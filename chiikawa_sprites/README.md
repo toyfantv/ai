@@ -48,38 +48,69 @@ python extract_sprites.py "C:\Users\liwos\AppData\Local\Alt.Binz\download\Chiika
 
 Then run without `--limit` for the whole season. Finished episodes are skipped on re-run.
 
-Add labeling and sorting (needs an Anthropic API key):
+## Sprite-short library (optional, uses the Anthropic API)
+
+`--tag` asks Claude to label every cut-out and then exports a library in the
+layout the **sprite-short** skill reads (`cutout_sheets.py --lib`, `library_images.py --lib`).
+Extract into a working folder, then tag and export next to the existing library:
 
 ```powershell
-$env:ANTHROPIC_API_KEY = "sk-ant-..."
-python extract_sprites.py "<episodes folder>" -o D:\chiikawa_sprites --tag
-# or tag what was already extracted:
-python extract_sprites.py "<episodes folder>" -o D:\chiikawa_sprites --tag-only
+# 1. extract (free, local)
+python extract_sprites.py "<episodes folder>" -o D:\Claude\chiikawa-sprites\anime\episodes
+# 2. tag + export (paid). Set the key in your own window first: $env:ANTHROPIC_API_KEY = "..."
+python extract_sprites.py "<episodes folder>" -o D:\Claude\chiikawa-sprites\anime\episodes --tag-only `
+    --library D:\Claude\chiikawa-sprites\anime --claude-model claude-sonnet-5-5
+# rebuild the library from tags.jsonl without any API calls (e.g. after editing THEMES):
+python extract_sprites.py "<episodes folder>" -o D:\Claude\chiikawa-sprites\anime\episodes --export-only `
+    --library D:\Claude\chiikawa-sprites\anime
 ```
 
-Tagging sends one image per cut-out. A season produces thousands of them. To
-cut cost, use `--claude-model claude-haiku-4-5`, or tag a trial batch first.
-Tagging can be resumed: already-tagged files are skipped.
+Before sending anything, the script prints how many cut-outs it will tag and a rough cost, and asks
+for confirmation (`--yes` skips the question). Tagging resumes: already-tagged files are skipped.
+Rough cost per cut-out: Opus 5.5 ~1¢, Sonnet 5.5 ~0.6¢, Haiku 4.5 ~0.3¢. Try a copy of 1-2 episodes first.
+
+```
+D:\Claude\chiikawa-sprites\anime\
+  characters\
+    chiikawa\ hachiware\ usagi\ ...   whole single characters (pose stills for cutout_sheets.py)
+      bust\                           cut off at the bottom (stickers sliding up from the bottom)
+    group\                            2+ characters ("interacting" or "together" in the name)
+    misc\                             side characters and monsters
+    props\                            objects without a character
+    theme-eating\ theme-rain\ ...      the same files again, by theme (hard links: no extra space)
+  poses.json        pose picks per character, best first (front-facing, highest quality)
+  index.jsonl       every exported file with its source episode, time and Claude's tags
+  review\partial\   cut off at the top/sides, not used by the skill
+  review\rejected\  not a character or poor cut-out
+  episodes\         the extraction output (-o): per-episode sprites, manifest.jsonl, tags.jsonl
+```
+
+File names start with `ep-<episode>-<time>` followed by the action, props and characters, for example
+`ep-0162bceb-01m12-50s-0-eating-rice-ball.png`. Use the library with sprite-short:
+
+```powershell
+python %SK%\cutout_sheets.py D:\Claude\animations\<name> chiikawa usagi --lib D:\Claude\chiikawa-sprites\anime\characters
+python %SK%\library_images.py D:\Claude\animations\<name> --list theme-eating --lib D:\Claude\chiikawa-sprites\anime\characters
+```
+
+The export never touches the hand-curated `D:\Claude\chiikawa-sprites\characters` library. Re-exporting
+only removes files the previous export wrote (listed in `index.jsonl`), and an existing `poses.json` that
+the export didn't write is left alone (the picks then go to `poses_episodes.json`). Theme names are the
+`THEMES` list in `extract_sprites.py`; character folders are `LIBRARY_CHARACTERS`.
 
 ## Output
 
 ```
-D:\chiikawa_sprites\
-  S01E001\
+<-o folder>\
+  <episode>\
     frames\   full source frames (one per shot), for reference
     sprites\  one PNG per character blob (single, or overlapping/interacting)
     groups\   all characters of a multi-character shot in one PNG
   manifest.jsonl   one line per cut-out: episode, timestamp, bbox, touches_edge...
   tags.jsonl       (--tag) Claude's labels per cut-out
-  sorted\          (--tag) copies sorted into:
-    single\<character>\           clean single character
-    with_props\<character>\       character with accessories
-    with_weapon\<character>\      character holding/wearing a weapon
-    interacting\<a+b>\            overlapping / interacting characters
-    together\<a+b>\               characters sharing a shot without touching
-    partial\<names>\              cut off by the frame edge or messy cut-out
-    rejected\                     not a character (scenery, matte errors)
 ```
+
+Episode folders are named after the file name's `S01E001` part, or the whole file name when it has none.
 
 ## Tuning
 
@@ -97,6 +128,6 @@ D:\chiikawa_sprites\
 
 Notes:
 - The model can still misjudge *which* area is a character (leftover background or a missing piece).
-  `--tag` puts those into `partial\` or `rejected\`, and `touches_edge` in the manifest flags
+  `--tag` puts those into `review\partial\` or `review\rejected\`, and `touches_edge` in the manifest flags
   characters cut off by the frame.
-- It runs on CPU by default. For a big speed-up on an NVIDIA GPU, install `rembg[gpu]` instead of `rembg[cpu]`.
+- It runs on CPU by default (about 1 minute per episode on a desktop CPU). For a speed-up on a recent NVIDIA GPU, install `rembg[gpu]` instead of `rembg[cpu]`. Current onnxruntime-gpu builds need CUDA 12/13 and have no kernels for GTX 10xx (Pascal) cards, so stay on CPU there. Never install `onnxruntime` and `onnxruntime-gpu` side by side: uninstalling one deletes the folder they share (fix with `pip install --force-reinstall --no-deps onnxruntime`).

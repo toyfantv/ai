@@ -12,8 +12,9 @@ Pipeline (per episode):
                                    touch each other, incl. held props/weapons)
        - all blobs  -> groups/    (when 2+ separate characters share the shot)
   4. Optionally (--tag) ask Claude to label every sprite (which characters,
-     interaction, accessories/weapons, completeness) and copy the sprites into
-     sorted/ folders by character / group / props.
+     pose, themes, props/weapons, completeness) and copy the sprites into a
+     sprite-short library (--library): one folder per character, group/, misc/,
+     props/, theme-<theme>/ and a poses.json for cutout_sheets.py.
 
 Input files may have no extension; anything OpenCV can decode as video is used.
 Re-running skips episodes that are already done (delete the episode folder to
@@ -26,6 +27,7 @@ import argparse
 import base64
 import io
 import json
+import os
 import re
 import shutil
 import sys
@@ -242,6 +244,17 @@ def sprite_hash(img: Image.Image) -> int:
 
 # ------------------------------------------------------------ extraction
 
+def drop_from_manifest(out_root: Path, ep: str) -> None:
+    """Remove an episode's lines from manifest.jsonl before it is extracted again."""
+    manifest = out_root / "manifest.jsonl"
+    if not manifest.exists():
+        return
+    lines = manifest.read_text(encoding="utf-8").splitlines()
+    keep = [l for l in lines if l.strip() and json.loads(l).get("episode") != ep]
+    if len(keep) != len(lines):
+        manifest.write_text("".join(l + "\n" for l in keep), encoding="utf-8")
+
+
 def process_episode(video: Path, out_root: Path, matter: Matter, cfg: Config) -> list[dict]:
     ep = episode_name(video)
     ep_dir = out_root / ep
@@ -251,6 +264,7 @@ def process_episode(video: Path, out_root: Path, matter: Matter, cfg: Config) ->
         return []
     if ep_dir.exists():
         shutil.rmtree(ep_dir)  # partial run: start the episode over
+    drop_from_manifest(out_root, ep)
     (ep_dir / "sprites").mkdir(parents=True)
     (ep_dir / "groups").mkdir()
     if cfg.save_frames:
@@ -299,7 +313,12 @@ def process_episode(video: Path, out_root: Path, matter: Matter, cfg: Config) ->
 
 # --------------------------------------------------------------- tagging
 
-ROSTER = """Known Chiikawa characters (use these names, lowercase):
+# Character folder names of the sprite-short library (D:\Claude\chiikawa-sprites\characters\<name>).
+LIBRARY_CHARACTERS = ["chiikawa", "hachiware", "usagi", "momonga", "kurimanju", "rakko", "shisa",
+                      "furuhonya", "yoroi", "chiikabu"]
+ALIASES = {"yoroi-san": "yoroi", "yoroi_san": "yoroi", "yoroisan": "yoroi", "armor": "yoroi"}
+
+ROSTER = """Known Chiikawa characters (use exactly these names, lowercase):
 - chiikawa: small white bear-like creature, pink blush, round ears, timid
 - hachiware: white cat-like creature with a blue-gray split "hachiware" pattern over the top of the head, cheerful
 - usagi: yellow/cream rabbit-like creature with long ears, wild expressions
@@ -308,15 +327,24 @@ ROSTER = """Known Chiikawa characters (use these names, lowercase):
 - rakko: sea otter, strong swordsman, tan with a mane-like face
 - shisa: small shisa (lion-dog), orange/yellow mane, works at the ramen shop
 - furuhonya: used-bookstore keeper, hairy, glasses
-- yoroi-san: armored people (pot/armor helmets) who run the labor office and shops
-- kani-chan / momonga etc.: use the closest known name; otherwise "other:<short description>"
-- chimera / monster: any enemy creature (describe briefly as "monster:<description>")"""
+- yoroi: armored people (pot/armor helmets) who run the labor office and shops
+- chiikabu: use only if you are sure
+Anyone else: "other:<short description>". Enemy creatures: "monster:<short description>"."""
+
+# The sprite-short pose rows (cutout_sheets.py ROWS) and what each one means.
+POSES = ["idle", "happy", "cheer", "sleep", "desk", "power", "dash"]
+POSE_HELP = ("idle = standing/neutral, happy = smiling/shy/blushing, cheer = jumping/dancing/arms up, "
+             "sleep = sleeping/lying down, desk = busy with something in hand (eating, reading, working), "
+             "power = determined/fighting/weapon raised, dash = running/flying/moving fast")
+# Theme folders (characters\theme-<theme>). Edit this list to change them.
+THEMES = ["eating", "cooking", "working", "fighting", "running", "crying", "laughing", "shy", "scared",
+          "angry", "surprised", "sleeping", "celebrating", "hugging", "music", "rain"]
 
 TAG_SCHEMA = {
     "type": "object",
     "properties": {
         "is_character": {"type": "boolean",
-                         "description": "True if the cut-out mainly shows one or more characters (not scenery, text, food alone, or a matting error)."},
+                         "description": "True if the cut-out mainly shows one or more characters (not scenery, text, an object alone, or a matting error)."},
         "characters": {"type": "array", "items": {"type": "string"},
                        "description": "Names of every character visible, one entry per character."},
         "interaction": {"type": "boolean",
@@ -325,14 +353,29 @@ TAG_SCHEMA = {
                   "description": "Accessories, held items, costumes (e.g. 'stick', 'pochette', 'hat', 'mushroom')."},
         "weapons": {"type": "array", "items": {"type": "string"},
                     "description": "Weapons held or worn (e.g. 'stick', 'sword', 'spear', 'tweezers')."},
-        "pose": {"type": "string", "description": "Short pose/action, e.g. 'running', 'crying', 'hugging hachiware'."},
-        "complete": {"type": "boolean",
-                     "description": "True if the characters are whole (not cut off by the frame edge) with little leftover background."},
-        "quality": {"type": "integer", "description": "1-5 usefulness as a clean sprite for a short video."},
+        "action": {"type": "string",
+                   "description": "1-3 lowercase words for what the lead character does, e.g. 'eating rice ball', 'running', 'crying'."},
+        "pose": {"type": "string", "enum": POSES, "description": "Closest pose row: " + POSE_HELP},
+        "facing": {"type": "string", "enum": ["front", "side", "back"],
+                   "description": "Which way the lead character faces."},
+        "cut_off": {"type": "string", "enum": ["none", "bottom", "other"],
+                    "description": "none = whole body visible; bottom = only the lower body is cut off (a bust); "
+                                   "other = cut off at the top or sides, or a large part missing."},
+        "themes": {"type": "array", "items": {"type": "string", "enum": THEMES},
+                   "description": "0-3 themes that clearly fit."},
+        "quality": {"type": "integer",
+                    "description": "1-5 usefulness as a clean sprite for a short video (5 = clean outline, no leftover background)."},
     },
-    "required": ["is_character", "characters", "interaction", "props", "weapons", "pose", "complete", "quality"],
+    "required": ["is_character", "characters", "interaction", "props", "weapons", "action", "pose", "facing",
+                 "cut_off", "themes", "quality"],
     "additionalProperties": False,
 }
+
+# Request options per model family. Haiku 4.5 rejects `effort`; server-side fallbacks only exist on newer models.
+NO_EFFORT_MODELS = ("claude-haiku-4-5", "claude-sonnet-4-5")
+FALLBACK_MODELS = ("claude-opus-5-5", "claude-opus-5", "claude-sonnet-5-5", "claude-fable-5-1")
+# Rough cost per cut-out (USD): ~1,000 input tokens (one image <=768 px + prompt) and ~400 output tokens.
+PRICE_PER_MTOK = {"claude-opus-5-5": (4, 20), "claude-sonnet-5-5": (2, 10), "claude-haiku-4-5": (1, 5)}
 
 
 def sprite_png_b64(path: Path, max_side: int = 768) -> str:
@@ -345,13 +388,20 @@ def sprite_png_b64(path: Path, max_side: int = 768) -> str:
     return base64.standard_b64encode(buf.getvalue()).decode()
 
 
+def request_options(model: str) -> dict:
+    output_config: dict = {"format": {"type": "json_schema", "schema": TAG_SCHEMA}}
+    if model not in NO_EFFORT_MODELS:
+        output_config["effort"] = "low"
+    opts: dict = {"output_config": output_config}
+    if model in FALLBACK_MODELS:
+        opts.update(betas=["server-side-fallback-2026-07-01"], fallbacks="default")
+    return opts
+
+
 def tag_sprite(client, model: str, path: Path) -> dict | None:
     response = client.beta.messages.create(
         model=model,
         max_tokens=2000,
-        betas=["server-side-fallback-2026-07-01"],
-        fallbacks="default",
-        output_config={"effort": "low", "format": {"type": "json_schema", "schema": TAG_SCHEMA}},
         messages=[{
             "role": "user",
             "content": [
@@ -362,6 +412,7 @@ def tag_sprite(client, model: str, path: Path) -> dict | None:
                     "character sprite in short videos. Label it.\n\n" + ROSTER)},
             ],
         }],
+        **request_options(model),
     )
     if response.stop_reason == "refusal":
         return None
@@ -370,39 +421,43 @@ def tag_sprite(client, model: str, path: Path) -> dict | None:
 
 
 def slug(s: str) -> str:
-    return re.sub(r"[^\w-]+", "_", s.strip().lower())[:40] or "unknown"
+    return re.sub(r"[^\w-]+", "-", s.strip().lower()).strip("-_")[:40] or "unknown"
 
 
-def sort_dest(out_root: Path, rec: dict) -> Path | None:
-    tags = rec.get("tags")
-    if not tags or not tags["is_character"] or tags["quality"] <= 1:
-        return out_root / "sorted" / "rejected"
-    chars = tags["characters"]
-    if not tags["complete"]:  # cut off by the frame edge or messy matte
-        return out_root / "sorted" / "partial" / "+".join(sorted(slug(c) for c in chars) or ["unknown"])
-    if rec["kind"] == "group" or len(chars) >= 2:
-        sub = "interacting" if tags["interaction"] else "together"
-        return out_root / "sorted" / sub / "+".join(sorted(slug(c) for c in chars))
-    base = out_root / "sorted" / ("with_weapon" if tags["weapons"] else
-                                  "with_props" if tags["props"] else "single")
-    return base / slug(chars[0] if chars else "unknown")
-
-
-def tag_all(out_root: Path, model: str, workers: int) -> None:
-    import anthropic
-
-    manifest = out_root / "manifest.jsonl"
-    tags_file = out_root / "tags.jsonl"
-    records = list({r["file"]: r for r in (json.loads(l) for l in
-                    manifest.read_text(encoding="utf-8").splitlines() if l.strip())}.values())
-    done: dict[str, dict] = {}
-    if tags_file.exists():
-        for line in tags_file.read_text(encoding="utf-8").splitlines():
+def load_jsonl(path: Path) -> dict[str, dict]:
+    """{file: record}; later lines win."""
+    out: dict[str, dict] = {}
+    if path.exists():
+        for line in path.read_text(encoding="utf-8").splitlines():
             if line.strip():
                 r = json.loads(line)
-                done[r["file"]] = r
-    todo = [r for r in records if r["file"] not in done]
-    print(f"Tagging {len(todo)} cut-outs ({len(done)} already tagged) with {model}")
+                out[r["file"]] = r
+    return out
+
+
+def estimate_cost(model: str, n: int) -> str:
+    price = PRICE_PER_MTOK.get(model)
+    if not price:
+        return "unknown model price"
+    usd = n * (1000 * price[0] + 400 * price[1]) / 1e6
+    return f"roughly ${usd:.2f}"
+
+
+def tag_all(out_root: Path, model: str, workers: int, assume_yes: bool) -> dict[str, dict]:
+    """Tag every cut-out in manifest.jsonl that isn't in tags.jsonl yet. Returns {file: tagged record}."""
+    records = {f: r for f, r in load_jsonl(out_root / "manifest.jsonl").items() if (out_root / f).exists()}
+    tags_file = out_root / "tags.jsonl"
+    done = {f: r for f, r in load_jsonl(tags_file).items() if f in records}
+    todo = [r for f, r in records.items() if f not in done]
+    print(f"{len(records)} cut-outs in manifest.jsonl, {len(done)} already tagged, {len(todo)} to tag with {model} "
+          f"({estimate_cost(model, len(todo))}).")
+    if not todo:
+        return done
+    if not assume_yes and input("Send them to the Anthropic API now? [y/N] ").strip().lower() != "y":
+        print("Tagging skipped.")
+        return done
+
+    import anthropic
 
     client = anthropic.Anthropic()
     lock = threading.Lock()
@@ -411,7 +466,7 @@ def tag_all(out_root: Path, model: str, workers: int) -> None:
         try:
             tags = tag_sprite(client, model, out_root / rec["file"])
         except anthropic.RateLimitError:
-            print(f"  rate limited on {rec['file']}; re-run --tag later to finish", file=sys.stderr)
+            print(f"  rate limited on {rec['file']}; re-run --tag-only later to finish", file=sys.stderr)
             return
         except anthropic.APIStatusError as e:
             print(f"  API error {e.status_code} on {rec['file']}: {e.message}", file=sys.stderr)
@@ -429,15 +484,123 @@ def tag_all(out_root: Path, model: str, workers: int) -> None:
 
     with ThreadPoolExecutor(max_workers=workers) as pool:
         list(pool.map(work, todo))
+    return done
 
-    sorted_dir = out_root / "sorted"
-    if sorted_dir.exists():
-        shutil.rmtree(sorted_dir)
-    for rec in done.values():
-        dest = sort_dest(out_root, rec)
-        dest.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(out_root / rec["file"], dest / Path(rec["file"]).name)
-    print(f"Sorted {len(done)} cut-outs into {sorted_dir}")
+
+# ------------------------------------------------------- library export
+
+def character_folder(name: str) -> str | None:
+    """Library folder for a tagged name, or None for side characters (other:/monster:/unknown)."""
+    n = slug(name)
+    n = ALIASES.get(n, n)
+    return n if n in LIBRARY_CHARACTERS else None
+
+
+def short_episode(ep: str) -> str:
+    return slug(ep if len(ep) <= 12 else ep[:8])
+
+
+def library_dest(rec: dict) -> tuple[str, str] | None:
+    """(folder relative to characters/, file name) for a tagged cut-out, or (review/<why>, name), or None."""
+    tags = rec.get("tags")
+    stamp = Path(rec["file"]).stem.rsplit("_", 3)
+    stamp = "-".join(stamp[1:]) if len(stamp) == 4 else Path(rec["file"]).stem
+    base = f"ep-{short_episode(rec['episode'])}-{slug(stamp)}"
+    if not tags or tags["quality"] <= 1:
+        return "../review/rejected", base + ".png"
+    names = [character_folder(c) or "other" for c in tags["characters"]]
+    action = slug(tags["action"])
+    extras = [x for x in (slug(x) for x in tags["weapons"] + tags["props"]) if x not in action][:2]
+    words = "-".join(dict.fromkeys([action] + extras))
+    if not tags["is_character"]:
+        return ("props" if tags["quality"] >= 3 else "../review/rejected"), f"{base}-{words}.png"
+    if tags["cut_off"] == "other":
+        return "../review/partial", f"{base}-{'+'.join(sorted(set(names)))}-{words}.png"
+    if rec["kind"] == "group" or len(names) >= 2:
+        how = "interacting" if tags["interaction"] else "together"
+        bust = "" if tags["cut_off"] == "none" else "-bust"
+        return "group", f"{base}-{'+'.join(sorted(set(names)))}-{how}{bust}-{words}.png"
+    lead = names[0] if names else "other"
+    folder = "misc" if lead == "other" else lead
+    return (folder if tags["cut_off"] == "none" else f"{folder}/bust"), f"{base}-{words}.png"
+
+
+def place(src: Path, dest: Path) -> None:
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    if dest.exists():
+        dest.unlink()
+    shutil.copy2(src, dest)
+
+
+def link(src: Path, dest: Path) -> None:
+    """Hard link (no extra disk space on the same drive); copy if linking isn't possible."""
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    if dest.exists():
+        dest.unlink()
+    try:
+        os.link(src, dest)
+    except OSError:
+        shutil.copy2(src, dest)
+
+
+def export_library(out_root: Path, lib_root: Path, tagged: dict[str, dict]) -> None:
+    """Copy tagged cut-outs into a sprite-short library:
+
+      <lib_root>/characters/<name>/        whole single characters (cutout_sheets.py pose stills)
+      <lib_root>/characters/<name>/bust/   singles cut off at the bottom
+      <lib_root>/characters/group/         2+ characters (library_images.py / showcase)
+      <lib_root>/characters/misc/          side characters and monsters
+      <lib_root>/characters/props/         objects without a character
+      <lib_root>/characters/theme-<theme>/  hard links of the above, by theme (flat, so --list works)
+      <lib_root>/poses.json                pose picks for cutout_sheets.py (best first)
+      <lib_root>/index.jsonl               one line per exported file with its source and tags
+      <lib_root>/review/{partial,rejected}/  not used by the skill
+
+    Only files listed in the previous index.jsonl are ever removed, so the folder can sit next to other assets.
+    """
+    chars = lib_root / "characters"
+    index_path = lib_root / "index.jsonl"
+    for old in load_jsonl(index_path):   # remove what the last export wrote, nothing else
+        for p in [lib_root / old] + [chars / f"theme-{t}" / Path(old).name for t in THEMES]:
+            if p.exists():
+                p.unlink()
+
+    index, poses = [], {}
+    counts: dict[str, int] = {}
+    for rec in sorted(tagged.values(), key=lambda r: r["file"]):
+        src = out_root / rec["file"]
+        dest = library_dest(rec)
+        if dest is None or not src.exists():
+            continue
+        folder, name = dest
+        rel = (Path("characters") / folder / name).as_posix().replace("characters/../", "")
+        place(src, lib_root / rel)
+        tags = rec.get("tags") or {}
+        index.append({"file": rel, "source": rec["file"], "episode": rec["episode"], "time": rec["time"],
+                      "frame": rec.get("frame"), "tags": tags})
+        top = folder.split("/")[0] if not folder.startswith("..") else folder[3:]
+        counts[top] = counts.get(top, 0) + 1
+        if rel.startswith("characters/"):
+            for theme in tags.get("themes", []):
+                if theme in THEMES:
+                    link(lib_root / rel, chars / f"theme-{theme}" / name)
+        if folder in LIBRARY_CHARACTERS:  # whole single character: candidate pose still
+            poses.setdefault(folder, []).append((tags["pose"], tags["facing"] != "front", -tags["quality"], name))
+
+    with open(index_path, "w", encoding="utf-8") as f:
+        for r in index:
+            f.write(json.dumps(r) + "\n")
+
+    pose_json = {c: {p: [n for q, _, _, n in sorted(v) if q == p] for p in POSES if any(q == p for q, *_ in v)}
+                 for c, v in sorted(poses.items())}
+    pose_path = lib_root / "poses.json"
+    if pose_path.exists() and not (lib_root / ".sprite_export").exists():
+        pose_path = lib_root / "poses_episodes.json"   # never overwrite a hand-tagged poses.json
+        print(f"  {lib_root / 'poses.json'} is not ours; wrote pose picks to {pose_path.name} instead")
+    pose_path.write_text(json.dumps(pose_json, indent=1), encoding="utf-8")
+    (lib_root / ".sprite_export").touch()
+    print(f"Exported {len(index)} cut-outs to {lib_root}: " + ", ".join(f"{k} {v}" for k, v in sorted(counts.items())))
+    print(f"  use with sprite-short: cutout_sheets.py <project> <names> --lib \"{chars}\"")
 
 
 # ------------------------------------------------------------------ main
@@ -459,10 +622,16 @@ def main() -> None:
                    help="How far the cut edge may grow to include the drawn outline")
     p.add_argument("--no-frames", action="store_true", help="Don't save the full source frames")
     p.add_argument("--limit", type=int, default=0, help="Only process the first N episodes (for a trial run)")
-    p.add_argument("--tag", action="store_true", help="Label sprites with Claude and sort them (needs ANTHROPIC_API_KEY)")
-    p.add_argument("--tag-only", action="store_true", help="Skip extraction; only tag/sort what's in the output folder")
+    p.add_argument("--tag", action="store_true",
+                   help="Label sprites with Claude and export the library (needs ANTHROPIC_API_KEY)")
+    p.add_argument("--tag-only", action="store_true", help="Skip extraction; only tag and export what's in the output folder")
+    p.add_argument("--export-only", action="store_true",
+                   help="No extraction, no API calls: rebuild the library from tags.jsonl")
+    p.add_argument("--library", type=Path, default=None,
+                   help="Where to export the sprite-short library (default: <output>/library)")
     p.add_argument("--claude-model", default="claude-opus-5-5")
     p.add_argument("--workers", type=int, default=4)
+    p.add_argument("--yes", action="store_true", help="Don't ask before sending cut-outs to the API")
     args = p.parse_args()
 
     cfg = Config(sample_fps=args.sample_fps, scene_threshold=args.scene_threshold, max_gap=args.max_gap,
@@ -471,7 +640,7 @@ def main() -> None:
     out_root = args.output
     out_root.mkdir(parents=True, exist_ok=True)
 
-    if not args.tag_only:
+    if not (args.tag_only or args.export_only):
         if args.input.is_file():
             videos = [args.input]
         else:
@@ -489,8 +658,13 @@ def main() -> None:
             except Exception as e:  # keep going on a bad file
                 print(f"[{v.name}] failed: {e}", file=sys.stderr)
 
-    if args.tag or args.tag_only:
-        tag_all(out_root, args.claude_model, args.workers)
+    if args.tag or args.tag_only or args.export_only:
+        if args.export_only:
+            records = load_jsonl(out_root / "manifest.jsonl")
+            tagged = {f: r for f, r in load_jsonl(out_root / "tags.jsonl").items() if f in records}
+        else:
+            tagged = tag_all(out_root, args.claude_model, args.workers, args.yes)
+        export_library(out_root, args.library or out_root / "library", tagged)
 
 
 if __name__ == "__main__":
