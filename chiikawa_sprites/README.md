@@ -43,7 +43,7 @@ The first run downloads the anime matting model (`isnet-anime`, about 170 MB) to
 Do a trial on 2 episodes first:
 
 ```powershell
-python extract_sprites.py "C:\Users\liwos\AppData\Local\Alt.Binz\download\Chiikawa.S01.2022.1080p.WEB-DL.H.264.AAC-ADWeb (1)" -o D:\chiikawa_sprites --limit 2
+python extract_sprites.py "C:\Users\liwos\AppData\Local\Alt.Binz\download\Chiikawa.S01.2022.1080p.WEB-DL.H.264.AAC-ADWeb (1)" -o D:\Claude\chiikawa-sprites\anime\episodes --limit 2
 ```
 
 Then run without `--limit` for the whole season. Finished episodes are skipped on re-run.
