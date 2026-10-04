@@ -4,8 +4,9 @@
 Pipeline (per episode):
   1. Sample frames, keeping one per shot (scene-change + periodic sampling,
      skipping black/flat/blurry frames and near-duplicates).
-  2. Cut the characters out of each kept frame with an anime-tuned matting
-     model (rembg "isnet-anime"), producing a transparent PNG.
+  2. Find the characters with an anime-tuned matting model (rembg
+     "isnet-anime"). The model only picks which pixels to keep: sprites are the
+     untouched frame pixels with an on/off alpha, snapped to the drawn outline.
   3. Split the cut-out into connected blobs:
        - each blob  -> sprites/   (one character, or characters that overlap /
                                    touch each other, incl. held props/weapons)
@@ -55,6 +56,9 @@ class Config:
     min_area: float = 0.004         # smallest sprite, as a fraction of the frame
     max_area: float = 0.85          # larger blobs are usually a failed matte
     alpha_threshold: int = 128
+    outline_px: int = 4             # how far the edge may grow to take in the drawn outline
+    outline_luma: int = 110         # pixels darker than this count as outline
+    max_hole: float = 0.15          # fill holes smaller than this fraction of the character
     pad: int = 12
     save_frames: bool = True
     max_frames: int = 0             # 0 = unlimited
@@ -154,17 +158,40 @@ class Matter:
         return np.asarray(mask.convert("L"))
 
 
-def rgba_crop(rgb: np.ndarray, alpha: np.ndarray, x0, y0, x1, y1, pad: int) -> Image.Image:
-    h, w = alpha.shape
+def rgba_crop(rgb: np.ndarray, mask: np.ndarray, x0, y0, x1, y1, pad: int) -> Image.Image:
+    """Crop the original frame pixels; alpha is fully opaque inside the mask, 0 outside."""
+    h, w = mask.shape
     x0, y0 = max(0, x0 - pad), max(0, y0 - pad)
     x1, y1 = min(w, x1 + pad), min(h, y1 + pad)
-    rgba = np.dstack([rgb[y0:y1, x0:x1], alpha[y0:y1, x0:x1]])
+    alpha = np.where(mask[y0:y1, x0:x1] > 0, 255, 0).astype(np.uint8)
+    rgba = np.dstack([rgb[y0:y1, x0:x1], alpha])
     return Image.fromarray(rgba, "RGBA")
+
+
+def refine_mask(comp: np.ndarray, gray: np.ndarray, cfg: Config) -> np.ndarray:
+    """Turn the model's rough guess into a mask that follows the drawing itself.
+
+    The model only decides *where* a character is. The edge is snapped outward
+    to the dark drawn outline (so the linework is kept whole), and small holes
+    the model punched inside the character (eyes, mouth, white fur) are filled.
+    """
+    r = cfg.outline_px
+    band = cv2.dilate(comp, np.ones((2 * r + 1, 2 * r + 1), np.uint8)) & (1 - comp)
+    mask = comp | (band & (gray < cfg.outline_luma).astype(np.uint8))
+
+    contours, hierarchy = cv2.findContours(mask, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)
+    if hierarchy is not None:
+        outer_area = sum(cv2.contourArea(c) for c, hi in zip(contours, hierarchy[0]) if hi[3] < 0)
+        for c, hi in zip(contours, hierarchy[0]):
+            if hi[3] >= 0 and cv2.contourArea(c) < cfg.max_hole * outer_area:
+                cv2.drawContours(mask, [c], -1, 1, thickness=cv2.FILLED)
+    return mask
 
 
 def cut_sprites(rgb: np.ndarray, soft: np.ndarray, cfg: Config):
     """Return (blob_sprites, group_sprite_or_None). Each blob = (Image, info)."""
     h, w = soft.shape
+    gray = cv2.cvtColor(rgb, cv2.COLOR_RGB2GRAY)
     binary = (soft >= cfg.alpha_threshold).astype(np.uint8)
     binary = cv2.morphologyEx(binary, cv2.MORPH_OPEN, np.ones((5, 5), np.uint8))
     n, labels, stats, _ = cv2.connectedComponentsWithStats(binary, connectivity=8)
@@ -172,19 +199,18 @@ def cut_sprites(rgb: np.ndarray, soft: np.ndarray, cfg: Config):
     blobs = []
     keep = np.zeros_like(binary)
     for i in range(1, n):
-        x, y, bw, bh, area = stats[i]
+        area = stats[i][4]
         frac = area / (w * h)
         if frac < cfg.min_area or frac > cfg.max_area:
             continue
-        comp = (labels == i).astype(np.uint8)
-        # Grow the hard mask slightly so the soft anti-aliased edge survives.
-        grown = cv2.dilate(comp, np.ones((7, 7), np.uint8))
-        alpha = (soft * grown).astype(np.uint8)
-        keep |= grown
-        img = rgba_crop(rgb, alpha, x, y, x + bw, y + bh, cfg.pad)
-        touches = x <= 1 or y <= 1 or x + bw >= w - 1 or y + bh >= h - 1
+        mask = refine_mask((labels == i).astype(np.uint8), gray, cfg)
+        keep |= mask
+        ys, xs = np.nonzero(mask)
+        x, y, x1, y1 = xs.min(), ys.min(), xs.max() + 1, ys.max() + 1
+        img = rgba_crop(rgb, mask, x, y, x1, y1, cfg.pad)
+        touches = x <= 1 or y <= 1 or x1 >= w - 1 or y1 >= h - 1
         blobs.append((img, {
-            "bbox": [int(x), int(y), int(bw), int(bh)],
+            "bbox": [int(x), int(y), int(x1 - x), int(y1 - y)],
             "area_frac": round(float(frac), 4),
             "touches_edge": bool(touches),
         }))
@@ -192,9 +218,19 @@ def cut_sprites(rgb: np.ndarray, soft: np.ndarray, cfg: Config):
     group = None
     if len(blobs) >= 2:
         ys, xs = np.nonzero(keep)
-        alpha = (soft * keep).astype(np.uint8)
-        group = rgba_crop(rgb, alpha, xs.min(), ys.min(), xs.max() + 1, ys.max() + 1, cfg.pad)
+        group = rgba_crop(rgb, keep, xs.min(), ys.min(), xs.max() + 1, ys.max() + 1, cfg.pad)
     return blobs, group
+
+
+def check_untouched(img: Image.Image, rgb: np.ndarray, bbox, pad: int) -> None:
+    """Every visible sprite pixel must be the exact source-frame pixel at full opacity."""
+    a = np.asarray(img)
+    h, w = rgb.shape[:2]
+    x0, y0 = max(0, bbox[0] - pad), max(0, bbox[1] - pad)
+    src = rgb[y0:y0 + a.shape[0], x0:x0 + a.shape[1]]
+    vis = a[..., 3] > 0
+    if not (np.all(a[..., 3][vis] == 255) and np.array_equal(a[..., :3][vis], src[vis])):
+        raise AssertionError("sprite pixels differ from the source frame")
 
 
 def sprite_hash(img: Image.Image) -> int:
@@ -237,6 +273,7 @@ def process_episode(video: Path, out_root: Path, matter: Matter, cfg: Config) ->
             cv2.imwrite(str(out_root / frame_rel), frame, [cv2.IMWRITE_JPEG_QUALITY, 92])
 
         for k, (img, info) in enumerate(blobs):
+            check_untouched(img, rgb, info["bbox"], cfg.pad)
             hsh = sprite_hash(img)
             if any(hamming(hsh, o) <= 12 for o in seen[-60:]):
                 continue
@@ -418,6 +455,8 @@ def main() -> None:
     p.add_argument("--skip-start", type=float, default=0.0, help="Seconds to skip at the start (e.g. opening)")
     p.add_argument("--skip-end", type=float, default=0.0, help="Seconds to skip at the end (e.g. credits)")
     p.add_argument("--max-frames", type=int, default=0, help="Max frames per episode (0 = no limit)")
+    p.add_argument("--outline-px", type=int, default=Config.outline_px,
+                   help="How far the cut edge may grow to include the drawn outline")
     p.add_argument("--no-frames", action="store_true", help="Don't save the full source frames")
     p.add_argument("--limit", type=int, default=0, help="Only process the first N episodes (for a trial run)")
     p.add_argument("--tag", action="store_true", help="Label sprites with Claude and sort them (needs ANTHROPIC_API_KEY)")
@@ -427,7 +466,7 @@ def main() -> None:
     args = p.parse_args()
 
     cfg = Config(sample_fps=args.sample_fps, scene_threshold=args.scene_threshold, max_gap=args.max_gap,
-                 min_sharpness=args.min_sharpness, min_area=args.min_area, skip_start=args.skip_start,
+                 min_sharpness=args.min_sharpness, min_area=args.min_area, outline_px=args.outline_px, skip_start=args.skip_start,
                  skip_end=args.skip_end, max_frames=args.max_frames, save_frames=not args.no_frames)
     out_root = args.output
     out_root.mkdir(parents=True, exist_ok=True)

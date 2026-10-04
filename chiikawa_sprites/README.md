@@ -11,6 +11,22 @@ sprite-based short videos:
 
 The episode files don't need an extension. Any file OpenCV can decode as video is used.
 
+## Cut-outs keep the original pixels
+
+The AI model only decides **which** pixels belong to a character. Every visible
+pixel in a sprite is the exact pixel from the episode frame. Nothing is
+regenerated, recoloured, resized or blended:
+
+- Alpha is strictly on/off (255 or 0), with no semi-transparent edge blending.
+- The model's rough edge is snapped outward to the drawn dark outline, so the linework is kept whole.
+- Small holes the model punches inside a character (eyes, mouth, white fur) are filled with the original pixels.
+- Before each sprite is saved, the script checks that it matches the source frame pixel for pixel.
+- PNGs are lossless and are full resolution (1080p).
+
+The trade-off of hard edges: a 1-pixel fringe of the episode's anti-aliased
+outline (a bit of background tint) can remain around a character.
+`--outline-px` sets how far the edge may grow to catch the outline.
+
 ## Setup (Windows, once)
 
 ```powershell
@@ -76,10 +92,11 @@ D:\chiikawa_sprites\
 | `--min-area` | 0.004 | Smallest sprite as a fraction of the frame |
 | `--skip-start` / `--skip-end` | 0 | Seconds to skip, e.g. the opening/ending |
 | `--model` | `isnet-anime` | rembg matting model; try `isnet-general-use` or `u2net` if cut-outs miss characters |
+| `--outline-px` | 4 | How far the cut edge may grow to take in the drawn outline |
 | `--no-frames` | off | Don't save the full frames |
 
 Notes:
-- Matting is a neural model, so expect some cut-outs with leftover background or a missing piece.
+- The model can still misjudge *which* area is a character (leftover background or a missing piece).
   `--tag` puts those into `partial\` or `rejected\`, and `touches_edge` in the manifest flags
   characters cut off by the frame.
 - It runs on CPU by default. For a big speed-up on an NVIDIA GPU, install `rembg[gpu]` instead of `rembg[cpu]`.
