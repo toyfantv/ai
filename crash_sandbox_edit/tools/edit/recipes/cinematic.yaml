@@ -1,0 +1,27 @@
+# Cinematic cut: a clean title, slow push-ins on close-ups, a speed ramp through the big moment
+# (optical-flow slow-mo, then snap back) and a subtle grade. No vignette, no letterbox bars.
+name: cinematic
+aspects: [wide, 4x5]
+grade: {contrast: 1.06, saturation: 1.06, warmth: 0.035, gamma: 1.02}
+audio: {loudness: -14, slow_gain: 0.9}
+title_card: {seconds: 2.0}
+range: {start: 0, end: auto, tail: 1.8}
+smooth_slowmo: true
+
+rules:
+  - on: {cut: close}
+    do:
+      - push_in: {zoom: 1.08}
+
+  - on: {climax: true}
+    do:
+      - slowmo: {speed: 0.3, before: 0.45, after: 1.3, ease_in: 0.3, ease_out: 0.35}
+      - sfx: {name: riser, gain: 0.35, offset: -1.2}
+      - sfx: {name: boom, gain: 0.6}
+      - flash: {frames: 3, strength: 0.35}
+      - shake: {frames: 18, amp: 0.012, rot: 0.6}
+
+  - on: {event: [power, explode]}
+    do:
+      - slowmo: {speed: 0.5, before: 0.2, after: 0.5, ease_in: 0.15, ease_out: 0.2}
+      - sfx: {name: boom, gain: 0.35}

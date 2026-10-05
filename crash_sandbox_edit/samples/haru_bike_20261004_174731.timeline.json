@@ -1,0 +1,294 @@
+{
+ "_note": "Hand-made fixture for development. Cut times were measured by scene-change detection on the video (accurate to ~1 frame); other times come from the scene script (scenes/stories/haru_bike.lua) and simulation traces, accurate to ~0.1-0.2 s. 'tracks' (screen positions) aren't in this fixture: code must work without them (fall back to centre / manual framing) and use them when present. t = 0 is GO = the first frame of the video.",
+ "scene": "haru_bike",
+ "title": "Learning to Ride",
+ "fps": 60,
+ "duration": 14.8,
+ "video": {
+  "wide": "haru_bike_20261004_174731.mp4",
+  "wideSize": [
+   1920,
+   1080
+  ],
+  "vertical": "haru_bike_20261004_174731_4x5.mp4",
+  "verticalSize": [
+   1080,
+   1350
+  ],
+  "verticalCropOfWide": {
+   "x": 528,
+   "w": 864,
+   "note": "the 4:5 file is the centre 864x1080 of the 16:9 frame, scaled to 1080x1350"
+  }
+ },
+ "characters": {
+  "haru": {
+   "label": "Haru Urara",
+   "cast": "haru_urara",
+   "role": "rides the motorbike; gets hit by the bus"
+  },
+  "oguri": {
+   "label": "Oguri Cap",
+   "cast": "oguri_cap",
+   "role": "drives the jeep"
+  },
+  "goku": {
+   "label": "Goku",
+   "cast": "goku",
+   "role": "leaps in and stops the jeep with one palm"
+  },
+  "bus_driver": {
+   "label": "Bus driver",
+   "role": "background"
+  }
+ },
+ "vehicles": {
+  "bike": {
+   "model": "motorbike",
+   "rider": "haru"
+  },
+  "car": {
+   "model": "jeep",
+   "driver": "oguri"
+  },
+  "bus": {
+   "model": "school_bus",
+   "driver": "bus_driver"
+  }
+ },
+ "cuts": [
+  {
+   "t": 0.0,
+   "camera": "haru front",
+   "type": "chase",
+   "shows": [
+    "haru"
+   ],
+   "framing": "medium, front 3/4"
+  },
+  {
+   "t": 1.917,
+   "camera": "low car",
+   "type": "chase",
+   "shows": [
+    "car"
+   ],
+   "framing": "low chase of the jeep launching"
+  },
+  {
+   "t": 2.617,
+   "camera": "oguri close",
+   "type": "onboard",
+   "shows": [
+    "oguri"
+   ],
+   "framing": "face close-up through the windshield"
+  },
+  {
+   "t": 3.7,
+   "camera": "east wide",
+   "type": "fixed",
+   "shows": [
+    "goku",
+    "haru",
+    "car"
+   ],
+   "framing": "wide: Goku leaps and lands in the intersection"
+  },
+  {
+   "t": 4.767,
+   "camera": "power close",
+   "type": "fixed",
+   "shows": [
+    "goku",
+    "car",
+    "haru"
+   ],
+   "framing": "side-on: Goku's palm, the jeep's nose, Haru behind"
+  },
+  {
+   "t": 5.75,
+   "camera": "haru front",
+   "type": "chase",
+   "shows": [
+    "haru",
+    "goku",
+    "car"
+   ],
+   "framing": "Haru rides past the stopped jeep"
+  },
+  {
+   "t": 8.067,
+   "camera": "side pan",
+   "type": "fixed",
+   "shows": [
+    "haru"
+   ],
+   "framing": "calm wide pan; the bus enters from the left and hits her"
+  },
+  {
+   "t": 10.05,
+   "camera": "haru fly",
+   "type": "track",
+   "shows": [
+    "haru"
+   ],
+   "framing": "follows Haru through the air"
+  },
+  {
+   "t": 12.083,
+   "camera": "goku end",
+   "type": "fixed",
+   "shows": [
+    "goku",
+    "car"
+   ],
+   "framing": "medium: Goku facepalms"
+  }
+ ],
+ "dialogue": [
+  {
+   "t": 0.3,
+   "dur": 2.08,
+   "who": "haru",
+   "text": "Okay, okay... nice and steady...",
+   "face": "nervous"
+  },
+  {
+   "t": 2.7,
+   "dur": 2.08,
+   "who": "oguri",
+   "text": "Buffet closes in five minutes...",
+   "face": "angry"
+  },
+  {
+   "t": 4.9,
+   "dur": 0.8,
+   "who": "goku",
+   "text": "Not today!",
+   "face": "angry"
+  },
+  {
+   "t": 6.3,
+   "dur": 2.28,
+   "who": "haru",
+   "text": "Hehe~ I'm getting the hang of this!",
+   "face": "happy"
+  }
+ ],
+ "events": [
+  {
+   "t": 0.5,
+   "kind": "launch",
+   "who": "car",
+   "note": "the jeep floors it (engine rev)"
+  },
+  {
+   "t": 2.2,
+   "kind": "run",
+   "who": "goku"
+  },
+  {
+   "t": 3.4,
+   "kind": "leap",
+   "who": "goku"
+  },
+  {
+   "t": 4.2,
+   "kind": "land",
+   "who": "goku",
+   "note": "superhero landing, dust ring, thud"
+  },
+  {
+   "t": 4.59,
+   "kind": "power",
+   "who": "goku",
+   "target": "car",
+   "note": "palm burst: energy rings, flash, shake; the jeep brakes hard"
+  },
+  {
+   "t": 4.85,
+   "kind": "stop",
+   "who": "car",
+   "note": "stops ~6 studs from Goku's palm"
+  },
+  {
+   "t": 5.3,
+   "kind": "pass",
+   "who": "haru",
+   "note": "rides past the jeep's bumper, safe"
+  },
+  {
+   "t": 8.95,
+   "kind": "horn",
+   "who": "bus"
+  },
+  {
+   "t": 9.87,
+   "kind": "impact",
+   "who": "bus",
+   "target": "haru",
+   "speed": 150,
+   "climax": true,
+   "note": "the school bus hits the bike from behind at full speed"
+  },
+  {
+   "t": 9.87,
+   "kind": "knock",
+   "who": "haru",
+   "note": "ragdoll launched high into the air (screams)"
+  },
+  {
+   "t": 11.3,
+   "kind": "land",
+   "who": "haru",
+   "note": "hits the road far ahead"
+  },
+  {
+   "t": 11.6,
+   "kind": "turn",
+   "who": "goku"
+  },
+  {
+   "t": 12.4,
+   "kind": "gesture",
+   "who": "goku",
+   "gesture": "facepalm"
+  }
+ ],
+ "sounds": [
+  {
+   "t": 0.5,
+   "cat": "rev"
+  },
+  {
+   "t": 4.2,
+   "cat": "thud"
+  },
+  {
+   "t": 4.59,
+   "cat": "zap"
+  },
+  {
+   "t": 4.59,
+   "cat": "screech"
+  },
+  {
+   "t": 8.95,
+   "cat": "horn"
+  },
+  {
+   "t": 9.87,
+   "cat": "hit"
+  },
+  {
+   "t": 9.95,
+   "cat": "scream"
+  },
+  {
+   "t": 11.3,
+   "cat": "thud"
+  }
+ ],
+ "tracks": {}
+}

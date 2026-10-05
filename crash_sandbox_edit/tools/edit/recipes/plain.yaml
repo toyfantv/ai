@@ -1,0 +1,7 @@
+# Plain cut: the take as recorded, loudness-normalised. Captions are off because the game already
+# draws speech bubbles; switch them on for platforms that autoplay muted.
+name: plain
+aspects: [wide, 4x5]
+audio: {loudness: -14}
+captions: {enabled: false, near_speaker: true}
+rules: []

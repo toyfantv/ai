@@ -1,0 +1,29 @@
+# Shorts: vertical, fast. Opens on the climax (hook), rewinds to the start, trims dead air,
+# big captions, the anime hits on the climax, and an ending that loops back into the hook.
+name: shorts
+aspects: [4x5]
+grade: {contrast: 1.1, saturation: 1.2}
+audio: {loudness: -14, freeze: stutter}
+captions: {enabled: true, style: big, color_by_speaker: true, near_speaker: false}
+range: {start: 0, end: auto, tail: 1.0}
+trim_dead_air: {max_gap: 1.2, keep: 0.3}
+hook: {before: 0.35, after: 0.55, rewind_frames: 14, sfx: whoosh}
+loop: {crossfade: 0.15}
+
+rules:
+  - on: {climax: true}
+    do:
+      - hitstop: {frames: 5}
+      - impact_frames: {sequence: [ink, invert, red], hold: 2}
+      - shake: {frames: 22, amp: 0.035, rot: 2.0}
+      - sfx: {name: boom, gain: 0.9}
+      - onomatopoeia: {frames: 46, size: 0.22}
+      - punch_in: {zoom: 1.25, delay: 0.12, hold_frames: 26}
+
+  - on: {event: [power, hit, punch, kick, slap, bonk, pie, explode], climax: false}
+    do:
+      - hitstop: {frames: 3}
+      - impact_frames: {sequence: [invert], hold: 2}
+      - shake: {frames: 12, amp: 0.02}
+      - sfx: {name: zap, gain: 0.55}
+      - onomatopoeia: {frames: 36}

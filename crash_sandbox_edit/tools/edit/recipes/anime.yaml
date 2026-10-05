@@ -1,0 +1,53 @@
+# Anime cut: impact frames, hit-stop, shake, speed lines, manga face panels, intro cards,
+# onomatopoeia and a punch-in on the reaction. Rules fire on timeline events (docs/TIMELINE_SPEC.md).
+name: anime
+aspects: [wide, 4x5]
+grade: {contrast: 1.1, saturation: 1.18, warmth: 0.02}
+audio: {loudness: -14, freeze: stutter}
+captions: {enabled: false}
+range: {start: 0, end: auto, tail: 1.6}
+
+rules:
+  # Main characters get a freeze-frame name card the first time we see them.
+  - on: {first_appearance: main, max: 3, min_gap: 0.8}
+    do:
+      - intro_card: {seconds: 0.75, delay: 0.35}
+      - sfx: {name: shing, gain: 0.55, delay: 0.35}
+
+  # The climax: freeze on contact, flash through ink frames, shake hard, then punch in on the victim.
+  - on: {climax: true}
+    do:
+      - hitstop: {frames: 6}
+      - impact_frames: {sequence: [ink, invert, red, invert], hold: 2}
+      - shake: {frames: 26, amp: 0.035, rot: 2.0}
+      - sfx: {name: boom, gain: 0.9}
+      - sfx: {name: hit, gain: 0.8}
+      - onomatopoeia: {frames: 50, size: 0.2}
+      - speed_lines: {seconds: 0.9, delay: 0.12}
+      - punch_in: {zoom: 1.28, delay: 0.15, hold_frames: 30}
+
+  # Power moves and other hits: a lighter hit-stop and impact flash, then the reaction panels.
+  - on: {event: [power, hit, punch, kick, slap, bonk, pie, explode, shoot, bazooka], climax: false}
+    do:
+      - hitstop: {frames: 4}
+      - impact_frames: {sequence: [invert, ink], hold: 2}
+      - shake: {frames: 14, amp: 0.02}
+      - flash: {frames: 4, strength: 0.6}
+      - sfx: {name: zap, gain: 0.6}
+      - onomatopoeia: {}
+      - face_panels: {who: auto, seconds: 1.0, delay: 0.3}
+      - sfx: {name: whoosh, gain: 0.6, delay: 0.3}
+
+  - on: {event: [leap, launch, run]}
+    do:
+      - speed_lines: {seconds: 0.6, opacity: 0.55}
+      - sfx: {name: whoosh, gain: 0.45}
+
+  - on: {event: [land, slip, horn]}
+    do:
+      - shake: {frames: 10, amp: 0.012}
+      - onomatopoeia: {frames: 36, size: 0.13}
+
+  - on: {event: gesture}
+    do:
+      - punch_in: {zoom: 1.18, in_frames: 8, hold_frames: 40, out_frames: 12}
