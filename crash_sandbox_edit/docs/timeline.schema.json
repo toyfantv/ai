@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Crash Sandbox take timeline",
+  "type": "object",
+  "required": ["fps", "duration"],
+  "properties": {
+    "version": {"type": "integer", "const": 1},
+    "scene": {"type": "string"},
+    "title": {"type": "string"},
+    "fps": {"type": "number", "exclusiveMinimum": 0},
+    "duration": {"type": "number", "minimum": 0},
+    "video": {
+      "type": "object",
+      "properties": {
+        "wide": {"type": "string"},
+        "vertical": {"type": "string"},
+        "verticalCropOfWide": {"type": "object", "properties": {"x": {"type": "number"}, "w": {"type": "number"}}}
+      }
+    },
+    "characters": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "label": {"type": "string"},
+          "cast": {"type": "string"},
+          "role": {"type": "string"},
+          "color": {"$ref": "#/$defs/rgb"}
+        }
+      }
+    },
+    "vehicles": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {"model": {"type": "string"}, "driver": {"type": "string"}, "rider": {"type": "string"}}
+      }
+    },
+    "cuts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["t"],
+        "properties": {
+          "t": {"$ref": "#/$defs/time"},
+          "camera": {"type": "string"},
+          "type": {"type": "string"},
+          "shows": {"type": "array", "items": {"type": "string"}},
+          "framing": {"type": "string"}
+        }
+      }
+    },
+    "dialogue": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["who", "text"],
+        "properties": {
+          "t": {"$ref": "#/$defs/time"},
+          "dur": {"type": "number", "minimum": 0},
+          "who": {"type": "string"},
+          "to": {"type": "string"},
+          "text": {"type": "string"},
+          "face": {"type": "string"}
+        }
+      }
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["t", "kind"],
+        "properties": {
+          "t": {"$ref": "#/$defs/time"},
+          "kind": {"type": "string"},
+          "who": {"type": "string"},
+          "target": {"type": "string"},
+          "speed": {"type": "number"},
+          "pos": {"type": "array", "items": {"type": "number"}, "minItems": 3, "maxItems": 3},
+          "climax": {"type": "boolean"},
+          "note": {"type": "string"}
+        }
+      }
+    },
+    "sounds": {
+      "type": "array",
+      "items": {"type": "object", "required": ["t", "cat"], "properties": {"t": {"$ref": "#/$defs/time"}, "cat": {"type": "string"}}}
+    },
+    "tracks": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["t"],
+          "properties": {
+            "t": {"$ref": "#/$defs/time"},
+            "head": {"$ref": "#/$defs/point"},
+            "box": {"type": "array", "items": {"type": "number"}, "minItems": 4, "maxItems": 4},
+            "onScreen": {"type": "boolean"}
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "time": {"type": "number", "minimum": 0},
+    "point": {"type": "array", "items": {"type": "number"}, "minItems": 2, "maxItems": 2},
+    "rgb": {"type": "array", "items": {"type": "integer", "minimum": 0, "maximum": 255}, "minItems": 3, "maxItems": 3}
+  }
+}
