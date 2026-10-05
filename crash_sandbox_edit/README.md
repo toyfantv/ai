@@ -105,18 +105,15 @@ with the fewest subjects). With two or more close-ups the panels are all faces; 
 action frame is the first panel. Cuts need `shows` for this; without it a character gets no panel. From a wide shot of the
 ~690 px tall Studio view those crops are soft; ISO passes fix that.
 
-## Open questions for you
+## Defaults picked (change any of them in the recipes)
 
-1. **Fonts.** Sound words and cards use Bangers, headlines Anton (both SIL OFL, bundled in
-   `tools/edit/fonts/`). Want a different comic font? Drop it in that folder and name it in `text.py`.
-2. **Sound words.** The default `words:` map is English ("KABOOM!", "HONK!"). Want Japanese-style
-   ones ("ドン!", "ゴゴゴ") as an option for the anime cut? It needs a font with kana.
-3. **Intro cards.** They freeze 0.75 s for each main character (up to 3). Too many for a 15 s
-   short? The shorts recipe skips them.
-4. **Slow-mo audio.** Cinematic uses tape-style pitch-down. Prefer the original pitch (time-stretch)
-   or a music-friendly mute plus SFX bed?
-5. **Captions.** Off for plain/anime/cinematic since the game draws bubbles; on and big for shorts.
-6. **Music.** Nothing is added. A `music:` key that ducks under SFX would be easy if you want to drop
-   your own tracks in.
-7. **Climax.** The timeline marks it (`climax: true`) or the fastest impact wins. Should the scene
-   format get an explicit `climax = "..."` field?
+1. **Fonts:** Bangers for sound words and cards, Anton for headlines (both SIL OFL, bundled in
+   `tools/edit/fonts/`). To swap, drop a .ttf there and name it in `text.py`.
+2. **Sound words:** English ("KABOOM!", "HONK!"). Japanese ones ("ドン!") would need a font with kana;
+   add them through the recipe's `words:` map.
+3. **Intro cards:** up to 3 per take at 0.75 s each in the anime cut, none in shorts.
+4. **Slow-mo audio:** tape-style pitch-down in the cinematic cut (`audio.slow_gain` sets its level).
+5. **Captions:** off where the game already draws bubbles (plain, anime, cinematic), big in shorts.
+6. **Music:** none is added. A `music:` key that ducks under the SFX is a small follow-up.
+7. **Climax:** an event with `climax: true` wins, else the fastest impact. Adding an explicit
+   `climax = "..."` field to the scene format would make it deterministic.
