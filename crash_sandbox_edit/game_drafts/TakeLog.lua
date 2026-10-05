@@ -2,8 +2,10 @@
 -- Server-side event log for the take timeline (docs/TIMELINE_SPEC.md).
 --
 -- Wiring (local session):
---   * CrashServer: TakeLog.start(scene) when GO fires (same moment the countdown ends).
---   * ctx.beat(kind, info)       -> TakeLog.event(kind, info)
+--   * CrashServer: TakeLog.start(scene) where it sets GoTime.Value (line ~542); times are logged on
+--     the shared clock workspace:GetServerTimeNow() - GoTime.Value, so they line up with the
+--     client's runTime() and the cuts / tracks it logs.
+--   * ctx.beat(info) (CrashServer ~722): add TakeLog.event(info.kind, info) next to the FireAllClients
 --   * Damage first/big impact    -> TakeLog.event("impact", {who = vehicleId, target = hitId, speed = relSpeed, pos = p})
 --   * NPC:knock                  -> TakeLog.event("knock", {who = charId})
 --   * Acting actions (punch, slip, leap, power, gesture...) -> TakeLog.event(action, {who = id, target = targetId})
@@ -17,11 +19,12 @@ local ServerStorage = game:GetService("ServerStorage")
 
 local TakeLog = {}
 
-local goClock = nil
+local GoTime = game:GetService("ReplicatedStorage"):WaitForChild("CrashState"):WaitForChild("GoTime")
 local log = nil
 
+-- The same clock the client's runTime() uses: server time since GO, shared by server and client.
 local function now()
-	return goClock and (os.clock() - goClock) or 0
+	return GoTime.Value > 0 and (workspace:GetServerTimeNow() - GoTime.Value) or 0
 end
 
 local function round(x)
@@ -39,7 +42,6 @@ local function holder()
 end
 
 function TakeLog.start(scene)
-	goClock = os.clock()
 	log = {
 		version = 1,
 		scene = scene.name,

@@ -1,0 +1,241 @@
+{
+ "_note": "Hand-made fixture: cuts from scene-change detection, dialogue from the scene script (lines without t chained at ~0.065 s/char), gag times from audio peaks checked against the script. Approximate; no shows / tracks.",
+ "scene": "office_slapstick",
+ "title": "Office Hours",
+ "fps": 60,
+ "duration": 30.016,
+ "video": {
+  "wide": "office_slapstick_20261004_041401.mp4",
+  "wideSize": [
+   1280,
+   720
+  ]
+ },
+ "characters": {
+  "karen": {
+   "label": "Karen",
+   "role": "has the stapler"
+  },
+  "dave": {
+   "label": "Dave",
+   "role": "slips on the banana"
+  },
+  "boss": {
+   "label": "The Boss",
+   "role": "slips on the second banana"
+  }
+ },
+ "cuts": [
+  {
+   "t": 0.0,
+   "camera": "start",
+   "shows": []
+  },
+  {
+   "t": 0.883,
+   "camera": "shot 2",
+   "shows": []
+  },
+  {
+   "t": 3.1,
+   "camera": "shot 3",
+   "shows": []
+  },
+  {
+   "t": 5.067,
+   "camera": "shot 4",
+   "shows": []
+  },
+  {
+   "t": 5.767,
+   "camera": "shot 5",
+   "shows": []
+  },
+  {
+   "t": 7.933,
+   "camera": "shot 6",
+   "shows": []
+  },
+  {
+   "t": 8.65,
+   "camera": "shot 7",
+   "shows": []
+  },
+  {
+   "t": 9.35,
+   "camera": "shot 8",
+   "shows": []
+  },
+  {
+   "t": 9.65,
+   "camera": "shot 9",
+   "shows": []
+  },
+  {
+   "t": 10.4,
+   "camera": "shot 10",
+   "shows": []
+  },
+  {
+   "t": 12.55,
+   "camera": "shot 11",
+   "shows": []
+  },
+  {
+   "t": 13.033,
+   "camera": "shot 12",
+   "shows": []
+  },
+  {
+   "t": 15.617,
+   "camera": "shot 13",
+   "shows": []
+  },
+  {
+   "t": 16.233,
+   "camera": "shot 14",
+   "shows": []
+  },
+  {
+   "t": 18.267,
+   "camera": "shot 15",
+   "shows": []
+  },
+  {
+   "t": 20.65,
+   "camera": "shot 16",
+   "shows": []
+  },
+  {
+   "t": 22.05,
+   "camera": "shot 17",
+   "shows": []
+  },
+  {
+   "t": 22.617,
+   "camera": "shot 18",
+   "shows": []
+  },
+  {
+   "t": 24.817,
+   "camera": "shot 19",
+   "shows": []
+  },
+  {
+   "t": 26.55,
+   "camera": "shot 20",
+   "shows": []
+  },
+  {
+   "t": 29.15,
+   "camera": "shot 21",
+   "shows": []
+  }
+ ],
+ "dialogue": [
+  {
+   "t": 0.6,
+   "who": "karen",
+   "to": "dave",
+   "text": "Dave, have you seen my stapler?",
+   "dur": 2.015
+  },
+  {
+   "who": "dave",
+   "text": "Nope. Definitely not.",
+   "face": "nervous",
+   "t": 2.865,
+   "dur": 1.365
+  },
+  {
+   "t": 5.6,
+   "who": "boss",
+   "to": "dave",
+   "text": "DAVE! Where is my REPORT?!",
+   "face": "angry",
+   "dur": 1.69
+  },
+  {
+   "t": 8.2,
+   "who": "dave",
+   "to": "boss",
+   "text": "It's... almost done, boss!",
+   "face": "nervous",
+   "dur": 1.69
+  },
+  {
+   "who": "boss",
+   "to": "dave",
+   "text": "You said that YESTERDAY!",
+   "face": "angry",
+   "t": 10.139999999999999,
+   "dur": 1.56
+  },
+  {
+   "t": 15.4,
+   "who": "karen",
+   "text": "Smooth, Dave.",
+   "face": "smug",
+   "dur": 1.0
+  },
+  {
+   "t": 18.2,
+   "who": "boss",
+   "to": "karen",
+   "text": "Wait... is that MY stapler?!",
+   "face": "shocked",
+   "dur": 1.82
+  },
+  {
+   "t": 20.6,
+   "who": "karen",
+   "to": "boss",
+   "text": "...no?",
+   "face": "nervous",
+   "dur": 1.0
+  },
+  {
+   "t": 23.5,
+   "who": "boss",
+   "to": "karen",
+   "text": "KAREN!!!",
+   "face": "angry",
+   "dur": 1.0
+  }
+ ],
+ "events": [
+  {
+   "t": 6.9,
+   "kind": "doubletake",
+   "who": "dave"
+  },
+  {
+   "t": 14.1,
+   "kind": "slip",
+   "who": "dave",
+   "note": "banana1"
+  },
+  {
+   "t": 22.3,
+   "kind": "throw",
+   "who": "karen",
+   "target": "boss"
+  },
+  {
+   "t": 23.28,
+   "kind": "pie",
+   "who": "karen",
+   "target": "boss",
+   "note": "splat"
+  },
+  {
+   "t": 25.7,
+   "kind": "slip",
+   "who": "boss",
+   "climax": true,
+   "note": "banana2"
+  }
+ ],
+ "sounds": [],
+ "tracks": {}
+}

@@ -18,16 +18,17 @@ each cut's key moments, one row per cut and aspect).
 Requirements: Python 3.11, ffmpeg 6+ on PATH, `pip install numpy opencv-python Pillow PyYAML`.
 Encodes with `h264_nvenc` when it works, else `libx264` (`--no-gpu` forces libx264).
 
-Proof renders on the synthetic stand-in take (all four recipes, every recipe under 2 min for a
-15 s 1080p60 take on 4 CPU cores with libx264): [contact sheet](docs/proof/contact_sheet_standin.jpg),
-[anime frames](docs/proof/anime_frames_standin.jpg) (intro cards, face panels, impact frame, speed lines).
+Proof renders on your sample takes (every recipe renders a 15 s 1080p60 take in about 2 minutes or
+less on 4 CPU cores with libx264): [haru_bike contact sheet](docs/proof/contact_sheet_haru_bike.jpg),
+[anime frames](docs/proof/anime_frames_haru_bike.jpg) (intro card, face panels, impact frame,
+the flight with speed lines), [office_slapstick contact sheet](docs/proof/contact_sheet_office.jpg).
 
 ## What's tested and what isn't
 
 | Part | Status |
 |---|---|
-| `tools/edit/` (the editor), recipes, `produce.py --video` / `--from edit` | Tested here on a synthetic stand-in take that follows the haru_bike timeline (`python -m edit.testclip`, run from `tools/`). |
-| The editor on the real sample takes | **Not yet run here**: the sample videos weren't available to this session. |
+| `tools/edit/` (the editor), recipes, `produce.py --video` / `--from edit` | Tested on the haru_bike take with its fixture timeline, and on the office_slapstick take with a hand-made fixture (`samples/`). Also a synthetic stand-in (`python -m edit.testclip`, run from `tools/`) for the tracks code path, since neither fixture has tracks. |
+| Takes without a sidecar | `edit.timeline.guess` finds cuts (scene changes) and up to 4 "hit" events (audio peaks; the loudest is the climax). Rough, but your existing recordings get effects. |
 | `produce.py` sync / record / iso steps | **Untested**: they call `sync.py` / `record.py`, which need Studio and OBS. |
 | `game_drafts/*` (timeline logging, ISO passes) | **Draft, untested.** The merge in `take_timeline.py` was unit-checked. |
 
@@ -99,7 +100,9 @@ for. Effects are drawn after reframing, so text and panels are laid out for each
 ### Face panels
 
 Close-ups come from, in order: an ISO pass of that character ([docs/ISO_PASSES.md](docs/ISO_PASSES.md)),
-the tracked head box, or the shot that features them (close-ups first). From a wide shot of the
+the tracked head box, or the shot that features them (a close-up of them alone first, then the shot
+with the fewest subjects). With two or more close-ups the panels are all faces; with one, the frozen
+action frame is the first panel. Cuts need `shows` for this; without it a character gets no panel. From a wide shot of the
 ~690 px tall Studio view those crops are soft; ISO passes fix that.
 
 ## Open questions for you

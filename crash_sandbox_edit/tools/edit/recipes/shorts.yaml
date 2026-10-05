@@ -20,7 +20,7 @@ rules:
       - onomatopoeia: {frames: 46, size: 0.22}
       - punch_in: {zoom: 1.25, delay: 0.12, hold_frames: 26}
 
-  - on: {event: [power, hit, punch, kick, slap, bonk, explode], climax: false}
+  - on: {event: [power, hit, punch, kick, slap, bonk, pie, explode], climax: false}
     do:
       - hitstop: {frames: 3}
       - impact_frames: {sequence: [invert], hold: 2}

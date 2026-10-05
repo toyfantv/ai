@@ -81,8 +81,9 @@ event) or the server picks the fastest impact.
 
 ## Clock
 
-All three sources (server events, client cuts / tracks, SfxLog) must share GO. The server already
-knows GO (`goTime = os.clock()` when the countdown ends) and broadcasts it with the start event; the
-client records `goClient = os.clock()` when it receives GO. Everything is logged relative to its own
-side's GO, then record.py merges and shifts the whole timeline by the same offset it used to cut the
-video (its wall-clock estimate snapped to the director's cut at GO), so `t = 0` is the video's first frame.
+Server and client already share one: `CrashState.GoTime` holds GO on the server clock and the
+client's `runTime()` is `workspace:GetServerTimeNow() - GoTime.Value`. The server's TakeLog, the
+client's cuts and tracks, and the replay buffer all log on that clock, so they line up without any
+conversion. record.py then shifts the whole timeline by the difference between GO and the first frame
+of its cut (its wall-clock GO estimate snapped to the director's cut at GO; usually a frame or two),
+so that `t = 0` is the video's first frame.

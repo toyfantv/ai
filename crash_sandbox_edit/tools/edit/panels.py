@@ -37,12 +37,16 @@ def _layout(n: int, w: int, h: int, vertical: bool) -> list:
 
 
 def face_panels(base: np.ndarray, crops: list, k: int, frames: int, labels: list | None = None,
-                colors: list | None = None, stagger: int = 3, slide: int = 6, gutter: int = 0) -> np.ndarray:
-    """Composite frame k of a panel sequence. Panel 0 is the base frame; the rest are close-ups
-    that slide in one after another. White gutters, black outlines, a name tag per close-up."""
+                colors: list | None = None, stagger: int = 3, slide: int = 6, gutter: int = 0,
+                base_panel: bool = True) -> np.ndarray:
+    """Composite frame k of a panel sequence: optionally the base frame as the first panel, then
+    close-ups that slide in one after another. White gutters, black outlines, a name tag each."""
+    srcs = ([base] if base_panel else []) + list(crops)
+    tags = ([None] if base_panel else []) + list(labels or [None] * len(crops))
+    cols = ([None] if base_panel else []) + list(colors or [(255, 255, 255)] * len(crops))
     h, w = base.shape[:2]
     vertical = h > w
-    n = len(crops) + 1
+    n = len(srcs)
     gutter = gutter or max(8, int(min(w, h) * 0.014))
     out = base.copy()
     polys = _layout(n, w, h, vertical)
@@ -56,8 +60,8 @@ def face_panels(base: np.ndarray, crops: list, k: int, frames: int, labels: list
         x1, y1 = poly.max(0)
         pw, ph = int(x1 - x0) + 2, int(y1 - y0) + 2
         drift = 1.0 + 0.05 * (k / max(1, frames))   # slow push-in inside the panel
-        src = base if i == 0 else crops[i - 1]
-        content = cover(src, pw, ph, zoom=drift * (1.12 if i == 0 else 1.0))
+        src = srcs[i]
+        content = cover(src, pw, ph, zoom=drift * (1.12 if i == 0 and base_panel else 1.0))
         # slide in along the panel's long axis, alternating directions
         off = (1 - p) * (h if vertical is False else w) * (1 if i % 2 else -1)
         ox, oy = (0, off) if not vertical else (off, 0)
@@ -76,10 +80,10 @@ def face_panels(base: np.ndarray, crops: list, k: int, frames: int, labels: list
     # frame border so the outer panels read as panels too
     cv2.rectangle(out, (0, 0), (w - 1, h - 1), (255, 255, 255), gutter)
     for i, poly in enumerate(shown):
-        if i == 0 or not labels or not labels[i - 1]:
+        if not tags[i]:
             continue
-        col = tuple(colors[i - 1]) if colors else (255, 255, 255)
-        tag = sprite(labels[i - 1].upper(), "comic", int(min(w, h) * 0.05), fill=(255, 255, 255),
+        col = tuple(cols[i])
+        tag = sprite(tags[i].upper(), "comic", int(min(w, h) * 0.05), fill=(255, 255, 255),
                      stroke=3, stroke_fill=(0, 0, 0), outer=5, outer_fill=col)
         cx, cy = poly.mean(0)
         if vertical:

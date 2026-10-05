@@ -179,7 +179,12 @@ def _iso(a, state) -> list:
 def _edit(a, state) -> dict:
     video = Path(state["video"])
     info = probe(video)
-    tl = Timeline.load(Path(state["timeline"]) if state.get("timeline") else None, info["duration"], info["fps"])
+    if state.get("timeline"):
+        tl = Timeline.load(Path(state["timeline"]), info["duration"], info["fps"])
+    else:
+        from edit.timeline import guess
+        tl = guess(video, info["duration"], info["fps"])
+        print(f"  no timeline: guessed {len(tl.cuts) - 1} cuts and {len(tl.events)} hits from the video")
     out_dir = Path(state["dir"])
     outputs, thumbs = {}, {}
     for name in [r.strip() for r in a.recipes.split(",") if r.strip()]:

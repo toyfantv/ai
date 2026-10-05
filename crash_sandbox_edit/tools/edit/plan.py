@@ -170,6 +170,8 @@ def compile_plan(recipe: dict, tl: Timeline, source_duration: float) -> Plan:
                     freezes[j] = tm.add_freeze(t, p.get("frames", 4) / fps, "hitstop")
                 elif name == "freeze":
                     freezes[j] = tm.add_freeze(t, p.get("seconds", 0.5), "freeze")
+                elif name == "face_panels" and not _panel_names(tl, m, p):
+                    continue  # nobody we can show a close-up of: no panels, no freeze
                 elif name in ("intro_card", "face_panels") and p.get("freeze", True):
                     freezes[j] = tm.add_freeze(t, p.get("seconds", 0.8), name)
                 elif name == "slowmo":
@@ -226,7 +228,10 @@ def compile_plan(recipe: dict, tl: Timeline, source_duration: float) -> Plan:
     # one sound word at a time: an earlier word ends when the next one lands
     words = sorted((e for e in plan.effects if e.kind == "onomatopoeia"), key=lambda e: e.start)
     for a, b in zip(words, words[1:]):
-        if a.start + a.frames > b.start and a.start != b.start:
+        if a.start == b.start:      # two rules on one moment: the first rule's word wins
+            plan.effects.remove(b)
+            b.frames = 0
+        elif a.frames and a.start + a.frames > b.start:
             a.frames = max(6, b.start - a.start)
     if not plan.marks:
         plan.marks = [(int(len(tm.frames) * k / 6), "") for k in range(6)]
@@ -291,10 +296,7 @@ def _add(plan: Plan, name: str, p: dict, anchor: int, m: Match, freeze, part: st
                         {"name": tl.label(who), "color": tl.color(who), "subtitle": sub}))
         plan.marks.append((anchor + int(p.get("seconds", 0.8) * fps * 0.6), f"intro {who}"))
     elif name == "face_panels":
-        who = p.get("who", "auto")
-        names = [tl.person(w) for w in ([m.who, m.target] if who == "auto" else _listify(who))]
-        names += [tl.person(w) for w in _listify(p.get("also", []))]
-        names = [w for i, w in enumerate(names) if w and w not in names[:i]][:p.get("max", 3)]
+        names = _panel_names(tl, m, p)
         if names:
             n = int(p.get("seconds", 0.8) * fps)
             E.append(Effect("face_panels", anchor, n, {"who": names, "t": m.t}))
@@ -304,6 +306,16 @@ def _add(plan: Plan, name: str, p: dict, anchor: int, m: Match, freeze, part: st
         plan.cues.append((out_t, p.get("name", "hit"), p.get("gain", 0.8)))
     else:
         raise ValueError(f"unknown action '{name}' in recipe {plan.recipe.get('name')}")
+
+
+def _panel_names(tl: Timeline, m: Match, p: dict) -> list:
+    """Characters for face panels that the take can show: a shot features them or they're tracked."""
+    who = p.get("who", "auto")
+    names = [tl.person(w) for w in ([m.who, m.target] if who == "auto" else _listify(who))]
+    names += [tl.person(w) for w in _listify(p.get("also", []))]
+    seen = {tl.person(s) for c in tl.cuts for s in c.get("shows", [])} | set(tl.tracks)
+    names = [w for i, w in enumerate(names) if w and w not in names[:i] and w in seen]
+    return names[:p.get("max", 3)]
 
 
 def dead_air(tl: Timeline, start: float, end: float, max_gap: float = 1.4, keep: float = 0.35) -> list:

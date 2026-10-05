@@ -173,3 +173,37 @@ def _chain_dialogue(lines: list) -> list:
         t = d["t"] + d["dur"]
         out.append(d)
     return sorted(out, key=lambda d: d["t"])
+
+
+def guess(video: Path, duration: float, fps: float, max_hits: int = 4) -> Timeline:
+    """A rough timeline for a take recorded without a sidecar: camera cuts from scene changes and
+    'hit' events from sharp peaks in the audio (the loudest is the climax). No characters or tracks."""
+    import subprocess
+
+    import numpy as np
+
+    from .media import SAMPLE_RATE, ffmpeg, read_audio
+    r = subprocess.run([ffmpeg(), "-hide_banner", "-i", str(video), "-vf", "select='gt(scene,0.3)',showinfo",
+                        "-an", "-f", "null", "-"], capture_output=True, text=True)
+    import re
+    cuts = [{"t": 0.0, "camera": "start", "shows": []}]
+    cuts += [{"t": round(float(t), 3), "camera": f"shot {i + 2}", "shows": []}
+             for i, t in enumerate(re.findall(r"pts_time:([\d.]+)", r.stderr))]
+    a = read_audio(video, duration).mean(1)
+    hop = SAMPLE_RATE // 100                       # 10 ms
+    n = len(a) // hop
+    rms = np.sqrt((a[:n * hop].reshape(n, hop) ** 2).mean(1) + 1e-12)
+    onset = np.maximum(0, rms[1:] - rms[:-1])          # rise over 10 ms
+    thr = np.median(rms) * 1.8
+    cand = sorted(((float(rms[i + 1]), (i + 1) / 100) for i in range(len(onset))
+                   if rms[i + 1] > thr and onset[i] > rms[i + 1] * 0.25), reverse=True)
+    hits = []
+    for level, t in cand:
+        if all(abs(t - h[1]) > 1.5 for h in hits):
+            hits.append((level, t))
+        if len(hits) >= max_hits:
+            break
+    events = [{"t": round(t, 3), "kind": "hit", "level": round(lv, 4)} for lv, t in sorted(hits, key=lambda h: h[1])]
+    if events:
+        max(events, key=lambda e: e["level"])["climax"] = True
+    return Timeline(scene=Path(video).stem, duration=duration, fps=fps, cuts=cuts, events=events)

@@ -125,7 +125,9 @@ def _closeup(plan: Plan, stills: FrameSource, who: str, t: float, iso_clips: lis
         shots = [c for c in tl.cuts if who in [tl.person(s) for s in c.get("shows", [])]]
     if not shots:
         return None
-    shots.sort(key=lambda c: (not tl.is_close(c), abs((c["t"] + tl.cut_end(c)) / 2 - t)))
+    # a close-up of them alone beats a shot they share; then fewer subjects; then nearest in time
+    shots.sort(key=lambda c: (len(c.get("shows", [])) > 1 or not tl.is_close(c), len(c.get("shows", [])),
+                              abs((c["t"] + tl.cut_end(c)) / 2 - t)))
     c = shots[0]
     a, b = c["t"], tl.cut_end(c)
     tt = min(max(t, a + 0.15), b - 0.15) if a + 0.3 < b else (a + b) / 2
@@ -238,7 +240,8 @@ def _apply(frame, active, i, plan, rect, W, H, crops, f):
                 g = plan.recipe.get("grade", {})
                 imgs = [fx.grade(x, **g) if g else x for x in imgs]
                 frame = panels.face_panels(frame, imgs, k, e.frames, [plan.timeline.label(n) for n in names],
-                                           [plan.timeline.color(n) for n in names])
+                                           [plan.timeline.color(n) for n in names],
+                                           base_panel=e.params.get("base_panel", len(imgs) < 2))
         elif e.kind == "onomatopoeia":
             frame = _onomatopoeia(frame, p, k, e.frames, rect, W, H)
         elif e.kind == "caption":

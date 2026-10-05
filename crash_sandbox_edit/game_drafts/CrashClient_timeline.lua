@@ -3,9 +3,12 @@
 -- Logs camera cuts and samples every character's screen position for the take timeline.
 --
 -- Wiring:
---   * TimelineRec.start() where the client receives GO.
---   * TimelineRec.cut(cameraName, shotType, shows, framing) wherever the director switches shots
---     (next to the existing DirectorLog append). `shows` = subject ids, most important first.
+--   * TimelineRec.start(characterModels) where the client resets DirectorLog for a new run (~1813).
+--   * TimelineRec.cut(cams[i].name, cams[i].type, shows, why) inside cutTo() next to the
+--     DirectorLog append (~1619), and in setCam() for scripted shot lists. `shows` = subject ids,
+--     most important first (the shot's target / follow list).
+--   * Times use runTime() (workspace:GetServerTimeNow() - GoTime.Value), the clock the server's
+--     TakeLog and the replay buffer use too.
 --   * TimelineRec.stop() when the take ends; it writes the JSON (~100 KB for 15 s, too big for an
 --     attribute) into a client-side StringValue LocalPlayer.CrashTimeline, which record.py reads over MCP:
 --       python tools/studio_mcp.py lua Client -e "return game.Players.LocalPlayer.CrashTimeline.Value"
@@ -18,10 +21,11 @@ local RunService = game:GetService("RunService")
 local TimelineRec = {}
 
 local SAMPLE_HZ = 20
-local goClock, conn, lastSample = nil, nil, 0
+local GoTime = game:GetService("ReplicatedStorage"):WaitForChild("CrashState"):WaitForChild("GoTime")
+local conn, lastSample = nil, 0
 local data = nil
 
-local function now() return os.clock() - goClock end
+local function now() return GoTime.Value > 0 and (workspace:GetServerTimeNow() - GoTime.Value) or 0 end
 local function r3(x) return math.floor(x * 1000 + 0.5) / 1000 end
 
 -- The recorded video is the centre 16:9 slice of the viewport (record.py crops the sides).
@@ -63,12 +67,11 @@ local function sample(models)
 end
 
 function TimelineRec.start(characterModels)
-	goClock = os.clock()
 	data = { cuts = {}, tracks = {} }
 	lastSample = -1
 	conn = RunService.RenderStepped:Connect(function()
 		local t = now()
-		if t - lastSample >= 1 / SAMPLE_HZ then
+		if t >= 0 and t - lastSample >= 1 / SAMPLE_HZ then
 			lastSample = t
 			sample(characterModels())
 		end

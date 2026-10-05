@@ -1,7 +1,9 @@
 -- DRAFT, UNTESTED. ISO passes from the replay buffer (docs/ISO_PASSES.md).
--- Hook into CrashClient next to the existing CrashReplay attribute handler. Assumes the existing
--- startReplay({from, to, once}) and a way to get a character's replay puppet; adapt the names
--- (`replayPuppet`, `setCameraOverride`) to what CrashClient really has.
+-- Hook into CrashClient: extend the CrashReplay attribute handler (~2034, which today only takes a
+-- number = replay speed) with the string form below. startReplay({from, to, once}) (~406) already
+-- plays a window once on the runTime() clock; stopReplay() ends it. `replayPuppet(who)` is new: look
+-- the character's puppet up in replay.puppets / replay.puppetOf. onDone needs a small hook in
+-- updateReplay where `range.once` calls stopReplay().
 
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
@@ -32,7 +34,8 @@ player:GetAttributeChangedSignal("CrashReplay"):Connect(function()
 	local who, from, to = spec:match("^iso:([^:]+):([%d%.]+):([%d%.]+)")
 	from, to = tonumber(from), tonumber(to)
 	local conn
-	startReplay({ from = from, to = to, once = true, speed = 1, hideUi = true, onDone = function()
+	replay.speed = 1
+	startReplay({ from = from, to = to, once = true, onDone = function()
 		if conn then conn:Disconnect() end
 		player:SetAttribute("CrashReplayState", "done")
 		player:SetAttribute("CrashReplay", "")
