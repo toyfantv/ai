@@ -59,15 +59,20 @@ Extract into a working folder, then tag and export next to the existing library:
 python extract_sprites.py "<episodes folder>" -o D:\Claude\chiikawa-sprites\anime\episodes
 # 2. tag + export (paid). Set the key in your own window first: $env:ANTHROPIC_API_KEY = "..."
 python extract_sprites.py "<episodes folder>" -o D:\Claude\chiikawa-sprites\anime\episodes --tag-only `
-    --library D:\Claude\chiikawa-sprites\anime --claude-model claude-sonnet-5-5
+    --library D:\Claude\chiikawa-sprites\anime --claude-model claude-haiku-4-5
 # rebuild the library from tags.jsonl without any API calls (e.g. after editing THEMES):
 python extract_sprites.py "<episodes folder>" -o D:\Claude\chiikawa-sprites\anime\episodes --export-only `
     --library D:\Claude\chiikawa-sprites\anime
 ```
 
-Before sending anything, the script prints how many cut-outs it will tag and a rough cost, and asks
-for confirmation (`--yes` skips the question). Tagging resumes: already-tagged files are skipped.
-Rough cost per cut-out: Opus 5.5 ~1¢, Sonnet 5.5 ~0.6¢, Haiku 4.5 ~0.3¢. Try a copy of 1-2 episodes first.
+Cut-outs are sent 12 at a time on a numbered contact sheet (one API call per sheet, ~309 px per cut-out),
+together with which frame edges each one touched. `--per-sheet 1` sends each cut-out on its own at up to
+768 px (more detail, ~4x the cost); `--keep-sheets` saves the sheets to `<output>\tag_sheets\` for checking.
+Before sending anything, the script prints the number of sheets and a rough cost, and asks for confirmation
+(`--yes` skips the question). Tagging resumes: already-tagged files are skipped, and a sheet whose answer
+is missing a number leaves that cut-out for the next run.
+Rough cost for 11,000 cut-outs at 12 per sheet: Haiku 4.5 ~$10, Sonnet 5.5 ~$20, Opus 5.5 ~$40.
+Try a copy of 1-2 episodes first.
 
 ```
 D:\Claude\chiikawa-sprites\anime\

@@ -374,22 +374,21 @@ TAG_SCHEMA = {
 # Request options per model family. Haiku 4.5 rejects `effort`; server-side fallbacks only exist on newer models.
 NO_EFFORT_MODELS = ("claude-haiku-4-5", "claude-sonnet-4-5")
 FALLBACK_MODELS = ("claude-opus-5-5", "claude-opus-5", "claude-sonnet-5-5", "claude-fable-5-1")
-# Rough cost per cut-out (USD): ~1,000 input tokens (one image <=768 px + prompt) and ~400 output tokens.
 PRICE_PER_MTOK = {"claude-opus-5-5": (4, 20), "claude-sonnet-5-5": (2, 10), "claude-haiku-4-5": (1, 5)}
+SHEET_PIXELS = 1_150_000   # the API scales larger images down to about this, so a sheet is built at this size
+FRAME_W, FRAME_H = 1920, 1080   # fallback when the episode's frame JPG isn't there
 
 
-def sprite_png_b64(path: Path, max_side: int = 768) -> str:
-    img = Image.open(path).convert("RGBA")
-    img.thumbnail((max_side, max_side))
-    bg = Image.new("RGBA", img.size, (128, 128, 128, 255))  # neutral grey shows the cut edge
-    bg.alpha_composite(img)
-    buf = io.BytesIO()
-    bg.convert("RGB").save(buf, "PNG")
-    return base64.standard_b64encode(buf.getvalue()).decode()
+def sheet_schema() -> dict:
+    item = {**TAG_SCHEMA, "properties": {"n": {"type": "integer", "description": "The cut-out's number on the sheet."},
+                                         **TAG_SCHEMA["properties"]},
+            "required": ["n"] + TAG_SCHEMA["required"]}
+    return {"type": "object", "properties": {"items": {"type": "array", "items": item}},
+            "required": ["items"], "additionalProperties": False}
 
 
 def request_options(model: str) -> dict:
-    output_config: dict = {"format": {"type": "json_schema", "schema": TAG_SCHEMA}}
+    output_config: dict = {"format": {"type": "json_schema", "schema": sheet_schema()}}
     if model not in NO_EFFORT_MODELS:
         output_config["effort"] = "low"
     opts: dict = {"output_config": output_config}
@@ -398,26 +397,74 @@ def request_options(model: str) -> dict:
     return opts
 
 
-def tag_sprite(client, model: str, path: Path) -> dict | None:
+def grid(n: int) -> tuple[int, int, int]:
+    """(columns, rows, cell px) for a contact sheet of n cut-outs, at most SHEET_PIXELS and 768 px per cell."""
+    cols = max(1, round((n * 4 / 3) ** 0.5))
+    rows = -(-n // cols)
+    return cols, rows, min(768, int((SHEET_PIXELS / (cols * rows)) ** 0.5))
+
+
+def contact_sheet(paths: list[Path]) -> Image.Image:
+    """Cut-outs on neutral grey, one per numbered cell (1..n), separated by white lines."""
+    from PIL import ImageDraw, ImageFont
+
+    cols, rows, cell = grid(len(paths))
+    sheet = Image.new("RGB", (cols * cell, rows * cell), (255, 255, 255))
+    try:
+        font = ImageFont.load_default(size=max(14, cell // 11))
+    except TypeError:   # Pillow < 10.1
+        font = ImageFont.load_default()
+    draw = ImageDraw.Draw(sheet)
+    for i, path in enumerate(paths):
+        x, y = (i % cols) * cell, (i // cols) * cell
+        tile = Image.new("RGBA", (cell - 4, cell - 4), (128, 128, 128, 255))
+        img = Image.open(path).convert("RGBA")
+        img.thumbnail((cell - 12, cell - 12))
+        tile.alpha_composite(img, ((tile.width - img.width) // 2, (tile.height - img.height) // 2))
+        sheet.paste(tile.convert("RGB"), (x + 2, y + 2))
+        label = str(i + 1)
+        box = draw.textbbox((x + 6, y + 6), label, font=font)
+        draw.rectangle((box[0] - 3, box[1] - 2, box[2] + 3, box[3] + 2), fill=(255, 255, 255))
+        draw.text((x + 6, y + 6), label, fill=(0, 0, 0), font=font)
+    return sheet
+
+
+def edges_hint(rec: dict, out_root: Path, sizes: dict) -> str:
+    """Which frame edges a cut-out touches (from its bbox), e.g. 'bottom, left'."""
+    if "bbox" not in rec:
+        return "group shot"
+    if rec["episode"] not in sizes:
+        frame = out_root / rec["frame"] if rec.get("frame") else None
+        sizes[rec["episode"]] = Image.open(frame).size if frame and frame.exists() else (FRAME_W, FRAME_H)
+    w, h = sizes[rec["episode"]]
+    x, y, bw, bh = rec["bbox"]
+    sides = [s for s, hit in (("top", y <= 1), ("bottom", y + bh >= h - 1), ("left", x <= 1), ("right", x + bw >= w - 1)) if hit]
+    return "touches frame edge: " + ", ".join(sides) if sides else "inside the frame"
+
+
+def tag_sheet(client, model: str, image: Image.Image, hints: list[str]) -> dict[int, dict]:
+    """Label every numbered cut-out on a sheet. Returns {number: tags}."""
+    buf = io.BytesIO()
+    image.save(buf, "JPEG", quality=90)
+    text = ("This contact sheet shows numbered cut-outs (each on grey) from the anime Chiikawa, meant to be reused "
+            "as character sprites in short videos. Label every number, judging each cell on its own.\n"
+            "Where each cut-out sat in the video frame (a character touching the bottom edge is usually a bust):\n"
+            + "\n".join(f"{i + 1}: {h}" for i, h in enumerate(hints)) + "\n\n" + ROSTER)
     response = client.beta.messages.create(
         model=model,
-        max_tokens=2000,
-        messages=[{
-            "role": "user",
-            "content": [
-                {"type": "image", "source": {"type": "base64", "media_type": "image/png",
-                                             "data": sprite_png_b64(path)}},
-                {"type": "text", "text": (
-                    "This is a cut-out (on grey) from the anime Chiikawa, meant to be reused as a "
-                    "character sprite in short videos. Label it.\n\n" + ROSTER)},
-            ],
-        }],
+        max_tokens=min(16000, 400 + 250 * len(hints)),
+        messages=[{"role": "user", "content": [
+            {"type": "image", "source": {"type": "base64", "media_type": "image/jpeg",
+                                         "data": base64.standard_b64encode(buf.getvalue()).decode()}},
+            {"type": "text", "text": text},
+        ]}],
         **request_options(model),
     )
-    if response.stop_reason == "refusal":
-        return None
+    if response.stop_reason in ("refusal", "max_tokens"):
+        return {}
     text = next((b.text for b in response.content if b.type == "text"), None)
-    return json.loads(text) if text else None
+    items = json.loads(text)["items"] if text else []
+    return {it.pop("n"): it for it in items if 1 <= it.get("n", 0) <= len(hints)}
 
 
 def slug(s: str) -> str:
@@ -435,22 +482,26 @@ def load_jsonl(path: Path) -> dict[str, dict]:
     return out
 
 
-def estimate_cost(model: str, n: int) -> str:
+def estimate_cost(model: str, n: int, per_sheet: int) -> str:
     price = PRICE_PER_MTOK.get(model)
     if not price:
         return "unknown model price"
-    usd = n * (1000 * price[0] + 400 * price[1]) / 1e6
-    return f"roughly ${usd:.2f}"
+    sheets = -(-n // per_sheet)
+    # per sheet: ~1,550 image tokens + ~600 prompt tokens + 25 per hint in; ~120 out per cut-out + 150
+    usd = sheets * ((2150 + 25 * per_sheet) * price[0] + (150 + 120 * per_sheet) * price[1]) / 1e6
+    return f"{sheets} sheets of up to {per_sheet}, roughly ${usd:.2f}"
 
 
-def tag_all(out_root: Path, model: str, workers: int, assume_yes: bool) -> dict[str, dict]:
-    """Tag every cut-out in manifest.jsonl that isn't in tags.jsonl yet. Returns {file: tagged record}."""
+def tag_all(out_root: Path, model: str, workers: int, assume_yes: bool, per_sheet: int,
+            keep_sheets: bool) -> dict[str, dict]:
+    """Tag every cut-out in manifest.jsonl that isn't in tags.jsonl yet, per_sheet at a time on a contact sheet.
+    Returns {file: tagged record}."""
     records = {f: r for f, r in load_jsonl(out_root / "manifest.jsonl").items() if (out_root / f).exists()}
     tags_file = out_root / "tags.jsonl"
     done = {f: r for f, r in load_jsonl(tags_file).items() if f in records}
-    todo = [r for f, r in records.items() if f not in done]
+    todo = [r for f, r in sorted(records.items()) if f not in done]
     print(f"{len(records)} cut-outs in manifest.jsonl, {len(done)} already tagged, {len(todo)} to tag with {model} "
-          f"({estimate_cost(model, len(todo))}).")
+          f"({estimate_cost(model, len(todo), per_sheet)}).")
     if not todo:
         return done
     if not assume_yes and input("Send them to the Anthropic API now? [y/N] ").strip().lower() != "y":
@@ -461,29 +512,44 @@ def tag_all(out_root: Path, model: str, workers: int, assume_yes: bool) -> dict[
 
     client = anthropic.Anthropic()
     lock = threading.Lock()
+    sizes: dict[str, tuple[int, int]] = {}
+    batches = [todo[i:i + per_sheet] for i in range(0, len(todo), per_sheet)]
+    sheet_dir = out_root / "tag_sheets"
+    if keep_sheets:
+        sheet_dir.mkdir(exist_ok=True)
 
-    def work(rec: dict) -> None:
+    def work(batch: list[dict]) -> None:
+        first = Path(batch[0]["file"]).stem
         try:
-            tags = tag_sprite(client, model, out_root / rec["file"])
+            image = contact_sheet([out_root / r["file"] for r in batch])
+            with lock:
+                hints = [edges_hint(r, out_root, sizes) for r in batch]
+            if keep_sheets:
+                image.save(sheet_dir / f"{first}.jpg", quality=90)
+            tags = tag_sheet(client, model, image, hints)
         except anthropic.RateLimitError:
-            print(f"  rate limited on {rec['file']}; re-run --tag-only later to finish", file=sys.stderr)
+            print(f"  rate limited at {first}; re-run --tag-only later to finish", file=sys.stderr)
             return
         except anthropic.APIStatusError as e:
-            print(f"  API error {e.status_code} on {rec['file']}: {e.message}", file=sys.stderr)
+            print(f"  API error {e.status_code} at {first}: {e.message}", file=sys.stderr)
             return
         except anthropic.APIConnectionError as e:
-            print(f"  connection error on {rec['file']}: {e}", file=sys.stderr)
+            print(f"  connection error at {first}: {e}", file=sys.stderr)
             return
-        out = {**rec, "tags": tags}
+        except (ValueError, KeyError) as e:   # unreadable answer: leave the batch for the next run
+            print(f"  bad answer at {first}: {e}", file=sys.stderr)
+            return
         with lock:
-            done[rec["file"]] = out
             with open(tags_file, "a", encoding="utf-8") as f:
-                f.write(json.dumps(out) + "\n")
-            if len(done) % 25 == 0:
-                print(f"  {len(done)}/{len(records)} tagged")
+                for k, rec in enumerate(batch, 1):
+                    if k in tags:
+                        out = {**rec, "tags": tags[k]}
+                        done[rec["file"]] = out
+                        f.write(json.dumps(out) + "\n")
+            print(f"  {len(done)}/{len(records)} tagged")
 
     with ThreadPoolExecutor(max_workers=workers) as pool:
-        list(pool.map(work, todo))
+        list(pool.map(work, batches))
     return done
 
 
@@ -632,6 +698,9 @@ def main() -> None:
     p.add_argument("--claude-model", default="claude-opus-5-5")
     p.add_argument("--workers", type=int, default=4)
     p.add_argument("--yes", action="store_true", help="Don't ask before sending cut-outs to the API")
+    p.add_argument("--per-sheet", type=int, default=12,
+                   help="Cut-outs per contact sheet sent in one API call (1 = one image per call, best detail)")
+    p.add_argument("--keep-sheets", action="store_true", help="Save the contact sheets to <output>/tag_sheets")
     args = p.parse_args()
 
     cfg = Config(sample_fps=args.sample_fps, scene_threshold=args.scene_threshold, max_gap=args.max_gap,
@@ -663,7 +732,8 @@ def main() -> None:
             records = load_jsonl(out_root / "manifest.jsonl")
             tagged = {f: r for f, r in load_jsonl(out_root / "tags.jsonl").items() if f in records}
         else:
-            tagged = tag_all(out_root, args.claude_model, args.workers, args.yes)
+            tagged = tag_all(out_root, args.claude_model, args.workers, args.yes, max(1, args.per_sheet),
+                             args.keep_sheets)
         export_library(out_root, args.library or out_root / "library", tagged)
 
 
