@@ -410,6 +410,11 @@ def guide():
         for k, (x, y, w, h) in faces.items():
             d.rectangle([x, y, x + w - 1, y + h - 1], fill=colors[name], outline=(0, 0, 0))
             d.text((x + w // 2, y + h // 2), names[k], font=font(10), fill=(0, 0, 0), anchor="mm")
+    # R15 split lines (dotted on the official template): upper/lower torso and upper/lower limb
+    for x0, x1 in ((165, 555),):
+        stitch(d, x0, 170, x1, 170, (0, 0, 0), dash=4, gap=3)
+    for x0, x1 in ((19, 281), (308, 570)):
+        stitch(d, x0, 407, x1, 407, (0, 0, 0), dash=4, gap=3)
     d.text((295, 280), "TORSO", font=font(12), fill=(0, 0, 0), anchor="mm")
     d.text((80, 300), "RIGHT ARM / RIGHT LEG", font=font(11), fill=(0, 0, 0), anchor="mm")
     d.text((470, 300), "LEFT ARM / LEFT LEG", font=font(11), fill=(0, 0, 0), anchor="mm")

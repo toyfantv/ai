@@ -11,7 +11,16 @@ Ready-to-upload Roblox **classic Shirts and Pants**, all built on the official
 | `pants_light_jeans.png` | Light-wash jeans: brown belt, orange stitching, ripped knees | Pants |
 
 Set 1 = hoodie + joggers, Set 2 = varsity jacket + jeans (they mix and match too).
-`preview_set*.png` and `template_guide.png` are for viewing only, so don't upload them.
+`preview_*.png` and `template_guide.png` are for viewing only, so don't upload them.
+
+## Verified against the official template
+Checked pixel by pixel against Roblox's official `Template-Shirts-R15.png` /
+`Template-Pants-R15.png`. All 18 panels match exactly, every panel pixel is fully
+painted, and nothing is drawn outside the panels. See `preview_on_official_template.png`.
+
+The dotted lines on the official template (torso y=170, arms/legs y=407) mark
+where R15 avatars split into upper/lower torso and upper/lower limbs. Belts and
+waistbands sit below the torso line. Cuffs and hems sit at the very bottom of the limbs.
 
 ## Template layout (x, y, w, h)
 
