@@ -318,18 +318,22 @@ LIBRARY_CHARACTERS = ["chiikawa", "hachiware", "usagi", "momonga", "kurimanju", 
                       "furuhonya", "yoroi", "chiikabu"]
 ALIASES = {"yoroi-san": "yoroi", "yoroi_san": "yoroi", "yoroisan": "yoroi", "armor": "yoroi"}
 
-ROSTER = """Known Chiikawa characters (use exactly these names, lowercase):
-- chiikawa: small white bear-like creature, pink blush, round ears, timid
-- hachiware: white cat-like creature with a blue-gray split "hachiware" pattern over the top of the head, cheerful
-- usagi: yellow/cream rabbit-like creature with long ears, wild expressions
-- momonga: small white flying squirrel with big dark-blue-tinted ears/tail, fluffy
-- kurimanju: chestnut-bun shaped creature, brown top, often drinking
-- rakko: sea otter, strong swordsman, tan with a mane-like face
-- shisa: small shisa (lion-dog), orange/yellow mane, works at the ramen shop
-- furuhonya: used-bookstore keeper, hairy, glasses
-- yoroi: armored people (pot/armor helmets) who run the labor office and shops
+ROSTER = """Known Chiikawa characters (use exactly these names, lowercase). Tell them apart by these cues:
+- chiikawa: WHITE, small round bear ears on top, pink blush, no markings at all on the head
+- hachiware: WHITE, with a BLUE-GRAY patch shaped like a cat's ears/cap over the top of the head
+- usagi: CREAM/YELLOW body, two LONG upright rabbit ears with pink insides (yellow = usagi, never chiikawa)
+- momonga: small WHITE flying squirrel with LARGE dark blue-gray ears and a big fluffy tail
+- kurimanju: brown chestnut-bun shaped body with a pale bottom, often holding a drink
+- rakko: tan/brown sea otter with a mane-like face, carries a sword
+- shisa: small lion-dog with an orange/yellow mane
+- furuhonya: shaggy, hairy creature with glasses
+- yoroi: a figure in GRAY METAL ARMOR with a helmet (no ears, no blush, no visible fur)
 - chiikabu: use only if you are sure
-Anyone else: "other:<short description>". Enemy creatures: "monster:<short description>"."""
+Anyone else: "other:<short description>". Enemy creatures: "monster:<short description>".
+Rules: name every character visible in a cell, including ones seen from behind, partly hidden or cut off by the
+cell edge (a white round back with small round ears is chiikawa). Food, cups, crackers, tools or furniture
+without a face are props, not characters. If you are unsure who it is, say "other:<description>" rather
+than guessing a name."""
 
 # The sprite-short pose rows (cutout_sheets.py ROWS) and what each one means.
 POSES = ["idle", "happy", "cheer", "sleep", "desk", "power", "dash"]
@@ -362,12 +366,14 @@ TAG_SCHEMA = {
                     "description": "none = whole body visible; bottom = only the lower body is cut off (a bust); "
                                    "other = cut off at the top or sides, or a large part missing."},
         "themes": {"type": "array", "items": {"type": "string", "enum": THEMES},
-                   "description": "0-3 themes that clearly fit."},
+                   "description": "0-3 themes that clearly fit what is visible (no rain unless rain or umbrellas show)."},
+        "has_text": {"type": "boolean",
+                     "description": "True if subtitles, captions, watermarks or other written text overlap the cut-out."},
         "quality": {"type": "integer",
                     "description": "1-5 usefulness as a clean sprite for a short video (5 = clean outline, no leftover background)."},
     },
     "required": ["is_character", "characters", "interaction", "props", "weapons", "action", "pose", "facing",
-                 "cut_off", "themes", "quality"],
+                 "cut_off", "themes", "has_text", "quality"],
     "additionalProperties": False,
 }
 
@@ -447,7 +453,8 @@ def tag_sheet(client, model: str, image: Image.Image, hints: list[str]) -> dict[
     buf = io.BytesIO()
     image.save(buf, "JPEG", quality=90)
     text = ("This contact sheet shows numbered cut-outs (each on grey) from the anime Chiikawa, meant to be reused "
-            "as character sprites in short videos. Label every number, judging each cell on its own.\n"
+            "as character sprites in short videos. Label every number, judging each cell on its own: first count "
+            "the characters in the cell, then name each one using the cues below.\n"
             "Where each cut-out sat in the video frame (a character touching the bottom edge is usually a bust):\n"
             + "\n".join(f"{i + 1}: {h}" for i, h in enumerate(hints)) + "\n\n" + ROSTER)
     response = client.beta.messages.create(
@@ -553,6 +560,84 @@ def tag_all(out_root: Path, model: str, workers: int, assume_yes: bool, per_shee
     return done
 
 
+# ---------------------------------------------------------- duplicates
+
+DUP_SIZE = 48         # signatures compare cut-outs scaled to 48x48
+DUP_MIN_OVERLAP = 0.8  # shapes must overlap at least this much (intersection over union)
+
+
+def dup_signature(path: Path) -> tuple[np.ndarray, np.ndarray, float, int]:
+    """(rgb 48x48, mask 48x48, aspect ratio, opaque pixels) of a cut-out, cropped to its visible part."""
+    img = Image.open(path).convert("RGBA")
+    img = img.crop(img.getbbox() or (0, 0, 1, 1))
+    a = np.asarray(img)
+    grey = np.full(a.shape[:2] + (3,), 128, np.uint8)
+    rgb = np.where(a[..., 3:] > 0, a[..., :3], grey)
+    small = np.asarray(Image.fromarray(rgb).resize((DUP_SIZE, DUP_SIZE), Image.BILINEAR)).astype(np.int16)
+    mask = np.asarray(img.getchannel("A").resize((DUP_SIZE, DUP_SIZE), Image.BILINEAR)) > 127
+    return small, mask, img.width / img.height, int((a[..., 3] > 0).sum())
+
+
+def is_duplicate(p, q, max_diff: float) -> bool:
+    if abs(p[2] - q[2]) > 0.15 * max(p[2], q[2]):
+        return False
+    union = p[1] | q[1]
+    if (p[1] & q[1]).sum() < DUP_MIN_OVERLAP * max(1, union.sum()):
+        return False
+    diff = np.abs(p[0] - q[0]).mean(-1) * union
+    if diff.sum() > max_diff * union.sum():
+        return False
+    # any local change (eyes, mouth, a raised arm) keeps both: no 4x4 block may differ by more than 2x max_diff
+    n = DUP_SIZE // 4
+    blocks = diff.reshape(n, 4, n, 4).sum((1, 3)) / np.maximum(1, union.reshape(n, 4, n, 4).sum((1, 3)))
+    return float(blocks.max()) <= 2 * max_diff
+
+
+def dedupe(out_root: Path, max_diff: float, assume_yes: bool) -> None:
+    """Delete near-identical cut-outs within each episode, keeping the most complete one of each set.
+
+    Cut-outs whose shapes overlap >= 80%, whose colours differ by <= max_diff (0-255, mean over the shape) and
+    by <= 2x max_diff in every 4x4 block of a 48x48 thumbnail (so a changed face or arm is kept) count as
+    duplicates. The kept one is the one not touching the frame edge, then the largest. Deleted files
+    leave manifest.jsonl and tags.jsonl, and dedupe_log.jsonl records which file each one duplicated.
+    Only files in the output folder are touched.
+    """
+    manifest = out_root / "manifest.jsonl"
+    records = {f: r for f, r in load_jsonl(manifest).items() if (out_root / f).exists()}
+    by_ep: dict[str, list[dict]] = {}
+    for r in records.values():
+        by_ep.setdefault(r["episode"], []).append(r)
+    drop: dict[str, str] = {}
+    for n, (ep, recs) in enumerate(sorted(by_ep.items()), 1):
+        sigs = {r["file"]: dup_signature(out_root / r["file"]) for r in recs}
+        recs.sort(key=lambda r: (bool(r.get("touches_edge")), -sigs[r["file"]][3], r["file"]))
+        kept: list[dict] = []
+        for r in recs:
+            twin = next((k for k in kept if is_duplicate(sigs[r["file"]], sigs[k["file"]], max_diff)), None)
+            if twin:
+                drop[r["file"]] = twin["file"]
+            else:
+                kept.append(r)
+        print(f"  [{n}/{len(by_ep)}] {ep[:12]}: {len(recs)} cut-outs, {len(recs) - len(kept)} duplicates")
+    print(f"{len(drop)} of {len(records)} cut-outs are near-duplicates (colour difference <= {max_diff}).")
+    if not drop:
+        return
+    if not assume_yes and input("Delete them from the output folder? [y/N] ").strip().lower() != "y":
+        print("Nothing deleted.")
+        return
+    with open(out_root / "dedupe_log.jsonl", "a", encoding="utf-8") as f:
+        for gone, twin in drop.items():
+            f.write(json.dumps({"file": gone, "duplicate_of": twin}) + "\n")
+            (out_root / gone).unlink()
+    for name in ("manifest.jsonl", "tags.jsonl"):
+        path = out_root / name
+        if path.exists():
+            lines = path.read_text(encoding="utf-8").splitlines()
+            keep = [l for l in lines if l.strip() and json.loads(l)["file"] not in drop]
+            path.write_text("".join(l + "\n" for l in keep), encoding="utf-8")
+    print(f"Deleted {len(drop)} duplicates; {len(records) - len(drop)} cut-outs left. Log: dedupe_log.jsonl")
+
+
 # ------------------------------------------------------- library export
 
 def character_folder(name: str) -> str | None:
@@ -574,6 +659,8 @@ def library_dest(rec: dict) -> tuple[str, str] | None:
     base = f"ep-{short_episode(rec['episode'])}-{slug(stamp)}"
     if not tags or tags["quality"] <= 1:
         return "../review/rejected", base + ".png"
+    if tags.get("has_text"):   # burned-in subtitles: not a clean sprite
+        return "../review/text", f"{base}-{'+'.join(sorted(slug(c) for c in tags['characters'])) or 'none'}.png"
     names = [character_folder(c) or "other" for c in tags["characters"]]
     action = slug(tags["action"])
     extras = [x for x in (slug(x) for x in tags["weapons"] + tags["props"]) if x not in action][:2]
@@ -700,6 +787,10 @@ def main() -> None:
     p.add_argument("--yes", action="store_true", help="Don't ask before sending cut-outs to the API")
     p.add_argument("--per-sheet", type=int, default=12,
                    help="Cut-outs per contact sheet sent in one API call (1 = one image per call, best detail)")
+    p.add_argument("--dedupe", action="store_true",
+                   help="Delete near-identical cut-outs per episode (asks first; runs before tagging)")
+    p.add_argument("--dup-threshold", type=float, default=30,
+                   help="Max mean colour difference (0-255) for two cut-outs to count as duplicates")
     p.add_argument("--keep-sheets", action="store_true", help="Save the contact sheets to <output>/tag_sheets")
     args = p.parse_args()
 
@@ -709,7 +800,7 @@ def main() -> None:
     out_root = args.output
     out_root.mkdir(parents=True, exist_ok=True)
 
-    if not (args.tag_only or args.export_only):
+    if not (args.tag_only or args.export_only or args.dedupe):
         if args.input.is_file():
             videos = [args.input]
         else:
@@ -726,6 +817,9 @@ def main() -> None:
                 process_episode(v, out_root, matter, cfg)
             except Exception as e:  # keep going on a bad file
                 print(f"[{v.name}] failed: {e}", file=sys.stderr)
+
+    if args.dedupe:
+        dedupe(out_root, args.dup_threshold, args.yes)
 
     if args.tag or args.tag_only or args.export_only:
         if args.export_only:

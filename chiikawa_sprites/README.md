@@ -85,6 +85,7 @@ D:\Claude\chiikawa-sprites\anime\
     theme-eating\ theme-rain\ ...      the same files again, by theme (hard links: no extra space)
   poses.json        pose picks per character, best first (front-facing, highest quality)
   index.jsonl       every exported file with its source episode, time and Claude's tags
+  review\text\      burned-in subtitles or other text over the character, not used by the skill
   review\partial\   cut off at the top/sides, not used by the skill
   review\rejected\  not a character or poor cut-out
   episodes\         the extraction output (-o): per-episode sprites, manifest.jsonl, tags.jsonl
@@ -102,6 +103,22 @@ The export never touches the hand-curated `D:\Claude\chiikawa-sprites\characters
 only removes files the previous export wrote (listed in `index.jsonl`), and an existing `poses.json` that
 the export didn't write is left alone (the picks then go to `poses_episodes.json`). Theme names are the
 `THEMES` list in `extract_sprites.py`; character folders are `LIBRARY_CHARACTERS`.
+
+## Removing near-duplicates
+
+Shots where the camera holds still give many near-identical cut-outs. `--dedupe` compares the cut-outs of each
+episode and deletes the near-identical ones from the output folder, keeping the most complete one of each set
+(not touching the frame edge, then the largest). It prints the count per episode and asks before deleting.
+Deleted files are removed from `manifest.jsonl` and `tags.jsonl` and listed in `dedupe_log.jsonl`.
+
+```powershell
+python extract_sprites.py "<episodes folder>" -o D:\Claude\chiikawa-sprites\anime\episodes --dedupe
+```
+
+Two cut-outs count as duplicates when their shapes overlap at least 80%, their colours differ by at most
+`--dup-threshold` (default 30, on 0-255) on average, and no small patch differs by more than twice that, so a
+changed face or a raised arm is kept. Raise it (e.g. 45) to also merge small movements; run it on a copy first.
+Run it before tagging, so you don't pay for duplicates.
 
 ## Output
 
