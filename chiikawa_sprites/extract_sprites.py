@@ -12,8 +12,9 @@ Pipeline (per episode):
                                    touch each other, incl. held props/weapons)
        - all blobs  -> groups/    (when 2+ separate characters share the shot)
   4. Optionally (--tag) ask Claude to label every sprite (which characters,
-     interaction, accessories/weapons, completeness) and copy the sprites into
-     sorted/ folders by character / group / props.
+     pose, themes, props/weapons, completeness) and copy the sprites into a
+     sprite-short library (--library): one folder per character, group/, misc/,
+     props/, theme-<theme>/ and a poses.json for cutout_sheets.py.
 
 Input files may have no extension; anything OpenCV can decode as video is used.
 Re-running skips episodes that are already done (delete the episode folder to
@@ -26,6 +27,7 @@ import argparse
 import base64
 import io
 import json
+import os
 import re
 import shutil
 import sys
@@ -242,6 +244,17 @@ def sprite_hash(img: Image.Image) -> int:
 
 # ------------------------------------------------------------ extraction
 
+def drop_from_manifest(out_root: Path, ep: str) -> None:
+    """Remove an episode's lines from manifest.jsonl before it is extracted again."""
+    manifest = out_root / "manifest.jsonl"
+    if not manifest.exists():
+        return
+    lines = manifest.read_text(encoding="utf-8").splitlines()
+    keep = [l for l in lines if l.strip() and json.loads(l).get("episode") != ep]
+    if len(keep) != len(lines):
+        manifest.write_text("".join(l + "\n" for l in keep), encoding="utf-8")
+
+
 def process_episode(video: Path, out_root: Path, matter: Matter, cfg: Config) -> list[dict]:
     ep = episode_name(video)
     ep_dir = out_root / ep
@@ -251,6 +264,7 @@ def process_episode(video: Path, out_root: Path, matter: Matter, cfg: Config) ->
         return []
     if ep_dir.exists():
         shutil.rmtree(ep_dir)  # partial run: start the episode over
+    drop_from_manifest(out_root, ep)
     (ep_dir / "sprites").mkdir(parents=True)
     (ep_dir / "groups").mkdir()
     if cfg.save_frames:
@@ -299,24 +313,42 @@ def process_episode(video: Path, out_root: Path, matter: Matter, cfg: Config) ->
 
 # --------------------------------------------------------------- tagging
 
-ROSTER = """Known Chiikawa characters (use these names, lowercase):
-- chiikawa: small white bear-like creature, pink blush, round ears, timid
-- hachiware: white cat-like creature with a blue-gray split "hachiware" pattern over the top of the head, cheerful
-- usagi: yellow/cream rabbit-like creature with long ears, wild expressions
-- momonga: small white flying squirrel with big dark-blue-tinted ears/tail, fluffy
-- kurimanju: chestnut-bun shaped creature, brown top, often drinking
-- rakko: sea otter, strong swordsman, tan with a mane-like face
-- shisa: small shisa (lion-dog), orange/yellow mane, works at the ramen shop
-- furuhonya: used-bookstore keeper, hairy, glasses
-- yoroi-san: armored people (pot/armor helmets) who run the labor office and shops
-- kani-chan / momonga etc.: use the closest known name; otherwise "other:<short description>"
-- chimera / monster: any enemy creature (describe briefly as "monster:<description>")"""
+# Character folder names of the sprite-short library (D:\Claude\chiikawa-sprites\characters\<name>).
+LIBRARY_CHARACTERS = ["chiikawa", "hachiware", "usagi", "momonga", "kurimanju", "rakko", "shisa",
+                      "furuhonya", "yoroi", "chiikabu"]
+ALIASES = {"yoroi-san": "yoroi", "yoroi_san": "yoroi", "yoroisan": "yoroi", "armor": "yoroi"}
+
+ROSTER = """Known Chiikawa characters (use exactly these names, lowercase). Tell them apart by these cues:
+- chiikawa: WHITE, small round bear ears on top, pink blush, no markings at all on the head
+- hachiware: WHITE, with a BLUE-GRAY patch shaped like a cat's ears/cap over the top of the head
+- usagi: CREAM/YELLOW body, two LONG upright rabbit ears with pink insides (yellow = usagi, never chiikawa)
+- momonga: small WHITE flying squirrel with LARGE dark blue-gray ears and a big fluffy tail
+- kurimanju: brown chestnut-bun shaped body with a pale bottom, often holding a drink
+- rakko: tan/brown sea otter with a mane-like face, carries a sword
+- shisa: small lion-dog with an orange/yellow mane
+- furuhonya: shaggy, hairy creature with glasses
+- yoroi: a figure in GRAY METAL ARMOR with a helmet (no ears, no blush, no visible fur)
+- chiikabu: use only if you are sure
+Anyone else: "other:<short description>". Enemy creatures: "monster:<short description>".
+Rules: name every character visible in a cell, including ones seen from behind, partly hidden or cut off by the
+cell edge (a white round back with small round ears is chiikawa). Food, cups, crackers, tools or furniture
+without a face are props, not characters. If you are unsure who it is, say "other:<description>" rather
+than guessing a name."""
+
+# The sprite-short pose rows (cutout_sheets.py ROWS) and what each one means.
+POSES = ["idle", "happy", "cheer", "sleep", "desk", "power", "dash"]
+POSE_HELP = ("idle = standing/neutral, happy = smiling/shy/blushing, cheer = jumping/dancing/arms up, "
+             "sleep = sleeping/lying down, desk = busy with something in hand (eating, reading, working), "
+             "power = determined/fighting/weapon raised, dash = running/flying/moving fast")
+# Theme folders (characters\theme-<theme>). Edit this list to change them.
+THEMES = ["eating", "cooking", "working", "fighting", "running", "crying", "laughing", "shy", "scared",
+          "angry", "surprised", "sleeping", "celebrating", "hugging", "music", "rain"]
 
 TAG_SCHEMA = {
     "type": "object",
     "properties": {
         "is_character": {"type": "boolean",
-                         "description": "True if the cut-out mainly shows one or more characters (not scenery, text, food alone, or a matting error)."},
+                         "description": "True if the cut-out mainly shows one or more characters (not scenery, text, an object alone, or a matting error)."},
         "characters": {"type": "array", "items": {"type": "string"},
                        "description": "Names of every character visible, one entry per character."},
         "interaction": {"type": "boolean",
@@ -325,119 +357,403 @@ TAG_SCHEMA = {
                   "description": "Accessories, held items, costumes (e.g. 'stick', 'pochette', 'hat', 'mushroom')."},
         "weapons": {"type": "array", "items": {"type": "string"},
                     "description": "Weapons held or worn (e.g. 'stick', 'sword', 'spear', 'tweezers')."},
-        "pose": {"type": "string", "description": "Short pose/action, e.g. 'running', 'crying', 'hugging hachiware'."},
-        "complete": {"type": "boolean",
-                     "description": "True if the characters are whole (not cut off by the frame edge) with little leftover background."},
-        "quality": {"type": "integer", "description": "1-5 usefulness as a clean sprite for a short video."},
+        "action": {"type": "string",
+                   "description": "1-3 lowercase words for what the lead character does, e.g. 'eating rice ball', 'running', 'crying'."},
+        "pose": {"type": "string", "enum": POSES, "description": "Closest pose row: " + POSE_HELP},
+        "facing": {"type": "string", "enum": ["front", "side", "back"],
+                   "description": "Which way the lead character faces."},
+        "cut_off": {"type": "string", "enum": ["none", "bottom", "other"],
+                    "description": "none = whole body visible; bottom = only the lower body is cut off (a bust); "
+                                   "other = cut off at the top or sides, or a large part missing."},
+        "themes": {"type": "array", "items": {"type": "string", "enum": THEMES},
+                   "description": "0-3 themes that clearly fit what is visible (no rain unless rain or umbrellas show)."},
+        "has_text": {"type": "boolean",
+                     "description": "True if subtitles, captions, watermarks or other written text overlap the cut-out."},
+        "quality": {"type": "integer",
+                    "description": "1-5 usefulness as a clean sprite for a short video (5 = clean outline, no leftover background)."},
     },
-    "required": ["is_character", "characters", "interaction", "props", "weapons", "pose", "complete", "quality"],
+    "required": ["is_character", "characters", "interaction", "props", "weapons", "action", "pose", "facing",
+                 "cut_off", "themes", "has_text", "quality"],
     "additionalProperties": False,
 }
 
+# Request options per model family. Haiku 4.5 rejects `effort`; server-side fallbacks only exist on newer models.
+NO_EFFORT_MODELS = ("claude-haiku-4-5", "claude-sonnet-4-5")
+FALLBACK_MODELS = ("claude-opus-5-5", "claude-opus-5", "claude-sonnet-5-5", "claude-fable-5-1")
+PRICE_PER_MTOK = {"claude-opus-5-5": (4, 20), "claude-sonnet-5-5": (2, 10), "claude-haiku-4-5": (1, 5)}
+SHEET_PIXELS = 1_150_000   # the API scales larger images down to about this, so a sheet is built at this size
+FRAME_W, FRAME_H = 1920, 1080   # fallback when the episode's frame JPG isn't there
 
-def sprite_png_b64(path: Path, max_side: int = 768) -> str:
-    img = Image.open(path).convert("RGBA")
-    img.thumbnail((max_side, max_side))
-    bg = Image.new("RGBA", img.size, (128, 128, 128, 255))  # neutral grey shows the cut edge
-    bg.alpha_composite(img)
+
+def sheet_schema() -> dict:
+    item = {**TAG_SCHEMA, "properties": {"n": {"type": "integer", "description": "The cut-out's number on the sheet."},
+                                         **TAG_SCHEMA["properties"]},
+            "required": ["n"] + TAG_SCHEMA["required"]}
+    return {"type": "object", "properties": {"items": {"type": "array", "items": item}},
+            "required": ["items"], "additionalProperties": False}
+
+
+def request_options(model: str) -> dict:
+    output_config: dict = {"format": {"type": "json_schema", "schema": sheet_schema()}}
+    if model not in NO_EFFORT_MODELS:
+        output_config["effort"] = "low"
+    opts: dict = {"output_config": output_config}
+    if model in FALLBACK_MODELS:
+        opts.update(betas=["server-side-fallback-2026-07-01"], fallbacks="default")
+    return opts
+
+
+def grid(n: int) -> tuple[int, int, int]:
+    """(columns, rows, cell px) for a contact sheet of n cut-outs, at most SHEET_PIXELS and 768 px per cell."""
+    cols = max(1, round((n * 4 / 3) ** 0.5))
+    rows = -(-n // cols)
+    return cols, rows, min(768, int((SHEET_PIXELS / (cols * rows)) ** 0.5))
+
+
+def contact_sheet(paths: list[Path]) -> Image.Image:
+    """Cut-outs on neutral grey, one per numbered cell (1..n), separated by white lines."""
+    from PIL import ImageDraw, ImageFont
+
+    cols, rows, cell = grid(len(paths))
+    sheet = Image.new("RGB", (cols * cell, rows * cell), (255, 255, 255))
+    try:
+        font = ImageFont.load_default(size=max(14, cell // 11))
+    except TypeError:   # Pillow < 10.1
+        font = ImageFont.load_default()
+    draw = ImageDraw.Draw(sheet)
+    for i, path in enumerate(paths):
+        x, y = (i % cols) * cell, (i // cols) * cell
+        tile = Image.new("RGBA", (cell - 4, cell - 4), (128, 128, 128, 255))
+        img = Image.open(path).convert("RGBA")
+        img.thumbnail((cell - 12, cell - 12))
+        tile.alpha_composite(img, ((tile.width - img.width) // 2, (tile.height - img.height) // 2))
+        sheet.paste(tile.convert("RGB"), (x + 2, y + 2))
+        label = str(i + 1)
+        box = draw.textbbox((x + 6, y + 6), label, font=font)
+        draw.rectangle((box[0] - 3, box[1] - 2, box[2] + 3, box[3] + 2), fill=(255, 255, 255))
+        draw.text((x + 6, y + 6), label, fill=(0, 0, 0), font=font)
+    return sheet
+
+
+def edges_hint(rec: dict, out_root: Path, sizes: dict) -> str:
+    """Which frame edges a cut-out touches (from its bbox), e.g. 'bottom, left'."""
+    if "bbox" not in rec:
+        return "group shot"
+    if rec["episode"] not in sizes:
+        frame = out_root / rec["frame"] if rec.get("frame") else None
+        sizes[rec["episode"]] = Image.open(frame).size if frame and frame.exists() else (FRAME_W, FRAME_H)
+    w, h = sizes[rec["episode"]]
+    x, y, bw, bh = rec["bbox"]
+    sides = [s for s, hit in (("top", y <= 1), ("bottom", y + bh >= h - 1), ("left", x <= 1), ("right", x + bw >= w - 1)) if hit]
+    return "touches frame edge: " + ", ".join(sides) if sides else "inside the frame"
+
+
+def tag_sheet(client, model: str, image: Image.Image, hints: list[str]) -> dict[int, dict]:
+    """Label every numbered cut-out on a sheet. Returns {number: tags}."""
     buf = io.BytesIO()
-    bg.convert("RGB").save(buf, "PNG")
-    return base64.standard_b64encode(buf.getvalue()).decode()
-
-
-def tag_sprite(client, model: str, path: Path) -> dict | None:
+    image.save(buf, "JPEG", quality=90)
+    text = ("This contact sheet shows numbered cut-outs (each on grey) from the anime Chiikawa, meant to be reused "
+            "as character sprites in short videos. Label every number, judging each cell on its own: first count "
+            "the characters in the cell, then name each one using the cues below.\n"
+            "Where each cut-out sat in the video frame (a character touching the bottom edge is usually a bust):\n"
+            + "\n".join(f"{i + 1}: {h}" for i, h in enumerate(hints)) + "\n\n" + ROSTER)
     response = client.beta.messages.create(
         model=model,
-        max_tokens=2000,
-        betas=["server-side-fallback-2026-07-01"],
-        fallbacks="default",
-        output_config={"effort": "low", "format": {"type": "json_schema", "schema": TAG_SCHEMA}},
-        messages=[{
-            "role": "user",
-            "content": [
-                {"type": "image", "source": {"type": "base64", "media_type": "image/png",
-                                             "data": sprite_png_b64(path)}},
-                {"type": "text", "text": (
-                    "This is a cut-out (on grey) from the anime Chiikawa, meant to be reused as a "
-                    "character sprite in short videos. Label it.\n\n" + ROSTER)},
-            ],
-        }],
+        max_tokens=min(16000, 400 + 250 * len(hints)),
+        messages=[{"role": "user", "content": [
+            {"type": "image", "source": {"type": "base64", "media_type": "image/jpeg",
+                                         "data": base64.standard_b64encode(buf.getvalue()).decode()}},
+            {"type": "text", "text": text},
+        ]}],
+        **request_options(model),
     )
-    if response.stop_reason == "refusal":
-        return None
+    if response.stop_reason in ("refusal", "max_tokens"):
+        return {}
     text = next((b.text for b in response.content if b.type == "text"), None)
-    return json.loads(text) if text else None
+    items = json.loads(text)["items"] if text else []
+    return {it.pop("n"): it for it in items if 1 <= it.get("n", 0) <= len(hints)}
 
 
 def slug(s: str) -> str:
-    return re.sub(r"[^\w-]+", "_", s.strip().lower())[:40] or "unknown"
+    return re.sub(r"[^\w-]+", "-", s.strip().lower()).strip("-_")[:40] or "unknown"
 
 
-def sort_dest(out_root: Path, rec: dict) -> Path | None:
-    tags = rec.get("tags")
-    if not tags or not tags["is_character"] or tags["quality"] <= 1:
-        return out_root / "sorted" / "rejected"
-    chars = tags["characters"]
-    if not tags["complete"]:  # cut off by the frame edge or messy matte
-        return out_root / "sorted" / "partial" / "+".join(sorted(slug(c) for c in chars) or ["unknown"])
-    if rec["kind"] == "group" or len(chars) >= 2:
-        sub = "interacting" if tags["interaction"] else "together"
-        return out_root / "sorted" / sub / "+".join(sorted(slug(c) for c in chars))
-    base = out_root / "sorted" / ("with_weapon" if tags["weapons"] else
-                                  "with_props" if tags["props"] else "single")
-    return base / slug(chars[0] if chars else "unknown")
-
-
-def tag_all(out_root: Path, model: str, workers: int) -> None:
-    import anthropic
-
-    manifest = out_root / "manifest.jsonl"
-    tags_file = out_root / "tags.jsonl"
-    records = list({r["file"]: r for r in (json.loads(l) for l in
-                    manifest.read_text(encoding="utf-8").splitlines() if l.strip())}.values())
-    done: dict[str, dict] = {}
-    if tags_file.exists():
-        for line in tags_file.read_text(encoding="utf-8").splitlines():
+def load_jsonl(path: Path) -> dict[str, dict]:
+    """{file: record}; later lines win."""
+    out: dict[str, dict] = {}
+    if path.exists():
+        for line in path.read_text(encoding="utf-8").splitlines():
             if line.strip():
                 r = json.loads(line)
-                done[r["file"]] = r
-    todo = [r for r in records if r["file"] not in done]
-    print(f"Tagging {len(todo)} cut-outs ({len(done)} already tagged) with {model}")
+                out[r["file"]] = r
+    return out
+
+
+def estimate_cost(model: str, n: int, per_sheet: int) -> str:
+    price = PRICE_PER_MTOK.get(model)
+    if not price:
+        return "unknown model price"
+    sheets = -(-n // per_sheet)
+    # per sheet: ~1,550 image tokens + ~600 prompt tokens + 25 per hint in; ~120 out per cut-out + 150
+    usd = sheets * ((2150 + 25 * per_sheet) * price[0] + (150 + 120 * per_sheet) * price[1]) / 1e6
+    return f"{sheets} sheets of up to {per_sheet}, roughly ${usd:.2f}"
+
+
+def tag_all(out_root: Path, model: str, workers: int, assume_yes: bool, per_sheet: int,
+            keep_sheets: bool) -> dict[str, dict]:
+    """Tag every cut-out in manifest.jsonl that isn't in tags.jsonl yet, per_sheet at a time on a contact sheet.
+    Returns {file: tagged record}."""
+    records = {f: r for f, r in load_jsonl(out_root / "manifest.jsonl").items() if (out_root / f).exists()}
+    tags_file = out_root / "tags.jsonl"
+    done = {f: r for f, r in load_jsonl(tags_file).items() if f in records}
+    todo = [r for f, r in sorted(records.items()) if f not in done]
+    print(f"{len(records)} cut-outs in manifest.jsonl, {len(done)} already tagged, {len(todo)} to tag with {model} "
+          f"({estimate_cost(model, len(todo), per_sheet)}).")
+    if not todo:
+        return done
+    if not assume_yes and input("Send them to the Anthropic API now? [y/N] ").strip().lower() != "y":
+        print("Tagging skipped.")
+        return done
+
+    import anthropic
 
     client = anthropic.Anthropic()
     lock = threading.Lock()
+    sizes: dict[str, tuple[int, int]] = {}
+    batches = [todo[i:i + per_sheet] for i in range(0, len(todo), per_sheet)]
+    sheet_dir = out_root / "tag_sheets"
+    if keep_sheets:
+        sheet_dir.mkdir(exist_ok=True)
 
-    def work(rec: dict) -> None:
+    def work(batch: list[dict]) -> None:
+        first = Path(batch[0]["file"]).stem
         try:
-            tags = tag_sprite(client, model, out_root / rec["file"])
+            image = contact_sheet([out_root / r["file"] for r in batch])
+            with lock:
+                hints = [edges_hint(r, out_root, sizes) for r in batch]
+            if keep_sheets:
+                image.save(sheet_dir / f"{first}.jpg", quality=90)
+            tags = tag_sheet(client, model, image, hints)
         except anthropic.RateLimitError:
-            print(f"  rate limited on {rec['file']}; re-run --tag later to finish", file=sys.stderr)
+            print(f"  rate limited at {first}; re-run --tag-only later to finish", file=sys.stderr)
             return
         except anthropic.APIStatusError as e:
-            print(f"  API error {e.status_code} on {rec['file']}: {e.message}", file=sys.stderr)
+            print(f"  API error {e.status_code} at {first}: {e.message}", file=sys.stderr)
             return
         except anthropic.APIConnectionError as e:
-            print(f"  connection error on {rec['file']}: {e}", file=sys.stderr)
+            print(f"  connection error at {first}: {e}", file=sys.stderr)
             return
-        out = {**rec, "tags": tags}
+        except (ValueError, KeyError) as e:   # unreadable answer: leave the batch for the next run
+            print(f"  bad answer at {first}: {e}", file=sys.stderr)
+            return
         with lock:
-            done[rec["file"]] = out
             with open(tags_file, "a", encoding="utf-8") as f:
-                f.write(json.dumps(out) + "\n")
-            if len(done) % 25 == 0:
-                print(f"  {len(done)}/{len(records)} tagged")
+                for k, rec in enumerate(batch, 1):
+                    if k in tags:
+                        out = {**rec, "tags": tags[k]}
+                        done[rec["file"]] = out
+                        f.write(json.dumps(out) + "\n")
+            print(f"  {len(done)}/{len(records)} tagged")
 
     with ThreadPoolExecutor(max_workers=workers) as pool:
-        list(pool.map(work, todo))
+        list(pool.map(work, batches))
+    return done
 
-    sorted_dir = out_root / "sorted"
-    if sorted_dir.exists():
-        shutil.rmtree(sorted_dir)
-    for rec in done.values():
-        dest = sort_dest(out_root, rec)
-        dest.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(out_root / rec["file"], dest / Path(rec["file"]).name)
-    print(f"Sorted {len(done)} cut-outs into {sorted_dir}")
+
+# ---------------------------------------------------------- duplicates
+
+DUP_SIZE = 48         # signatures compare cut-outs scaled to 48x48
+DUP_MIN_OVERLAP = 0.8  # shapes must overlap at least this much (intersection over union)
+
+
+def dup_signature(path: Path) -> tuple[np.ndarray, np.ndarray, float, int]:
+    """(rgb 48x48, mask 48x48, aspect ratio, opaque pixels) of a cut-out, cropped to its visible part."""
+    img = Image.open(path).convert("RGBA")
+    img = img.crop(img.getbbox() or (0, 0, 1, 1))
+    a = np.asarray(img)
+    grey = np.full(a.shape[:2] + (3,), 128, np.uint8)
+    rgb = np.where(a[..., 3:] > 0, a[..., :3], grey)
+    small = np.asarray(Image.fromarray(rgb).resize((DUP_SIZE, DUP_SIZE), Image.BILINEAR)).astype(np.int16)
+    mask = np.asarray(img.getchannel("A").resize((DUP_SIZE, DUP_SIZE), Image.BILINEAR)) > 127
+    return small, mask, img.width / img.height, int((a[..., 3] > 0).sum())
+
+
+def is_duplicate(p, q, max_diff: float) -> bool:
+    if abs(p[2] - q[2]) > 0.15 * max(p[2], q[2]):
+        return False
+    union = p[1] | q[1]
+    if (p[1] & q[1]).sum() < DUP_MIN_OVERLAP * max(1, union.sum()):
+        return False
+    diff = np.abs(p[0] - q[0]).mean(-1) * union
+    if diff.sum() > max_diff * union.sum():
+        return False
+    # any local change (eyes, mouth, a raised arm) keeps both: no 4x4 block may differ by more than 2x max_diff
+    n = DUP_SIZE // 4
+    blocks = diff.reshape(n, 4, n, 4).sum((1, 3)) / np.maximum(1, union.reshape(n, 4, n, 4).sum((1, 3)))
+    return float(blocks.max()) <= 2 * max_diff
+
+
+def dedupe(out_root: Path, max_diff: float, assume_yes: bool) -> None:
+    """Delete near-identical cut-outs within each episode, keeping the most complete one of each set.
+
+    Cut-outs whose shapes overlap >= 80%, whose colours differ by <= max_diff (0-255, mean over the shape) and
+    by <= 2x max_diff in every 4x4 block of a 48x48 thumbnail (so a changed face or arm is kept) count as
+    duplicates. The kept one is the one not touching the frame edge, then the largest. Deleted files
+    leave manifest.jsonl and tags.jsonl, and dedupe_log.jsonl records which file each one duplicated.
+    Only files in the output folder are touched.
+    """
+    manifest = out_root / "manifest.jsonl"
+    records = {f: r for f, r in load_jsonl(manifest).items() if (out_root / f).exists()}
+    by_ep: dict[str, list[dict]] = {}
+    for r in records.values():
+        by_ep.setdefault(r["episode"], []).append(r)
+    drop: dict[str, str] = {}
+    for n, (ep, recs) in enumerate(sorted(by_ep.items()), 1):
+        sigs = {r["file"]: dup_signature(out_root / r["file"]) for r in recs}
+        recs.sort(key=lambda r: (bool(r.get("touches_edge")), -sigs[r["file"]][3], r["file"]))
+        kept: list[dict] = []
+        for r in recs:
+            twin = next((k for k in kept if is_duplicate(sigs[r["file"]], sigs[k["file"]], max_diff)), None)
+            if twin:
+                drop[r["file"]] = twin["file"]
+            else:
+                kept.append(r)
+        print(f"  [{n}/{len(by_ep)}] {ep[:12]}: {len(recs)} cut-outs, {len(recs) - len(kept)} duplicates")
+    print(f"{len(drop)} of {len(records)} cut-outs are near-duplicates (colour difference <= {max_diff}).")
+    if not drop:
+        return
+    if not assume_yes and input("Delete them from the output folder? [y/N] ").strip().lower() != "y":
+        print("Nothing deleted.")
+        return
+    with open(out_root / "dedupe_log.jsonl", "a", encoding="utf-8") as f:
+        for gone, twin in drop.items():
+            f.write(json.dumps({"file": gone, "duplicate_of": twin}) + "\n")
+            (out_root / gone).unlink()
+    for name in ("manifest.jsonl", "tags.jsonl"):
+        path = out_root / name
+        if path.exists():
+            lines = path.read_text(encoding="utf-8").splitlines()
+            keep = [l for l in lines if l.strip() and json.loads(l)["file"] not in drop]
+            path.write_text("".join(l + "\n" for l in keep), encoding="utf-8")
+    print(f"Deleted {len(drop)} duplicates; {len(records) - len(drop)} cut-outs left. Log: dedupe_log.jsonl")
+
+
+# ------------------------------------------------------- library export
+
+def character_folder(name: str) -> str | None:
+    """Library folder for a tagged name, or None for side characters (other:/monster:/unknown)."""
+    n = slug(name)
+    n = ALIASES.get(n, n)
+    return n if n in LIBRARY_CHARACTERS else None
+
+
+def short_episode(ep: str) -> str:
+    return slug(ep if len(ep) <= 12 else ep[:8])
+
+
+def library_dest(rec: dict) -> tuple[str, str] | None:
+    """(folder relative to characters/, file name) for a tagged cut-out, or (review/<why>, name), or None."""
+    tags = rec.get("tags")
+    stamp = Path(rec["file"]).stem.rsplit("_", 3)
+    stamp = "-".join(stamp[1:]) if len(stamp) == 4 else Path(rec["file"]).stem
+    base = f"ep-{short_episode(rec['episode'])}-{slug(stamp)}"
+    if not tags or tags["quality"] <= 1:
+        return "../review/rejected", base + ".png"
+    if tags.get("has_text"):   # burned-in subtitles: not a clean sprite
+        return "../review/text", f"{base}-{'+'.join(sorted(slug(c) for c in tags['characters'])) or 'none'}.png"
+    names = [character_folder(c) or "other" for c in tags["characters"]]
+    action = slug(tags["action"])
+    extras = [x for x in (slug(x) for x in tags["weapons"] + tags["props"]) if x not in action][:2]
+    words = "-".join(dict.fromkeys([action] + extras))
+    if not tags["is_character"]:
+        return ("props" if tags["quality"] >= 3 else "../review/rejected"), f"{base}-{words}.png"
+    if tags["cut_off"] == "other":
+        return "../review/partial", f"{base}-{'+'.join(sorted(set(names)))}-{words}.png"
+    if rec["kind"] == "group" or len(names) >= 2:
+        how = "interacting" if tags["interaction"] else "together"
+        bust = "" if tags["cut_off"] == "none" else "-bust"
+        return "group", f"{base}-{'+'.join(sorted(set(names)))}-{how}{bust}-{words}.png"
+    lead = names[0] if names else "other"
+    folder = "misc" if lead == "other" else lead
+    return (folder if tags["cut_off"] == "none" else f"{folder}/bust"), f"{base}-{words}.png"
+
+
+def place(src: Path, dest: Path) -> None:
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    if dest.exists():
+        dest.unlink()
+    shutil.copy2(src, dest)
+
+
+def link(src: Path, dest: Path) -> None:
+    """Hard link (no extra disk space on the same drive); copy if linking isn't possible."""
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    if dest.exists():
+        dest.unlink()
+    try:
+        os.link(src, dest)
+    except OSError:
+        shutil.copy2(src, dest)
+
+
+def export_library(out_root: Path, lib_root: Path, tagged: dict[str, dict]) -> None:
+    """Copy tagged cut-outs into a sprite-short library:
+
+      <lib_root>/characters/<name>/        whole single characters (cutout_sheets.py pose stills)
+      <lib_root>/characters/<name>/bust/   singles cut off at the bottom
+      <lib_root>/characters/group/         2+ characters (library_images.py / showcase)
+      <lib_root>/characters/misc/          side characters and monsters
+      <lib_root>/characters/props/         objects without a character
+      <lib_root>/characters/theme-<theme>/  hard links of the above, by theme (flat, so --list works)
+      <lib_root>/poses.json                pose picks for cutout_sheets.py (best first)
+      <lib_root>/index.jsonl               one line per exported file with its source and tags
+      <lib_root>/review/{partial,rejected}/  not used by the skill
+
+    Only files listed in the previous index.jsonl are ever removed, so the folder can sit next to other assets.
+    """
+    chars = lib_root / "characters"
+    index_path = lib_root / "index.jsonl"
+    for old in load_jsonl(index_path):   # remove what the last export wrote, nothing else
+        for p in [lib_root / old] + [chars / f"theme-{t}" / Path(old).name for t in THEMES]:
+            if p.exists():
+                p.unlink()
+
+    index, poses = [], {}
+    counts: dict[str, int] = {}
+    for rec in sorted(tagged.values(), key=lambda r: r["file"]):
+        src = out_root / rec["file"]
+        dest = library_dest(rec)
+        if dest is None or not src.exists():
+            continue
+        folder, name = dest
+        rel = (Path("characters") / folder / name).as_posix().replace("characters/../", "")
+        place(src, lib_root / rel)
+        tags = rec.get("tags") or {}
+        index.append({"file": rel, "source": rec["file"], "episode": rec["episode"], "time": rec["time"],
+                      "frame": rec.get("frame"), "tags": tags})
+        top = folder.split("/")[0] if not folder.startswith("..") else folder[3:]
+        counts[top] = counts.get(top, 0) + 1
+        if rel.startswith("characters/"):
+            for theme in tags.get("themes", []):
+                if theme in THEMES:
+                    link(lib_root / rel, chars / f"theme-{theme}" / name)
+        if folder in LIBRARY_CHARACTERS:  # whole single character: candidate pose still
+            poses.setdefault(folder, []).append((tags["pose"], tags["facing"] != "front", -tags["quality"], name))
+
+    with open(index_path, "w", encoding="utf-8") as f:
+        for r in index:
+            f.write(json.dumps(r) + "\n")
+
+    pose_json = {c: {p: [n for q, _, _, n in sorted(v) if q == p] for p in POSES if any(q == p for q, *_ in v)}
+                 for c, v in sorted(poses.items())}
+    pose_path = lib_root / "poses.json"
+    if pose_path.exists() and not (lib_root / ".sprite_export").exists():
+        pose_path = lib_root / "poses_episodes.json"   # never overwrite a hand-tagged poses.json
+        print(f"  {lib_root / 'poses.json'} is not ours; wrote pose picks to {pose_path.name} instead")
+    pose_path.write_text(json.dumps(pose_json, indent=1), encoding="utf-8")
+    (lib_root / ".sprite_export").touch()
+    print(f"Exported {len(index)} cut-outs to {lib_root}: " + ", ".join(f"{k} {v}" for k, v in sorted(counts.items())))
+    print(f"  use with sprite-short: cutout_sheets.py <project> <names> --lib \"{chars}\"")
 
 
 # ------------------------------------------------------------------ main
@@ -459,10 +775,23 @@ def main() -> None:
                    help="How far the cut edge may grow to include the drawn outline")
     p.add_argument("--no-frames", action="store_true", help="Don't save the full source frames")
     p.add_argument("--limit", type=int, default=0, help="Only process the first N episodes (for a trial run)")
-    p.add_argument("--tag", action="store_true", help="Label sprites with Claude and sort them (needs ANTHROPIC_API_KEY)")
-    p.add_argument("--tag-only", action="store_true", help="Skip extraction; only tag/sort what's in the output folder")
+    p.add_argument("--tag", action="store_true",
+                   help="Label sprites with Claude and export the library (needs ANTHROPIC_API_KEY)")
+    p.add_argument("--tag-only", action="store_true", help="Skip extraction; only tag and export what's in the output folder")
+    p.add_argument("--export-only", action="store_true",
+                   help="No extraction, no API calls: rebuild the library from tags.jsonl")
+    p.add_argument("--library", type=Path, default=None,
+                   help="Where to export the sprite-short library (default: <output>/library)")
     p.add_argument("--claude-model", default="claude-opus-5-5")
     p.add_argument("--workers", type=int, default=4)
+    p.add_argument("--yes", action="store_true", help="Don't ask before sending cut-outs to the API")
+    p.add_argument("--per-sheet", type=int, default=12,
+                   help="Cut-outs per contact sheet sent in one API call (1 = one image per call, best detail)")
+    p.add_argument("--dedupe", action="store_true",
+                   help="Delete near-identical cut-outs per episode (asks first; runs before tagging)")
+    p.add_argument("--dup-threshold", type=float, default=30,
+                   help="Max mean colour difference (0-255) for two cut-outs to count as duplicates")
+    p.add_argument("--keep-sheets", action="store_true", help="Save the contact sheets to <output>/tag_sheets")
     args = p.parse_args()
 
     cfg = Config(sample_fps=args.sample_fps, scene_threshold=args.scene_threshold, max_gap=args.max_gap,
@@ -471,7 +800,7 @@ def main() -> None:
     out_root = args.output
     out_root.mkdir(parents=True, exist_ok=True)
 
-    if not args.tag_only:
+    if not (args.tag_only or args.export_only or args.dedupe):
         if args.input.is_file():
             videos = [args.input]
         else:
@@ -489,8 +818,17 @@ def main() -> None:
             except Exception as e:  # keep going on a bad file
                 print(f"[{v.name}] failed: {e}", file=sys.stderr)
 
-    if args.tag or args.tag_only:
-        tag_all(out_root, args.claude_model, args.workers)
+    if args.dedupe:
+        dedupe(out_root, args.dup_threshold, args.yes)
+
+    if args.tag or args.tag_only or args.export_only:
+        if args.export_only:
+            records = load_jsonl(out_root / "manifest.jsonl")
+            tagged = {f: r for f, r in load_jsonl(out_root / "tags.jsonl").items() if f in records}
+        else:
+            tagged = tag_all(out_root, args.claude_model, args.workers, args.yes, max(1, args.per_sheet),
+                             args.keep_sheets)
+        export_library(out_root, args.library or out_root / "library", tagged)
 
 
 if __name__ == "__main__":
