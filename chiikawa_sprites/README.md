@@ -112,10 +112,11 @@ moves, keeps the most active stretch of up to `--clip-len` frames (default 16 = 
 every character through it and saves each moving character (plus all characters together, as a group clip):
 
 ```
-<out>\<episode>\<episode>_<time>_<n>.zip    sprite sheet for sprite-short: sprite.png (one row of frames) + manifest.json
-<out>\<episode>\<episode>_<time>_<n>.webp   looping transparent animated WebP (preview, or use in any editor)
-<out>\<episode>\<episode>_<time>_<n>.png    middle frame (what --tag labels)
-<out>\manifest.jsonl                         one line per clip
+<out>\chiikawa-001\chiikawa-001_00m12_50s_0.zip    sprite sheet for sprite-short: sprite.png (one row of frames) + manifest.json
+<out>\chiikawa-001\chiikawa-001_00m12_50s_0.webp   looping transparent animated WebP (preview, or use in any editor)
+<out>\chiikawa-001\chiikawa-001_00m12_50s_0.png    middle frame (what --tag labels)
+<out>\manifest.jsonl                               one line per clip
+<out>\episodes.json                                which source file each chiikawa-NNN stands for
 ```
 
 ```powershell
@@ -124,6 +125,10 @@ python extract_clips.py "<episodes folder>" -o D:\Claude\chiikawa-sprites\anime\
 python extract_clips.py "<episodes folder>" -o D:\Claude\chiikawa-sprites\anime\clip-episodes --tag-only `
     --library D:\Claude\chiikawa-sprites\anime\clips --claude-model claude-sonnet-5-5
 ```
+
+Episodes are named `chiikawa-001`, `chiikawa-002`, ... (`--prefix` changes the word) in file-name order of the
+input folder, so the numbers stay the same across runs and `--limit`; they are not broadcast episode numbers.
+Library files are named the same way, e.g. `usagi\chiikawa-001-00m12-50s-0-drinking.zip`.
 
 The library gets `<character>\`, `<character>\bust\`, `group\`, `misc\`, `props\`, `theme-<theme>\` and
 `review\{partial,rejected,text}\`, each clip as a `.zip` + `.webp` pair, plus `index.jsonl`.

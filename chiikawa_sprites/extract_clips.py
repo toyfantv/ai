@@ -242,8 +242,12 @@ def save_clip(frames: list, out_root: Path, rel_stem: str, fps: float, info: dic
 
 # ----------------------------------------------------------- episodes
 
-def process_episode(video: Path, out_root: Path, matter, cfg: ClipConfig) -> list[dict]:
-    ep = es.episode_name(video)
+def episode_names(videos: list[Path], prefix: str) -> dict[Path, str]:
+    """<prefix>-001, <prefix>-002, ... in file-name order of the whole input folder (stable across --limit)."""
+    return {v: f"{prefix}-{i:03d}" for i, v in enumerate(sorted(videos), 1)}
+
+
+def process_episode(video: Path, ep: str, out_root: Path, matter, cfg: ClipConfig) -> list[dict]:
     ep_dir = out_root / ep
     if (ep_dir / ".done").exists():
         print(f"[{ep}] already done, skipping")
@@ -302,7 +306,8 @@ def process_episode(video: Path, out_root: Path, matter, cfg: ClipConfig) -> lis
             info = {"episode": ep, "time": round(t0, 2), "end": round(t1, 2), "bbox": [x0, y0, x1 - x0, y1 - y0]}
             save_clip(frames_out, out_root, rel_stem, cfg.clip_fps, info)
             records.append({"kind": kind, "file": f"{rel_stem}.png", "sheet": f"{rel_stem}.zip",
-                            "preview": f"{rel_stem}.webp", "episode": ep, "time": round(t0, 2), "end": round(t1, 2),
+                            "preview": f"{rel_stem}.webp", "episode": ep, "source_file": video.name,
+                            "time": round(t0, 2), "end": round(t1, 2),
                             "frames": len(frames_out), "fps": cfg.clip_fps, "frame": None,
                             "blobs_in_frame": len(kept_tracks), "bbox": [x0, y0, x1 - x0, y1 - y0],
                             "touches_edge": bool(x0 <= 1 or y0 <= 1 or x1 >= wd - 1 or y1 >= h - 1)})
@@ -334,6 +339,7 @@ def export_clips(out_root: Path, lib_root: Path, tagged: dict[str, dict]) -> Non
             continue
         folder, name = es.library_dest(rec)
         folder = folder[3:] if folder.startswith("../") else folder
+        name = name[3:] if name.startswith("ep-") else name   # chiikawa-001-00m12-50s-0-... rather than ep-...
         stem = Path(folder) / Path(name).stem
         for src, ext in ((rec["sheet"], ".zip"), (rec["preview"], ".webp")):
             es.place(out_root / src, lib_root / stem.with_suffix(ext))
@@ -378,6 +384,7 @@ def main() -> None:
     p.add_argument("--skip-start", type=float, default=0.0)
     p.add_argument("--skip-end", type=float, default=0.0)
     p.add_argument("--limit", type=int, default=0, help="Only process the first N episodes (for a trial run)")
+    p.add_argument("--prefix", default="chiikawa", help="Episode name prefix: <prefix>-001, <prefix>-002, ...")
     p.add_argument("--tag", action="store_true", help="Label clips with Claude and export the library")
     p.add_argument("--tag-only", action="store_true", help="Skip extraction; only tag and export")
     p.add_argument("--export-only", action="store_true", help="No extraction, no API calls: rebuild the library")
@@ -398,6 +405,11 @@ def main() -> None:
 
     if not (args.tag_only or args.export_only):
         videos = [args.input] if args.input.is_file() else sorted(f for f in args.input.iterdir() if es.is_video(f))
+        names = episode_names(videos, args.prefix)
+        mapping = out_root / "episodes.json"   # which source file each episode name stands for
+        known = json.loads(mapping.read_text(encoding="utf-8")) if mapping.exists() else {}
+        known.update({names[v]: v.name for v in videos})
+        mapping.write_text(json.dumps(known, indent=1, sort_keys=True), encoding="utf-8")
         if args.limit:
             videos = videos[: args.limit]
         if not videos:
@@ -406,7 +418,7 @@ def main() -> None:
         matter = es.Matter(args.model)
         for v in videos:
             try:
-                process_episode(v, out_root, matter, cfg)
+                process_episode(v, names[v], out_root, matter, cfg)
             except Exception as e:  # keep going on a bad file
                 print(f"[{v.name}] failed: {e}", file=sys.stderr)
 

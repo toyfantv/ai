@@ -648,7 +648,7 @@ def character_folder(name: str) -> str | None:
 
 
 def short_episode(ep: str) -> str:
-    return slug(ep if len(ep) <= 12 else ep[:8])
+    return slug(ep if len(ep) <= 20 else ep[:8])
 
 
 def library_dest(rec: dict) -> tuple[str, str] | None:
