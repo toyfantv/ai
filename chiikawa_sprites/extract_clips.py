@@ -54,6 +54,7 @@ class ClipConfig(es.Config):
     hold_eps: float = 0.6       # below this change a frame is a held drawing: reuse the previous mask
     track_motion: float = 1.5   # a character whose cut-out changes less than this is static: no clip
     min_overlap: float = 0.2    # box overlap (IoU) that links a character from one frame to the next
+    min_area_ratio: float = 0.7  # a frame whose cut-out is <70% or >143% of the clip's median size is dropped
 
 
 # ----------------------------------------------------------- shot windows
@@ -192,7 +193,14 @@ def fit(img: Image.Image, size: int) -> Image.Image:
 
 def build_clip(frames_rgb: list, entries: list, cfg: ClipConfig):
     """Frames of one character (or a group): all cropped to the same box, so its movement in the shot is kept.
-    Returns (frames, union box) or None if it barely moves."""
+    Returns (frames, union box) or None if it barely moves or its cut-out flickers."""
+    # frames where the cut-out suddenly grows or shrinks are model mistakes (background swallowed, a limb lost)
+    areas = [int(e[1].sum()) for e in entries]
+    med = float(np.median(areas))
+    steady = [e for e, a in zip(entries, areas) if cfg.min_area_ratio * med <= a <= med / cfg.min_area_ratio]
+    if len(steady) < max(cfg.min_frames, 0.75 * len(entries)):
+        return None
+    entries = steady
     x0 = max(0, min(e[2][0] for e in entries) - cfg.pad)
     y0 = max(0, min(e[2][1] for e in entries) - cfg.pad)
     h, w = frames_rgb[entries[0][0]].shape[:2]
@@ -269,8 +277,6 @@ def process_episode(video: Path, ep: str, out_root: Path, matter, cfg: ClipConfi
         for k, rgb in enumerate(rgbs):
             held = k and np.abs(thumbs[k] - thumbs[k - 1]).mean() < cfg.hold_eps
             softs.append(softs[-1] if held else matter.alpha(Image.fromarray(rgb)))
-        if len(softs) >= 3:   # steady the model's guess between frames (only picks pixels; colours stay original)
-            softs = [np.median(np.stack(softs[max(0, k - 1):k + 2]), axis=0).astype(np.uint8) for k in range(len(softs))]
         blobs = [blob_masks(rgb, soft, cfg) for rgb, soft in zip(rgbs, softs)]
         if not blobs or not blobs[0]:
             continue
@@ -323,9 +329,9 @@ def process_episode(video: Path, ep: str, out_root: Path, matter, cfg: ClipConfi
 # ----------------------------------------------------------- library export
 
 def export_clips(out_root: Path, lib_root: Path, tagged: dict[str, dict]) -> None:
-    """Copy tagged clips (.zip sheet + .webp preview) into <lib_root>/<character|group|misc|props>/[bust/],
-    theme-<theme>/ (hard links) and review/{partial,rejected,text}/. Only files the previous export
-    wrote (index.jsonl) are ever removed."""
+    """Copy tagged clips (.zip sheet + .webp preview) into <lib_root>/<character|group|misc>/[bust/],
+    theme-<theme>/ (hard links) and review/{partial,text,messy}/. Objects on their own and junk are left
+    out. Only files the previous export wrote (index.jsonl) are ever removed."""
     index_path = lib_root / "index.jsonl"
     for old in es.load_jsonl(index_path):
         for ext in (".zip", ".webp"):
@@ -333,17 +339,22 @@ def export_clips(out_root: Path, lib_root: Path, tagged: dict[str, dict]) -> Non
             for q in [p] + [lib_root / f"theme-{t}" / p.name for t in es.THEMES]:
                 if q.exists():
                     q.unlink()
-    index, counts = [], {}
+    index, counts, skipped = [], {}, 0
     for rec in sorted(tagged.values(), key=lambda r: r["file"]):
         if not (out_root / rec["sheet"]).exists():
             continue
+        tags = rec.get("tags") or {}
         folder, name = es.library_dest(rec)
         folder = folder[3:] if folder.startswith("../") else folder
+        if folder in ("props", "review/rejected") or not tags.get("is_character"):
+            skipped += 1   # objects on their own and junk: characters only in the clip library
+            continue
+        if tags.get("quality", 0) <= 2 and not folder.startswith("review"):
+            folder = "review/messy"   # leftover background or a rough cut-out
         name = name[3:] if name.startswith("ep-") else name   # chiikawa-001-00m12-50s-0-... rather than ep-...
         stem = Path(folder) / Path(name).stem
         for src, ext in ((rec["sheet"], ".zip"), (rec["preview"], ".webp")):
             es.place(out_root / src, lib_root / stem.with_suffix(ext))
-        tags = rec.get("tags") or {}
         if not folder.startswith("review"):
             for theme in tags.get("themes", []):
                 if theme in es.THEMES:
@@ -358,7 +369,8 @@ def export_clips(out_root: Path, lib_root: Path, tagged: dict[str, dict]) -> Non
     with open(index_path, "w", encoding="utf-8") as f:
         for r in index:
             f.write(json.dumps(r) + "\n")
-    print(f"Exported {len(index)} clips to {lib_root}: " + ", ".join(f"{k} {v}" for k, v in sorted(counts.items())))
+    print(f"Exported {len(index)} clips to {lib_root}: " + ", ".join(f"{k} {v}" for k, v in sorted(counts.items()))
+          + f" ({skipped} objects/junk left out)")
     print('  use with sprite-short: key_sprites.py <project> <name>="<clip>.zip", then paste the clip\'s '
           'manifest "story" rows/frames into CHARACTERS and draw it with fps 8')
 

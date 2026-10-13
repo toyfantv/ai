@@ -130,8 +130,11 @@ Episodes are named `chiikawa-001`, `chiikawa-002`, ... (`--prefix` changes the w
 input folder, so the numbers stay the same across runs and `--limit`; they are not broadcast episode numbers.
 Library files are named the same way, e.g. `usagi\chiikawa-001-00m12-50s-0-drinking.zip`.
 
-The library gets `<character>\`, `<character>\bust\`, `group\`, `misc\`, `props\`, `theme-<theme>\` and
-`review\{partial,rejected,text}\`, each clip as a `.zip` + `.webp` pair, plus `index.jsonl`.
+The library holds **characters only** (they may be holding something): `<character>\`, `<character>\bust\`,
+`group\`, `misc\` (side characters), `theme-<theme>\` and `review\{partial,text,messy}\`, each clip as a `.zip`
++ `.webp` pair, plus `index.jsonl`. Objects on their own and junk are left out; clips Claude rates 2 or lower
+(leftover background, rough edges) go to `review\messy\`. Telling a character from an object needs the labels,
+so run `--tag-only` before using the clips.
 
 Use a clip in sprite-short like any sheet: `python %SK%\key_sprites.py <project> usagi_drink="<clip>.zip"`
 (it keeps the transparency), then add the clip to `CHARACTERS` with the `rows`/`frames` from the `story` block
@@ -141,6 +144,9 @@ in the zip's `manifest.json` (every pose plays the clip's one row) and draw it a
 - Frames are scaled to fit `--clip-size` (512 px, the skill's frame size) with on/off alpha kept; `--clip-size 0`
   keeps the original pixels (reduced only if a row of frames would exceed the 16,383 px WebP limit).
 - Characters that barely move get no clip (the stills cover them); still shots are skipped.
+- Every frame is cut out on its own (no blending between frames, which clipped moving limbs). Frames whose
+  cut-out suddenly grows or shrinks by more than ~30% (the model swallowing background or losing a limb) are
+  dropped; a clip that loses more than a quarter of its frames that way is skipped.
 - Speed: about 16 matting runs per clip window, roughly 1-2 minutes per episode on CPU with `--max-clips 8`.
   Held drawings reuse the previous frame's cut-out.
 - Write clips to their own `-o` folder, not the stills' `episodes` folder.
