@@ -104,6 +104,42 @@ only removes files the previous export wrote (listed in `index.jsonl`), and an e
 the export didn't write is left alone (the picks then go to `poses_episodes.json`). Theme names are the
 `THEMES` list in `extract_sprites.py`; character folders are `LIBRARY_CHARACTERS`.
 
+## Moving characters (animated clips)
+
+`extract_clips.py` takes the same episodes and saves characters **in motion**, cut out with the same model,
+outline snapping and per-frame pixel check as the stills. For each episode it finds the shots where something
+moves, keeps the most active stretch of up to `--clip-len` frames (default 16 = 2 s at `--clip-fps` 8), follows
+every character through it and saves each moving character (plus all characters together, as a group clip):
+
+```
+<out>\<episode>\<episode>_<time>_<n>.zip    sprite sheet for sprite-short: sprite.png (one row of frames) + manifest.json
+<out>\<episode>\<episode>_<time>_<n>.webp   looping transparent animated WebP (preview, or use in any editor)
+<out>\<episode>\<episode>_<time>_<n>.png    middle frame (what --tag labels)
+<out>\manifest.jsonl                         one line per clip
+```
+
+```powershell
+python extract_clips.py "<episodes folder>" -o D:\Claude\chiikawa-sprites\anime\clip-episodes --limit 2
+# label and export (same contact sheets, subtitle flag and cost check as the stills):
+python extract_clips.py "<episodes folder>" -o D:\Claude\chiikawa-sprites\anime\clip-episodes --tag-only `
+    --library D:\Claude\chiikawa-sprites\anime\clips --claude-model claude-sonnet-5-5
+```
+
+The library gets `<character>\`, `<character>\bust\`, `group\`, `misc\`, `props\`, `theme-<theme>\` and
+`review\{partial,rejected,text}\`, each clip as a `.zip` + `.webp` pair, plus `index.jsonl`.
+
+Use a clip in sprite-short like any sheet: `python %SK%\key_sprites.py <project> usagi_drink="<clip>.zip"`
+(it keeps the transparency), then add the clip to `CHARACTERS` with the `rows`/`frames` from the `story` block
+in the zip's `manifest.json` (every pose plays the clip's one row) and draw it at `fps: 8`.
+
+- All frames of a clip share one crop box, so the character's movement in the shot is kept.
+- Frames are scaled to fit `--clip-size` (512 px, the skill's frame size) with on/off alpha kept; `--clip-size 0`
+  keeps the original pixels (reduced only if a row of frames would exceed the 16,383 px WebP limit).
+- Characters that barely move get no clip (the stills cover them); still shots are skipped.
+- Speed: about 16 matting runs per clip window, roughly 1-2 minutes per episode on CPU with `--max-clips 8`.
+  Held drawings reuse the previous frame's cut-out.
+- Write clips to their own `-o` folder, not the stills' `episodes` folder.
+
 ## Removing near-duplicates
 
 Shots where the camera holds still give many near-identical cut-outs. `--dedupe` compares the cut-outs of each
