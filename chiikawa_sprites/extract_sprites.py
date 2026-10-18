@@ -368,12 +368,17 @@ TAG_SCHEMA = {
         "themes": {"type": "array", "items": {"type": "string", "enum": THEMES},
                    "description": "0-3 themes that clearly fit what is visible (no rain unless rain or umbrellas show)."},
         "has_text": {"type": "boolean",
-                     "description": "True if subtitles, captions, watermarks or other written text overlap the cut-out."},
+                     "description": "True if subtitles, captions, watermarks or other written text overlap the cut-out "
+                                    "(even a few small characters of subtitle at the bottom)."},
+        "only_characters": {"type": "boolean",
+                            "description": "True if the cut-out shows nothing but the character(s) and what they hold or "
+                                           "wear. False if it also includes furniture (tables), trees, plants, ground, "
+                                           "walls, scenery or loose objects next to them."},
         "quality": {"type": "integer",
                     "description": "1-5 usefulness as a clean sprite for a short video (5 = clean outline, no leftover background)."},
     },
     "required": ["is_character", "characters", "interaction", "props", "weapons", "action", "pose", "facing",
-                 "cut_off", "themes", "has_text", "quality"],
+                 "cut_off", "themes", "has_text", "only_characters", "quality"],
     "additionalProperties": False,
 }
 

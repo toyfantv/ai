@@ -132,8 +132,11 @@ Library files are named the same way, e.g. `usagi\chiikawa-001-00m12-50s-0-drink
 
 The library holds **characters only** (they may be holding something): `<character>\`, `<character>\bust\`,
 `group\`, `misc\` (side characters), `theme-<theme>\` and `review\{partial,text,messy}\`, each clip as a `.zip`
-+ `.webp` pair, plus `index.jsonl`. Objects on their own and junk are left out; clips Claude rates 2 or lower
-(leftover background, rough edges) go to `review\messy\`. Telling a character from an object needs the labels,
++ `.webp` pair, plus `index.jsonl`. Objects on their own and junk are left out. Only clean clips reach the character
+folders: nothing but the character and what it holds (no tables, trees, ground or scenery), no subtitles,
+quality 3+. Everything else goes to `review\messy\` or `review\text\`. Clips are shown 6 per contact sheet
+(437 px each) so these details are visible. Labels from before this check lack it; delete `tags.jsonl` and
+re-tag. Telling a character from an object needs the labels,
 so run `--tag-only` before using the clips.
 
 Use a clip in sprite-short like any sheet: `python %SK%\key_sprites.py <project> usagi_drink="<clip>.zip"`

@@ -330,8 +330,9 @@ def process_episode(video: Path, ep: str, out_root: Path, matter, cfg: ClipConfi
 
 def export_clips(out_root: Path, lib_root: Path, tagged: dict[str, dict]) -> None:
     """Copy tagged clips (.zip sheet + .webp preview) into <lib_root>/<character|group|misc>/[bust/],
-    theme-<theme>/ (hard links) and review/{partial,text,messy}/. Objects on their own and junk are left
-    out. Only files the previous export wrote (index.jsonl) are ever removed."""
+    theme-<theme>/ (hard links) and review/{partial,text,messy}/. Only clean clips (nothing but the
+    character and what it holds, no subtitles, quality 3+) reach the character folders; objects on their own
+    and junk are left out. Only files the previous export wrote (index.jsonl) are ever removed."""
     index_path = lib_root / "index.jsonl"
     for old in es.load_jsonl(index_path):
         for ext in (".zip", ".webp"):
@@ -349,8 +350,8 @@ def export_clips(out_root: Path, lib_root: Path, tagged: dict[str, dict]) -> Non
         if folder in ("props", "review/rejected") or not tags.get("is_character"):
             skipped += 1   # objects on their own and junk: characters only in the clip library
             continue
-        if tags.get("quality", 0) <= 2 and not folder.startswith("review"):
-            folder = "review/messy"   # leftover background or a rough cut-out
+        if not folder.startswith("review") and (tags.get("quality", 0) <= 2 or not tags.get("only_characters")):
+            folder = "review/messy"   # furniture, scenery or leftover background included, or a rough cut-out
         name = name[3:] if name.startswith("ep-") else name   # chiikawa-001-00m12-50s-0-... rather than ep-...
         stem = Path(folder) / Path(name).stem
         for src, ext in ((rec["sheet"], ".zip"), (rec["preview"], ".webp")):
@@ -403,7 +404,7 @@ def main() -> None:
     p.add_argument("--library", type=Path, default=None, help="Clip library folder (default: <output>/library)")
     p.add_argument("--claude-model", default="claude-opus-5-5")
     p.add_argument("--workers", type=int, default=4)
-    p.add_argument("--per-sheet", type=int, default=12)
+    p.add_argument("--per-sheet", type=int, default=6, help="Clips per contact sheet (6 = bigger thumbnails)")
     p.add_argument("--keep-sheets", action="store_true")
     p.add_argument("--yes", action="store_true", help="Don't ask before sending clips to the API")
     args = p.parse_args()
