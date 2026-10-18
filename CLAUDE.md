@@ -17,5 +17,6 @@ video hides the user's song-cover posters and a "TOY FAN TV" sign; no vignette o
 audio or footage; borrow other creators' patterns, never their jokes (unless the user explicitly allows remixing a
 specific creator's premises).
 
-Cloud sessions can't reach YouTube or TikTok unless the environment allows those hosts: see the "Network access"
-section of `story_research/README.md`.
+To research a YouTube channel, use `story_research/tools/` (lists a channel's Shorts with views, dates and top
+comments through YouTube's public data API). Cloud sessions can't reach youtube.com or TikTok pages unless the
+environment allows those hosts: see the "Network access" section of `story_research/README.md`.

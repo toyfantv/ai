@@ -31,15 +31,27 @@ The user brings results back to a local session and says "merge these into the b
 
 | Prefix | Meaning | Last used |
 |---|---|---|
-| `NEW-` | temporary ids for rows in the 26 existing formats (the `series` column says which) | NEW-028 |
+| `NEW-` | temporary ids for rows in the 26 existing formats (the `series` column says which) | NEW-031 |
 | `SLANG-` | new format: Slang Taken Literally | SLANG-014 |
-| `MINI-` | new format: Literal Minis | MINI-008 |
+| `USER-` | new format: Username Puns (nametag = a word in the line; replaced `MINI-`) | USER-019 |
+| `RUSH-` | new format: Server Rush (a rare-drop announcement, the whole server stampedes; trend days) | RUSH-005 |
+
+## Researching a YouTube channel
+
+`tools/yt_shorts.py` lists every Short on a channel with view counts. `tools/yt_details.py` adds publish dates and
+top comments for the top and newest Shorts. Comments are the best way to learn what happens in a Short without
+watching it: viewers quote the lines and explain the joke. Both use YouTube's public data API
+(`youtubei.googleapis.com`), which worked on 2026-10-18 even while www.youtube.com was blocked. Run them with
+`python -I` and keep their output outside the repo (or in the research folder as a CSV snapshot, like
+`2026-10-18_senselessbeing/channel_shorts_2026-10-18.csv`). Video length isn't available this way (the player API
+needs a login).
 
 ## Network access (cloud sessions)
 
-The cloud environment's network policy blocked these on 2026-10-18; web search still worked. To research creators
-properly, the user adds them under the environment's **Network access -> Allowed domains**
-(see https://code.claude.com/docs/en/cloud-environments#network-access), then starts a new session:
+On 2026-10-18 the user allowed the hosts below. Later in that same session only `youtubei.googleapis.com` was
+reachable (it hadn't been tried before the change); www.youtube.com, i.ytimg.com and tiktok.com were still refused. The setting probably takes effect only in a
+new session. If they're still blocked, the user checks them under the environment's **Network access -> Allowed
+domains** (see https://code.claude.com/docs/en/cloud-environments#network-access):
 
 `youtube.com`, `www.youtube.com`, `m.youtube.com`, `youtu.be`, `youtubei.googleapis.com`, `i.ytimg.com`,
 `yt3.ggpht.com`, `tiktok.com`, `www.tiktok.com`, `m.tiktok.com`, `ads.tiktok.com` (Creative Center), and optionally
@@ -50,3 +62,4 @@ properly, the user adds them under the environment's **Network access -> Allowed
 | Date | Folder | Request | Output |
 |---|---|---|---|
 | 2026-10-18 | [`2026-10-18_senselessbeing/`](2026-10-18_senselessbeing/) | Ideas from YouTube @SenselessBeing (Roblox "#literal" skits); remixes of their premises allowed | 50 rows (28 existing formats, 2 new formats: SLANG, MINI), 8 scripts |
+| 2026-10-18 | same folder (second pass) | Re-run with real channel data after YouTube was unblocked | all 510 Shorts with views; the core device is the username pun; MINI -> USER; new RUSH format; Halloween + Steal An Egg rows; 69 rows, 10 scripts |

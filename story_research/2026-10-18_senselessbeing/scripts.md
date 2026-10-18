@@ -1,4 +1,4 @@
-# Scripts: 8 ready-to-build episodes (SenselessBeing-inspired batch, 2026-10-18)
+# Scripts: 10 ready-to-build episodes (SenselessBeing-inspired batch, 2026-10-18)
 
 Every script follows the user's rules: start on the action, every spoken line 8 words or fewer, at most 3 puns,
 slapstick by default (victims ragdoll, get up, **oof**), no canned laughter, no goofy horns, no sound under titles.
@@ -10,13 +10,15 @@ for `toy_fan_tv` or the Noob, use that instead of the suggestion here.
 | # | Id | Title | Series | Length |
 |---|---|---|---|---|
 | 1 | SLANG-001 | Let Him Cook | Slang Taken Literally (new) | ~17 s |
-| 2 | MINI-002 | The Server Was Down | Literal Minis (new) | ~10 s |
+| 2 | USER-002 | The Server Was Down | Username Puns (new) | ~10 s |
 | 3 | NEW-007 | The Crush Replied | Car Puns That Crash | ~14 s |
 | 4 | NEW-001 | Train of Thought | Take It Literally | ~17 s |
 | 5 | NEW-013 | Opportunity Knocks | Bro, I'm Sorry (YAML) | ~28 s |
 | 6 | NEW-020 | Fired Means Fired | Breaking News (YAML) | ~14 s |
 | 7 | NEW-018 | You're Running Out of Time | The Teacher Said... | ~14 s |
 | 8 | SLANG-007 | This Beat Slaps | Slang Taken Literally (new) | ~13 s |
+| 9 | USER-010 | Are We There Yet? | Username Puns (new) | ~12 s |
+| 10 | RUSH-002 | Ice Cream Truck Outside | Server Rush (new) | ~17 s |
 
 ---
 
@@ -48,9 +50,10 @@ for `toy_fan_tv` or the Noob, use that instead of the suggestion here.
 
 ---
 
-## 2. MINI-002: The Server Was Down
+## 2. USER-002: The Server Was Down
 
-- **Format:** Literal Minis: one line, one literal reveal, a lowercase recap caption as the punchline. 8-12 s.
+- **Format:** Username Puns: one line, a player whose nametag makes it literal, a lowercase recap caption as the
+  punchline. 8-12 s. Make the nametag big enough to read on a phone.
 - **Set:** `diner`. A "TOY FAN TV" sticker on the jukebox, a song-cover poster behind the counter.
 - **Cast:**
   - Customer: `toy_fan_tv`, voice Joey
@@ -221,3 +224,62 @@ Uses the user's **own** track (no copyrighted audio), so it doubles as a promo f
 | 10.5-13.0 | Producer to camera; the TV cover fills the background | Producer: "Out now. Link in bio." |
 
 **Comment bait:** "should BEAT be in every video?"
+
+---
+
+## 9. USER-010: Are We There Yet? (Username Puns)
+
+Our take on their "Welcome to IDK" sign gag (5.3M): the joke is a place name, and the setup is the most familiar
+road-trip line there is.
+
+- **Top caption:** `are we there yet?`
+- **Set:** a country road into `hollow_creek`; a town sign at the roadside: `WELCOME TO YET - POP. 12`. A "TOY FAN TV"
+  sticker on the bus window, a song-cover poster on the town noticeboard.
+- **Cast:**
+  - Driver: `toy_fan_tv`, voice Joey, driving the `school_bus`
+  - Asker: Classic Noob, voice wacky
+  - Passengers: `anime:Haru Urara`, `anime:Luffy`, `boy:random` (no lines)
+- **Puns:** 1 ("yet")
+
+| Time | Picture | Line |
+|---|---|---|
+| 0.0-2.0 | Onboard: the Noob leans into the aisle | Noob: "Are we there yet?" |
+| 2.0-3.5 | Driver, eyes on the road | Driver: "No." |
+| 3.5-5.0 | Quick cut, same framing, the Noob again (lower-third tag: `(10th time)`) | Noob: "Are we there yet?" |
+| 5.0-6.5 | The bus brakes; wide shot of the bus beside the town sign | - |
+| 6.5-8.5 | Driver turns round, deadpan, points at the sign | Driver: "Yep. We're in Yet." |
+| 8.5-10.0 | The passengers lean to the windows; Haru Urara cheers | - |
+| 10.0-12.0 | Recap caption: `they were there yet` | - |
+
+**Comment bait (pinned):** "comment a place name for part 2"
+
+---
+
+## 10. RUSH-002: Ice Cream Truck Outside (Server Rush)
+
+The Server Rush pattern (their Grow a Garden "in stock" stampede, 34M) in a school setting, so it works without a
+trending game. On Steal An Egg days, swap in RUSH-001.
+
+- **Top caption:** `psst... the ice cream truck is outside`
+- **Set:** `office` as a classroom (`furnish = false` + desks + whiteboard: "PERIOD 6 - MATH"), then `school` bus drop-off.
+  Song-cover poster on the classroom wall; "TOY FAN TV" sticker on the ice cream truck's window.
+- **Cast:**
+  - Whisperer: `toy_fan_tv`, voice Joey
+  - Teacher: green giant principal, voice UK narrator
+  - Class: Classic Noob (wacky), `anime:Yuji`, `anime:Megumi`, `anime:Nobara`, `anime:Denji`, `girl:random`
+  - `ice_cream_truck`, scripted to pull away at 12.5 s
+- **Puns:** 0 (a situation gag)
+
+| Time | Picture | Line |
+|---|---|---|
+| 0.0-2.0 | Silent class; `toy_fan_tv` leans to the Noob | Whisperer: "Psst. Ice cream truck. Outside." |
+| 2.0-4.0 | The whisper travels desk to desk: quick close-ups, each head snaps to the window | - |
+| 4.0-5.0 | Calm beat: the teacher turns from the board | Teacher: "Don't even think about it." |
+| 5.0-8.0 | **Stampede:** everyone sprints for the door at once; the teacher spins like a turnstile and sits down hard in a chair | (oofs) |
+| 8.0-10.5 | Outside, a drone shot: the class pours out of the school; Yuji vaults the bike rack; the Noob trips and is trampled flat (ragdoll, gets up) | - |
+| 10.5-12.5 | They skid to a stop at the kerb... | - |
+| 12.5-14.5 | ...as the ice cream truck drives away | - |
+| 14.5-17.0 | Back in the classroom, the teacher alone, eating an ice cream | Teacher: "Should've stayed." |
+
+**Ending / loop:** cut on the teacher's line; the first frame (the silent class) loops cleanly.
+**Comment bait:** "what would make YOU run out of class?"

@@ -1,143 +1,231 @@
-# SenselessBeing: creator notes and the ideas they inspired (2026-10-18)
+# SenselessBeing: creator notes and the ideas they inspired (updated 2026-10-18)
 
 **Request:** use the YouTube channel https://www.youtube.com/@SenselessBeing for Toy Fan TV video ideas. Remixing the
 channel's own premises is allowed, as long as each version is changed a little (user's instruction, 2026-10-18).
 
-**Outputs in this folder:** `new_ideas.csv` (50 backlog rows in the `ideas.csv` schema), `scripts.md` (8 full
-scripts, 2 of them as generator YAML), and this report.
+**Folder contents:**
+- `new_ideas.csv`: 69 backlog rows in the `ideas.csv` schema
+- `scripts.md`: 10 full scripts
+- `channel_shorts_2026-10-18.csv`: all 510 of the channel's Shorts with views (and dates for 114 of them)
+- this report
 
-## 1. How this was researched (and its limits)
+## 0. What changed in this second pass
 
-This cloud environment's network policy blocked youtube.com and tiktok.com, and stats mirrors such as
-socialblade.com, playboard.co and urlebird.com. Everything below comes from **web-search result snippets**: titles,
-captions and like counts that search engines and TikTok "discover" pages had indexed. I couldn't watch any video, so
-the content of a clip is only known where a listing described it. Treat the numbers as rough snapshots. To research
-properly next time, allow the hosts listed in `../README.md`.
+The first pass relied on search snippets because youtube.com and tiktok.com were blocked. After the user changed the
+network settings, `youtubei.googleapis.com` (YouTube's own public data API) was reachable; the first pass hadn't
+tried it. www.youtube.com and tiktok.com were still refused in this session. Through that API I pulled:
+- the full Shorts list with view counts;
+- publish dates for the top 80 and the newest 40;
+- the top comments on 55 of them. Viewers quote the lines and explain the jokes, which shows what happens in each
+  Short without watching it.
 
-## 2. The creator
+The scripts are in `../tools/`.
 
-| Field | What's known |
+Corrections to the first pass:
+
+| First pass said | Actually |
 |---|---|
-| Handles | YouTube **@SenselessBeing** (channel id `UCB9YyGpeAJ-CEw4cAu6pVKQ`), bio "i have no sense"; TikTok **@senselessbeingyt** |
-| Size | ~112K YouTube subscribers and ~1.1K videos (a PLAYBOARD listing, date unknown). TikTok follower count not found |
-| History | A second YouTube channel with the same tagline says the original was terminated and a friend made a new one. Unconfirmed |
-| Niche | Short Roblox **"#literal" skits**: someone says an everyday phrase and the Roblox world acts it out literally |
-| Captions | lowercase, deadpan, past tense, the outcome stated flatly: "the train came", "he ran out", "the air got out", "he is fired", "nobody loves him". Often just emoji. Hashtags: #literal #roblox #robloxfyp #fyp #funny |
-| Series habit | numbered parts ("bro saw something 1") |
-| Reach beyond the channel | other creators post "senselessbeingyt mentality" edits (one has 265.5K likes): the name itself is a meme |
+| ~112K subscribers, ~1.1K videos | **119K subscribers, 516 videos** (510 public Shorts), ~213M Shorts views in total |
+| "the train came" ~1.3M views | **5.6M** on YouTube (Feb 2, 2026). The 1.3M was a TikTok listing |
+| Generic "literal" skits | The core device is the **Roblox username**: a player whose name is a word in the line appears and makes the line literal |
+| Steady channel | **Peaked Dec 2025 - Feb 2026, declining since**: Sep-Oct 2026 Shorts get ~30K-185K views |
+| Biggest hits are literal skits | The two biggest (34M, 10M) are **Grow a Garden trend-jacks** from June 2025 |
 
-### Clips found (snapshots seen 2026-10-18)
+Still unverified (TikTok only, which stays blocked): the "big house = animal cage" and "text your first crush"
+clips.
 
-| Caption | What the listing says happens | Numbers seen |
-|---|---|---|
-| "the train came" | #literal skit; content not described | ~1.3M views (one listing) |
-| "nobody loves him" | content not described | 165.6K likes, 733 comments |
-| "damn this is crazy" | content not described | 17.4K-19K likes, 448-501 comments |
-| "the air got out" | #literal skit | 3.3K likes, 44 comments |
-| "he ran out" ("Running Out of Time in Roblox") | running out of time, taken literally | n/a |
-| "are you fr" | #literal skit | ~19.9K views |
-| "he is fired" / "you are fired" | a character literally gets fired | n/a |
-| literal house gag | a friend shows off a "big house"; it's an animal cage | 9.7K likes, 100 comments |
-| first-crush skit | a friend pushes him to text his first crush, then reveals why | n/a |
-| "average iq" | Roblox players' IQ joke | n/a |
-| "bro saw something 1" | numbered part of a series | 20 likes |
+## 1. The channel
 
-Sources (search-indexed pages):
-[@SenselessBeing](https://www.youtube.com/@SenselessBeing),
-["the air got out"](https://www.tiktok.com/@senselessbeingyt/video/7603299572433112327),
-["are you fr"](https://www.tiktok.com/@senselessbeingyt/video/7607775787441474834),
-["he ran out"](https://www.tiktok.com/@senselessbeingyt/video/7592864838515297554),
-["damn this is crazy"](https://www.tiktok.com/@senselessbeingyt/video/7587708458787540242),
-["nobody loves him"](https://www.tiktok.com/@senselessbeingyt/video/7589146323689999623),
-["average iq"](https://www.tiktok.com/@senselessbeingyt/video/7559505844061179144),
-["senselessbeingyt mentality" (another creator)](https://www.tiktok.com/@thv_nqc/video/7599114324199705887),
-[TikTok "Literal Memes Roblox"](https://www.tiktok.com/discover/literal-memes-roblox),
-[TikTok "Bro Saw Saw Something"](https://www.tiktok.com/discover/bro-saw-saw-something).
+| Field | Value (2026-10-18) |
+|---|---|
+| Handles | YouTube **@SenselessBeing** (`UCB9YyGpeAJ-CEw4cAu6pVKQ`), bio "i have no sense"; TikTok **@senselessbeingyt** |
+| Size | 119K subscribers, 516 videos, 510 public Shorts, ~213M total views |
+| Spread | median Short 98.5K views; 252 Shorts over 100K, 79 over 500K, 41 over 1M |
+| How it's made | real Roblox gameplay recorded with friends ("a skit made with my friends", top video's description). Usernames are set with Roblox friend nicknames, which only the camera account sees (a commenter explains the trick). Many friends' names are Filipino dishes (manok, sisig, adobo) |
+| Titles | a lowercase phrase ("the train came", "i fell down") until ~May 2026, then **emoji only** ("💔🥀💔"). Hashtags #literal #roblox #robloxfyp #fyp #xybca |
+| Cadence | ~2 a day at the peak (Dec-Jan); ~1 a day in spring; ~2-3 a week since July |
+
+### Eras (monthly figures estimated from the 114 dated Shorts, interpolated by upload order)
+
+| Period | What they posted | Shorts / month | Median views | 1M+ |
+|---|---|---|---|---|
+| Jun-Jul 2025 | Grow a Garden reaction skits ("ember lily in stock") | 30-64 | 40-50K | 4 (incl. 34M, 10M) |
+| Aug-Nov 2025 | mixed skits | ~30 | 26-46K | 1 |
+| **Dec 2025-Feb 2026** | **username puns, ~2 a day** | 47-62 | **140K-350K** | **27** |
+| Mar-May 2026 | username puns, fewer posts | 19-31 | ~100-130K | 4 |
+| Jun-Aug 2026 | emoji titles; restaged viral meme lines; crush / girlfriend jokes | 10-13 | ~210K | 5 |
+| Sep-Oct 2026 | same, less often | 2-9 | ~50K | 0 |
+
+### Top Shorts and what happens in them (from the comments)
+
+| Views | Date | Title | What happens |
+|---|---|---|---|
+| 34M | 2025-06-09 | ember lily | Grow a Garden: "ember lily in stock!" and the whole server races to the seed shop (speedrun timer) |
+| 10M | 2025-12-24 | he aint btw | username joke in a gunpoint scene ("username matches perfectly"). Weapons: not for us |
+| 10M | 2025-06-12 | even in another game | saying "ember lily on stock" in a different game makes the whole server leave |
+| 8.4M | 2026-01-30 | bro got some ammo | a player named "AM MOP" = "ammo", in a shooter game |
+| 5.6M | 2026-02-02 | the train came | a player named "train" arrives, and gets hit by a train |
+| 5.4M | 2026-05-04 | what did he do | "Go to sleep" and a player named "sleep" says hello; a cop |
+| 5.3M | 2026-02-15 | idk | "Where are we?" "idk" and a sign reads "Welcome to IDK" |
+| 3.4M | 2026-04-10 | they have to play fair | a player named "fair" gets played; a player named "hacks" |
+| 3.4M | 2026-01-03 | I fell down | "I think I will fall" and a player named "I" drops from the sky |
+| 3.0M | 2025-12-25 | damn this is crazy | introducing a player named "crazy" to one named "damn" |
+| 2.9M | 2026-01-08 | he saw a firefly | a player named "fire" flies |
+| 2.8M | 2026-01-12 | a butterfly | "butter" flies |
+| 2.4M | 2025-12-27 | he is right | word-named players introduced ("this is my bro") |
+| 2.3M | 2026-08-09 | 🥀👮‍♂️😭🤙 | a rookie cop takes "copy that" literally |
+| 2.3M | 2026-01-24 | this is getting old | a double-meaning line ("saying 2 meanings in 1 sentence is crazy part 39") |
+| 2.2M | 2025-07-19 | is not that obvious | friends badly hide a "body" (Hide the Body game). Not for us |
+| 1.8M | 2025-12-28 | he is cooked | username pun ("hey, I'm cooked") |
+| 1.7M | 2026-02-16 | it must been the wind | a player named after Genshin's wind character = "the wind" |
+| 1.7M | 2026-01-25 | they saw a waterfall | a player named "water" falls |
+| 1.7M | 2026-01-17 | well thats bad | players named "well" and "bad" greet each other |
+| 1.6M | 2026-01-17 | hes scared | "I'm scared of school", answered with "Hi, scared" |
+| 1.6M | 2026-01-02 | atleast he got | "I love robux" and a player named "robux" receives the love |
+| 1.5M | 2026-07-07 | 🌨🥀😭 | "where did the snow come from?" It's dandruff |
+| 1.4M | 2026-02-17 | bro waited | "hold on" and a player named "on" |
+| 1.4M | 2026-01-27 | they hit the road | the players literally attack the road |
+| 1.4M | 2025-12-28 | nobody loves him | a player named "nobody" loves him |
+| 1.3M | 2026-06-15 | 💔🥀💔 | restages the viral line "that's a (swear) asteroid" |
+| 1.3M | 2026-07-28 | 💧💦🥀😭 | restages "it's time to stay hydrated" (a bath-water joke) |
+| 1.3M | 2026-08-29 | 👴💔✌️ | restages a viral AI video ("hey daddy" / "I wouldn't miss it for the world") |
+| 1.3M | 2026-01-17 | the sidewalk | "have you seen the sidewalk?" and the "side" is walking |
+| 1.2M | 2026-02-17 | are you fr | a player named "fr" just trying to get his pizza |
+| 1.1M | 2026-02-19 | there late | two players named "late" run for the bus |
+
+Full list with links: `channel_shorts_2026-10-18.csv`.
+
+## 2. How the username pun works
+
+Every peak-era hit is one of five patterns. All rely on the nametag being readable on screen:
+
+1. **Split a compound word:** fire + fly, butter + fly, water + fall, side + walk, star + fish, under + stand.
+2. **Name a player after a little word:** I, nobody, idk, fr, on, he ("he is going to die" and a player named "he").
+3. **"X, this is Y" introductions:** damn / crazy, well / bad, "hi scared". Fans keep asking for more ("wow / cool",
+   "lowkey / good").
+4. **The noun shows up:** train, robux, sleep, life, late, fair / hacks.
+5. **A place-name sign:** "Welcome to IDK".
+
+Plus two non-pun hits: **trend-jacking the #1 game** at its peak (Grow a Garden, 34M + 10M), and, recently,
+**restaging viral meme lines** (1.3-2.3M).
 
 ### Why it works (my read)
 
-1. **Zero setup cost.** Everyone already knows the phrase, so the joke lands in about one second, even with the
-   sound off.
-2. **The caption is the punchline.** A flat, lowercase recap ("the train came") reads like an understatement after
-   something absurd. It also gives the short a reason to be rewatched and a line people repeat in the comments.
-3. **Endless supply.** Any phrase, idiom or slang word is an episode, which is how they reached ~1.1K videos.
-4. **Roblox-native look.** It plays like real Roblox gameplay, which the 8-16 audience recognises instantly.
+1. **One glance at a name explains the joke.** Viewers rewatch, then comment the explanation for each other: "i
+   didnt know until i read their users", "for those who didn't get it...". Those explainer threads are free
+   engagement.
+2. **Fans pitch the next one.** Comment sections fill with "do 'X'" requests, so the idea bank refills itself. The
+   comment meme "Saying 2 meanings in 1 sentence is crazy part N" shows viewers treat it as a series.
+3. **Near-zero production cost** (friends plus nicknames) allowed 2 posts a day at the peak.
+4. **Trend timing:** the 34M hit landed while Grow a Garden was at its all-time peak.
+
+### Possible reasons for the decline (correlation, not proof)
+
+- Titles changed to emoji only in summer 2026, so there's no phrase to hook a scroller or a search.
+- The jokes moved to meme-line restagings, which only land if you know the meme, and to crush / girlfriend jokes and
+  crude humour.
+- Cadence fell from ~2 a day to ~2 a week.
+- A commenter notes many people re-uploaded their videos without credit.
 
 ## 3. What this means for Toy Fan TV
 
-SenselessBeing is close proof that our **Take It Literally (LIT)** and **Car Puns That Crash (CAR)** formats work.
-Their best clip found ("the train came", ~1.3M views) is exactly a LIT/CAR premise. Three things to borrow (the
-pattern, not their jokes):
+1. **Build the username pun as a series: Username Puns (`USER`).** The peak era (Dec 2025 - Feb 2026), when nearly
+   every Short was a username pun, produced 27 of their 41 million-view Shorts. Our engine already has nametags
+   ("usernames are a joke slot"). It is Bro, I'm Sorry's
+   quick cousin: same "word as a person" idea, but one line and one reveal, no bazooka. Our edge over them: crashes,
+   force-stops, anime cast, directed cameras and a clean look.
+2. **Keep the phrase readable:** a top caption with the line, the nametag big and legible, a lowercase recap at the
+   end. Don't go emoji-only.
+3. **Pin "comment a phrase and we'll make it"** on every USER / SLANG post, and mine the replies for the bank.
+4. **Trend-jack with `Server Rush`** (new format, below). **Steal An Egg** is Roblox's #1 game this month (~0.8-1M
+   concurrent players, Oct 2026; rare eggs are announced in system chat and the fastest player wins). That's the same
+   setup as their 34M Grow a Garden hit. **Halloween (Oct 31)** is two weeks away: the batch includes 5 Halloween
+   rows.
+5. **Stay kid-safe.** Their weapon, "hide the body", crude and crush/gender jokes are exactly what our rules exclude,
+   and those came as their views dropped.
 
-- **The lowercase recap caption** as the end card / punchline: `his train of thought came back`. Cheap to add in
-  the edit step, and it can go on LIT, CAR, TCH and MINI episodes.
-- **Shorter cuts.** A one-line literal gag needs 8-12 s, not 25. More posts per day at the same build cost.
-- **Slang as the bank.** Gen Alpha slang ("let him cook", "touch grass", "crash out") is the phrase list the core
-  audience uses every day, and it's barely touched by our 26 formats.
+**Priority:** USER first (strongest evidence), then LIT and CAR, RUSH on trend days, SLANG as a 3-post test. Keep
+posting BIS (it's the same mechanism, and the user's BIS shorts are already proven). Their own titles include "the
+truth hurts" and "time flies", which are two of the user's BIS episodes.
 
-**Priority suggestion:** move LIT and CAR up; start the two new formats below with 3 posts each; keep posting the
-proven BIS shorts. "Crash out" and "it hits different" are perfect for Crash Sandbox's signature crashes.
+## 4. Format proposals
 
-## 4. New format proposals
+### USER: Username Puns (8-12 s). Replaces the first pass's "Literal Minis"
 
-### SLANG: Slang Taken Literally (12-20 s)
+- **Premise:** someone says an everyday line; a player whose **nametag** is a word in it appears and makes it literal.
+- **Beat sheet:** 0-3 s the line, said mid-situation (top caption = the line); 3-4 s a beat; 4-7 s the reveal (the
+  nametag must be big and on screen); 7-8.5 s an optional button; 8-10 s a lowercase recap caption, then a hard cut
+  back to frame 1.
+- **Title pattern:** the recap ("Nobody Came", "Milkshake").
+- **Comment bait:** "comment a phrase for part 2" / "did you get it?"
+- **Sets / cast:** any. `toy_fan_tv` says the line; the word-player is any look; the Noob is the straight man.
+- **Bank (30, our own words; each checked against all 510 of their titles):** bill, server, deadline, beat (dropped), nobody
+  (came to the party), it (went over his head), gym (hit back), wi-fi (weak), break (dance), yet (are we there yet),
+  what (is up on the roof), milk (shake), key (board), earth (quake), copy (do you copy), trick / treat, boo,
+  nothing (happened), slow (dance, B), somebody (stop that bus: a force-stop), fan (turn on the fan: a player in a
+  TOY FAN TV shirt spins), pop (quiz), game (over: falls over the fence), door (hold the door), line (cut the
+  line), lights (went out), meeting (ran late), mood (dropped), joke (landed: a superhero landing), coast (is clear).
+- **Engine:** A (nametags + existing actions). Make the nametag font big enough to read on a phone.
 
-- **Premise:** a piece of Gen Alpha / TikTok slang is said in a normal situation, and the world acts it out literally.
-- **Beat sheet:** 0-2 s top caption `when bro says "<slang>"` over the action; 2-6 s the situation and the line;
-  6-8 s calm beat (double-take); 8-13 s the literal payoff (a crash, explosion, tumble, ghost, slap); 13-18 s a
-  button line, then an optional lowercase recap caption.
-- **Title pattern:** "Let Him Cook", "Touch Grass" (the slang itself).
-- **Hook:** the slang in the top caption. Everyone recognises it in under a second.
-- **Ending:** the deadpan button ("He cooked."), cut on it, loop to the first frame.
-- **Comment bait:** "what slang should we do next?" (it also refills the bank).
-- **Sets / cast:** any; `toy_fan_tv` says the slang, the Noob takes it literally.
-- **Bank (25):** let him cook, he's cooked, crash out, touch grass, built different, ghosted, this slaps, fell off,
-  rent free, caught in 4K, are you fr, lock in, glow up, you're mid, it hits different, down bad (lies face-down),
-  heated (`fume` steam), sending me (a bus "sends" him across the street), NPC behaviour (walks a loop, [NPC]
-  nametag), chat is this real (a crowd nametagged CHAT appears), skill issue, say less (bubbles shrink; B), main
-  character (a spotlight follows him; B), no cap (his hat gets yoinked; B), spill the tea (B: cup prop).
-- **Why it travels:** relatable, current, comment-generating, and parents find it funny too.
-- **Engine:** A for the 14 rows in `new_ideas.csv`; the B items need the props noted.
-- **Watch the shelf life:** slang ages fast. Retire a term once it reads as cringe in the comments.
+### SLANG: Slang Taken Literally (12-20 s). Unchanged from the first pass
 
-### MINI: Literal Minis (8-12 s)
+See the first-pass write-up in the rows (`SLANG-001..014`). Note: SenselessBeing has used several of the same slang
+phrases in titles ("let bro cooked", "he is cooked", "why crash out", "he did a glowup", "just let bro touch grass",
+"this hits different"). Our payoffs are different, but the phrases aren't exclusive. Test 3 before making more.
 
-- **Premise:** an everyday phrase where a noun is secretly a **person** ("the bill", "the server", "the deadline").
-  It plays out literally, and a lowercase recap caption is the punchline.
-- **Difference from BIS / LIT:** no "Bro, I'm sorry" hook, no bazooka, no setup scene. One line, one reveal, one
-  caption. Built for volume (a filler between the bigger shorts).
-- **Beat sheet:** 0-3 s the line, said mid-situation; 3-4 s a beat; 4-7 s the literal reveal; 7-8.5 s an optional
-  button; 8-10 s the recap caption, then a hard cut back to the start (loop).
-- **Title pattern:** the recap caption ("The Bill Came").
-- **Comment bait:** "guess the next one" / "which one got you?"
-- **Bank (24):** the bill came, the server was down, the deadline passed, he dropped the beat, nobody loves him
-  (except the bus), it went over his head, he hit the gym, the wifi was weak, the internet was down (a guy
-  nametagged INTERNET lying flat), the meeting ran late (MEETING jogs in late), the lights went out (LIGHTS walks
-  out and the room goes dark), the joke landed (JOKE does a superhero landing), the traffic was rude (TRAFFIC cuts
-  the queue), the mood dropped (MOOD tumbles down the stairs), the bar was low (BAR lies on the floor, everyone steps
-  over him), the game crashed (CAR), the party got crashed (CAR), the news broke, the price dropped, his ride came,
-  the plot thickened (B: scale-up), she took a seat (B: carry a chair), the pressure was on (B), they rolled out (B).
-- **Engine:** A (nametags + existing actions).
+### RUSH: Server Rush (15-20 s). New, for trend days
+
+- **Premise:** a server message announces something rare, and the whole server stampedes. Crash Sandbox's crowds,
+  vehicles and pile-ups make it bigger than a real Roblox clip; the twist decides who actually gets it.
+- **Beat sheet:** 0-1.5 s a yellow system-chat caption ("[SERVER] A SECRET EGG spawned at the gas station");
+  1.5-4 s every head turns (a double-take wave); 4-10 s the stampede (sprinting, cars, a bus, superhero leaps,
+  speed lines); 10-14 s a pile-up at the target; 14-18 s the twist: the AFK Noob was already sitting on it, the
+  grandma on the mobility scooter rolls up, or the sign flips to "jk". Optional caption "speedrun: 0.4 s".
+- **Comment bait:** "what would make YOU run?"
+- **Bank (20):** Steal An Egg secret egg (now), whatever the next hit farming game's rare item is ("X in stock"),
+  free Robux at the bank, admin joined (everyone instantly behaves), ice cream truck outside, last slice, candy bowl
+  unattended (Halloween), double XP weekend, new update dropped, limited UGC drop, snow day announced, free samples
+  at the supermarket, the arcade machine is free, Mom says dinner's ready (stairs tumble), Black Friday at the
+  supermarket (cart pile-up), someone dropped a Dominus, the bus is early, the Wi-Fi is back, free period, a new
+  Robux gift card at the gas station. Never fire drills or emergencies.
+- **Engine:** A, except an egg model (B; a glowing sign is the A stand-in).
 
 ## 5. Remix map: their premise -> our version (changed, not copied)
 
-| SenselessBeing clip | Our version | What changed |
+| SenselessBeing Short (views) | Ours | What changed |
 |---|---|---|
-| "the train came" | NEW-001 Train of Thought | the phrase is "train of thought"; the train hits an empty parked car; deadpan "Found it." |
-| "he ran out" (running out of time) | NEW-018 You're Running Out of Time | a teacher's line; TIME is a person (an Uma Musume runner) who sprints out of the exam |
-| "the air got out" | NEW-010 He Got Some Air, NEW-002 Walking on Air | "get some air" = a ramp launch; "walking on air" = moon gravity |
-| "are you fr" | SLANG-011 Are You Fr | "not fr" = she's literally an NPC walking into a wall |
-| "he is fired" | NEW-020 Fired Means Fired | told as Breaking News; the fire department "responds" |
-| "nobody loves him" | MINI-005 Nobody Loves Him | everyone avoids the Noob... except the bus (our running gag) |
-| "big house" = animal cage | NEW-027 Bro Bought a Mansion | the "mansion" is a school bus on the lawn; a Brookhaven RP tour |
-| texting the first crush | NEW-007 The Crush Replied | "crush" = the garbage truck; recap caption "the crush replied" |
-| "bro saw something 1" | NEW-028 Bro Saw Something | Monsters With Normal Problems: Siren Head wants a phone charger |
-| "average iq" | NEW-024 IQ 1 vs 100 vs 999 | a Level format; IQ 999 Gojo force-stops the bus |
+| the train came (5.6M): a player named "train" | NEW-001 Train of Thought | the phrase is "train of thought"; a real train hits Bro's empty parked car |
+| nobody loves him (1.4M): a player named "nobody" | USER-005 Nobody Came | "nobody's coming to my party" and NOBODY shows up with a wave |
+| 🥀👮‍♂️😭🤙 (2.3M): a cop and "copy that" | USER-015 Do You Copy? | "do you copy?" and identical cops keep stepping out |
+| idk (5.3M): "Welcome to IDK" sign | USER-010 Are We There Yet? | a road trip that ends in a town called Yet |
+| ember lily (34M): server-wide race to the shop | RUSH-001 Secret Egg Spawned + RUSH format | Steal An Egg's secret egg; vehicles and pile-ups; the AFK Noob wins |
+| they hit the road (1.4M) | NEW-008 Hit the Road | the road "hits back" with a semi truck |
+| he is fired (716K) | NEW-020 Fired Means Fired | Breaking News; the fire department responds |
+| the air got out (snippet only) | NEW-010 He Got Some Air, NEW-002 Walking on Air | a ramp launch; moon gravity |
+| are you fr (1.2M): a player named "fr" | SLANG-011 Are You Fr | "not fr" = she's an NPC walking into a wall |
+| he ran out ("time flies" is theirs too) | NEW-018 You're Running Out of Time | TIME is an Uma Musume runner who sprints out of an exam |
+| having a crush / TikTok crush clip | NEW-007 The Crush Replied | "crush" = the garbage truck |
+| bro saw something 1 | NEW-028 Bro Saw Something | Siren Head wants a phone charger |
+| average iq | NEW-024 IQ 1 vs 100 vs 999 | IQ 999 Gojo force-stops the bus |
+| big house = animal cage (TikTok snippet) | NEW-027 Bro Bought a Mansion | the mansion is a school bus |
 
 ## 6. Notes for the local session
 
-- `ideas.csv` wasn't attached, so existing-format rows use temporary ids `NEW-001..028`; renumber them on merge.
-  New formats start fresh: `SLANG-001..014`, `MINI-001..008`.
-- Rows that may duplicate an existing premise are flagged "check ideas.csv" in their payoff (NEW-017, NEW-019).
-- SLANG-011 swaps the barista's nametag across a cut (two copies of the character), not mid-shot.
-- SLANG-007, MINI-004 and NEW-006 use the user's own music (fine for Content ID).
+- Existing-format rows use temporary ids `NEW-001..031`; renumber them on merge. New formats: `SLANG-001..014`,
+  `USER-001..019` (the first pass's `MINI-` rows, now Username Puns), `RUSH-001..005`.
+- Flagged "check ideas.csv" (common premises): NEW-017, NEW-019. Effort B: USER-019, RUSH-001, NEW-031 (each says
+  what it needs).
+- SLANG-007, USER-004 and NEW-006 use the user's own music. SLANG-011 swaps a nametag across a cut.
+
+## Sources
+
+- Channel data: YouTube InnerTube API (`youtubei.googleapis.com`), pulled 2026-10-18; the full list is in
+  `channel_shorts_2026-10-18.csv`.
+- Roblox charts: [livecounts.nl Roblox charts](https://livecounts.nl/roblox-charts/),
+  [rblxstat most played](https://rblxstat.com/lists/most-played-roblox-games),
+  [Adellion simulator picks (Oct 2026)](https://adellion.com/roblox-simulator-games),
+  [Steal An Egg on RoWatcher](https://rowatcher.com/games/10563114921/steal-an-egg),
+  [Pocket Gamer: Steal An Egg tips](https://www.pocketgamer.com/roblox/steal-an-egg-codes-and-tips/).
+- First-pass TikTok snippets: [@senselessbeingyt "the air got out"](https://www.tiktok.com/@senselessbeingyt/video/7603299572433112327),
+  ["are you fr"](https://www.tiktok.com/@senselessbeingyt/video/7607775787441474834),
+  [TikTok "Literal Memes Roblox"](https://www.tiktok.com/discover/literal-memes-roblox).
