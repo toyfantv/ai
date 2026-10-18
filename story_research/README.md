@@ -25,7 +25,10 @@ and write ideas and scripts; local sessions build, record and post them.
 5. Commit and push to the session's branch.
 
 The user brings results back to a local session and says "merge these into the backlog". The real backlog is
-`stories/shorts/ideas.csv` in the local repo (not on GitHub).
+`stories/shorts/ideas.csv` in the local repo (not on GitHub). [`LOCAL_HANDOFF.md`](LOCAL_HANDOFF.md) is the
+paste-ready prompt for that local session. It also adds a section to the user's video-making skill, so the skill
+pulls this repo and merges unmerged research folders (newer than its "Last merged" note) by itself. Keep the Log
+below up to date, because that's how the skill finds new folders.
 
 ## Id counters (until the local session renumbers into `ideas.csv`)
 
