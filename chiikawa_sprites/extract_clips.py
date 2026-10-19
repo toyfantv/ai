@@ -28,6 +28,7 @@ import io
 import json
 import shutil
 import sys
+import time
 import zipfile
 from dataclasses import dataclass
 from pathlib import Path
@@ -413,6 +414,12 @@ def export_clips(out_root: Path, lib_root: Path, tagged: dict[str, dict]) -> Non
 
 # ----------------------------------------------------------- main
 
+def fmt_time(seconds: float) -> str:
+    m, s = divmod(int(round(seconds)), 60)
+    h, m = divmod(m, 60)
+    return f"{h}h {m:02d}m" if h else f"{m}m {s:02d}s"
+
+
 def main() -> None:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("input", type=Path, help="Folder of episodes (files may lack extensions), or one video file")
@@ -466,11 +473,26 @@ def main() -> None:
             sys.exit(f"No decodable video files found in {args.input}")
         print(f"Found {len(videos)} episode(s). Loading matting model '{args.model}'...")
         matter = es.Matter(args.model)
+        timed: list[float] = []
+        started = time.monotonic()
         for v in videos:
+            if (out_root / names[v] / ".done").exists():
+                print(f"[{names[v]}] already done, skipping")
+                continue
+            t0 = time.monotonic()
             try:
                 process_episode(v, names[v], out_root, matter, cfg)
             except Exception as e:  # keep going on a bad file
                 print(f"[{v.name}] failed: {e}", file=sys.stderr)
+                continue
+            timed.append(time.monotonic() - t0)
+            print(f"    took {fmt_time(timed[-1])}")
+        if timed:
+            left = sum(1 for n in names.values() if not (out_root / n / ".done").exists())
+            avg = sum(timed) / len(timed)
+            print(f"Done: {len(timed)} episode(s) in {fmt_time(time.monotonic() - started)} "
+                  f"(average {fmt_time(avg)} per episode). {left} of {len(names)} episodes still to do: "
+                  f"about {fmt_time(avg * left)} at this pace.")
 
     if args.tag or args.tag_only or args.export_only:
         if args.export_only:
