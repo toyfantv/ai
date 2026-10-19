@@ -449,7 +449,9 @@ def edges_hint(rec: dict, out_root: Path, sizes: dict) -> str:
         sizes[rec["episode"]] = Image.open(frame).size if frame and frame.exists() else (FRAME_W, FRAME_H)
     w, h = sizes[rec["episode"]]
     x, y, bw, bh = rec["bbox"]
-    sides = [s for s, hit in (("top", y <= 1), ("bottom", y + bh >= h - 1), ("left", x <= 1), ("right", x + bw >= w - 1)) if hit]
+    cut = rec.get("subtitle_cut_y")   # clips cut off above burned-in subtitles count as touching the bottom
+    bottom = y + bh >= (cut if cut is not None else h) - 1
+    sides = [s for s, hit in (("top", y <= 1), ("bottom", bottom), ("left", x <= 1), ("right", x + bw >= w - 1)) if hit]
     return "touches frame edge: " + ", ".join(sides) if sides else "inside the frame"
 
 

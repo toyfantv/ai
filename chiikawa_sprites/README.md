@@ -152,6 +152,10 @@ in the zip's `manifest.json` (every pose plays the clip's one row) and draw it a
   dropped; a clip that loses more than a quarter of its frames that way is skipped.
 - Speed: about 16 matting runs per clip window, roughly 1-2 minutes per episode on CPU with `--max-clips 8`.
   Held drawings reuse the previous frame's cut-out.
+- Burned-in subtitles: when a clip has a subtitle line (white text with a dark outline, centred at the very
+  bottom of the frame) in any of its frames, everything from that line down is removed in every frame, at one
+  height. A character whose feet were behind the subtitle becomes a bust (`<character>\bust\`) instead of
+  carrying text. `--keep-subtitles` turns this off.
 - Write clips to their own `-o` folder, not the stills' `episodes` folder.
 
 ## Removing near-duplicates

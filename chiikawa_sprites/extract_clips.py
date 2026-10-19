@@ -55,6 +55,7 @@ class ClipConfig(es.Config):
     track_motion: float = 1.5   # a character whose cut-out changes less than this is static: no clip
     min_overlap: float = 0.2    # box overlap (IoU) that links a character from one frame to the next
     min_area_ratio: float = 0.7  # a frame whose cut-out is <70% or >143% of the clip's median size is dropped
+    cut_subtitles: bool = True   # remove burned-in subtitles by cutting the clip off at the subtitle line
 
 
 # ----------------------------------------------------------- shot windows
@@ -153,6 +154,30 @@ def blob_masks(rgb: np.ndarray, soft: np.ndarray, cfg: ClipConfig):
         ys, xs = np.nonzero(mask)
         out.append((mask, (int(xs.min()), int(ys.min()), int(xs.max()) + 1, int(ys.max()) + 1)))
     return out
+
+
+def subtitle_top(rgb: np.ndarray, band: float = 0.84) -> int | None:
+    """Top y of a burned-in subtitle line (white text with a dark outline, centred low in the frame), or None."""
+    h, w = rgb.shape[:2]
+    y0 = int(h * band)
+    part = rgb[y0:]
+    white = (part.min(-1) > 215).astype(np.uint8)
+    dark = (cv2.cvtColor(part, cv2.COLOR_RGB2GRAY) < 80).astype(np.uint8)
+    thin = white & (1 - cv2.morphologyEx(white, cv2.MORPH_OPEN, np.ones((17, 17), np.uint8)))   # strokes, not bodies
+    strokes = thin & cv2.dilate(dark, np.ones((5, 5), np.uint8))                              # ...with an outline
+    lines = cv2.morphologyEx(strokes, cv2.MORPH_CLOSE, np.ones((9, 31), np.uint8))           # glyphs -> one line
+    n, _, stats, _ = cv2.connectedComponentsWithStats(lines, connectivity=8)
+    tops = []
+    for i in range(1, n):
+        x, y, bw, bh, area = stats[i]
+        if not (12 <= bh <= 0.12 * h and bw >= 3 * bh and bw >= 0.06 * w):
+            continue
+        if abs(x + bw / 2 - w / 2) > 0.3 * w or y0 + y + bh < 0.9 * h:   # subtitles are centred, at the very bottom
+            continue
+        if strokes[y:y + bh, x:x + bw].sum() < 0.06 * bw * bh:
+            continue
+        tops.append(y0 + int(y))
+    return min(tops) if tops else None
 
 
 def iou(a, b) -> float:
@@ -277,6 +302,14 @@ def process_episode(video: Path, ep: str, out_root: Path, matter, cfg: ClipConfi
         for k, rgb in enumerate(rgbs):
             held = k and np.abs(thumbs[k] - thumbs[k - 1]).mean() < cfg.hold_eps
             softs.append(softs[-1] if held else matter.alpha(Image.fromarray(rgb)))
+        cut_y = None
+        if cfg.cut_subtitles:   # drop everything from the subtitle line down, at one height for the whole clip
+            tops = [t for t in (subtitle_top(rgb) for rgb in rgbs) if t is not None]
+            if tops:
+                cut_y = max(0, min(tops) - 6)
+                softs = [s.copy() for s in softs]
+                for s in softs:
+                    s[cut_y:] = 0
         blobs = [blob_masks(rgb, soft, cfg) for rgb, soft in zip(rgbs, softs)]
         if not blobs or not blobs[0]:
             continue
@@ -316,7 +349,9 @@ def process_episode(video: Path, ep: str, out_root: Path, matter, cfg: ClipConfi
                             "time": round(t0, 2), "end": round(t1, 2),
                             "frames": len(frames_out), "fps": cfg.clip_fps, "frame": None,
                             "blobs_in_frame": len(kept_tracks), "bbox": [x0, y0, x1 - x0, y1 - y0],
-                            "touches_edge": bool(x0 <= 1 or y0 <= 1 or x1 >= wd - 1 or y1 >= h - 1)})
+                            "subtitle_cut_y": cut_y,
+                            "touches_edge": bool(x0 <= 1 or y0 <= 1 or x1 >= wd - 1 or y1 >= h - 1
+                                                 or (cut_y is not None and y1 >= cut_y - 1))})
     with open(out_root / "manifest.jsonl", "a", encoding="utf-8") as f:
         for r in records:
             f.write(json.dumps(r) + "\n")
@@ -394,6 +429,8 @@ def main() -> None:
     p.add_argument("--scene-threshold", type=float, default=ClipConfig.scene_threshold)
     p.add_argument("--min-area", type=float, default=ClipConfig.min_area)
     p.add_argument("--outline-px", type=int, default=ClipConfig.outline_px)
+    p.add_argument("--keep-subtitles", action="store_true",
+                   help="Don't cut clips off at burned-in subtitle lines")
     p.add_argument("--skip-start", type=float, default=0.0)
     p.add_argument("--skip-end", type=float, default=0.0)
     p.add_argument("--limit", type=int, default=0, help="Only process the first N episodes (for a trial run)")
@@ -412,7 +449,7 @@ def main() -> None:
     cfg = ClipConfig(clip_fps=args.clip_fps, clip_len=args.clip_len, min_frames=args.min_frames,
                      max_clips=args.max_clips, clip_size=args.clip_size, min_motion=args.min_motion,
                      scene_threshold=args.scene_threshold, min_area=args.min_area, outline_px=args.outline_px,
-                     skip_start=args.skip_start, skip_end=args.skip_end)
+                     skip_start=args.skip_start, skip_end=args.skip_end, cut_subtitles=not args.keep_subtitles)
     out_root = args.output
     out_root.mkdir(parents=True, exist_ok=True)
 
