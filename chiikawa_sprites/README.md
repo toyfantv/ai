@@ -57,7 +57,8 @@ Extract into a working folder, then tag and export next to the existing library:
 ```powershell
 # 1. extract (free, local)
 python extract_sprites.py "<episodes folder>" -o D:\Claude\chiikawa-sprites\anime\episodes
-# 2. tag + export (paid). Set the key in your own window first: $env:ANTHROPIC_API_KEY = "..."
+# 2. tag + export (paid). Needs ANTHROPIC_API_KEY; save it once for all new windows with
+#    [Environment]::SetEnvironmentVariable("ANTHROPIC_API_KEY", (Read-Host "API key"), "User")
 python extract_sprites.py "<episodes folder>" -o D:\Claude\chiikawa-sprites\anime\episodes --tag-only `
     --library D:\Claude\chiikawa-sprites\anime --claude-model claude-haiku-4-5
 # rebuild the library from tags.jsonl without any API calls (e.g. after editing THEMES):
