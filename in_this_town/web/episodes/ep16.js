@@ -2,6 +2,7 @@
 import * as THREE from 'three';
 import { clamp, lerp, smooth, easeInOut, easeOut, easeIn, v3, rng, mat, box, noise1 } from '../engine/core.js';
 import { makeCharacter, pose } from '../engine/character.js';
+import { CAST } from '../engine/cast.js';
 import { buildTown, makeHouse, mergeGroup } from '../engine/town.js';
 import { initStage, applyEnv, shotAt, frame, expose, mixP, P, DAY, DUSK } from '../engine/stage.js';
 import { canvasTex, glowSprite } from '../engine/props.js';
@@ -11,7 +12,7 @@ const DAWN = P({ ...DAY, top: '#6a8ae0', horizon: '#ffc8a0', haze: '#f0d0c0', su
 const NOON = P({ ...DAY, sunDir: v3(0.3, 0.8, 0.5), exposure: 1.0, fogNear: 400, fogFar: 1600 });
 const SET = P({ ...DUSK, sunDir: v3(-0.2, 0.12, 0.95), sunSize: 1.8, top: '#3a2a6e', horizon: '#ff7a4a', haze: '#e89a7a', fogNear: 400, fogFar: 1600 });
 const W = {};
-const LEO = { skin: '#f6d2b0', shirt: '#d83a3a', pocket: '#c02e2e', hood: true, pants: '#2f5aa8', shoes: '#ffffff', hair: '#f2d06a', hairStyle: 'short' };
+const LEO = { ...CAST.leo };
 const COAST = 460;
 const DOOR = v3(60, 0, 860);            // door base x,z (y from seabed)
 const depthAt = (z) => -Math.min(70, Math.max(0, z - COAST) * 0.19);

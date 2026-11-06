@@ -16,7 +16,7 @@ for attempt in 1 2; do
   if python3 tools/runpod_render.py launch "$EP"; then
     t0=$(date +%s)
     until s=$(timeout 60 python3 tools/runpod_render.py status "$EP" 2>&1 | grep "status.txt:"); echo "$s" | grep -qE "DONE|NOGPU|FAILED"; do
-      [ $(( $(date +%s) - t0 )) -gt 2400 ] && { s="TIMEOUT"; break; }; sleep 15; done
+      [ $(( $(date +%s) - t0 )) -gt 1500 ] && { s="TIMEOUT"; break; }; sleep 15; done
     log "pod: $s"
     if echo "$s" | grep -q DONE && python3 tools/runpod_render.py fetch "$EP"; then GPU_OK=1; fi
     python3 tools/runpod_render.py delete "$EP"

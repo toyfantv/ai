@@ -2,6 +2,7 @@
 import * as THREE from 'three';
 import { clamp, lerp, smooth, easeInOut, easeOut, easeIn, v3, rng, mat, box, noise1 } from '../engine/core.js';
 import { makeCharacter, pose } from '../engine/character.js';
+import { CAST } from '../engine/cast.js';
 import { buildTown } from '../engine/town.js';
 import { initStage, applyEnv, shotAt, frame, expose, mixP, P, NIGHT } from '../engine/stage.js';
 import { canvasTex, glowSprite } from '../engine/props.js';
@@ -97,7 +98,7 @@ function build() {
     const jar = makeJar(); jar.position.set(0, -1.75, 0.45); c.arms[1].add(jar); c.jar = jar; W.npcs.push(c);
   }
   // Ruby + her golden star
-  W.ruby = makeCharacter({ skin: '#f6d2b0', shirt: '#ffd23f', pants: '#3a6db8', shoes: '#ffffff', hair: '#c4361e', hairStyle: 'long', female: true, caustic: false });
+  W.ruby = makeCharacter({ ...CAST.ruby, caustic: false });
   ctx.scene.add(W.ruby.root);
   W.gold = makeStar(1.6, '#ffd35a'); ctx.scene.add(W.gold); W.goldGlow = glowSprite('#ffc840', 4.5, 0.5); ctx.scene.add(W.goldGlow);
   W.goldLight = new THREE.PointLight('#ffcf60', 0, 16, 1.4); ctx.scene.add(W.goldLight);

@@ -2,6 +2,7 @@
 import * as THREE from 'three';
 import { U, clamp, lerp, smooth, easeInOut, easeOut, v3, rng, noise1 } from '../engine/core.js';
 import { makeCharacter, pose } from '../engine/character.js';
+import { CAST } from '../engine/cast.js';
 import { buildTown } from '../engine/town.js';
 import { initStage, applyEnv, shotAt, frame, expose, mixP, P, DAY, NIGHT } from '../engine/stage.js';
 import { canvasTex, glowSprite } from '../engine/props.js';
@@ -9,7 +10,7 @@ import { canvasTex, glowSprite } from '../engine/props.js';
 let ctx, L, EV;
 const DAYP = P({ ...DAY, exposure: 1.0 });
 const MID = P({ ...NIGHT, sunI: 1.2, hemiI: 0.9, exposure: 1.2, top: '#0a1236', horizon: '#2a3070', haze: '#1c2250', win: 1.6, lamp: 3 });
-const VOID = P({ ...DAY, top: '#ffffff', horizon: '#ffffff', haze: '#ffffff', sunDisc: 0, hemiSky: '#ffffff', hemiGround: '#dfe6ee', hemiI: 1.6, sunI: 1.2, exposure: 1.0, vig: 0.12, fogNear: 30, fogFar: 260 });
+const VOID = P({ ...DAY, top: '#ffffff', horizon: '#ffffff', haze: '#ffffff', sunDisc: 0, hemiSky: '#ffffff', hemiGround: '#dfe6ee', hemiI: 1.6, sunI: 1.2, exposure: 1.0, vig: 0.12, fogNear: 30, fogFar: 260, bloom: 0.1 });
 const W = { npcs: [] };
 
 function numTex(text, color = '#5ff7ff') {
@@ -40,7 +41,7 @@ function build() {
     const n = numSprite(nums[i]); n.position.y = 7.4; c.root.add(n); c.num = n;
     ctx.scene.add(c.root); W.npcs.push(c);
   });
-  W.sophie = makeCharacter({ skin: '#f4cca6', shirt: '#8a4fd6', pocket: '#7a40c4', hood: true, pants: '#1b1b22', shoes: '#ffffff', shoeTrim: '#d0d0d0', hair: '#6b4226', hairStyle: 'long', female: true, caustic: false });
+  W.sophie = makeCharacter({ ...CAST.sophie, caustic: false });
   ctx.scene.add(W.sophie.root);
   W.snum = { one: numTex('1', '#ff3b3b'), zero: numTex('0', '#ff3b3b'), mid: numTex('88', '#5ff7ff') };
   W.sNum = new THREE.Sprite(new THREE.SpriteMaterial({ map: W.snum.mid, transparent: true, depthWrite: false, toneMapped: false }));

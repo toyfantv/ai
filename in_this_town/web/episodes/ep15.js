@@ -2,6 +2,7 @@
 import * as THREE from 'three';
 import { clamp, lerp, smooth, easeInOut, easeOut, easeIn, v3, rng, mat, box, noise1 } from '../engine/core.js';
 import { makeCharacter, pose } from '../engine/character.js';
+import { CAST } from '../engine/cast.js';
 import { makeHouse, makeTree, mergeGroup } from '../engine/town.js';
 import { initStage, applyEnv, shotAt, frame, expose, mixP, P, NIGHT, DAY } from '../engine/stage.js';
 import { canvasTex, glowSprite } from '../engine/props.js';
@@ -11,7 +12,7 @@ const NITE = P({ ...NIGHT, sunI: 1.1, hemiI: 0.85, exposure: 1.2, top: '#060a26'
 const SPACE = P({ ...NIGHT, top: '#050010', horizon: '#1a0a3a', haze: '#0a0520', stars: 2.0, moon: 0, sunI: 0.6, hemiSky: '#7a6aff', hemiI: 0.8, exposure: 1.2, fogNear: 4000, fogFar: 9000 });
 const ALT = P({ ...DAY, top: '#ffb070', horizon: '#ffe0b0', haze: '#ffd8b0', sunColor: '#ffd8a0', sunDir: v3(0.7, 0.25, 0.4), exposure: 1.05, vig: 0.3 });
 const W = {};
-const GRACE = { skin: '#f4cca6', shirt: '#b39ddb', collar: '#9a84c8', pants: '#1b1b22', shoes: '#ffffff', hair: '#6b4226', hairStyle: 'long', female: true, caustic: false };
+const GRACE = { ...CAST.grace, caustic: false };
 const IN = v3(0, 600, 0);     // carriage interior origin (floor at IN.y)
 const IW = (x, y, z) => IN.clone().add(v3(x, y, z));
 

@@ -99,6 +99,20 @@
       "notes": [
         "narration not machine-verified: OpenRouter credit too low for the speech-to-text check"
       ]
+    },
+    "16": {
+      "title": "The Ocean Disappears Every Sunday",
+      "status": "complete",
+      "file": "InThisTown_Episode16_DisappearingOcean.mp4",
+      "duration_s": 61.97,
+      "qc": "pass",
+      "issues": [],
+      "wer": null,
+      "voice_margin_db": 15.0,
+      "render": "runpod",
+      "notes": [
+        "narration not machine-verified: OpenRouter credit too low for the speech-to-text check"
+      ]
     }
   }
 }

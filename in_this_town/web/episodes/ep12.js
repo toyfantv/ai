@@ -2,6 +2,7 @@
 import * as THREE from 'three';
 import { clamp, lerp, smooth, easeInOut, easeOut, v3, rng, mat, box, noise1 } from '../engine/core.js';
 import { makeCharacter, pose } from '../engine/character.js';
+import { CAST } from '../engine/cast.js';
 import { buildTown, mergeGroup } from '../engine/town.js';
 import { initStage, applyEnv, shotAt, frame, expose, P, DUSK } from '../engine/stage.js';
 import { canvasTex, glowSprite } from '../engine/props.js';
@@ -12,7 +13,7 @@ const W = {};
 const C = v3(1000, 0, 1000);           // classroom origin
 const HW = v3(1000, 0, 1400);          // hallway origin
 const EL = v3(1000, 0, 1700);          // elevator interior origin (standalone)
-const RYAN = { skin: '#eec09a', shirt: '#2f8a4a', collar: '#256e3a', pants: '#1b1b22', shoes: '#ffffff', hair: '#6b4226', hairStyle: 'short', caustic: false };
+const RYAN = { ...CAST.ryan, caustic: false };
 
 function dynTex(w, h, draw) {
   const c = document.createElement('canvas'); c.width = w; c.height = h;
@@ -102,7 +103,7 @@ function build() {
     W.students.push(s);
   }
   W.ryan = makeCharacter(RYAN); ctx.scene.add(W.ryan.root);
-  W.teacher = makeCharacter({ ...RYAN, hair: '#9a8a7a', hairStyle: 'shoulder', female: true, shirt: '#2f6a40', pants: '#3a3a44', scale: 1.15 });
+  W.teacher = makeCharacter({ ...RYAN, acc: ['glasses:#2a2a2a'], hair: '#9a8a7a', hairStyle: 'bun', female: true, shirt: '#2f6a40', pants: '#3a3a44', scale: 1.15 });
   ctx.scene.add(W.teacher.root);
   W.teacherWarn = makeCharacter({ shirt: '#8a3a5a', pants: '#2a2a33', hair: '#3a2a1a', hairStyle: 'shoulder', female: true, scale: 1.12 }); ctx.scene.add(W.teacherWarn.root);
   W.kids = [0, 1].map((i) => { const c = makeCharacter({ shirt: ['#ffb03a', '#c06aff'][i], pants: '#2a3a5a', hair: '#1a1a1a', hairStyle: 'short' }); ctx.scene.add(c.root); return c; });

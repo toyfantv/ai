@@ -2,6 +2,7 @@
 import * as THREE from 'three';
 import { clamp, lerp, smooth, easeInOut, easeOut, easeIn, v3, rng, mat, box, wallRects, noise1 } from '../engine/core.js';
 import { makeCharacter, pose } from '../engine/character.js';
+import { CAST } from '../engine/cast.js';
 import { makeHouse, makeTree, mergeGroup, buildHeroHouse, textTexture, winMat } from '../engine/town.js';
 import { initStage, applyEnv, shotAt, frame, expose, mixP, P, DAY, NIGHT } from '../engine/stage.js';
 import { makeLeg, footAt, makeEye, canvasTex, glowSprite } from '../engine/props.js';
@@ -163,7 +164,7 @@ function buildWorld() {
   crack.rotation.x = -Math.PI / 2; crack.position.set(0, 7.46, 1.5); hero.group.add(crack); W.floorCrack = crack;
 
   // characters
-  W.ethan = makeCharacter({ skin: '#f1c7a1', shirt: '#2f6fd6', pocket: '#2a5fbe', hood: true, pants: '#1b1b22', shoes: '#ffffff', shoeTrim: '#d0d0d0', hair: '#6b4226', hairStyle: 'short', caustic: false });
+  W.ethan = makeCharacter({ ...CAST.ethan, caustic: false });
   hero.group.add(W.ethan.root);
   W.resident = makeCharacter({ shirt: '#9ad0ff', pants: '#9ad0ff', hair: '#3a2a1a', hairStyle: 'short', shoes: '#8a6a4a' });
   W.resident.root.position.set(608, 0.3, 620); W.resident.root.rotation.y = -0.6; ctx.scene.add(W.resident.root);

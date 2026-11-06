@@ -4,6 +4,10 @@ import * as THREE from 'three';
 import { U, clamp, lerp, easeOut, noise1, v3 } from './core.js';
 import { buildSky } from './sky.js';
 import { winMat, lampMat } from './town.js';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 
 const C = (c) => (c && c.isColor ? c : new THREE.Color(c));
 export function P(o) {
@@ -26,13 +30,13 @@ export function mixP(a, b, k) {
 // Common palettes (episodes override fields with {...DAY, ...})
 export const DAY = P({ top: '#3a8ee6', horizon: '#c4e8ff', haze: '#c4e8ff', sunColor: '#fff2dc', sunI: 2.3, sunDir: v3(0.35, 0.8, 0.45),
   sunDisc: 1, sunSize: 1, stars: 0, moon: 0, hemiSky: '#bfe3ff', hemiGround: '#6a9a5a', hemiI: 0.95, amb: 0.15,
-  caus: '#ffffff', causI: 0, exposure: 0.95, vig: 0.22, win: 0, lamp: 0.15, fogNear: 230, fogFar: 780 });
+  caus: '#ffffff', causI: 0, exposure: 0.95, vig: 0.22, win: 0, lamp: 0.15, fogNear: 230, fogFar: 780, bloom: 0.22 });
 export const NIGHT = P({ top: '#060b26', horizon: '#1a2550', haze: '#141d40', sunColor: '#8fa6ff', sunI: 0.5, sunDir: v3(-0.3, 0.7, -0.6),
   sunDisc: 0, sunSize: 1, stars: 1, moon: 1, hemiSky: '#2a3a80', hemiGround: '#0a1020', hemiI: 0.6, amb: 0.12,
-  caus: '#ffffff', causI: 0, exposure: 1.05, vig: 0.45, win: 1.4, lamp: 3.0, fogNear: 160, fogFar: 600 });
+  caus: '#ffffff', causI: 0, exposure: 1.05, vig: 0.45, win: 1.4, lamp: 3.0, fogNear: 160, fogFar: 600, bloom: 0.5 });
 export const DUSK = P({ top: '#2a2f6e', horizon: '#ff9a6a', haze: '#d89a8a', sunColor: '#ffb07a', sunI: 1.7, sunDir: v3(0.8, 0.15, -0.4),
   sunDisc: 1, sunSize: 1.4, stars: 0.2, moon: 0, hemiSky: '#c8a0c0', hemiGround: '#4a4a40', hemiI: 0.9, amb: 0.14,
-  caus: '#ffffff', causI: 0, exposure: 1.0, vig: 0.35, win: 0.8, lamp: 1.2, fogNear: 200, fogFar: 700 });
+  caus: '#ffffff', causI: 0, exposure: 1.0, vig: 0.35, win: 0.8, lamp: 1.2, fogNear: 200, fogFar: 700, bloom: 0.35 });
 
 export async function initStage(ep) {
   const TL = await (await fetch(`/build/${ep}/timeline.json`)).json();
@@ -58,7 +62,15 @@ export async function initStage(ep) {
   U.uCausticStrength.value = 0;
   const L = (i) => TL.lines[i];
   const el = (id) => document.getElementById(id);
-  const ctx = { renderer, scene, camera, hemi, amb, sun, sky, TL, L, dur: TL.duration,
+  // post: MSAA HDR target -> bloom -> tone map/sRGB
+  const pr = window.devicePixelRatio;
+  const rt = new THREE.WebGLRenderTarget(1080 * pr, 1920 * pr, { type: THREE.HalfFloatType, samples: 4 });
+  const composer = new EffectComposer(renderer, rt);
+  composer.setPixelRatio(pr); composer.setSize(1080, 1920);
+  composer.addPass(new RenderPass(scene, camera));
+  const bloom = new UnrealBloomPass(new THREE.Vector2(1080 * pr, 1920 * pr), 0.3, 0.4, 2.2);
+  composer.addPass(bloom); composer.addPass(new OutputPass());
+  const ctx = { renderer, scene, camera, hemi, amb, sun, sky, TL, L, dur: TL.duration, composer, bloom,
     cap: el('cap'), black: el('black'), flash: el('flash'), grade: el('grade'), thumbMode: false };
   return ctx;
 }
@@ -78,6 +90,7 @@ export function applyEnv(ctx, e) {
   U.uCausticColor.value.copy(e.caus); U.uCausticStrength.value = e.causI;
   winMat.emissiveIntensity = e.win; lampMat.emissiveIntensity = e.lamp;
   renderer.toneMappingExposure = e.exposure;
+  if (ctx.bloom) ctx.bloom.strength = e.bloom ?? 0.4;
   ctx.env = e;
 }
 
@@ -115,6 +128,11 @@ export function frame(ctx, t, sh, o = {}) {
   camera.position.copy(sh.pos); camera.fov = sh.fov || 60; camera.updateProjectionMatrix();
   const look = sh.look.clone();
   const shake = o.shake || 0;
+  if (!o.steady) {   // gentle handheld drift
+    const dd = camera.position.distanceTo(look) * 0.0045;
+    look.x += noise1(t * 0.55 + 11) * dd; look.y += noise1(t * 0.47 + 23) * dd * 0.7;
+    camera.position.y += noise1(t * 0.4 + 5) * Math.min(0.06, dd * 0.3);
+  }
   if (shake > 0) {
     const d = camera.position.distanceTo(look) * 0.012 * shake;
     look.x += noise1(t * 23) * d; look.y += noise1(t * 19 + 5) * d; look.z += noise1(t * 21 + 9) * d * 0.5;
@@ -137,7 +155,7 @@ export function frame(ctx, t, sh, o = {}) {
     (o.tint ? `, ${o.tint}` : '');
   ctx.sky.uniforms.uTime.value = t;
   U.uTime.value = t;
-  renderer.render(scene, camera);
+  if (ctx.composer) ctx.composer.render(); else renderer.render(scene, camera);
 }
 
 // expose to the renderer; thumbText is drawn large at the top

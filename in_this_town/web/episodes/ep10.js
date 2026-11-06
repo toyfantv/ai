@@ -2,13 +2,14 @@
 import * as THREE from 'three';
 import { clamp, lerp, smooth, easeInOut, easeOut, easeIn, v3, rng, mat, box, noise1 } from '../engine/core.js';
 import { makeCharacter, pose } from '../engine/character.js';
+import { CAST } from '../engine/cast.js';
 import { buildTown } from '../engine/town.js';
 import { initStage, applyEnv, shotAt, frame, expose, mixP, P, NIGHT } from '../engine/stage.js';
 import { canvasTex, glowSprite } from '../engine/props.js';
 
 let ctx, L, EV;
 const ROOMN = P({ ...NIGHT, sunI: 0.9, hemiI: 0.8, exposure: 1.15, win: 1.4 });
-const AVA = { skin: '#f4cca6', shirt: '#ff8fb8', pants: '#2a3350', shoes: '#ffffff', hair: '#141416', hairStyle: 'shoulder', female: true, caustic: false };
+const AVA = { ...CAST.ava, caustic: false };
 const W = {};
 const H = (x, y, z) => v3(60 + x, y, -24 + z);  // hero house local -> world (no rotation)
 

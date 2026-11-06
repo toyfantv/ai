@@ -2,6 +2,7 @@
 import * as THREE from 'three';
 import { clamp, lerp, smooth, easeInOut, easeOut, easeIn, v3, rng, noise1 } from '../engine/core.js';
 import { makeCharacter, pose } from '../engine/character.js';
+import { CAST } from '../engine/cast.js';
 import { buildTown } from '../engine/town.js';
 import { initStage, applyEnv, shotAt, frame, expose, mixP, P, DAY, DUSK } from '../engine/stage.js';
 import { canvasTex, glowSprite } from '../engine/props.js';
@@ -65,7 +66,7 @@ function build() {
     ctx.scene.add(c.root); const cl = makeCloud(1.5, ['#e8f4ff', '#fff0d0', '#e8ffe8', '#f6e8ff', '#ffe8e8', '#e8fffc'][i], 50 + i); W.res.push({ c, cl, x: 30 + i * 9, z: i % 2 ? 4 : -4, dir: i % 2 ? 1 : -1 });
   }
   // Chloe + pink cloud
-  W.chloe = makeCharacter({ skin: '#f6d2b0', shirt: '#8fd0ff', pocket: '#7ac0f0', hood: true, pants: '#f4f4f4', shoes: '#ffffff', hair: '#f2d06a', hairStyle: 'long', female: true });
+  W.chloe = makeCharacter({ ...CAST.chloe });
   ctx.scene.add(W.chloe.root);
   W.pink = makeCloud(1.2, '#ffb6d8', 3);
   // mother

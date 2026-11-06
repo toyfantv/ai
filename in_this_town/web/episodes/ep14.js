@@ -2,17 +2,18 @@
 import * as THREE from 'three';
 import { clamp, lerp, smooth, easeInOut, easeOut, v3, rng, mat, box, noise1 } from '../engine/core.js';
 import { makeCharacter, pose } from '../engine/character.js';
+import { CAST } from '../engine/cast.js';
 import { buildTown } from '../engine/town.js';
 import { initStage, applyEnv, shotAt, frame, expose, mixP, P, DAY } from '../engine/stage.js';
 import { canvasTex, glowSprite } from '../engine/props.js';
 
 let ctx, L, EV;
 const SUN = P({ ...DAY, exposure: 1.0 });
-const WHITE = P({ ...DAY, top: '#ffffff', horizon: '#ffffff', haze: '#f6f4ee', sunDisc: 0, hemiSky: '#ffffff', hemiGround: '#d8d4c8', hemiI: 1.4, sunI: 1.4, exposure: 1.0, vig: 0.2, fogNear: 120, fogFar: 600 });
+const WHITE = P({ ...DAY, top: '#ffffff', horizon: '#ffffff', haze: '#f6f4ee', sunDisc: 0, hemiSky: '#ffffff', hemiGround: '#d8d4c8', hemiI: 1.4, sunI: 1.4, exposure: 1.0, vig: 0.2, fogNear: 120, fogFar: 600, bloom: 0.12 });
 const W = { clocks: [] };
 const SHOP = v3(1200, 0, 1200);
 const SW = (x, y, z) => SHOP.clone().add(v3(x, y, z));
-const MAXC = { skin: '#eec09a', shirt: '#2a5ad8', collar: '#1a4ab0', pants: '#7a7a82', shoes: '#222222', hair: '#141417', hairStyle: 'short' };
+const MAXC = { ...CAST.max };
 
 const FACE = canvasTex(512, 512, (c, w, h) => {
   c.fillStyle = '#fff8e8'; c.beginPath(); c.arc(256, 256, 248, 0, 7); c.fill();
@@ -92,6 +93,7 @@ function build() {
   W.keeper = makeCharacter({ shirt: '#6a3a6a', pants: '#2a2a33', hair: '#d8d8d8', hairStyle: 'shoulder', female: true, caustic: false, scale: 1.05 }); ctx.scene.add(W.keeper.root);
   W.max = makeCharacter(MAXC); ctx.scene.add(W.max.root);
   W.maxHair = mat(MAXC.hair, { caustic: true });
+  W.maxHL = mat('#' + new THREE.Color(MAXC.hair).lerp(new THREE.Color('#f2c890'), 0.45).getHexString(), { caustic: true });
   W.beard = new THREE.Mesh(new THREE.BoxGeometry(1.0, 0.6, 0.3), mat('#e8e8e8')); W.beard.position.set(0, 0.25, 0.62); W.max.neck.add(W.beard);
   W.old = makeCharacter({ ...MAXC, hair: '#e6e6e6', skin: '#e0b28c' }); ctx.scene.add(W.old.root);
   const ob = new THREE.Mesh(new THREE.BoxGeometry(1.0, 0.7, 0.3), mat('#f0f0f0')); ob.position.set(0, 0.2, 0.62); W.old.neck.add(ob);
@@ -161,6 +163,7 @@ function renderAt(t) {
   else { M.root.visible = true; M.root.position.set(60, 0.3, -6); M.root.rotation.y = t > EV.old ? 0 : 0.2; pose(M, t > L(17).start ? 'scared' : 'idle', t);
     M.torso.rotation.x += age * 0.35; M.setFace(t < EV.old ? 'smile' : t < L(21).start ? 'worried' : age > 0.4 ? 'shock' : 'scared'); }
   W.maxHair.color.set('#141417').lerp(new THREE.Color('#e8e8e8'), age);
+  W.maxHL.color.set(new THREE.Color(MAXC.hair).lerp(new THREE.Color('#f2c890'), 0.45)).lerp(new THREE.Color('#ffffff'), age);
   W.beard.scale.set(1, Math.max(0.001, age), 1); W.beard.visible = age > 0.02;
   W.bill.visible = t > EV.bill - 0.2 && t < EV.stop + 2; W.bill.position.copy(SW(0.2, 3.32, lerp(-3.6, -4.4, clamp((t - EV.bill) / 0.4))));
   // old Max walks in with the giant clock

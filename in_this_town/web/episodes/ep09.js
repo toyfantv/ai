@@ -2,6 +2,7 @@
 import * as THREE from 'three';
 import { clamp, lerp, smooth, easeInOut, easeOut, easeIn, v3, rng, mat, box, noise1 } from '../engine/core.js';
 import { makeCharacter, pose } from '../engine/character.js';
+import { CAST } from '../engine/cast.js';
 import { buildTown, mergeGroup } from '../engine/town.js';
 import { initStage, applyEnv, shotAt, frame, expose, mixP, P, DAY } from '../engine/stage.js';
 import { canvasTex, glowSprite } from '../engine/props.js';
@@ -85,7 +86,7 @@ function build() {
   const th = new THREE.Mesh(new THREE.BoxGeometry(60, 170, 70), skin); th.position.set(150, -70, 20); th.rotation.z = 0.7; hand.add(th);
   const sleeve = new THREE.Mesh(new THREE.BoxGeometry(270, 900, 140), new THREE.MeshStandardMaterial({ color: '#3a6ad8', fog: false })); sleeve.position.y = 560; hand.add(sleeve);
   // Lucas + telescope
-  W.lucas = makeCharacter({ skin: '#eec09a', shirt: '#ff8a2a', pocket: '#f07a1a', hood: true, pants: '#2a4f9a', shoes: '#ffffff', hair: '#1a1410', hairStyle: 'short' });
+  W.lucas = makeCharacter({ ...CAST.lucas });
   ctx.scene.add(W.lucas.root);
   const tel = new THREE.Group(); ctx.scene.add(tel); W.tel = tel;
   const tm = mat('#2a2e3a');

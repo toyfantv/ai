@@ -130,12 +130,58 @@ export function makeCharacter(spec) {
 
   // hair
   const H = s.hair;
-  if (s.hairStyle === 'long' || s.hairStyle === 'shoulder') {
-    const backLen = s.hairStyle === 'long' ? 2.5 : 1.45;
-    part(1.48, 0.42, 1.42, H, 0, 1.36, -0.02, neck, 0.16, o);              // top cap
-    part(1.48, backLen, 0.4, H, 0, 1.5 - backLen / 2, -0.62, neck, 0.12, o); // back panel
-    for (const side of [-1, 1]) part(0.26, backLen * 0.78, 1.0, H, side * 0.73, 1.45 - backLen * 0.39, -0.12, neck, 0.08, o);
-    part(1.0, 0.34, 0.22, H, -0.18, 1.18, 0.6, neck, 0.08, o);             // bangs
+  const HL = '#' + new THREE.Color(H).lerp(new THREE.Color('#f2c890'), 0.45).getHexString();   // highlight stripe
+  const style = s.hairStyle;
+  const capTop = () => part(1.46, 0.4, 1.42, H, 0, 1.36, -0.02, neck, 0.16, o);
+  const back = (len) => part(1.46, len, 0.38, H, 0, 1.5 - len / 2, -0.62, neck, 0.12, o);
+  const sides = (len) => { for (const sd of [-1, 1]) part(0.24, len, 1.0, H, sd * 0.73, 1.45 - len / 2, -0.12, neck, 0.08, o); };
+  if (style === 'bacon') {
+    // "bacon-style" hair: rows of thin wavy ribbons, alternating dark and light, forming a dome + a swept fringe
+    capTop(); back(0.8);
+    for (const sd of [-1, 1]) part(0.22, 0.65, 0.9, H, sd * 0.72, 1.08, -0.12, neck, 0.06, o);
+    for (let i = 0; i < 6; i++) {
+      const z = 0.52 - i * 0.22, col = i % 2 ? HL : H;
+      for (let k = 0; k < 7; k++) {
+        const x = -0.66 + k * 0.22;
+        const y = 1.56 + Math.sin(x * 7 + i * 1.3) * 0.05 - Math.abs(z) * 0.1 - Math.abs(x) * 0.08;
+        const seg = part(0.25, 0.11, 0.24, col, x, y, z, neck, 0.04, o); seg.rotation.z = Math.cos(x * 7 + i * 1.3) * 0.32;
+      }
+    }
+    for (let j = 0; j < 2; j++) for (let k = 0; k < 5; k++) {   // fringe ribbons draping over the forehead
+      const x = -0.55 + k * 0.22 + j * 0.06, col = (j + k) % 2 ? HL : H;
+      const seg = part(0.25, 0.1, 0.2, col, x, 1.32 - j * 0.12 - k * 0.025 + Math.sin(k * 1.7 + j) * 0.03, 0.63 + j * 0.02, neck, 0.04, o);
+      seg.rotation.z = 0.25 + Math.cos(k * 1.7) * 0.2;
+    }
+  } else if (style === 'spiky') {
+    capTop(); back(0.7);
+    const cone = new THREE.ConeGeometry(0.26, 0.75, 4);
+    for (let i = 0; i < 9; i++) { const sp = new THREE.Mesh(cone, mat(i % 3 === 0 ? HL : H, o)); const a = (i / 9) * Math.PI * 2;
+      sp.position.set(Math.cos(a) * 0.42, 1.68, Math.sin(a) * 0.42 - 0.05); sp.rotation.set(Math.sin(a) * 0.6, 0, -Math.cos(a) * 0.6); sp.castShadow = true; neck.add(sp); }
+    const c = new THREE.Mesh(cone, mat(H, o)); c.position.set(0, 1.82, 0); c.scale.setScalar(1.2); neck.add(c);
+    part(0.9, 0.24, 0.22, H, 0.1, 1.22, 0.6, neck, 0.06, o);
+  } else if (style === 'bun') {
+    capTop(); back(1.0); sides(0.8);
+    const bun = new THREE.Mesh(new THREE.SphereGeometry(0.42, 16, 12), mat(H, o)); bun.position.set(0, 1.85, -0.25); neck.add(bun);
+    part(1.0, 0.3, 0.22, H, -0.15, 1.2, 0.6, neck, 0.08, o);
+  } else if (style === 'pigtails') {
+    capTop(); back(0.9); part(1.1, 0.32, 0.22, H, 0, 1.2, 0.6, neck, 0.08, o);
+    for (const sd of [-1, 1]) {
+      part(0.3, 0.3, 0.3, H, sd * 0.82, 1.32, -0.18, neck, 0.1, o);
+      const tl = part(0.42, 1.55, 0.42, H, sd * 1.02, 0.42, -0.2, neck, 0.2, o); tl.rotation.z = sd * 0.18;
+      part(0.48, 0.14, 0.48, s.tie || '#ff5a8a', sd * 0.9, 1.15, -0.2, neck, 0.06, o);
+    }
+  } else if (style === 'ponytail') {
+    capTop(); back(0.8); sides(0.7); part(1.0, 0.3, 0.22, H, -0.12, 1.2, 0.6, neck, 0.08, o);
+    const tail = part(0.48, 1.7, 0.45, H, 0, 0.8, -0.95, neck, 0.2, o); tail.rotation.x = 0.25; part(0.5, 0.14, 0.5, s.tie || '#ffd23f', 0, 1.6, -0.82, neck, 0.06, o);
+  } else if (style === 'bob') {
+    capTop(); back(1.15); sides(1.05); part(1.36, 0.3, 0.2, H, 0, 1.2, 0.61, neck, 0.06, o);
+  } else if (style === 'long' || style === 'shoulder' || style === 'wavy') {
+    const backLen = style === 'shoulder' ? 1.45 : 2.5;
+    capTop();
+    if (style === 'wavy') { for (let i = 0; i < 5; i++) part(1.46 - (i % 2) * 0.1, backLen / 5 + 0.05, 0.4 + (i % 2) * 0.08, i % 2 ? HL : H, (i % 2) * 0.04, 1.5 - (i + 0.5) * backLen / 5, -0.62 - (i % 2) * 0.04, neck, 0.12, o); }
+    else back(backLen);
+    sides(backLen * 0.78);
+    part(1.0, 0.34, 0.22, H, -0.18, 1.18, 0.6, neck, 0.08, o);
     part(0.5, 0.24, 0.2, H, 0.42, 1.24, 0.6, neck, 0.06, o);
   } else {
     part(1.44, 0.4, 1.4, H, 0, 1.35, -0.03, neck, 0.15, o);
@@ -144,6 +190,53 @@ export function makeCharacter(spec) {
     for (const side of [-1, 1]) part(0.18, 0.55, 0.8, H, side * 0.7, 1.05, -0.15, neck, 0.06, o);
   }
   if (s.hat) part(1.55, 0.35, 1.55, s.hat, 0, 1.55, 0, neck, 0.1, o);
+  // accessories
+  for (const acc of s.acc || []) {
+    const [kind, col = '#222831'] = acc.split(':');
+    if (kind === 'headphones') {
+      const band = new THREE.Mesh(new THREE.TorusGeometry(0.78, 0.07, 8, 24, Math.PI), mat(col, o)); band.position.set(0, 1.0, 0); neck.add(band);
+      for (const sd of [-1, 1]) { const cup = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.3, 0.2, 16), mat(col, o)); cup.rotation.z = Math.PI / 2; cup.position.set(sd * 0.78, 0.75, 0); neck.add(cup);
+        const pad = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.22, 0.22, 16), mat(s.accent || '#5ff7ff', o)); pad.rotation.z = Math.PI / 2; pad.position.set(sd * 0.86, 0.75, 0); neck.add(pad); }
+    } else if (kind === 'cap' || kind === 'capback') {
+      part(1.52, 0.42, 1.48, col, 0, 1.5, -0.02, neck, 0.18, o);
+      const brim = part(1.3, 0.08, 0.7, col, 0, 1.33, kind === 'cap' ? 0.9 : -0.95, neck, 0.04, o); brim.rotation.x = kind === 'cap' ? 0.08 : -0.08;
+      part(0.3, 0.1, 0.3, s.accent || '#ffffff', 0, 1.74, -0.02, neck, 0.05, o);
+    } else if (kind === 'beanie') {
+      part(1.54, 0.55, 1.5, col, 0, 1.55, -0.02, neck, 0.22, o); part(1.58, 0.2, 1.54, s.accent || '#ffffff', 0, 1.3, -0.02, neck, 0.08, o);
+      const pom = new THREE.Mesh(new THREE.SphereGeometry(0.22, 12, 10), mat(s.accent || '#ffffff', o)); pom.position.set(0, 1.92, -0.02); neck.add(pom);
+    } else if (kind === 'catears') {
+      part(1.5, 0.08, 0.2, col, 0, 1.58, 0.1, neck, 0.03, o);
+      for (const sd of [-1, 1]) { const e = new THREE.Mesh(new THREE.ConeGeometry(0.26, 0.5, 4), mat(col, o)); e.position.set(sd * 0.48, 1.85, 0.1); e.rotation.y = Math.PI / 4; neck.add(e);
+        const ie = new THREE.Mesh(new THREE.ConeGeometry(0.14, 0.3, 4), mat(s.accent || '#ff9ec6', o)); ie.position.set(sd * 0.48, 1.82, 0.2); ie.rotation.y = Math.PI / 4; neck.add(ie); }
+    } else if (kind === 'bow') {
+      for (const sd of [-1, 1]) { const w = part(0.36, 0.3, 0.14, col, 0.45 + sd * 0.22, 1.55, 0.25, neck, 0.06, o); w.rotation.z = sd * 0.4; }
+      part(0.14, 0.16, 0.16, col, 0.45, 1.55, 0.26, neck, 0.04, o);
+    } else if (kind === 'glasses') {
+      const gm = mat(col, o);
+      for (const sd of [-1, 1]) { const x = sd * 0.27; part(0.36, 0.04, 0.03, col, x, 0.86, 0.66, neck, 0.01, o); part(0.36, 0.04, 0.03, col, x, 0.6, 0.66, neck, 0.01, o);
+        part(0.04, 0.3, 0.03, col, x - 0.17, 0.73, 0.66, neck, 0.01, o); part(0.04, 0.3, 0.03, col, x + 0.17, 0.73, 0.66, neck, 0.01, o); }
+      part(0.16, 0.04, 0.03, col, 0, 0.8, 0.66, neck, 0.01, o); void gm;
+    } else if (kind === 'backpack') {
+      part(1.4, 1.6, 0.6, col, 0, 1.0, -0.8, torso, 0.15, o);
+    } else if (kind === 'scarf') {
+      part(1.5, 0.35, 1.1, col, 0, 1.95, 0, torso, 0.12, o);
+    }
+  }
+  // shirt graphic
+  if (s.decal) {
+    const dc = document.createElement('canvas'); dc.width = dc.height = 128; const g = dc.getContext('2d');
+    g.fillStyle = s.decalColor || '#ffffff'; g.strokeStyle = 'rgba(0,0,0,0.35)'; g.lineWidth = 6; g.lineJoin = 'round';
+    g.beginPath();
+    if (s.decal === 'star') for (let i = 0; i < 10; i++) { const a = (i / 10) * Math.PI * 2 - Math.PI / 2, r = i % 2 ? 22 : 54; g.lineTo(64 + Math.cos(a) * r, 64 + Math.sin(a) * r); }
+    else if (s.decal === 'heart') { g.moveTo(64, 104); g.bezierCurveTo(10, 66, 22, 18, 64, 44); g.bezierCurveTo(106, 18, 118, 66, 64, 104); }
+    else if (s.decal === 'bolt') { [[70, 10], [30, 70], [60, 70], [48, 118], [98, 50], [66, 50], [80, 10]].forEach(([x, y]) => g.lineTo(x, y)); }
+    else if (s.decal === 'moon') { g.arc(64, 64, 46, 0.6, Math.PI * 2 - 0.6); g.arc(84, 54, 34, Math.PI * 2 - 0.9, 0.9, true); }
+    else { g.arc(64, 64, 46, 0, 7); }
+    g.closePath(); g.stroke(); g.fill();
+    const dt = new THREE.CanvasTexture(dc); dt.colorSpace = THREE.SRGBColorSpace;
+    const d = new THREE.Mesh(new THREE.PlaneGeometry(0.85, 0.85), new THREE.MeshStandardMaterial({ map: dt, transparent: true, roughness: 0.8, polygonOffset: true, polygonOffsetFactor: -2 }));
+    d.position.set(0, s.hood ? 1.2 : 1.05, 0.505); torso.add(d);
+  }
 
   // face plane
   const faceTex = {};
@@ -151,9 +244,12 @@ export function makeCharacter(spec) {
   const face = new THREE.Mesh(new THREE.PlaneGeometry(1.15, 1.15), faceMat);
   face.position.set(0, 0.64, 0.632); neck.add(face);
   faceMat.polygonOffset = true; faceMat.polygonOffsetFactor = -2;
+  const lid = new THREE.Mesh(new THREE.PlaneGeometry(0.66, 0.36), new THREE.MeshBasicMaterial({ color: s.skin, toneMapped: true, polygonOffset: true, polygonOffsetFactor: -4 }));
+  lid.position.set(0, 0.73, 0.634); lid.visible = false; neck.add(lid);
   const ch = {
-    root, hips, torso, neck, head, legs, arms, spec: s,
+    root, hips, torso, neck, head, legs, arms, spec: s, lid, expr: 'neutral', blinkPh: (s.shirt.charCodeAt(1) + s.hair.charCodeAt(2)) % 37 / 10,
     setFace(expr) {
+      this.expr = expr;
       if (!faceTex[expr]) faceTex[expr] = drawFace(expr, s.female);
       faceMat.map = faceTex[expr]; faceMat.needsUpdate = true;
     },
@@ -171,6 +267,8 @@ export function makeCharacter(spec) {
 // ---------- poses (pure functions of time) ----------
 export function pose(ch, name, t, k = {}) {
   ch.reset();
+  // natural blinks (never for closed, creepy or shocked faces)
+  if (ch.lid) ch.lid.visible = !['calm', 'creepy', 'shock', 'sleep'].includes(ch.expr) && ((t + ch.blinkPh) % 3.3) < 0.11;
   const [L, R] = ch.legs, [AL, AR] = ch.arms;
   const breathe = Math.sin(t * 2.1) * 0.025;
   switch (name) {
