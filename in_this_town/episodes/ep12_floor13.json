@@ -1,0 +1,389 @@
+{
+ "id": "ep12",
+ "number": 12,
+ "title": "The Secret Thirteenth Floor",
+ "output": "InThisTown_Episode12_Floor13.mp4",
+ "tts": "openrouter",
+ "youtube_title": "In This Roblox Town, the School Elevator Has a Floor 13...",
+ "tiktok_caption": "Never press 13. Ryan pressed 13. 🛗",
+ "hashtags": "#Roblox #RobloxStories #InThisTown #RobloxMystery #Shorts",
+ "thumbnail_text": "NEVER PRESS 13",
+ "thumbnail_rec": "A glowing elevator button 13 beside Ryan in his green jacket, behind him a classroom full of identical Ryans staring at the camera.",
+ "lead_in": 0.3,
+ "tail": 3.0,
+ "voices": {
+  "narrator": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "ErXwobaYiN019PkySvjV",
+    "pitch": 1.1,
+    "tempo": 1.12,
+    "max_tempo": 1.15,
+    "pace": [
+     2.6,
+     3.0
+    ]
+   },
+   "kokoro": "am_michael",
+   "speed": 1.0,
+   "note": "Antoni (American), In This Town preset el:ErXwobaYiN019PkySvjV:1.1:1.12 - same narrator every episode"
+  },
+  "teacher": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "laura",
+    "pitch": 0.9,
+    "tempo": 0.95
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  },
+  "students": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "eric",
+    "pitch": 1.06,
+    "tempo": 1.0
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  }
+ },
+ "highlights": {
+  "TWELVE FLOORS": "yellow",
+  "THIRTEENTH": "red",
+  "NEVER TO PRESS": "red",
+  "RYAN": "yellow",
+  "NEW BUTTON": "yellow",
+  "FLOOR THIRTEEN": "red",
+  "DIDN'T STOP": "red",
+  "FIVE MINUTES": "yellow",
+  "EXACTLY LIKE HIM": "red",
+  "OLDER VERSION": "red",
+  "LATE AGAIN": "red",
+  "VANISHED": "red",
+  "BELL RANG": "yellow",
+  "WELCOME BACK": "red",
+  "TODAY'S DATE": "yellow",
+  "WAS BORN": "red"
+ },
+ "lines": [
+  {
+   "text": "In this town, every school has twelve floors.",
+   "tag": "[mysterious]",
+   "pause": 0.32
+  },
+  {
+   "text": "But sometimes, the elevator shows a thirteenth.",
+   "tag": "[ominous]",
+   "pause": 0.32
+  },
+  {
+   "text": "Nobody knows where it leads.",
+   "tag": "[mysterious]",
+   "pause": 0.32
+  },
+  {
+   "text": "And teachers warn students never to press it.",
+   "tag": "[serious]",
+   "pause": 0.45
+  },
+  {
+   "text": "One afternoon, a boy named Ryan stayed late after class.",
+   "tag": "[curious]",
+   "pause": 0.32
+  },
+  {
+   "text": "When he entered the elevator, a new button appeared.",
+   "tag": "[intrigued]",
+   "pause": 0.32
+  },
+  {
+   "text": "Floor thirteen.",
+   "tag": "[whispers]",
+   "pause": 0.4
+  },
+  {
+   "text": "He pressed it.",
+   "tag": "[tense]",
+   "pause": 0.35
+  },
+  {
+   "text": "The elevator began moving upward.",
+   "tag": "[tense]",
+   "pause": 0.32
+  },
+  {
+   "text": "But it didn't stop.",
+   "tag": "[uneasy]",
+   "pause": 0.4
+  },
+  {
+   "text": "After five minutes, the doors finally opened.",
+   "tag": "[tense]",
+   "pause": 0.35
+  },
+  {
+   "text": "Ryan stepped into a classroom.",
+   "tag": "[uneasy]",
+   "pause": 0.32
+  },
+  {
+   "text": "Every desk was occupied.",
+   "tag": "[uneasy]",
+   "pause": 0.32
+  },
+  {
+   "text": "And every student looked exactly like him.",
+   "tag": "[fearful]",
+   "pause": 0.45
+  },
+  {
+   "text": "Suddenly, the teacher turned around.",
+   "tag": "[tense]",
+   "pause": 0.32
+  },
+  {
+   "text": "She was an older version of Ryan.",
+   "tag": "[shocked]",
+   "pause": 0.32
+  },
+  {
+   "text": "She smiled and said,",
+   "tag": "[quietly]",
+   "pause": 0.3
+  },
+  {
+   "text": "“You're late again.”",
+   "speak": "You're late again.",
+   "voice": "teacher",
+   "tag": "[warmly, eerie]",
+   "pause": 0.45
+  },
+  {
+   "text": "Ryan tried to run back into the elevator.",
+   "tag": "[urgent]",
+   "pause": 0.32
+  },
+  {
+   "text": "But the doors had vanished.",
+   "tag": "[fearful]",
+   "pause": 0.35
+  },
+  {
+   "text": "Then the school bell rang.",
+   "tag": "[tense]",
+   "pause": 0.32
+  },
+  {
+   "text": "And every student whispered together,",
+   "tag": "[whispers]",
+   "pause": 0.3
+  },
+  {
+   "text": "“Welcome back, Ryan.”",
+   "speak": "Welcome back, Ryan.",
+   "voice": "students",
+   "tag": "[whispers]",
+   "fx": "chorus",
+   "pause": 0.5
+  },
+  {
+   "text": "On the blackboard was today's date.",
+   "tag": "[ominous]",
+   "pause": 0.3
+  },
+  {
+   "text": "It was the day Ryan was born.",
+   "tag": "[whispers, terrified]",
+   "pause": 0.0
+  }
+ ],
+ "sound": {
+  "key": 47,
+  "music": [
+   [
+    "0",
+    "mystery"
+   ],
+   [
+    "L4",
+    "mystery"
+   ],
+   [
+    "L7",
+    "suspense"
+   ],
+   [
+    "L11",
+    "dread"
+   ],
+   [
+    "L17",
+    "suspense"
+   ],
+   [
+    "L20",
+    "dread"
+   ],
+   [
+    "L23",
+    "dread"
+   ]
+  ],
+  "cues": [
+   [
+    "0",
+    "ding",
+    0.25
+   ],
+   [
+    "0.3",
+    "hum",
+    0.1,
+    {
+     "dur": 3,
+     "f": 120
+    }
+   ],
+   [
+    "L1",
+    "glitch",
+    0.2,
+    {
+     "dur": 0.4
+    }
+   ],
+   [
+    "L3",
+    "footsteps",
+    0.2,
+    {
+     "dur": 2.0
+    }
+   ],
+   [
+    "L4",
+    "footsteps",
+    0.25,
+    {
+     "dur": 3.0,
+     "rate": 1.6
+    }
+   ],
+   [
+    "L5",
+    "ding",
+    0.3
+   ],
+   [
+    "L6",
+    "glitch",
+    0.2,
+    {
+     "dur": 0.3
+    }
+   ],
+   [
+    "L7",
+    "pop",
+    0.4
+   ],
+   [
+    "L8",
+    "hum",
+    0.3,
+    {
+     "dur": 8,
+     "f": 55
+    }
+   ],
+   [
+    "L9",
+    "riser",
+    0.15,
+    {
+     "dur": 3.0
+    }
+   ],
+   [
+    "L10",
+    "ding",
+    0.18
+   ],
+   [
+    "L10+0.3",
+    "whoosh",
+    0.12
+   ],
+   [
+    "L12",
+    "tick",
+    0.2,
+    {
+     "dur": 4.0
+    }
+   ],
+   [
+    "L13",
+    "sting",
+    0.15
+   ],
+   [
+    "L14",
+    "creak",
+    0.15,
+    {
+     "dur": 0.8
+    }
+   ],
+   [
+    "L15",
+    "impact",
+    0.25
+   ],
+   [
+    "L18",
+    "run",
+    0.35,
+    {
+     "dur": 1.6
+    }
+   ],
+   [
+    "L19",
+    "impact",
+    0.3
+   ],
+   [
+    "L20",
+    "bell",
+    0.35,
+    {
+     "dur": 2.5
+    }
+   ],
+   [
+    "L21",
+    "whisper",
+    0.2,
+    {
+     "dur": 3.0
+    }
+   ],
+   [
+    "L23",
+    "riser",
+    0.2,
+    {
+     "dur": 2.5
+    }
+   ],
+   [
+    "L24",
+    "boom",
+    0.35
+   ]
+  ]
+ }
+}

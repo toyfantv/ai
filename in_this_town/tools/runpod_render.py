@@ -54,7 +54,7 @@ def gpu_prices():
 def bundle(ep):
     buf = io.BytesIO()
     with tarfile.open(fileobj=buf, mode="w:gz") as tf:
-        for p in ["web", "render.js", "package.json", "tools/runpod", f"build/{ep}/timeline.json"]:
+        for p in ["web/engine", "web/index.html", f"web/episodes/{ep}.js", "web/fonts/README.txt", "render.js", "package.json", "tools/runpod", f"build/{ep}/timeline.json"]:
             tf.add(os.path.join(ROOT, p), p, filter=lambda ti: None if ti.name.endswith(".otf") else ti)
     return base64.b64encode(buf.getvalue()).decode()
 

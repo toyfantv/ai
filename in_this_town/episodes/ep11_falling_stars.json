@@ -1,0 +1,380 @@
+{
+ "id": "ep11",
+ "number": 11,
+ "title": "The Stars Fall Every Night",
+ "output": "InThisTown_Episode11_FallingStars.mp4",
+ "tts": "openrouter",
+ "youtube_title": "In This Roblox Town, Stars Fall Every Night...",
+ "tiktok_caption": "Each star grants one wish. Never wish for another star. ⭐",
+ "hashtags": "#Roblox #RobloxStories #InThisTown #RobloxMystery #Shorts",
+ "thumbnail_text": "NEVER WISH FOR MORE",
+ "thumbnail_rec": "Ruby holding a glowing golden star as thousands of stars rain over the town and a vast eyeless face emerges from a tear in the night sky.",
+ "lead_in": 0.3,
+ "tail": 2.8,
+ "voices": {
+  "narrator": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "ErXwobaYiN019PkySvjV",
+    "pitch": 1.1,
+    "tempo": 1.12,
+    "max_tempo": 1.15,
+    "pace": [
+     2.6,
+     3.0
+    ]
+   },
+   "kokoro": "am_michael",
+   "speed": 1.0,
+   "note": "Antoni (American), In This Town preset el:ErXwobaYiN019PkySvjV:1.1:1.12 - same narrator every episode"
+  },
+  "ruby": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "sarah",
+    "pitch": 1.04,
+    "tempo": 1.0
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  }
+ },
+ "highlights": {
+  "STARS FALL": "yellow",
+  "REAL STARS": "yellow",
+  "GLASS JARS": "cyan",
+  "ONE WISH": "yellow",
+  "ONE RULE": "yellow",
+  "ANOTHER STAR": "red",
+  "RUBY": "yellow",
+  "GOLDEN STAR": "yellow",
+  "THOUSAND MORE": "red",
+  "SHAKING": "red",
+  "THOUSANDS": "yellow",
+  "GOLDEN LIGHT": "yellow",
+  "TERRIFYING": "red",
+  "ESCAPING": "red",
+  "OPENING": "red",
+  "SOMETHING ENORMOUS": "red",
+  "MISSING ITS EYES": "red"
+ },
+ "lines": [
+  {
+   "text": "In this town, stars fall from the sky every night.",
+   "tag": "[mysterious]",
+   "pause": 0.25
+  },
+  {
+   "text": "Not shooting stars.",
+   "tag": "[intrigued]",
+   "pause": 0.2
+  },
+  {
+   "text": "Real stars.",
+   "tag": "[in awe]",
+   "pause": 0.25
+  },
+  {
+   "text": "Tiny glowing ones that land in people's gardens.",
+   "tag": "[warmly]",
+   "pause": 0.25
+  },
+  {
+   "text": "Everyone collects them in glass jars.",
+   "tag": "[warmly]",
+   "pause": 0.25
+  },
+  {
+   "text": "And each star grants one wish.",
+   "tag": "[intrigued]",
+   "pause": 0.35
+  },
+  {
+   "text": "But there's one rule.",
+   "tag": "[serious]",
+   "pause": 0.2
+  },
+  {
+   "text": "Never wish for another star.",
+   "tag": "[ominous]",
+   "pause": 0.45
+  },
+  {
+   "text": "One night, a girl named Ruby found a golden star outside her window.",
+   "tag": "[curious]",
+   "pause": 0.25
+  },
+  {
+   "text": "It was brighter than anything she'd ever seen.",
+   "tag": "[in awe]",
+   "pause": 0.25
+  },
+  {
+   "text": "She held it close and whispered,",
+   "tag": "[quietly]",
+   "pause": 0.3
+  },
+  {
+   "text": "“I wish I had a thousand more.”",
+   "speak": "I wish I had a thousand more.",
+   "voice": "ruby",
+   "tag": "[whispers, excited]",
+   "fx": "whisper",
+   "pause": 0.45
+  },
+  {
+   "text": "Suddenly, the sky began shaking.",
+   "tag": "[tense]",
+   "pause": 0.25
+  },
+  {
+   "text": "One star fell.",
+   "tag": "[tense]",
+   "pause": 0.15
+  },
+  {
+   "text": "Then ten.",
+   "tag": "[tense]",
+   "pause": 0.15
+  },
+  {
+   "text": "Then hundreds.",
+   "tag": "[excited]",
+   "pause": 0.2
+  },
+  {
+   "text": "Within seconds, thousands of glowing stars were raining down.",
+   "tag": "[in awe]",
+   "pause": 0.2
+  },
+  {
+   "text": "The streets filled with golden light.",
+   "tag": "[in awe]",
+   "pause": 0.2
+  },
+  {
+   "text": "Ruby looked up in amazement.",
+   "tag": "[amazed]",
+   "pause": 0.35
+  },
+  {
+   "text": "But then she noticed something terrifying.",
+   "tag": "[uneasy]",
+   "pause": 0.25
+  },
+  {
+   "text": "The stars weren't falling.",
+   "tag": "[fearful]",
+   "pause": 0.2
+  },
+  {
+   "text": "They were escaping.",
+   "tag": "[fearful]",
+   "pause": 0.35
+  },
+  {
+   "text": "And behind them, the night sky was opening.",
+   "tag": "[ominous]",
+   "pause": 0.3
+  },
+  {
+   "text": "Something enormous was waking up.",
+   "tag": "[whispers]",
+   "pause": 0.5
+  },
+  {
+   "text": "And it was missing its eyes.",
+   "tag": "[terrified, whispers]",
+   "pause": 0.0
+  }
+ ],
+ "sound": {
+  "key": 55,
+  "music": [
+   [
+    "0",
+    "wonder"
+   ],
+   [
+    "L6",
+    "mystery"
+   ],
+   [
+    "L8",
+    "wonder"
+   ],
+   [
+    "L12",
+    "suspense"
+   ],
+   [
+    "L16",
+    "cosmic"
+   ],
+   [
+    "L19",
+    "suspense"
+   ],
+   [
+    "L22",
+    "dread"
+   ]
+  ],
+  "cues": [
+   [
+    "0",
+    "shimmer",
+    0.3,
+    {
+     "dur": 4
+    }
+   ],
+   [
+    "L1",
+    "chime",
+    0.2,
+    {
+     "note": 93
+    }
+   ],
+   [
+    "L3",
+    "chime",
+    0.25,
+    {
+     "note": 88
+    }
+   ],
+   [
+    "L4",
+    "glass",
+    0.2,
+    {
+     "dur": 1.0
+    }
+   ],
+   [
+    "L5",
+    "shimmer",
+    0.25,
+    {
+     "dur": 2
+    }
+   ],
+   [
+    "L7",
+    "sting",
+    0.1
+   ],
+   [
+    "L8+1.5",
+    "shimmer",
+    0.3,
+    {
+     "dur": 2.5
+    }
+   ],
+   [
+    "L11",
+    "whisper",
+    0.15,
+    {
+     "dur": 2
+    }
+   ],
+   [
+    "L12",
+    "rumble",
+    0.35,
+    {
+     "dur": 4
+    }
+   ],
+   [
+    "L12",
+    "impact",
+    0.25
+   ],
+   [
+    "L13",
+    "chime",
+    0.3,
+    {
+     "note": 96
+    }
+   ],
+   [
+    "L14",
+    "shimmer",
+    0.25,
+    {
+     "dur": 1.5
+    }
+   ],
+   [
+    "L15",
+    "shimmer",
+    0.35,
+    {
+     "dur": 2.5
+    }
+   ],
+   [
+    "L16",
+    "shimmer",
+    0.35,
+    {
+     "dur": 5
+    }
+   ],
+   [
+    "L16",
+    "wind",
+    0.2,
+    {
+     "dur": 6
+    }
+   ],
+   [
+    "L19",
+    "sting",
+    0.15
+   ],
+   [
+    "L21",
+    "whoosh",
+    0.35,
+    {
+     "dur": 1.5
+    }
+   ],
+   [
+    "L22",
+    "crackle",
+    0.25,
+    {
+     "dur": 3,
+     "density": 80
+    }
+   ],
+   [
+    "L22",
+    "boom",
+    0.3
+   ],
+   [
+    "L23e",
+    "groan",
+    0.3,
+    {
+     "dur": 4
+    }
+   ],
+   [
+    "L24",
+    "boom",
+    0.35
+   ]
+  ]
+ }
+}

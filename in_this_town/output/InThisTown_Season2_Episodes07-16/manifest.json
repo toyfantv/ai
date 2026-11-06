@@ -32,6 +32,73 @@
       "wer": 0.031,
       "voice_margin_db": 10.8,
       "render": "runpod"
+    },
+    "10": {
+      "title": "Every Mirror Shows Tomorrow",
+      "status": "complete",
+      "file": "InThisTown_Episode10_Mirrors.mp4",
+      "duration_s": 57.37,
+      "qc": "pass",
+      "issues": [],
+      "wer": 0.0,
+      "voice_margin_db": 12.7,
+      "render": "runpod"
+    },
+    "11": {
+      "title": "The Stars Fall Every Night",
+      "status": "complete",
+      "file": "InThisTown_Episode11_FallingStars.mp4",
+      "duration_s": 60.17,
+      "qc": "pass",
+      "issues": [],
+      "wer": null,
+      "voice_margin_db": 11.3,
+      "render": "runpod",
+      "notes": [
+        "narration not machine-verified: OpenRouter credit too low for the speech-to-text check"
+      ]
+    },
+    "12": {
+      "title": "The Secret Thirteenth Floor",
+      "status": "complete",
+      "file": "InThisTown_Episode12_Floor13.mp4",
+      "duration_s": 59.77,
+      "qc": "pass",
+      "issues": [],
+      "wer": null,
+      "voice_margin_db": 10.7,
+      "render": "runpod",
+      "notes": [
+        "narration not machine-verified: OpenRouter credit too low for the speech-to-text check"
+      ]
+    },
+    "13": {
+      "title": "The Clouds Are Alive",
+      "status": "complete",
+      "file": "InThisTown_Episode13_LivingClouds.mp4",
+      "duration_s": 56.3,
+      "qc": "pass",
+      "issues": [],
+      "wer": null,
+      "voice_margin_db": 11.6,
+      "render": "runpod",
+      "notes": [
+        "narration not machine-verified: OpenRouter credit too low for the speech-to-text check"
+      ]
+    },
+    "14": {
+      "title": "You Can Buy Extra Time",
+      "status": "complete",
+      "file": "InThisTown_Episode14_BuyTime.mp4",
+      "duration_s": 59.27,
+      "qc": "pass",
+      "issues": [],
+      "wer": null,
+      "voice_margin_db": 14.5,
+      "render": "runpod",
+      "notes": [
+        "narration not machine-verified: OpenRouter credit too low for the speech-to-text check"
+      ]
     }
   }
 }

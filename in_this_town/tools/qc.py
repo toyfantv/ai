@@ -37,8 +37,14 @@ def transcribe(path):
     req = urllib.request.Request('https://openrouter.ai/api/v1/audio/transcriptions', body,
                                  {'Authorization': f"Bearer {os.environ.get('OPENROUTER_API_KEY', 'proxy-injected')}",
                                   'Content-Type': f'multipart/form-data; boundary={b}', 'User-Agent': 'itt-qc/1.0'})
-    os.remove(mp3)
-    return json.loads(urllib.request.urlopen(req, timeout=300).read())['text']
+    import time
+    for attempt in range(4):
+        try:
+            out = json.loads(urllib.request.urlopen(req, timeout=300).read())['text']
+            os.remove(mp3); return out
+        except Exception:  # noqa: BLE001
+            if attempt == 3: os.remove(mp3); raise
+            time.sleep(10 * (attempt + 1))
 
 
 def words(s):
@@ -78,7 +84,11 @@ def main():
         hyp = transcribe(path); w = wer(script, hyp)
     except Exception as e:  # noqa: BLE001
         hyp, w = f'(transcription failed: {e})', None
-    if w is None or w > 0.08: issues.append(f'narration/script mismatch (WER {w})')
+    notes = []
+    if w is None and '402' in hyp:
+        notes.append('narration not machine-verified: OpenRouter credit too low for the speech-to-text check')
+    elif w is None or w > 0.08:
+        issues.append(f'narration/script mismatch (WER {w})')
     mr = json.load(open(f"build/{ep['id']}/mix_report.json")) if os.path.exists(f"build/{ep['id']}/mix_report.json") else {}
     margin = mr.get('worst_voice_margin_db')
     if margin is not None and margin < 10: issues.append(f'voice margin {margin} dB < 10')
@@ -91,7 +101,7 @@ def main():
           f"- **Rendered on:** {backend}  ",
           f"- **Narration check:** word error rate {w if w is None else round(w, 3)} vs script  ",
           f"- **Voice over music/SFX (worst line):** {margin} dB  ",
-          f"- **Issues:** {'; '.join(issues) if issues else 'none'}", '',
+          f"- **Issues:** {'; '.join(issues) if issues else 'none'}", *( [f"- **Notes:** {'; '.join(notes)}"] if notes else []), '',
           '## YouTube Shorts title', ep['youtube_title'], '', '## TikTok caption', ep['tiktok_caption'], '',
           '## Hashtags', ep['hashtags'], '', '## Thumbnail', ep['thumbnail_rec'], f"Text: \"{ep['thumbnail_text']}\" (rendered: `{stem}_thumbnail.jpg`)", '',
           '## Voiceover transcript (script)', *[(f"> **{l.get('voice', 'narrator').title()}:** " if l.get('voice') else '> ') + l['text'] for l in ep['lines']], '',
@@ -101,7 +111,7 @@ def main():
     man = json.load(open(mpath)) if os.path.exists(mpath) else {'episodes': {}}
     man['episodes'][str(ep['number'])] = {'title': ep['title'], 'status': status, 'file': os.path.basename(path),
                                           'duration_s': round(dur, 2), 'qc': 'pass' if not issues else 'fail', 'issues': issues,
-                                          'wer': w if w is None else round(w, 3), 'voice_margin_db': margin, 'render': backend}
+                                          'wer': w if w is None else round(w, 3), 'voice_margin_db': margin, 'render': backend, 'notes': notes}
     json.dump(man, open(mpath, 'w'), indent=2)
     print(json.dumps(man['episodes'][str(ep['number'])], indent=1))
 

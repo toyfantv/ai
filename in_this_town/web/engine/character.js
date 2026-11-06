@@ -200,6 +200,9 @@ export function pose(ch, name, t, k = {}) {
       ch.hips.position.y = 2 + Math.abs(Math.cos(t * sp)) * (run ? 0.28 : 0.1);
       ch.torso.rotation.x = run ? 0.22 : 0.04; break;
     }
+    case 'sit':
+      ch.hips.position.y = 2 - 1.55; L.rotation.x = -1.45; R.rotation.x = -1.45;
+      ch.torso.rotation.x = breathe; AL.rotation.x = -0.9; AR.rotation.x = -0.9; break;
     case 'lean': // parent leaning toward someone
       ch.torso.rotation.x = (k.amt ?? 0.35); ch.neck.rotation.x = -(k.amt ?? 0.35) * 0.6; ch.neck.rotation.z = (k.tilt ?? 0.12);
       AL.rotation.z = -0.03; AR.rotation.z = 0.03; break;

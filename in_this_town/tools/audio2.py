@@ -244,6 +244,14 @@ def main():
         if fx == 'radio': a = bp(a, 350, 3500) * 1.4
         if fx == 'giant': a = reverb(a, 3.0, 0.45)
         if fx == 'whisper': a = reverb(a, 1.6, 0.3)
+        if fx == 'chorus':  # a classroom of identical voices: detuned, delayed copies
+            from scipy.signal import resample
+            layers = [a]
+            for k, (rate, dl) in enumerate([(1.04, 0.035), (0.96, 0.06), (1.08, 0.09), (0.93, 0.12)]):
+                y = resample(a, int(len(a) / rate)); y = np.concatenate([np.zeros(int(dl * SR)), y])
+                layers.append(y * 0.7)
+            n = max(len(y) for y in layers); a = sum(np.pad(y, (0, n - len(y))) for y in layers) / 2.2
+            a = reverb(a, 1.8, 0.35)
         voice.add(ln['start'], reverb(a, 1.0, 0.08, seed=7) if not fx else a, 1.0)
     snd = ep['sound']
     key = snd.get('key', 50)

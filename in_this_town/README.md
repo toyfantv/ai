@@ -89,3 +89,23 @@ camera-shake and flash overlays.
 Copy the episode JSON (lines + captions), then copy `web/episodes/ep06.js` and change its palettes, shots and
 props. The engine modules are meant to be reused across episodes so the look stays consistent: same Emma,
 same town, same caption style.
+
+## Season 2 (Episodes 7–16)
+
+Every Season 2 episode is built the same way, with the same narrator (Antoni, In This Town preset) and the same caption style:
+
+```
+episodes/specs/epXX.json  → tools/mkep.py → episodes/epXX_*.json   (script, cast voices, highlight words, sound cues, metadata)
+tools/tts.py              → narration + timeline (auto 2–4 word captions with yellow/red/cyan highlights)
+web/episodes/epXX.js      → the director: world, characters, ~15–25 shots keyed to narration lines
+tools/produce_episode.sh  → RunPod GPU render (≤ $2/hr, local fallback) → tools/audio2.py mix → thumbnail → MP4 → tools/qc.py
+```
+
+Shared engine additions: `web/engine/stage.js` (renderer, palettes, shots, captions, overlays), `sky.js`
+(sun/moon/stars dome), `props.js` (giant eye, IK spider legs, signs, glow sprites), a world "dissolve" effect
+in `core.js`, configurable town (`buildTown(scene, { sign, house, ground })`) and `pose(..., 'sit')`.
+`tools/audio2.py` is a cue-driven designer (music moods plus about 30 synthesized SFX: ticks, creaks, glitches, bells,
+train horns, water rush, shell screams, chorus voices) with voice-first ducking and a 10 dB voice-margin check.
+
+Outputs are in `output/InThisTown_Season2_Episodes07-16/`: one MP4, thumbnail and `_info.md` per episode
+(transcript, title, TikTok caption, hashtags, thumbnail recommendation, QC result), plus `manifest.json`.
