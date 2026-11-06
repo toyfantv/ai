@@ -7,6 +7,7 @@
 { "imports": { "three": "/node_modules/three/build/three.module.js", "three/addons/": "/node_modules/three/examples/jsm/" } }
 </script>
 <style>
+  @font-face { font-family: 'ITTInter'; font-weight: 900; src: url('/web/fonts/Inter-Black.otf') format('opentype'); }
   html, body { margin: 0; background: #000; overflow: hidden; }
   #stage { position: relative; width: 1080px; height: 1920px; transform-origin: 0 0; }
   canvas { display: block; position: absolute; inset: 0; }
@@ -14,7 +15,7 @@
   #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; }
   #black { position: absolute; inset: 0; background: #000; opacity: 0; pointer-events: none; }
   #cap { position: absolute; left: 60px; right: 60px; top: 1180px; text-align: center; pointer-events: none;
-         font-family: 'Inter', sans-serif; font-weight: 900; font-size: 104px; line-height: 1.08; letter-spacing: -1px;
+         font-family: 'ITTInter', sans-serif; font-weight: 900; font-size: 104px; line-height: 1.08; letter-spacing: -1px;
          color: #fff; -webkit-text-stroke: 20px #000; paint-order: stroke fill;
          text-shadow: 0 10px 0 rgba(0,0,0,0.55); transform-origin: 50% 50%; }
   #cap .yellow { color: #ffe23a; } #cap .cyan { color: #4ff0ff; } #cap .red { color: #ff3344; }

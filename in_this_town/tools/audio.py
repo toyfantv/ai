@@ -181,6 +181,10 @@ def main():
     for ln in TL['lines']:
         a, sr = sf.read(ln['file'])
         a = resample_poly(a, SR, sr)
+        # level every line to the same loudness so whispers and quiet takes still sit on top
+        rms = np.sqrt(np.mean(a[np.abs(a) > 0.01] ** 2)) if np.any(np.abs(a) > 0.01) else 1.0
+        a = a * (0.12 / rms)
+        a = np.clip(a, -0.98, 0.98)
         if ln['whisper']:
             # breathy whisper: voice + noise shaped by its own envelope, intimate reverb
             envl = lp(np.abs(a), 30)
@@ -234,11 +238,11 @@ def main():
 
     # --- act 4: hands ---
     for ht in (E['hand1'], E['hand2']):
-        sfx.add(ht - 0.05, impact(4.0, 110, 26, 0.9), 1.0)
+        sfx.add(ht - 0.05, impact(4.0, 110, 26, 0.9), 0.45)
         sfx.add(ht - 0.6, water_whoosh(1.8), 0.35)
     t = E['harder']
     while t < E['run']:
-        sfx.add(t, impact(1.6, 70, 30, 0.4), 0.45); t += 2 * np.pi / 3.4
+        sfx.add(t, impact(1.6, 70, 30, 0.4), 0.22); t += 2 * np.pi / 3.4
     music.add(E['hand1'], pad([hz(n) for n in (36, 37, 43, 48)], E['run'] - E['hand1'] + 0.5, a=0.5, r=0.5, bright=700, detune=0.01), 0.45)
 
     # --- act 5: inside ---
@@ -249,9 +253,9 @@ def main():
     t = E['run'] + 0.4
     while t < E['crack0']:
         bpm = 105 if t < E['reveal'] + 1 else 82
-        sfx.add(t, heartbeat(), 0.7); t += 60 / bpm
+        sfx.add(t, heartbeat(), 0.3); t += 60 / bpm
     sting = sum(np.sin(2 * np.pi * f * tt(3.5)) for f in (880, 932.3, 1396.9)) / 3
-    music.add(E['smile'], reverb(sting * env_adsr(len(sting), 0.05, 2.5), 2.5, 0.5), 0.12)
+    music.add(E['smile'] - 0.6, reverb(sting * env_adsr(len(sting), 0.05, 2.5), 2.5, 0.5), 0.07)
     hum = pad([hz(n) for n in (33, 40, 45)], E['crack0'] - E['reveal'], a=1.0, r=0.3, bright=400)
     music.add(E['reveal'], hum, 0.5)
     whisper_bed = bp(noise(E['crack0'] - E['mom']), 2500, 7000)
@@ -260,10 +264,10 @@ def main():
 
     # --- act 6: the sky cracks ---
     cd = E['black'] - E['crack0']
-    sfx.add(E['crack0'], impact(4.0, 120, 24, 1.0), 1.0)
+    sfx.add(E['crack0'], impact(4.0, 120, 24, 1.0), 0.45)
     cr = crackle(cd, density=40)
     cr *= np.linspace(0.4, 1.0, len(cr)) ** 1.5
-    sfx.add(E['crack0'], reverb(cr, 1.5, 0.3), 0.75)
+    sfx.add(E['crack0'], reverb(cr, 1.5, 0.3), 0.5)
     sfx.add(E['crack0'], reverb(glass_pings(cd, 40), 2.0, 0.4), 0.3)
     sfx.add(E['hole'] - 0.05, impact(3.0, 140, 22, 1.2), 1.1)
     sfx.add(E['hole'] - 0.05, crackle(0.8, density=400, seed=21), 0.9)
@@ -271,24 +275,43 @@ def main():
     music.add(E['eye0'] - 0.2, riser, 0.9)
     music.add(E['crack0'], pad([hz(n) for n in (35, 41, 46, 47)], cd, a=0.3, r=0.01, bright=1200, detune=0.012), 0.5)
 
-    # --- mix: duck music under narration, hard cut to silence at black ---
+    # --- mix: voices always on top ---
+    # Sidechain ducking: a smoothed voice envelope (fast attack, slow release) pulls music down by up to
+    # MUSIC_DUCK dB and effects by up to SFX_DUCK dB whenever anyone is speaking.
+    MUSIC_DUCK, SFX_DUCK, VOICE_GAIN = 15.0, 15.0, 1.6
     v = voice.mono()
-    duck = lp(np.abs(v), 4) > 0.01
-    duck = 1 - 0.45 * lp(duck.astype(float), 3)
+    hop = int(0.01 * SR)
+    frames = np.sqrt(np.convolve(v ** 2, np.ones(hop * 3) / (hop * 3), 'same')[::hop])
+    active = (frames > 0.006).astype(float)
+    sm = np.zeros_like(active); a_up, a_dn = 1 - np.exp(-1 / 3), 1 - np.exp(-1 / 35)   # ~30 ms attack, ~350 ms release
+    for i in range(len(active)):
+        prev = sm[i - 1] if i else 0.0
+        sm[i] = prev + (a_up if active[i] > prev else a_dn) * (active[i] - prev)
+    # look-ahead: start ducking 80 ms before the voice
+    sm = np.maximum(sm, np.concatenate([sm[8:], np.zeros(8)]))
+    k = np.interp(np.arange(len(v)), np.arange(len(sm)) * hop, sm)
+    gm = 10 ** (-MUSIC_DUCK * k / 20); gs = 10 ** (-SFX_DUCK * k / 20)
     out = []
     for ch in (0, 1):
-        m = (music.L, music.R)[ch] * duck * 0.55 + (sfx.L, sfx.R)[ch] * (0.6 + 0.4 * duck) + (voice.L, voice.R)[ch] * 1.6
+        m = (music.L, music.R)[ch] * 0.55 * gm + (sfx.L, sfx.R)[ch] * gs + (voice.L, voice.R)[ch] * VOICE_GAIN
         out.append(m)
     mix = np.stack(out, 1)[: int(dur * SR)]
-    if '--debug' in sys.argv:
-        for name, a in [('voice', voice.mono() * 1.6), ('music', music.mono() * duck * 0.55), ('sfx', sfx.mono())]:
-            segs = [np.sqrt(np.mean(a[int(x * SR):int((x + 2) * SR)] ** 2)) for x in range(0, int(dur) - 2, 4)]
-            print(f'{name:6s}', ' '.join(f'{20 * np.log10(v + 1e-9):6.1f}' for v in segs))
     cut = int(E['black'] * SR)
     fade = int(0.02 * SR)
     mix[cut:cut + fade] *= np.linspace(1, 0, fade)[:, None][: len(mix[cut:cut + fade])]
     mix[cut + fade:] = 0
-    mix = np.tanh(mix / (np.max(np.abs(mix)) + 1e-9) * 1.4) * 0.89
+    # report speech-to-background ratio for every line (needs >= 10 dB)
+    bg = ((music.mono() * 0.55 * gm + sfx.mono() * gs))[: len(mix)]
+    vv = (v * VOICE_GAIN)[: len(mix)]
+    worst = 99
+    for ln in TL['lines']:
+        a_, b_ = int(ln['start'] * SR), int(ln['end'] * SR)
+        r = 20 * np.log10(np.sqrt(np.mean(vv[a_:b_] ** 2)) / (np.sqrt(np.mean(bg[a_:b_] ** 2)) + 1e-9))
+        worst = min(worst, r)
+        if '--debug' in sys.argv or r < 10: print(f'  {r:5.1f} dB  {ln["text"][:50]}')
+    print(f'voice-over-background, worst line: {worst:.1f} dB')
+    peak = np.max(np.abs(mix)) + 1e-9
+    mix = np.tanh(mix / peak * 1.2) * 0.89
     sf.write(f'{d}/mix.wav', mix.astype(np.float32), SR)
     print('wrote', f'{d}/mix.wav', mix.shape[0] / SR, 's')
 

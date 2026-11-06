@@ -149,9 +149,9 @@ export function buildTown(scene) {
 
   // warning sign in the square (kept separate: its own textured board)
   const signTex = textTexture([
-    { text: 'STAY INSIDE', font: '900 150px Inter, sans-serif', color: '#2a1a12', y: 0.27 },
-    { text: 'WHEN THE OCEAN', font: '900 118px Inter, sans-serif', color: '#2a1a12', y: 0.55 },
-    { text: 'TURNS RED', font: '900 160px Inter, sans-serif', color: '#b3121b', y: 0.82 },
+    { text: 'STAY INSIDE', font: '900 150px ITTInter, sans-serif', color: '#2a1a12', y: 0.27 },
+    { text: 'WHEN THE OCEAN', font: '900 118px ITTInter, sans-serif', color: '#2a1a12', y: 0.55 },
+    { text: 'TURNS RED', font: '900 160px ITTInter, sans-serif', color: '#b3121b', y: 0.82 },
   ], 1024, 600, (ctx, w, h) => {
     ctx.fillStyle = '#e8d9b0'; ctx.fillRect(0, 0, w, h);
     const rr = rng(3);

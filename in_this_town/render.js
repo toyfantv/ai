@@ -27,7 +27,12 @@ function serve() {
 
 async function openPage(ep, scale) {
   const srv = await serve();
-  const browser = await chromium.launch({ args: ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] });
+  // RENDER_GL_ARGS (JSON array) / RENDER_CHANNEL let a GPU machine pick a hardware GL backend.
+  const glArgs = process.env.RENDER_GL_ARGS ? JSON.parse(process.env.RENDER_GL_ARGS)
+    : ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'];
+  const opts = { args: glArgs };
+  if (process.env.RENDER_CHANNEL) opts.channel = process.env.RENDER_CHANNEL;
+  const browser = await chromium.launch(opts);
   const page = await browser.newPage({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: scale });
   page.on('console', (m) => { if (m.type() === 'error' || m.type() === 'warning') console.error('[page]', m.text().slice(0, 400)); });
   page.on('pageerror', (e) => console.error('[pageerror]', e.message));
@@ -44,6 +49,14 @@ async function shoot(page, t, file) {
 
 (async () => {
   const [mode, ep, a, ...rest] = process.argv.slice(2);
+  if (mode === 'probe') { // print the WebGL renderer string for the current GL args
+    const opts = { args: process.env.RENDER_GL_ARGS ? JSON.parse(process.env.RENDER_GL_ARGS) : [] };
+    if (process.env.RENDER_CHANNEL) opts.channel = process.env.RENDER_CHANNEL;
+    const b = await chromium.launch(opts); const p = await b.newPage();
+    console.log(await p.evaluate(() => { const g = document.createElement('canvas').getContext('webgl2'); if (!g) return 'none';
+      const e = g.getExtension('WEBGL_debug_renderer_info'); return g.getParameter(e ? e.UNMASKED_RENDERER_WEBGL : g.RENDERER); }));
+    await b.close(); return;
+  }
   const out = path.join(ROOT, 'build', ep);
   if (mode === 'stills') {
     const scale = parseFloat(a);

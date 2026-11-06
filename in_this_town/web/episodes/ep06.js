@@ -52,11 +52,12 @@ function events() {
   e.smile = L(17).start;
   e.mom = L(18).start - 0.05;
   e.react = L(20).start + 0.9;
+  // the ending is anchored to the end of the episode (narration length varies by voice)
+  e.black = TL.duration - 0.45;
+  e.eye0 = e.black - 0.55;
+  e.hole = e.black - 0.95;
+  e.crackFull = e.hole - 0.25;
   e.crack0 = S(9) + 0.15;
-  e.crackFull = S(9) + 3.4;
-  e.hole = S(9) + 3.65;
-  e.eye0 = S(9) + 4.05;
-  e.black = S(9) + 4.6;
   e.end = TL.duration;
   return e;
 }
@@ -272,7 +273,7 @@ export async function setup() {
   EV = events(); window.__events = EV; window.__duration = TL.duration;
   capEl = document.getElementById('cap'); blackEl = document.getElementById('black');
   flashEl = document.getElementById('flash'); gradeEl = document.getElementById('grade');
-  await document.fonts.load('900 100px Inter');
+  await document.fonts.load('900 100px ITTInter');
 
   renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true, powerPreference: 'high-performance' });
   renderer.setPixelRatio(window.devicePixelRatio);

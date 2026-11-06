@@ -5,7 +5,10 @@ Usage: python tools/tts.py episodes/ep06_ocean_sky.json
 
 Writes build/<id>/voice/line_XX.wav and build/<id>/timeline.json.
 
-Backends:
+Backends (episode "tts" field, or TTS_BACKEND env):
+  * openrouter: ElevenLabs models through OpenRouter (/api/v1/audio/speech). The key is sent as
+    Authorization: Bearer $OPENROUTER_API_KEY (in Claude cloud sessions the proxy injects it).
+    Per-line "tag" values (e.g. "[in awe]") are prepended for Eleven v3/v4 delivery control.
   * kokoro (default, offline). Needs KOKORO_MODEL and KOKORO_VOICES pointing at
     kokoro-v1.0.onnx and voices-v1.0.bin (github.com/thewh1teagle/kokoro-onnx releases).
   * elevenlabs: set ELEVENLABS_API_KEY plus ELEVENLABS_VOICE_<ROLE> (e.g.
@@ -38,7 +41,7 @@ class KokoroTTS:
         self.k = Kokoro(os.environ.get("KOKORO_MODEL", "kokoro-v1.0.onnx"),
                         os.environ.get("KOKORO_VOICES", "voices-v1.0.bin"))
 
-    def say(self, text, role, cfg):
+    def say(self, text, role, cfg, tag=""):
         audio, sr = self.k.create(text, voice=cfg["kokoro"], speed=cfg.get("speed", 1.0), lang="en-us")
         if sr != SR:
             from scipy.signal import resample_poly
@@ -46,11 +49,70 @@ class KokoroTTS:
         return np.asarray(audio, dtype=np.float32)
 
 
+def decode_to_sr(data, af=None):
+    import subprocess
+    out = subprocess.run(['ffmpeg', '-loglevel', 'error', '-i', '-'] + (['-af', af] if af else []) + ['-f', 'f32le', '-ac', '1', '-ar', str(SR), '-'],
+                         input=data, capture_output=True, check=True).stdout
+    return np.frombuffer(out, dtype=np.float32).copy()
+
+
+class OpenRouterTTS:
+    """ElevenLabs via OpenRouter, with a per-take mp3 cache and pace control.
+
+    cfg.openrouter: {model, voice, pitch, tempo, max_tempo, pace: [lo, hi] words/sec}
+    Lines (3+ words) outside the pace window get up to 3 takes; slow ones may raise tempo up to max_tempo.
+    """
+    def __init__(self):
+        self.key = os.environ.get("OPENROUTER_API_KEY", "proxy-injected")
+        self.cache = os.path.join("build", "tts_cache"); os.makedirs(self.cache, exist_ok=True)
+
+    def raw(self, o, text, take):
+        import hashlib
+        h = hashlib.sha1(json.dumps([o.get("model"), o["voice"], text, take]).encode()).hexdigest()[:16]
+        f = os.path.join(self.cache, h + ".mp3")
+        if not os.path.exists(f):
+            body = json.dumps({"model": o.get("model", "elevenlabs/eleven-v4"), "voice": o["voice"],
+                               "input": text, "response_format": "mp3"}).encode()
+            req = urllib.request.Request("https://openrouter.ai/api/v1/audio/speech", body,
+                                         {"Authorization": f"Bearer {self.key}", "Content-Type": "application/json"})
+            open(f, "wb").write(urllib.request.urlopen(req, timeout=120).read())
+        return open(f, "rb").read()
+
+    @staticmethod
+    def shape(data, p, t):
+        # The API ignores speed: apply pitch/tempo afterwards (pitch shifts by p, overall speed by t).
+        return trim(decode_to_sr(data, f"asetrate=44100*{p},aresample=44100,atempo={t / p:.5f}" if (p, t) != (1.0, 1.0) else None))
+
+    def say(self, text, role, cfg, tag=""):
+        o = cfg["openrouter"]
+        inp = (tag + " " + text).strip() if tag else text
+        p, t0 = float(o.get("pitch", 1.0)), float(o.get("tempo", 1.0))
+        tmax = float(o.get("max_tempo", t0))
+        lo, hi = o.get("pace", [0, 99])
+        words = len(text.split())
+        best = None
+        for take in range(3):
+            data = self.raw(o, inp, take)
+            a = self.shape(data, p, t0)
+            wps = words / (len(a) / SR)
+            t = t0
+            if words >= 3 and wps < lo and tmax > t0:   # slow line: allowed to speed up to max_tempo
+                t = min(tmax, t0 * lo / wps); a = self.shape(data, p, t); wps = words / (len(a) / SR)
+            miss = 0 if words < 3 or lo <= wps <= hi else min(abs(wps - lo), abs(wps - hi))
+            if best is None or miss < best[0]:
+                best = (miss, a, take, t, wps)
+            if miss == 0:
+                break
+        miss, a, take, t, wps = best
+        print(f"      take {take} tempo {t:.3f} -> {wps:.2f} wps" + ("" if miss == 0 else "  (outside pace window)"))
+        return a
+
+
 class ElevenLabsTTS:
     def __init__(self):
         self.key = os.environ["ELEVENLABS_API_KEY"]
 
-    def say(self, text, role, cfg):
+    def say(self, text, role, cfg, tag=""):
         voice = os.environ.get(f"ELEVENLABS_VOICE_{role.upper()}") or cfg.get("elevenlabs")
         url = f"https://api.elevenlabs.io/v1/text-to-speech/{voice}?output_format=pcm_24000"
         body = json.dumps({"text": text, "model_id": "eleven_multilingual_v2"}).encode()
@@ -70,13 +132,15 @@ def main():
     ep = json.load(open(ep_path))
     out = os.path.join("build", ep["id"])
     os.makedirs(os.path.join(out, "voice"), exist_ok=True)
-    tts = ElevenLabsTTS() if os.environ.get("ELEVENLABS_API_KEY") else KokoroTTS()
+    backend = os.environ.get("TTS_BACKEND") or ep.get("tts") or ("elevenlabs" if os.environ.get("ELEVENLABS_API_KEY") else "kokoro")
+    tts = {"openrouter": OpenRouterTTS, "elevenlabs": ElevenLabsTTS, "kokoro": KokoroTTS}[backend]()
+    print("tts backend:", backend)
 
     t = ep.get("lead_in", 0.3)
     timeline = {"lines": [], "captions": [], "scenes": {}}
     for i, line in enumerate(ep["lines"]):
         role = line.get("voice", "narrator")
-        audio = trim(tts.say(line["text"], role, ep["voices"][role]))
+        audio = trim(tts.say(line.get("speak", line["text"]), role, ep["voices"][role], line.get("tag", "")))
         path = os.path.join(out, "voice", f"line_{i:02d}.wav")
         sf.write(path, audio, SR)
         dur = len(audio) / SR

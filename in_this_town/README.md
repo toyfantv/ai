@@ -26,16 +26,42 @@ Run everything:
 
 ```bash
 npm install
-KOKORO_MODEL=/path/kokoro-v1.0.onnx KOKORO_VOICES=/path/voices-v1.0.bin PYTHON=/path/venv/bin/python \
-  ./make_episode.sh episodes/ep06_ocean_sky.json 3
+PYTHON=/path/venv/bin/python ./make_episode.sh episodes/ep06_ocean_sky.json 3
 ```
 
-The Kokoro model files come from the `model-files-v1.0` release of `thewh1teagle/kokoro-onnx` on GitHub.
 Python packages: `kokoro-onnx soundfile scipy numpy`.
 
-For ElevenLabs voices, set `ELEVENLABS_API_KEY`, `ELEVENLABS_VOICE_NARRATOR` and `ELEVENLABS_VOICE_MOTHER`
-(voice ids), then rerun. `tools/tts.py` switches to ElevenLabs automatically and the caption timings follow
-the new audio. OpenRouter doesn't proxy ElevenLabs text-to-speech, so you need an ElevenLabs key.
+### Voices
+
+Episode 6 uses ElevenLabs through OpenRouter (`"tts": "openrouter"` in the episode JSON). The API key is
+sent as `Authorization: Bearer $OPENROUTER_API_KEY`; in Claude cloud sessions the network proxy injects it.
+
+* Narrator: Antoni `ErXwobaYiN019PkySvjV` (American) on `elevenlabs/eleven-v3-conversational`, with the
+  In This Town preset pitch 1.1 and tempo 1.12. The API ignores speed, so pitch and tempo are applied with
+  ffmpeg afterwards: `asetrate=44100*p,aresample=44100,atempo=t/p`.
+* Mom: `matilda`. Each line can set a delivery `tag` (for example `[whispers]`) and a `speak` text with pauses.
+  Captions always use the script `text`.
+* Pace: narrator lines with 3+ words aim for 2.8–3.0 words a second. A line outside that range gets up to
+  3 takes, and a slow line may raise tempo to 1.15 and never more. Takes are cached in `build/tts_cache/`.
+* Episode 6 averages 2.81 words a second. A Scribe transcript of the generated audio matched the script word for word.
+
+Kokoro (offline) is still available with `TTS_BACKEND=kokoro`.
+
+### Rendering on RunPod
+
+`tools/runpod_render.py` rents a GPU pod at **$0.50/hr or less**. It reads live prices, requests only GPUs under
+the cap, and deletes the pod if its actual rate is higher. The pod receives the code as a 42 KB bundle, finds a
+hardware WebGL backend (EGL on NVIDIA), renders every frame and serves the encoded video on
+`https://<podId>-8000.proxy.runpod.net`. The script downloads it and deletes the pod. If no GPU under the cap is
+available, or the pod can't get hardware WebGL, `make_episode.sh` renders locally instead.
+GPU and CPU frames are identical. Episode 6 rendered in minutes on an RTX 4000 Ada ($0.18–0.24/hr) instead of
+about 25 minutes on a 4-core CPU.
+
+### Mix
+
+Every voice line is levelled to the same loudness. Music ducks up to 15 dB and effects up to 15 dB under speech
+(30 ms attack, 350 ms release, 80 ms look-ahead). `tools/audio.py` prints each line's speech-to-background ratio
+and flags anything under 10 dB. In Episode 6 the worst line is 11.9 dB.
 
 To preview while editing, render a few stills at quarter resolution and put them on a contact sheet:
 
