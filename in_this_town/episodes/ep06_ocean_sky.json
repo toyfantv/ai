@@ -1,0 +1,69 @@
+{
+  "id": "ep06",
+  "title": "In This Town, The Ocean Is in the Sky",
+  "output": "InThisTown_Episode06_OceanSky.mp4",
+  "youtube_title": "In This Roblox Town, The Ocean Is in the Sky...",
+  "tiktok_caption": "Imagine living in a town where whales swim above your house... until the ocean turns red. 🌊",
+  "hashtags": "#Roblox #RobloxStories #InThisTown #RobloxMystery #Shorts",
+  "thumbnail_text": "THE OCEAN TURNED RED",
+  "voices": {
+    "narrator": { "kokoro": "am_michael", "speed": 1.0 },
+    "mother": { "kokoro": "af_heart", "speed": 0.88, "whisper": true }
+  },
+  "lead_in": 0.35,
+  "tail": 3.2,
+  "lines": [
+    { "scene": 1, "text": "In this town, the ocean is in the sky.", "pause": 0.55,
+      "captions": [["IN THIS TOWN,"], ["THE OCEAN IS IN THE SKY", "*", "cyan"]] },
+
+    { "scene": 2, "text": "Instead of clouds, enormous whales swim above the rooftops.", "pause": 0.3,
+      "captions": [["INSTEAD OF CLOUDS,"], ["ENORMOUS WHALES SWIM", "WHALES", "cyan"], ["ABOVE THE ROOFTOPS", "*", "cyan"]] },
+    { "scene": 2, "text": "Fish float between the buildings.", "pause": 0.3,
+      "captions": [["FISH FLOAT", "FISH", "yellow"], ["BETWEEN THE BUILDINGS"]] },
+    { "scene": 2, "text": "And every night, glowing jellyfish light up the streets.", "pause": 0.5,
+      "captions": [["AND EVERY NIGHT,"], ["GLOWING JELLYFISH", "*", "cyan"], ["LIGHT UP THE STREETS"]] },
+
+    { "scene": 3, "text": "Everyone thinks it's beautiful.", "pause": 0.35,
+      "captions": [["EVERYONE THINKS"], ["IT'S BEAUTIFUL", "BEAUTIFUL", "yellow"]] },
+    { "scene": 3, "text": "But there's one rule.", "pause": 0.45,
+      "captions": [["BUT THERE'S ONE RULE", "ONE RULE", "yellow"]] },
+    { "scene": 3, "text": "Never go outside when the ocean turns red.", "pause": 0.7,
+      "captions": [["NEVER GO OUTSIDE", "*", "red"], ["WHEN THE OCEAN TURNS RED", "*", "red"]] },
+
+    { "scene": 4, "text": "One evening, a girl named Emma looked out her window.", "pause": 0.3,
+      "captions": [["ONE EVENING,"], ["A GIRL NAMED EMMA", "EMMA", "yellow"], ["LOOKED OUT HER WINDOW"]] },
+    { "scene": 4, "text": "The water above the town was slowly changing color.", "pause": 0.6,
+      "captions": [["THE WATER ABOVE THE TOWN"], ["WAS SLOWLY"], ["CHANGING COLOR", "*", "red"]] },
+
+    { "scene": 5, "text": "Then every fish stopped swimming.", "pause": 0.4,
+      "captions": [["THEN EVERY FISH STOPPED", "EVERY FISH STOPPED", "red"], ["SWIMMING."]] },
+    { "scene": 5, "text": "The whales disappeared.", "pause": 0.45,
+      "captions": [["THE WHALES"], ["DISAPPEARED", "*", "yellow"]] },
+    { "scene": 5, "text": "And something enormous moved beneath the surface.", "pause": 0.6,
+      "captions": [["AND SOMETHING", "SOMETHING", "red"], ["ENORMOUS MOVED", "MOVED", "red"], ["BENEATH THE SURFACE"]] },
+
+    { "scene": 6, "text": "Suddenly, a giant hand pressed against the water.", "pause": 0.45,
+      "captions": [["SUDDENLY,"], ["A GIANT HAND", "GIANT HAND", "red"], ["PRESSED AGAINST THE WATER"]] },
+    { "scene": 6, "text": "Then another.", "pause": 0.5,
+      "captions": [["THEN ANOTHER.", "ANOTHER", "red"]] },
+    { "scene": 6, "text": "It looked like someone was trying to break through.", "pause": 0.55,
+      "captions": [["IT LOOKED LIKE SOMEONE"], ["WAS TRYING"], ["TO BREAK THROUGH", "*", "red"]] },
+
+    { "scene": 7, "text": "Emma ran downstairs to warn her parents.", "pause": 0.3,
+      "captions": [["EMMA RAN DOWNSTAIRS", "EMMA", "yellow"], ["TO WARN HER PARENTS"]] },
+    { "scene": 7, "text": "But they were already standing at the front door.", "pause": 0.6,
+      "captions": [["BUT THEY WERE ALREADY"], ["STANDING AT THE FRONT DOOR"]] },
+    { "scene": 7, "text": "Smiling.", "pause": 0.9,
+      "captions": [["SMILING.", "*", "red"]] },
+
+    { "scene": 8, "text": "Her mother whispered,", "pause": 0.55,
+      "captions": [["HER MOTHER WHISPERED,"]] },
+    { "scene": 8, "voice": "mother", "text": "Don't worry, sweetheart.", "pause": 0.5,
+      "captions": [["“DON'T WORRY,"], ["SWEETHEART.”", "SWEETHEART", "yellow"]] },
+    { "scene": 8, "voice": "mother", "text": "It's only the person who dreams us.", "pause": 1.0,
+      "captions": [["“IT'S ONLY"], ["THE PERSON WHO DREAMS US”", "*", "red"]] },
+
+    { "scene": 9, "text": "And then the sky began to crack.", "pause": 0.0,
+      "captions": [["AND THEN"], ["THE SKY BEGAN TO CRACK", "*", "red"]] }
+  ]
+}

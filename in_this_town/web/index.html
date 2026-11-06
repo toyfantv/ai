@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>In This Town — renderer</title>
+<script type="importmap">
+{ "imports": { "three": "/node_modules/three/build/three.module.js", "three/addons/": "/node_modules/three/examples/jsm/" } }
+</script>
+<style>
+  html, body { margin: 0; background: #000; overflow: hidden; }
+  #stage { position: relative; width: 1080px; height: 1920px; transform-origin: 0 0; }
+  canvas { display: block; position: absolute; inset: 0; }
+  #grade { position: absolute; inset: 0; pointer-events: none; }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; }
+  #black { position: absolute; inset: 0; background: #000; opacity: 0; pointer-events: none; }
+  #cap { position: absolute; left: 60px; right: 60px; top: 1180px; text-align: center; pointer-events: none;
+         font-family: 'Inter', sans-serif; font-weight: 900; font-size: 104px; line-height: 1.08; letter-spacing: -1px;
+         color: #fff; -webkit-text-stroke: 20px #000; paint-order: stroke fill;
+         text-shadow: 0 10px 0 rgba(0,0,0,0.55); transform-origin: 50% 50%; }
+  #cap .yellow { color: #ffe23a; } #cap .cyan { color: #4ff0ff; } #cap .red { color: #ff3344; }
+</style>
+</head>
+<body>
+<div id="stage"><div id="gl"></div><div id="grade"></div><div id="flash"></div><div id="cap"></div><div id="black"></div></div>
+<script type="module">
+  const q = new URLSearchParams(location.search);
+  const ep = q.get('ep') || 'ep06';
+  const mod = await import(`./episodes/${ep}.js`);
+  window.__ready = mod.setup({ scale: parseFloat(q.get('scale') || '1') });
+</script>
+</body>
+</html>
