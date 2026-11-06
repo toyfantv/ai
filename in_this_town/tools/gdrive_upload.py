@@ -5,7 +5,7 @@
 
 Needs environment variables GDRIVE_CLIENT_ID, GDRIVE_CLIENT_SECRET, GDRIVE_REFRESH_TOKEN
 (OAuth client + refresh token; see README "Google Drive"). Files go into a Drive folder named
-$GDRIVE_FOLDER (default "In This Town videos"), which this tool creates on first use. With the
+$GDRIVE_FOLDER (default "javascript_videos"), which this tool creates on first use. With the
 drive.file scope it can only see files and folders it created itself.
 """
 import json
@@ -14,7 +14,7 @@ import sys
 import urllib.parse
 import urllib.request
 
-FOLDER = os.environ.get("GDRIVE_FOLDER", "In This Town videos")
+FOLDER = os.environ.get("GDRIVE_FOLDER", "javascript_videos")
 UA = {"User-Agent": "itt-uploader/1.0"}
 
 
