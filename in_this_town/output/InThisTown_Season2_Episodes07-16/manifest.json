@@ -1,0 +1,37 @@
+{
+  "episodes": {
+    "7": {
+      "title": "Every House Moves at Midnight",
+      "status": "complete",
+      "file": "InThisTown_Episode07_MovingHouses.mp4",
+      "duration_s": 60.4,
+      "qc": "pass",
+      "issues": [],
+      "wer": 0.034,
+      "voice_margin_db": 12.2,
+      "render": "runpod"
+    },
+    "8": {
+      "title": "Everyone Has a Floating Number",
+      "status": "complete",
+      "file": "InThisTown_Episode08_FloatingNumbers.mp4",
+      "duration_s": 57.97,
+      "qc": "pass",
+      "issues": [],
+      "wer": 0.015,
+      "voice_margin_db": 11.4,
+      "render": "runpod"
+    },
+    "9": {
+      "title": "The Sun Never Sets",
+      "status": "complete",
+      "file": "InThisTown_Episode09_ArtificialSun.mp4",
+      "duration_s": 58.23,
+      "qc": "pass",
+      "issues": [],
+      "wer": 0.031,
+      "voice_margin_db": 10.8,
+      "render": "runpod"
+    }
+  }
+}

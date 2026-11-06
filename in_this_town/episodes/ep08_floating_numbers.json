@@ -1,0 +1,378 @@
+{
+ "id": "ep08",
+ "number": 8,
+ "title": "Everyone Has a Floating Number",
+ "output": "InThisTown_Episode08_FloatingNumbers.mp4",
+ "tts": "openrouter",
+ "youtube_title": "In This Roblox Town, Everyone Has a Number Above Their Head...",
+ "tiktok_caption": "Her number hit zero... and the whole town turned to look at her. 🔢👀",
+ "hashtags": "#Roblox #RobloxStories #InThisTown #RobloxMystery #Shorts",
+ "thumbnail_text": "MY NUMBER HIT ZERO",
+ "thumbnail_rec": "Sophie in her purple hoodie with a glowing red 0 above her head while every smiling neighbor stares at her, glitching.",
+ "lead_in": 0.3,
+ "tail": 4.2,
+ "voices": {
+  "narrator": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "ErXwobaYiN019PkySvjV",
+    "pitch": 1.1,
+    "tempo": 1.12,
+    "max_tempo": 1.15,
+    "pace": [
+     2.6,
+     3.0
+    ]
+   },
+   "kokoro": "am_michael",
+   "speed": 1.0,
+   "note": "Antoni (American), In This Town preset el:ErXwobaYiN019PkySvjV:1.1:1.12 - same narrator every episode"
+  },
+  "system": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "eric",
+    "pitch": 0.94,
+    "tempo": 0.95
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  }
+ },
+ "highlights": {
+  "NUMBER": "yellow",
+  "MILLIONS": "cyan",
+  "FEW HUNDRED": "cyan",
+  "DECREASE": "red",
+  "SOPHIE": "yellow",
+  "THE NUMBER ONE": "red",
+  "ONE DAY LEFT": "red",
+  "MIDNIGHT": "yellow",
+  "ZERO": "red",
+  "DIDN'T DISAPPEAR": "yellow",
+  "TURNED TOWARD HER": "red",
+  "VANISHED": "red",
+  "LAST REAL PERSON": "red",
+  "IDENTIFIED": "red",
+  "SMILING": "red",
+  "GLITCHING": "cyan",
+  "DISAPPEARING": "red",
+  "EXCEPT SOPHIE": "yellow"
+ },
+ "lines": [
+  {
+   "text": "In this town, everyone has a number floating above their head.",
+   "tag": "[mysterious]",
+   "pause": 0.32
+  },
+  {
+   "text": "Nobody knows what the numbers mean.",
+   "tag": "[curious]",
+   "pause": 0.32
+  },
+  {
+   "text": "Some people have millions.",
+   "tag": "[intrigued]",
+   "pause": 0.32
+  },
+  {
+   "text": "Others have only a few hundred.",
+   "tag": "[intrigued]",
+   "pause": 0.32
+  },
+  {
+   "text": "But the numbers decrease every single day.",
+   "tag": "[ominous]",
+   "pause": 0.5
+  },
+  {
+   "text": "A girl named Sophie had always been curious about hers.",
+   "tag": "[curious]",
+   "pause": 0.32
+  },
+  {
+   "text": "Until one morning, she woke up with the number one.",
+   "tag": "[tense]",
+   "pause": 0.7
+  },
+  {
+   "text": "She panicked.",
+   "tag": "[alarmed]",
+   "pause": 0.32
+  },
+  {
+   "text": "She thought it meant she had one day left to live.",
+   "tag": "[fearful]",
+   "pause": 0.32
+  },
+  {
+   "text": "So she locked herself inside her house.",
+   "tag": "[urgent]",
+   "pause": 0.5
+  },
+  {
+   "text": "But at midnight, something strange happened.",
+   "tag": "[mysterious]",
+   "pause": 0.32
+  },
+  {
+   "text": "Her number changed to zero.",
+   "tag": "[tense]",
+   "pause": 0.8
+  },
+  {
+   "text": "And she didn't disappear.",
+   "tag": "[surprised]",
+   "pause": 0.4
+  },
+  {
+   "text": "Instead, every person in town suddenly turned toward her.",
+   "tag": "[ominous]",
+   "pause": 0.5
+  },
+  {
+   "text": "Their numbers vanished.",
+   "tag": "[quietly]",
+   "pause": 0.4
+  },
+  {
+   "text": "Then a message appeared across the sky.",
+   "tag": "[tense]",
+   "pause": 0.8
+  },
+  {
+   "text": "“THE LAST REAL PERSON HAS BEEN IDENTIFIED.”",
+   "speak": "The last real person has been identified.",
+   "voice": "system",
+   "tag": "[robotic, flat]",
+   "fx": "radio",
+   "pause": 0.8
+  },
+  {
+   "text": "Sophie looked around.",
+   "tag": "[uneasy]",
+   "pause": 0.32
+  },
+  {
+   "text": "Every neighbor was smiling.",
+   "tag": "[eerie]",
+   "pause": 0.4
+  },
+  {
+   "text": "Then their faces began glitching.",
+   "tag": "[fearful]",
+   "pause": 0.5
+  },
+  {
+   "text": "And the entire town started disappearing.",
+   "tag": "[dramatic]",
+   "pause": 1.0
+  },
+  {
+   "text": "Except Sophie.",
+   "tag": "[whispers]",
+   "pause": 0.0
+  }
+ ],
+ "sound": {
+  "key": 52,
+  "music": [
+   [
+    "0",
+    "playful"
+   ],
+   [
+    "L4",
+    "mystery"
+   ],
+   [
+    "L6",
+    "suspense"
+   ],
+   [
+    "L10",
+    "mystery"
+   ],
+   [
+    "L13",
+    "dread"
+   ],
+   [
+    "L16",
+    "silence"
+   ],
+   [
+    "L17",
+    "dread"
+   ],
+   [
+    "L21",
+    "cosmic"
+   ]
+  ],
+  "cues": [
+   [
+    "0",
+    "shimmer",
+    0.3
+   ],
+   [
+    "0",
+    "impact",
+    0.25
+   ],
+   [
+    "L2",
+    "chime",
+    0.2,
+    {
+     "note": 91
+    }
+   ],
+   [
+    "L3",
+    "chime",
+    0.2,
+    {
+     "note": 79
+    }
+   ],
+   [
+    "L4",
+    "tick",
+    0.3,
+    {
+     "dur": 2.5,
+     "rate": 2
+    }
+   ],
+   [
+    "L6+1.6",
+    "sting",
+    0.18
+   ],
+   [
+    "L7",
+    "heartbeat",
+    0.35,
+    {
+     "dur": 4.5,
+     "bpm": 110
+    }
+   ],
+   [
+    "L9+0.4",
+    "impact",
+    0.2
+   ],
+   [
+    "L9+0.5",
+    "creak",
+    0.2,
+    {
+     "dur": 0.6
+    }
+   ],
+   [
+    "L10",
+    "tick",
+    0.25,
+    {
+     "dur": 3.0
+    }
+   ],
+   [
+    "L11+0.9",
+    "glitch",
+    0.35,
+    {
+     "dur": 0.8
+    }
+   ],
+   [
+    "L11+0.9",
+    "boom",
+    0.3
+   ],
+   [
+    "L13+0.5",
+    "whoosh",
+    0.3
+   ],
+   [
+    "L14",
+    "pop",
+    0.4
+   ],
+   [
+    "L14+0.1",
+    "pop",
+    0.3
+   ],
+   [
+    "L14+0.25",
+    "pop",
+    0.3
+   ],
+   [
+    "L15",
+    "riser",
+    0.3,
+    {
+     "dur": 2.4
+    }
+   ],
+   [
+    "L16",
+    "hum",
+    0.15,
+    {
+     "dur": 3.5,
+     "f": 50
+    }
+   ],
+   [
+    "L18",
+    "whisper",
+    0.2,
+    {
+     "dur": 2.5
+    }
+   ],
+   [
+    "L19",
+    "glitch",
+    0.45,
+    {
+     "dur": 2.4,
+     "seed": 5
+    }
+   ],
+   [
+    "L20",
+    "glitch",
+    0.4,
+    {
+     "dur": 3.0,
+     "seed": 9
+    }
+   ],
+   [
+    "L20",
+    "rumble",
+    0.25,
+    {
+     "dur": 3
+    }
+   ],
+   [
+    "L21",
+    "shimmer",
+    0.25,
+    {
+     "dur": 3
+    }
+   ]
+  ]
+ }
+}

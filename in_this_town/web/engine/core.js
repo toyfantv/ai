@@ -27,13 +27,19 @@ export const U = {
   uTime: { value: 0 },
   uCausticColor: { value: new THREE.Color(0.35, 0.75, 1.0) },
   uCausticStrength: { value: 0.35 },
+  // world dissolve (glitch-erase everything patched, outward from a point, sparing a radius)
+  uDissolve: { value: 0 },
+  uDissolveCenter: { value: new THREE.Vector3() },
+  uDissolveKeep: { value: 6 },
 };
 
 const CAUSTIC_GLSL = /* glsl */`
 uniform float uTime;
 uniform vec3 uCausticColor;
 uniform float uCausticStrength;
+uniform float uDissolve; uniform vec3 uDissolveCenter; uniform float uDissolveKeep;
 varying vec3 vCWorld;
+float dHash(vec3 p) { return fract(sin(dot(p, vec3(12.9898, 78.233, 37.719))) * 43758.5453); }
 float causticAt(vec2 p, float t) {
   // cheap animated caustic web (iterated sin warp)
   vec2 i = p;
@@ -55,15 +61,26 @@ export function patchCaustics(mat, scale = 0.09) {
     shader.uniforms.uTime = U.uTime;
     shader.uniforms.uCausticColor = U.uCausticColor;
     shader.uniforms.uCausticStrength = U.uCausticStrength;
+    shader.uniforms.uDissolve = U.uDissolve; shader.uniforms.uDissolveCenter = U.uDissolveCenter; shader.uniforms.uDissolveKeep = U.uDissolveKeep;
     shader.vertexShader = 'varying vec3 vCWorld;\n' + shader.vertexShader.replace(
       '#include <worldpos_vertex>',
       '#include <worldpos_vertex>\n vCWorld = (modelMatrix * vec4(transformed, 1.0)).xyz;');
     shader.fragmentShader = CAUSTIC_GLSL + shader.fragmentShader.replace(
       '#include <dithering_fragment>',
       `#include <dithering_fragment>
+       if (uDissolve > 0.0) {
+         float dd = length(vCWorld.xz - uDissolveCenter.xz);
+         float reach = uDissolve * 900.0;
+         float h = dHash(floor(vCWorld * 0.6));
+         if (dd > uDissolveKeep && dd < reach + h * 40.0 - 20.0 + uDissolveKeep) discard;
+         float edge = 1.0 - smoothstep(0.0, 30.0, abs(dd - reach - uDissolveKeep));
+         if (dd > uDissolveKeep) gl_FragColor.rgb = mix(gl_FragColor.rgb, h > 0.5 ? vec3(0.1, 1.0, 1.0) : vec3(1.0, 0.1, 0.9), edge * step(0.35, h));
+       }
+       if (uCausticStrength > 0.001) {
        vec2 cp = vec2(vCWorld.x + vCWorld.y * 0.45, vCWorld.z - vCWorld.y * 0.3) * ${scale.toFixed(3)};
        float cst = causticAt(mod(cp, 6.2831853) * 1.0 + 7.0, uTime * 0.55);
        gl_FragColor.rgb += uCausticColor * cst * uCausticStrength;
+       }
       `);
   };
   mat.customProgramCacheKey = () => 'caustic' + scale;

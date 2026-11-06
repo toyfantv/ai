@@ -121,6 +121,28 @@ class ElevenLabsTTS:
         return np.frombuffer(pcm, dtype="<i2").astype(np.float32) / 32768.0
 
 
+def auto_captions(text, highlights):
+    """Split a line into 2-4 word caption chunks (break at punctuation) with highlight phrases."""
+    words = text.upper().replace("\u2019", "'").split()
+    chunks, cur = [], []
+    for w in words:
+        cur.append(w)
+        if len(cur) >= 4 or (len(cur) >= 2 and re.search(r"[,.!?:;\u201d\"]$", w)):
+            chunks.append(cur); cur = []
+    if cur:
+        if len(cur) == 1 and chunks and len(chunks[-1]) < 5: chunks[-1] += cur
+        else: chunks.append(cur)
+    out = []
+    for c in chunks:
+        txt = " ".join(c)
+        hls = []
+        for phrase, color in highlights.items():
+            if phrase.upper() in txt:
+                hls.append([phrase.upper(), color])
+        out.append([txt, hls] if hls else [txt])
+    return out
+
+
 def word_weights(text):
     # Rough syllable-ish weight per word, used to spread caption chunks across a line.
     words = text.split()
@@ -146,16 +168,17 @@ def main():
         dur = len(audio) / SR
         timeline["lines"].append({"i": i, "role": role, "text": line["text"], "start": round(t, 3),
                                   "end": round(t + dur, 3), "file": path,
-                                  "whisper": ep["voices"][role].get("whisper", False)})
-        timeline["scenes"].setdefault(str(line["scene"]), round(t, 3))
+                                  "whisper": ep["voices"][role].get("whisper", False), "fx": line.get("fx")})
+        timeline["scenes"].setdefault(str(line.get("scene", i)), round(t, 3))
 
         # Caption chunks: weight by the words each chunk covers.
-        chunks = line["captions"]
+        chunks = line.get("captions") or auto_captions(line["text"], ep.get("highlights", {}))
         w = [sum(word_weights(c[0])) for c in chunks]
         acc = t
         for c, wi in zip(chunks, w):
             d = dur * wi / sum(w)
-            timeline["captions"].append({"text": c[0], "hl": c[1] if len(c) > 1 else "",
+            timeline["captions"].append({"text": c[0], "hl": c[1] if len(c) > 1 and isinstance(c[1], str) else "",
+                                         "hls": c[1] if len(c) > 1 and isinstance(c[1], list) else None,
                                          "color": c[2] if len(c) > 2 else "yellow",
                                          "start": round(acc, 3), "end": round(acc + d, 3)})
             acc += d

@@ -56,6 +56,7 @@ function house(g, x, z, facing, r, floors) {
   // garden hedge + flowers
   box(w, 1.1, 1, mat('#4f9a4a'), 0, 0.55, d / 2 + 4.5, hg);
   for (let i = 0; i < 4; i++) box(0.6, 0.6, 0.6, mat(['#ff7aa8', '#ffd24a', '#ffffff', '#b07aff'][i]), -w / 2 + 1.5 + i * 1.2, 1.3, d / 2 + 4.5, hg);
+  return hg;
 }
 
 function tree(g, x, z, r) {
@@ -86,12 +87,17 @@ function textTexture(lines, w, h, style) {
   return t;
 }
 
-export function buildTown(scene) {
-  const r = rng(6);
+const DEFAULT_SIGN = [['STAY INSIDE', '#2a1a12', 150], ['WHEN THE OCEAN', '#2a1a12', 118], ['TURNS RED', '#b3121b', 160]];
+
+// opts: { sign: [[text, color, px] x3] | null, house: bool, grass, seed }
+export { textTexture, mergeGroup, house as makeHouse, tree as makeTree, buildEmmaHouse as buildHeroHouse };
+
+export function buildTown(scene, opts = {}) {
+  const r = rng(opts.seed || 6);
   const stat = new THREE.Group();
 
   // ground, roads, sidewalks
-  const ground = new THREE.Mesh(new THREE.PlaneGeometry(3000, 3000), mat('#79c565'));
+  const ground = new THREE.Mesh(new THREE.PlaneGeometry(opts.ground || 3000, opts.ground || 3000), mat(opts.grass || '#79c565'));
   ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; scene.add(ground);
   const road = mat('#5d626b'), walk = mat('#d4d7da'), line = mat('#f3d35a');
   box(900, 0.1, 14, road, 0, 0.05, 0, stat);
@@ -124,7 +130,7 @@ export function buildTown(scene) {
   for (const side of [-1, 1]) {
     for (let x = -204; x <= 204; x += 24) {
       if (Math.abs(x) < 34) continue;
-      if (side === -1 && x === 60) continue; // Emma's house slot
+      if (side === -1 && x === 60 && opts.house !== false) continue; // hero house slot
       house(stat, x, side * 24, side < 0 ? 0 : Math.PI, r, r() > 0.35 ? 2 : 1);
       if (r() > 0.25) tree(stat, x + 11, side * 15.5, r);
       house(stat, x + 12, side * 62, side < 0 ? Math.PI : 0, r, r() > 0.5 ? 2 : 1);
@@ -136,8 +142,8 @@ export function buildTown(scene) {
       if (r() > 0.3) tree(stat, side * 15.5, -z - 11, r);
     }
   }
-  for (let i = 0; i < 90; i++) {
-    const a = r() * Math.PI * 2, d = 230 + r() * 300;
+  for (let i = 0; i < (opts.ground && opts.ground < 1400 ? 60 : 90); i++) {
+    const a = r() * Math.PI * 2, d = 230 + r() * (opts.ground && opts.ground < 1400 ? opts.ground / 2 - 260 : 300);
     tree(stat, Math.cos(a) * d, Math.sin(a) * d, r);
   }
   for (let x = -200; x <= 200; x += 30) {
@@ -148,24 +154,24 @@ export function buildTown(scene) {
   mergeGroup(stat, scene);
 
   // warning sign in the square (kept separate: its own textured board)
-  const signTex = textTexture([
-    { text: 'STAY INSIDE', font: '900 150px ITTInter, sans-serif', color: '#2a1a12', y: 0.27 },
-    { text: 'WHEN THE OCEAN', font: '900 118px ITTInter, sans-serif', color: '#2a1a12', y: 0.55 },
-    { text: 'TURNS RED', font: '900 160px ITTInter, sans-serif', color: '#b3121b', y: 0.82 },
-  ], 1024, 600, (ctx, w, h) => {
+  const signLines = opts.sign === undefined ? DEFAULT_SIGN : opts.sign;
+  let sign = null;
+  if (signLines) {
+  const signTex = textTexture(signLines.map(([text, color, px], i) => ({ text, color, font: `900 ${px}px ITTInter, sans-serif`, y: [0.27, 0.55, 0.82][i] })), 1024, 600, (ctx, w, h) => {
     ctx.fillStyle = '#e8d9b0'; ctx.fillRect(0, 0, w, h);
     const rr = rng(3);
     for (let i = 0; i < 900; i++) { ctx.fillStyle = `rgba(90,60,30,${rr() * 0.12})`; ctx.fillRect(rr() * w, rr() * h, 2 + rr() * 30, 1 + rr() * 3); }
     ctx.strokeStyle = '#5a3a1e'; ctx.lineWidth = 26; ctx.strokeRect(13, 13, w - 26, h - 26);
     ctx.fillStyle = 'rgba(70,40,20,0.35)'; for (let i = 0; i < 6; i++) { ctx.beginPath(); ctx.arc(rr() * w, rr() * h, 10 + rr() * 26, 0, 7); ctx.fill(); }
   });
-  const sign = new THREE.Group(); sign.position.set(9, 0, -16); sign.rotation.set(0, -0.12, 0.025); scene.add(sign);
+  sign = new THREE.Group(); sign.position.set(9, 0, -16); sign.rotation.set(0, -0.12, 0.025); scene.add(sign);
   box(0.6, 7.5, 0.6, mat('#5a3a1e'), -3.8, 3.75, 0, sign); box(0.6, 7.5, 0.6, mat('#5a3a1e'), 3.8, 3.75, 0, sign);
   const board = new THREE.Mesh(new THREE.BoxGeometry(8.4, 4.9, 0.3),
     [mat('#6a4a2a'), mat('#6a4a2a'), mat('#6a4a2a'), mat('#6a4a2a'), patchSign(signTex), mat('#6a4a2a')]);
   board.position.set(0, 5.1, 0.35); board.castShadow = true; sign.add(board);
+  }
 
-  const emma = buildEmmaHouse(scene, EMMA.x, EMMA.z);
+  const emma = opts.house === false ? null : buildEmmaHouse(scene, EMMA.x, EMMA.z);
   return { emma, sign, signPos: new THREE.Vector3(9, 5.1, -15.6), EMMA };
 }
 

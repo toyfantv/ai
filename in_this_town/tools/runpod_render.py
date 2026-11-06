@@ -20,7 +20,7 @@ import tarfile
 import time
 import urllib.request
 
-MAX_PRICE = float(os.environ.get("RUNPOD_MAX_PRICE", "0.50"))
+MAX_PRICE = float(os.environ.get("RUNPOD_MAX_PRICE", "2.00"))
 KEY = os.environ.get("RUNPOD_API_KEY", "proxy-injected")
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 

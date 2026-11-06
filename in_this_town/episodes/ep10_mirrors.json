@@ -1,0 +1,361 @@
+{
+ "id": "ep10",
+ "number": 10,
+ "title": "Every Mirror Shows Tomorrow",
+ "output": "InThisTown_Episode10_Mirrors.mp4",
+ "tts": "openrouter",
+ "youtube_title": "In This Roblox Town, Mirrors Show Tomorrow...",
+ "tiktok_caption": "Never look into a broken mirror. Ava did. 🪞",
+ "hashtags": "#Roblox #RobloxStories #InThisTown #RobloxMystery #Shorts",
+ "thumbnail_text": "MY REFLECTION GOT OUT",
+ "thumbnail_rec": "Two identical Avas in pink sweaters face to face in a dim bedroom, one smiling unnaturally, glowing mirror shards on the floor.",
+ "lead_in": 0.3,
+ "tail": 3.0,
+ "voices": {
+  "narrator": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "ErXwobaYiN019PkySvjV",
+    "pitch": 1.1,
+    "tempo": 1.12,
+    "max_tempo": 1.15,
+    "pace": [
+     2.6,
+     3.0
+    ]
+   },
+   "kokoro": "am_michael",
+   "speed": 1.0,
+   "note": "Antoni (American), In This Town preset el:ErXwobaYiN019PkySvjV:1.1:1.12 - same narrator every episode"
+  },
+  "reflection": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "laura",
+    "pitch": 1.0,
+    "tempo": 0.95
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  }
+ },
+ "highlights": {
+  "REFLECTION": "yellow",
+  "TOMORROW": "cyan",
+  "ONE RULE": "yellow",
+  "BROKEN MIRROR": "red",
+  "AVA": "yellow",
+  "SHATTERED": "red",
+  "CRYING": "cyan",
+  "RUNNING": "cyan",
+  "COMPLETELY STILL": "red",
+  "SMILING": "red",
+  "DIRECTLY AT HER": "red",
+  "POINTING BEHIND HER": "red",
+  "NOBODY": "yellow",
+  "DISAPPEARED": "red",
+  "ALREADY HERE": "red",
+  "STEPPED OUT": "red"
+ },
+ "lines": [
+  {
+   "text": "In this town, mirrors don't show your reflection.",
+   "tag": "[mysterious]",
+   "pause": 0.32
+  },
+  {
+   "text": "They show what you'll be doing tomorrow.",
+   "tag": "[intrigued]",
+   "pause": 0.32
+  },
+  {
+   "text": "People use them to prepare for their future.",
+   "tag": "[calm]",
+   "pause": 0.32
+  },
+  {
+   "text": "But there's one rule.",
+   "tag": "[serious]",
+   "pause": 0.32
+  },
+  {
+   "text": "Never look into a broken mirror.",
+   "tag": "[ominous]",
+   "pause": 0.5
+  },
+  {
+   "text": "A girl named Ava accidentally dropped her bedroom mirror.",
+   "tag": "[tense]",
+   "pause": 0.32
+  },
+  {
+   "text": "It shattered into hundreds of pieces.",
+   "tag": "[dramatic]",
+   "pause": 0.4
+  },
+  {
+   "text": "And in every piece, she saw herself.",
+   "tag": "[uneasy]",
+   "pause": 0.32
+  },
+  {
+   "text": "But each reflection was doing something different.",
+   "tag": "[uneasy]",
+   "pause": 0.32
+  },
+  {
+   "text": "One was crying.",
+   "tag": "[quietly]",
+   "pause": 0.32
+  },
+  {
+   "text": "Another was running.",
+   "tag": "[tense]",
+   "pause": 0.32
+  },
+  {
+   "text": "And one was standing completely still.",
+   "tag": "[slowly]",
+   "pause": 0.4
+  },
+  {
+   "text": "Smiling.",
+   "tag": "[whispers]",
+   "pause": 0.5
+  },
+  {
+   "text": "Then every reflection suddenly looked directly at her.",
+   "tag": "[fearful]",
+   "pause": 0.32
+  },
+  {
+   "text": "All except one.",
+   "tag": "[quietly]",
+   "pause": 0.32
+  },
+  {
+   "text": "That reflection was pointing behind her.",
+   "tag": "[ominous]",
+   "pause": 0.5
+  },
+  {
+   "text": "Ava slowly turned around.",
+   "tag": "[slowly, scared]",
+   "pause": 0.32
+  },
+  {
+   "text": "Nobody was there.",
+   "tag": "[whispers]",
+   "pause": 0.4
+  },
+  {
+   "text": "When she looked back, every reflection had disappeared.",
+   "tag": "[fearful]",
+   "pause": 0.32
+  },
+  {
+   "text": "Except the smiling one.",
+   "tag": "[ominous]",
+   "pause": 0.4
+  },
+  {
+   "text": "It pressed its hand against the glass.",
+   "tag": "[tense]",
+   "pause": 0.32
+  },
+  {
+   "text": "And whispered,",
+   "tag": "[whispers]",
+   "pause": 0.4
+  },
+  {
+   "text": "“Tomorrow is already here.”",
+   "speak": "Tomorrow is already here.",
+   "voice": "reflection",
+   "tag": "[whispers, eerie]",
+   "fx": "whisper",
+   "pause": 0.6
+  },
+  {
+   "text": "Then the reflection stepped out.",
+   "tag": "[dramatic, fearful]",
+   "pause": 0.0
+  }
+ ],
+ "sound": {
+  "key": 48,
+  "music": [
+   [
+    "0",
+    "mystery"
+   ],
+   [
+    "L5",
+    "suspense"
+   ],
+   [
+    "L7",
+    "mystery"
+   ],
+   [
+    "L13",
+    "suspense"
+   ],
+   [
+    "L16",
+    "silence"
+   ],
+   [
+    "L18",
+    "dread"
+   ],
+   [
+    "L23",
+    "dread"
+   ]
+  ],
+  "cues": [
+   [
+    "0",
+    "shimmer",
+    0.25
+   ],
+   [
+    "L1",
+    "chime",
+    0.2,
+    {
+     "note": 86
+    }
+   ],
+   [
+    "L4",
+    "glass",
+    0.3,
+    {
+     "dur": 1.2
+    }
+   ],
+   [
+    "L4",
+    "sting",
+    0.12
+   ],
+   [
+    "L5+1.6",
+    "whoosh",
+    0.3,
+    {
+     "dur": 0.8
+    }
+   ],
+   [
+    "L6",
+    "glass",
+    0.6,
+    {
+     "dur": 2.0
+    }
+   ],
+   [
+    "L6",
+    "impact",
+    0.4
+   ],
+   [
+    "L6+0.1",
+    "crackle",
+    0.4,
+    {
+     "dur": 1.2,
+     "density": 200
+    }
+   ],
+   [
+    "L7",
+    "shimmer",
+    0.2,
+    {
+     "dur": 2.0
+    }
+   ],
+   [
+    "L10",
+    "run",
+    0.2,
+    {
+     "dur": 1.5
+    }
+   ],
+   [
+    "L12",
+    "sting",
+    0.15
+   ],
+   [
+    "L13",
+    "whoosh",
+    0.3
+   ],
+   [
+    "L13+0.2",
+    "impact",
+    0.25
+   ],
+   [
+    "L16",
+    "creak",
+    0.2,
+    {
+     "dur": 1.5
+    }
+   ],
+   [
+    "L17",
+    "heartbeat",
+    0.3,
+    {
+     "dur": 3.0,
+     "bpm": 80
+    }
+   ],
+   [
+    "L18",
+    "whisper",
+    0.18,
+    {
+     "dur": 3.0
+    }
+   ],
+   [
+    "L20",
+    "glass",
+    0.2,
+    {
+     "dur": 0.6
+    }
+   ],
+   [
+    "L23",
+    "glitch",
+    0.3,
+    {
+     "dur": 1.5
+    }
+   ],
+   [
+    "L23",
+    "boom",
+    0.35
+   ],
+   [
+    "L23+0.5",
+    "riser",
+    0.2,
+    {
+     "dur": 2.0
+    }
+   ]
+  ]
+ }
+}
