@@ -4,9 +4,10 @@
 - **Status:** complete  
 - **Duration:** 57.4 s · 1080×1920 · 30 fps · H.264/AAC  
 - **Rendered on:** runpod  
-- **Narration check:** word error rate 0.0 vs script  
+- **Narration check:** word error rate None vs script  
 - **Voice over music/SFX (worst line):** 12.7 dB  
 - **Issues:** none
+- **Notes:** narration not machine-verified: OpenRouter credit too low for the speech-to-text check
 
 ## YouTube Shorts title
 In This Roblox Town, Mirrors Show Tomorrow...
@@ -48,4 +49,4 @@ Text: "MY REFLECTION GOT OUT" (rendered: `InThisTown_Episode10_Mirrors_thumbnail
 > Then the reflection stepped out.
 
 ## Speech-to-text of the final video
-In this town, mirrors don't show your reflection. They show what you'll be doing tomorrow. People use them to prepare for their future, but there's one rule: never look into a broken mirror. A girl named Ava accidentally dropped her bedroom mirror. It shattered into hundreds of pieces, and in every piece, she saw herself. But each reflection was doing something different. One was crying, another was running, and one was standing completely still, smiling. Then every reflection suddenly looked directly at her, all except one. That reflection was pointing behind her. Ava slowly turned around. Nobody was there. When she looked back, every reflection had disappeared, except the smiling one. It pressed its hand against the glass and whispered, "Tomorrow is already here." Then the reflection stepped out.
+(transcription failed: HTTP Error 402: Payment Required)

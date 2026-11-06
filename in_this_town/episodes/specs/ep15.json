@@ -1,39 +1,334 @@
-{"number": 15, "title": "The 3:33 AM Train", "output": "InThisTown_Episode15_GhostTrain.mp4",
+{
+ "number": 15,
+ "title": "The 3:33 AM Train",
+ "output": "InThisTown_Episode15_GhostTrain.mp4",
  "youtube_title": "In This Roblox Town, a Train Arrives at 3:33 AM...",
  "tiktok_caption": "Nobody is allowed to board the 3:33 train. Grace did. 🚆✨",
  "hashtags": "#Roblox #RobloxStories #InThisTown #RobloxMystery #Shorts",
- "thumbnail_text": "DON'T BOARD THE 3:33", "thumbnail_rec": "A glowing silver train crossing a starfield at night, Grace in a lavender jacket at the window, carriages full of identical Graces behind her.",
- "cast": {"announcer": {"voice": "eric", "pitch": 0.92, "tempo": 0.92}},
- "highlights": {"3:33": "yellow", "MYSTERIOUS TRAIN": "cyan", "NOBODY": "red", "BOARD": "red", "GRACE": "yellow", "LAST BUS": "yellow", "SILVER TRAIN": "cyan",
-   "ASLEEP": "cyan", "STEPPED ABOARD": "red", "DISAPPEARED": "red", "THROUGH THE STARS": "cyan", "OPENED THEIR EYES": "red", "EXACTLY LIKE GRACE": "red",
-   "FINAL STOP": "red", "DIDN'T CHOOSE": "red", "ANOTHER GRACE": "red", "NEVER HAD": "red"},
+ "thumbnail_text": "DON'T BOARD THE 3:33",
+ "thumbnail_rec": "A glowing silver train crossing a starfield at night, Grace in a lavender jacket at the window, carriages full of identical Graces behind her.",
+ "cast": {
+  "announcer": {
+   "voice": "eric",
+   "pitch": 0.92,
+   "tempo": 0.92
+  }
+ },
+ "highlights": {
+  "3:33": "yellow",
+  "MYSTERIOUS TRAIN": "cyan",
+  "NOBODY": "red",
+  "BOARD": "red",
+  "GRACE": "yellow",
+  "LAST BUS": "yellow",
+  "SILVER TRAIN": "cyan",
+  "ASLEEP": "cyan",
+  "STEPPED ABOARD": "red",
+  "DISAPPEARED": "red",
+  "THROUGH THE STARS": "cyan",
+  "OPENED THEIR EYES": "red",
+  "EXACTLY LIKE GRACE": "red",
+  "FINAL STOP": "red",
+  "DIDN'T CHOOSE": "red",
+  "ANOTHER GRACE": "red",
+  "NEVER HAD": "red"
+ },
  "lines": [
-  {"text": "In this town, a mysterious train arrives every night at 3:33 AM.", "speak": "In this town, a mysterious train arrives every night at three thirty-three A.M.", "tag": "[mysterious]"},
-  {"text": "Nobody knows where it comes from.", "tag": "[mysterious]"},
-  {"text": "And nobody is allowed to board it.", "tag": "[ominous]", "pause": 0.45},
-  {"text": "But one night, a girl named Grace missed the last bus home.", "tag": "[curious]"},
-  {"text": "Then she heard a train approaching.", "tag": "[tense]", "pause": 0.35},
-  {"text": "The station clock read 3:33.", "speak": "The station clock read three thirty-three.", "tag": "[whispers]", "pause": 0.4},
-  {"text": "A beautiful silver train stopped in front of her.", "tag": "[in awe]"},
-  {"text": "Its doors opened.", "tag": "[quietly]", "pause": 0.35},
-  {"text": "Inside, every passenger was asleep.", "tag": "[uneasy]"},
-  {"text": "Grace stepped aboard.", "tag": "[tense]", "pause": 0.4},
-  {"text": "The train began moving.", "tag": "[tense]"},
-  {"text": "But when she looked outside, the town had disappeared.", "tag": "[uneasy]"},
-  {"text": "Instead, the train was traveling through the stars.", "tag": "[in awe]", "pause": 0.45},
-  {"text": "Suddenly, the passengers opened their eyes.", "tag": "[fearful]"},
-  {"text": "Every single one looked exactly like Grace.", "tag": "[fearful]", "pause": 0.4},
-  {"text": "An announcement echoed through the carriage.", "tag": "[tense]", "pause": 0.3},
-  {"text": "“FINAL STOP. THE LIFE YOU DIDN'T CHOOSE.”", "speak": "Final stop... The life you didn't choose.", "voice": "announcer", "tag": "[calm, announcement]", "fx": "radio", "pause": 0.5},
-  {"text": "The train stopped.", "tag": "[quietly]"},
-  {"text": "The doors opened.", "tag": "[quietly]", "pause": 0.35},
-  {"text": "And outside stood another Grace.", "tag": "[shocked]", "pause": 0.35},
-  {"text": "Holding a photograph of the family she'd never had.", "tag": "[whispers, sad]", "pause": 0.0}
+  {
+   "text": "In this town, a mysterious train arrives every night at 3:33 AM.",
+   "speak": "In this town, a mysterious train arrives every night at three thirty-three A.M.",
+   "tag": "[mysterious]"
+  },
+  {
+   "text": "Nobody knows where it comes from.",
+   "tag": "[mysterious]"
+  },
+  {
+   "text": "And nobody is allowed to board it.",
+   "tag": "[ominous]",
+   "pause": 0.45
+  },
+  {
+   "text": "But one night, a girl named Grace missed the last bus home.",
+   "tag": "[curious]"
+  },
+  {
+   "text": "Then she heard a train approaching.",
+   "tag": "[tense]",
+   "pause": 0.35
+  },
+  {
+   "text": "The station clock read 3:33.",
+   "speak": "The station clock read three thirty-three.",
+   "tag": "[whispers]",
+   "pause": 0.4
+  },
+  {
+   "text": "A beautiful silver train stopped in front of her.",
+   "tag": "[in awe]"
+  },
+  {
+   "text": "Its doors opened.",
+   "tag": "[quietly]",
+   "pause": 0.35
+  },
+  {
+   "text": "Inside, every passenger was asleep.",
+   "tag": "[uneasy]"
+  },
+  {
+   "text": "Grace stepped aboard.",
+   "tag": "[tense]",
+   "pause": 0.4
+  },
+  {
+   "text": "The train began moving.",
+   "tag": "[tense]"
+  },
+  {
+   "text": "But when she looked outside, the town had disappeared.",
+   "tag": "[uneasy]"
+  },
+  {
+   "text": "Instead, the train was traveling through the stars.",
+   "tag": "[in awe]",
+   "pause": 0.45
+  },
+  {
+   "text": "Suddenly, the passengers opened their eyes.",
+   "tag": "[fearful]"
+  },
+  {
+   "text": "Every single one looked exactly like Grace.",
+   "tag": "[fearful]",
+   "pause": 0.4
+  },
+  {
+   "text": "An announcement echoed through the carriage.",
+   "tag": "[tense]",
+   "pause": 0.3
+  },
+  {
+   "text": "“FINAL STOP. THE LIFE YOU DIDN'T CHOOSE.”",
+   "speak": "Final stop... The life you didn't choose.",
+   "voice": "announcer",
+   "tag": "[calm, announcement]",
+   "fx": "radio",
+   "pause": 0.5
+  },
+  {
+   "text": "The train stopped.",
+   "tag": "[quietly]"
+  },
+  {
+   "text": "The doors opened.",
+   "tag": "[quietly]",
+   "pause": 0.35
+  },
+  {
+   "text": "And outside stood another Grace.",
+   "tag": "[shocked]",
+   "pause": 0.35
+  },
+  {
+   "text": "Holding a photograph of the family she'd never had.",
+   "tag": "[whispers, sad]",
+   "pause": 0.0
+  }
  ],
  "tail": 3.4,
- "sound": {"key": 49, "music": [["0", "mystery"], ["L3", "mystery"], ["L4", "suspense"], ["L6", "wonder"], ["L8", "mystery"], ["L10", "cosmic"], ["L13", "suspense"], ["L16", "silence"], ["L17", "dread"], ["L19", "cosmic"]],
-  "cues": [["0", "horn", 0.3], ["0", "chug", 0.3, {"dur": 3.5, "rate": 3.5}], ["L1", "wind", 0.2, {"dur": 5}], ["L3", "chug", 0.15, {"dur": 2.0, "rate": 2}], ["L4", "chug", 0.25, {"dur": 3.5, "rate": 2.5}],
-   ["L4+1.0", "horn", 0.25], ["L5", "tick", 0.3, {"dur": 2.0}], ["L6", "whoosh", 0.3, {"dur": 1.6}], ["L7", "ding", 0.25], ["L7+0.2", "whoosh", 0.15, {"dur": 0.8}],
-   ["L9", "footsteps", 0.2, {"dur": 1.2}], ["L10", "chug", 0.3, {"dur": 8, "rate": 3.0}], ["L12", "shimmer", 0.3, {"dur": 3.5}], ["L13", "sting", 0.12],
-   ["L15", "ding", 0.3], ["L16", "hum", 0.12, {"dur": 3.0, "f": 60}], ["L17", "impact", 0.25], ["L18", "whoosh", 0.25, {"dur": 0.9}], ["L19", "shimmer", 0.2, {"dur": 3}], ["L20e", "chime", 0.25, {"note": 76}]]}
+ "sound": {
+  "key": 49,
+  "music": [
+   [
+    "0",
+    "mystery"
+   ],
+   [
+    "L3",
+    "mystery"
+   ],
+   [
+    "L4",
+    "suspense"
+   ],
+   [
+    "L6",
+    "wonder"
+   ],
+   [
+    "L8",
+    "mystery"
+   ],
+   [
+    "L10",
+    "cosmic"
+   ],
+   [
+    "L13",
+    "suspense"
+   ],
+   [
+    "L16",
+    "silence"
+   ],
+   [
+    "L17",
+    "dread"
+   ],
+   [
+    "L19",
+    "cosmic"
+   ]
+  ],
+  "cues": [
+   [
+    "0",
+    "horn",
+    0.3
+   ],
+   [
+    "0",
+    "chug",
+    0.3,
+    {
+     "dur": 3.5,
+     "rate": 3.5
+    }
+   ],
+   [
+    "L1",
+    "wind",
+    0.2,
+    {
+     "dur": 5
+    }
+   ],
+   [
+    "L3",
+    "chug",
+    0.15,
+    {
+     "dur": 2.0,
+     "rate": 2
+    }
+   ],
+   [
+    "L4",
+    "chug",
+    0.25,
+    {
+     "dur": 3.5,
+     "rate": 2.5
+    }
+   ],
+   [
+    "L4+1.0",
+    "horn",
+    0.25
+   ],
+   [
+    "L5",
+    "tick",
+    0.3,
+    {
+     "dur": 2.0
+    }
+   ],
+   [
+    "L6",
+    "whoosh",
+    0.3,
+    {
+     "dur": 1.6
+    }
+   ],
+   [
+    "L7",
+    "ding",
+    0.25
+   ],
+   [
+    "L7+0.2",
+    "whoosh",
+    0.15,
+    {
+     "dur": 0.8
+    }
+   ],
+   [
+    "L9",
+    "footsteps",
+    0.2,
+    {
+     "dur": 1.2
+    }
+   ],
+   [
+    "L10",
+    "chug",
+    0.3,
+    {
+     "dur": 8,
+     "rate": 3.0
+    }
+   ],
+   [
+    "L12",
+    "shimmer",
+    0.3,
+    {
+     "dur": 3.5
+    }
+   ],
+   [
+    "L13",
+    "sting",
+    0.12
+   ],
+   [
+    "L15",
+    "ding",
+    0.2
+   ],
+   [
+    "L16",
+    "hum",
+    0.05,
+    {
+     "dur": 3.0,
+     "f": 60
+    }
+   ],
+   [
+    "L17",
+    "impact",
+    0.25
+   ],
+   [
+    "L18",
+    "whoosh",
+    0.25,
+    {
+     "dur": 0.9
+    }
+   ],
+   [
+    "L19",
+    "shimmer",
+    0.2,
+    {
+     "dur": 3
+    }
+   ],
+   [
+    "L20e",
+    "chime",
+    0.25,
+    {
+     "note": 76
+    }
+   ]
+  ]
+ }
 }

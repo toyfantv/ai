@@ -4,9 +4,10 @@
 - **Status:** complete  
 - **Duration:** 58.2 s · 1080×1920 · 30 fps · H.264/AAC  
 - **Rendered on:** runpod  
-- **Narration check:** word error rate 0.031 vs script  
+- **Narration check:** word error rate None vs script  
 - **Voice over music/SFX (worst line):** 10.8 dB  
 - **Issues:** none
+- **Notes:** narration not machine-verified: OpenRouter credit too low for the speech-to-text check
 
 ## YouTube Shorts title
 In This Roblox Town, The Sun Never Sets...
@@ -46,4 +47,4 @@ Text: "THE SUN IS A LIGHTBULB" (rendered: `InThisTown_Episode09_ArtificialSun_th
 > **Giant:** “WHO LEFT THE TOY CITY TURNED ON?”
 
 ## Speech-to-text of the final video
-In this town, the sun never sets. It's always exactly noon. The sky is always blue, and nobody has ever seen nighttime. But one day, a boy named Lucas noticed something strange. The sun blinked just for a second. He thought he imagined it until it happened again. This time, the entire sky went black. For one second, Lucas saw thousands of stars and something enormous standing behind the sun. The next morning, Lucas climbed the tallest building in town. He pointed a telescope toward the sky and discovered the truth. The sun wasn't a sun. It was a giant light bulb hanging from an enormous ceiling. Suddenly, the light bulb flickered. A gigantic hand reached down from above, and a voice echoed through the town. Who left the Toy City turned on?
+(transcription failed: HTTP Error 402: Payment Required)

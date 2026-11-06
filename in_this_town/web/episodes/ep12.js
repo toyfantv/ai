@@ -126,7 +126,7 @@ const SHOTS = [
   { name: 'ghost', t0: () => L(2).start - 0.05, t1: () => L(3).start - 0.05, f: (u) => ({ pos: v3(lerp(-30, -34, u), 46, 20), look: v3(-50, 62, -70), fov: 56 }) },
   { name: 'warn', t0: () => L(3).start - 0.05, t1: () => EV.hall, f: (u) => ({ pos: HH(lerp(2.5, 2.0, u), 4.2, -9), look: HH(0, 3.4, -17), fov: 60 }) },
   { name: 'hallway', t0: () => EV.hall, t1: () => L(5).start - 0.05, f: (u) => ({ pos: HH(-2.5, 4.5, lerp(12, 8, u)), look: HH(0, 3, -14), fov: 60 }) },
-  { name: 'enter', t0: () => L(5).start - 0.05, t1: () => L(6).start - 0.05, f: (u) => ({ pos: EW(-1.4, 4.6, 1.8), look: EW(2.2, 3.2, -1.2), fov: 60 }) },
+  { name: 'enter', t0: () => L(5).start - 0.05, t1: () => L(6).start - 0.05, f: (u) => ({ pos: EW(1.4, 4.6, 1.9), look: EW(2.3, 3.4, -1.3), fov: 58 }) },
   { name: 'b13', t0: () => L(6).start - 0.05, t1: () => L(8).start - 0.05, f: (u) => ({ pos: EW(lerp(1.0, 1.3, u), 3.8, -1.43), look: EW(2.32, 3.79, -1.43), fov: lerp(36, 30, u) }) },
   { name: 'display', t0: () => L(8).start - 0.05, t1: () => L(9).start - 0.05, f: (u) => ({ pos: EW(1.4, 4.2, -1.8), look: EW(0, 5.6, 2.33), fov: 44 }) },
   { name: 'nonstop', t0: () => L(9).start - 0.05, t1: () => L(10).start - 0.05, f: (u) => ({ pos: EW(-0.5, 4.9, 2.0), look: EW(-1.3, 4.7, 0.2), fov: 50 }) },

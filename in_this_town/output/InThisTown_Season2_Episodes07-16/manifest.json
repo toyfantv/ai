@@ -7,9 +7,12 @@
       "duration_s": 60.4,
       "qc": "pass",
       "issues": [],
-      "wer": 0.034,
+      "wer": null,
       "voice_margin_db": 12.2,
-      "render": "runpod"
+      "render": "runpod",
+      "notes": [
+        "narration not machine-verified: OpenRouter credit too low for the speech-to-text check"
+      ]
     },
     "8": {
       "title": "Everyone Has a Floating Number",
@@ -18,9 +21,12 @@
       "duration_s": 57.97,
       "qc": "pass",
       "issues": [],
-      "wer": 0.015,
+      "wer": null,
       "voice_margin_db": 11.4,
-      "render": "runpod"
+      "render": "runpod",
+      "notes": [
+        "narration not machine-verified: OpenRouter credit too low for the speech-to-text check"
+      ]
     },
     "9": {
       "title": "The Sun Never Sets",
@@ -29,9 +35,12 @@
       "duration_s": 58.23,
       "qc": "pass",
       "issues": [],
-      "wer": 0.031,
+      "wer": null,
       "voice_margin_db": 10.8,
-      "render": "runpod"
+      "render": "runpod",
+      "notes": [
+        "narration not machine-verified: OpenRouter credit too low for the speech-to-text check"
+      ]
     },
     "10": {
       "title": "Every Mirror Shows Tomorrow",
@@ -40,9 +49,12 @@
       "duration_s": 57.37,
       "qc": "pass",
       "issues": [],
-      "wer": 0.0,
+      "wer": null,
       "voice_margin_db": 12.7,
-      "render": "runpod"
+      "render": "runpod",
+      "notes": [
+        "narration not machine-verified: OpenRouter credit too low for the speech-to-text check"
+      ]
     },
     "11": {
       "title": "The Stars Fall Every Night",
@@ -109,6 +121,20 @@
       "issues": [],
       "wer": null,
       "voice_margin_db": 15.0,
+      "render": "runpod",
+      "notes": [
+        "narration not machine-verified: OpenRouter credit too low for the speech-to-text check"
+      ]
+    },
+    "15": {
+      "title": "The 3:33 AM Train",
+      "status": "complete",
+      "file": "InThisTown_Episode15_GhostTrain.mp4",
+      "duration_s": 58.3,
+      "qc": "pass",
+      "issues": [],
+      "wer": null,
+      "voice_margin_db": 15.6,
       "render": "runpod",
       "notes": [
         "narration not machine-verified: OpenRouter credit too low for the speech-to-text check"

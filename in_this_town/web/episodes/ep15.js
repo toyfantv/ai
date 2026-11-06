@@ -143,7 +143,7 @@ const SHOTS = [
   { name: 'asleep', t0: () => L(8).start - 0.05, t1: () => L(9).start - 0.05, f: (u) => ({ pos: IW(lerp(7, 5, u), 5.4, -0.6), look: IW(-12, 2.8, 0.8), fov: 60 }) },
   { name: 'board', t0: () => L(9).start - 0.05, t1: () => L(10).start - 0.05, f: (u) => ({ pos: v3(7.5, 5, -17), look: v3(7, 3.4, -3), fov: 56 }) },
   { name: 'moving', t0: () => L(10).start - 0.05, t1: () => L(11).start - 0.05, f: (u) => ({ pos: v3(-30, 4, -14), look: v3(20, 4, 0), fov: 66 }) },
-  { name: 'look-out', t0: () => L(11).start - 0.05, t1: () => EV.space, f: (u) => ({ pos: IW(-2.4, 4.6, 0.8), look: IW(-0.5, 4.2, 6), fov: 60 }) },
+  { name: 'look-out', t0: () => L(11).start - 0.05, t1: () => EV.space, f: (u) => ({ pos: IW(lerp(-1.2, -0.6, u), 4.8, -1.8), look: IW(1.0, 4.6, 6), fov: 62 }) },
   { name: 'stars', t0: () => EV.space, t1: () => L(13).start - 0.05, f: (u, t) => { const tx = W.train.position; return { pos: tx.clone().add(v3(lerp(-20, 30, u), lerp(8, 14, u), 34)), look: tx.clone().add(v3(-20, 3, 0)), fov: 66 }; } },
   { name: 'wake', t0: () => L(13).start - 0.05, t1: () => L(14).start - 0.05, f: (u) => ({ pos: IW(lerp(4, 2, u), 4.8, -1.3), look: IW(-14, 3.6, 1.8), fov: 58 }) },
   { name: 'all-grace', t0: () => L(14).start - 0.05, t1: () => L(15).start - 0.05, f: (u) => { const p = W.pass[4].root.position; return { pos: p.clone().add(v3(0.3, 3.7, lerp(2.9, 2.5, u))), look: p.clone().add(v3(0, 3.3, 0)), fov: 52 }; } },

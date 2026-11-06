@@ -156,7 +156,7 @@ function renderAt(t) {
     m.rotation.set(-Math.PI / 2, 0, u.spin + (1 - k) * 3);
     m.material.map = W.studio.rts[shardKind(m, t)].texture;
   });
-  W.cold.intensity = after ? lerp(0, 30, smooth(EV.shatter, EV.shatter + 2, t)) : 0;
+  W.cold.intensity = after ? lerp(0, 8, smooth(EV.shatter, EV.shatter + 2, t)) : 0;
   W.Hs.warmUp.intensity = after ? lerp(22, 10, smooth(L(13).start, L(16).start, t)) : 22;
   // Ava
   const A = W.ava;

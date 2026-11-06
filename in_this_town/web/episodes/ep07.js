@@ -134,7 +134,7 @@ function buildWorld() {
   // Ethan's house on giant legs
   const hero = buildHeroHouse(ctx.scene, 0, 0);
   hero.warmUp.intensity = 26; hero.warmDown.intensity = 18;
-  const fill = new THREE.PointLight('#9fb4ff', 30, 12, 1.2); fill.position.set(0, 12.2, 8.6); hero.group.add(fill); W.fill = fill;
+  const fill = new THREE.PointLight('#9fb4ff', 9, 12, 1.4); fill.position.set(0, 12.2, 8.6); hero.group.add(fill); W.fill = fill;
   const heroLegs = [], heroHips = [];
   for (const s of [-1, 1]) for (let k = 0; k < 4; k++) { heroLegs.push(makeLeg(ctx.scene, 78, 84, 1.7, legMat)); heroHips.push({ local: v3(s * 7.4, -0.3, -5.5 + k * 3.6), s, k }); }
   // underside plate so the house reads as a body
@@ -278,7 +278,7 @@ function renderAt(t) {
   W.clockFace.material.map = W.clockTex[t >= EV.minute ? 1 : 0];
   W.floorCrack.material.opacity = smooth(EV.floor - 0.8, EV.floor + 0.6, t) * (0.7 + 0.3 * Math.sin(t * 9));
   W.floorCrack.visible = t > EV.floor - 0.8;
-  W.fill.color.set(t > EV.floor - 0.8 ? '#ff4030' : '#9fb4ff'); W.fill.intensity = t > EV.floor - 0.8 ? 45 : 30;
+  W.fill.color.set(t > EV.floor - 0.8 ? '#ff4030' : '#9fb4ff'); W.fill.intensity = t > EV.floor - 0.8 ? 16 : 9;
   // leg tip tapping the window during the scratch shot
   const tap = Math.abs(Math.sin(t * 7)) * 0.6;
   W.tip.update(HW(3.5, 15.5, 9.5), HW(1.2 - tap * 0.4, 12.2 + tap * 0.3, 7.15), v3(0, 1, 0));

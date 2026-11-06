@@ -100,7 +100,7 @@ function build() {
   // Ruby + her golden star
   W.ruby = makeCharacter({ ...CAST.ruby, caustic: false });
   ctx.scene.add(W.ruby.root);
-  W.gold = makeStar(1.6, '#ffd35a'); ctx.scene.add(W.gold); W.goldGlow = glowSprite('#ffc840', 4.5, 0.5); ctx.scene.add(W.goldGlow);
+  W.gold = makeStar(1.6, '#ffd35a'); ctx.scene.add(W.gold); W.goldGlow = glowSprite('#ffc840', 3.5, 0.35); ctx.scene.add(W.goldGlow);
   W.goldLight = new THREE.PointLight('#ffcf60', 0, 16, 1.4); ctx.scene.add(W.goldLight);
   W.streetLights = [0, 1, 2, 3].map((i) => { const l = new THREE.PointLight('#ffcf60', 0, 70, 1.2); l.position.set(30 + i * 30, 8, 0); ctx.scene.add(l); return l; });
   // the rift + creature face in the sky
@@ -122,7 +122,7 @@ const SHOTS = [
   { name: 'jars', t0: () => L(4).start - 0.05, t1: () => L(5).start - 0.05, f: (u) => { const p = W.npcs[2].root.position; return { pos: p.clone().add(v3(lerp(5, 4, u), 4.6, 9)), look: p.clone().add(v3(0, 2.8, 0)), fov: 52 }; } },
   { name: 'jar-close', t0: () => L(5).start - 0.05, t1: () => L(6).start - 0.05, f: (u) => { const j = new THREE.Vector3(); W.npcs[2].jar.getWorldPosition(j); return { pos: j.clone().add(v3(1.2, 1.0, lerp(4.6, 3.8, u))), look: j, fov: 44 }; } },
   { name: 'rule', t0: () => L(6).start - 0.05, t1: () => L(8).start - 0.05, f: (u) => { const e = easeInOut(u); return { pos: v3(lerp(12, 9.6, e), lerp(7, 5.4, e), lerp(14, -5, e)), look: v3(9.1, lerp(7, 4.2, e), -16), fov: lerp(60, 52, e) }; } },
-  { name: 'window', t0: () => L(8).start - 0.05, t1: () => L(9).start - 0.05, f: (u) => ({ pos: H(lerp(2.6, 2.2, u), 13.3, 1.6), look: H(0.6, 9.4, 8.4), fov: 58 }) },
+  { name: 'window', t0: () => L(8).start - 0.05, t1: () => L(9).start - 0.05, f: (u) => ({ pos: H(lerp(3.4, 3.0, u), 13.4, 2.2), look: H(0.4, 9.4, 8.4), fov: 58 }) },
   { name: 'gold-close', t0: () => L(9).start - 0.05, t1: () => L(10).start - 0.05, f: (u) => ({ pos: H(0.4, 10.6, lerp(4.4, 5.4, u)), look: W.gold.position.clone(), fov: 40 }) },
   { name: 'wish', t0: () => L(10).start - 0.05, t1: () => L(12).start - 0.05, f: (u) => ({ pos: H(lerp(0.2, 0.1, u), 12.3, lerp(8.6, 8.1, u)), look: H(0, 11.8, 5.3), fov: 44 }) },
   { name: 'shake', t0: () => L(12).start - 0.05, t1: () => L(13).start - 0.05, f: (u) => ({ pos: v3(70, 3, 14), look: v3(60, 40, -80), fov: 74 }) },
@@ -176,7 +176,7 @@ function renderAt(t) {
   W.gold.position.copy(gp); W.goldGlow.position.copy(gp); W.goldLight.position.copy(gp).add(v3(0, 0.5, -1));
   const pulse = 1 + Math.sin(t * 6) * 0.08;
   W.gold.scale.setScalar(1.6 * pulse * (t > L(11).start && holding ? 1.4 : 1)); W.goldGlow.material.opacity = 0.45;
-  W.gold.visible = W.goldGlow.visible = t > EV.window - 0.1 && t < EV.shake + 0.4; W.goldLight.intensity = W.gold.visible ? 14 : 0;
+  W.gold.visible = W.goldGlow.visible = t > EV.window - 0.1 && t < EV.shake + 0.4; W.goldLight.intensity = W.gold.visible ? 6 : 0;
   // neighbours with jars
   W.npcs.forEach((c, i) => { pose(c, t > EV.thousands ? 'lookUp' : 'idle', t + i, { amt: 0.5 }); c.arms[1].rotation.x = -0.9; c.setFace(t > EV.escape ? 'scared' : 'smile'); c.root.visible = t < EV.window || t > EV.shake; });
   // rift + face

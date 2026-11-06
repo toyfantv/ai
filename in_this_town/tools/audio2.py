@@ -241,7 +241,7 @@ def main():
         rms = np.sqrt(np.mean(a[np.abs(a) > 0.01] ** 2)) if np.any(np.abs(a) > 0.01) else 1.0
         a = np.clip(a * (0.12 / rms), -0.98, 0.98)
         fx = ln.get('fx')
-        if fx == 'radio': a = bp(a, 350, 3500) * 1.4
+        if fx == 'radio': a = bp(a, 350, 3500); a = np.clip(a * (0.14 / (np.sqrt(np.mean(a[np.abs(a) > 0.005] ** 2)) + 1e-9)), -0.98, 0.98)
         if fx == 'giant': a = reverb(a, 3.0, 0.45)
         if fx == 'whisper': a = reverb(a, 1.6, 0.3)
         if fx == 'chorus':  # a classroom of identical voices: detuned, delayed copies
