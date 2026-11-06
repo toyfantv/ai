@@ -3,6 +3,7 @@
 import * as THREE from 'three';
 import { U, clamp, lerp, easeOut, noise1, v3 } from './core.js';
 import { buildSky } from './sky.js';
+import { loadAvatars } from './roblox.js';
 import { winMat, lampMat } from './town.js';
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
@@ -39,8 +40,11 @@ export const DUSK = P({ top: '#2a2f6e', horizon: '#ff9a6a', haze: '#d89a8a', sun
   caus: '#ffffff', causI: 0, exposure: 1.0, vig: 0.35, win: 0.8, lamp: 1.2, fogNear: 200, fogFar: 700, bloom: 0.35 });
 
 export async function initStage(ep) {
-  const TL = await (await fetch(`/build/${ep}/timeline.json`)).json();
+  const tr = await fetch(`/build/${ep}/timeline.json`);
+  // check pages (e.g. episodes/avatars.js) have no narration: fall back to an empty 6 s timeline
+  const TL = tr.ok ? await tr.json() : { duration: 6, lines: [], captions: [] };
   await document.fonts.load('900 100px ITTInter');
+  await loadAvatars();   // real Roblox avatars from web/assets/avatars (none -> procedural cast)
   const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true, powerPreference: 'high-performance' });
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(1080, 1920);

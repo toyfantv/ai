@@ -21,6 +21,7 @@ import time
 import urllib.request
 
 MAX_PRICE = float(os.environ.get("RUNPOD_MAX_PRICE", "2.00"))
+MAX_BUNDLE = int(float(os.environ.get("RUNPOD_MAX_BUNDLE_MB", "4")) * 1e6)
 KEY = os.environ.get("RUNPOD_API_KEY", "proxy-injected")
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -56,6 +57,8 @@ def bundle(ep):
     with tarfile.open(fileobj=buf, mode="w:gz") as tf:
         for p in ["web/engine", "web/index.html", f"web/episodes/{ep}.js", "web/fonts/README.txt", "render.js", "package.json", "tools/runpod", f"build/{ep}/timeline.json"]:
             tf.add(os.path.join(ROOT, p), p, filter=lambda ti: None if ti.name.endswith(".otf") else ti)
+        if os.path.isdir(os.path.join(ROOT, "web/assets/avatars")):   # real Roblox avatars (tools/roblox_avatar.py)
+            tf.add(os.path.join(ROOT, "web/assets/avatars"), "web/assets/avatars")
     return base64.b64encode(buf.getvalue()).decode()
 
 
@@ -71,6 +74,9 @@ def launch(ep):
     pw = json.load(open(os.path.join(ROOT, "node_modules", "playwright", "package.json")))["version"] \
         if os.path.exists(os.path.join(ROOT, "node_modules", "playwright")) else os.environ.get("PW_VERSION", "1.63.0")
     code = bundle(ep)
+    if len(code) > MAX_BUNDLE:
+        # the bundle travels in an environment variable; too many avatar textures make it too big
+        print(f"BUNDLE_TOO_BIG {len(code) / 1e6:.1f} MB > {MAX_BUNDLE / 1e6:.1f} MB (avatars?); render locally"); sys.exit(2)
     start = ("set -e; mkdir -p /w && cd /w && echo \"$CODE_B64\" | base64 -d | tar xz; "
              "npx -y playwright@$PW_VERSION install --with-deps chromium >/w/install.log 2>&1 || true; "
              "if [ ! -f /usr/share/fonts/opentype/inter/Inter-Black.otf ]; then mkdir -p /tmp/f && cd /tmp/f && "

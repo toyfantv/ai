@@ -2,6 +2,7 @@
 import * as THREE from 'three';
 import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
 import { mat } from './core.js';
+import { hasAvatar, makeAvatarCharacter } from './roblox.js';
 
 const geoCache = new Map();
 function rbox(w, h, d, r = 0.12) {
@@ -92,6 +93,8 @@ function drawFace(expr, female) {
 
 // ---------- character ----------
 export function makeCharacter(spec) {
+  // a real Roblox avatar downloaded with tools/roblox_avatar.py replaces the procedural body
+  if (hasAvatar(spec.avatar)) return makeAvatarCharacter(spec);
   const s = {
     skin: '#f1c7a1', shirt: '#4a90d9', sleeves: null, pants: '#2d3b55', shoes: '#222222',
     hair: '#2a1d14', hairStyle: 'short', female: false, hood: false, scale: 1, caustic: true, ...spec,
@@ -271,6 +274,7 @@ export function pose(ch, name, t, k = {}) {
   if (ch.lid) ch.lid.visible = !['calm', 'creepy', 'shock', 'sleep'].includes(ch.expr) && ((t + ch.blinkPh) % 3.3) < 0.11;
   const [L, R] = ch.legs, [AL, AR] = ch.arms;
   const breathe = Math.sin(t * 2.1) * 0.025;
+  const H0 = ch.hipY ?? 2;   // hip height: 2 for procedural bodies, measured for real avatars
   switch (name) {
     case 'idle':
       ch.torso.rotation.x = breathe; AL.rotation.z = -0.06; AR.rotation.z = 0.06;
@@ -295,11 +299,11 @@ export function pose(ch, name, t, k = {}) {
       const sp = run ? 13 : 7.5, amp = run ? 1.0 : 0.55;
       const p = Math.sin(t * sp);
       L.rotation.x = p * amp; R.rotation.x = -p * amp; AL.rotation.x = -p * amp * 0.9; AR.rotation.x = p * amp * 0.9;
-      ch.hips.position.y = 2 + Math.abs(Math.cos(t * sp)) * (run ? 0.28 : 0.1);
+      ch.hips.position.y = H0 + Math.abs(Math.cos(t * sp)) * (run ? 0.28 : 0.1);
       ch.torso.rotation.x = run ? 0.22 : 0.04; break;
     }
     case 'sit':
-      ch.hips.position.y = 2 - 1.55; L.rotation.x = -1.45; R.rotation.x = -1.45;
+      ch.hips.position.y = H0 - 1.55 * (H0 / 2); L.rotation.x = -1.45; R.rotation.x = -1.45;
       ch.torso.rotation.x = breathe; AL.rotation.x = -0.9; AR.rotation.x = -0.9; break;
     case 'lean': // parent leaning toward someone
       ch.torso.rotation.x = (k.amt ?? 0.35); ch.neck.rotation.x = -(k.amt ?? 0.35) * 0.6; ch.neck.rotation.z = (k.tilt ?? 0.12);

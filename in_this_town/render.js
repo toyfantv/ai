@@ -8,7 +8,7 @@ const path = require('path');
 const { chromium } = require('playwright');
 
 const ROOT = __dirname;
-const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.json': 'application/json', '.css': 'text/css' };
+const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.json': 'application/json', '.css': 'text/css', '.png': 'image/png', '.jpg': 'image/jpeg', '.obj': 'text/plain', '.mtl': 'text/plain' };
 
 function serve() {
   return new Promise((res) => {

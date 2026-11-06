@@ -84,6 +84,39 @@ python3 tools/sheet.py build/ep06 build/ep06/sheet.jpg 1 5 10 20 30 40 50 60
 dread → crack), the shot list (camera paths keyed to narration lines), character blocking, captions and the
 camera-shake and flash overlays.
 
+## Real Roblox avatars
+
+Any cast member can be drawn with a real Roblox avatar instead of the procedural body. Download it once
+on a machine that is signed in to Roblox, and every episode that uses that `CAST` entry picks it up:
+
+```bash
+export ROBLOSECURITY='<value of your .ROBLOSECURITY browser cookie>'   # an alt account is fine
+python tools/roblox_avatar.py fetch ethan --user SomeUsername           # or --user-id 123, or --asset <id>
+node render.js stills avatars 0.5 0.5 1.5 2.5 3.5 4.5 5.5               # check: real vs procedural, 6 poses
+```
+
+No cookie? In Roblox Studio, select the character Model, right-click > Export Selection > .obj, then
+`python tools/roblox_avatar.py import ethan path/to/export/`.
+
+* Files go to `web/assets/avatars/<key>/` (OBJ, MTL, textures, `avatar.json`) and `index.json`. Each
+  `CAST` entry has `avatar: '<its name>'`, so fetching `ethan` replaces Ethan. Extras keep the procedural
+  look unless their spec sets `avatar:`. `?avatars=0` on the page URL turns them all off.
+* `web/engine/roblox.js` splits the mesh onto the procedural rig (hips, torso, neck, arms, legs), so
+  `pose()`, walk/run cycles, head turns and props attached to `ch.neck` / `ch.torso` work unchanged.
+  Body parts named like Roblox's (`Head`, `UpperTorso`, `LeftUpperArm`, `Left Leg`, ...) go to their bone
+  whole. Hats and hair centred above the neck follow the head. Layered clothing and other accessories are
+  cut per triangle at the shoulders, hips and neck.
+* Limits: a real avatar keeps its own Roblox face, so `setFace()` expressions and blinks don't show on it;
+  costume overrides in an episode (`{...CAST.x, shirt: ...}`) don't apply; R15 elbows and knees stay
+  straight (the rig has one joint per limb). If a limb splits wrongly, set `landmarks`
+  (`hipY`, `neckY`, `shoulderX`), `head_only` or `yaw` in `avatar.json`; the tool's docstring lists them.
+* RunPod: avatars travel in the code bundle. Above 4 MB (`RUNPOD_MAX_BUNDLE_MB`) the launch refuses and
+  `make_episode.sh` renders locally.
+* Tested here on a synthetic R15 avatar in the 3D-thumbnail format (named parts, a hat, a backpack, a
+  layered jacket, a textured face), through both the `fetch` save path and `import`. The live Roblox
+  download itself is untested: Roblox's 3D endpoints need a signed-in cookie and aren't reachable from
+  the cloud container.
+
 ## Making the next episode
 
 Copy the episode JSON (lines + captions), then copy `web/episodes/ep06.js` and change its palettes, shots and
