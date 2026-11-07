@@ -12,4 +12,7 @@ export const CAST = {
   max: { avatar: 'max', skin: '#eec09a', shirt: '#2a5ad8', collar: '#1a4ab0', pants: '#7a7a82', shoes: '#222222', hair: '#141417', hairStyle: 'spiky' },
   grace: { avatar: 'grace', skin: '#f4cca6', shirt: '#b39ddb', collar: '#9a84c8', pants: '#1b1b22', shoes: '#ffffff', hair: '#6b4226', hairStyle: 'wavy', female: true, acc: ['beanie:#7a5acb'], accent: '#ffffff' },
   leo: { avatar: 'leo', skin: '#f6d2b0', shirt: '#d83a3a', pocket: '#c02e2e', hood: true, pants: '#2f5aa8', shoes: '#ffffff', hair: '#f2d06a', hairStyle: 'bacon', decal: 'star', decalColor: '#ffffff' },
+  // Opt-in real-avatar characters (the alternative route; procedural bodies stay the default): an episode uses one by
+  // name. Farm cast members, exported with tools/blender_avatar.py (README, "Real Roblox avatars").
+  emily: { avatar: 'farm_emma', skin: '#f2c79a', shirt: '#ece6d6', pants: '#2f5aa8', shoes: '#ffffff', hair: '#e8c040', hairStyle: 'wavy', female: true },
 };

@@ -57,6 +57,10 @@ available, or the pod can't get hardware WebGL, `make_episode.sh` renders locall
 GPU and CPU frames are identical. Episode 6 rendered in minutes on an RTX 4000 Ada ($0.18–0.24/hr) instead of
 about 25 minutes on a 4-core CPU.
 
+A real avatar's textures may not fit on a pod: the bundle travels in an env var, and the pod API answers 500 with
+`invalid character 'I'` at 1.25 MB (0.06 MB is fine). `launch` stops above 1 MB; render those episodes locally with
+`node render.js frames <ep> 30 <start> <end> 1` in a few parallel workers.
+
 ### Mix
 
 Every voice line is levelled to the same loudness. Music ducks up to 15 dB and effects up to 15 dB under speech
@@ -86,6 +90,9 @@ camera-shake and flash overlays.
 
 ## Real Roblox avatars
 
+This is an alternative, not the default: the procedural blocky bodies stay the look of the series. An episode opts in
+by using a `CAST` entry that names an avatar (`CAST.emily` is the first, Episode 17). Don't repoint existing entries.
+
 Any cast member can be drawn with a real Roblox avatar instead of the procedural body. Download it once
 on a machine that is signed in to Roblox, and every episode that uses that `CAST` entry picks it up:
 
@@ -97,6 +104,18 @@ node render.js stills avatars 0.5 0.5 1.5 2.5 3.5 4.5 5.5               # check:
 
 No cookie? In Roblox Studio, select the character Model, right-click > Export Selection > .obj, then
 `python tools/roblox_avatar.py import ethan path/to/export/`.
+
+From the video-farm cast, with no clicks in Studio: capture the character in Play and rebuild it in Blender
+(`tools/blender/still_capture.py`, `still_build.py` in video-farm), then bake that `scene.blend` to an OBJ the rig can split:
+
+```bash
+blender -b scene.blend --python tools/blender_avatar.py -- <character> <out dir> split:acc_Sweater=1.06 ...
+python tools/roblox_avatar.py import farm_emma <out dir>
+```
+
+`tools/blender_avatar.py` bakes each part's colour to a JPG and names the groups like Roblox parts so they bind whole.
+Options: `<part>=#rrggbb` (a skin-coloured cover), `split:<part>=<x>` (cut layered clothing at the shoulders),
+`gain:<part>=r,g,b`, `fill:<name>=x,y0,y1,z,#rrggbb` (a filler slab for a gap). Check the six poses after every import.
 
 * Files go to `web/assets/avatars/<key>/` (OBJ, MTL, textures, `avatar.json`) and `index.json`. Each
   `CAST` entry has `avatar: '<its name>'`, so fetching `ethan` replaces Ethan. Extras keep the procedural

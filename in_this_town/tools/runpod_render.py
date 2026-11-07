@@ -21,7 +21,8 @@ import time
 import urllib.request
 
 MAX_PRICE = float(os.environ.get("RUNPOD_MAX_PRICE", "2.00"))
-MAX_BUNDLE = int(float(os.environ.get("RUNPOD_MAX_BUNDLE_MB", "4")) * 1e6)
+# The pod API takes the bundle as an env var and answers 500 when it is too big: 0.06 MB went through, 1.25 MB did not (2026-11-06).
+MAX_BUNDLE = int(float(os.environ.get("RUNPOD_MAX_BUNDLE_MB", "1")) * 1e6)
 KEY = os.environ.get("RUNPOD_API_KEY", "proxy-injected")
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -57,8 +58,8 @@ def bundle(ep):
     with tarfile.open(fileobj=buf, mode="w:gz") as tf:
         for p in ["web/engine", "web/index.html", f"web/episodes/{ep}.js", "web/fonts/README.txt", "render.js", "package.json", "tools/runpod", f"build/{ep}/timeline.json"]:
             tf.add(os.path.join(ROOT, p), p, filter=lambda ti: None if ti.name.endswith(".otf") else ti)
-        if os.path.isdir(os.path.join(ROOT, "web/assets/avatars")):   # real Roblox avatars (tools/roblox_avatar.py)
-            tf.add(os.path.join(ROOT, "web/assets/avatars"), "web/assets/avatars")
+        if os.path.isdir(os.path.join(ROOT, "web/assets")):   # real Roblox avatars (tools/roblox_avatar.py), covers
+            tf.add(os.path.join(ROOT, "web/assets"), "web/assets")
     return base64.b64encode(buf.getvalue()).decode()
 
 

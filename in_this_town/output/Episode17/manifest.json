@@ -1,0 +1,18 @@
+{
+  "episodes": {
+    "17": {
+      "title": "The Midnight Package",
+      "status": "complete",
+      "file": "InThisTown_Episode17_MidnightPackage.mp4",
+      "duration_s": 64.9,
+      "qc": "pass",
+      "issues": [],
+      "wer": null,
+      "voice_margin_db": 10.1,
+      "render": "local",
+      "notes": [
+        "narration not machine-verified: OpenRouter credit too low for the speech-to-text check"
+      ]
+    }
+  }
+}

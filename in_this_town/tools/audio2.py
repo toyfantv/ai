@@ -130,6 +130,14 @@ def riser(d=3.0):
     return x * (t / d) ** 1.5
 
 
+def knock():
+    """One knuckle on a wooden door."""
+    n = int(SR * 0.2)
+    t = np.arange(n) / SR
+    x = (np.sin(2 * np.pi * 185 * t) + 0.45 * np.sin(2 * np.pi * 420 * t)) * np.exp(-t * 34) + 0.5 * rng.standard_normal(n) * np.exp(-t * 170)
+    return reverb(x * 0.8, 0.3, 0.18)
+
+
 def stomp():
     return impact(1.4, 70, 35, 0.5)
 
@@ -165,7 +173,7 @@ def heartbeats(d=4.0, bpm=90):
 
 SFX = {
     'impact': lambda o: impact(o.get('dur', 3.0), 100, 28, 0.7), 'boom': lambda o: impact(4.0, 130, 22, 1.1),
-    'stomp': lambda o: stomp(), 'whoosh': lambda o: whoosh(o.get('dur', 1.2)), 'shimmer': lambda o: shimmer(o.get('dur', 2.5)),
+    'stomp': lambda o: stomp(), 'knock': lambda o: knock(), 'whoosh': lambda o: whoosh(o.get('dur', 1.2)), 'shimmer': lambda o: shimmer(o.get('dur', 2.5)),
     'chime': lambda o: reverb(bell(hz(o.get('note', 88)), 2.5), 2.0, 0.4), 'footsteps': lambda o: footsteps(o.get('dur', 2.0), o.get('rate', 2.2)),
     'run': lambda o: footsteps(o.get('dur', 2.0), 8.5), 'heartbeat': lambda o: heartbeats(o.get('dur', 4.0), o.get('bpm', 90)),
     'creak': lambda o: creak(o.get('dur', 1.6)), 'wind': lambda o: wind(o.get('dur', 6.0)), 'rumble': lambda o: rumble(o.get('dur', 6.0)),

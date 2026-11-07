@@ -12,6 +12,7 @@ import os
 import re
 import subprocess
 import sys
+import tempfile
 import urllib.request
 import uuid
 
@@ -28,7 +29,7 @@ def decodes(path):
 
 
 def transcribe(path):
-    mp3 = f'/tmp/qc_{uuid.uuid4().hex}.mp3'
+    mp3 = os.path.join(tempfile.gettempdir(), f'qc_{uuid.uuid4().hex}.mp3')
     subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', path, '-vn', '-ac', '1', '-ar', '16000', '-b:a', '48k', mp3], check=True)
     b = uuid.uuid4().hex
     body = (f'--{b}\r\nContent-Disposition: form-data; name="model"\r\n\r\nelevenlabs/scribe-v2\r\n'
