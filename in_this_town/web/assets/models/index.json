@@ -828,5 +828,135 @@
     "url": "",
     "desc": "a futuristic white control chair on a dark pedestal with cyan neon trims and holographic armrest panels",
     "kind": "prop"
+  },
+  "bed_chart": {
+    "author": "toyfantv",
+    "desc": "a clipboard patient chart with a readable name for the foot of a bed",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep27",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "crt_tv": {
+    "author": "toyfantv",
+    "desc": "a ceiling-hung hospital CRT television on a pole, its screen ready for a render target",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep27",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "endless_ward": {
+    "author": "toyfantv",
+    "desc": "instanced endless rows of occupied hospital beds with sleeping patients",
+    "kind": "set",
+    "licence": "own",
+    "made_for": "ep27",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "fluor_panel": {
+    "author": "toyfantv",
+    "desc": "a recessed fluorescent ceiling light panel that dims and flickers",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep27",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "hospital_bed": {
+    "author": "toyfantv",
+    "desc": "a white steel hospital bed with side rails, wheels and a mint blanket",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep27",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "hospital_block": {
+    "author": "toyfantv",
+    "desc": "a derelict five-storey hospital block (Willow Creek General) whose windows switch on",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep27",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "hospital_cabinet": {
+    "author": "toyfantv",
+    "desc": "a white bedside hospital cabinet",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep27",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "iv_pole": {
+    "author": "toyfantv",
+    "desc": "a steel IV drip stand with a bag",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep27",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "notice_sign": {
+    "author": "toyfantv",
+    "desc": "a demolition notice sign board with custom lines",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep27",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "pa_speaker": {
+    "author": "toyfantv",
+    "desc": "a round ceiling PA loudspeaker grille",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep27",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "porcelain_nurse": {
+    "author": "toyfantv",
+    "desc": "an original faceless nurse in a white uniform and cap with a cracked porcelain mask (horror, no gore)",
+    "kind": "character",
+    "licence": "own",
+    "made_for": "ep27",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "room_plate": {
+    "author": "toyfantv",
+    "desc": "a white enamel room-number plate with dark-green numerals",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep27",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "ward_door": {
+    "author": "toyfantv",
+    "desc": "a pale-green hospital ward door with steel kick plates, a narrow window and a lever handle",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep27",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
   }
 }

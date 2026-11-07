@@ -139,6 +139,26 @@ python3 tools/sheet.py build/ep06 build/ep06/sheet.jpg 1 5 10 20 30 40 50 60
 * `audio2.py` needs `PYTHONPATH=D:/Claude/itt-renderer/.pylib` on this PC (the system scipy fails on a numpy mismatch).
 * Local narration: lines that slipped were fixed with another Silencio source voice (en_us_006 / 007 / 010) and commas or an ellipsis in `speak`.
 
+### Episode 27 notes (the liminal hospital; Liminal Horror, Episodes 27-31)
+
+* **Narration for Episodes 27-31:** OpenRouter has credit again (2026-11-07), so the collection uses the series ElevenLabs narrator
+  (Antoni, pitch 1.1, tempo 1.12) through `tools/tts.py`. Keep `"narrator": {"pace": [2.5, 2.95], "min_tempo": 1.04}` in every spec so
+  28-31 match. Other voices: ElevenLabs `sarah` (the PA) and `liam` (a boy on a tape), at tempo 0.95.
+* The full brief ran 76 s; minimal trims (a "Then" / "Suddenly" dropped, one bridging line cut, tighter pauses) brought it to 64.8 s
+  without speeding the voice. Write numbers in `speak` as words ("three seventeen", "two seventeen"); the transcript check gets digits back.
+* `web/engine/hospital.js`: `wallPaint`, `vinyl`, `ceilingTile` surfaces; `fluorPanel(w, d)` (`.level(k)` for flicker), `wardDoor()`
+  (hinge at the origin, `.handle`), `roomPlate`, `bedChart(name)`, `hospitalBed()` (head at -z, `.top` 3.9), `ivPole`, `cabinet`, `paSpeaker`,
+  `crtTV()` (`.screen` faces +z for a render target), `nurse()` (an original faceless nurse with a cracked porcelain mask, `.mask`),
+  `wardBeds(parent, list, { faceMap })` (instanced occupied beds), `hospitalBlock(parent)` (`.lights(k, t)`, 22% of windows stay dead),
+  `fenceRun`, `noticeSign`. Library names: `hospital_bed`, `ward_door`, `fluor_panel`, `crt_tv`, `iv_pole`, `hospital_cabinet`, `pa_speaker`,
+  `room_plate`, `bed_chart`, `porcelain_nurse`, `endless_ward`, `hospital_block`, `notice_sign`. Avatar `farm_grayson` (navy hoodie, black pants, brown hair).
+* A TV showing "the same room" works best with a second copy of the character drawn only into the feed's render target (hide the real one there).
+  Put the burned-in timestamp at the top of the screen: lower down it collides with the captions; in close-ups it should cross the hair, not the brows.
+* `audio2.py` voice fx `pa` (a ceiling loudspeaker in a long hall) and `tv` (a thin CRT speaker); SFX `buzz` (fluorescent hum, 120 Hz harmonics),
+  `vent`, `pachime`, `static`, `clunk` (breaker), `drone`, `flick`. A liminal mix is buzz + vent at ~0.2-0.3 with no music; the voice still sits 10+ dB over it.
+* Local 60 fps pro-look renders run ~400 frames a minute per three workers on this PC: about 20 minutes for a 65 s episode.
+* A camera placed inside a wall shows a flat colour: keep room shots inside the room's bounds (the first bed shot sat in the door wall).
+
 ## Engine (`web/engine/`)
 
 | file | what it makes |

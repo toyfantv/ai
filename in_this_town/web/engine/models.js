@@ -14,6 +14,7 @@ import { goldenDragon, goldenKey, goldenEgg } from './pets.js';
 import { cottage, mailbox, framedPhoto } from './pastel.js';
 import { campfire, tent, logSeat, woodPile, axeStump, lantern, cookPot, bedroll, supplyCrate, pines, exitGate, beast, snow } from './camp.js';
 import { obbyPlatform, laserCross, controlChair } from './obby.js';
+import { hospitalBed, wardDoor, fluorPanel, crtTV, ivPole, cabinet, paSpeaker, roomPlate, bedChart, nurse, wardBeds, hospitalBlock, noticeSign } from './hospital.js';
 import { cubeSeed, cubeStairs, gardenPlot, seedStall, wateringCan, wheelbarrow, scarecrow, floatingIsland, glassField, nameTree, bloomField } from './garden.js';
 
 // ---------- Episode 17 ----------
@@ -372,6 +373,19 @@ export const BUILD = {
   obby_platform: (o) => put(o, obbyPlatform(o.w ?? 5, o.d ?? 5, o.color ?? '#ff4757', o)),   // a candy obby platform with a neon top trim (.userData.edge); { num } paints a checkpoint number
   laser_cross: (o) => put(o, laserCross(o.arms ?? 2, o.len ?? 6)),   // a hub with crisp spinning laser beams: spin .beams.rotation.z
   control_chair: (o) => put(o, controlChair()),   // a futuristic control chair on a pedestal, holo panels (.holo), cushion top at .seatY
+  hospital_bed: (o) => put(o, hospitalBed(o)),   // a white steel hospital bed, mint blanket; head at -z, mattress top at .top ({ occupied } for a body-sized blanket)
+  ward_door: (o) => put(o, wardDoor(o)),   // a pale-green ward door leaf with kick plates and a window; hinge at its local origin, handle point .handle
+  fluor_panel: (o) => put(o, fluorPanel(o.w ?? 3.6, o.d ?? 7.2, o)),   // a recessed fluorescent ceiling panel; .level(k) dims it (flicker)
+  crt_tv: (o) => put(o, crtTV(o)),   // a ceiling-hung hospital CRT television; .screen faces +z (map a render target onto it)
+  iv_pole: (o) => put(o, ivPole()),
+  hospital_cabinet: (o) => put(o, cabinet()),
+  pa_speaker: (o) => put(o, paSpeaker()),   // a round ceiling loudspeaker grille
+  room_plate: (o) => put(o, roomPlate(o.text ?? '217', o)),   // a white enamel room-number plate
+  bed_chart: (o) => put(o, bedChart(o.name ?? 'TYLER', o)),   // a clipboard chart with a patient name, for the foot of a bed
+  porcelain_nurse: (o) => put(o, nurse()),   // an original faceless nurse: white uniform, cap with a green cross, a cracked porcelain mask (.mask); no gore
+  endless_ward: (o) => wardBeds(o.parent, o.list ?? [-1, 0, 1].flatMap((i) => [0, 1].map((j) => ({ x: i * 6, z: j * 12, empty: i === 0 && j === 1 }))), o),   // instanced rows of occupied beds (closed-eye patients, o.faceMap); list [{ x, z, ry, empty }]
+  hospital_block: (o) => hospitalBlock(o.parent, o),   // a derelict five-storey hospital; .lights(k, t) switches its windows on (22% stay dead)
+  notice_sign: (o) => put(o, noticeSign(o.lines ?? ['DEMOLITION NOTICE'], o)),
   forest_beast: (o) => put(o, beast(o)),   // a blocky wolf-like creature with glowing eyes that blink; .update(t)
   snowfall: (o) => snow(o.parent, o),   // falling snow points (centre, size, height, count)
 };

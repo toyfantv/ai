@@ -1,0 +1,466 @@
+{
+ "id": "ep27",
+ "number": 27,
+ "title": "The Hospital That Was Never Built",
+ "output": "InThisTown_Episode27_LiminalHospital.mp4",
+ "tts": "openrouter",
+ "youtube_title": "The Hospital That Was Never Built...",
+ "tiktok_caption": "It was demolished twelve years ago. Every night at 3:17, its lights still turn on.",
+ "hashtags": "#InThisTown #LiminalSpaces #RobloxHorror #Shorts",
+ "thumbnail_text": "ROOM 217",
+ "thumbnail_rec": "Grayson in his navy hoodie at the end of a pristine pale-green hospital corridor under buzzing fluorescent lights; far down the hall, a still nurse in a cracked white porcelain mask points at the door of ROOM 217.",
+ "lead_in": 0.3,
+ "tail": 2.5,
+ "voices": {
+  "narrator": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "ErXwobaYiN019PkySvjV",
+    "pitch": 1.1,
+    "tempo": 1.12,
+    "max_tempo": 1.15,
+    "pace": [
+     2.5,
+     2.95
+    ],
+    "min_tempo": 1.04
+   },
+   "kokoro": "am_michael",
+   "speed": 1.0,
+   "note": "Antoni (American), In This Town preset el:ErXwobaYiN019PkySvjV:1.1:1.12 - same narrator every episode"
+  },
+  "pa": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "sarah",
+    "pitch": 0.97,
+    "tempo": 0.95
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  },
+  "tvboy": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "liam",
+    "pitch": 1.04,
+    "tempo": 0.95
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  }
+ },
+ "highlights": {
+  "3:17": "yellow",
+  "LIGHTS TURN ON": "yellow",
+  "DEMOLISHED": "red",
+  "TWELVE YEARS AGO": "red",
+  "EMPTY ROAD": "yellow",
+  "FRESH PAINT": "yellow",
+  "HUMMED": "cyan",
+  "PERFECTLY CLEAN": "cyan",
+  "PATIENT GRAYSON": "red",
+  "FROZE": "yellow",
+  "NEVER BEEN THERE": "red",
+  "NURSE": "red",
+  "CRACKED PORCELAIN MASK": "red",
+  "ROOM 217": "yellow",
+  "HOSPITAL BED": "yellow",
+  "TELEVISION": "yellow",
+  "PHOTOGRAPH OF HIMSELF": "red",
+  "SWITCHED ON": "cyan",
+  "SAME ROOM": "yellow",
+  "DATED TOMORROW": "red",
+  "TURNED TOWARD THE CAMERA": "purple",
+  "DISCHARGE YOU": "red",
+  "BEHIND HIM": "red",
+  "LIGHTS WENT OUT": "red",
+  "HALLWAY WAS GONE": "purple",
+  "ENDLESS ROW": "purple",
+  "OCCUPIED": "red",
+  "EXCEPT HIS": "red"
+ },
+ "lines": [
+  {
+   "text": "Every night at 3:17, the abandoned hospital's lights turn on.",
+   "tag": "[calm]",
+   "pause": 0.25,
+   "speak": "Every night at three seventeen, the abandoned hospital's lights turn on."
+  },
+  {
+   "text": "But the hospital was demolished twelve years ago.",
+   "tag": "[mysterious]",
+   "pause": 0.29
+  },
+  {
+   "text": "Grayson found it standing at the end of an empty road.",
+   "tag": "[calm]",
+   "pause": 0.22
+  },
+  {
+   "text": "Inside, the hallways smelled like fresh paint.",
+   "tag": "[softly]",
+   "pause": 0.18
+  },
+  {
+   "text": "The lights hummed.",
+   "tag": "[softly]",
+   "pause": 0.25
+  },
+  {
+   "text": "Every patient room was perfectly clean.",
+   "tag": "[mysterious]",
+   "pause": 0.25
+  },
+  {
+   "text": "\"Patient Grayson, please return to your room.\"",
+   "tag": "[calm]",
+   "pause": 0.29,
+   "speak": "Patient Grayson, please return to your room.",
+   "voice": "pa",
+   "fx": "pa"
+  },
+  {
+   "text": "He froze.",
+   "tag": "[softly]",
+   "pause": 0.18
+  },
+  {
+   "text": "He'd never been there before.",
+   "tag": "[mysterious]",
+   "pause": 0.29
+  },
+  {
+   "text": "A nurse appeared at the end of the corridor.",
+   "tag": "[calm]",
+   "pause": 0.18
+  },
+  {
+   "text": "Her face hid behind a cracked porcelain mask.",
+   "tag": "[mysterious]",
+   "pause": 0.22
+  },
+  {
+   "text": "She pointed toward Room 217.",
+   "tag": "[calm]",
+   "pause": 0.32,
+   "speak": "She pointed toward Room two seventeen."
+  },
+  {
+   "text": "Grayson slowly opened the door.",
+   "tag": "[softly]",
+   "pause": 0.25
+  },
+  {
+   "text": "Inside was a hospital bed.",
+   "tag": "[calm]",
+   "pause": 0.18
+  },
+  {
+   "text": "A television.",
+   "tag": "[calm]",
+   "pause": 0.18
+  },
+  {
+   "text": "And a photograph of himself sleeping.",
+   "tag": "[mysterious]",
+   "pause": 0.36
+  },
+  {
+   "text": "The television switched on.",
+   "tag": "[calm]",
+   "pause": 0.18
+  },
+  {
+   "text": "It showed Grayson standing in the same room.",
+   "tag": "[mysterious]",
+   "pause": 0.22
+  },
+  {
+   "text": "But the recording was dated tomorrow.",
+   "tag": "[mysterious]",
+   "pause": 0.36
+  },
+  {
+   "text": "On screen, he turned toward the camera.",
+   "tag": "[softly]",
+   "pause": 0.18
+  },
+  {
+   "text": "And whispered,",
+   "tag": "[softly]",
+   "pause": 0.15
+  },
+  {
+   "text": "\"Don't let them discharge you.\"",
+   "tag": "[whispers]",
+   "pause": 0.36,
+   "speak": "Don't let them discharge you.",
+   "voice": "tvboy",
+   "fx": "tv"
+  },
+  {
+   "text": "Behind him, the nurse appeared.",
+   "tag": "[softly]",
+   "pause": 0.55
+  },
+  {
+   "text": "The lights went out.",
+   "tag": "[calm]",
+   "pause": 0.5
+  },
+  {
+   "text": "When they returned, the hallway was gone.",
+   "tag": "[mysterious]",
+   "pause": 0.22
+  },
+  {
+   "text": "Only an endless row of hospital beds remained.",
+   "tag": "[mysterious]",
+   "pause": 0.22
+  },
+  {
+   "text": "And every bed was occupied.",
+   "tag": "[softly]",
+   "pause": 0.36
+  },
+  {
+   "text": "Except his.",
+   "tag": "[whispers]",
+   "pause": 0.15
+  }
+ ],
+ "samples": {},
+ "sound": {
+  "key": 45,
+  "music_gain": 0.3,
+  "music": [
+   [
+    "0",
+    "silence"
+   ]
+  ],
+  "cues": [
+   [
+    "0",
+    "wind",
+    0.2,
+    {
+     "dur": 10.8
+    }
+   ],
+   [
+    "ev:on",
+    "clunk",
+    0.3,
+    {
+     "pan": 0.3
+    }
+   ],
+   [
+    "ev:walkIn-0.3",
+    "buzz",
+    0.3,
+    {
+     "dur": 41.9
+    }
+   ],
+   [
+    "ev:walkIn",
+    "vent",
+    0.22,
+    {
+     "dur": 41.6
+    }
+   ],
+   [
+    "ev:walkIn",
+    "footsteps",
+    0.22,
+    {
+     "dur": 2.6,
+     "rate": 2.0
+    }
+   ],
+   [
+    "ev:buzz",
+    "buzz",
+    0.32,
+    {
+     "dur": 1.8,
+     "f": 120
+    }
+   ],
+   [
+    "ev:pa",
+    "pachime",
+    0.55
+   ],
+   [
+    "ev:freeze",
+    "drone",
+    0.3,
+    {
+     "dur": 3.2,
+     "f": 55
+    }
+   ],
+   [
+    "ev:flick",
+    "flick",
+    0.5
+   ],
+   [
+    "ev:flick+0.3",
+    "flick",
+    0.4,
+    {
+     "dur": 0.35
+    }
+   ],
+   [
+    "ev:nurse",
+    "drone",
+    0.45,
+    {
+     "dur": 8.0,
+     "f": 49
+    }
+   ],
+   [
+    "ev:open-0.2",
+    "knock",
+    0.12
+   ],
+   [
+    "ev:open",
+    "creak",
+    0.32,
+    {
+     "dur": 1.6
+    }
+   ],
+   [
+    "L13-0.2",
+    "footsteps",
+    0.18,
+    {
+     "dur": 1.6,
+     "rate": 1.6
+    }
+   ],
+   [
+    "ev:tvon",
+    "clunk",
+    0.28
+   ],
+   [
+    "ev:tvon",
+    "glitch",
+    0.3,
+    {
+     "dur": 0.4
+    }
+   ],
+   [
+    "ev:tvon+0.1",
+    "static",
+    0.13,
+    {
+     "dur": 13.6
+    }
+   ],
+   [
+    "ev:turn",
+    "drone",
+    0.4,
+    {
+     "dur": 7.0,
+     "f": 46
+    }
+   ],
+   [
+    "ev:nurseTV",
+    "glitch",
+    0.55,
+    {
+     "dur": 0.8
+    }
+   ],
+   [
+    "ev:nurseTV",
+    "sting",
+    0.3
+   ],
+   [
+    "ev:out",
+    "clunk",
+    0.8
+   ],
+   [
+    "ev:rings",
+    "clunk",
+    0.45
+   ],
+   [
+    "ev:rings+0.45",
+    "clunk",
+    0.32,
+    {
+     "pan": -0.3
+    }
+   ],
+   [
+    "ev:rings+0.9",
+    "clunk",
+    0.24,
+    {
+     "pan": 0.3
+    }
+   ],
+   [
+    "ev:rings+1.4",
+    "clunk",
+    0.16,
+    {
+     "pan": -0.2
+    }
+   ],
+   [
+    "ev:rings+2.0",
+    "clunk",
+    0.1,
+    {
+     "pan": 0.2
+    }
+   ],
+   [
+    "ev:rings",
+    "buzz",
+    0.3,
+    {
+     "dur": 11.2
+    }
+   ],
+   [
+    "ev:rings+1.0",
+    "drone",
+    0.42,
+    {
+     "dur": 10.0,
+     "f": 41
+    }
+   ],
+   [
+    "L26",
+    "heartbeat",
+    0.25,
+    {
+     "dur": 5.5,
+     "bpm": 66
+    }
+   ]
+  ]
+ },
+ "fps": 60
+}

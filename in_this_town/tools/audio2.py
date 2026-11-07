@@ -171,6 +171,48 @@ def heartbeats(d=4.0, bpm=90):
     return x[: int(d * SR)]
 
 
+# Episode 27 (the liminal hospital): fluorescent buzz, ventilation, the PA chime, TV static, a breaker clunk, a low drone
+def tube_buzz(d=8.0, f=120, seed=4):
+    r = np.random.default_rng(seed); t = tt(d)
+    x = sum(a * np.sin(2 * np.pi * f * k * t + r.uniform(0, 6)) for k, a in ((1, 1.0), (2, 0.55), (3, 0.3), (5, 0.18), (7, 0.1)))
+    x = x * (0.85 + 0.15 * np.sin(2 * np.pi * 0.37 * t)) + 0.12 * bp(noise(d), 2500, 7000) * (0.6 + 0.4 * np.sin(2 * np.pi * 0.9 * t))
+    return x * env_adsr(len(t), 0.4, 0.6) * 0.5
+
+
+def vent(d=8.0):
+    x = lp(noise(d, 'brown'), 400) + 0.25 * bp(noise(d), 400, 1200)
+    return x / (np.max(np.abs(x)) + 1e-9) * env_adsr(len(x), 1.0, 1.0) * 0.6
+
+
+def pa_chime():
+    a = bell(hz(76), 1.6) * 0.8; b = bell(hz(72), 2.0) * 0.8; x = np.zeros(int(2.6 * SR)); x[:len(a)] += a; i = int(0.55 * SR); x[i:i + len(b)] += b[: len(x) - i]
+    return reverb(bp(x, 300, 4000), 2.4, 0.45)
+
+
+def static(d=3.0, seed=6):
+    r = np.random.default_rng(seed); x = bp(r.standard_normal(int(d * SR)), 800, 7500)
+    return x / (np.max(np.abs(x)) + 1e-9) * env_adsr(len(x), 0.02, 0.15) * 0.5
+
+
+def clunk():
+    t = tt(0.9); x = np.sin(2 * np.pi * (55 + 40 * np.exp(-t * 30)) * t) * np.exp(-t * 9) + 0.6 * hp(noise(0.9), 1500) * np.exp(-t * 60)
+    return reverb(x * 0.9, 1.4, 0.35)
+
+
+def drone(d=8.0, f=55):
+    t = tt(d); x = np.sin(2 * np.pi * f * t) + 0.6 * np.sin(2 * np.pi * f * 1.498 * t + 1) + 0.3 * np.sin(2 * np.pi * f * 2.01 * t)
+    x = x * (0.8 + 0.2 * np.sin(2 * np.pi * 0.11 * t))
+    return reverb(lp(x, 900) * env_adsr(len(t), min(2.5, d / 3), min(2.5, d / 3)) * 0.5, 2.5, 0.3)
+
+
+def flick(d=0.6, seed=8):
+    r = np.random.default_rng(seed); x = np.zeros(int(d * SR)); t = 0.0
+    while t < d - 0.03:
+        n = int(r.uniform(0.008, 0.03) * SR); i = int(t * SR); m = min(n, len(x) - i)
+        x[i:i + m] += (hp(r.standard_normal(n), 1200) * np.hanning(n))[:m] * r.uniform(0.4, 1.0); t += r.uniform(0.03, 0.12)
+    return x * 0.7
+
+
 SFX = {
     'impact': lambda o: impact(o.get('dur', 3.0), 100, 28, 0.7), 'boom': lambda o: impact(4.0, 130, 22, 1.1),
     'stomp': lambda o: stomp(), 'knock': lambda o: knock(), 'whoosh': lambda o: whoosh(o.get('dur', 1.2)), 'shimmer': lambda o: shimmer(o.get('dur', 2.5)),
@@ -185,6 +227,8 @@ SFX = {
     'riser': lambda o: riser(o.get('dur', 3.0)), 'groan': lambda o: groan(o.get('dur', 3.5)), 'pop': lambda o: pop(),
     'whale': lambda o: whale(3.2, o.get('f0', 160), o.get('f1', 380), o.get('f2', 220)),
     'sample': lambda o: sample(o), 'scratch': lambda o: scratch(o.get('dur', 3.0), o.get('rate', 7.0)),
+    'buzz': lambda o: tube_buzz(o.get('dur', 8.0), o.get('f', 120)), 'vent': lambda o: vent(o.get('dur', 8.0)), 'pachime': lambda o: pa_chime(),
+    'static': lambda o: static(o.get('dur', 3.0)), 'clunk': lambda o: clunk(), 'drone': lambda o: drone(o.get('dur', 8.0), o.get('f', 55)), 'flick': lambda o: flick(o.get('dur', 0.6)),
     'flutter': lambda o: flutter(o.get('dur', 1.2), o.get('rate', 9.0)), 'chirp': lambda o: chirp(o.get('f', 1300), o.get('dur', 0.32), o.get('up', 1)),
 }
 
@@ -357,6 +401,12 @@ def main():
         if fx == 'radio': a = bp(a, 350, 3500); a = np.clip(a * (0.14 / (np.sqrt(np.mean(a[np.abs(a) > 0.005] ** 2)) + 1e-9)), -0.98, 0.98)
         if fx == 'giant': a = reverb(a, 3.0, 0.45)
         if fx == 'whisper': a = reverb(a, 1.6, 0.3)
+        if fx == 'pa':  # a ceiling loudspeaker in a long hard corridor
+            a = bp(a, 450, 3200); a = np.tanh(a * 3.0) / 3.0
+            a = a * (0.13 / (np.sqrt(np.mean(a[np.abs(a) > 0.004] ** 2)) + 1e-9)); a = reverb(a, 2.6, 0.42)
+        if fx == 'tv':  # a voice from an old CRT speaker: thin, a little crushed, close
+            a = bp(a, 380, 3800); a = np.tanh(a * 2.2) / 2.2
+            a = a * (0.12 / (np.sqrt(np.mean(a[np.abs(a) > 0.004] ** 2)) + 1e-9)); a = reverb(a, 0.6, 0.12)
         if fx == 'chorus':  # a classroom of identical voices: detuned, delayed copies
             from scipy.signal import resample
             layers = [a]
