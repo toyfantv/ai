@@ -1,0 +1,688 @@
+{
+  "number": 26,
+  "title": "The Obby That Changed Every Time I Failed",
+  "output": "InThisTown_Episode26_AdaptiveObby.mp4",
+  "youtube_title": "The Obby That Changed Every Time I Failed...",
+  "tiktok_caption": "Ten stages. Every time she failed, the obby changed. Then it started predicting her.",
+  "hashtags": "#Roblox #Obby #RobloxStories #InThisTown #Shorts",
+  "thumbnail_text": "IT LEARNS",
+  "thumbnail_rec": "Emma in her yellow hoodie mid-jump between neon platforms floating in space, a spinning red laser cross behind her and the glowing message THE LEVEL LEARNS FROM YOU under the start platform.",
+  "tail": 3.4,
+  "fps": 60,
+  "local_wps": 3.2,
+  "local_rate": 1.15,
+  "narrator": {
+    "min_tempo": 1.0,
+    "pace": [
+      2.8,
+      3.4
+    ]
+  },
+  "cast": {
+    "system": {
+      "voice": "eric",
+      "pitch": 0.84,
+      "tempo": 0.95
+    }
+  },
+  "highlights": {
+    "OBSTACLE COURSE": "yellow",
+    "TEN STAGES": "yellow",
+    "EASY": "yellow",
+    "FAILED": "red",
+    "COURSE CHANGED": "purple",
+    "PLATFORMS MOVED": "cyan",
+    "WALLS DISAPPEARED": "cyan",
+    "TENTH ATTEMPT": "yellow",
+    "FLOATING IN SPACE": "purple",
+    "QUIT": "red",
+    "MESSAGE": "yellow",
+    "STARTING PLATFORM": "yellow",
+    "THE LEVEL LEARNS FROM YOU": "red",
+    "STOPPED RUNNING": "yellow",
+    "WAITED": "yellow",
+    "ON THEIR OWN": "purple",
+    "LASERS SPUN": "red",
+    "PLATFORMS VANISHED": "red",
+    "FARTHER AWAY": "red",
+    "REALIZED": "yellow",
+    "JUMPING SKILLS": "yellow",
+    "PREDICTING HER DECISIONS": "purple",
+    "COMPLETELY UNEXPECTED": "yellow",
+    "JUMPED BACKWARD": "yellow",
+    "FROZE": "cyan",
+    "UNPREDICTABLE ACTION DETECTED": "cyan",
+    "HIDDEN PATH": "cyan",
+    "GLOWING DOOR": "cyan",
+    "THOUSANDS OF SCREENS": "purple",
+    "DIFFERENT PLAYER": "yellow",
+    "ESCAPE": "red",
+    "TURNED TOWARD HER": "purple",
+    "NEW LEVEL DESIGNER SELECTED": "cyan"
+  },
+  "lines": [
+    {
+      "text": "Emma found an obstacle course with only ten stages.",
+      "tag": "[conversational]",
+      "pause": 0.3,
+      "audio": "build/ep26/local_lines/line_00.wav"
+    },
+    {
+      "text": "It looked easy.",
+      "tag": "[casual]",
+      "pause": 0.4,
+      "audio": "build/ep26/local_lines/line_01.wav"
+    },
+    {
+      "text": "But every time she failed, the course changed.",
+      "tag": "[mysterious]",
+      "pause": 0.35,
+      "audio": "build/ep26/local_lines/line_02.wav"
+    },
+    {
+      "text": "The first time, the platforms moved.",
+      "tag": "[conversational]",
+      "pause": 0.2,
+      "audio": "build/ep26/local_lines/line_03.wav"
+    },
+    {
+      "text": "The second time, the walls disappeared.",
+      "tag": "[conversational]",
+      "pause": 0.2,
+      "audio": "build/ep26/local_lines/line_04.wav"
+    },
+    {
+      "text": "By her tenth attempt, the entire course was floating in space.",
+      "tag": "[in awe]",
+      "pause": 0.6,
+      "audio": "build/ep26/local_lines/line_05.wav"
+    },
+    {
+      "text": "Emma was about to quit.",
+      "tag": "[tired]",
+      "pause": 0.45,
+      "audio": "build/ep26/local_lines/line_06.wav"
+    },
+    {
+      "text": "Then she noticed a message beneath the starting platform.",
+      "tag": "[mysterious]",
+      "pause": 0.25,
+      "audio": "build/ep26/local_lines/line_07.wav"
+    },
+    {
+      "text": "\"THE LEVEL LEARNS FROM YOU.\"",
+      "tag": "[slowly]",
+      "pause": 0.55,
+      "speak": "The level learns from you.",
+      "voice": "system",
+      "audio": "build/ep26/local_lines/line_08.wav"
+    },
+    {
+      "text": "She stopped running.",
+      "tag": "[mysterious]",
+      "pause": 0.2,
+      "audio": "build/ep26/local_lines/line_09.wav"
+    },
+    {
+      "text": "Instead, she waited.",
+      "tag": "[softly]",
+      "pause": 0.5,
+      "audio": "build/ep26/local_lines/line_10.wav"
+    },
+    {
+      "text": "The obstacles began moving on their own.",
+      "tag": "[mysterious]",
+      "pause": 0.25,
+      "audio": "build/ep26/local_lines/line_11.wav",
+      "local": {
+        "src": "en_us_007"
+      }
+    },
+    {
+      "text": "Lasers spun.",
+      "tag": "[tense]",
+      "pause": 0.12,
+      "audio": "build/ep26/local_lines/line_12.wav",
+      "speak": "Lasers... spun."
+    },
+    {
+      "text": "Platforms vanished.",
+      "tag": "[tense]",
+      "pause": 0.12,
+      "audio": "build/ep26/local_lines/line_13.wav"
+    },
+    {
+      "text": "And the finish line kept getting farther away.",
+      "tag": "[tense]",
+      "pause": 0.6,
+      "audio": "build/ep26/local_lines/line_14.wav"
+    },
+    {
+      "text": "Then Emma realized something.",
+      "tag": "[mysterious]",
+      "pause": 0.2,
+      "audio": "build/ep26/local_lines/line_15.wav"
+    },
+    {
+      "text": "The course wasn't testing her jumping skills.",
+      "tag": "[mysterious]",
+      "pause": 0.15,
+      "audio": "build/ep26/local_lines/line_16.wav",
+      "local": {
+        "src": "en_us_006"
+      },
+      "speak": "The course wasn't testing her jumping skills."
+    },
+    {
+      "text": "It was predicting her decisions.",
+      "tag": "[ominous]",
+      "pause": 0.55,
+      "audio": "build/ep26/local_lines/line_17.wav",
+      "local": {
+        "src": "en_us_010"
+      },
+      "speak": "It was predicting, her decisions."
+    },
+    {
+      "text": "So she did something completely unexpected.",
+      "tag": "[mysterious]",
+      "pause": 0.25,
+      "audio": "build/ep26/local_lines/line_18.wav"
+    },
+    {
+      "text": "She jumped backward.",
+      "tag": "[urgent]",
+      "pause": 0.45,
+      "audio": "build/ep26/local_lines/line_19.wav"
+    },
+    {
+      "text": "The entire course froze.",
+      "tag": "[mysterious]",
+      "pause": 0.4,
+      "audio": "build/ep26/local_lines/line_20.wav"
+    },
+    {
+      "text": "A message appeared.",
+      "tag": "[mysterious]",
+      "pause": 0.2,
+      "audio": "build/ep26/local_lines/line_21.wav"
+    },
+    {
+      "text": "\"UNPREDICTABLE ACTION DETECTED.\"",
+      "tag": "[slowly]",
+      "pause": 0.6,
+      "speak": "Unpredictable action detected.",
+      "voice": "system",
+      "audio": "build/ep26/local_lines/line_22.wav"
+    },
+    {
+      "text": "Suddenly, a hidden path appeared beneath her feet.",
+      "tag": "[in awe]",
+      "pause": 0.3,
+      "audio": "build/ep26/local_lines/line_23.wav"
+    },
+    {
+      "text": "Emma followed it to a glowing door.",
+      "tag": "[mysterious]",
+      "pause": 0.4,
+      "audio": "build/ep26/local_lines/line_24.wav",
+      "local": {
+        "src": "en_us_010"
+      },
+      "speak": "Emma followed it, to a glowing door."
+    },
+    {
+      "text": "Inside was a room filled with thousands of screens.",
+      "tag": "[in awe]",
+      "pause": 0.3,
+      "audio": "build/ep26/local_lines/line_25.wav"
+    },
+    {
+      "text": "Each one showed a different player trying to escape.",
+      "tag": "[mysterious]",
+      "pause": 0.45,
+      "audio": "build/ep26/local_lines/line_26.wav"
+    },
+    {
+      "text": "Then the screens all turned toward her.",
+      "tag": "[ominous]",
+      "pause": 0.35,
+      "audio": "build/ep26/local_lines/line_27.wav",
+      "speak": "Then the screens all turned, toward her."
+    },
+    {
+      "text": "\"NEW LEVEL DESIGNER SELECTED.\"",
+      "tag": "[slowly]",
+      "pause": 0.6,
+      "speak": "New level designer selected.",
+      "voice": "system",
+      "audio": "build/ep26/local_lines/line_28.wav"
+    }
+  ],
+  "samples": {},
+  "sound": {
+    "key": 50,
+    "music_gain": 0.5,
+    "music": [
+      [
+        "0",
+        "playful"
+      ],
+      [
+        "ev:space-0.1",
+        "cosmic"
+      ],
+      [
+        "L11-0.1",
+        "suspense"
+      ],
+      [
+        "ev:freeze",
+        "silence"
+      ],
+      [
+        "L23-0.1",
+        "mystery"
+      ],
+      [
+        "ev:enter",
+        "wonder"
+      ]
+    ],
+    "cues": [
+      [
+        "0",
+        "wind",
+        0.05,
+        {
+          "dur": 4
+        }
+      ],
+      [
+        "ev:hop",
+        "whoosh",
+        0.08,
+        {
+          "dur": 0.5
+        }
+      ],
+      [
+        "ev:hop+0.75",
+        "pop",
+        0.09
+      ],
+      [
+        "ev:fail",
+        "whoosh",
+        0.08,
+        {
+          "dur": 0.6
+        }
+      ],
+      [
+        "ev:fail+0.12",
+        "glitch",
+        0.08,
+        {
+          "dur": 0.3
+        }
+      ],
+      [
+        "ev:fail+0.8",
+        "whoosh",
+        0.12,
+        {
+          "dur": 1.2
+        }
+      ],
+      [
+        "ev:moved",
+        "glitch",
+        0.1,
+        {
+          "dur": 0.6
+        }
+      ],
+      [
+        "ev:moved+0.1",
+        "shimmer",
+        0.1,
+        {
+          "dur": 1.4
+        }
+      ],
+      [
+        "ev:beam",
+        "run",
+        0.1,
+        {
+          "dur": 2.0
+        }
+      ],
+      [
+        "ev:walls",
+        "shimmer",
+        0.14,
+        {
+          "dur": 1.6
+        }
+      ],
+      [
+        "ev:walls",
+        "glitch",
+        0.07,
+        {
+          "dur": 0.5
+        }
+      ],
+      [
+        "ev:slip",
+        "whoosh",
+        0.1,
+        {
+          "dur": 1.0
+        }
+      ],
+      [
+        "ev:space-0.15",
+        "glitch",
+        0.14,
+        {
+          "dur": 0.5
+        }
+      ],
+      [
+        "ev:space",
+        "boom",
+        0.1
+      ],
+      [
+        "ev:space+0.1",
+        "shimmer",
+        0.16,
+        {
+          "dur": 3.0
+        }
+      ],
+      [
+        "ev:space+0.1",
+        "tick",
+        0.06,
+        {
+          "dur": 0.9,
+          "rate": 9
+        }
+      ],
+      [
+        "L6+0.1",
+        "pop",
+        0.1
+      ],
+      [
+        "L7",
+        "hum",
+        0.05,
+        {
+          "dur": 2.5,
+          "f": 55
+        }
+      ],
+      [
+        "L8-0.1",
+        "glitch",
+        0.08,
+        {
+          "dur": 0.4
+        }
+      ],
+      [
+        "L8",
+        "sting",
+        0.1,
+        {
+          "dur": 2.4
+        }
+      ],
+      [
+        "L10",
+        "tick",
+        0.05,
+        {
+          "dur": 1.4,
+          "rate": 2
+        }
+      ],
+      [
+        "ev:auto",
+        "rumble",
+        0.1,
+        {
+          "dur": 3.0
+        }
+      ],
+      [
+        "ev:auto",
+        "hum",
+        0.06,
+        {
+          "dur": 3.0,
+          "f": 70
+        }
+      ],
+      [
+        "ev:lasers",
+        "hum",
+        0.1,
+        {
+          "dur": 2.6,
+          "f": 110
+        }
+      ],
+      [
+        "ev:lasers",
+        "whoosh",
+        0.08,
+        {
+          "dur": 0.8
+        }
+      ],
+      [
+        "ev:vanish",
+        "pop",
+        0.12
+      ],
+      [
+        "ev:vanish+0.3",
+        "pop",
+        0.11
+      ],
+      [
+        "ev:vanish+0.6",
+        "pop",
+        0.1
+      ],
+      [
+        "ev:recede",
+        "whoosh",
+        0.1,
+        {
+          "dur": 2.0
+        }
+      ],
+      [
+        "ev:realize",
+        "chime",
+        0.1
+      ],
+      [
+        "ev:ghosts",
+        "shimmer",
+        0.12,
+        {
+          "dur": 2.0
+        }
+      ],
+      [
+        "ev:ghosts",
+        "glitch",
+        0.06,
+        {
+          "dur": 0.4
+        }
+      ],
+      [
+        "ev:back",
+        "whoosh",
+        0.16,
+        {
+          "dur": 0.8
+        }
+      ],
+      [
+        "ev:freeze",
+        "boom",
+        0.14
+      ],
+      [
+        "ev:freeze",
+        "glitch",
+        0.12,
+        {
+          "dur": 0.4
+        }
+      ],
+      [
+        "ev:detect",
+        "ding",
+        0.16
+      ],
+      [
+        "ev:detect+0.3",
+        "tick",
+        0.06,
+        {
+          "dur": 1.2,
+          "rate": 14
+        }
+      ],
+      [
+        "ev:path",
+        "shimmer",
+        0.2,
+        {
+          "dur": 2.2
+        }
+      ],
+      [
+        "ev:path+0.1",
+        "glass",
+        0.1,
+        {
+          "dur": 1.4
+        }
+      ],
+      [
+        "ev:land",
+        "pop",
+        0.1
+      ],
+      [
+        "ev:follow",
+        "footsteps",
+        0.1,
+        {
+          "dur": 2.0,
+          "rate": 4.0
+        }
+      ],
+      [
+        "ev:open",
+        "whoosh",
+        0.12,
+        {
+          "dur": 1.0
+        }
+      ],
+      [
+        "ev:open",
+        "hum",
+        0.06,
+        {
+          "dur": 2.0,
+          "f": 80
+        }
+      ],
+      [
+        "ev:enter",
+        "shimmer",
+        0.14,
+        {
+          "dur": 2.5
+        }
+      ],
+      [
+        "L26",
+        "hum",
+        0.06,
+        {
+          "dur": 4.0,
+          "f": 60
+        }
+      ],
+      [
+        "L26+0.2",
+        "glitch",
+        0.04,
+        {
+          "dur": 0.8
+        }
+      ],
+      [
+        "ev:turn",
+        "whoosh",
+        0.14,
+        {
+          "dur": 1.6
+        }
+      ],
+      [
+        "ev:turn+0.2",
+        "glitch",
+        0.06,
+        {
+          "dur": 0.5
+        }
+      ],
+      [
+        "ev:sitDown+0.5",
+        "pop",
+        0.08
+      ],
+      [
+        "ev:illum",
+        "riser",
+        0.1,
+        {
+          "dur": 1.2
+        }
+      ],
+      [
+        "ev:illum+0.8",
+        "shimmer",
+        0.2,
+        {
+          "dur": 3.0
+        }
+      ],
+      [
+        "ev:rise",
+        "hum",
+        0.08,
+        {
+          "dur": 3.0,
+          "f": 70
+        }
+      ]
+    ]
+  }
+}

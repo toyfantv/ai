@@ -13,6 +13,7 @@ import { gown, dressForm, starPaddle } from './runway.js';
 import { goldenDragon, goldenKey, goldenEgg } from './pets.js';
 import { cottage, mailbox, framedPhoto } from './pastel.js';
 import { campfire, tent, logSeat, woodPile, axeStump, lantern, cookPot, bedroll, supplyCrate, pines, exitGate, beast, snow } from './camp.js';
+import { obbyPlatform, laserCross, controlChair } from './obby.js';
 import { cubeSeed, cubeStairs, gardenPlot, seedStall, wateringCan, wheelbarrow, scarecrow, floatingIsland, glassField, nameTree, bloomField } from './garden.js';
 
 // ---------- Episode 17 ----------
@@ -368,6 +369,9 @@ export const BUILD = {
     a.position.set(-5, 0, 0); b.position.set(-1, 0, 0); c.position.set(2.5, 0, 0); d.position.set(4.5, 0, 0); e.position.set(6.5, 0, 0); f.position.set(9, 0, 0); h.position.set(12, 0, 0); g.add(a, b, c, d, e, f, h); })),   // log seat, wood pile, axe stump, lantern, cook pot, bedroll, supply crate
   snowy_pines: (o) => pines(o.parent, o.list || [], o),   // instanced dark pines with frosted tips; list [{x, z, s}]; .vanish(fn)
   exit_gate: (o) => put(o, exitGate(o)),   // stone pillars and an arch with runes around a swirling portal; .set({ open, close, t })
+  obby_platform: (o) => put(o, obbyPlatform(o.w ?? 5, o.d ?? 5, o.color ?? '#ff4757', o)),   // a candy obby platform with a neon top trim (.userData.edge); { num } paints a checkpoint number
+  laser_cross: (o) => put(o, laserCross(o.arms ?? 2, o.len ?? 6)),   // a hub with crisp spinning laser beams: spin .beams.rotation.z
+  control_chair: (o) => put(o, controlChair()),   // a futuristic control chair on a pedestal, holo panels (.holo), cushion top at .seatY
   forest_beast: (o) => put(o, beast(o)),   // a blocky wolf-like creature with glowing eyes that blink; .update(t)
   snowfall: (o) => snow(o.parent, o),   // falling snow points (centre, size, height, count)
 };

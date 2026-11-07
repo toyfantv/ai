@@ -798,5 +798,35 @@
     "source": "this renderer",
     "type": "builder",
     "url": ""
+  },
+  "obby_platform": {
+    "author": "toyfantv",
+    "licence": "own",
+    "made_for": "ep26",
+    "source": "this renderer",
+    "type": "builder",
+    "url": "",
+    "desc": "a candy-coloured obby platform with a lighter top slab and a neon top trim that glows in space; optional checkpoint number",
+    "kind": "prop"
+  },
+  "laser_cross": {
+    "author": "toyfantv",
+    "licence": "own",
+    "made_for": "ep26",
+    "source": "this renderer",
+    "type": "builder",
+    "url": "",
+    "desc": "a dark hub with two or more crisp red laser beams and a faint halo, made to spin",
+    "kind": "prop"
+  },
+  "control_chair": {
+    "author": "toyfantv",
+    "licence": "own",
+    "made_for": "ep26",
+    "source": "this renderer",
+    "type": "builder",
+    "url": "",
+    "desc": "a futuristic white control chair on a dark pedestal with cyan neon trims and holographic armrest panels",
+    "kind": "prop"
   }
 }

@@ -126,6 +126,19 @@ python3 tools/sheet.py build/ep06 build/ep06/sheet.jpg 1 5 10 20 30 40 50 60
 * A child running hand in hand right behind the lead hides from a front camera: shoot the sprint side-on.
 * `local_voice.py` rewrites the spec with the copy it loaded at the start: don't edit the spec (e.g. its `sound`) while it runs.
 
+### Episode 26 notes (the adaptive obby)
+
+* `web/engine/obby.js`: `obbyPlatform(w, d, col, o)` (rounded block with a lighter top and an edge rim; `o.num` paints a checkpoint number),
+  `laserCross(arms, len)` (crisp emissive beams on a hub, `.beams`; spin it yourself), `controlChair()` (a white control chair with holo panels,
+  `.holo`, `.seatY` 2.34), `edgeMat(col)`, `canvasSign(text, w, h, o)`. Library names: `obby_platform`, `laser_cross`, `control_chair`.
+* Avatar `farm_emma_obby` (yellow hoodie, jeans, high black ponytail; rebaked with `gain:1.18,1.14,1.0` on torso + arms so the yellow reads).
+* Lasers read as crisp lines with bloom at 0.08-0.1; more bloom turns them into neon smears (glare).
+* A bright sky haze near white reads as glare: keep the obby haze blue (`#9fd2ff`) and the clouds few and low.
+* Anything the viewer must read (the message under the start pad) sits above y ~1180 px of the 1920 frame, where the captions start; a dark backing panel, never red on red.
+* A bullet-time freeze mid-jump: give the jump 2 s and a high arc, and freeze it before the peak, or it stops too low to read.
+* `audio2.py` needs `PYTHONPATH=D:/Claude/itt-renderer/.pylib` on this PC (the system scipy fails on a numpy mismatch).
+* Local narration: lines that slipped were fixed with another Silencio source voice (en_us_006 / 007 / 010) and commas or an ellipsis in `speak`.
+
 ## Engine (`web/engine/`)
 
 | file | what it makes |

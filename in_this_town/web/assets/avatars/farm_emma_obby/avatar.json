@@ -1,0 +1,34 @@
+{
+ "key": "farm_emma_obby",
+ "source": {
+  "route": "one-off Studio capture, the steps of tools/farm_avatars.py",
+  "catalog_items": [
+   2072082108,
+   4831133446,
+   13744499623
+  ],
+  "label": "Emma (Episode 26): yellow zip hoodie, blue jeans, high black ponytail"
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-07",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_pony1"
+ ]
+}
