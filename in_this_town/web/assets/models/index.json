@@ -39,12 +39,42 @@
     "type": "builder",
     "url": ""
   },
+  "clock_tower": {
+    "author": "toyfantv",
+    "desc": "a stone town clock tower with a working clock",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep18",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "forest_tree": {
+    "author": "toyfantv",
+    "desc": "a tree with real bark and rustling leaves, any size or colours; instanced in numbers",
+    "kind": "environment",
+    "licence": "own",
+    "made_for": "ep18",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "hero_house": {
     "author": "toyfantv",
     "desc": "Emma's two-storey house with a furnished interior",
     "kind": "building",
     "licence": "own",
     "made_for": "town",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "hero_oak": {
+    "author": "toyfantv",
+    "desc": "an enormous oak with a dim face in its bark that can glow",
+    "kind": "environment",
+    "licence": "own",
+    "made_for": "ep18",
     "source": "this renderer",
     "type": "builder",
     "url": ""

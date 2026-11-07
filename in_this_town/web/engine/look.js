@@ -4,6 +4,7 @@
 // (colour, clarity, sharpen) and sub-frame accumulation: motion blur, soft sun shadows and cleaner edges.
 // Older episodes stay on 'classic'; RENDER_LOOK=pro|classic overrides either for a test.
 import * as THREE from 'three';
+import { U } from './core.js';
 import { GTAOPass } from 'three/addons/postprocessing/GTAOPass.js';
 import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
 import { FullScreenQuad } from 'three/addons/postprocessing/Pass.js';
@@ -31,7 +32,7 @@ const GradeShader = {
       }
       wide /= 12.0;
       float mid = 1.0 - pow(abs(L * 2.0 - 1.0), 3.0);      // clarity leaves blacks and whites alone
-      c += (L - near) * sharpen + (L - wide) * clarity * mid;
+      c += (L - near) * sharpen + clamp(L - wide, -0.07, 0.07) * clarity * mid;
       c = mix(vec3(0.5), c, contrast);
       c = c * (1.0 - lift) + lift;
       c = mix(vec3(luma(c)), c, saturation);
@@ -57,6 +58,7 @@ function envScene(e) {
 
 export function installLook(ctx, { samples = 1, fps = 30 } = {}) {
   const { renderer, scene, camera, composer, sun } = ctx;
+  U.skinGlow = 0.3;
   const pr = window.devicePixelRatio, W = 1080 * pr, H = 1920 * pr;
   renderer.toneMapping = THREE.NeutralToneMapping;       // keeps colour where ACES washes it out
   renderer.shadowMap.type = THREE.PCFShadowMap;           // the only filtered map that honours shadow.radius without VSM's light bleed
@@ -64,7 +66,7 @@ export function installLook(ctx, { samples = 1, fps = 30 } = {}) {
   const bounce = new THREE.DirectionalLight('#ffffff', 0); scene.add(bounce); scene.add(bounce.target);
 
   const gtao = new GTAOPass(scene, camera, W, H);
-  gtao.updateGtaoMaterial({ radius: 2.4, distanceExponent: 1.2, thickness: 1.2, scale: 1.25, samples: 16, distanceFallOff: 1, screenSpaceRadius: false });
+  gtao.updateGtaoMaterial({ radius: 2, distanceExponent: 1.2, thickness: 0.7, scale: 1.25, samples: 16, distanceFallOff: 1, screenSpaceRadius: false });
   gtao.updatePdMaterial({ lumaPhi: 10, depthPhi: 2, normalPhi: 3, radius: 4, radiusExponent: 1, rings: 2, samples: 16 });
   gtao.blendIntensity = 1;
   // glows, light shafts and other soft cards aren't surfaces: keep them out of the occlusion

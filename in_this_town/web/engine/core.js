@@ -24,6 +24,7 @@ export function noise1(x) {
 
 // Uniforms shared by every patched material and the ocean.
 export const U = {
+  skinGlow: 0,   // pro look: skin keeps a little of its own colour, so coloured light can't turn faces green or orange
   uTime: { value: 0 },
   uCausticColor: { value: new THREE.Color(0.35, 0.75, 1.0) },
   uCausticStrength: { value: 0.35 },

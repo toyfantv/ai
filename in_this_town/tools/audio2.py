@@ -184,7 +184,28 @@ SFX = {
     'water': lambda o: water_rush(o.get('dur', 4.0)), 'screams': lambda o: scream_chorus(o.get('dur', 2.5)), 'sting': lambda o: sting(o.get('dur', 3.0)),
     'riser': lambda o: riser(o.get('dur', 3.0)), 'groan': lambda o: groan(o.get('dur', 3.5)), 'pop': lambda o: pop(),
     'whale': lambda o: whale(3.2, o.get('f0', 160), o.get('f1', 380), o.get('f2', 220)),
+    'sample': lambda o: sample(o), 'scratch': lambda o: scratch(o.get('dur', 3.0), o.get('rate', 7.0)),
 }
+
+
+# a spoken sample from build/<id>/samples (tts.py "samples"): a name in the trees, slowed or raised with rate, in a room of rev seconds
+BUILD = {'dir': ''}
+def sample(o):
+    a, sr = sf.read(f"{BUILD['dir']}/samples/{o['name']}.wav")
+    a = resample_poly(a, SR, sr)
+    r = o.get('rate', 1.0)
+    if r != 1.0: a = np.interp(np.arange(0, len(a), r), np.arange(len(a)), a)
+    if o.get('dur'): a = a[: int(o['dur'] * SR)]
+    a = a / (np.max(np.abs(a)) + 1e-9) * 0.7
+    return reverb(a, o.get('rev', 1.8), o.get('wet', 0.35))
+
+
+def scratch(d=3.0, rate=7.0, seed=4):
+    r = np.random.default_rng(seed); x = np.zeros(int(d * SR)); t = 0.0
+    while t < d - 0.15:
+        n = int(r.uniform(0.05, 0.11) * SR); s = bp(r.standard_normal(n), r.uniform(1400, 2400), r.uniform(5000, 8000)) * np.hanning(n) * r.uniform(0.6, 1.0)
+        i = int(t * SR); x[i:i + n] += s[: len(x[i:i + n])]; t += 1 / rate * r.uniform(0.7, 1.3)
+    return x / (np.max(np.abs(x)) + 1e-9) * 0.7
 
 
 # ---------- music moods ----------
@@ -236,8 +257,9 @@ def resolve(ref, TL, EV):
 
 
 def main():
-    ep = json.load(open(sys.argv[1]))
+    ep = json.load(open(sys.argv[1], encoding='utf8'))
     d = f"build/{ep['id']}"
+    BUILD['dir'] = d
     TL = json.load(open(f'{d}/timeline.json'))
     EV = json.load(open(f'{d}/events.json')).get('events', {})
     dur = TL['duration']

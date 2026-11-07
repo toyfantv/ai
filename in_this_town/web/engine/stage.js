@@ -160,7 +160,11 @@ export function frame(ctx, t, sh, o = {}) {
   sun.target.position.copy(focus);
   const sd = ctx.env ? ctx.env.sunDir.clone().normalize() : v3(0.3, 0.8, 0.4);
   if (jit) { sd.x += jit[0] * 0.09; sd.z += jit[1] * 0.09; sd.normalize(); }   // an area light: soft shadow edges
-  sun.position.copy(focus).add(sd.multiplyScalar(180));
+  sun.position.copy(focus).add(sd.multiplyScalar(o.shadowSpan ? Math.max(180, o.shadowSpan * 1.6) : 180));
+  if (ctx.pro) {   // a wide shot can ask for a wider shadow map (the sun's reach in studs either side of the focus)
+    const sc = sun.shadow.camera, span = o.shadowSpan ?? 70;
+    if (sc.right !== span) { sc.left = -span; sc.right = span; sc.top = span; sc.bottom = -span; sc.far = Math.max(500, span * 5); sc.updateProjectionMatrix(); }
+  }
   sun.castShadow = o.shadows !== false;
   if (!sub || sub.i === 0) {   // overlays come from t itself, not from the shutter's earlier sub-frames
     captionAt(ctx, t, o.captionsOff ?? 1e9);

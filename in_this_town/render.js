@@ -40,7 +40,7 @@ async function openPage(ep, scale, fps = 30) {
   page.on('pageerror', (e) => console.error('[pageerror]', e.message));
   // RENDER_LOOK overrides the episode's look; RENDER_SAMPLES = sub-frames per frame (pro look: motion blur, soft shadows)
   const look = process.env.RENDER_LOOK ? `&look=${process.env.RENDER_LOOK}` : '';
-  await page.goto(`http://127.0.0.1:${srv.address().port}/?ep=${ep}&fps=${fps}&samples=${process.env.RENDER_SAMPLES || 1}${look}`);
+  await page.goto(`http://127.0.0.1:${srv.address().port}/?ep=${ep}&fps=${fps}&samples=${process.env.RENDER_SAMPLES || 1}${look}${process.env.RENDER_QUERY ? '&' + process.env.RENDER_QUERY : ''}`);
   await page.waitForFunction(() => window.__ready !== undefined);
   const info = await page.evaluate(() => window.__ready);
   return { srv, browser, page, info };

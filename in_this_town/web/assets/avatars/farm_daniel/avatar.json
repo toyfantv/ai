@@ -1,0 +1,34 @@
+{
+ "key": "farm_daniel",
+ "source": {
+  "route": "one-off Studio capture, the steps of tools/farm_avatars.py",
+  "catalog_items": [
+   11088796714,
+   8884585013,
+   99464418162334
+  ],
+  "label": "Daniel (Episode 18): forest-green hoodie, black pants with white sneakers, short dark-brown hair"
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-07",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_Accessory_8"
+ ]
+}

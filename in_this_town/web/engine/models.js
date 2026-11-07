@@ -1,6 +1,7 @@
 // The renderer's own models. Episodes reach them through engine/library.js: model('package_box').
 // Each builder takes one options object and returns the model; the catalogue is web/assets/models/index.json.
-import { building, skyline, crowd, crate, barrel, lamp, sign } from './kit.js';
+import { building, skyline, crowd, crate, barrel, lamp, sign, Batch, surf, paint } from './kit.js';
+import { treeShape, treeSet, heroOak } from './forest.js';
 import * as THREE from 'three';
 import { v3, rng, mat, box, wallRects, lerp } from './core.js';
 import { makeHouse, makeTree, mergeGroup, buildHeroHouse, buildTown } from './town.js';
@@ -240,6 +241,29 @@ function makeStillHouse() {
 
 const inGroup = (fn2) => { const g = new THREE.Group(); fn2(g); return g; };
 
+// ---------- Episode 18 ----------
+// The town's stone clock tower, 112 studs to the ball. .clock is the clock: .clock.setTime(minutes)
+export function makeClockTower() {
+  const g = new THREE.Group();
+  const b = new Batch(), stone = surf('brick', '#a8957c'), trim = paint('#e6dcc4', { roughness: 0.55 }), dark = paint('#3b3e47', { metalness: 0.4, roughness: 0.5 }), gold = paint('#d9a83a', { metalness: 0.75, roughness: 0.32 });
+  b.box(surf('concrete', '#8a8478'), 34, 2.4, 34, 0, 1.2, 0, { r: 0.2 }); b.box(surf('concrete', '#938d80'), 28, 2.4, 28, 0, 3.6, 0, { r: 0.2 });
+  b.box(stone, 21, 62, 21, 0, 35, 0, { r: 0.2 });
+  for (const sx of [-1, 1]) for (const sz of [-1, 1]) b.box(surf('brick', '#8f7c66'), 3.2, 66, 3.2, sx * 10.2, 37, sz * 10.2, { r: 0.2 });
+  for (const y of [16, 30, 42, 66]) b.box(trim, 23.4, 1, 23.4, 0, y, 0, { r: 0.14 });
+  for (const ry of [0, Math.PI / 2, Math.PI, -Math.PI / 2]) {
+    const s = Math.sin(ry), c = Math.cos(ry), at = (u, y, o) => [c * u + s * (10.6 + o), y, -s * u + c * (10.6 + o)];
+    for (const y of [10, 23, 36]) for (const u of [-4.4, 4.4]) { b.box(trim, 3.2, 6.6, 0.4, ...at(u, y, 0), { ry, r: 0.08 }); b.box(paint('#2a3a4a', { roughness: 0.2, metalness: 0.3 }), 2.4, 5.8, 0.2, ...at(u, y, 0.2), { ry, r: 0.02 }); b.box(trim, 3.8, 0.34, 0.8, ...at(u, y - 3.5, 0.2), { ry, r: 0.06 }); }
+    b.box(dark, 18.6, 18.6, 0.6, ...at(0, 54, 0), { ry, r: 0.1 });
+    for (const u of [-5, 0, 5]) b.box(trim, 1.8, 7, 0.5, ...at(u, 72, 0), { ry, r: 0.1 });
+  }
+  b.box(stone, 22, 13, 22, 0, 73, 0, { r: 0.2 }); b.box(trim, 25, 1.2, 25, 0, 80, 0, { r: 0.18 });
+  const roof = new THREE.ConeGeometry(17, 26, 4, 1); roof.rotateY(Math.PI / 4);
+  b.add(surf('shingle', '#2a5a58'), roof, 0, 93.4, 0); b.cyl(gold, 0.3, 0.5, 6, 0, 108, 0); b.done(g);
+  const ball = new THREE.Mesh(new THREE.SphereGeometry(1.1, 18, 12), gold); ball.position.y = 111; g.add(ball);
+  const ck = makeClock(8.4, false); ck.g.position.set(0, 54, 11.0); g.add(ck.g); g.clock = ck;
+  return g;
+}
+
 // name -> builder. o.parent, when given, receives the model.
 const put = (o, m) => { if (o.parent) o.parent.add(m.isObject3D ? m : m.g || m.root); return m; };
 export const BUILD = {
@@ -272,4 +296,10 @@ export const BUILD = {
     return w;
   },
   watching_house: (o) => put(o, makeStillHouse()),
+  clock_tower: (o) => put(o, makeClockTower()),
+  // a forest tree with real bark and rustling leaves: treeShape's options (h, r0, spread, clumps, cols...), o.parent required.
+  // Many trees: treeSet(parent, shapes, list) instances them, and .pose() leans them (see ep18.js)
+  forest_tree: (o) => treeSet(o.parent, [treeShape(o)], [{ x: o.x || 0, z: o.z || 0, s: o.s || 1, yaw: o.yaw || 0, shape: 0 }]),
+  // the enormous oak with a face in the bark: .glow(0..1) lights it, .group holds it
+  hero_oak: (o) => heroOak(o.parent, { pos: o.pos || v3(0, 0, 0) }),
 };

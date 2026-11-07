@@ -1,0 +1,618 @@
+{
+ "number": 18,
+ "title": "The Trees Started Calling Everyone by Name",
+ "output": "InThisTown_Episode18_WhisperingTrees.mp4",
+ "youtube_title": "Every Tree in This Roblox Town Started Whispering Names...",
+ "tiktok_caption": "At 6 PM the trees learned everyone's name. Daniel had six minutes. 🌳",
+ "hashtags": "#Roblox #RobloxStories #InThisTown #RobloxMystery #Shorts",
+ "thumbnail_text": "WRONG NAME",
+ "thumbnail_rec": "Daniel in his forest-green hoodie in front of a huge trunk, a glowing name scratched through in the bark, every tree behind him lit with names.",
+ "narrator": {
+  "min_tempo": 1.0,
+  "pace": [
+   2.6,
+   3.4
+  ]
+ },
+ "cast": {
+  "trees": {
+   "voice": "roger",
+   "pitch": 0.84,
+   "tempo": 1.0
+  },
+  "names": {
+   "voice": "laura",
+   "pitch": 0.92,
+   "tempo": 0.95
+  }
+ },
+ "highlights": {
+  "6 PM": "yellow",
+  "WHISPERING": "cyan",
+  "PRANK": "yellow",
+  "DISAPPEARING": "red",
+  "ONE BY ONE": "red",
+  "DANIEL": "yellow",
+  "BIGGEST OAK": "yellow",
+  "FROZE": "red",
+  "SIX MINUTES": "red",
+  "RAN": "red",
+  "EVERY TREE": "cyan",
+  "CROSSED OUT": "red",
+  "GLOWING": "cyan",
+  "HIS OWN NAME": "yellow",
+  "COUNTDOWN": "red",
+  "00:59": "red",
+  "SCRATCHED": "yellow",
+  "STOPPED": "yellow",
+  "SILENT": "cyan",
+  "HUNDREDS": "red",
+  "WRONG NAME": "red",
+  "WASN'T HIS": "red",
+  "LITTLE SISTER'S": "red",
+  "HER NAME": "red"
+ },
+ "lines": [
+  {
+   "text": "At exactly 6 PM, every tree in town started whispering people's names.",
+   "speak": "At exactly six PM, every tree in town started whispering people's names.",
+   "tag": "[mysterious]",
+   "pause": 0.2
+  },
+  {
+   "text": "At first, everyone thought it was a prank.",
+   "tag": "[conversational]",
+   "pause": 0.2
+  },
+  {
+   "text": "Until the people whose names were called began disappearing.",
+   "tag": "[ominous]",
+   "pause": 0.15
+  },
+  {
+   "text": "One by one.",
+   "tag": "[whispers]",
+   "pause": 0.3
+  },
+  {
+   "text": "A boy named Daniel was walking home when the biggest oak tree in the park whispered his name.",
+   "tag": "[curious]",
+   "pause": 0.12
+  },
+  {
+   "text": "\"Daniel.\"",
+   "voice": "trees",
+   "fx": "whisper",
+   "tag": "[whispers, eerie]",
+   "pause": 0.19
+  },
+  {
+   "text": "He froze.",
+   "tag": "[tense]",
+   "pause": 0.22
+  },
+  {
+   "text": "Then the tree whispered something else.",
+   "tag": "[uneasy]",
+   "pause": 0.12
+  },
+  {
+   "text": "\"You have six minutes.\"",
+   "voice": "trees",
+   "fx": "whisper",
+   "tag": "[whispers, eerie]",
+   "pause": 0.19
+  },
+  {
+   "text": "Daniel ran.",
+   "tag": "[urgent]",
+   "pause": 0.12
+  },
+  {
+   "text": "As he passed the park, he noticed names carved into every tree.",
+   "tag": "[tense]",
+   "pause": 0.2
+  },
+  {
+   "text": "Some were crossed out.",
+   "tag": "[uneasy]",
+   "pause": 0.12
+  },
+  {
+   "text": "Others were glowing.",
+   "tag": "[in awe]",
+   "pause": 0.19
+  },
+  {
+   "text": "Then he found his own name.",
+   "tag": "[tense]",
+   "pause": 0.19
+  },
+  {
+   "text": "Beside it was a countdown.",
+   "tag": "[uneasy]",
+   "pause": 0.12
+  },
+  {
+   "text": "00:59.",
+   "speak": "Zero zero, fifty-nine.",
+   "tag": "[tense]",
+   "pause": 0.19
+  },
+  {
+   "text": "Daniel desperately scratched his name off the bark.",
+   "tag": "[urgent]",
+   "pause": 0.19
+  },
+  {
+   "text": "The countdown stopped.",
+   "tag": "[relieved]",
+   "pause": 0.25
+  },
+  {
+   "text": "For a moment, everything went silent.",
+   "tag": "[whispers]",
+   "pause": 0.45
+  },
+  {
+   "text": "Then hundreds of trees began whispering at once.",
+   "tag": "[ominous]",
+   "pause": 0.15
+  },
+  {
+   "text": "\"Wrong name.\"",
+   "voice": "trees",
+   "fx": "chorus",
+   "tag": "[whispers, eerie]",
+   "pause": 0.25
+  },
+  {
+   "text": "Daniel looked down.",
+   "tag": "[uneasy]",
+   "pause": 0.19
+  },
+  {
+   "text": "The name he'd erased wasn't his.",
+   "tag": "[tense]",
+   "pause": 0.19
+  },
+  {
+   "text": "It was his little sister's.",
+   "tag": "[fearful]",
+   "pause": 0.3
+  },
+  {
+   "text": "And across town, every tree began calling her name.",
+   "tag": "[ominous]",
+   "pause": 0
+  }
+ ],
+ "tail": 4.4,
+ "samples": {
+  "n_marcus": {
+   "text": "Marcus...",
+   "voice": "trees",
+   "tag": "[whispers]"
+  },
+  "n_olivia": {
+   "text": "Olivia...",
+   "voice": "names",
+   "tag": "[whispers]"
+  },
+  "n_ethan": {
+   "text": "Ethan...",
+   "voice": "names",
+   "tag": "[whispers]"
+  },
+  "n_grace": {
+   "text": "Grace...",
+   "voice": "trees",
+   "tag": "[whispers]"
+  },
+  "n_noah": {
+   "text": "Noah...",
+   "voice": "names",
+   "tag": "[whispers]"
+  },
+  "n_sofia": {
+   "text": "Sofia...",
+   "voice": "trees",
+   "tag": "[whispers]"
+  },
+  "n_danielle": {
+   "text": "Danielle. Her name is Danielle.",
+   "voice": "trees",
+   "tag": "[whispers]"
+  },
+  "n_danielle2": {
+   "text": "Danielle. Danielle.",
+   "voice": "names",
+   "tag": "[whispers]"
+  }
+ },
+ "sound": {
+  "key": 45,
+  "music_gain": 0.5,
+  "music": [
+   [
+    "0",
+    "mystery"
+   ],
+   [
+    "L9",
+    "suspense"
+   ],
+   [
+    "L18-0.1",
+    "silence"
+   ],
+   [
+    "L19",
+    "dread"
+   ]
+  ],
+  "cues": [
+   [
+    "0",
+    "wind",
+    0.1,
+    {
+     "dur": 24
+    }
+   ],
+   [
+    "ev:strike",
+    "chime",
+    0.55,
+    {
+     "note": 45
+    }
+   ],
+   [
+    "ev:strike+1.3",
+    "chime",
+    0.3,
+    {
+     "note": 45
+    }
+   ],
+   [
+    "ev:wave",
+    "whisper",
+    0.16,
+    {
+     "dur": 10
+    }
+   ],
+   [
+    "ev:wave+0.2",
+    "sample",
+    0.34,
+    {
+     "name": "n_grace",
+     "pan": -0.6,
+     "rate": 0.96
+    }
+   ],
+   [
+    "ev:wave+1.3",
+    "sample",
+    0.34,
+    {
+     "name": "n_noah",
+     "pan": 0.6
+    }
+   ],
+   [
+    "ev:wave+2.6",
+    "sample",
+    0.34,
+    {
+     "name": "n_ethan",
+     "pan": -0.3,
+     "rate": 0.94
+    }
+   ],
+   [
+    "ev:marcus-1.0",
+    "sample",
+    0.5,
+    {
+     "name": "n_marcus",
+     "pan": -0.4
+    }
+   ],
+   [
+    "ev:marcus",
+    "shimmer",
+    0.3,
+    {
+     "dur": 1.0
+    }
+   ],
+   [
+    "ev:olivia-0.95",
+    "sample",
+    0.5,
+    {
+     "name": "n_olivia",
+     "pan": 0.4
+    }
+   ],
+   [
+    "ev:olivia",
+    "shimmer",
+    0.3,
+    {
+     "dur": 1.0
+    }
+   ],
+   [
+    "ev:v1-0.6",
+    "sample",
+    0.4,
+    {
+     "name": "n_sofia",
+     "pan": 0.5
+    }
+   ],
+   [
+    "ev:v1",
+    "pop",
+    0.14
+   ],
+   [
+    "ev:v2",
+    "pop",
+    0.14
+   ],
+   [
+    "ev:v3",
+    "pop",
+    0.14
+   ],
+   [
+    "ev:v4",
+    "pop",
+    0.14
+   ],
+   [
+    "L4",
+    "footsteps",
+    0.2,
+    {
+     "dur": 5.2,
+     "rate": 2.1
+    }
+   ],
+   [
+    "ev:oakname",
+    "rumble",
+    0.3,
+    {
+     "dur": 3
+    }
+   ],
+   [
+    "L6",
+    "heartbeat",
+    0.34,
+    {
+     "dur": 2.2,
+     "bpm": 100
+    }
+   ],
+   [
+    "L8-0.2",
+    "creak",
+    0.3,
+    {
+     "dur": 1.6
+    }
+   ],
+   [
+    "ev:run",
+    "run",
+    0.24,
+    {
+     "dur": 8
+    }
+   ],
+   [
+    "L10",
+    "wind",
+    0.14,
+    {
+     "dur": 10
+    }
+   ],
+   [
+    "L10",
+    "whisper",
+    0.14,
+    {
+     "dur": 7
+    }
+   ],
+   [
+    "ev:found",
+    "heartbeat",
+    0.36,
+    {
+     "dur": 6.2,
+     "bpm": 116
+    }
+   ],
+   [
+    "ev:timerOn",
+    "ding",
+    0.2
+   ],
+   [
+    "ev:t59",
+    "tick",
+    0.42,
+    {
+     "dur": 5,
+     "rate": 1.0
+    }
+   ],
+   [
+    "ev:scratch",
+    "scratch",
+    0.46,
+    {
+     "dur": 3.0
+    }
+   ],
+   [
+    "ev:stop",
+    "glitch",
+    0.2,
+    {
+     "dur": 0.4
+    }
+   ],
+   [
+    "ev:relight",
+    "riser",
+    0.34,
+    {
+     "dur": 2.2
+    }
+   ],
+   [
+    "ev:relight",
+    "whisper",
+    0.28,
+    {
+     "dur": 2.2
+    }
+   ],
+   [
+    "L20e",
+    "sting",
+    0.45,
+    {
+     "dur": 2.6
+    }
+   ],
+   [
+    "ev:moss",
+    "creak",
+    0.2,
+    {
+     "dur": 0.9
+    }
+   ],
+   [
+    "ev:lele",
+    "impact",
+    0.46,
+    {
+     "dur": 2.4
+    }
+   ],
+   [
+    "ev:sister",
+    "hum",
+    0.14,
+    {
+     "dur": 3,
+     "f": 55
+    }
+   ],
+   [
+    "ev:calling",
+    "wind",
+    0.16,
+    {
+     "dur": 8
+    }
+   ],
+   [
+    "ev:bend",
+    "rumble",
+    0.44,
+    {
+     "dur": 7
+    }
+   ],
+   [
+    "ev:bend",
+    "creak",
+    0.34,
+    {
+     "dur": 2.4
+    }
+   ],
+   [
+    "ev:bend+1.1",
+    "creak",
+    0.26,
+    {
+     "dur": 2
+    }
+   ],
+   [
+    "L24e+0.1",
+    "sample",
+    0.75,
+    {
+     "name": "n_danielle2",
+     "rev": 2.6,
+     "wet": 0.5
+    }
+   ],
+   [
+    "L24e+0.45",
+    "sample",
+    0.5,
+    {
+     "name": "n_danielle2",
+     "rate": 0.93,
+     "pan": -0.7,
+     "rev": 2.6,
+     "wet": 0.5
+    }
+   ],
+   [
+    "L24e+0.9",
+    "sample",
+    0.5,
+    {
+     "name": "n_danielle2",
+     "rate": 1.06,
+     "pan": 0.7,
+     "rev": 2.6,
+     "wet": 0.5
+    }
+   ],
+   [
+    "L24e+1.5",
+    "sample",
+    0.4,
+    {
+     "name": "n_danielle2",
+     "rate": 0.88,
+     "pan": -0.3,
+     "rev": 3,
+     "wet": 0.6
+    }
+   ],
+   [
+    "L24e+2.1",
+    "sample",
+    0.36,
+    {
+     "name": "n_danielle2",
+     "rate": 1.1,
+     "pan": 0.4,
+     "rev": 3,
+     "wet": 0.6
+    }
+   ]
+  ]
+ },
+ "fps": 60
+}

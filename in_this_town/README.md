@@ -63,6 +63,13 @@ A real avatar's textures may not fit on a pod: the bundle travels in an env var,
 
 ### Mix
 
+A cue can be a spoken sample: `["L24e+0.4", "sample", 0.5, {"name": "n_x", "rate": 0.93, "pan": -0.7, "rev": 2.6, "wet": 0.5}]` plays
+`build/<id>/samples/n_x.wav`, made by the spec's `samples` block (`{"n_x": {"text": "Danielle. Danielle.", "voice": "names", "tag": "[whispers]"}}`).
+Give a sample a few words: one whispered word with an ellipsis comes back 0.3 s long. `scratch` is a new effect too.
+`tools/caption_sync.py episodes/epXX.json` moves caption chunks onto the spoken words (faster-whisper, local); run it after `tts.py`, before
+frames. `tts.py` and `qc.py` read the OpenRouter key from the environment, then `~/.env`, and `qc.py` falls back to local faster-whisper
+when Scribe can't run. If plain `python tools/audio2.py` fails on scipy, set `PYTHONPATH=D:/Claude/itt-renderer/.pylib`.
+
 Every voice line is levelled to the same loudness. Music ducks up to 15 dB and effects up to 15 dB under speech
 (30 ms attack, 350 ms release, 80 ms look-ahead). `tools/audio.py` prints each line's speech-to-background ratio
 and flags anything under 10 dB. In Episode 6 the worst line is 11.9 dB.
@@ -163,8 +170,26 @@ older episodes stay on `classic`, and `RENDER_LOOK=pro|classic` overrides either
 - `engine/kit.js`: tiling surfaces (`surf('brick', colour)`), `Batch` (bevelled parts merged per material), `building`,
   `skyline`, `crowd`, `crate`, `barrel`, `lamp`, `sign`. Detail comes from layers: trims, frames, ledges, signs.
 - `engine/atmos.js`: `dust`, `sparkles`, `shaft`, `flame`, `clouds`. Call `.update(t)` each frame.
+- `engine/atmos.js` also has `leaves` (falling), `burst` (sparks from a point: `.fire(t0)`) and `vanisher(ch, colour)`: `.set(0..1)` turns
+  a character into blocks of light. `kit.js` has the surfaces `grass` and `cobble`, `character.js` has `nameTag(ch, text)`.
+- `engine/forest.js` (Episode 18): `treeShape` / `treeSet` (instanced trees with bark, rustling leaves, `.pose()` to lean them),
+  `heroOak`, `mossPad`, carved glowing names (`nameAtlas`, `namePatches`, `heroPatch`: a name that can be scratched or redrawn) and
+  `leafLight(centre, radius, colour, i)`: a wave of coloured light through every crown (it darkens the leaf too, so green plus pink
+  doesn't come out yellow).
+- **Skin** keeps a little of its own colour on the pro look (`U.skinGlow`), so coloured light can't turn a face green or orange:
+  no per-episode fix needed. Keep the sun and moon near neutral all the same: put the colour in the set, not the light.
+- **Wide shots**: `frame(ctx, ..., { shadowSpan })` widens the sun's shadow map (studs either side of the focus).
+- **Episode 18's lessons**: a dark forest needs far more fill than it looks (hemi ~2.2, amb 0.5, env 1.4, exposure 1.25), or trunks go
+  black. Bark needs long vertical plates, or it reads as leopard spots under fill. A shot's end time must be finite: `ctx.dur + 1`, not
+  999, or `u` stays near 0 and the camera never moves. On a curved trunk, size text by its letter advance or letters overlap, and leave
+  the canvas room: a clipped digit looks like a crop. A caption sits at 1180 px: keep faces above it, by aiming the camera below the
+  subject (aiming up moves things down the frame).
 - **Extras**: crowds and unnamed characters may use `crowd()` or procedural bodies when that renders faster; named
   characters keep their cast model.
+- **60 fps** from Episode 18: `FPS=60 RENDER_SAMPLES=4`, and `"fps": 60` in the spec so `qc.py` checks it. About 6 frames a second on the
+  GTX 1060 with three workers (`node render.js frames epXX 60 <start> <end> 1`, one range each; existing frames are skipped, so a pass can
+  stop and carry on). Run `tools/caption_sync.py` before frames: captions are in the frames. Clarity is clamped so it can't draw an outline
+  round characters (the old hair halo).
 - Check page: `node render.js stills lookdemo 1 0.5 2.5 3.5`. On Windows, render.js uses the NVIDIA card by itself.
 
 ## Real Roblox avatars
@@ -223,7 +248,7 @@ Options: `<part>=#rrggbb` (a skin-coloured cover), `split:<part>=<x>` (cut layer
   Body parts named like Roblox's (`Head`, `UpperTorso`, `LeftUpperArm`, `Left Leg`, ...) go to their bone
   whole. Hats and hair centred above the neck follow the head. Layered clothing and other accessories are
   cut per triangle at the shoulders, hips and neck.
-* Limits: a real avatar keeps its own Roblox face, so `setFace()` expressions and blinks don't show on it;
+* Limits: a real avatar keeps its own Roblox face unless its spec has `alti` (below);
   costume overrides in an episode (`{...CAST.x, shirt: ...}`) don't apply; R15 elbows and knees stay
   straight (the rig has one joint per limb). If a limb splits wrongly, set `landmarks`
   (`hipY`, `neckY`, `shoulderX`), `head_only` or `yaw` in `avatar.json`; the tool's docstring lists them.
@@ -233,6 +258,32 @@ Options: `<part>=#rrggbb` (a skin-coloured cover), `split:<part>=<x>` (cut layer
   layered jacket, a textured face), through both the `fetch` save path and `import`. The live Roblox
   download itself is untested: Roblox's 3D endpoints need a signed-in cookie and aren't reachable from
   the cloud container.
+
+### Animated Alti Wyre faces on real avatars (Episodes 18-26)
+
+Main characters are real avatars with AltiWyre's cartoon faces: expressions, blinks and lip sync.
+
+```js
+ctx = await initStage('ep19', { look: 'pro', avatars: ['farm_daniel'] });
+await loadAlti(['neutral', 'scared', 'shocked']);                       // every expression the episode uses, before makeCharacter
+const ch = makeCharacter({ avatar: 'farm_daniel', alti: true, skin: '#f2c79a', caustic: false });
+ch.setFace('scared', { blink: blinkAt(t, 0.3), viseme: visemeAt(line.text, line.start, line.end, t), gaze: 'left' });   // each frame
+```
+
+- `engine/altiface.js`; images from `python tools/alti_pack.py` into `web/assets/faces/alti/` (git-ignored: this repo is public and the pack's terms say not to re-upload it, so run the tool once per checkout). Presets, whole faces (`setFace('dizzy')`) and the
+  pick-from sheets are the video-farm's (`docs/faces/` there). Aliases: `smile`, `worried`, `curious`, `shock`, `panic`, `fear`, `frown`.
+- The head's texture is replaced with plain `skin`, so no avatar face shows underneath, and the head is shaded as a smooth box because the
+  default head's sculpted eye sockets showed as rings. Give `skin` the avatar's hand colour. The face is a sheet ray-cast onto the head
+  (`alti: { y, size }` tunes it): it can't float or sink, and hair sits in front of it.
+- **Choose hair that clears the forehead**: fringes hide the eyes (Episode 18's first six candidates mostly failed on this).
+- Check page, every face close: `RENDER_QUERY=only=farm_daniel node render.js stills altifaces 0.5 0.5 1.5 2.5 3.5 4.5 6.5`
+  (`mkdir -p build/altifaces/stills` first).
+
+**Making a new main character** (about 10 minutes, Studio free): find items with `tools/cat_find.py` in the farm repo (classic shirts and pants
+bake cleanest; `--shirts`, `--pants`, `--hair`), put them in a throwaway `scenes/sandbox/avcap_<x>.lua` as `{ id = "x", items = {...}, colors =
+{ skin = ... }, anchored = true }` rows (farm_avatars.py's `scene_text` is the template; 12 candidates fit one scene), run sync, Play,
+`still_capture.py`, `still_build.py`, then `blender_avatar.py ... auto` and `roblox_avatar.py import farm_<x>`. Compare the candidates on the
+check page and delete the rejects. The items of each avatar are in its `avatar.json`. Name it `farm_...`: other names load in every episode.
 
 ## Making the next episode
 

@@ -30,6 +30,15 @@ function draw(kind) {
       for (let k = 0; k < 26; k++) { x.strokeStyle = grey(0.55 + r() * 0.2); x.globalAlpha = 0.35; x.beginPath(); const px = i * w + r() * w; x.moveTo(px, 0); x.bezierCurveTo(px + 5, S / 3, px - 5, S / 2, px, S); x.stroke(); }
       x.globalAlpha = 1; x.fillStyle = grey(0.3); x.fillRect(i * w + w - 3, 0, 3, S);
     }
+  } else if (kind === 'grass') {
+    x.fillStyle = grey(0.7); x.fillRect(0, 0, S, S);
+    for (let i = 0; i < 9000; i++) { x.strokeStyle = grey(0.45 + r() * 0.55); x.lineWidth = 1 + r() * 1.6; x.globalAlpha = 0.5; const a = r() * S, b = r() * S, d = (r() - 0.5) * 8; x.beginPath(); x.moveTo(a, b); x.lineTo(a + d, b - 8 - r() * 12); x.stroke(); }
+    x.globalAlpha = 1;
+  } else if (kind === 'cobble') {
+    x.fillStyle = grey(0.5); x.fillRect(0, 0, S, S);
+    const n = 9, w = S / n;   // uneven set stones: no two the same size, so they don't read as dots
+    for (let j = 0; j < n; j++) { let u = -r() * w; while (u < S) { const sw = w * (0.7 + r() * 0.9), sh = w * (0.82 + r() * 0.14), y = (j + 0.5) * w + (r() - 0.5) * w * 0.1; x.fillStyle = grey(0.66 + r() * 0.26); x.beginPath(); x.roundRect(u + 2, y - sh / 2, sw - 4, sh, w * 0.2); x.fill(); u += sw; } }
+    grain(9000, 0.1);
   } else if (kind === 'sand') { grain(30000, 0.2, 2); grain(3000, 0.25, 4); }
   else if (kind === 'stucco') { grain(16000, 0.13, 3); }
   else if (kind === 'concrete') {
@@ -58,7 +67,7 @@ function normalFrom(canvas, strength) {
   }
   x.putImageData(im, 0, 0); return o;
 }
-const SPAN = { brick: 9, tile: 8, plank: 7, sand: 14, stucco: 10, concrete: 12, corrugated: 9, shingle: 8, hazard: 4, facade: 40 };
+const SPAN = { grass: 12, cobble: 7, brick: 9, tile: 8, plank: 7, sand: 14, stucco: 10, concrete: 12, corrugated: 9, shingle: 8, hazard: 4, facade: 40 };
 const ROUGH = { tile: 0.28, hazard: 0.6, corrugated: 0.5 };
 const tex = new Map(), mats = new Map();
 function maps(kind) {

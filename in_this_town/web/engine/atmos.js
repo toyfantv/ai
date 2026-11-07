@@ -115,5 +115,76 @@ export function clouds(scene, o = {}) {
   return im;
 }
 
+// leaves coming down, tumbling; a pure function of t
+export function leaves(scene, o = {}) {
+  const n = o.count ?? 260, S = o.size ?? 80, H = o.height ?? 40, c = o.centre || v3(0, H / 2, 0), r = rng(o.seed || 21);
+  const g = new THREE.PlaneGeometry(0.42, 0.26); g.rotateZ(0.5);
+  const m = new THREE.InstancedMesh(g, new THREE.MeshStandardMaterial({ side: THREE.DoubleSide, roughness: 0.8 }), n);
+  const items = [], col = new THREE.Color(), cols = o.colors || ['#3f7a35', '#6a9a3f', '#a5a648', '#2f5f30'];
+  for (let i = 0; i < n; i++) { items.push({ x: (r() - 0.5) * S, z: (r() - 0.5) * S, y: r(), v: 0.05 + r() * 0.09, p: r() * 9, w: 0.7 + r() * 1.4 }); m.setColorAt(i, col.set(cols[i % cols.length])); }
+  m.instanceColor.needsUpdate = true; m.frustumCulled = false; m.userData.noAO = true;
+  (o.parent || scene).add(m);
+  const M = new THREE.Matrix4(), q = new THREE.Quaternion(), e = new THREE.Euler(), s = v3(1, 1, 1), p = v3(0, 0, 0);
+  m.update = (t) => {
+    items.forEach((a, i) => {
+      const f = ((a.y - t * a.v * (o.speed ?? 1)) % 1 + 1) % 1;
+      p.set(c.x + a.x + Math.sin(t * a.w + a.p) * 1.4, c.y - H / 2 + f * H, c.z + a.z + Math.cos(t * a.w * 0.8 + a.p) * 1.4);
+      q.setFromEuler(e.set(t * a.w * 1.3 + a.p, t * a.w + a.p, a.p));
+      M.compose(p, q, s); m.setMatrixAt(i, M);
+    });
+    m.instanceMatrix.needsUpdate = true;
+  };
+  return m;
+}
+
+// sparks thrown from a point at time t0; set t0 with .fire(t0)
+export function burst(scene, o = {}) {
+  const n = o.count ?? 90, r = rng(o.seed || 5), pos = new Float32Array(n * 3), vel = new Float32Array(n * 3), seed = new Float32Array(n);
+  const sp = o.spread ?? 1.2;
+  for (let i = 0; i < n; i++) {
+    pos[i * 3] = (r() - 0.5) * sp; pos[i * 3 + 1] = r() * (o.height ?? 4.6); pos[i * 3 + 2] = (r() - 0.5) * sp;
+    vel[i * 3] = (r() - 0.5) * 2.2; vel[i * 3 + 1] = 1.2 + r() * 4; vel[i * 3 + 2] = (r() - 0.5) * 2.2; seed[i] = r();
+  }
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.BufferAttribute(pos, 3)); g.setAttribute('vel', new THREE.BufferAttribute(vel, 3)); g.setAttribute('seed', new THREE.BufferAttribute(seed, 1));
+  const m = new THREE.ShaderMaterial({ transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+    uniforms: { life: { value: -1 }, dur: { value: o.dur ?? 1.4 }, color: { value: new THREE.Color(o.color || '#7dffb0').multiplyScalar(o.bright ?? 2.2) }, px: { value: o.pointSize ?? 1 } },
+    vertexShader: `attribute vec3 vel; attribute float seed; uniform float life, dur, px; varying float a;
+      void main(){ float k = life / dur; vec3 p = position + vel * life * (1.0 - 0.3 * k);
+        vec4 mv = modelViewMatrix * vec4(p, 1.0); gl_Position = projectionMatrix * mv;
+        a = step(0.0, life) * (1.0 - smoothstep(0.35 + seed * 0.4, 1.0, k));
+        gl_PointSize = px * (0.5 + seed) * 210.0 / max(1.0, -mv.z); }`,
+    fragmentShader: `uniform vec3 color; varying float a; void main(){ vec2 q = abs(gl_PointCoord - 0.5); float s = smoothstep(0.5, 0.3, max(q.x, q.y)); if (a < 0.01) discard; gl_FragColor = vec4(color, s * a); }` });
+  const p = new THREE.Points(g, m); p.frustumCulled = false; p.userData.noAO = true; if (o.pos) p.position.copy(o.pos); (o.parent || scene).add(p);
+  let t0 = 1e9;
+  p.fire = (t) => { t0 = t; return p; };
+  p.update = (t) => { m.uniforms.life.value = t - t0; p.visible = t >= t0 && t < t0 + m.uniforms.dur.value; };
+  return p;
+}
+
+// Turns a procedural character to blocks of light: const v = vanisher(ch); v.set(0..1) each frame
+export function vanisher(ch, color = '#7dffb0') {
+  const u = { uV: { value: 0 }, uC: { value: new THREE.Color(color) } }, fades = [];
+  ch.root.traverse((o) => {
+    if (!o.isMesh) return;
+    if (o.material.isMeshBasicMaterial) { o.material = o.material.clone(); fades.push(o.material); return; }
+    const m = o.material.clone();
+    m.onBeforeCompile = (s) => {
+      s.uniforms.uV = u.uV; s.uniforms.uC = u.uC;
+      s.vertexShader = s.vertexShader.replace('#include <common>', '#include <common>\nvarying vec3 vVW;').replace('#include <project_vertex>', '#include <project_vertex>\n vVW = (modelMatrix * vec4(transformed, 1.0)).xyz;');
+      s.fragmentShader = s.fragmentShader.replace('#include <common>', `#include <common>
+        varying vec3 vVW; uniform float uV; uniform vec3 uC;
+        float vH(vec3 p){ return fract(sin(dot(p, vec3(12.9898, 78.233, 37.719))) * 43758.5453); }`)
+        .replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>
+        float vE = vH(floor(vVW * 5.0)) - uV * 1.3 + 0.15;
+        if (uV > 0.001 && vE < 0.0) discard;
+        totalEmissiveRadiance += uC * smoothstep(0.3, 0.0, vE) * 4.0 * step(0.001, uV);`);
+    };
+    m.customProgramCacheKey = () => 'vanisher';
+    o.material = m;
+  });
+  return { set(v) { u.uV.value = v; fades.forEach((m) => { m.transparent = true; m.opacity = 1 - Math.min(1, v * 2.5); }); } };
+}
+
 // updates a whole list: const air = atmos(dust(...), clouds(...)); air.update(t)
 export const atmos = (...items) => ({ update: (t) => items.forEach((i) => i.update && i.update(t)) });

@@ -1,7 +1,7 @@
 // Procedural blocky (R6-style) characters: rig, clothing, hair, canvas-drawn faces, poses.
 import * as THREE from 'three';
 import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
-import { mat } from './core.js';
+import { mat, U } from './core.js';
 import { hasAvatar, makeAvatarCharacter } from './roblox.js';
 
 const geoCache = new Map();
@@ -100,6 +100,7 @@ export function makeCharacter(spec) {
     hair: '#2a1d14', hairStyle: 'short', female: false, hood: false, scale: 1, caustic: true, ...spec,
   };
   const o = { caustic: s.caustic };
+  const so = U.skinGlow ? { ...o, emissive: s.skin, emissiveIntensity: U.skinGlow } : o;
   const root = new THREE.Group();
   const scaleG = new THREE.Group(); scaleG.scale.setScalar(s.scale); root.add(scaleG);
 
@@ -125,11 +126,11 @@ export function makeCharacter(spec) {
   for (const side of [-1, 1]) {
     const pivot = new THREE.Group(); pivot.position.set(side * 1.5, 1.82, 0); torso.add(pivot);
     part(0.98, 1.5, 1, s.sleeves || s.shirt, 0, -0.62, 0, pivot, 0.1, o);
-    part(0.94, 0.5, 0.94, s.skin, 0, -1.6, 0, pivot, 0.12, o);
+    part(0.94, 0.5, 0.94, s.skin, 0, -1.6, 0, pivot, 0.12, so);
     arms.push(pivot);
   }
   const neck = new THREE.Group(); neck.position.set(0, 2, 0); torso.add(neck);
-  const head = part(1.3, 1.25, 1.25, s.skin, 0, 0.68, 0, neck, 0.28, o);
+  const head = part(1.3, 1.25, 1.25, s.skin, 0, 0.68, 0, neck, 0.28, so);
 
   // hair
   const H = s.hair;
@@ -265,6 +266,17 @@ export function makeCharacter(spec) {
   faceMat.color.setScalar(0.92);
   ch.setFace('neutral');
   return ch;
+}
+
+// Roblox's floating name, as a sprite above the head (a sprite stays out of the ambient occlusion)
+export function nameTag(ch, text, o = {}) {
+  const c = document.createElement('canvas'); c.width = 512; c.height = 96;
+  const x = c.getContext('2d'); x.font = '900 62px ITTInter, sans-serif'; x.textAlign = 'center'; x.textBaseline = 'middle';
+  x.lineWidth = 9; x.strokeStyle = 'rgba(0,0,0,0.8)'; x.lineJoin = 'round'; x.strokeText(text, 256, 48); x.fillStyle = o.color || '#ffffff'; x.fillText(text, 256, 48);
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace;
+  const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: t, transparent: true, depthWrite: false, toneMapped: false }));
+  s.scale.set(o.width ?? 5.2, (o.width ?? 5.2) * 96 / 512, 1); s.position.y = o.y ?? 6.3; ch.root.add(s);
+  return s;
 }
 
 // ---------- poses (pure functions of time) ----------

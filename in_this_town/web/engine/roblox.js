@@ -9,7 +9,8 @@
 import * as THREE from 'three';
 import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
 import { MTLLoader } from 'three/addons/loaders/MTLLoader.js';
-import { patchCaustics } from './core.js';
+import { patchCaustics, U } from './core.js';
+import { attachAlti } from './altiface.js';
 
 const BASE = '/web/assets/avatars/';
 const REG = new Map();   // key -> template
@@ -165,6 +166,7 @@ function standard(T, src, caustic) {
     roughness: 0.75, metalness: 0, side: THREE.FrontSide,
   });
   if (m.map) { m.map.colorSpace = THREE.SRGBColorSpace; m.map.anisotropy = 4; }
+  if (m.map && U.skinGlow && /(head|hand)$/i.test(src.name || '')) { m.emissive.set('#ffffff'); m.emissiveMap = m.map; m.emissiveIntensity = U.skinGlow; }   // the pro look's skin
   if (m.transparent) m.depthWrite = m.opacity > 0.5;
   if (caustic) patchCaustics(m);
   T.mats.set(k, m);
@@ -182,23 +184,28 @@ export function makeAvatarCharacter(spec) {
   const torso = new THREE.Group(); hips.add(torso);
   const neck = new THREE.Group(); neck.position.copy(piv.neck).sub(piv.hips); torso.add(neck);
   const head = new THREE.Group(); neck.add(head);
+  const headSkin = [];
   const add = (r, parent) => T.parts[r].forEach(({ geometry, material }) => {
     const m = new THREE.Mesh(geometry, standard(T, material, caustic));
     m.castShadow = true; m.receiveShadow = true; parent.add(m);
+    if (r === 'head' && /(^|_)head$/i.test(material.name || '')) headSkin.push(m);
   });
   add('torso', torso); add('head', head);
   const arms = [0, 1].map((sd) => { const g = new THREE.Group(); g.position.copy(piv['arm' + sd]).sub(piv.hips); torso.add(g); add('arm' + sd, g); return g; });
   const legs = [0, 1].map((sd) => { const g = new THREE.Group(); g.position.copy(piv['leg' + sd]).sub(piv.hips); hips.add(g); add('leg' + sd, g); return g; });
   const hipY = piv.hips.y;
-  return {
+  const ch = {
     root, hips, torso, neck, head, legs, arms, spec, lid: null, expr: 'neutral', hipY, avatar: spec.avatar,
-    // A real avatar keeps its own Roblox face; expressions are remembered so episode logic still reads them.
+    // A real avatar keeps its own Roblox face unless spec.alti gives it an animated one (engine/altiface.js);
+    // expressions are remembered so episode logic still reads them.
     setFace(expr) { this.expr = expr; },
     reset() {
       hips.position.y = hipY; hips.rotation.set(0, 0, 0); torso.rotation.set(0, 0, 0); neck.rotation.set(0, 0, 0);
       legs.forEach((l) => l.rotation.set(0, 0, 0)); arms.forEach((a2) => a2.rotation.set(0, 0, 0));
     },
   };
+  if (spec.alti) attachAlti(ch, headSkin, spec, T.alti ||= {});
+  return ch;
 }
 
 export function avatarInfo(key) { const T = REG.get(key); return T && { landmarks: T.lm, height: T.height, info: T.info }; }

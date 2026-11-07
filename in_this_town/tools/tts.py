@@ -56,6 +56,17 @@ def decode_to_sr(data, af=None):
     return np.frombuffer(out, dtype=np.float32).copy()
 
 
+def openrouter_key():
+    """The environment, then ~/.env (this PC), else the cloud proxy's placeholder. Never printed."""
+    k = os.environ.get("OPENROUTER_API_KEY")
+    env = os.path.expanduser("~/.env")
+    if not k and os.path.exists(env):
+        for line in open(env, encoding="utf8"):
+            m = re.match(r"\s*OPENROUTER_API_KEY\s*=\s*(.*)$", line)
+            if m: k = m.group(1).strip().strip("'\"")
+    return k or "proxy-injected"
+
+
 class OpenRouterTTS:
     """ElevenLabs via OpenRouter, with a per-take mp3 cache and pace control.
 
@@ -63,7 +74,7 @@ class OpenRouterTTS:
     Lines (3+ words) outside the pace window get up to 3 takes; slow ones may raise tempo up to max_tempo.
     """
     def __init__(self):
-        self.key = os.environ.get("OPENROUTER_API_KEY", "proxy-injected")
+        self.key = openrouter_key()
         self.cache = os.path.join("build", "tts_cache"); os.makedirs(self.cache, exist_ok=True)
 
     def raw(self, o, text, take):
@@ -75,7 +86,8 @@ class OpenRouterTTS:
                                "input": text, "response_format": "mp3"}).encode()
             req = urllib.request.Request("https://openrouter.ai/api/v1/audio/speech", body,
                                          {"Authorization": f"Bearer {self.key}", "Content-Type": "application/json"})
-            open(f, "wb").write(urllib.request.urlopen(req, timeout=120).read())
+            data = urllib.request.urlopen(req, timeout=120).read()   # read first: a failed request must not leave an empty cache file
+            open(f, "wb").write(data)
         return open(f, "rb").read()
 
     @staticmethod
@@ -98,6 +110,9 @@ class OpenRouterTTS:
             t = t0
             if words >= 3 and wps < lo and tmax > t0:   # slow line: allowed to speed up to max_tempo
                 t = min(tmax, t0 * lo / wps); a = self.shape(data, p, t); wps = words / (len(a) / SR)
+            tmin = float(o.get("min_tempo", t0))
+            if words >= 3 and wps > hi and tmin < t0:   # a fast line may slow down to min_tempo (an episode can set it)
+                t = max(tmin, t0 * hi / wps); a = self.shape(data, p, t); wps = words / (len(a) / SR)
             miss = 0 if words < 3 or lo <= wps <= hi else min(abs(wps - lo), abs(wps - hi))
             if best is None or miss < best[0]:
                 best = (miss, a, take, t, wps)
@@ -151,7 +166,7 @@ def word_weights(text):
 
 def main():
     ep_path = sys.argv[1]
-    ep = json.load(open(ep_path))
+    ep = json.load(open(ep_path, encoding="utf8"))
     out = os.path.join("build", ep["id"])
     os.makedirs(os.path.join(out, "voice"), exist_ok=True)
     backend = os.environ.get("TTS_BACKEND") or ep.get("tts") or ("elevenlabs" if os.environ.get("ELEVENLABS_API_KEY") else "kokoro")
@@ -184,6 +199,12 @@ def main():
             acc += d
         print(f"{t:6.2f}s  {dur:5.2f}s  [{role}] {line['text']}")
         t += dur + line.get("pause", 0.3)
+
+    # extra spoken sounds for audio2's "sample" cue (whispered names under the narration); not in the captions or the script
+    for name, sm in ep.get("samples", {}).items():
+        os.makedirs(os.path.join(out, "samples"), exist_ok=True)
+        if os.path.exists(os.path.join(out, "samples", name + ".wav")): continue   # already made, or made by hand
+        sf.write(os.path.join(out, "samples", name + ".wav"), trim(tts.say(sm["text"], sm["voice"], ep["voices"][sm["voice"]], sm.get("tag", ""))), SR)
 
     timeline["duration"] = round(t + ep.get("tail", 3.0), 3)
     # captions stay up until the next one (or a short hold)
