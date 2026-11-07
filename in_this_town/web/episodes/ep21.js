@@ -25,10 +25,10 @@ const WARM = new THREE.Color('#ffd0a0'), GRN = new THREE.Color('#2bff8e'), tmpC 
 
 // ---- palettes ----
 const HOTEL = { ...NIGHT, ...P({ top: '#000000', horizon: '#000000', haze: '#040806', sunColor: '#ffffff', hemiSky: '#a8b8a8', hemiGround: '#40302a' }),
-  sunI: 0, sunDisc: 0, stars: 0, moon: 0, hemiI: 0.85, amb: 0.2, envI: 0.3, exposure: 1.2, bloom: 0.34, fogNear: 50, fogFar: 240, saturation: 1.18, contrast: 1.05, bounce: 0.1 };
-const EMERG = { ...HOTEL, ...P({ haze: '#03140c', hemiSky: '#55ffa8', hemiGround: '#0c3a26' }), hemiI: 1.05, amb: 0.2, envI: 0.25, exposure: 1.22, bloom: 0.46, saturation: 1.22 };
+  sunI: 0, sunDisc: 0, stars: 0, moon: 0, hemiI: 0.85, amb: 0.2, envI: 0.3, exposure: 1.08, bloom: 0.1, fogNear: 70, fogFar: 300, saturation: 1.2, contrast: 1.14, bounce: 0.1 };
+const EMERG = { ...HOTEL, ...P({ haze: '#03140c', hemiSky: '#55ffa8', hemiGround: '#0c3a26' }), hemiI: 0.95, amb: 0.2, envI: 0.25, exposure: 1.08, bloom: 0.14, saturation: 1.2, contrast: 1.14 };
 const TOWER = { ...NIGHT, ...P({ top: '#050a1c', horizon: '#123a34', haze: '#0b1f22', sunColor: '#9fc0e8', hemiSky: '#7a9ac0', hemiGround: '#1c2a24' }),
-  sunI: 0.55, sunDir: v3(-0.5, 0.6, 0.6), sunDisc: 0, stars: 1, moon: 1, hemiI: 0.6, amb: 0.14, envI: 0.3, exposure: 1.15, bloom: 0.42, fogNear: 300, fogFar: 1500, saturation: 1.2, contrast: 1.04, bounce: 0.08 };
+  sunI: 0.55, sunDir: v3(-0.5, 0.6, 0.6), sunDisc: 0, stars: 1, moon: 1, hemiI: 0.6, amb: 0.14, envI: 0.3, exposure: 1.12, bloom: 0.22, fogNear: 300, fogFar: 1500, saturation: 1.2, contrast: 1.04, bounce: 0.08 };
 const MORN = { ...DAY, ...P({ top: '#2f8df0', horizon: '#ffeccd', haze: '#fff2dc', sunColor: '#fff0d4', hemiSky: '#d8ecff', hemiGround: '#8fb060' }),
   sunI: 3.2, sunDir: v3(0.55, 0.42, 0.72), sunDisc: 1, stars: 0, moon: 0, hemiI: 1.15, amb: 0.24, envI: 0.85, exposure: 1.04, bloom: 0.3, fogNear: 260, fogFar: 1500, saturation: 1.28, contrast: 1.02, bounce: 0.45 };
 
@@ -103,7 +103,7 @@ function corridor() {
   for (const s of [1, -1]) for (const z of zs) {
     if (z === 5 && s < 0) continue; const x = s * (HW - 0.1); sc.box(brass, 0.12, 1.3, 0.6, x, 7.9, z, { r: 0.04 }); sc.box(brass, 0.7, 0.1, 0.1, s * (HW - 0.45), 7.9, z, { r: 0.03 });
     const m = new THREE.Mesh(shadeG, new THREE.MeshBasicMaterial({ color: '#ffffff' })); m.position.set(s * (HW - 0.82), 8.3, z); m.userData.noAO = true; g.add(m);
-    const gl = glowSprite('#ffffff', 7.5, 0.5); gl.material = gl.material.clone(); gl.position.set(s * (HW - 0.95), 8.3, z); gl.userData.noAO = true; g.add(gl); W.sc.push({ m, gl, z });
+    const gl = glowSprite('#ffffff', 4.2, 0.3); gl.material = gl.material.clone(); gl.position.set(s * (HW - 0.95), 8.3, z); gl.userData.noAO = true; g.add(gl); W.sc.push({ m, gl, z });
   }
   sc.done(g);
   // floor strips
@@ -245,9 +245,9 @@ function lightSet(set, t) {
   W.key.intensity = 0; W.flash.intensity = 0;
   if (set === 'corr') {
     for (let i = 0; i < 8; i++) { const z = 6 + i * 16, l = pl[i], k = greenAt(z, t), blink = k > 0 && k < 1 ? 2 : 1; l.position.set(i % 2 ? -7.6 : 7.6, 8.2, z); l.color.copy(tmpC.copy(WARM).lerp(GRN, k)); l.intensity = lerp(62 * flick(t, i), 120, k) * blink; l.distance = 42; }
-    pl[8].position.set(4, 9, 5); pl[8].color.copy(tmpC.set('#ffcf8e').lerp(GRN, greenAt(0, t))); pl[8].intensity = 44; pl[8].distance = 26;
+    pl[8].position.set(4, 9, 5); pl[8].color.copy(tmpC.set('#ffcf8e').lerp(GRN, greenAt(0, t))); pl[8].intensity = 28; pl[8].distance = 26;
     pl[9].position.set(DX, 5.5, 4.5); pl[9].color.copy(GRN); pl[9].intensity = 20 * smooth(e.reveal, e.reveal + 0.5, t) + 6; pl[9].distance = 18;
-    W.key.position.set(4, 11, 42); W.key.target.position.set(0, 2, 2); W.key.color.copy(tmpC.set('#ffd6a0').lerp(GRN, greenAt(0, t))); W.key.intensity = 300; W.key.distance = 80; W.key.angle = 0.42;
+    W.key.position.set(4, 11, 42); W.key.target.position.set(0, 2, 2); W.key.color.copy(tmpC.set('#ffd6a0').lerp(GRN, greenAt(0, t))); W.key.intensity = 210; W.key.distance = 80; W.key.angle = 0.42;
   } else if (set === 'wing') {
     const g = t >= e.green ? 1 : 0;
     for (let i = 0; i < 6; i++) { const z = -10 - i * 24, l = pl[i]; l.position.set(DX, WH - 1.7, z); l.color.copy(g ? GRN : WARM); l.intensity = g ? 90 * flick(t, i, 0.4) : 40; l.distance = 34; }
@@ -352,7 +352,7 @@ function renderAt(t) {
   W.clouds.visible = set === 'mead';
   // the corridor's lamps
   if (set === 'corr') {
-    W.sc.forEach(({ m, gl, z }, i) => { const k = greenAt(z, t), f = flick(t, i), c = tmpC.copy(WARM).lerp(GRN, k); m.material.color.copy(c).multiplyScalar(lerp(2.4 * f, 3.2, k)); gl.material.color.copy(c); gl.material.opacity = lerp(0.5 * f, 0.7, k); });
+    W.sc.forEach(({ m, gl, z }, i) => { const k = greenAt(z, t), f = flick(t, i), c = tmpC.copy(WARM).lerp(GRN, k); m.material.color.copy(c).multiplyScalar(lerp(1.5 * f, 1.8, k)); gl.material.color.copy(c); gl.material.opacity = lerp(0.22 * f, 0.3, k); });
     W.led.color.copy(GRN).multiplyScalar(lerp(0.34, 2.4, smooth(e.green, e.green + 1.2, t)));
     W.hideV.set(clamp((t - e.reveal) / 0.7)); W.hide.visible = t < e.reveal + 0.75;
     W.air.list.spark.visible = t > e.reveal && t < e.open + 1; const crying = t > e.cry - 0.3 && t < e.open + 0.3; W.gap.material.color.setRGB(1, 0.9, 0.6).multiplyScalar(t < e.reveal + 0.6 ? 0 : (crying ? 1.5 + 1.2 * Math.max(0, noise1(t * 9)) : 0.4));
