@@ -8,7 +8,7 @@
  "tiktok_caption": "She lost 20 fashion shows. Then she found a silver dress behind the mirrors, and it never let her lose again.",
  "hashtags": "#Roblox #RobloxStories #InThisTown #DressToImpress #Shorts",
  "thumbnail_text": "WINNER FOREVER",
- "thumbnail_rec": "Bella in the glowing silver dress and tiara alone on a silver-lit runway, a giant screen behind her reading WINNER SELECTED FOREVER, frozen contestants in the dark.",
+ "thumbnail_rec": "Ruby in the glowing silver dress and tiara alone on a silver-lit runway, a giant screen behind her reading WINNER SELECTED FOREVER, frozen contestants in the dark.",
  "lead_in": 0.3,
  "tail": 4.0,
  "voices": {
@@ -71,7 +71,7 @@
  },
  "lines": [
   {
-   "text": "Bella had entered twenty fashion competitions.",
+   "text": "Ruby had entered twenty fashion competitions.",
    "tag": "[mysterious]",
    "pause": 0.34,
    "audio": "build/ep22/local_lines/line_00.wav"
@@ -101,7 +101,7 @@
    "audio": "build/ep22/local_lines/line_04.wav"
   },
   {
-   "text": "And when Bella put it on, the entire lobby went silent.",
+   "text": "And when Ruby put it on, the entire lobby went silent.",
    "tag": "[mysterious]",
    "pause": 0.62,
    "audio": "build/ep22/local_lines/line_05.wav"
@@ -114,7 +114,7 @@
    "audio": "build/ep22/local_lines/line_06.wav"
   },
   {
-   "text": "Bella walked onto the stage.",
+   "text": "Ruby walked onto the stage.",
    "tag": "[conversational]",
    "pause": 0.34,
    "audio": "build/ep22/local_lines/line_07.wav"
@@ -153,7 +153,7 @@
    "audio": "build/ep22/local_lines/line_12.wav"
   },
   {
-   "text": "At first, Bella loved it.",
+   "text": "At first, Ruby loved it.",
    "tag": "[conversational]",
    "pause": 0.34,
    "audio": "build/ep22/local_lines/line_13.wav"
@@ -186,7 +186,7 @@
    "audio": "build/ep22/local_lines/line_17.wav"
   },
   {
-   "text": "Bella tried to leave the game.",
+   "text": "Ruby tried to leave the game.",
    "tag": "[urgent]",
    "pause": 0.34,
    "audio": "build/ep22/local_lines/line_18.wav"
@@ -225,7 +225,7 @@
    "audio": "build/ep22/local_lines/line_23.wav"
   },
   {
-   "text": "Bella looked toward the audience.",
+   "text": "Ruby looked toward the audience.",
    "tag": "[mysterious]",
    "pause": 0.34,
    "audio": "build/ep22/local_lines/line_24.wav"

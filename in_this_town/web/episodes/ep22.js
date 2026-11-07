@@ -1,8 +1,8 @@
 // Episode 22: The Dress That Won Every Competition. A glamorous fashion-show game: a runway hall in silver light (catwalk, LED screen,
 // truss and moving heads, red-velvet risers, a judges' desk) and a pink backstage lounge with a wall of bulb mirrors. One mirror slides
-// away to show a silver gown on a dress form. In it Bella can't lose: every round, every outfit, first place. Then the game stops
+// away to show a silver gown on a dress form. In it Ruby can't lose: every round, every outfit, first place. Then the game stops
 // pretending: the contestants freeze, the screen picks its winner forever, the gown cinches, and the only person left in the seats is
-// wearing Bella's original outfit.
+// wearing Ruby's original outfit.
 // Sets share the world: the hall at the origin (runway along +z), the lounge at LX.
 import * as THREE from 'three';
 import { clamp, lerp, smooth, easeInOut, easeOut, v3, rng, noise1 } from '../engine/core.js';
@@ -20,7 +20,7 @@ const W = {};
 const LX = v3(700, 0, 0);
 const RT = 1.6, RW = 5, RZ0 = -6, RZ1 = 66;          // runway top, half width, start and end
 const SZ = -26, ST = 1.6;                             // stage back wall, stage top
-const END = 58, MID = 40;                             // Bella's marks on the runway
+const END = 58, MID = 40;                             // Ruby's marks on the runway
 const SPEC = { s: -1, r: 3, z: 34 };                  // the one seat that stays taken
 const lp3 = (a, b, u) => a.clone().lerp(b, u);
 const tmpC = new THREE.Color();
@@ -28,7 +28,7 @@ const ARM = 2.2;
 
 // ---- palettes ----
 const HALL = { ...NIGHT, ...P({ top: '#05060c', horizon: '#090b16', haze: '#080a14', sunColor: '#dfe6ff', hemiSky: '#b9c6e8', hemiGround: '#251c2a' }),
-  sunI: 0, sunDisc: 0, stars: 0, moon: 0, hemiI: 0.62, amb: 0.14, envI: 0.42, exposure: 1.16, bloom: 0.3, fogNear: 120, fogFar: 520, saturation: 1.14, contrast: 1.04, bounce: 0.12 };
+  sunI: 0, sunDisc: 0, stars: 0, moon: 0, hemiI: 0.62, amb: 0.14, envI: 0.36, exposure: 0.95, bloom: 0.05, fogNear: 120, fogFar: 520, saturation: 1.2, contrast: 1.14, bounce: 0.12 };
 const COLD = { ...HALL, ...P({ haze: '#05070e', hemiSky: '#8ea6ff', hemiGround: '#14141e' }), hemiI: 0.5, amb: 0.1, envI: 0.32, exposure: 1.12, saturation: 0.88, contrast: 1.08 };
 const DARK = { ...COLD, ...P({ haze: '#020205', hemiSky: '#5a6a9a' }), hemiI: 0.24, amb: 0.06, envI: 0.16, exposure: 1.26, saturation: 0.95 };
 const LOUNGE = { ...NIGHT, ...P({ top: '#1a0f16', horizon: '#2a1820', haze: '#24141c', sunColor: '#ffffff', hemiSky: '#ffe2ee', hemiGround: '#6a3a4c' }),
@@ -48,7 +48,7 @@ function velvet(base) { const m = paint(base, { roughness: 0.82 }); return m; }
 function hall() {
   const g = new THREE.Group(); ctx.scene.add(g); W.hall = g;
   const b = new Batch(), floor = paint('#0c0d14', { roughness: 0.22, metalness: 0.35 }), black = paint('#08080c', { roughness: 0.6 }), chrome = paint('#c9ced8', { metalness: 0.95, roughness: 0.18 }),
-    white = paint('#e8ebf2', { roughness: 0.16, metalness: 0.25 }), trim = paint('#a7adbb', { metalness: 0.9, roughness: 0.25 }), gold = paint('#c9a24a', { metalness: 0.9, roughness: 0.3 });
+    white = paint('#555b69', { roughness: 0.3, metalness: 0.55 }), trim = paint('#a7adbb', { metalness: 0.9, roughness: 0.25 }), gold = paint('#c9a24a', { metalness: 0.9, roughness: 0.3 });
   b.box(floor, 200, 0.4, 200, 0, -0.2, 20, { r: 0.02 });
   // the catwalk: white lacquer top on a mirrored plinth, chrome lips
   b.box(white, RW * 2, 0.3, RZ1 - RZ0, 0, RT - 0.15, (RZ0 + RZ1) / 2, { r: 0.05 });
@@ -56,7 +56,7 @@ function hall() {
   for (const s of [-1, 1]) b.box(chrome, 0.2, 0.2, RZ1 - RZ0, s * RW, RT + 0.02, (RZ0 + RZ1) / 2, { r: 0.05 });
   b.box(chrome, RW * 2 + 0.2, 0.2, 0.2, 0, RT + 0.02, RZ1, { r: 0.05 });
   // a pattern of inlaid squares down the catwalk
-  for (let z = RZ0 + 3; z < RZ1; z += 6) b.box(paint('#b7bfd2', { metalness: 0.9, roughness: 0.12 }), 2.2, 0.04, 2.2, 0, RT + 0.01, z, { r: 0.02, ry: Math.PI / 4 });
+  for (let z = RZ0 + 3; z < RZ1; z += 6) b.box(paint('#8d95a8', { metalness: 0.9, roughness: 0.2 }), 2.2, 0.04, 2.2, 0, RT + 0.01, z, { r: 0.02, ry: Math.PI / 4 });
   // the end platform, round
   b.cyl(white, 7.2, 7.2, 0.3, 0, RT - 0.15, RZ1 - 2, { seg: 48 }); b.cyl(paint('#1a1c26', { metalness: 0.6, roughness: 0.15 }), 7.0, 7.0, RT - 0.3, 0, (RT - 0.3) / 2, RZ1 - 2, { seg: 48 });
   b.cyl(chrome, 7.3, 7.3, 0.16, 0, RT + 0.02, RZ1 - 2, { seg: 48 });
@@ -236,8 +236,10 @@ function people() {
   W.pink = makeCharacter({ avatar: 'farm_bella_a', alti: true, skin: '#f2c79a', caustic: false }); sc.add(W.pink.root);
   W.silver = makeCharacter({ avatar: 'farm_silver_a', alti: true, skin: '#f2c79a', caustic: false }); sc.add(W.silver.root);
   W.rivals = [['farm_rival_red', '#f6d2b0'], ['farm_rival_gold', '#8e5a3a'], ['farm_rival_blue', '#d9a77c']].map(([a, s]) => { const c = makeCharacter({ avatar: a, alti: true, skin: s, caustic: false }); sc.add(c.root); return c; });
+  W.pink.faceStyle = W.silver.faceStyle = (x) => 'lash:' + x;
+  [[0, 'glam:spring_pastel'], [2, 'glam:fantasy']].forEach(([i, g]) => { W.rivals[i].faceStyle = (x) => (['shocked', 'surprised', 'scared'].includes(x) ? 'lash:' + x : g); });
   W.judges = ['farm_rich_dominus', 'farm_grandma', 'farm_john'].map((a) => { const c = makeCharacter({ avatar: a, caustic: false }); sc.add(c.root); return c; });
-  // the gown on Bella (on her hips, so it follows the walk), and the one on the dress form
+  // the gown on Ruby (on her hips, so it follows the walk), and the one on the dress form
   const H0 = W.silver.hipY ?? 2, sp = sparkleTex(); sp.wrapS = sp.wrapT = THREE.RepeatWrapping; W.sp = sp;
   W.gTop = 0.62; W.gH0 = H0;
   W.gown = gownGeo(); shapeGown(W.gown, W.gTop, H0, 0); W.gownM = gownMat(sp);
@@ -266,13 +268,13 @@ function lightSet(set, t, focus) {
   if (set === 'hall') {
     const warm = tmpC.set('#e6ecff');
     // washes along the runway, the screen's glow, rims from behind
-    for (let i = 0; i < 5; i++) { const l = pl[i]; l.position.set(i % 2 ? 9 : -9, 14, 4 + i * 14); l.color.copy(warm).lerp(tmpC.set('#8ea6ff'), fr); l.intensity = lerp(lerp(150, 110, fr), 4, dk); l.distance = 48; }
+    for (let i = 0; i < 5; i++) { const l = pl[i]; l.position.set(i % 2 ? 9 : -9, 14, 4 + i * 14); l.color.copy(warm).lerp(tmpC.set('#8ea6ff'), fr); l.intensity = lerp(lerp(75, 60, fr), 4, dk); l.distance = 48; }
     pl[5].position.set(0, 14, SZ + 10); pl[5].color.copy(W.scrGlow || warm); pl[5].intensity = lerp(240, 120, dk); pl[5].distance = 60;
     pl[6].position.set(focus.x, focus.y + 8, focus.z - 7); pl[6].color.set('#cfdcff'); pl[6].intensity = lerp(70, 30, dk); pl[6].distance = 20;   // rim
     pl[7].position.set(-16, 10, 56); pl[7].color.set('#ffe6d0'); pl[7].intensity = lerp(60, 0, dk); pl[7].distance = 22;            // the judges
     pl[8].position.set(0, 9, -10); pl[8].color.set('#dfe6ff'); pl[8].intensity = lerp(90, 0, dk); pl[8].distance = 30;               // the stage line-up
-    W.key.position.set(focus.x + 7, 26, focus.z + 16); W.key.target.position.copy(focus); W.key.color.set('#f4f6ff'); W.key.intensity = lerp(lerp(900, 700, fr), 0, dk); W.key.distance = 70; W.key.angle = 0.3;
-    if (t >= EV.spot - 0.3) { W.key.position.set(MID === focus.z ? 0 : focus.x, 31, focus.z + 2); W.key.target.position.copy(focus); W.key.angle = 0.12; W.key.penumbra = 0.35; W.key.intensity = 1500 * smooth(EV.spot, EV.spot + 0.08, t); }
+    W.key.position.set(focus.x + 7, 26, focus.z + 16); W.key.target.position.copy(focus); W.key.color.set('#f4f6ff'); W.key.intensity = lerp(lerp(420, 360, fr), 0, dk); W.key.distance = 70; W.key.angle = 0.3;
+    if (t >= EV.spot - 0.3) { W.key.position.set(MID === focus.z ? 0 : focus.x, 31, focus.z + 2); W.key.target.position.copy(focus); W.key.angle = 0.12; W.key.penumbra = 0.35; W.key.intensity = 760 * smooth(EV.spot, EV.spot + 0.08, t); }
     else W.key.penumbra = 0.55;
     if (dk > 0) for (let i = 0; i < 5; i++) { const l = pl[i]; l.position.set(i % 2 ? 21 : -21, 13, 8 + i * 12); l.color.set('#6c7cc0'); l.intensity = lerp(l.intensity, 110, dk); l.distance = 34; }
     if (dk > 0) { const p = specPos(); pl[7].position.set(p.x + 5, p.y + 8, p.z + 2); pl[7].color.set('#d6cce8'); pl[7].intensity = 26 * dk; pl[7].distance = 14; }
@@ -306,7 +308,7 @@ function screenDraw(t, mode) {
     txt(`COMPETITION #${n}`, 120, 64, '#cfd8ff'); txt('RESULTS', 210, 46, '#8a94b8');
     const rows = [['1', 'xXStarGirlXx'], ['2', 'GoldenJay'], ['3', 'BlueBunny_09']]; x.font = F(40); x.textAlign = 'left';
     rows.forEach(([a, b], i) => { x.fillStyle = 'rgba(255,255,255,0.07)'; x.fillRect(220, 260 + i * 62, 584, 52); x.fillStyle = '#ffd23f'; x.fillText(a, 244, 288 + i * 62); x.fillStyle = '#e8ecff'; x.fillText(b, 300, 288 + i * 62); });
-    x.fillStyle = 'rgba(255,40,70,0.22)'; x.fillRect(220, 470, 584, 56); x.fillStyle = '#ff4466'; x.fillText('20', 236, 500); x.fillText('Bella', 300, 500); x.textAlign = 'right'; x.fillText('LAST', 790, 500);
+    x.fillStyle = 'rgba(255,40,70,0.22)'; x.fillRect(220, 470, 584, 56); x.fillStyle = '#ff4466'; x.fillText('20', 236, 500); x.fillText('Ruby', 300, 500); x.textAlign = 'right'; x.fillText('LAST', 790, 500);
     glow = '#9fb0ff';
   } else if (mode === 'theme') {
     bg('#1a1030', '#06040e'); const k = smooth(L(6).start + 0.2, L(6).start + 0.9, t);
@@ -314,15 +316,15 @@ function screenDraw(t, mode) {
     txt('THEME', 300, 40, '#b9a6e8'); txt('FUTURE ROYALTY', 390, 54, '#f2e6ff', '#c58bff'); x.globalAlpha = 1; glow = '#c58bff';
   } else if (mode === 'score' || mode === 'win' || mode === 'win2') {
     bg('#1a1a24', '#06060a');
-    if (mode === 'score') { txt('JUDGES', 140, 48, '#cfd8ff'); stars(300, 5, smooth(e.j1, e.j3 + 0.3, t) * 1.01); txt('Bella', 440, 64, '#ffffff'); }
-    else { txt(mode === 'win2' ? 'ROUND 2' : 'WINNER', 120, 48, '#cfd8ff'); txt('1ST PLACE', 280, 120, '#ffd23f', '#ffb000'); txt('Bella', 420, 70, '#ffffff'); glow = '#ffcf6a'; }
+    if (mode === 'score') { txt('JUDGES', 140, 48, '#cfd8ff'); stars(300, 5, smooth(e.j1, e.j3 + 0.3, t) * 1.01); txt('Ruby', 440, 64, '#ffffff'); }
+    else { txt(mode === 'win2' ? 'ROUND 2' : 'WINNER', 120, 48, '#cfd8ff'); txt('1ST PLACE', 280, 120, '#ffd23f', '#ffb000'); txt('Ruby', 420, 70, '#ffffff'); glow = '#ffcf6a'; }
   } else if (mode === 'round') {
     bg('#101426', '#05060c'); txt('ROUND 2', 230, 120, '#e8ecff'); txt('THEME: FUTURE ROYALTY', 360, 40, '#b9a6e8');
   } else if (mode === 'wins') {
     bg('#1a1a24', '#06060a'); const k = clamp((t - e.outfits) / (L(12).end - e.outfits)), n = 3 + Math.floor(Math.pow(k, 1.6) * 96);
-    txt(`ROUND ${n}`, 110, 52, '#cfd8ff'); txt('1ST PLACE', 270, 120, '#ffd23f', '#ffb000'); txt('Bella', 410, 70, '#ffffff'); glow = '#ffcf6a';
+    txt(`ROUND ${n}`, 110, 52, '#cfd8ff'); txt('1ST PLACE', 270, 120, '#ffd23f', '#ffb000'); txt('Ruby', 410, 70, '#ffffff'); glow = '#ffcf6a';
   } else if (mode === 'frozen') {
-    bg('#1a1a24', '#06060a'); txt('1ST PLACE', 270, 120, '#ffd23f', '#ffb000'); txt('Bella', 410, 70, '#ffffff');
+    bg('#1a1a24', '#06060a'); txt('1ST PLACE', 270, 120, '#ffd23f', '#ffb000'); txt('Ruby', 410, 70, '#ffffff');
     const g = smooth(e.glitch - 0.3, e.glitch, t); if (g > 0) { const r = rng(Math.floor(t * 30)); for (let i = 0; i < 18 * g; i++) { x.fillStyle = r() < 0.5 ? 'rgba(255,40,70,0.5)' : 'rgba(200,220,255,0.4)'; x.fillRect(0, r() * h, w, 4 + r() * 20); } }
   } else if (mode === 'forever') {
     bg('#1c0408', '#050102'); const r = rng(Math.floor(t * 24)), j = (r() - 0.5) * 10 * (1 - smooth(e.forever, e.forever + 1.2, t));
@@ -359,7 +361,7 @@ function menu(x, t) {
   x.fillStyle = 'rgba(28,30,38,0.96)'; rr(x, -440, -330, 880, 600, 30); x.fill(); x.strokeStyle = 'rgba(255,255,255,0.18)'; x.lineWidth = 3; x.stroke();
   x.textAlign = 'left'; x.font = F(40); x.fillStyle = '#ffffff'; x.fillText('Players', -390, -258); x.fillStyle = '#9aa0b4'; x.fillText('Settings', -170, -258); x.fillText('Help', 70, -258);
   x.fillStyle = '#3c3f4c'; x.fillRect(-440, -226, 880, 3);
-  x.font = F(36); x.fillStyle = '#e8ecff'; x.fillText('Bella', -330, -150); x.fillStyle = '#5a5e70'; x.beginPath(); x.arc(-375, -162, 26, 0, 7); x.fill();
+  x.font = F(36); x.fillStyle = '#e8ecff'; x.fillText('Ruby', -330, -150); x.fillStyle = '#5a5e70'; x.beginPath(); x.arc(-375, -162, 26, 0, 7); x.fill();
   // the buttons
   const gone = smooth(e.gone - 0.05, e.gone + 0.35, t), r = rng(Math.floor(t * 30));
   const btn = (bx, label, col, alpha = 1, jit = 0) => { x.globalAlpha = alpha; x.fillStyle = col; rr(x, bx + jit, 120, 250, 96, 18); x.fill(); x.fillStyle = '#ffffff'; x.textAlign = 'center'; x.font = F(36); x.fillText(label, bx + 125 + jit, 182); x.globalAlpha = 1; x.textAlign = 'left'; };
@@ -384,7 +386,7 @@ function drawHud(t, n) {
 
 // ---- helpers for hands and walks ----
 function modelWalk(c, t, amp = 0.45) { pose(c, 'walk', t); const [Lg, Rg] = c.legs, [A, B] = c.arms; Lg.rotation.x *= amp; Rg.rotation.x *= amp; A.rotation.x *= 0.6; B.rotation.x *= 0.6; A.rotation.z = -0.19; B.rotation.z = 0.19; c.torso.rotation.y = Math.sin(t * 7.5) * 0.06; }
-function faceOf(c, name, t, ph, o = {}) { c.setFace(name, { blink: o.blink !== false && blinkAt(t, ph) && !['shocked', 'terrified', 'gasp'].includes(name), viseme: o.viseme }); }
+function faceOf(c, name, t, ph, o = {}) { c.setFace(c.faceStyle && !name.includes(':') ? c.faceStyle(name) : name, { blink: o.blink !== false && blinkAt(t, ph) && !['shocked', 'terrified', 'gasp'].includes(name), viseme: o.viseme }); }
 const OUTFITS = ['#ffd27a', '#ff5a7a', '#7fa8ff', '#2b2b36', '#b48cff', '#ffffff', '#7affc8'];
 function tintSilver(col) {
   if (!W.tintMats) { W.tintMats = []; W.silver.root.traverse((o) => { if (o.isMesh && o.material && !o.material.isMeshBasicMaterial && o !== W.gownMesh && /torso|leg|foot/i.test(o.material.name || '')) { o.material = o.material.clone(); W.tintMats.push({ m: o.material, c: o.material.color.clone() }); } }); }
@@ -446,19 +448,19 @@ function renderAt(t) {
     if (first) screenDraw(t, mode);
     // LEDs, beams, flashes
     const fr = smooth(e.freeze, e.freeze + 0.5, t), dk = smooth(e.spot - 0.3, e.spot, t), red = smooth(e.forever - 0.2, e.forever + 0.4, t) * (1 - dk);
-    W.ledM.color.copy(tmpC.set('#dfe6ff').lerp(tmpC.clone().set('#ff2244'), red)).multiplyScalar(lerp(2.4, 0.15, dk));
-    W.scrM.color.setScalar(lerp(1.25, 0.9, dk));
+    W.ledM.color.copy(tmpC.set('#dfe6ff').lerp(tmpC.clone().set('#ff2244'), red)).multiplyScalar(lerp(1.3, 0.15, dk));
+    W.scrM.color.setScalar(lerp(1.0, 0.85, dk));
     W.heads.forEach(({ from, beam, i, bar }) => { const sw = t < e.freeze ? t : e.freeze, a = Math.sin(sw * 0.6 + i * 1.3) * 0.5, to = bar ? v3(from.x * 0.3 + Math.sin(sw * 0.8 + i) * 4, RT, from.z + 6 + Math.cos(sw * 0.7 + i) * 6) : v3(from.x * 0.4 + Math.sin(a) * 14, 0, 18 + Math.cos(sw * 0.5 + i) * 16);
-      beam.quaternion.setFromUnitVectors(v3(0, -1, 0), to.sub(from).normalize()); beam.material.uniforms.amount.value = (bar ? 0.06 : 0.1) * (1 - dk) * (1 - 0.4 * fr); beam.material.uniforms.color.value.copy(tmpC.set('#dfe7ff').lerp(tmpC.clone().set('#ff3355'), red * 0.7)); });
-    W.spotBeam.material.uniforms.amount.value = 0.34 * smooth(e.spot, e.spot + 0.08, t);
+      beam.quaternion.setFromUnitVectors(v3(0, -1, 0), to.sub(from).normalize()); beam.material.uniforms.amount.value = (bar ? 0.025 : 0.045) * (1 - dk) * (1 - 0.4 * fr); beam.material.uniforms.color.value.copy(tmpC.set('#dfe7ff').lerp(tmpC.clone().set('#ff3355'), red * 0.7)); });
+    W.spotBeam.material.uniforms.amount.value = 0.14 * smooth(e.spot, e.spot + 0.08, t);
     W.specBeam.material.uniforms.amount.value = 0.13 * smooth(e.spec, e.spec + 0.5, t);
-    W.flashes.forEach(({ sp, ph, rate }) => { const on = t < e.freeze && ['enter', 'first', 'round2', 'outfits', 'loved', 'open'].includes(n); const f = (t * rate + ph) % 1; sp.material.opacity = on && f < 0.06 ? 0.9 : 0; });
+    W.flashes.forEach(({ sp, ph, rate }) => { const on = t < e.freeze && ['enter', 'first', 'round2', 'outfits', 'loved', 'open'].includes(n); const f = (t * rate + ph) % 1; sp.material.opacity = on && f < 0.06 ? 0.5 : 0; });
     // the crowd
     const cmode = t >= e.freeze ? 'idle' : ['first', 'loved'].includes(n) || (n === 'round2' && t > e.conf2) || n === 'outfits' ? 'cheer' : ['enter', 'judges', 'round2'].includes(n) ? 'clap' : 'idle';
     W.crowd(Math.min(t, e.freeze), cmode);
     W.crowdG.forEach((m) => { m.visible = !['audience', 'empty', 'one', 'reveal'].includes(n) && !(n === 'count' && t > s(24) - 0.2); });
 
-    // Bella on the runway
+    // Ruby on the runway
     const B = n === 'open' || n === 'lose' ? P : Sv; B.root.visible = true;
     const bp = B.root.position; let walking = false;
     if (n === 'open') { const z = walkZ(t, 0, 24, 44, 6.4); bp.set(0, RT, z); walking = z < 44; }
@@ -474,11 +476,11 @@ function renderAt(t) {
     else pose(B, 'idle', t);
     focus = bp.clone().add(v3(0, 3, 0));
     if (B === P) {
-      faceOf(P, n === 'lose' ? 'nervous' : 'nervous', t, 0.3);
+      faceOf(P, n === 'lose' ? 'sad' : 'nervous', t, 0.3);
       if (n === 'lose') { P.neck.rotation.x = 0.22; P.torso.rotation.x = 0.06; }
     } else {
       W.glitter.visible = true; let face = 'happy';
-      if (n === 'theme' || n === 'enter') face = 'smug';
+      if (n === 'theme' || n === 'enter') face = 'glam:silver_bunny';
       if (n === 'judges') face = 'surprised';
       if (n === 'first' || n === 'round2' || n === 'outfits') { face = 'laugh'; if (!walking) { const [A, Bm] = Sv.arms; Bm.rotation.z = 2.5 + Math.sin(t * 8) * 0.2; A.rotation.z = -0.5; A.rotation.x = -0.2; } }
       if (n === 'loved') { face = 'grin'; Sv.arms[1].rotation.z = 2.6 + Math.sin(t * 9) * 0.35; Sv.arms[0].rotation.z = -0.2; }
@@ -521,7 +523,7 @@ function renderAt(t) {
     if (B !== P) {
       sp.root.visible = true; pose(sp, 'sit', t); sp.root.rotation.y = Math.PI / 2;
       const hy = sp.hips.position.y; sp.root.position.set(p.x - 0.42, p.y + 1.4 - (hy - 0.5) + 0.02, p.z);
-      faceOf(sp, t >= e.clap ? 'smug' : 'neutral', t, 0.9);
+      faceOf(sp, t >= e.clap - 0.6 ? 'glam:brown_beauty' : 'neutral', t, 0.9);
       if (t >= e.clap - 0.6) { const k = smooth(e.clap - 0.6, e.clap, t), c = t > e.clap ? Math.pow(Math.abs(Math.sin((t - e.clap) * Math.PI / 0.62)), 0.5) : 0; const [A, Bm] = sp.arms;
         A.rotation.x = lerp(-0.9, -1.25, k); Bm.rotation.x = lerp(-0.9, -1.25, k); A.rotation.z = lerp(0, 0.36 + 0.22 * (1 - c), k); Bm.rotation.z = -A.rotation.z; }
       sp.neck.rotation.x = 0.05;
@@ -548,11 +550,11 @@ function renderAt(t) {
       const k = clamp((t - (e.swap - 0.7)) / 1.4), spin = easeInOut(k) * Math.PI * 4, swapped = t >= e.swap;
       const B = swapped ? Sv : P; B.root.visible = true; B.root.position.set(o.x, 0, o.z - 2); B.root.rotation.y = spin; pose(B, 'idle', t);
       if (B === Sv) { W.glitter.visible = true; Sv.arms[0].rotation.z = -0.13 - 0.5 * (1 - k); Sv.arms[1].rotation.z = 0.13 + 0.5 * (1 - k); } else { P.arms[0].rotation.z = -0.4 * k; P.arms[1].rotation.z = 0.4 * k; }
-      faceOf(B, swapped ? 'smug' : 'surprised', t, 0.3);
+      faceOf(B, swapped ? 'glam:silver_bunny' : 'surprised', t, 0.3);
       focus = v3(o.x, 4, o.z - 2);
     }
     if (n === 'silent') {
-      Sv.root.visible = true; Sv.root.position.set(o.x, 0, o.z - 2); Sv.root.rotation.y = 0; pose(Sv, 'idle', t); W.glitter.visible = true; faceOf(Sv, 'smug', t, 0.3);
+      Sv.root.visible = true; Sv.root.position.set(o.x, 0, o.z - 2); Sv.root.rotation.y = 0; pose(Sv, 'idle', t); W.glitter.visible = true; faceOf(Sv, 'glam:silver_bunny', t, 0.3);
       Sv.arms[0].rotation.z = -0.19; Sv.arms[1].rotation.z = 0.19;
       R.forEach((c, i) => { c.root.visible = true; c.root.position.set(o.x + [-5.5, 0.5, 6][i], 0, o.z + 7 + (i === 1 ? 1.5 : 0)); c.root.rotation.y = Math.PI + [0.4, 0, -0.45][i]; pose(c, 'idle', 0.4); faceOf(c, ['shocked', 'surprised', 'shocked'][i], t, 0.6 + i, { blink: false }); });
       focus = v3(o.x, 4, o.z - 2);
@@ -563,7 +565,7 @@ function renderAt(t) {
   W.sp.offset.set((t * 0.05) % 1, (t * 0.031) % 1);
   shapeGown(W.gown, W.gTop, W.gH0, tight, t);
   if (tight > 0) W.bands.forEach((b, i) => { const y = [0.2, -0.7, -1.5][i], k = clamp(tight * 1.3 - i * 0.15), r = lerp(1.7, [1.13, 1.17, 1.2][i], easeOut(k)); b.position.y = y; b.scale.set(r, r * lerp(0.62, 0.8, (0.62 - y) / (0.62 + W.gH0)), 1); b.material.opacity = 0.9 * clamp(k * 3) * (0.75 + 0.25 * Math.sin(t * 9 + i)); });
-  W.gownM.emissiveIntensity = 0.42 + 0.7 * tight * (0.6 + 0.4 * Math.sin(t * 7));
+  W.gownM.emissiveIntensity = (set === 'hall' ? 0.3 : 0.42) + 0.6 * tight * (0.6 + 0.4 * Math.sin(t * 7));
 
   lightSet(set, t, focus);
   if (set !== 'hall' && !W.mirrorDone) { W.mirrorDone = true; const hid = []; ctx.scene.traverse((o) => { if (o.isMesh && o.material === W.mirrorM && o.visible) { o.visible = false; hid.push(o); } });
@@ -585,18 +587,19 @@ function renderAt(t) {
 
 export async function setup() {
   ctx = await initStage('ep22', { look: 'pro', avatars: ['farm_bella_a', 'farm_silver_a', 'farm_rival_red', 'farm_rival_gold', 'farm_rival_blue', 'farm_rich_dominus', 'farm_grandma', 'farm_john'] }); L = ctx.L; EV = events();
-  await loadAlti(['neutral', 'happy', 'sad', 'nervous', 'surprised', 'shocked', 'scared', 'terrified', 'smug', 'laugh', 'grin', 'suspicious']);
+  const EXPR = ['neutral', 'happy', 'sad', 'nervous', 'surprised', 'shocked', 'scared', 'terrified', 'smug', 'laugh', 'grin', 'suspicious'];
+  await loadAlti([...EXPR, ...EXPR.map((x) => 'lash:' + x), 'glam:silver_bunny', 'glam:brown_beauty', 'glam:spring_pastel', 'glam:fantasy']);
   const { scene, camera } = ctx; camera.far = 3000; camera.near = 0.3; camera.updateProjectionMatrix();
   // captions: a heavier outline and a dark halo, for the bright screen and spotlights behind them
   ctx.cap.style.webkitTextStroke = '24px #000'; ctx.cap.style.textShadow = '0 10px 0 rgba(0,0,0,0.6), 0 0 26px rgba(0,0,0,0.9), 0 0 54px rgba(0,0,0,0.65)';
   rig(); hall(); seating(); lounge(); people();
   const list = {
-    haze: dust(scene, { size: 90, height: 30, centre: v3(0, 14, 24), count: 700, color: '#dfe6ff', amount: 0.22, pointSize: 0.7 }),
+    haze: dust(scene, { size: 90, height: 30, centre: v3(0, 14, 24), count: 700, color: '#dfe6ff', amount: 0.08, pointSize: 0.6 }),
     motes: dust(scene, { size: 40, height: 14, centre: LX.clone().add(v3(0, 7, 0)), count: 300, color: '#ffe6f2', amount: 0.3, pointSize: 0.45 }),
     formG: sparkles(scene, { centre: LX.clone().add(v3(0, 6.5, -20)), size: 4.6, height: 7, count: 70, color: '#e6eeff', pointSize: 0.26 }),
     swirl: sparkles(scene, { centre: LX.clone().add(v3(0, 3.2, -2)), size: 4.4, height: 6.2, count: 260, color: '#ffffff', pointSize: 0.34 }),
-    conf1: burst(scene, { count: 260, color: '#ffd23f', dur: 2.6, spread: 12, height: 18, pointSize: 2.6, bright: 1.6, pos: v3(0, 4, END) }).fire(EV.conf1),
-    conf2: burst(scene, { count: 260, color: '#e6ecff', dur: 2.4, spread: 12, height: 18, pointSize: 2.6, bright: 1.8, pos: v3(0, 4, END), seed: 9 }).fire(EV.conf2),
+    conf1: burst(scene, { count: 260, color: '#ffd23f', dur: 2.6, spread: 12, height: 18, pointSize: 2.6, bright: 1.0, pos: v3(0, 4, END) }).fire(EV.conf1),
+    conf2: burst(scene, { count: 260, color: '#e6ecff', dur: 2.4, spread: 12, height: 18, pointSize: 2.6, bright: 1.0, pos: v3(0, 4, END), seed: 9 }).fire(EV.conf2),
   };
   W.air = atmos(...Object.values(list)); W.air.list = list;
   hudInit(); W.shots = shots();

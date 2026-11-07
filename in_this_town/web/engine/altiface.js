@@ -11,11 +11,26 @@ import * as THREE from 'three';
 import { U } from './core.js';
 
 const BASE = '/web/assets/faces/alti/';
-let IDX = null;
+let IDX = null, PIDX = null;
+// the "pretty" library (Episode 22, tools/pretty_pack.py): "glam:<face>" is a whole glamorous face (one expression, for shots that hold);
+// "lash:<expression>" is a lashed eye set with Alti's mouth for that expression (blinks, talks). Their ids are 'p:<image id>'.
+const PBASE = '/web/assets/faces/pretty/';
+const srcOf = (i) => (typeof i === 'string' && i.startsWith('p:') ? `${PBASE}${i.slice(2)}.png` : `${BASE}${i}.png`);
+const mouthOf = (p, o) => {
+  const set = IDX.talk[p.talk || 'a'];
+  if (o.viseme && set[o.viseme]) return set[o.viseme];
+  if (typeof p.mouth === 'string') return IDX.speech[p.mouth];
+  return p.mouth ? IDX.mouths[p.mouth] : null;
+};
 const IMG = new Map(), TEX = new Map();
 const ALIAS = { smile: 'happy', worried: 'nervous', curious: 'surprised', shock: 'shocked', panic: 'terrified', fear: 'scared', frown: 'sad' };
 
 const layersOf = (name, o = {}) => {
+  if (name.startsWith('glam:')) return ['p:' + (PIDX.glam[name.slice(5)] || PIDX.glam.beauty_spots)];
+  if (name.startsWith('lash:')) {
+    const q = PIDX.lash_presets[ALIAS[name.slice(5)] || name.slice(5)] || PIDX.lash_presets.neutral, p = IDX.presets[q.alti] || IDX.presets.neutral;
+    return ['p:' + PIDX.lash[o.blink && q.blink ? q.blink : q.eyes], p.extra ? IDX.extras[p.extra] : null, mouthOf(p, o)].filter(Boolean);
+  }
   name = ALIAS[name] || name;
   if (IDX.faces[name]) return [IDX.faces[name]];
   const p = IDX.presets[name] || IDX.presets.neutral;
@@ -37,13 +52,14 @@ const layersOf = (name, o = {}) => {
 // Loads what the named presets need, with their blinks and both complete talk sets.
 export async function loadAlti(presets = ['neutral']) {
   if (!IDX) IDX = await (await fetch(BASE + 'index.json')).json();
+  if (!PIDX && presets.some((n) => /^(glam|lash):/.test(n))) PIDX = await (await fetch(PBASE + 'index.json')).json();
   const want = new Set();
   for (const n of presets) {
     layersOf(n).forEach((i) => want.add(i)); layersOf(n, { blink: true }).forEach((i) => want.add(i));
     for (const v of ['A', 'CH', 'F', 'L', 'O', 'R', 'S', 'TH', 'W']) layersOf(n, { viseme: v }).forEach((i) => want.add(i));
   }
   await Promise.all([...want].filter((i) => !IMG.has(i)).map((i) => new Promise((ok, no) => {
-    const m = new Image(); m.onload = () => { IMG.set(i, m); ok(); }; m.onerror = () => no(new Error('alti image ' + i)); m.src = `${BASE}${i}.png`;
+    const m = new Image(); m.onload = () => { IMG.set(i, m); ok(); }; m.onerror = () => no(new Error('alti image ' + i)); m.src = srcOf(i);
   })));
 }
 

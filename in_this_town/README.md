@@ -335,6 +335,34 @@ Gotchas from Episode 21: give `blender_avatar.py` an **absolute** output path (a
 `LeftLowerArm=#hex RightLowerArm=#hex gain:UpperTorso/LowerTorso/LeftUpperArm/RightUpperArm=r,g,b` on the bake line. Characters are big
 in a 9:16 frame (about 38° across at fov 64): a two-shot needs them side-on to the camera and close together, cheated toward it.
 
+### Pretty girl faces next to Alti Wyre (Episode 22)
+
+Glamour faces for girls (lashes, irises, blush, lips), for scenes where Alti Wyre's cartoon eyes look too goofy. Two kinds of name, both
+through the same `setFace` / `loadAlti` as Alti:
+
+```js
+await loadAlti(['neutral', 'lash:neutral', 'lash:happy', 'lash:shocked', 'glam:silver_bunny']);   // list every name the episode uses
+ch.setFace('lash:happy', { blink: blinkAt(t, 0.3), viseme: visemeAt(text, s, e, t) });             // lashed eyes + Alti's mouth: blinks, talks
+ch.setFace('glam:silver_bunny');                                                                  // a whole made-up face, one expression
+ch.faceStyle = (x) => 'lash:' + x;   // (Episode 22's faceOf helper) one character's plain names become lash: names
+```
+
+- **`lash:<expression>`**: smoshmlp2's lashed eye sets with Alti Wyre's mouths and extras, so they blink, lip-sync and act. Expressions:
+  neutral, happy, smile, laugh, grin, smug, surprised, shocked, nervous, scared, terrified, sad, angry, suspicious, wink (Alti's aliases
+  work too). Use it for a main girl who talks or reacts (Ruby in Episode 22).
+- **`glam:<face>`**: caffeinatedhell's whole faces, one expression each (no blink, no lip sync): `brown_beauty`, `beauty_spots`,
+  `cocoa_bunny`, `silver_bunny`, `spring_pastel`, `fantasy`, `cloudy_night`, `egghunt`. Use them for close-ups that hold, silent poses,
+  rivals and onlookers; switch to Alti or `lash:` when the character speaks or needs a strong expression (Episode 22's rivals go `lash:`
+  for shocked / scared). **Keep Alti Wyre for boys, comedy and big expressions.**
+- Images: `python tools/pretty_pack.py` into `web/assets/faces/pretty/` (index.json + PNGs from Roblox's public thumbnails), git-ignored
+  like Alti's (this repo is public and neither pack says it may be re-uploaded), so run it once per checkout. The pack list, ids and each
+  creator's terms are in the tool and in `index.json` → `packs`:
+  - smoshmlp2, "Female Face Pack (Eyes)", Creator Store model 17769829463: "You can use this face pack for female characters in your
+    animation/movies!"
+  - caffeinatedhell's face decals ("faces - ..."): "anyone can use!" and they ask to be told in a comment where the faces are used
+    (the renderer can't post one: credit them in the video's description). Their fan-art faces of existing characters are left out.
+- Same rules as Alti: the head's own face is replaced (no double faces), hair must clear the forehead, check a close frame of every face.
+
 ## Making the next episode
 
 Copy the episode JSON (lines + captions), then copy `web/episodes/ep06.js` and change its palettes, shots and
