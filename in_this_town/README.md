@@ -192,6 +192,12 @@ older episodes stay on `classic`, and `RENDER_LOOK=pro|classic` overrides either
   `ctx.grade`, and a `WebGLRenderTarget` of the same world for a monitor. The feed is linear and skips the tone map, so scale it down (x0.5). Infrared wants
   low point lights (70 near the lens, one per room): the first try at 420 blew every face out. Top-down shots need `steady: true`, or the noise drift tilts
   them. Check sightlines from a fixed camera with arithmetic before seating anyone. Cues with a built-in tail (`impact`, `sting`) crash under 2.4 s `dur`.
+- **Episode 20's lessons** (`engine/isles.js`, the islands kit): a grid mesh built ring by ring needs its winding checked on the first still: the island's top was
+  culled for a whole draft and the sea showed through, which read as "Kai is wading". If the ground looks like water, lower the sea in a debug still before
+  touching colours. A held prop on `arms[1]` blocks the face from the +x side: orbit from `yaw - 0.4..0.6` and aim between head and hand. A portrait frame is
+  only about `dist * tan(fov / 2) * 9 / 16` wide each side, so pull back rather than pan. A line can take a ready file with `"audio": "<wav>"` in the spec
+  (`tts.py` decodes it instead of calling a voice): that is how narration carried on when OpenRouter ran out of credit (local Silencio + Seed-VC onto clips of the
+  same voice). New moods in `audio2.py`: `fantasy` (harp arpeggio over strings), `ancient` (brass fifths, choir, timpani).
 - **60 fps** from Episode 18: `FPS=60 RENDER_SAMPLES=4`, and `"fps": 60` in the spec so `qc.py` checks it. About 6 frames a second on the
   GTX 1060 with three workers (`node render.js frames epXX 60 <start> <end> 1`, one range each; existing frames are skipped, so a pass can
   stop and carry on). Run `tools/caption_sync.py` before frames: captions are in the frames. Clarity is clamped so it can't draw an outline

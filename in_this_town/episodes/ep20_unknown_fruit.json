@@ -1,0 +1,645 @@
+{
+ "id": "ep20",
+ "number": 20,
+ "title": "The Blox Fruit Nobody Could Identify",
+ "output": "InThisTown_Episode20_UnknownFruit.mp4",
+ "tts": "openrouter",
+ "youtube_title": "I Found a Blox Fruit Nobody Could Identify...",
+ "tiktok_caption": "No color. No name. No description. Kai took one bite and the whole game reset. 🍎",
+ "hashtags": "#Roblox #BloxFruits #RobloxStories #InThisTown #Shorts",
+ "thumbnail_text": "UNKNOWN",
+ "thumbnail_rec": "Kai in his red jacket holding up a glass-clear fruit on a tropical beach, an UNKNOWN item card floating beside it, rainbow light refracting through the fruit.",
+ "lead_in": 0.3,
+ "tail": 3.6,
+ "voices": {
+  "narrator": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "ErXwobaYiN019PkySvjV",
+    "pitch": 1.1,
+    "tempo": 1.12,
+    "max_tempo": 1.15,
+    "pace": [
+     2.6,
+     3.4
+    ],
+    "min_tempo": 1.0
+   },
+   "kokoro": "am_michael",
+   "speed": 1.0,
+   "note": "Antoni (American), In This Town preset el:ErXwobaYiN019PkySvjV:1.1:1.12 - same narrator every episode"
+  },
+  "system": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "eric",
+    "pitch": 0.84,
+    "tempo": 0.95
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  }
+ },
+ "highlights": {
+  "LEGENDARY FRUIT": "yellow",
+  "ISLANDS": "yellow",
+  "WEEKS": "yellow",
+  "NOBODY HAD EVER SEEN": "cyan",
+  "TRANSPARENT FRUIT": "cyan",
+  "NO COLOR": "cyan",
+  "NO NAME": "cyan",
+  "NO DESCRIPTION": "cyan",
+  "INSPECT": "yellow",
+  "ONE WORD": "yellow",
+  "UNKNOWN": "purple",
+  "BITE": "yellow",
+  "NOTHING": "yellow",
+  "THREW": "yellow",
+  "OCEAN": "cyan",
+  "INVENTORY": "yellow",
+  "GONE": "red",
+  "SWORD": "yellow",
+  "MONEY": "yellow",
+  "LEVEL": "yellow",
+  "ZERO": "red",
+  "NOTIFICATION": "cyan",
+  "FIRST VERSION": "purple",
+  "DRAINED AWAY": "red",
+  "REARRANGING": "red",
+  "THOUSANDS": "yellow",
+  "ANCIENT BUILDINGS": "purple",
+  "SEABED": "cyan",
+  "NEW POWER": "yellow",
+  "BEFORE ANYONE ELSE": "purple",
+  "MESSAGE": "cyan",
+  "CREATOR": "purple",
+  "BOWED": "yellow"
+ },
+ "lines": [
+  {
+   "text": "Kai had spent weeks searching the islands for a legendary fruit.",
+   "tag": "[conversational]",
+   "pause": 0.3
+  },
+  {
+   "text": "Then one morning, he found something nobody had ever seen.",
+   "tag": "[curious]",
+   "pause": 0.4
+  },
+  {
+   "text": "A completely transparent fruit.",
+   "tag": "[in awe]",
+   "pause": 0.5
+  },
+  {
+   "text": "It had no color.",
+   "tag": "[mysterious]",
+   "pause": 0.3
+  },
+  {
+   "text": "No name.",
+   "tag": "[mysterious]",
+   "pause": 0.3
+  },
+  {
+   "text": "And no description.",
+   "tag": "[mysterious]",
+   "pause": 0.5
+  },
+  {
+   "text": "When Kai tried to inspect it, his screen displayed one word.",
+   "tag": "[tense]",
+   "pause": 0.4
+  },
+  {
+   "text": "\"UNKNOWN.\"",
+   "speak": "Unknown.",
+   "voice": "system",
+   "fx": "giant",
+   "tag": "[slowly, deep]",
+   "pause": 0.45
+  },
+  {
+   "text": "He took a bite.",
+   "tag": "[conversational]",
+   "pause": 0.6
+  },
+  {
+   "text": "Nothing happened.",
+   "tag": "[flat]",
+   "pause": 0.4
+  },
+  {
+   "text": "Disappointed, Kai threw the fruit into the ocean.",
+   "tag": "[conversational]",
+   "pause": 0.45
+  },
+  {
+   "text": "But the next time he opened his inventory, every item was gone.",
+   "tag": "[uneasy]",
+   "pause": 0.3
+  },
+  {
+   "text": "His sword.",
+   "tag": "[tense]",
+   "pause": 0.3
+  },
+  {
+   "text": "His money.",
+   "tag": "[tense]",
+   "pause": 0.3
+  },
+  {
+   "text": "Even his level.",
+   "tag": "[tense]",
+   "pause": 0.35
+  },
+  {
+   "text": "Everything had reset to zero.",
+   "tag": "[ominous]",
+   "pause": 0.45
+  },
+  {
+   "text": "Then a strange notification appeared.",
+   "tag": "[mysterious]",
+   "pause": 0.35
+  },
+  {
+   "text": "\"YOU HAVE UNLOCKED THE FIRST VERSION.\"",
+   "speak": "You have unlocked the first version.",
+   "voice": "system",
+   "fx": "giant",
+   "tag": "[slowly, deep]",
+   "pause": 0.5
+  },
+  {
+   "text": "Suddenly, the ocean drained away.",
+   "tag": "[urgent]",
+   "pause": 0.45,
+   "audio": "build/ep20/local_lines/line_18.wav"
+  },
+  {
+   "text": "The islands began rearranging themselves.",
+   "tag": "[urgent]",
+   "pause": 0.4,
+   "audio": "build/ep20/local_lines/line_19.wav"
+  },
+  {
+   "text": "And thousands of ancient buildings rose from the seabed.",
+   "tag": "[in awe]",
+   "pause": 0.45,
+   "audio": "build/ep20/local_lines/line_20.wav"
+  },
+  {
+   "text": "Kai realized he hadn't gained a new power.",
+   "tag": "[mysterious]",
+   "pause": 0.35,
+   "audio": "build/ep20/local_lines/line_21.wav"
+  },
+  {
+   "text": "He'd unlocked a version of the world that existed before anyone else joined.",
+   "tag": "[in awe]",
+   "pause": 0.45,
+   "audio": "build/ep20/local_lines/line_22.wav"
+  },
+  {
+   "text": "Then a message appeared.",
+   "tag": "[mysterious]",
+   "pause": 0.35,
+   "audio": "build/ep20/local_lines/line_23.wav"
+  },
+  {
+   "text": "\"WELCOME BACK, CREATOR.\"",
+   "speak": "Welcome back, Creator.",
+   "voice": "system",
+   "fx": "chorus",
+   "tag": "[slowly, deep]",
+   "pause": 0.5,
+   "audio": "build/ep20/local_lines/line_24.wav"
+  },
+  {
+   "text": "And every NPC bowed.",
+   "speak": "And every N P C bowed.",
+   "tag": "[in awe]",
+   "pause": 0.3,
+   "audio": "build/ep20/local_lines/line_25.wav"
+  }
+ ],
+ "samples": {},
+ "sound": {
+  "key": 52,
+  "music_gain": 0.5,
+  "music": [
+   [
+    "0",
+    "fantasy"
+   ],
+   [
+    "L6-0.2",
+    "mystery"
+   ],
+   [
+    "ev:bite",
+    "silence"
+   ],
+   [
+    "L11",
+    "mystery"
+   ],
+   [
+    "ev:zero",
+    "suspense"
+   ],
+   [
+    "ev:drain",
+    "dread"
+   ],
+   [
+    "ev:rise-0.2",
+    "ancient"
+   ]
+  ],
+  "cues": [
+   [
+    "0",
+    "water",
+    0.1,
+    {
+     "dur": 12
+    }
+   ],
+   [
+    "0",
+    "wind",
+    0.05,
+    {
+     "dur": 12
+    }
+   ],
+   [
+    "L0+0.5",
+    "whoosh",
+    0.12,
+    {
+     "dur": 0.7
+    }
+   ],
+   [
+    "L1",
+    "footsteps",
+    0.12,
+    {
+     "dur": 3,
+     "rate": 1.8
+    }
+   ],
+   [
+    "L2",
+    "shimmer",
+    0.22,
+    {
+     "dur": 3
+    }
+   ],
+   [
+    "L3-0.2",
+    "chime",
+    0.22
+   ],
+   [
+    "L4",
+    "pop",
+    0.12
+   ],
+   [
+    "L5",
+    "pop",
+    0.12
+   ],
+   [
+    "ev:inspect",
+    "ding",
+    0.2
+   ],
+   [
+    "ev:scan",
+    "tick",
+    0.22,
+    {
+     "dur": 2,
+     "rate": 6
+    }
+   ],
+   [
+    "ev:unk",
+    "sting",
+    0.34,
+    {
+     "dur": 2.6
+    }
+   ],
+   [
+    "ev:unk",
+    "glitch",
+    0.14,
+    {
+     "dur": 0.25
+    }
+   ],
+   [
+    "ev:bite",
+    "glass",
+    0.28
+   ],
+   [
+    "ev:chew",
+    "knock",
+    0.12
+   ],
+   [
+    "L9",
+    "wind",
+    0.07,
+    {
+     "dur": 2.5
+    }
+   ],
+   [
+    "ev:throwT",
+    "whoosh",
+    0.3,
+    {
+     "dur": 0.8
+    }
+   ],
+   [
+    "ev:splash",
+    "water",
+    0.3,
+    {
+     "dur": 1.2
+    }
+   ],
+   [
+    "ev:splash",
+    "pop",
+    0.14
+   ],
+   [
+    "ev:open",
+    "pop",
+    0.2
+   ],
+   [
+    "ev:open+0.05",
+    "chime",
+    0.14
+   ],
+   [
+    "ev:gone",
+    "glitch",
+    0.2,
+    {
+     "dur": 0.35
+    }
+   ],
+   [
+    "ev:gone+0.5",
+    "glitch",
+    0.14,
+    {
+     "dur": 0.25
+    }
+   ],
+   [
+    "ev:gone+1.0",
+    "glitch",
+    0.16,
+    {
+     "dur": 0.3
+    }
+   ],
+   [
+    "ev:sword",
+    "glass",
+    0.34
+   ],
+   [
+    "ev:sword",
+    "shimmer",
+    0.16,
+    {
+     "dur": 1
+    }
+   ],
+   [
+    "ev:coins",
+    "ding",
+    0.18
+   ],
+   [
+    "ev:coins+0.12",
+    "ding",
+    0.16
+   ],
+   [
+    "ev:coins+0.24",
+    "ding",
+    0.14
+   ],
+   [
+    "ev:lvl",
+    "tick",
+    0.26,
+    {
+     "dur": 1.1,
+     "rate": 14
+    }
+   ],
+   [
+    "ev:zero",
+    "impact",
+    0.44,
+    {
+     "dur": 2.6
+    }
+   ],
+   [
+    "ev:zero",
+    "glitch",
+    0.2,
+    {
+     "dur": 0.4
+    }
+   ],
+   [
+    "ev:toast",
+    "ding",
+    0.26
+   ],
+   [
+    "ev:type",
+    "tick",
+    0.2,
+    {
+     "dur": 2.6,
+     "rate": 12
+    }
+   ],
+   [
+    "ev:drain-0.3",
+    "riser",
+    0.26,
+    {
+     "dur": 1.4
+    }
+   ],
+   [
+    "ev:drain",
+    "rumble",
+    0.34,
+    {
+     "dur": 4.6
+    }
+   ],
+   [
+    "ev:drain",
+    "water",
+    0.34,
+    {
+     "dur": 4.6
+    }
+   ],
+   [
+    "ev:drain+0.6",
+    "whoosh",
+    0.2,
+    {
+     "dur": 2.2
+    }
+   ],
+   [
+    "ev:shift",
+    "rumble",
+    0.32,
+    {
+     "dur": 4.2
+    }
+   ],
+   [
+    "ev:shift",
+    "groan",
+    0.22,
+    {
+     "dur": 3.6
+    }
+   ],
+   [
+    "ev:shift+1.2",
+    "stomp",
+    0.2
+   ],
+   [
+    "ev:rise",
+    "boom",
+    0.4
+   ],
+   [
+    "ev:rise",
+    "rumble",
+    0.36,
+    {
+     "dur": 6
+    }
+   ],
+   [
+    "ev:rise+1.2",
+    "stomp",
+    0.22
+   ],
+   [
+    "ev:rise+2.4",
+    "stomp",
+    0.22
+   ],
+   [
+    "ev:realize",
+    "shimmer",
+    0.24,
+    {
+     "dur": 3
+    }
+   ],
+   [
+    "ev:realize+0.1",
+    "chime",
+    0.2
+   ],
+   [
+    "ev:gather",
+    "footsteps",
+    0.14,
+    {
+     "dur": 3.6,
+     "rate": 3
+    }
+   ],
+   [
+    "ev:msg",
+    "ding",
+    0.26
+   ],
+   [
+    "ev:welcome",
+    "impact",
+    0.34,
+    {
+     "dur": 2.6
+    }
+   ],
+   [
+    "ev:welcome",
+    "shimmer",
+    0.3,
+    {
+     "dur": 3
+    }
+   ],
+   [
+    "ev:bow",
+    "whoosh",
+    0.24,
+    {
+     "dur": 0.9
+    }
+   ],
+   [
+    "ev:bow+0.05",
+    "stomp",
+    0.2
+   ],
+   [
+    "ev:aerial",
+    "riser",
+    0.26,
+    {
+     "dur": 2.6
+    }
+   ],
+   [
+    "ev:aerial+2.5",
+    "boom",
+    0.3
+   ],
+   [
+    "ev:aerial",
+    "shimmer",
+    0.26,
+    {
+     "dur": 3.6
+    }
+   ]
+  ]
+ },
+ "fps": 60
+}

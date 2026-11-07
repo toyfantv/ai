@@ -2,6 +2,7 @@
 // Each builder takes one options object and returns the model; the catalogue is web/assets/models/index.json.
 import { building, skyline, crowd, crate, barrel, lamp, sign, Batch, surf, paint } from './kit.js';
 import { treeShape, treeSet, heroOak } from './forest.js';
+import { makeIsland, palms, sailboat, galleon, hut, stall, dock, chest, katana, fruit, city, greatTemple } from './isles.js';
 import * as THREE from 'three';
 import { v3, rng, mat, box, wallRects, lerp } from './core.js';
 import { makeHouse, makeTree, mergeGroup, buildHeroHouse, buildTown } from './town.js';
@@ -313,4 +314,18 @@ export const BUILD = {
   forest_tree: (o) => treeSet(o.parent, [treeShape(o)], [{ x: o.x || 0, z: o.z || 0, s: o.s || 1, yaw: o.yaw || 0, shape: 0 }]),
   // the enormous oak with a face in the bark: .glow(0..1) lights it, .group holds it
   hero_oak: (o) => heroOak(o.parent, { pos: o.pos || v3(0, 0, 0) }),
+  // Episode 20's islands. tropical_island returns { group, heightAt, place(u, a), outline }: add .group; o = { seed, R, top, peak, pos }
+  tropical_island: (o) => { const I = makeIsland({ seed: 20, R: 80, ...o }); if (o.parent) o.parent.add(I.group); return I; },
+  palm: (o) => palms(o.parent, o.list || [{ x: o.x || 0, y: o.y || 0, z: o.z || 0, s: o.s || 1, ry: o.ry || 0 }]),
+  sailboat: (o) => put(o, sailboat(o)),
+  galleon: (o) => put(o, galleon(o)),
+  beach_hut: (o) => put(o, hut(o)),
+  market_stall: (o) => put(o, stall(o)),
+  pier: (o) => put(o, dock(o.length || 46)),
+  treasure_chest: (o) => put(o, chest(o)),
+  katana: (o) => put(o, katana()),
+  glass_fruit: (o) => put(o, fruit(o)),
+  // a whole first-version city on the seabed: .set(t, t0, dur, depth) raises it; o = { keep(x, z), inner, outer, rings }
+  ancient_city: (o) => city(o.parent, o),
+  great_temple: (o) => put(o, greatTemple(o)),
 };

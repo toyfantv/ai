@@ -177,7 +177,12 @@ def main():
     timeline = {"lines": [], "captions": [], "scenes": {}}
     for i, line in enumerate(ep["lines"]):
         role = line.get("voice", "narrator")
-        audio = trim(tts.say(line.get("speak", line["text"]), role, ep["voices"][role], line.get("tag", "")))
+        if line.get("audio"):   # a line made another way (a local voice conversion when the credit ran out): used as it is
+            import subprocess
+            raw = subprocess.run(['ffmpeg', '-loglevel', 'error', '-i', line["audio"], '-f', 'f32le', '-ac', '1', '-ar', str(SR), '-'], capture_output=True, check=True).stdout
+            audio = trim(np.frombuffer(raw, dtype=np.float32).copy())
+        else:
+            audio = trim(tts.say(line.get("speak", line["text"]), role, ep["voices"][role], line.get("tag", "")))
         path = os.path.join(out, "voice", f"line_{i:02d}.wav")
         sf.write(path, audio, SR)
         dur = len(audio) / SR

@@ -225,6 +225,26 @@ def mood(name, d, key=50, seed=1):
         if name == 'playful':
             t = 0.0
             while t < d: add(int(t * SR), impact(0.4, 90, 60, 0.0), 0.12); t += 0.5
+    elif name == 'fantasy':
+        # tropical magic: a lydian string bed, a harp arpeggio that walks through four chords, a thin shimmer on top
+        add(0, pad([hz(key + n) for n in (0, 7, 12, 18, 19)], d + 0.5, a=0.6, r=1.0, bright=2200, detune=0.005), 0.42)
+        add(0, shimmer(d, seed), 0.08)
+        chords = [(0, 4, 7, 11, 14), (2, 6, 9, 14, 18), (-3, 4, 7, 12, 16), (5, 9, 12, 16, 19)]
+        t, i = 0.1, 0
+        while t < d:
+            c = chords[(i // 8) % 4]
+            add(int(t * SR), bell(hz(key + 12 + c[[0, 1, 2, 3, 4, 3, 2, 1][i % 8]]), 1.6), 0.13); t += 0.21; i += 1
+    elif name == 'ancient':
+        # the first world: low brass fifths, a choir-like stack that opens up, slow timpani, shimmering strings
+        add(0, pad([hz(key - 24 + n) for n in (0, 7, 12, 19)], d + 0.5, a=1.0, r=1.0, bright=900, detune=0.006), 0.5)
+        p2 = pad([hz(key + n) for n in (0, 7, 12, 16, 19, 24)], d + 0.5, a=2.2, r=1.2, bright=3200, detune=0.005)
+        add(0, p2 * np.linspace(0.35, 1.0, len(p2)), 0.4)
+        add(0, shimmer(d, seed), 0.16)
+        t = 0.3
+        while t < d: add(int(t * SR), impact(0.9, 70, 46, 0.0), 0.2); t += 1.6
+        notes = [key + 24 + n for n in (0, 4, 7, 12, 16, 19, 24)]
+        t, i = 0.6, 0
+        while t < d: add(int(t * SR), bell(hz(notes[i % 7]), 2.6), 0.1); t += 0.4; i += 1
     elif name == 'mystery':
         add(0, pad([hz(key + n) for n in (0, 3, 7, 10, 14)], d + 0.5, a=0.8, r=1.0, bright=1500), 0.45)
         notes = [key + 24 + n for n in (0, 3, 7, 10, 12, 15)]

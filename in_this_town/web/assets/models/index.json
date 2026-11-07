@@ -1,4 +1,24 @@
 {
+  "ancient_city": {
+    "author": "toyfantv",
+    "desc": "thousands of instanced stone buildings with glowing lines that rise from the seabed",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep20",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "beach_hut": {
+    "author": "toyfantv",
+    "desc": "a thatched island hut",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep20",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "bird": {
     "author": "toyfantv",
     "desc": "a blocky bird with wings to flap",
@@ -79,6 +99,36 @@
     "type": "builder",
     "url": ""
   },
+  "galleon": {
+    "author": "toyfantv",
+    "desc": "a three-masted sailing ship",
+    "kind": "vehicle",
+    "licence": "own",
+    "made_for": "ep20",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "glass_fruit": {
+    "author": "toyfantv",
+    "desc": "a clear glass fruit with a stem and a rim light",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep20",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "great_temple": {
+    "author": "toyfantv",
+    "desc": "a stepped stone temple with a gold roof",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep20",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "hero_house": {
     "author": "toyfantv",
     "desc": "Emma's two-storey house with a furnished interior",
@@ -125,6 +175,16 @@
     "kind": "prop",
     "licence": "own",
     "made_for": "ep19",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "katana": {
+    "author": "toyfantv",
+    "desc": "a katana with a red grip",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep20",
     "source": "this renderer",
     "type": "builder",
     "url": ""
@@ -209,6 +269,16 @@
     "type": "builder",
     "url": ""
   },
+  "market_stall": {
+    "author": "toyfantv",
+    "desc": "a striped market stall with a sign",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep20",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "model_house": {
     "author": "toyfantv",
     "desc": "hero_house as a roofless cutaway: at 0.1 scale, the miniature",
@@ -239,6 +309,16 @@
     "type": "builder",
     "url": ""
   },
+  "palm": {
+    "author": "toyfantv",
+    "desc": "instanced palm trees that sway",
+    "kind": "plant",
+    "licence": "own",
+    "made_for": "ep20",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "pc_desk": {
     "author": "toyfantv",
     "desc": "a desk with a big monitor, keyboard, mouse and lit PC tower",
@@ -249,12 +329,32 @@
     "type": "builder",
     "url": ""
   },
+  "pier": {
+    "author": "toyfantv",
+    "desc": "a wooden pier on posts",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep20",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "potted_plant": {
     "author": "toyfantv",
     "desc": "a potted house plant, seeded",
     "kind": "prop",
     "licence": "own",
     "made_for": "ep19",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "sailboat": {
+    "author": "toyfantv",
+    "desc": "a small wooden boat with a striped sail",
+    "kind": "vehicle",
+    "licence": "own",
+    "made_for": "ep20",
     "source": "this renderer",
     "type": "builder",
     "url": ""
@@ -329,12 +429,32 @@
     "type": "builder",
     "url": ""
   },
+  "treasure_chest": {
+    "author": "toyfantv",
+    "desc": "a gold-banded chest full of coins",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep20",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "tree": {
     "author": "toyfantv",
     "desc": "a blocky street tree, seeded",
     "kind": "prop",
     "licence": "own",
     "made_for": "town",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "tropical_island": {
+    "author": "toyfantv",
+    "desc": "an island with a beach, grass, a rock wall skirt and strata down to the seabed",
+    "kind": "terrain",
+    "licence": "own",
+    "made_for": "ep20",
     "source": "this renderer",
     "type": "builder",
     "url": ""
