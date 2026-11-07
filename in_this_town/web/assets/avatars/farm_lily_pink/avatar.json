@@ -1,0 +1,30 @@
+{
+ "key": "farm_lily_pink",
+ "source": {
+  "route": "one-off Studio capture (Episode 23), the steps of tools/farm_avatars.py",
+  "scene": "scenes/sandbox/avcap_ep23.lua",
+  "label": "Lily (Episode 23): pink hoodie, blue jeans, brown hair"
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-07",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_Accessory_Ponytail"
+ ]
+}

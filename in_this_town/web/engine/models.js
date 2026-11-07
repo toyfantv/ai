@@ -10,6 +10,8 @@ import { makeLeg, footAt, makeEye, canvasTex, glowSprite } from './props.js';
 import { secCam, fridge, diningChair, diningTable, bed, sofa, plant, pcDesk, selectionBox, modernHouse } from './home.js';
 import { doorLeaf, plate, exitSign, flashlight, ceilingTiles, rubble, hotelTower } from './hotel.js';
 import { gown, dressForm, starPaddle } from './runway.js';
+import { goldenDragon, goldenKey, goldenEgg } from './pets.js';
+import { cottage, mailbox, framedPhoto } from './pastel.js';
 
 // ---------- Episode 17 ----------
 // The black package: four walls that fold out (open(angle)), a lid, a RETURN ADDRESS label.
@@ -342,4 +344,10 @@ export const BUILD = {
   silver_gown: (o) => { const g = gown(o); if (o.parent) o.parent.add(g.mesh); return g; },   // put on a character's hips; .set(k, t): 0 flowing, 1 cinched
   dress_form: (o) => put(o, dressForm(o)),                // a dark-silver form wearing the gown, sparkling (.mat, .geo)
   star_paddle: (o) => put(o, starPaddle(o.arm ?? 2.2)),   // a judge's five-star card on a stick, for a character's arm
+  golden_dragon: (o) => { const d = goldenDragon(o); put(o, d.g); return d; },   // a tiny golden pet dragon: .pose({ t, mode: sit|hover|fly|held|hop, mood, flap, ... }), .mouthAt()
+  golden_key: (o) => put(o, goldenKey(o)),               // an emissive golden key with a heart bow (.userData.mat)
+  golden_egg: (o) => put(o, goldenEgg(o)),               // a pet egg in two halves (.userData.top lifts off, .userData.mat glows)
+  pastel_cottage: (o) => { const c = cottage(o); put(o, c.g); return c; },   // a pastel two-storey house with porch, siding, shutters; .door hinge, .edges for an outline, own:true for revealMat
+  mailbox: (o) => put(o, mailbox(o)),                    // a street mailbox; old:true = rusty, leaning, no name
+  framed_photo: (o) => { const f = framedPhoto(o.kind || 'dragon', o.face || null, o); put(o, f); return f; },   // a drawn photo in a frame; .setFace(0..1) restores an erased face
 };

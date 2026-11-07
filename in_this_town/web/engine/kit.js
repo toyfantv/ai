@@ -48,6 +48,10 @@ function draw(kind) {
   } else if (kind === 'shingle') {
     const rows = 12, h = S / rows, w = S / 10; x.fillStyle = grey(0.35); x.fillRect(0, 0, S, S);
     for (let j = 0; j < rows; j++) for (let i = -1; i < 11; i++) { x.fillStyle = grey(0.7 + r() * 0.28); x.fillRect(i * w + (j % 2) * w / 2 + 1, j * h, w - 2, h - 3); }
+  } else if (kind === 'siding') {   // lap siding (Episode 23): horizontal boards, each with a shadow line under its lip
+    const n = 10, h = S / n;
+    for (let j = 0; j < n; j++) { const g = x.createLinearGradient(0, j * h, 0, (j + 1) * h); g.addColorStop(0, grey(0.98)); g.addColorStop(0.82, grey(0.86)); g.addColorStop(0.9, grey(0.62)); g.addColorStop(1, grey(0.42)); x.fillStyle = g; x.fillRect(0, j * h, S, h); }
+    grain(6000, 0.06);
   } else if (kind === 'hazard') {
     x.fillStyle = '#f2c21a'; x.fillRect(0, 0, S, S); x.fillStyle = '#17171b';
     for (let i = -2; i < 6; i += 2) { x.beginPath(); x.moveTo(i * 64 * 2, S); x.lineTo((i + 1) * 128, S); x.lineTo((i + 1) * 128 + S, 0); x.lineTo(i * 128 + S, 0); x.fill(); }
@@ -67,7 +71,7 @@ function normalFrom(canvas, strength) {
   }
   x.putImageData(im, 0, 0); return o;
 }
-const SPAN = { grass: 12, cobble: 7, brick: 9, tile: 8, plank: 7, sand: 14, stucco: 10, concrete: 12, corrugated: 9, shingle: 8, hazard: 4, facade: 40 };
+const SPAN = { grass: 12, cobble: 7, brick: 9, tile: 8, plank: 7, sand: 14, stucco: 10, concrete: 12, corrugated: 9, shingle: 8, siding: 6, hazard: 4, facade: 40 };
 const ROUGH = { tile: 0.28, hazard: 0.6, corrugated: 0.5 };
 const tex = new Map(), mats = new Map();
 function maps(kind) {

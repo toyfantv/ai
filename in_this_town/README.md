@@ -99,6 +99,21 @@ node render.js stills ep06 0.25 1 5 10 20 30 40 50 60
 python3 tools/sheet.py build/ep06 build/ep06/sheet.jpg 1 5 10 20 30 40 50 60
 ```
 
+### Episode 23 notes (the golden dragon)
+
+* `web/engine/pets.js`: `goldenDragon()` (a pet with canvas eyes per mood, blink and gaze, a mouth decal, scalloped wings raised up and back so they read from the front,
+  a spade tail; `pose({ t, mode: 'sit' | 'hover' | 'fly' | 'held' | 'hop', mood, flap, headYaw, headPitch, tilt, mouth, hop })`, `mouthAt()`),
+  `goldenKey()`, `goldenEgg()`. Held in arms, scale it to 0.7 and put its feet at the holder's hips (`hipY - 0.15`, 1 stud forward) so it never covers her face.
+* `web/engine/pastel.js`: `cottage()` (lap siding, porch, shutters, a door hinge, `.edges` for a drawn light outline, `own: true` for its own materials),
+  `revealMat(mat, revealUniforms())` (mode 0 builds a model up from the ground with a gold edge, mode 1 dissolves it in noise), `picket`, `mailbox`,
+  `flowers`, `framedPhoto(kind, face)` with `.setFace(0..1)` (an erased face comes back), `holeyWall`, `wallpaper`. Kit surface `'siding'` (lap boards).
+* `altiCanvas(name)` in altiface.js draws an Alti face to a canvas (for photos, posters); load its preset first.
+* `vanisher()` clones a character's materials, so `setFace` stops changing an Alti face afterwards: set the face before making the vanisher.
+* Local voices: a `"girl"` role in `local_voice.py` (Silencio en_us_001 pitched 1.2, not converted). Episode 23 used no `local_rate`: the narrator source
+  was already at the series pace; a misheard word was fixed by another source voice plus commas or an ellipsis in `speak`.
+* `audio2.py`: moods `tender`, `tender_hope`, `musicbox`; effects `flutter` (wing beats), `chirp` (a small creature's squeak). `glass` needs `dur` >= 1.
+* `render.js frames <ep> 60 <start> <end> 1` takes frame numbers, not seconds.
+
 ## Engine (`web/engine/`)
 
 | file | what it makes |

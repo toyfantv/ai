@@ -18,7 +18,8 @@ REFS = ROOT / "voice_samples" / "local_refs"
 # role: Silencio source voice, Seed-VC reference (None: no conversion), words a second aimed for, pitch shift after (formants move too)
 VOICES = {"narrator": {"src": "en_us_009", "ref": "ref_narrator.wav", "wps": 2.9},
           "system": {"src": "en_us_007", "ref": "ref_system.wav", "wps": 0},
-          "boy": {"src": "en_us_006", "ref": None, "wps": 0, "pitch": 1.28}}
+          "boy": {"src": "en_us_006", "ref": None, "wps": 0, "pitch": 1.28},
+          "girl": {"src": "en_us_001", "ref": None, "wps": 0, "pitch": 1.2}}   # a little girl (Episode 23): Jessie pitched up, no conversion
 MAX_TEMPO = 1.15
 
 

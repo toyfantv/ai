@@ -1,0 +1,693 @@
+{
+ "number": 23,
+ "title": "My Adopt Me Pet Remembered a Deleted Player",
+ "output": "InThisTown_Episode23_ForgottenPet.mp4",
+ "youtube_title": "My Adopt Me Pet Remembered a Deleted Player...",
+ "tiktok_caption": "Her golden dragon kept flying to an empty plot every night. Then it dropped a key.",
+ "hashtags": "#Roblox #AdoptMe #RobloxStories #InThisTown #Shorts",
+ "thumbnail_text": "SHE WAS DELETED",
+ "thumbnail_rec": "Lily hugging the tiny golden dragon on a glowing golden house outline at night, the faint little girl waving in the doorway behind them.",
+ "tail": 3.6,
+ "fps": 60,
+ "narrator": {
+  "min_tempo": 1.0,
+  "pace": [
+   2.6,
+   3.4
+  ]
+ },
+ "cast": {
+  "system": {
+   "voice": "eric",
+   "pitch": 0.84,
+   "tempo": 0.95
+  },
+  "girl": {
+   "voice": "matilda",
+   "pitch": 1.2,
+   "tempo": 1.0
+  }
+ },
+ "highlights": {
+  "TINY GOLDEN DRAGON": "yellow",
+  "PET SHOP": "yellow",
+  "STRANGE": "red",
+  "REFUSED": "red",
+  "EMPTY PLOT": "yellow",
+  "MIDNIGHT": "purple",
+  "FOLLOWED": "yellow",
+  "OLD MAILBOX": "yellow",
+  "NO HOUSE": "red",
+  "JUST GRASS": "yellow",
+  "GOLDEN KEY": "cyan",
+  "PICKED IT UP": "yellow",
+  "GLOWING OUTLINE": "cyan",
+  "ENTIRE HOUSE": "cyan",
+  "TOYS": "yellow",
+  "PHOTOGRAPHS": "yellow",
+  "SAME LITTLE GIRL": "yellow",
+  "ERASED": "red",
+  "NOTIFICATION": "yellow",
+  "FRIEND REQUEST": "cyan",
+  "UNKNOWN PLAYER": "red",
+  "ACCEPTED": "yellow",
+  "EVERY PHOTOGRAPH": "cyan",
+  "EXCITEMENT": "yellow",
+  "MESSAGE": "yellow",
+  "REMEMBERING ME": "purple",
+  "LITTLE GIRL": "purple",
+  "DOORWAY": "yellow",
+  "WAVED": "yellow",
+  "FADED AWAY": "purple"
+ },
+ "lines": [
+  {
+   "text": "Lily adopted a tiny golden dragon from the pet shop.",
+   "tag": "[warm]",
+   "pause": 0.3,
+   "audio": "build/ep23/local_lines/line_00.wav"
+  },
+  {
+   "text": "But something about it was strange.",
+   "tag": "[mysterious]",
+   "pause": 0.45,
+   "audio": "build/ep23/local_lines/line_01.wav"
+  },
+  {
+   "text": "It refused to enter her house.",
+   "tag": "[mysterious]",
+   "pause": 0.3,
+   "audio": "build/ep23/local_lines/line_02.wav",
+   "local": {
+    "src": "en_us_007"
+   }
+  },
+  {
+   "text": "Every evening, it flew to the same empty plot across town.",
+   "tag": "[mysterious]",
+   "pause": 0.3,
+   "audio": "build/ep23/local_lines/line_03.wav",
+   "local": {
+    "src": "en_us_007"
+   },
+   "speak": "Every evening, it flew to the same, empty plot across town."
+  },
+  {
+   "text": "And sat there until midnight.",
+   "tag": "[mysterious]",
+   "pause": 0.55,
+   "audio": "build/ep23/local_lines/line_04.wav"
+  },
+  {
+   "text": "One day, Lily followed it.",
+   "tag": "[conversational]",
+   "pause": 0.3,
+   "audio": "build/ep23/local_lines/line_05.wav"
+  },
+  {
+   "text": "The dragon landed beside an old mailbox.",
+   "tag": "[mysterious]",
+   "pause": 0.3,
+   "audio": "build/ep23/local_lines/line_06.wav"
+  },
+  {
+   "text": "There was no house.",
+   "tag": "[mysterious]",
+   "pause": 0.3,
+   "audio": "build/ep23/local_lines/line_07.wav",
+   "local": {
+    "src": "en_us_007"
+   }
+  },
+  {
+   "text": "Just grass.",
+   "tag": "[mysterious]",
+   "pause": 0.55,
+   "audio": "build/ep23/local_lines/line_08.wav"
+  },
+  {
+   "text": "Then the dragon dropped a small golden key.",
+   "tag": "[mysterious]",
+   "pause": 0.3,
+   "audio": "build/ep23/local_lines/line_09.wav"
+  },
+  {
+   "text": "Lily picked it up.",
+   "tag": "[conversational]",
+   "pause": 0.3,
+   "audio": "build/ep23/local_lines/line_10.wav"
+  },
+  {
+   "text": "A glowing outline appeared around the empty plot.",
+   "tag": "[in awe]",
+   "pause": 0.3,
+   "audio": "build/ep23/local_lines/line_11.wav",
+   "local": {
+    "src": "en_us_010"
+   },
+   "speak": "A glowing outline appeared, around the empty plot."
+  },
+  {
+   "text": "Slowly, an entire house became visible.",
+   "tag": "[in awe]",
+   "pause": 0.55,
+   "audio": "build/ep23/local_lines/line_12.wav"
+  },
+  {
+   "text": "Inside were toys, furniture, and photographs.",
+   "tag": "[mysterious]",
+   "pause": 0.3,
+   "audio": "build/ep23/local_lines/line_13.wav",
+   "local": {
+    "src": "en_us_007"
+   },
+   "speak": "Inside, were toys, furniture, and photographs."
+  },
+  {
+   "text": "Every picture showed the same little girl.",
+   "tag": "[mysterious]",
+   "pause": 0.3,
+   "audio": "build/ep23/local_lines/line_14.wav"
+  },
+  {
+   "text": "But her face had been erased.",
+   "tag": "[whispers]",
+   "pause": 0.55,
+   "audio": "build/ep23/local_lines/line_15.wav",
+   "local": {
+    "src": "en_us_010"
+   }
+  },
+  {
+   "text": "Suddenly, Lily received a notification.",
+   "tag": "[mysterious]",
+   "pause": 0.3,
+   "audio": "build/ep23/local_lines/line_16.wav"
+  },
+  {
+   "text": "\"FRIEND REQUEST FROM UNKNOWN PLAYER.\"",
+   "tag": "[slowly]",
+   "pause": 0.45,
+   "speak": "Friend request from unknown player.",
+   "voice": "system",
+   "fx": "giant",
+   "audio": "build/ep23/local_lines/line_17.wav"
+  },
+  {
+   "text": "She accepted.",
+   "tag": "[conversational]",
+   "pause": 0.3,
+   "audio": "build/ep23/local_lines/line_18.wav"
+  },
+  {
+   "text": "The erased face appeared in every photograph.",
+   "tag": "[in awe]",
+   "pause": 0.3,
+   "audio": "build/ep23/local_lines/line_19.wav"
+  },
+  {
+   "text": "And the dragon began jumping with excitement.",
+   "tag": "[excited]",
+   "pause": 0.3,
+   "audio": "build/ep23/local_lines/line_20.wav"
+  },
+  {
+   "text": "Then a message arrived.",
+   "tag": "[mysterious]",
+   "pause": 0.3,
+   "audio": "build/ep23/local_lines/line_21.wav"
+  },
+  {
+   "text": "\"THANK YOU FOR REMEMBERING ME.\"",
+   "tag": "[softly]",
+   "pause": 0.55,
+   "speak": "Thank you for remembering me.",
+   "voice": "girl",
+   "audio": "build/ep23/local_lines/line_22.wav"
+  },
+  {
+   "text": "For one second, a little girl appeared in the doorway.",
+   "tag": "[softly]",
+   "pause": 0.3,
+   "audio": "build/ep23/local_lines/line_23.wav"
+  },
+  {
+   "text": "She waved.",
+   "tag": "[softly]",
+   "pause": 0.45,
+   "audio": "build/ep23/local_lines/line_24.wav"
+  },
+  {
+   "text": "And the house faded away.",
+   "tag": "[softly]",
+   "pause": 0.3,
+   "audio": "build/ep23/local_lines/line_25.wav",
+   "local": {
+    "src": "en_us_007"
+   },
+   "speak": "And the house... faded away."
+  }
+ ],
+ "samples": {},
+ "sound": {
+  "key": 53,
+  "music_gain": 0.5,
+  "music": [
+   [
+    "0",
+    "musicbox"
+   ],
+   [
+    "L1-0.1",
+    "tender"
+   ],
+   [
+    "L2-0.1",
+    "mystery"
+   ],
+   [
+    "L5-0.1",
+    "suspense"
+   ],
+   [
+    "ev:outline-0.3",
+    "fantasy"
+   ],
+   [
+    "L13-0.1",
+    "mystery"
+   ],
+   [
+    "L15-0.1",
+    "tender"
+   ],
+   [
+    "ev:notif-0.2",
+    "silence"
+   ],
+   [
+    "ev:accept",
+    "tender_hope"
+   ],
+   [
+    "ev:fade-0.2",
+    "fantasy"
+   ],
+   [
+    "ev:hug-0.2",
+    "tender_hope"
+   ]
+  ],
+  "cues": [
+   [
+    "0",
+    "hum",
+    0.03,
+    {
+     "dur": 5
+    }
+   ],
+   [
+    "ev:crack",
+    "crackle",
+    0.16,
+    {
+     "dur": 0.7,
+     "density": 90
+    }
+   ],
+   [
+    "ev:crack+0.35",
+    "crackle",
+    0.18,
+    {
+     "dur": 0.5,
+     "density": 120
+    }
+   ],
+   [
+    "ev:hatch",
+    "pop",
+    0.24
+   ],
+   [
+    "ev:hatch",
+    "shimmer",
+    0.2,
+    {
+     "dur": 2
+    }
+   ],
+   [
+    "ev:hatch+0.2",
+    "chirp",
+    0.2,
+    {
+     "f": 1400
+    }
+   ],
+   [
+    "ev:hatch+0.3",
+    "flutter",
+    0.12,
+    {
+     "dur": 1.0
+    }
+   ],
+   [
+    "ev:toast",
+    "ding",
+    0.18
+   ],
+   [
+    "ev:toast+0.4",
+    "chirp",
+    0.16,
+    {
+     "f": 1700
+    }
+   ],
+   [
+    "L1",
+    "footsteps",
+    0.1,
+    {
+     "dur": 2.4,
+     "rate": 2.2
+    }
+   ],
+   [
+    "L1+0.3",
+    "flutter",
+    0.08,
+    {
+     "dur": 2.0,
+     "rate": 8
+    }
+   ],
+   [
+    "L2+0.3",
+    "chirp",
+    0.16,
+    {
+     "f": 900,
+     "up": 0
+    }
+   ],
+   [
+    "L2+0.9",
+    "chirp",
+    0.14,
+    {
+     "f": 800,
+     "up": 0
+    }
+   ],
+   [
+    "ev:flyoff",
+    "whoosh",
+    0.16,
+    {
+     "dur": 1.0
+    }
+   ],
+   [
+    "ev:flyoff",
+    "flutter",
+    0.14,
+    {
+     "dur": 2.6,
+     "rate": 10
+    }
+   ],
+   [
+    "L4",
+    "wind",
+    0.05,
+    {
+     "dur": 3.5
+    }
+   ],
+   [
+    "L4+0.4",
+    "tick",
+    0.08,
+    {
+     "dur": 2.6,
+     "rate": 2.0
+    }
+   ],
+   [
+    "L5",
+    "run",
+    0.14,
+    {
+     "dur": 2.4
+    }
+   ],
+   [
+    "L5+0.2",
+    "flutter",
+    0.1,
+    {
+     "dur": 2.2,
+     "rate": 10
+    }
+   ],
+   [
+    "L6",
+    "flutter",
+    0.12,
+    {
+     "dur": 1.4
+    }
+   ],
+   [
+    "ev:land",
+    "stomp",
+    0.08
+   ],
+   [
+    "L7",
+    "wind",
+    0.06,
+    {
+     "dur": 4.5
+    }
+   ],
+   [
+    "ev:keydrop-0.3",
+    "chirp",
+    0.14,
+    {
+     "f": 1200
+    }
+   ],
+   [
+    "ev:keyland",
+    "glass",
+    0.14,
+    {
+     "dur": 1.4
+    }
+   ],
+   [
+    "ev:keyland",
+    "chime",
+    0.14
+   ],
+   [
+    "ev:grab+0.3",
+    "shimmer",
+    0.1,
+    {
+     "dur": 1.2
+    }
+   ],
+   [
+    "ev:outline-0.5",
+    "riser",
+    0.16,
+    {
+     "dur": 0.6
+    }
+   ],
+   [
+    "ev:outline",
+    "shimmer",
+    0.24,
+    {
+     "dur": 2.6
+    }
+   ],
+   [
+    "ev:outline",
+    "hum",
+    0.06,
+    {
+     "dur": 4
+    }
+   ],
+   [
+    "ev:reveal",
+    "whoosh",
+    0.16,
+    {
+     "dur": 1.2
+    }
+   ],
+   [
+    "ev:reveal",
+    "shimmer",
+    0.22,
+    {
+     "dur": 2.4
+    }
+   ],
+   [
+    "ev:reveal+0.3",
+    "rumble",
+    0.08,
+    {
+     "dur": 1.6
+    }
+   ],
+   [
+    "L13",
+    "creak",
+    0.14,
+    {
+     "dur": 1.4
+    }
+   ],
+   [
+    "L13+0.3",
+    "footsteps",
+    0.08,
+    {
+     "dur": 1.6,
+     "rate": 2
+    }
+   ],
+   [
+    "L15",
+    "sting",
+    0.14,
+    {
+     "dur": 2.6
+    }
+   ],
+   [
+    "ev:notif",
+    "ding",
+    0.22
+   ],
+   [
+    "ev:accept",
+    "pop",
+    0.16
+   ],
+   [
+    "ev:accept+0.05",
+    "chime",
+    0.16
+   ],
+   [
+    "ev:faces",
+    "shimmer",
+    0.24,
+    {
+     "dur": 2.4
+    }
+   ],
+   [
+    "ev:faces+0.4",
+    "chime",
+    0.12
+   ],
+   [
+    "ev:jump",
+    "chirp",
+    0.18,
+    {
+     "f": 1500
+    }
+   ],
+   [
+    "ev:jump+0.55",
+    "chirp",
+    0.16,
+    {
+     "f": 1700
+    }
+   ],
+   [
+    "ev:jump+1.1",
+    "chirp",
+    0.16,
+    {
+     "f": 1600
+    }
+   ],
+   [
+    "ev:jump",
+    "flutter",
+    0.1,
+    {
+     "dur": 1.8,
+     "rate": 11
+    }
+   ],
+   [
+    "ev:msg",
+    "ding",
+    0.18
+   ],
+   [
+    "ev:girl-0.4",
+    "shimmer",
+    0.18,
+    {
+     "dur": 2
+    }
+   ],
+   [
+    "ev:girl",
+    "bell",
+    0.08
+   ],
+   [
+    "ev:fade",
+    "whoosh",
+    0.12,
+    {
+     "dur": 1.6
+    }
+   ],
+   [
+    "ev:fade",
+    "shimmer",
+    0.24,
+    {
+     "dur": 3
+    }
+   ],
+   [
+    "ev:hug",
+    "chirp",
+    0.12,
+    {
+     "f": 1100
+    }
+   ],
+   [
+    "ev:hug+0.2",
+    "shimmer",
+    0.16,
+    {
+     "dur": 3
+    }
+   ]
+  ]
+ }
+}

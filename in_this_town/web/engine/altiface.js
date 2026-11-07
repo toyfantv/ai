@@ -150,3 +150,6 @@ export function visemeAt(text, t0, t1, t) {
   if ('mbp'.includes(c)) return null;
   return 'S';
 }
+
+// a whole face as a canvas (Episode 23: a photograph's face): the preset must be loaded with loadAlti()
+export const altiCanvas = (name, o = {}) => texFor(layersOf(name, o)).image;

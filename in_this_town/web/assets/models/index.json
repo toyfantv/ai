@@ -578,5 +578,65 @@
     "source": "this renderer",
     "type": "builder",
     "url": ""
+  },
+  "golden_dragon": {
+    "author": "toyfantv",
+    "desc": "a tiny golden pet dragon with big expressive eyes, little wings, poses and moods",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep23",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "golden_key": {
+    "author": "toyfantv",
+    "desc": "a glowing golden key with a heart bow",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep23",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "golden_egg": {
+    "author": "toyfantv",
+    "desc": "a golden pet egg that splits in two",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep23",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "pastel_cottage": {
+    "author": "toyfantv",
+    "desc": "a pastel suburban house with porch, lap siding, shutters, flower boxes; can build up from light",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep23",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "mailbox": {
+    "author": "toyfantv",
+    "desc": "a street mailbox, new with a name or old and rusty",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep23",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "framed_photo": {
+    "author": "toyfantv",
+    "desc": "a framed drawn photo of a little girl (and her dragon) whose face can be erased and restored",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep23",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
   }
 }

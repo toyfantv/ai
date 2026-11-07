@@ -3,7 +3,7 @@
 
 Usage: python tools/audio2.py episodes/epXX.json
 The episode JSON has a "sound" block:
-  "music": [[time, mood], ...]       moods: wonder, mystery, playful, suspense, dread, cosmic, silence, runway, runway_dark
+  "music": [[time, mood], ...]       moods: wonder, mystery, playful, suspense, dread, cosmic, silence, runway, runway_dark, tender, tender_hope, musicbox
   "cues":  [[time, sfx, gain, {opts}], ...]
 Times: "0", "L3" (start of line 3), "L3e" (end of line 3), "ev:name" (director event), each with optional "+x"/"-x".
 """
@@ -185,7 +185,37 @@ SFX = {
     'riser': lambda o: riser(o.get('dur', 3.0)), 'groan': lambda o: groan(o.get('dur', 3.5)), 'pop': lambda o: pop(),
     'whale': lambda o: whale(3.2, o.get('f0', 160), o.get('f1', 380), o.get('f2', 220)),
     'sample': lambda o: sample(o), 'scratch': lambda o: scratch(o.get('dur', 3.0), o.get('rate', 7.0)),
+    'flutter': lambda o: flutter(o.get('dur', 1.2), o.get('rate', 9.0)), 'chirp': lambda o: chirp(o.get('f', 1300), o.get('dur', 0.32), o.get('up', 1)),
 }
+
+
+# Episode 23: a small dragon's wings (soft feathery beats) and its voice (a bright squeak that bends up or down)
+def flutter(d=1.2, rate=9.0, seed=5):
+    r = np.random.default_rng(seed); x = np.zeros(int(d * SR)); t = 0.0
+    while t < d - 0.08:
+        n = int(0.07 * SR); s = bp(r.standard_normal(n), 300, 2200) * np.hanning(n) * r.uniform(0.6, 1.0)
+        i = int(t * SR); x[i:i + n] += s[: len(x) - i]; t += 1 / rate * r.uniform(0.9, 1.1)
+    return reverb(x / (np.max(np.abs(x)) + 1e-9) * 0.6, 0.6, 0.15)
+
+
+def chirp(f=1300, d=0.32, up=1):
+    t = tt(d); k = t / d
+    fr = f * (1 + (0.55 * k if up > 0 else -0.35 * k) + 0.05 * np.sin(2 * np.pi * 28 * t))
+    ph = 2 * np.pi * np.cumsum(fr) / SR
+    x = (np.sin(ph) + 0.35 * np.sin(2 * ph) + 0.12 * np.sin(3 * ph)) * np.sin(np.pi * np.clip(k, 0, 1)) ** 0.6
+    return reverb(x * 0.5, 0.8, 0.2)
+
+
+def piano(f, d=3.0, vel=1.0):
+    t = tt(d); x = np.zeros(len(t))
+    for h, a in ((1, 1.0), (2, 0.42), (3, 0.2), (4, 0.11), (5, 0.06), (6, 0.03)):
+        x += a * np.sin(2 * np.pi * f * h * (1 + 0.0004 * h * h) * t) * np.exp(-t * (1.1 + 0.9 * h) * (0.6 + f / 900))
+    att = np.minimum(1, t / 0.004)
+    return lp(x * att * vel * 0.5, 5200)
+
+
+def musicbox(f, d=2.0):
+    t = tt(d); return (np.sin(2 * np.pi * f * t) + 0.3 * np.sin(2 * np.pi * f * 3.01 * t) + 0.12 * np.sin(2 * np.pi * f * 5.4 * t)) * np.exp(-t * 3.2) * np.minimum(1, t / 0.002) * 0.5
 
 
 # a spoken sample from build/<id>/samples (tts.py "samples"): a name in the trees, slowed or raised with rate, in a room of rev seconds
@@ -258,6 +288,26 @@ def mood(name, d, key=50, seed=1):
             add(int((t + beat / 2) * SR), hat, 0.05 if dark else 0.09)
             add(int(t * SR), bell(hz(arp[i % 8]), 0.5), 0.05 if dark else 0.08); add(int((t + beat / 2) * SR), bell(hz(arp[(i + 4) % 8] + 12), 0.4), 0.04)
             t += beat; i += 1
+    elif name in ('tender', 'tender_hope'):
+        # Episode 23: gentle piano over a warm string bed: I - V - vi - IV, a broken-chord left hand, a slow melody on top; tender_hope opens up
+        bright = 2600 if name == 'tender_hope' else 1500
+        add(0, pad([hz(key - 12 + n) for n in (0, 7, 12, 16)], d + 0.5, a=1.2, r=1.2, bright=bright, detune=0.004), 0.32)
+        if name == 'tender_hope': add(0, shimmer(d, seed), 0.07)
+        prog = [(0, 4, 7), (7, 11, 14), (9, 12, 16), (5, 9, 12)]
+        mel = [16, 14, 12, 14, 19, 16, 14, 12, 21, 19, 16, 14, 17, 16, 14, 12]
+        beat = 0.5; t, i = 0.05, 0
+        while t < d:
+            c = prog[(i // 8) % 4]
+            add(int(t * SR), piano(hz(key - 12 + c[[0, 1, 2, 1, 0, 1, 2, 1][i % 8]] + (12 if i % 8 in (2, 6) else 0)), 2.4, 0.55), 0.5)
+            if i % 2 == 0: add(int(t * SR), piano(hz(key + 12 + mel[(i // 2) % 16]), 3.0, 0.8 if i % 8 == 0 else 0.6), 0.42)
+            t += beat; i += 1
+    elif name == 'musicbox':
+        # a music-box lullaby (the pet shop): a slow plucked tune in the high register, a soft bed under it
+        add(0, pad([hz(key + n) for n in (0, 7, 12, 16)], d + 0.5, a=0.5, r=1.0, bright=2200), 0.22)
+        tune = [12, 16, 19, 24, 23, 19, 21, 19, 16, 19, 17, 14, 12, 14, 16, 12]
+        t, i = 0.05, 0
+        while t < d:
+            add(int(t * SR), reverb(musicbox(hz(key + 24 + tune[i % 16])), 1.2, 0.3), 0.26); t += 0.3; i += 1
     elif name == 'mystery':
         add(0, pad([hz(key + n) for n in (0, 3, 7, 10, 14)], d + 0.5, a=0.8, r=1.0, bright=1500), 0.45)
         notes = [key + 24 + n for n in (0, 3, 7, 10, 12, 15)]

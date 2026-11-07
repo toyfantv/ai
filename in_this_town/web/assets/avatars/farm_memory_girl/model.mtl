@@ -1,0 +1,56 @@
+newmtl m_acc_BlondPigtails
+Kd 1 1 1
+map_Kd t_acc_BlondPigtails.jpg
+
+newmtl m_Head
+Kd 1 1 1
+map_Kd t_Head.jpg
+
+newmtl m_LeftFoot
+Kd 0.9647 0.9490 0.9176
+
+newmtl m_LeftHand
+Kd 1 1 1
+map_Kd t_LeftHand.jpg
+
+newmtl m_LeftLowerArm
+Kd 1 1 1
+map_Kd t_LeftLowerArm.jpg
+
+newmtl m_LeftLowerLeg
+Kd 0.9451 0.7882 0.6275
+
+newmtl m_LeftUpperArm
+Kd 1 1 1
+map_Kd t_LeftUpperArm.jpg
+
+newmtl m_LeftUpperLeg
+Kd 0.9490 0.8745 0.4549
+
+newmtl m_LowerTorso
+Kd 0.9490 0.8745 0.4549
+
+newmtl m_RightFoot
+Kd 0.9647 0.9490 0.9176
+
+newmtl m_RightHand
+Kd 1 1 1
+map_Kd t_RightHand.jpg
+
+newmtl m_RightLowerArm
+Kd 1 1 1
+map_Kd t_RightLowerArm.jpg
+
+newmtl m_RightLowerLeg
+Kd 0.9451 0.7882 0.6275
+
+newmtl m_RightUpperArm
+Kd 1 1 1
+map_Kd t_RightUpperArm.jpg
+
+newmtl m_RightUpperLeg
+Kd 0.9490 0.8745 0.4549
+
+newmtl m_UpperTorso
+Kd 1 1 1
+map_Kd t_UpperTorso.jpg
