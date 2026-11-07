@@ -38,10 +38,9 @@ const WARDP = { ...HALL, ...P({ top: '#020403', horizon: '#020403', haze: '#0204
 
 function events() {
   const s = (i) => L(i).start, e = (i) => L(i).end;
-  return { on: 0.55, walkIn: s(3) - 0.15, buzz: s(4), pa: s(6) - 0.75, freeze: s(7) + 0.05, flick: s(9) + 0.15, nurse: s(9) + 0.32, point: s(11) + 0.15, open: s(12) + 0.55,
-    tvon: s(16) + 0.1, turn: s(19) + 0.25, nurseTV: s(22) + 0.55, out: s(23) + 0.12, back: s(24) - 0.05, rings: s(24) + 0.5, end: ctx.dur };
+  return { on: 0.55, walkIn: s(3) - 0.15, buzz: s(4), pa: s(9) - 0.75, freeze: s(10) - 0.3, flick: s(12) + 0.15, nurse: s(12) + 0.32, point: s(13) + 0.15, open: s(14) + 0.55,
+    tvon: s(16) + 0.1, turn: s(19) + 0.1, nurseTV: s(21) + 0.55, out: s(22) + 0.12, back: s(23) - 0.05, rings: s(23) + 0.5, end: ctx.dur };
 }
-const hallZ = (t) => -1.5 - Math.max(0, t - EV.walkIn) * 3.2;     // Grayson walking in
 
 // ---- outside ----
 function outside() {
@@ -215,62 +214,68 @@ function wardLights(t) {
   return (r) => clamp((t - (EV.rings + r * 0.13)) / 0.22);
 }
 
-// ---- people ----
+// ---- people: seven of them, met one at a time down an otherwise empty corridor; the same seven are in the ward's beds ----
+const CAST = {
+  guard: { avatar: 'farm_prison_guard', skin: '#8e5a3a', face: 'neutral' },
+  recep: { avatar: 'farm_classic_mom', skin: '#f2c79a', face: 'lash:smile', alti: { y: -0.3, size: 0.86 } },
+  jan: { avatar: 'farm_grandpa', skin: '#e6c29c', face: 'focused' },
+  gran: { avatar: 'farm_grandma_june', skin: '#eeccb2', face: 'lash:neutral' },
+  wait: { avatar: 'farm_beanie_guy', skin: '#7a4e33', face: 'neutral' },
+  kid: { avatar: 'farm_young_kid', skin: '#c98b5a', face: 'scared', scale: 0.74 },
+  doc: { avatar: 'farm_dr_greene', skin: '#8e5a3a', face: 'focused' },
+};
+const armLen = (c, i) => { c.arms._len ||= []; if (!c.arms._len[i]) { c.reset(); c.root.updateMatrixWorld(true); const sh = c.arms[i].getWorldPosition(v3(0, 0, 0)), bx = new THREE.Box3().setFromObject(c.arms[i]); c.arms._len[i] = (sh.y - bx.min.y - 0.15) / c.root.scale.y; } return c.arms._len[i]; };
+function mkC(k, parent) {
+  const c = makeCharacter({ avatar: CAST[k].avatar, alti: CAST[k].alti ?? true, skin: CAST[k].skin, scale: CAST[k].scale ?? 1, caustic: false });
+  c.root.traverse((o) => { if (o.isMesh) o.castShadow = true; }); parent.add(c.root); armLen(c, 0); armLen(c, 1);
+  c.reset(); c.root.updateMatrixWorld(true); c.tall = new THREE.Box3().setFromObject(c.root).max.y - c.root.position.y; return c;
+}
 function people() {
   const mk = () => { const c = makeCharacter({ avatar: 'farm_grayson', alti: true, skin: GSKIN, caustic: false }); ctx.scene.add(c.root); return c; };
-  W.g = mk(); W.tape = mk();
+  W.g = mk(); W.tape = mk(); armLen(W.g, 0); armLen(W.g, 1);
   W.n = nurse(); ctx.scene.add(W.n.root); W.n.root.traverse((o) => { if (o.isMesh) o.castShadow = true; });
+  W.x = {}; for (const k of ['guard', 'recep', 'jan', 'gran', 'wait', 'kid']) W.x[k] = mkC(k, W.corr);
+  W.doc = mkC('doc', W.ward);
   extras();
 }
-
-// ---- the others: a few people in the corridor, still and slightly wrong; they are in the beds at the end ----
-const XS = {
-  desk: { skin: '#f0d2bc', shirt: '#c99aa6', sleeves: '#c99aa6', pants: '#5b4a52', shoes: '#2b2326', hair: '#7a3b2a', hairStyle: 'bun', female: true, collar: '#f4eee2', caustic: false },
-  jan: { skin: '#c68a5a', shirt: '#5f6f7a', sleeves: '#5f6f7a', pants: '#56646e', shoes: '#26292b', hair: '#77736e', hairStyle: 'short', caustic: false },
-  kid: { skin: '#f5d6b8', shirt: '#b9d4e6', sleeves: '#b9d4e6', pants: '#b9d4e6', shoes: '#ece8e0', hair: '#d8b25a', hairStyle: 'pigtails', tie: '#9fc0d8', female: true, scale: 0.72, caustic: false },
-  ord: { skin: '#e0ac7e', shirt: '#3f8f86', sleeves: '#3f8f86', pants: '#3a817a', shoes: '#f0f0ec', hair: '#1e1a17', hairStyle: 'short', caustic: false },
-};
-function dressX(ch, k) {
-  const b = new Batch();
-  if (k === 'jan') { b.box(paint('#3d4a52', { roughness: 0.8 }), 1.5, 0.42, 1.48, 0, 1.52, 0.02, { r: 0.12 }); b.box(paint('#3d4a52', { roughness: 0.8 }), 1.2, 0.1, 0.6, 0, 1.33, 0.9, { r: 0.04 }); }
-  if (k === 'ord') { b.box(paint('#3f8f86', { roughness: 0.85 }), 1.5, 0.46, 1.48, 0, 1.5, -0.02, { r: 0.16 }); b.box(paint('#eef2ef', { roughness: 0.9 }), 0.92, 0.48, 0.12, 0, 0.42, 0.64, { r: 0.05 }); }   // scrub cap, surgical mask
-  if (k === 'desk') { b.box(paint('#1d1a1a', { roughness: 0.4 }), 1.1, 0.08, 0.06, 0, 0.9, 0.66, { r: 0.02 }); }   // a thin glasses bar
-  if (k !== 'kid') ch.neck.add(b.done());
-  if (k === 'kid') { const g = new Batch(); g.box(paint('#b9d4e6', { roughness: 0.85 }), 2.16, 1.5, 1.2, 0, -0.55, 0, { r: 0.14 }); ch.hips.add(g.done()); }   // the gown's hem
-  ch.root.traverse((o) => { if (o.isMesh) o.castShadow = true; });
-}
+const WAITZ = [-46, -48.5, -51, -53.5], SEAT = 2.3, CHX = -5.4;
 function extras() {
-  const X = (k) => { const c = makeCharacter(XS[k]); dressX(c, k); W.corr.add(c.root); return c; };
-  W.x = { desk: X('desk'), jan: X('jan'), kid: X('kid'), ord: X('ord') };
   // the reception desk at the corridor's start (left side), a bell and a ledger
   const b = new Batch(), top = paint('#e9eee8', { roughness: 0.5 }), front = paint('#9fc5b0', { roughness: 0.6 });
   b.box(front, 1.4, 3.4, 7.0, -4.3, 1.7, -9, { r: 0.08 }); b.box(top, 2.4, 0.22, 7.4, -4.6, 3.5, -9, { r: 0.06 }); b.box(front, 2.0, 0.2, 7.0, -5.8, 2.6, -9, { r: 0.04 });
   b.box(paint('#f3efe2', { roughness: 0.8 }), 1.3, 0.12, 1.0, -4.5, 3.66, -10.6, { r: 0.03 }); b.cyl(paint('#c9a24a', { metalness: 0.8, roughness: 0.3 }), 0.28, 0.32, 0.22, -4.4, 3.72, -7.4);
+  // the waiting chairs on the left wall: seat, back, legs
+  const seat = paint('#5f8f7c', { roughness: 0.6 }), leg = paint('#c9cfcc', { metalness: 0.8, roughness: 0.3 });
+  for (const z of WAITZ) { b.box(seat, 2.4, 0.36, 2.3, CHX, SEAT - 0.18, z, { r: 0.12 }); b.box(seat, 0.36, 2.6, 2.3, CHX - 1.2, SEAT + 1.2, z, { r: 0.12 }); for (const [p, q] of [[-1, -1], [1, -1], [-1, 1], [1, 1]]) b.cyl(leg, 0.08, 0.08, SEAT - 0.36, CHX + p, (SEAT - 0.36) / 2, z + q * 0.95); }
   b.done(W.corr);
   const sg = canvasTex(512, 128, (x, w, h) => { x.fillStyle = '#f4f7f2'; x.fillRect(0, 0, w, h); x.fillStyle = '#3f6f5c'; x.font = '900 64px ITTInter, sans-serif'; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillText('RECEPTION', w / 2, h / 2 + 4); }); sg.colorSpace = THREE.SRGBColorSpace;
   const sm = new THREE.Mesh(new THREE.PlaneGeometry(4.2, 1.05), new THREE.MeshStandardMaterial({ map: sg, roughness: 0.6 })); sm.position.set(-6.94, 7.4, -9); sm.rotation.y = Math.PI / 2; W.corr.add(sm);
-  // the janitor's mop and bucket
-  const m = new Batch(); m.cyl(paint('#b8bcb6', { metalness: 0.6, roughness: 0.35 }), 0.09, 0.09, 6.2, 0, 3.1, 0); m.box(paint('#d9d4c4', { roughness: 0.95 }), 1.5, 0.3, 0.6, 0, 0.15, 0, { r: 0.1 });
-  W.mop = m.done(); W.corr.add(W.mop);
+  const wsg = canvasTex(512, 128, (x, w, h) => { x.fillStyle = '#f4f7f2'; x.fillRect(0, 0, w, h); x.fillStyle = '#3f6f5c'; x.font = '900 60px ITTInter, sans-serif'; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillText('WAITING', w / 2, h / 2 + 4); }); wsg.colorSpace = THREE.SRGBColorSpace;
+  const ws = new THREE.Mesh(new THREE.PlaneGeometry(4.2, 1.05), new THREE.MeshStandardMaterial({ map: wsg, roughness: 0.6 })); ws.position.set(-6.94, 7.6, -49.7); ws.rotation.y = Math.PI / 2; W.corr.add(ws);
+  // the janitor's mop: a head on the floor and a pole that ends in his hand (sized every frame)
+  W.mopHead = new THREE.Mesh(new THREE.BoxGeometry(1.5, 0.3, 0.6), paint('#d9d4c4', { roughness: 0.95 })); W.mopHead.castShadow = true; W.corr.add(W.mopHead);
+  const pg = new THREE.CylinderGeometry(0.09, 0.09, 1, 10); pg.translate(0, 0.5, 0); W.mopPole = new THREE.Mesh(pg, paint('#b8bcb6', { metalness: 0.6, roughness: 0.35 })); W.mopPole.castShadow = true; W.corr.add(W.mopPole);
   const bk = new Batch(); bk.cyl(paint('#e3b92c', { roughness: 0.55 }), 0.95, 0.8, 1.5, 0, 0.75, 0, { seg: 20 }); bk.box(paint('#8e9a9c', { metalness: 0.5, roughness: 0.4 }), 1.1, 1.0, 0.3, 0, 1.9, -0.9, { r: 0.04 });
-  const bucket = bk.done(); bucket.position.set(5.9, 0, -44.2); W.corr.add(bucket);
+  const bucket = bk.done(); bucket.position.set(5.6, 0, -22.4); W.corr.add(bucket);
   const wet = canvasTex(256, 360, (x, w, h) => { x.fillStyle = '#e7c23a'; x.fillRect(0, 0, w, h); x.fillStyle = '#1a1a1a'; x.font = '900 62px ITTInter, sans-serif'; x.textAlign = 'center'; x.fillText('WET', w / 2, 150); x.fillText('FLOOR', w / 2, 230); }); wet.colorSpace = THREE.SRGBColorSpace;
-  const wf = new THREE.Mesh(new THREE.PlaneGeometry(1.3, 1.9), new THREE.MeshStandardMaterial({ map: wet, roughness: 0.5, side: THREE.DoubleSide })); wf.position.set(5.2, 1.0, -52.5); wf.rotation.set(-0.18, -0.5, 0); W.corr.add(wf);
-  // the orderly's gurney: a low bed, nobody on it
-  W.gurney = hospitalBed({}); W.gurney.scale.setScalar(0.86); W.gurney.traverse((o) => { if (o.isMesh) o.castShadow = true; }); W.corr.add(W.gurney);
+  const wf = new THREE.Mesh(new THREE.PlaneGeometry(1.3, 1.9), new THREE.MeshStandardMaterial({ map: wet, roughness: 0.5, side: THREE.DoubleSide })); wf.position.set(5.6, 1.0, -31.5); wf.rotation.set(-0.18, -0.4, 0); W.corr.add(wf);
+  // the doctor's clipboard
+  const cb = new Batch(); cb.box(paint('#7a5a3a', { roughness: 0.6 }), 1.0, 1.36, 0.06, 0, 0, 0, { r: 0.03 }); cb.box(paint('#f4f2ea', { roughness: 0.9 }), 0.86, 1.08, 0.03, 0, -0.06, 0.04, { r: 0.01 }); cb.box(paint('#b8bcb6', { metalness: 0.8 }), 0.4, 0.12, 0.08, 0, 0.62, 0.04, { r: 0.02 });
+  W.clip = cb.done(); W.ward.add(W.clip);
 }
 
-// the same four, asleep in the ward, under blankets that cover them properly (feet tented, folded sheet at the shoulders)
-const WARDX = [['desk', -1, 0], ['jan', 0, 1], ['kid', 2, 1], ['ord', 4, 1]];
+// the same faces, asleep in the ward under blankets that cover them properly (feet tented, folded sheet at the shoulders)
+const WARDX = [['recep', 1, 1], ['jan', 2, 1], ['gran', 3, 1], ['wait', 4, 1], ['guard', 5, 1], ['kid', -1, 0]];
 function wardExtras(g, CX, CZ) {
   W.wx = [];
   for (const [k, i, j] of WARDX) {
-    const c = makeCharacter(XS[k]); dressX(c, k); g.add(c.root); c.reset(); c.setFace('calm'); if (c.lid) c.lid.visible = false;
-    const sc = XS[k].scale ?? 1, bz = j * CZ, bx = i * CX;
-    c.root.rotation.order = 'YXZ'; c.root.rotation.set(-Math.PI / 2, 0, 0); c.root.position.set(bx, W.bedTop + 0.5, bz + 1.4 - (1 - sc) * 5.0);
+    const c = mkC(k, g); c.reset(); c.setFace(CAST[k].face, { blink: true });
+    const kid = k === 'kid', bz = j * CZ, bx = i * CX;
+    c.root.rotation.order = 'YXZ'; c.root.rotation.set(-Math.PI / 2 + 0.12, 0, 0); c.root.position.set(bx, W.bedTop + 0.55, bz - 3.75 + c.tall);   // the head lifted onto the pillow   // the top of the head just below the headboard, on the pillow
+    if (kid) c.root.traverse((o) => { if (o.isMesh && /backpack/i.test(o.name + (o.parent?.name || ''))) o.visible = false; });
     const sb = new Batch(), bm = paint('#9ec3b4', { roughness: 0.92 });
-    sb.box(bm, 4.6, 1.15, 4.7, 0, 0, 0, { r: 0.42 }); sb.box(bm, 4.6, 2.2, 2.1, 0, 0.5, 1.55, { r: 0.8 }); sb.box(paint('#eef1ec', { roughness: 0.88 }), 4.66, 0.32, 0.75, 0, 0.5, -2.1, { r: 0.13 });
-    const bl = sb.done(); bl.position.set(bx, W.bedTop + 0.66, bz - 0.3 + (k === 'kid' ? -0.2 : 0)); if (k === 'kid') bl.scale.set(1, 0.8, 0.86); g.add(bl);
+    sb.box(bm, 4.6, 1.15, 4.7, 0, 0, 0, { r: 0.42 }); sb.box(bm, 4.6, 3.0, 2.5, 0, 0.85, 1.6, { r: 0.9 }); sb.box(paint('#eef1ec', { roughness: 0.88 }), 4.66, 0.32, 0.75, 0, 0.5, -2.1, { r: 0.13 });
+    const bl = sb.done(); bl.position.set(bx, W.bedTop + 0.66, bz - 0.3 + (kid ? -0.6 : 0)); if (kid) bl.scale.set(1, 0.85, 0.86); g.add(bl);
     W.wx.push(c);
   }
 }
@@ -319,33 +324,41 @@ function shots() {
   add('ext', 0, (u) => ({ pos: lp3(X(34, 10, 196), X(30, 10, 180), easeInOut(u)), look: X(0, 25, -20), fov: 62 }));
   add('sign', s(1) - 0.15, (u) => ({ pos: lp3(X(-11.2, 4.4, 83), X(-11.4, 4.5, 80), easeOut(u)), look: X(-12, 6.2, 66), fov: 50 }));
   add('road', s(2) - 0.1, (u, t) => { const z = gRoadZ(t); return { pos: X(4.5, 4.2, z + 22), look: X(-0.6, 9, z - 40), fov: 60 }; });
-  add('hall', s(3) - 0.15, (u, t) => ({ pos: v3(0, 5.4, lerp(7, 5.6, u)), look: v3(0, 4.2, -60), fov: 62 }));
-  add('desk', s(3) + 1.3, (u) => ({ pos: lp3(v3(4.4, 5.4, -15.8), v3(4.1, 5.4, -15.0), u), look: v3(-3.7, 4.6, -9.8), fov: 66 }));
-  add('tube', s(4) - 0.1, (u) => { const z = gStop() - 1.2; return { pos: lp3(v3(2.0, 3.0, z + 3.8), v3(1.8, 3.1, z + 3.5), u), look: v3(-0.2, 5.5, z - 2.5), fov: 62 }; });
-  add('peek', s(5) - 0.1, (u) => { const d = DOORS.find((q) => q.s < 0 && q.z < -30 && q.z > -50); return { pos: lp3(v3(-15.5, 5.4, d.z - 4.6), v3(-15.0, 5.3, d.z - 4.3), u), look: v3(-6, 3.4, d.z + 0.6), fov: 58 }; });
-  add('mop', s(5) + 0.95, (u) => ({ pos: lp3(v3(-2.2, 4.4, -56.5), v3(-2.0, 4.4, -55.7), u), look: v3(2.6, 3.4, -47.0), fov: 58 }));
-  add('spk', s(6) - 0.5, (u) => ({ pos: lp3(v3(-2.6, 6.8, -55.5), v3(-2.4, 7.0, -56.4), u), look: v3(0, H - 0.4, -63.5), fov: 48 }));
-  add('look', s(6) + 1.0, (u) => ({ pos: lp3(v3(1.4, 4.0, gStop() - 6.6), v3(1.3, 4.1, gStop() - 6.0), u), look: v3(0, 4.3, gStop()), fov: 56 }));
-  add('froze', s(7) - 0.1, (u) => ({ pos: lp3(v3(0.6, 4.6, gStop() - 4.6), v3(0.55, 4.6, gStop() - 4.2), u), look: v3(0, 4.25, gStop()), fov: 52 }));
-  add('never', s(8) - 0.1, (u) => ({ pos: lp3(v3(6.0, 5.0, gStop() - 11.5), v3(5.7, 4.9, gStop() - 10.7), easeOut(u)), look: v3(-2.6, 3.9, gStop() - 0.4), fov: 62 }));
-  add('nurse', s(9) - 0.1, (u) => ({ pos: lp3(v3(2.4, 5.6, gStop() + 6.4), v3(2.3, 5.5, gStop() + 5.0), u), look: v3(0, 4.6, -150), fov: lerp(50, 36, easeInOut(u)) }));
-  add('mask', s(10) - 0.1, (u) => ({ pos: lp3(v3(0.1, 4.9, NURSE.z + 9.5), v3(0.05, 4.95, NURSE.z + 5.6), easeInOut(u)), look: v3(0, 4.55, NURSE.z), fov: 46 }));
-  add('point', s(11) - 0.1, (u) => ({ pos: lp3(v3(-5.0, 5.6, NURSE.z - 8.0), v3(-4.8, 5.6, NURSE.z - 7.3), u), look: v3(0.9, 4.6, NURSE.z + 4), fov: 62 }));
-  add('plate', s(11) + 1.15, (u) => ({ pos: lp3(v3(1.4, 6.6, D217 + 9.5), v3(2.0, 6.9, D217 + 8.2), u), look: v3(HW - 0.1, 6.6, D217 + 2.4), fov: 54 }));
-  add('open', s(12) - 0.1, (u) => ({ pos: lp3(v3(-2.6, 5.4, D217 + 9.4), v3(-2.2, 5.3, D217 + 8.6), u), look: v3(5.6, 3.9, D217 + 0.4), fov: 60 }));
-  add('bed', s(13) - 0.15, (u) => ({ pos: lp3(v3(12.4, 6.6, -150.0), v3(13.0, 6.3, -150.8), easeOut(u)), look: v3(19.4, 3.0, -160.2), fov: 64 }));
-  add('tv', s(14) - 0.1, (u) => { const p = W.tv.localToWorld(v3(-2.5, -1.8, 7.0)), q = W.tv.localToWorld(v3(-2.2, -1.6, 6.4)); return { pos: lp3(p, q, u), look: W.tv.localToWorld(v3(0, 0.1, 0)), fov: 46 }; });
-  add('photo', s(15) - 0.1, (u) => { const f = W.frame.position; return { pos: lp3(v3(f.x - 6.2, 5.6, f.z + 3.4), v3(f.x - 4.0, 5.1, f.z + 2.1), easeInOut(u)), look: v3(f.x, f.y - 0.1, f.z + 0.1), fov: 40 }; });
+  // inside: over his shoulder, the guard turning a key in the glass doors he just came through
+  add('guard', s(3) - 0.15, (u) => ({ pos: lp3(v3(-4.2, 5.6, -14.5), v3(-3.5, 5.3, -12.2), easeInOut(u)), look: v3(0.8, 4.3, 4.5), fov: 50 }));
+  // reception: a dolly in beside him as he reaches the desk; she is writing and doesn't look up
+  add('desk', s(4) - 0.15, (u) => ({ pos: lp3(v3(-3.0, 5.4, -30.0), v3(-2.6, 5.2, -27.0), easeInOut(u)), look: v3(-2.4, 4.3, -6.0), fov: 46 }));
+  add('recep', s(5) - 0.1, (u) => ({ pos: lp3(v3(-1.0, 3.9, -11.6), v3(-1.5, 4.0, -10.9), u), look: v3(-6.0, 4.9, -9.2), fov: 50 }));
+  add('never', s(6) - 0.1, (u) => ({ pos: lp3(v3(-4.0, 5.0, -14.6), v3(-3.3, 4.9, -13.2), easeInOut(u)), look: v3(-0.9, 4.5, -8.9), fov: 50 }));
+  // the janitor, from the floor: the mop's arc in the foreground, Grayson coming down the hall behind
+  add('mop', s(7) - 0.15, (u) => ({ pos: lp3(v3(-3.6, 1.8, -38.5), v3(-2.2, 2.0, -37.4), easeInOut(u)), look: v3(1.0, 3.0, -25.0), fov: 58 }));
+  // the waiting chairs: a slow orbit; the two seated turn their heads to follow him
+  add('wait', s(8) - 0.15, (u) => { const a = lerp(-0.62, 0.05, easeInOut(u)), c = v3(-4.6, 0, -49.5); return { pos: v3(c.x + Math.cos(a) * 10.2, 5.0, c.z + Math.sin(a) * 10.2), look: v3(-3.6, 4.5, -49.2), fov: 60 }; });
+  add('spk', s(9) - 0.1, (u) => ({ pos: lp3(v3(-2.6, 6.8, -55.5), v3(-2.4, 7.0, -56.4), u), look: v3(0, H - 0.4, -63.5), fov: 48 }));
+  add('look', s(9) + 1.4, (u) => ({ pos: lp3(v3(1.4, 4.0, gStop() - 7.4), v3(1.3, 4.1, gStop() - 6.2), easeInOut(u)), look: v3(0, 4.4, gStop()), fov: 56 }));
+  // the boy: a two-shot from his left, then down over Grayson's shoulder at the boy's face
+  add('kid', s(10) - 0.15, (u) => ({ pos: lp3(v3(4.4, 3.9, -66.0), v3(3.8, 3.9, -64.8), easeOut(u)), look: v3(-0.8, 3.4, -58.2), fov: 56 }));
+  add('kidc', s(11) - 0.1, (u) => ({ pos: lp3(v3(0.9, 9.8, -56.2), v3(0.7, 9.5, -56.8), u), look: v3(-1.4, 2.6, -59.2), fov: 48 }));
+  add('nurse', s(12) - 0.1, (u) => ({ pos: lp3(v3(2.4, 5.6, gStop() + 6.4), v3(2.3, 5.5, gStop() + 5.0), u), look: v3(0, 4.6, -150), fov: lerp(50, 36, easeInOut(u)) }));
+  add('mask', s(12) + 1.75, (u) => ({ pos: lp3(v3(0.1, 4.9, NURSE.z + 9.5), v3(0.05, 4.95, NURSE.z + 5.6), easeInOut(u)), look: v3(0, 4.55, NURSE.z), fov: 46 }));
+  add('point', s(13) - 0.1, (u) => ({ pos: lp3(v3(-5.0, 5.6, NURSE.z - 8.0), v3(-4.8, 5.6, NURSE.z - 7.3), u), look: v3(0.9, 4.6, NURSE.z + 4), fov: 62 }));
+  add('plate', s(13) + 1.15, (u) => ({ pos: lp3(v3(1.4, 6.6, D217 + 9.5), v3(2.0, 6.9, D217 + 8.2), u), look: v3(HW - 0.1, 6.6, D217 + 2.4), fov: 54 }));
+  add('open', s(14) - 0.1, (u) => ({ pos: lp3(v3(-2.6, 5.4, D217 + 9.4), v3(-2.2, 5.3, D217 + 8.6), u), look: v3(5.6, 3.9, D217 + 0.4), fov: 60 }));
+  add('bed', s(15) - 0.15, (u) => ({ pos: lp3(v3(12.4, 6.6, -150.0), v3(13.0, 6.3, -150.8), easeOut(u)), look: v3(19.4, 3.0, -160.2), fov: 64 }));
+  add('tv', s(15) + 1.5, (u) => { const p = W.tv.localToWorld(v3(-2.5, -1.8, 7.0)), q = W.tv.localToWorld(v3(-2.2, -1.6, 6.4)); return { pos: lp3(p, q, u), look: W.tv.localToWorld(v3(0, 0.1, 0)), fov: 46 }; });
+  add('photo', s(15) + 2.45, (u) => { const f = W.frame.position; return { pos: lp3(v3(f.x - 6.2, 5.6, f.z + 3.4), v3(f.x - 4.0, 5.1, f.z + 2.1), easeInOut(u)), look: v3(f.x, f.y - 0.1, f.z + 0.1), fov: 40 }; });
   add('tvon', s(16) - 0.1, (u) => ({ pos: lp3(v3(18.4, 5.0, -160.6), v3(18.0, 5.0, -160.2), u), look: v3(11.2, 6.2, -153.0), fov: 58 }));
   add('feed', s(17) - 0.1, (u) => { const p = W.tv.localToWorld(v3(0.3, -0.2, 7.4)), q = W.tv.localToWorld(v3(0.2, -0.1, 6.8)); return { pos: lp3(p, q, u), look: W.tv.localToWorld(v3(0, 0.1, 0)), fov: 44 }; });
   add('date', s(18) - 0.1, (u) => { const p = W.tv.localToWorld(v3(0.2, -0.3, 6.2)), q = W.tv.localToWorld(v3(0.2, -0.3, 5.6)); return { pos: lp3(p, q, u), look: W.tv.localToWorld(v3(0.0, -0.2, 0)), fov: 42 }; });
   add('turn', s(19) - 0.1, (u) => { const p = W.tv.localToWorld(v3(0, -0.1, 5.4)), q = W.tv.localToWorld(v3(0, -0.05, 4.4)); return { pos: lp3(p, q, easeInOut(u)), look: W.tv.localToWorld(v3(0, 0.1, 0)), fov: 42 }; });
   add('whisper', s(20) - 0.05, (u) => { const p = W.tv.localToWorld(v3(0, 0.0, 4.2)), q = W.tv.localToWorld(v3(0, 0.05, 3.8)); return { pos: lp3(p, q, u), look: W.tv.localToWorld(v3(0, 0.1, 0)), fov: 44 }; });
-  add('behind', s(22) - 0.1, (u) => { const p = W.tv.localToWorld(v3(0, -0.1, 5.0)), q = W.tv.localToWorld(v3(0, -0.1, 4.6)); return { pos: lp3(p, q, u), look: W.tv.localToWorld(v3(0, 0.1, 0)), fov: 44 }; });
-  add('real', s(22) + 1.05, (u) => ({ pos: lp3(v3(12.0, 4.7, -154.0), v3(12.4, 4.7, -154.5), u), look: v3(STAND.x, 4.4, STAND.z), fov: 50 }));
+  add('behind', s(21) - 0.1, (u) => { const p = W.tv.localToWorld(v3(0, -0.1, 5.0)), q = W.tv.localToWorld(v3(0, -0.1, 4.6)); return { pos: lp3(p, q, u), look: W.tv.localToWorld(v3(0, 0.1, 0)), fov: 44 }; });
+  add('real', s(21) + 1.05, (u) => ({ pos: lp3(v3(12.0, 4.7, -154.0), v3(12.4, 4.7, -154.5), u), look: v3(STAND.x, 4.4, STAND.z), fov: 50 }));
   add('wake', e.back, (u) => ({ pos: lp3(Wd(-2.2, 6.2, 0.4), Wd(-3.6, 7.4, -3.8), easeOut(u)), look: Wd(0, 4.3, 6.7), fov: 54 }));
-  add('rows', s(25) - 0.1, (u) => ({ pos: lp3(Wd(-24, 24, 46), Wd(-14, 26, 40), easeInOut(u)), look: Wd(-2, 2, -70), fov: 62 }));
-  add('occ', s(26) - 0.1, (u) => ({ pos: lp3(Wd(40, 8.4, 6.4), Wd(13, 8.2, 6.4), easeInOut(u)), look: Wd(lerp(35, 8, easeInOut(u)), 4.0, 11.5), fov: 54 }));
+  add('rows', s(24) - 0.1, (u) => ({ pos: lp3(Wd(-24, 24, 46), Wd(-14, 26, 40), easeInOut(u)), look: Wd(-2, 2, -70), fov: 62 }));
+  // the doctor down the next aisle, chart to chart; the camera backs away in front of him
+  add('doc', s(25) - 0.15, (u, t) => { const x = docX(t); return { pos: Wd(x - 8.5, 5.8, 19.6), look: Wd(x, 4.3, 18.6), fov: 54 }; });
+  add('occ', s(26) - 0.1, (u) => { const x = lerp(31, 7.5, easeInOut(u)); return { pos: Wd(x + 1.2, 15.5, 20.5), look: Wd(x, 3.8, 9.9), fov: 52 }; });
   add('his', s(27) - 0.25, (u) => { const k = easeInOut(clamp(u * 1.15)); return { pos: lp3(Wd(5.5, 7.5, 17), Wd(0.6, 62, 16), k), look: lp3(Wd(2.5, 3.2, 1.5), Wd(0, 0, -1), k), fov: lerp(60, 58, k) }; });
   S.forEach((x, i) => { if (S[i + 1]) { const v = S[i + 1].t0(); x.t1 = () => v; } });
   S[S.length - 1].t1 = () => ctx.dur + 1;
@@ -353,7 +366,7 @@ function shots() {
 }
 const gRoadZ = (t) => 150 - Math.max(0, t - (L(2).start - 0.6)) * 4.2;
 const gStop = () => -58;
-const ORD_T = 19.55;   // the gurney passes Grayson (the PA line)   // where the PA stops him, under the speaker
+const docX = (t) => lerp(25, 9, smooth(L(25).start - 0.2, L(26).start + 0.4, t));   // the doctor, chart to chart
 
 // ---- the tape's text ----
 const F = (px) => `700 ${px}px "Courier New", monospace`;
@@ -370,7 +383,7 @@ function drawUI(t) {
 }
 function renderFeed(t, n) {
   const { renderer, scene } = ctx, c = W.feedCam;
-  c.position.copy(W.tv.localToWorld(v3(0, 0.0, 1.6))); const tp = W.tape.root.position, sk = smooth(EV.turn + 0.4, L(21).start, t); c.lookAt(lp3(v3(STAND.x + 1.6, 3.4, STAND.z - 1.6), v3(tp.x, 3.9, tp.z), sk)); c.fov = 54; c.updateProjectionMatrix();
+  c.position.copy(W.tv.localToWorld(v3(0, 0.0, 1.6))); const tp = W.tape.root.position, sk = smooth(EV.turn + 0.4, L(20).start, t); c.lookAt(lp3(v3(STAND.x + 1.6, 3.4, STAND.z - 1.6), v3(tp.x, 3.9, tp.z), sk)); c.fov = 54; c.updateProjectionMatrix();
   const gv = W.g.root.visible; W.g.root.visible = false; W.tape.root.visible = true; const nv = W.n.root.visible; W.n.root.visible = t >= EV.nurseTV;
   if (W.n.root.visible) { const tp2 = W.tape.root.position, dir = v3(tp2.x - c.position.x, 0, tp2.z - c.position.z).normalize(); W.n.root.position.set(tp2.x + dir.x * 4.2 + 0.9, 0, tp2.z + dir.z * 4.2 - 0.6); W.n.root.rotation.y = Math.atan2(W.tape.root.position.x - W.n.root.position.x, W.tape.root.position.z - W.n.root.position.z) + Math.PI; pose(W.n, 'still', t); W.n.root.rotation.y = Math.atan2(c.position.x - W.n.root.position.x, c.position.z - W.n.root.position.z); }
   W.tv.visible = false; const sc = ctx.sun.castShadow; ctx.sun.castShadow = false;
@@ -391,16 +404,16 @@ function renderPhoto() {
 
 // ---- a frame ----
 function faceOf(c, name, t, ph, viseme) { c.setFace(name, { blink: blinkAt(t, ph) && !['shocked', 'terrified'].includes(name), viseme }); }
-const hand = (c, i) => { c.root.updateMatrixWorld(true); return c.arms[i].localToWorld(v3(0, -ARM, 0.05)); };
-function armTo(c, i, y) { const sy = c.arms[i].getWorldPosition(v3(0, 0, 0)).y, len = ARM * c.root.scale.y; return Math.acos(clamp((sy - y) / len, -1, 1)); }
+const hand = (c, i) => { c.root.updateMatrixWorld(true); return c.arms[i].localToWorld(v3(0, -armLen(c, i), 0.05)); };
+function armTo(c, i, y) { const sy = c.arms[i].getWorldPosition(v3(0, 0, 0)).y, len = armLen(c, i) * c.root.scale.y; return Math.acos(clamp((sy - y) / len, -1, 1)); }
 const snap = (c, i, p) => { const h = hand(c, i); c.root.position.x += p.x - h.x; c.root.position.z += p.z - h.z; };
 const faceTo = (c, p) => { c.root.rotation.y = Math.atan2(p.x - c.root.position.x, p.z - c.root.position.z); };
 
 function renderAt(t) {
   if (!W.photoDone) { renderPhoto(); W.photoDone = true; }
   const first = !ctx.sub || ctx.sub.i === 0, sh = shotAt(W.shots, t), n = sh.name, e = EV, G = W.g, N = W.n, T = W.tape;
-  const sets = { ext: 'out', sign: 'out', road: 'out', hall: 'hall', desk: 'hall', tube: 'hall', peek: 'hall', mop: 'hall', spk: 'hall', look: 'hall', froze: 'hall', never: 'hall', nurse: 'hall', mask: 'hall', point: 'hall', plate: 'hall', open: 'hall',
-    bed: 'room', tv: 'room', photo: 'room', tvon: 'room', feed: 'room', date: 'room', turn: 'room', whisper: 'room', behind: 'room', real: 'room', wake: 'ward', rows: 'ward', occ: 'ward', his: 'ward' };
+  const sets = { ext: 'out', sign: 'out', road: 'out', guard: 'hall', desk: 'hall', recep: 'hall', never: 'hall', mop: 'hall', wait: 'hall', spk: 'hall', look: 'hall', kid: 'hall', kidc: 'hall', nurse: 'hall', mask: 'hall', point: 'hall', plate: 'hall', open: 'hall',
+    bed: 'room', tv: 'room', photo: 'room', tvon: 'room', feed: 'room', date: 'room', turn: 'room', whisper: 'room', behind: 'room', real: 'room', wake: 'ward', rows: 'ward', doc: 'ward', occ: 'ward', his: 'ward' };
   const set = sets[n];
   applyEnv(ctx, set === 'out' ? OUT : set === 'ward' ? WARDP : set === 'room' ? ROOM : HALL);
   W.ext.visible = set === 'out'; W.corr.visible = set === 'hall' || n === 'bed'; W.room.visible = set === 'room' || n === 'open' || n === 'plate'; W.ward.visible = set === 'ward';
@@ -422,31 +435,29 @@ function renderAt(t) {
   if (set === 'out') {
     gp.copy(EXT).add(v3(-0.6, 0, gRoadZ(t))); G.root.rotation.y = Math.PI; pose(G, 'walk', t * 0.8); faceOf(G, 'neutral', t, 0.4);
     G.root.visible = n === 'road';
-  } else if (n === 'hall') {
-    gp.set(0.3, 0, hallZ(t)); G.root.rotation.y = Math.PI; pose(G, 'walk', t * 0.75); faceOf(G, 'neutral', t, 0.4); focus = gp.clone();
+  } else if (n === 'guard') {
+    // just inside, he turns back at the sound of the lock
+    const t0 = L(3).start - 0.15; gp.set(0.9, 0, lerp(1.6, 0.6, smooth(t0, t0 + 0.6, t))); G.root.rotation.y = lerp(Math.PI, 0.18, smooth(t0 + 0.25, t0 + 1.05, t));
+    pose(G, t < t0 + 0.6 ? 'walk' : 'idle', t * 0.6); faceOf(G, 'nervous', t, 0.4); focus = v3(0, 0, 3);
   } else if (n === 'desk') {
-    // he slows at the desk, looks at the smiling receptionist; she points down the corridor; he goes on
-    const t0 = L(3).start + 1.3, k = smooth(t0, L(4).start - 0.05, t);
-    gp.set(0.4, 0, lerp(hallZ(t0), hallZ(t0) - 4.2, k * k * (1.6 - 0.6 * k))); G.root.rotation.y = Math.PI; pose(G, 'walk', t * 0.6);
-    G.neck.rotation.y = 0.75 * smooth(t0 + 0.1, t0 + 0.5, t) * (1 - smooth(t0 + 1.05, t0 + 1.4, t)); faceOf(G, 'nervous', t, 0.4); focus = gp.clone();
+    const t0 = L(4).start - 0.15, k = smooth(t0, L(5).start - 0.1, t);
+    gp.set(lerp(0.6, -0.6, k), 0, lerp(-0.5, -8.4, k * (1.7 - 0.7 * k))); G.root.rotation.y = lerp(Math.PI, -Math.PI / 2 + 2 * Math.PI, smooth(L(5).start - 0.6, L(5).start - 0.1, t)); pose(G, k < 0.95 ? 'walk' : 'idle', t * 0.6);
+    G.neck.rotation.y = 0.6 * smooth(t0 + 0.6, t0 + 1.0, t); faceOf(G, 'neutral', t, 0.4); focus = gp.clone();
+  } else if (n === 'recep' || n === 'never') {
+    gp.set(-0.9, 0, -8.9); G.root.rotation.y = -Math.PI / 2; pose(G, 'idle', t); focus = gp.clone();
+    faceOf(G, n === 'never' ? 'nervous' : 'neutral', t, 0.4);
+    if (n === 'never') { G.neck.rotation.y = -0.5 * smooth(L(6).start + 0.5, L(6).start + 1.0, t); G.neck.rotation.x = 0.1; }
   } else if (n === 'mop') {
-    // he passes the janitor, glances at him; the janitor never looks up
-    const t0 = L(5).start + 0.95; gp.set(-0.4, 0, lerp(-42.5, -46.8, clamp((t - t0) / 1.4))); G.root.rotation.y = Math.PI; pose(G, 'walk', t * 0.6);
-    G.neck.rotation.y = -0.7 * smooth(t0 + 0.15, t0 + 0.55, t); faceOf(G, 'nervous', t, 0.4); focus = gp.clone();
-  } else if (n === 'tube') {
-    gp.set(0.3, 0, gStop() - 1.2); G.root.rotation.y = Math.PI; pose(G, 'lookUp', t, { amt: 0.5 }); faceOf(G, 'surprised', t, 0.4); focus = gp.clone();
-    G.root.rotation.y = 0.15;
-  } else if (n === 'peek') {
-    const d = DOORS.find((q) => q.s < 0 && q.z < -30 && q.z > -50); gp.set(-4.6, 0, d.z + 0.6); G.root.rotation.y = -Math.PI / 2 + 0.1; pose(G, 'idle', t); G.neck.rotation.y = -0.15; faceOf(G, 'surprised', t, 0.4); focus = gp.clone();
-  } else if (['spk', 'look', 'froze', 'never', 'nurse'].includes(n)) {
+    const t0 = L(7).start - 0.15; gp.set(-1.7, 0, lerp(-17.0, -25.6, clamp((t - t0) / 2.8))); G.root.rotation.y = Math.PI; pose(G, 'walk', t * 0.6);
+    G.neck.rotation.y = -0.55 * smooth(t0 + 1.2, t0 + 1.7, t); faceOf(G, 'nervous', t, 0.4); focus = v3(1, 0, -27);
+  } else if (n === 'wait') {
+    const t0 = L(8).start - 0.15; gp.set(1.5, 0, lerp(-42.0, -50.0, clamp((t - t0) / 2.5))); G.root.rotation.y = Math.PI; pose(G, 'walk', t * 0.55);
+    G.neck.rotation.y = 0.7 * smooth(t0 + 0.6, t0 + 1.2, t); faceOf(G, 'nervous', t, 0.4); focus = v3(-2, 0, -49);
+  } else if (['spk', 'look', 'kid', 'kidc', 'nurse'].includes(n)) {
     gp.set(0.2, 0, gStop()); G.root.rotation.y = Math.PI; focus = gp.clone();
     if (n === 'spk' || n === 'look') { pose(G, 'lookUp', t, { amt: 0.45 }); faceOf(G, 'surprised', t, 0.4); }
-    if (n === 'froze') { pose(G, 'still', t); faceOf(G, 'scared', t, 0.4); G.neck.rotation.x = -0.05; }
-    if (n === 'never') { pose(G, 'idle', t); G.neck.rotation.y = 0.85 * smooth(L(8).start + 0.15, L(8).start + 0.6, t); gp.x += 0.55 * smooth(L(8).start + 0.5, L(8).start + 0.9, t); faceOf(G, 'nervous', t, 0.4); }
-    // the gurney passes on his left: he steps aside and watches it go
-    gp.x += 0.6 * smooth(ORD_T - 0.45, ORD_T - 0.05, t);
-    if (n === 'look') G.neck.rotation.y = 0.55 * smooth(ORD_T - 0.5, ORD_T - 0.1, t);
-    if (n === 'nurse') { G.root.rotation.y = Math.PI; pose(G, 'still', t); faceOf(G, 'scared', t, 0.4); }
+    if (n === 'kid' || n === 'kidc') { pose(G, 'still', t); const k = smooth(L(10).start + 0.9, L(10).start + 1.4, t); G.neck.rotation.y = 0.7 * k; G.neck.rotation.x = 0.42 * k; faceOf(G, k > 0.5 ? 'scared' : 'surprised', t, 0.4); }
+    if (n === 'nurse') { pose(G, 'still', t); faceOf(G, 'scared', t, 0.4); }
   } else if (n === 'point' || n === 'mask') {
     G.root.visible = n === 'point'; gp.set(0.2, 0, gStop() - 30); G.root.rotation.y = Math.PI; pose(G, 'still', t);
     focus = NURSE.clone();
@@ -456,62 +467,107 @@ function renderAt(t) {
     gp.set(HW - 2.6, 0, D217 + 1.7); G.root.rotation.y = Math.PI / 2; pose(G, 'idle', t); focus = gp.clone();
     const d = W.d217; d.updateMatrixWorld(true); const hp = d.localToWorld(d.handle.clone());
     // he pushes the door a crack, lets it swing, steps to the middle of the doorway, then walks in (never into the jamb or the leaf)
-    const reach = smooth(L(12).start + 0.05, e.open - 0.05, t), rel = smooth(e.open + 0.2, e.open + 0.5, t);
+    const reach = smooth(L(14).start + 0.05, e.open - 0.05, t), rel = smooth(e.open + 0.2, e.open + 0.5, t);
     const a = armTo(G, 0, hp.y); G.arms[0].rotation.x = -a * reach * (1 - rel); G.arms[0].rotation.z = 0;
     if (reach >= 1 && rel <= 0) { const h = hand(G, 0); gp.x += clamp(hp.x - h.x, -0.6, 0.6); gp.z += clamp(hp.z - h.z, -0.6, 0.6); }
     const side = smooth(e.open + 0.35, e.open + 0.95, t); gp.z = lerp(gp.z, D217 + 0.05, side);
     if (t > e.open + 0.95) { gp.x += Math.min(2.5, (t - e.open - 0.95) * 1.8); pose(G, 'walk', t * 0.6); }
     faceOf(G, 'nervous', t, 0.4);
   } else if (n === 'bed') {
-    gp.set(lerp(9.4, 11.6, smooth(L(13).start - 0.15, L(13).end + 0.3, t)), 0, -157.4); G.root.rotation.y = Math.PI / 2 - 0.12; pose(G, 'walk', t * 0.55); faceOf(G, 'nervous', t, 0.4);
+    gp.set(lerp(9.4, 11.6, smooth(L(15).start - 0.15, L(15).start + 1.6, t)), 0, -157.4); G.root.rotation.y = Math.PI / 2 - 0.12; pose(G, 'walk', t * 0.55); faceOf(G, 'nervous', t, 0.4);
   } else if (set === 'room') {
     gp.copy(STAND); faceTo(G, TVP); pose(G, 'still', t);
     if (['photo', 'feed', 'date', 'turn', 'whisper', 'behind'].includes(n)) G.root.visible = false;
     G.neck.rotation.x = n === 'photo' ? 0.3 : -0.42;
     faceOf(G, n === 'real' ? 'terrified' : ['date', 'turn', 'whisper', 'behind'].includes(n) ? 'scared' : n === 'photo' ? 'shocked' : 'nervous', t, 0.4);
-    if (n === 'real') { const k = smooth(L(22).start + 1.1, L(23).start, t); G.neck.rotation.y = lerp(0, -0.55, k); G.neck.rotation.x = lerp(-0.3, -0.05, k); }
+    if (n === 'real') { const k = smooth(L(21).start + 1.1, L(22).start, t); G.neck.rotation.y = lerp(0, -0.55, k); G.neck.rotation.x = lerp(-0.3, -0.05, k); }
   } else if (set === 'ward') {
     gp.copy(WARD).add(v3(0, 0, 6.7)); G.root.rotation.y = Math.PI; pose(G, 'still', t);
-    if (n === 'wake') { const k = smooth(L(24).start + 0.3, L(24).end, t); G.neck.rotation.y = lerp(0.5, -0.45, k); }
+    if (n === 'wake') { const k = smooth(L(23).start + 0.3, L(23).end, t); G.neck.rotation.y = lerp(0.5, -0.45, k); }
     faceOf(G, n === 'wake' ? 'scared' : 'terrified', t, 0.4); if (n === 'his') { G.neck.rotation.x = 0.32; faceOf(G, 'sad', t, 0.4); }
     focus = gp.clone();
   }
 
   // ---- the others in the corridor ----
   if (W.corr.visible) {
-    const x = W.x;
-    // receptionist: behind the desk, facing the corridor, the same smile; her arm rises once and points the way
-    x.desk.root.position.set(-6.3, 0.85, -9.2); x.desk.root.rotation.set(0, Math.PI / 2, 0); pose(x.desk, 'still', t); x.desk.setFace('creepy');
-    const pk = smooth(L(3).start + 1.75, L(3).start + 2.3, t), A = x.desk.arms[1]; A.rotation.x = -1.55 * pk; A.rotation.z = 1.05 * pk;
-    x.desk.neck.rotation.y = 0.25 * smooth(L(3).start + 0.4, L(3).start + 1.6, t);
-    // janitor: mopping in slow arcs, head down, never looks up
-    const jx = 4.6, jz = -47.5, sw = Math.sin(t * 1.7) * 0.5; x.jan.root.position.set(jx, 0, jz); x.jan.root.rotation.set(0, -Math.PI / 2 + sw * 0.3, 0); pose(x.jan, 'idle', t);
-    x.jan.torso.rotation.x = 0.28; x.jan.neck.rotation.x = 0.42; x.jan.arms.forEach((a, i) => { a.rotation.x = -0.95 - i * 0.2; a.rotation.z = (i ? -1 : 1) * 0.12; }); x.jan.setFace('neutral');
-    W.mop.position.set(jx - 2.6 + sw * 0.2, 0, jz + sw * 1.4); W.mop.rotation.set(0, sw * 0.4, -0.42);
-    // child in a gown: in the doorway of the next room, watching; then turns and goes back in
-    const kd = DOORS.find((q) => q.s < 0 && Math.abs(q.z - (gStop() - 1)) < 4.6); const tz = kd ? kd.z : gStop() - 1;
-    const turn = smooth(L(8).end - 0.55, L(8).end + 0.05, t), back = smooth(L(8).end - 0.05, L(8).end + 0.6, t);
-    x.kid.root.position.set(lerp(-6.1, -8.4, back), 0, tz); x.kid.root.rotation.set(0, lerp(Math.PI / 2 - 0.15, -Math.PI / 2, turn), 0); pose(x.kid, back > 0 ? 'walk' : 'still', t * 0.5); x.kid.setFace('neutral');
-    x.kid.root.visible = t < L(9).start;
-    // orderly: an empty gurney pushed past him, eyes ahead, never stopping
-    const gz = gStop() - (t - ORD_T) * 3.4; W.gurney.position.set(-3.8, 0, gz); W.gurney.rotation.y = 0;
-    x.ord.root.position.set(-3.8, 0, gz + 5.3); x.ord.root.rotation.set(0, Math.PI, 0); pose(x.ord, 'walk', t * 0.55); x.ord.arms.forEach((a) => { a.rotation.x = -1.15; a.rotation.z = 0; }); x.ord.setFace('neutral');
-    const ov = n === 'spk' || n === 'look'; x.ord.root.visible = ov; W.gurney.visible = ov;
+    const x = W.x; Object.values(x).forEach((c) => { c.root.visible = false; });
+    if (n === 'guard') {
+      // the guard: at the glass doors, his hand on the lock; then he looks back over his shoulder at Grayson
+      const c = x.guard; c.root.visible = true; c.root.position.set(-1.1, 0, 6.2); c.root.rotation.set(0, 0, 0); pose(c, 'still', t);
+      const a = armTo(c, 1, 4.6); c.arms[1].rotation.x = -a; const h = hand(c, 1); c.root.position.z += 7.45 - h.z;
+      c.arms[1].rotation.y = 0.35 * smooth(L(3).start + 0.7, L(3).start + 0.95, t);   // the key turns
+      // then he lets go and turns round to look at Grayson
+      const back = smooth(L(3).end - 1.1, L(3).end - 0.4, t); c.arms[1].rotation.x *= 1 - smooth(L(3).end - 1.2, L(3).end - 0.9, t); c.root.position.z -= 0.6 * back;
+      c.root.rotation.y = -2.7 * back; c.neck.rotation.y = -0.25 * back; faceOf(c, 'neutral', t, 0.7);
+    }
+    if (['desk', 'recep', 'never'].includes(n)) {
+      // the receptionist: writing, head down; she talks without ever looking up
+      const c = x.recep; c.root.visible = true; c.root.position.set(-6.15, 0, -9.3); c.root.rotation.set(0, Math.PI / 2, 0); pose(c, 'still', t);
+      c.neck.rotation.x = 0.16; c.torso.rotation.x = 0.08; c.arms.forEach((a, i) => { a.rotation.x = -0.72 - i * 0.12; a.rotation.z = (i ? 0.12 : -0.12); });
+      c.arms[0].rotation.y = 0.12 * Math.sin(t * 7);
+      const wl = L(5); faceOf(c, 'lash:smile', t, 0.2, visemeAt(wl.text, wl.start + 0.02, wl.end - 0.02, t));
+    }
+    if (n === 'mop' || n === 'never') {
+      // the janitor: slow arcs on a floor already clean; head down, he never looks up
+      const c = x.jan, jx = 3.2, jz = -26.8, sw = Math.sin(t * 1.6); c.root.visible = true; c.root.position.set(jx, 0, jz); c.root.rotation.set(0, Math.PI + sw * 0.18, 0); pose(c, 'idle', t);
+      c.torso.rotation.x = 0.25; c.neck.rotation.x = 0.4; c.arms[0].rotation.x = -0.75; c.arms[0].rotation.z = 0.25; c.arms[1].rotation.x = -0.55; c.arms[1].rotation.z = -0.15; faceOf(c, 'focused', t, 0.6);
+      const head = v3(jx + sw * 1.3, 0.15, jz - 3.0), top = hand(c, 0), dir = top.clone().sub(head);
+      W.mopHead.position.copy(head); W.mopHead.rotation.set(0, sw * 0.3, 0);
+      W.mopPole.position.copy(head); W.mopPole.scale.set(1, dir.length() + 0.35, 1); W.mopPole.quaternion.setFromUnitVectors(v3(0, 1, 0), dir.normalize());
+    }
+    W.mopHead.visible = W.mopPole.visible = x.jan.root.visible;
+    if (n === 'wait' || n === 'spk') {
+      // the waiting chairs: they sit very straight, and their eyes follow him; nobody blinks
+      for (const [k, z] of [['gran', WAITZ[0]], ['wait', WAITZ[2]]]) {
+        const c = x[k]; c.root.visible = true; c.root.rotation.set(0, Math.PI / 2, 0); pose(c, 'sit', t); c.root.position.set(CHX - 0.25, 0, z);
+        c.root.position.y = SEAT + 0.55 * c.root.scale.y - c.hips.position.y * c.root.scale.y;
+        c.arms.forEach((a) => { a.rotation.x = k === 'gran' ? -0.2 : -0.55; });
+        const want = Math.atan2(gp.x - c.root.position.x, gp.z - c.root.position.z) - c.root.rotation.y; c.neck.rotation.y = clamp(want, -1.15, 1.15);
+        c.setFace(CAST[k].face, {});
+      }
+    }
+    if ((n === 'kid' || n === 'kidc') && t < e.flick) {
+      // the boy: comes up on his left, takes his sleeve, tugs twice; looks up and whispers
+      const c = x.kid; c.root.visible = true; c.root.rotation.set(0, 0, 0);
+      const t0 = L(10).start - 0.15, arr = L(10).start + 0.55, k = smooth(t0, arr, t);
+      G.root.updateMatrixWorld(true); const hs = [hand(G, 0), hand(G, 1)], gh = hs[0].x < hs[1].x ? hs[0] : hs[1];   // his left hand (on -x)
+      const stand = v3(gh.x - 1.05, 0, gh.z - 0.1);
+      c.root.position.copy(lp3(v3(-3.6, 0, -54.0), stand, k)); c.root.rotation.y = Math.atan2(gh.x - c.root.position.x, gh.z - c.root.position.z);
+      pose(c, k < 1 ? 'walk' : 'still', t * 0.7);
+      if (k >= 1) {
+        const ai = c.arms[0].getWorldPosition(v3()).distanceTo(gh) < c.arms[1].getWorldPosition(v3()).distanceTo(gh) ? 0 : 1;
+        const tug = smooth(arr, arr + 0.3, t), yank = Math.max(0, Math.sin((t - arr - 0.35) * 14)) * (t > arr + 0.35 && t < arr + 0.8 ? 1 : 0);
+        const a = armTo(c, ai, gh.y + 0.35); c.arms[ai].rotation.x = -a * tug;
+        // the hand stops at the sleeve's surface: snap the body so the hand sits just outside his hand/cuff
+        if (tug >= 1) { const h = hand(c, ai), d = v3(gh.x - c.root.position.x, 0, gh.z - c.root.position.z).normalize(); c.root.position.x += (gh.x - d.x * 0.42) - h.x; c.root.position.z += (gh.z - d.z * 0.42) - h.z; }
+        c.arms[ai].rotation.x += 0.12 * yank; G.arms[gh === hs[0] ? 0 : 1].rotation.x = -0.1 * yank;
+        c.neck.rotation.x = -0.55 * smooth(arr + 0.2, arr + 0.6, t);
+      }
+      const wl = L(11); faceOf(c, 'scared', t, 0.3, visemeAt(wl.text, wl.start + 0.02, wl.end - 0.02, t));
+    }
+  }
+
+  // ---- the doctor in the ward ----
+  if (W.ward.visible) {
+    const c = W.doc, x = docX(t), walking = t > L(25).start - 0.2 && t < L(26).start + 0.4; c.root.position.set(x, 0, 19.6); c.root.rotation.set(0, -Math.PI / 2, 0);
+    pose(c, walking && n === 'doc' ? 'walk' : 'still', t * 0.5); c.neck.rotation.y = -0.7 * (0.5 + 0.5 * Math.sin(t * 3.1)); c.neck.rotation.x = 0.3;
+    c.arms[0].rotation.x = -1.25; c.arms[0].rotation.z = 0.25; faceOf(c, 'focused', t, 0.5);
+    c.root.updateMatrixWorld(true); const h = hand(c, 0); W.clip.position.set(h.x - WARD.x, h.y + 0.25, h.z); W.clip.rotation.set(-1.0, c.root.rotation.y + Math.PI, 0);
   }
 
   // ---- the Grayson on the tape (only ever drawn into the feed) ----
   T.root.position.copy(FEEDG); T.root.rotation.set(0, 0, 0);
-  const tv = W.tv.localToWorld(v3(0, -2, 1)), tturn = smooth(e.turn, e.turn + 1.4, t), step = smooth(e.turn + 0.6, L(21).start, t);
+  const tv = W.tv.localToWorld(v3(0, -2, 1)), tturn = smooth(e.turn, e.turn + 1.4, t), step = smooth(e.turn + 0.6, L(20).start, t);
   const away = Math.atan2(BEDC.x - FEEDG.x, BEDC.z - FEEDG.z), toward = Math.atan2(tv.x - FEEDG.x, tv.z - FEEDG.z);
   T.root.position.lerp(v3(FEEDG.x - 3.2, 0, FEEDG.z + 2.6), step * 0.85);
   T.root.rotation.y = lerp(away, toward + (Math.abs(toward - away) > Math.PI ? 0 : 0), tturn); pose(T, 'still', t); T.neck.rotation.x = -0.38 * tturn;
-  const wl = L(21); faceOf(T, 'neutral', t, 0.9, visemeAt(wl.text, wl.start + 0.02, wl.end - 0.02, t));
+  const wl = L(20); faceOf(T, 'neutral', t, 0.9, visemeAt(wl.text, wl.start + 0.02, wl.end - 0.02, t));
   if (t > wl.end) T.setFace('neutral');
 
   // ---- the nurse: never seen moving; she is somewhere, then somewhere else ----
   if (['nurse', 'mask', 'point'].includes(n)) {
     N.root.visible = n !== 'nurse' || t >= e.nurse; N.root.position.copy(NURSE); N.root.rotation.y = 0; pose(N, 'still', t);
-    N.neck.rotation.z = 0.12 * smooth(L(10).start + 0.6, L(10).end, t);   // the head tilts, once, slowly
+    N.neck.rotation.z = 0.12 * smooth(L(12).start + 1.9, L(12).end, t);   // the head tilts, once, slowly
     const pk = smooth(e.point, e.point + 1.4, t); const A = N.arms[0]; A.rotation.x = -1.45 * pk; A.rotation.y = 0; A.rotation.z = -0.35 * pk;   // her right arm rises
     if (n === 'point') { N.root.rotation.y = 0.05; }
   }
@@ -537,8 +593,8 @@ function renderAt(t) {
 }
 
 export async function setup() {
-  ctx = await initStage('ep27', { look: 'pro', avatars: ['farm_grayson'] }); L = ctx.L; EV = events();
-  await loadAlti(['neutral', 'surprised', 'shocked', 'scared', 'terrified', 'nervous', 'sad']);
+  ctx = await initStage('ep27', { look: 'pro', avatars: ['farm_grayson', ...Object.values(CAST).map((c) => c.avatar)] }); L = ctx.L; EV = events();
+  await loadAlti(['neutral', 'surprised', 'shocked', 'scared', 'terrified', 'nervous', 'sad', 'focused', 'lash:smile', 'lash:neutral']);
   const { scene, camera } = ctx; camera.far = 3000; camera.near = 0.2; camera.updateProjectionMatrix();
   rig(); outside(); corridor(); room217(); ward(); people();
   // a blanket drawn over the sleeping Grayson for the photograph only
@@ -547,5 +603,5 @@ export async function setup() {
   W.air = atmos(...Object.values(list)); W.air.list = list;
   W.shots = shots();
   void rng; void surf; void tmpC;
-  return expose(ctx, renderAt, L(11).start + 1.0, EV);
+  return expose(ctx, renderAt, L(13).start + 1.0, EV);
 }

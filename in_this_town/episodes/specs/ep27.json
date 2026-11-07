@@ -7,7 +7,7 @@
  "hashtags": "#InThisTown #LiminalSpaces #RobloxHorror #Shorts",
  "thumbnail_text": "ROOM 217",
  "thumbnail_rec": "Grayson in his navy hoodie at the end of a pristine pale-green hospital corridor under buzzing fluorescent lights; far down the hall, a still nurse in a cracked white porcelain mask points at the door of ROOM 217.",
- "tail": 2.5,
+ "tail": 2.3,
  "fps": 60,
  "narrator": {
   "pace": [
@@ -26,6 +26,16 @@
    "voice": "liam",
    "pitch": 1.04,
    "tempo": 0.95
+  },
+  "recep": {
+   "voice": "laura",
+   "pitch": 0.98,
+   "tempo": 0.95
+  },
+  "kid": {
+   "voice": "will",
+   "pitch": 1.3,
+   "tempo": 0.95
   }
  },
  "highlights": {
@@ -34,145 +44,151 @@
   "DEMOLISHED": "red",
   "TWELVE YEARS AGO": "red",
   "EMPTY ROAD": "yellow",
-  "FRESH PAINT": "yellow",
-  "HUMMED": "cyan",
-  "PERFECTLY CLEAN": "cyan",
-  "PATIENT GRAYSON": "red",
-  "FROZE": "yellow",
+  "LOCKED THE DOORS": "red",
+  "RECEPTIONIST": "cyan",
+  "WELCOME BACK, GRAYSON": "red",
   "NEVER BEEN THERE": "red",
-  "NURSE": "red",
+  "JANITOR": "cyan",
+  "NO ONE BLINKED": "purple",
+  "PATIENT GRAYSON": "red",
+  "LITTLE BOY": "cyan",
+  "SHE'S COMING": "red",
   "CRACKED PORCELAIN MASK": "red",
   "ROOM 217": "yellow",
-  "HOSPITAL BED": "yellow",
-  "TELEVISION": "yellow",
-  "PHOTOGRAPH OF HIMSELF": "red",
   "SWITCHED ON": "cyan",
-  "SAME ROOM": "yellow",
   "DATED TOMORROW": "red",
-  "TURNED TOWARD THE CAMERA": "purple",
+  "WHISPERED": "purple",
   "DISCHARGE YOU": "red",
   "BEHIND HIM": "red",
   "LIGHTS WENT OUT": "red",
   "HALLWAY WAS GONE": "purple",
-  "ENDLESS ROW": "purple",
+  "DOCTOR": "cyan",
+  "EVERY CHART": "yellow",
   "OCCUPIED": "red",
-  "EXCEPT HIS": "red"
+  "EXCEPT HIS": "red",
+  "GUARD": "cyan",
+  "A BED": "yellow",
+  "A TV": "yellow",
+  "PHOTO OF HIM": "red",
+  "THIS ROOM": "yellow",
+  "ENDLESS ROWS": "purple",
+  "SPOTLESS": "yellow",
+  "TELEVISION": "yellow"
  },
  "lines": [
   {
    "text": "Every night at 3:17, the abandoned hospital's lights turn on.",
    "tag": "[calm]",
-   "pause": 0.25,
+   "pause": 0.18,
    "speak": "Every night at three seventeen, the abandoned hospital's lights turn on."
   },
   {
-   "text": "But the hospital was demolished twelve years ago.",
+   "text": "But it was demolished twelve years ago.",
    "tag": "[mysterious]",
-   "pause": 0.29
+   "pause": 0.21
   },
   {
-   "text": "Grayson found it standing at the end of an empty road.",
+   "text": "Grayson found it at the end of an empty road.",
    "tag": "[calm]",
-   "pause": 0.22
+   "pause": 0.16
   },
   {
-   "text": "Inside, the hallways smelled like fresh paint.",
-   "tag": "[softly]",
+   "text": "A guard locked the doors behind him.",
+   "tag": "[mysterious]",
    "pause": 0.18
   },
   {
-   "text": "The lights hummed.",
-   "tag": "[softly]",
-   "pause": 0.25
+   "text": "The receptionist didn't look up.",
+   "tag": "[calm]",
+   "pause": 0.11
   },
   {
-   "text": "Every patient room was perfectly clean.",
+   "text": "\"Welcome back, Grayson.\"",
+   "tag": "[calm]",
+   "pause": 0.18,
+   "speak": "Welcome back, Grayson.",
+   "voice": "recep"
+  },
+  {
+   "text": "He'd never been there before.",
    "tag": "[mysterious]",
-   "pause": 0.25
+   "pause": 0.18
+  },
+  {
+   "text": "A janitor mopped an already spotless floor.",
+   "tag": "[calm]",
+   "pause": 0.16
+  },
+  {
+   "text": "In the waiting room, no one blinked.",
+   "tag": "[mysterious]",
+   "pause": 0.18
   },
   {
    "text": "\"Patient Grayson, please return to your room.\"",
    "tag": "[calm]",
-   "pause": 0.29,
+   "pause": 0.21,
    "speak": "Patient Grayson, please return to your room.",
    "voice": "pa",
    "fx": "pa"
   },
   {
-   "text": "He froze.",
+   "text": "A little boy tugged his sleeve.",
    "tag": "[softly]",
-   "pause": 0.18
+   "pause": 0.11
   },
   {
-   "text": "He'd never been there before.",
+   "text": "\"She's coming.\"",
+   "tag": "[whispers]",
+   "pause": 0.21,
+   "speak": "She's coming.",
+   "voice": "kid"
+  },
+  {
+   "text": "A nurse in a cracked porcelain mask waited down the hall.",
    "tag": "[mysterious]",
-   "pause": 0.29
-  },
-  {
-   "text": "A nurse appeared at the end of the corridor.",
-   "tag": "[calm]",
-   "pause": 0.18
-  },
-  {
-   "text": "Her face hid behind a cracked porcelain mask.",
-   "tag": "[mysterious]",
-   "pause": 0.22
+   "pause": 0.16
   },
   {
    "text": "She pointed toward Room 217.",
    "tag": "[calm]",
-   "pause": 0.32,
+   "pause": 0.21,
    "speak": "She pointed toward Room two seventeen."
   },
   {
    "text": "Grayson slowly opened the door.",
    "tag": "[softly]",
-   "pause": 0.25
-  },
-  {
-   "text": "Inside was a hospital bed.",
-   "tag": "[calm]",
    "pause": 0.18
   },
   {
-   "text": "A television.",
-   "tag": "[calm]",
-   "pause": 0.18
-  },
-  {
-   "text": "And a photograph of himself sleeping.",
+   "text": "Inside was a bed, a TV, and a photo of him asleep.",
    "tag": "[mysterious]",
-   "pause": 0.36
+   "pause": 0.23
   },
   {
    "text": "The television switched on.",
    "tag": "[calm]",
-   "pause": 0.18
+   "pause": 0.13
   },
   {
-   "text": "It showed Grayson standing in the same room.",
+   "text": "It showed him, in this room.",
    "tag": "[mysterious]",
-   "pause": 0.22
+   "pause": 0.14
   },
   {
    "text": "But the recording was dated tomorrow.",
    "tag": "[mysterious]",
-   "pause": 0.36
+   "pause": 0.23
   },
   {
-   "text": "On screen, he turned toward the camera.",
+   "text": "On screen, he whispered,",
    "tag": "[softly]",
-   "pause": 0.18
-  },
-  {
-   "text": "And whispered,",
-   "tag": "[softly]",
-   "pause": 0.15
+   "pause": 0.11
   },
   {
    "text": "\"Don't let them discharge you.\"",
    "tag": "[whispers]",
-   "pause": 0.36,
+   "pause": 0.26,
    "speak": "Don't let them discharge you.",
    "voice": "tvboy",
    "fx": "tv"
@@ -180,32 +196,37 @@
   {
    "text": "Behind him, the nurse appeared.",
    "tag": "[softly]",
-   "pause": 0.55
+   "pause": 0.4
   },
   {
    "text": "The lights went out.",
    "tag": "[calm]",
-   "pause": 0.5
+   "pause": 0.36
   },
   {
    "text": "When they returned, the hallway was gone.",
    "tag": "[mysterious]",
-   "pause": 0.22
+   "pause": 0.16
   },
   {
-   "text": "Only an endless row of hospital beds remained.",
+   "text": "Only endless rows of beds remained.",
    "tag": "[mysterious]",
-   "pause": 0.22
+   "pause": 0.16
   },
   {
-   "text": "And every bed was occupied.",
+   "text": "A doctor was checking every chart.",
+   "tag": "[calm]",
+   "pause": 0.16
+  },
+  {
+   "text": "Every bed was occupied.",
    "tag": "[softly]",
-   "pause": 0.36
+   "pause": 0.23
   },
   {
    "text": "Except his.",
    "tag": "[whispers]",
-   "pause": 0.15
+   "pause": 0.11
   }
  ],
  "samples": {},
@@ -319,7 +340,7 @@
     }
    ],
    [
-    "L13-0.2",
+    "L15-0.2",
     "footsteps",
     0.18,
     {
@@ -345,7 +366,7 @@
     "static",
     0.13,
     {
-     "dur": 13.6
+     "dur": 11.6
     }
    ],
    [
@@ -439,20 +460,19 @@
     }
    ],
    [
-    "18.6",
-    "creak",
-    0.08,
+    "L3+0.9",
+    "clunk",
+    0.4,
     {
-     "dur": 1.8
+     "pan": -0.2
     }
    ],
    [
-    "18.6",
-    "footsteps",
-    0.12,
+    "L3+1.15",
+    "clunk",
+    0.22,
     {
-     "dur": 2.0,
-     "rate": 1.9
+     "pan": -0.3
     }
    ]
   ]

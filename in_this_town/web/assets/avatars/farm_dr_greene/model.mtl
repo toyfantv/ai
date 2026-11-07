@@ -1,0 +1,76 @@
+newmtl m_acc_SleevesScrubsFlat_Blue
+Kd 1 1 1
+map_Kd t_acc_SleevesScrubsFlat_Blue.jpg
+
+newmtl m_acc_Lab_Coat
+Kd 1 1 1
+map_Kd t_acc_Lab_Coat.jpg
+
+newmtl m_acc_Stethoscope
+Kd 1 1 1
+map_Kd t_acc_Stethoscope.jpg
+
+newmtl m_acc_Hair_Male_003_Black
+Kd 1 1 1
+map_Kd t_acc_Hair_Male_003_Black.jpg
+
+newmtl m_Head
+Kd 1 1 1
+map_Kd t_Head.jpg
+
+newmtl m_LeftFoot
+Kd 1 1 1
+map_Kd t_LeftFoot.jpg
+
+newmtl m_LeftHand
+Kd 1 1 1
+map_Kd t_LeftHand.jpg
+
+newmtl m_LeftLowerArm
+Kd 0.6353 0.8510 0.9098
+
+newmtl m_LeftLowerLeg
+Kd 1 1 1
+map_Kd t_LeftLowerLeg.jpg
+
+newmtl m_LeftUpperArm
+Kd 0.6353 0.8510 0.9098
+
+newmtl m_LeftUpperLeg
+Kd 1 1 1
+map_Kd t_LeftUpperLeg.jpg
+
+newmtl m_LowerTorso
+Kd 1 1 1
+map_Kd t_LowerTorso.jpg
+
+newmtl m_RightFoot
+Kd 1 1 1
+map_Kd t_RightFoot.jpg
+
+newmtl m_RightHand
+Kd 1 1 1
+map_Kd t_RightHand.jpg
+
+newmtl m_RightLowerArm
+Kd 0.6353 0.8510 0.9098
+
+newmtl m_RightLowerLeg
+Kd 1 1 1
+map_Kd t_RightLowerLeg.jpg
+
+newmtl m_RightUpperArm
+Kd 0.6353 0.8510 0.9098
+
+newmtl m_RightUpperLeg
+Kd 1 1 1
+map_Kd t_RightUpperLeg.jpg
+
+newmtl m_UpperTorso
+Kd 0.6353 0.8510 0.9098
+
+newmtl m_UpperTorso3
+Kd 0.6353 0.8510 0.9098
+
+newmtl m_LowerTorso2
+Kd 0.5529 0.6824 0.8275
