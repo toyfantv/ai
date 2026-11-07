@@ -1,0 +1,35 @@
+{
+ "key": "farm_ep28_oldlady",
+ "source": {
+  "route": "one-off Studio capture (Episode 28), the steps of tools/farm_avatars.py",
+  "scene": "scenes/sandbox/avcap_ep28.lua",
+  "catalog_items": [
+   77294341529320,
+   229117361,
+   91947591248774
+  ],
+  "label": "The old lady (Episode 28): floral top, long black skirt, white side bun"
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-07",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_Accessory_Midnight_Blue_Short_Side_Bun_W_Bangs"
+ ]
+}

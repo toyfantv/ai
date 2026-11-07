@@ -1,4 +1,4 @@
-// Episode 28: The Photograph That Kept Changing (Liminal Horror 2/5). Photographs come under Charlotte's bedroom door: a mansion with a
+// Episode 28: The Photograph That Kept Changing (Liminal Horror 2/5; re-made 2026-11-07 with seven Roblox avatars: her friend Ruby, a butler and five guests). Photographs come under Charlotte's bedroom door: a mansion with a
 // girl in the upstairs window who looks exactly like her, closer each day, then the window open and the girl gone. An invitation's address
 // matches the mansion. Inside: a silent house, a waltz from an empty ballroom, a banquet of twelve untouched plates, a staircase of portraits
 // with the faces scratched out, and at the top a photograph of Charlotte in this ballroom among twelve guests. Chairs scrape back one by
@@ -8,7 +8,7 @@
 import * as THREE from 'three';
 import { clamp, lerp, smooth, easeInOut, easeOut, v3, rng, noise1 } from '../engine/core.js';
 import { makeCharacter, pose } from '../engine/character.js';
-import { loadAlti, blinkAt } from '../engine/altiface.js';
+import { loadAlti, blinkAt, visemeAt } from '../engine/altiface.js';
 import { initStage, applyEnv, shotAt, frame, expose, P, NIGHT, DAY } from '../engine/stage.js';
 import { Batch, surf, paint } from '../engine/kit.js';
 import { dust, atmos } from '../engine/atmos.js';
@@ -45,9 +45,9 @@ const PRINTD = { ...DAY, ...P({ top: '#9aa6b0', horizon: '#d6d8d6', haze: '#cfd2
   sunI: 1.15, sunDir: v3(0.45, 0.75, 0.6), sunDisc: 0, stars: 0, moon: 0, hemiI: 0.62, amb: 0.1, envI: 0.4, exposure: 0.9, bloom: 0, fogNear: 200, fogFar: 900, win: 0, lamp: 0 };
 
 function events() {
-  const s = (i) => L(i).start, e = (i) => L(i).end;
-  return { slide: 0.35, turn: s(0) + 1.7, morning: s(4), invite: s(8), gate: s(10) - 0.2, enter: s(11) - 0.1, climb: s(16) - 0.2, look1: s(17), turnAround: s(19),
-    scrape: s(21) + 0.25, out: s(24) + 0.35, lookBack: s(25) + 0.2, swap: s(26) - 0.15, end: ctx.dur };
+  const s = (i) => L(i).start;
+  return { slide: 0.35, turn: s(0) + 1.7, morning: s(6), invite: s(9), gate: s(11) - 0.4, door: s(11) + 0.15, bow: s(11) + 1.55, enter: s(12) - 0.4,
+    vanish: s(14) + 1.05, climb: s(19) - 0.2, top: s(19) + 1.7, scrape: s(21) + 0.25, hear: s(22) + 0.5, out: s(23) + 0.35, lookBack: s(24) + 0.1, swap: s(25) - 0.15, end: ctx.dur };
 }
 
 // ---- Charlotte's bedroom ----
@@ -119,6 +119,13 @@ function outside() {
   for (const s of [-1, 1]) { b.box(paint('#1f2a1c', { roughness: 0.95 }), 2.2, 2.6, 30, s * 8.5, 1.3, 26, { r: 0.8 }); b.cyl(surf('stucco', '#8a857a'), 1.0, 0.6, 2.2, s * 8.5, 3.6, 12, { seg: 16 }); }
   b.done(g);
   W.house = mansion({ wall: '#7f796c', trim: '#cfc6b2', roof: '#25272c' }); g.add(W.house);
+  // the front door opens inward: a lit gap widens from the latch side (x +2.5) over the dark door; the open leaf's edge shows at the hinge side
+  const hallTex = canvasTex(256, 480, (x, w, h) => { const gr = x.createLinearGradient(0, 0, 0, h); gr.addColorStop(0, '#5a3a22'); gr.addColorStop(0.35, '#d9a066'); gr.addColorStop(0.75, '#e8b67a'); gr.addColorStop(0.78, '#6a4630'); gr.addColorStop(1, '#3a2618'); x.fillStyle = gr; x.fillRect(0, 0, w, h);
+    x.fillStyle = 'rgba(40,24,14,0.55)'; x.fillRect(w * 0.36, h * 0.3, w * 0.28, h * 0.48); x.fillStyle = 'rgba(255,214,150,0.35)'; x.fillRect(w * 0.4, h * 0.34, w * 0.2, h * 0.42); });
+  hallTex.colorSpace = THREE.SRGBColorSpace;
+  const lg = new THREE.PlaneGeometry(5.0, 9.3); lg.translate(-2.5, 0, 0);
+  W.doorLit = new THREE.Mesh(lg, new THREE.MeshBasicMaterial({ map: hallTex, color: new THREE.Color('#ffffff').multiplyScalar(0.8) })); W.doorLit.position.set(2.5, 2.2 + 4.65, 0.33); W.doorLit.userData.noAO = true; g.add(W.doorLit);
+  W.doorEdge = new THREE.Mesh(new THREE.BoxGeometry(0.55, 9.3, 0.05), paint('#1e140e', { roughness: 0.6 })); W.doorEdge.position.set(-2.22, 2.2 + 4.65, 0.36); g.add(W.doorEdge);
   bareTrees(g, [{ x: -44, z: 24, h: 12 }, { x: -58, z: 8, h: 14 }, { x: 46, z: 30, h: 11 }, { x: 60, z: 6, h: 13 }, { x: -36, z: 70, h: 10 }, { x: 40, z: 72, h: 12 }, { x: -80, z: 40, h: 13 }, { x: 84, z: 46, h: 12 }], { seed: 6 });
   // a black tree line far behind
   const tb = new Batch(), r = rng(12), tree = paint('#05070a', { roughness: 1 }); for (let i = 0; i < 60; i++) { const x = -360 + i * 12 + r() * 6, h = 30 + r() * 30; tb.cyl(tree, 0.1, 7 + r() * 5, h, x, h / 2, -120 - r() * 50, { seg: 7 }); } tb.done(g);
@@ -208,7 +215,7 @@ function ballroom() {
   W.clock = grandClock(); W.clock.position.set(14, 0, Z0 + 1.3); g.add(W.clock);
   // the guests' portraits up the stair wall, and the final photograph at the top
   W.portraits = [];
-  [7.2, 1.6, -6.2, -11.4, -21.5].forEach((z, i) => { const f = ornateFrame(3.4, 4.3, { crest: i % 2 === 0 }); f.position.set(X0 + 0.75, stairY(z) + 7.2, z); f.rotation.y = Math.PI / 2; g.add(f); W.portraits.push(f); });
+  [7.2, 1.6, -6.2, -11.4, -20.4, -25.2].forEach((z, i) => { const f = ornateFrame(3.4, 4.3, { crest: i % 2 === 0 }); f.position.set(X0 + 0.75, stairY(z) + 7.2, z); f.rotation.y = Math.PI / 2; g.add(f); W.portraits.push(f); });
   W.final = ornateFrame(5.6, 6.9); W.final.position.copy(FINAL); g.add(W.final);
   // the photographs on other walls (empty frames of landscapes, darkened), for richness
   for (const [x, z, ry] of [[-8, Z0 + 0.3, 0], [6, Z0 + 0.3, 0]]) { const f = ornateFrame(4.6, 3.6, { crest: false }); f.position.set(x, GAL + 6.4, z); f.rotation.y = ry; f.pic.material = paint('#3a3a2e', { roughness: 0.8 }); g.add(f); }
@@ -222,9 +229,19 @@ function studio() {
 }
 
 // ---- characters ----
+// the seven Roblox avatars (captured 2026-11-07, catalog items in each avatar.json): Ruby in the bedroom, the butler at the door, five guests in the ballroom
+const GSK = '#d49a74';
+const CAST = {
+  ruby: { avatar: 'farm_ep28_ruby', lash: true, ph: 0.15 }, butler: { avatar: 'farm_ep28_butler', ph: 0.5 }, pearls: { avatar: 'farm_ep28_pearls', lash: true, ph: 0.8 },
+  tophat: { avatar: 'farm_ep28_tophat', ph: 0.35 }, oldlady: { avatar: 'farm_ep28_oldlady', lash: true, ph: 0.6 }, waistcoat: { avatar: 'farm_ep28_waistcoat', ph: 0.95 }, gown: { avatar: 'farm_ep28_gown', lash: true, ph: 0.25 },
+};
+// the party: where each guest stands (x, z) and the face they wear; Charlotte stops at CP
+const CP = v3(-0.4, 0, 12.6);
+const PARTY = { pearls: [-1.2, 8.4, 'smile'], tophat: [-4.8, 9.4, 'smug'], oldlady: [-6.8, 11.8, 'smile'], waistcoat: [2.6, 9.2, 'happy'], gown: [-3.8, 4.6, 'smile'] };
 function people() {
-  const mk = () => { const c = makeCharacter({ avatar: 'farm_charlotte', alti: true, skin: CSKIN, caustic: false }); ctx.scene.add(c.root); c.faceStyle = (x) => 'lash:' + x; c.root.traverse((o) => { if (o.isMesh) o.castShadow = true; }); return c; };
-  W.c = mk(); W.tw = mk(); W.tw.root.visible = false;
+  const mk = (avatar, skin, lash) => { const c = makeCharacter({ avatar, alti: true, skin, caustic: false }); ctx.scene.add(c.root); if (lash) c.faceStyle = (x) => 'lash:' + x; c.root.traverse((o) => { if (o.isMesh) o.castShadow = true; }); c.root.visible = false; return c; };
+  W.c = mk('farm_charlotte', CSKIN, true); W.c.root.visible = true; W.tw = mk('farm_charlotte', CSKIN, true);
+  W.x = {}; for (const [k, v] of Object.entries(CAST)) W.x[k] = mk(v.avatar, GSK, v.lash);
   W.guests = []; for (let i = 0; i < 12; i++) { const gch = guest(i); gch.root.visible = false; ctx.scene.add(gch.root); W.guests.push(gch); }
 }
 
@@ -251,6 +268,7 @@ function lightSet(set, t, focus) {
   } else if (set === 'out') {
     setL(0, X(-6, 12.4, 48), '#ffb860', 18, 22); setL(1, X(6, 12.4, 48), '#ffb860', 18, 22);
     setL(2, X(0, 7, 6), '#ffc27a', 30, 26); setL(3, X(-18, 7, 4), '#ffc27a', 16, 18); setL(4, X(18, 7, 4), '#ffc27a', 16, 18); setL(5, X(0, 19, 3), '#ffc27a', 14, 16);
+    const dk = W.doorK ?? 0; setL(6, X(0.6, 9.6, 0.5), '#ffc888', 16 * dk, 6); setL(7, X(1.4, 7.4, 4.6), '#ffd2a0', 14 * dk, 9);   // the hall's light on the butler: a rim from behind, a soft front
   } else if (set === 'hall') {
     const k = W.dim ?? 1;
     W.chand.forEach((c, i) => setL(i, c.position.clone().add(v3(0, -1.2, 0)), '#ffc888', 70 * k, 46));
@@ -266,7 +284,8 @@ function lightSet(set, t, focus) {
 const RT = (w, h) => { const r = new THREE.WebGLRenderTarget(w, h, { type: THREE.HalfFloatType, samples: 4 }); return r; };
 function only(...groups) { for (const k of ['bed', 'ext', 'in', 'studio']) W[k].visible = groups.includes(k); }
 function snap(rt, cam) { const { renderer, scene } = ctx; renderer.setRenderTarget(rt); renderer.clear(); renderer.render(scene, cam); renderer.setRenderTarget(null); }
-function hideAll() { W.c.root.visible = false; W.tw.root.visible = false; W.guests.forEach((q) => { q.root.visible = false; }); }
+function hideAll() { W.c.root.visible = false; W.tw.root.visible = false; W.guests.forEach((q) => { q.root.visible = false; }); Object.values(W.x).forEach((q) => { q.root.visible = false; }); }
+const faceN = (q, name) => (q.faceStyle ? q.faceStyle(name) : name);
 function sunAt(focus, span = 90) { const s = ctx.sun; s.target.position.copy(focus); s.position.copy(focus).add(ctx.env.sunDir.clone().normalize().multiplyScalar(220)); s.castShadow = true;
   const sc = s.shadow.camera; sc.left = -span; sc.right = span; sc.top = span; sc.bottom = -span; sc.far = 600; sc.updateProjectionMatrix(); }
 function renderPrints() {
@@ -296,15 +315,16 @@ function renderPrints() {
     W.prints.push(printMat({ tex: main.texture, detail: det.texture, rect: W.dRect, seed: 3 + k * 7 }));
   }
   T.root.visible = false; H.setSash(0); H.blow(0, 0); lamp.intensity = 0; W.pl[1].intensity = 0;
-  // the guests' portraits: head and shoulders in the studio, each face scratched out
+  // the guests' portraits (the five guests, then Ruby at the top): head and shoulders in the studio, each face scratched out
   only('studio'); applyEnv(ctx, { ...HALLP, hemiI: 0.9, exposure: 1.0 }); ctx.sun.castShadow = false; ctx.sun.intensity = 0;
   const pc = new THREE.PerspectiveCamera(30, 4 / 5, 0.5, 200);
   W.portraitM = [];
-  [0, 1, 4, 3, 8].forEach((gi, i) => {
-    hideAll(); const q = W.guests[gi]; q.root.visible = true; q.reset(); q.root.position.copy(PS).add(v3(0.4, 0, 0)); q.root.rotation.set(0, -0.15 + (i % 2) * 0.3, 0); pose(q, 'still', 0);
+  ['pearls', 'tophat', 'oldlady', 'waistcoat', 'gown', 'ruby'].forEach((k, i) => {
+    hideAll(); const q = W.x[k]; q.root.visible = true; q.reset(); q.root.position.copy(PS).add(v3(0.4, 0, 0)); q.root.rotation.set(0, -0.15 + (i % 2) * 0.3, 0); pose(q, 'still', 0); q.setFace(faceN(q, 'neutral')); q.faceSheet.visible = true;
     setL(0, PS.clone().add(v3(-5, 9, 8)), '#ffe2b8', 120, 30); setL(1, PS.clone().add(v3(6, 6, 6)), '#c8d0e0', 30, 30);
-    pc.position.copy(PS).add(v3(0.4, 4.6, 12.5)); pc.lookAt(PS.clone().add(v3(0.4, 4.1, 0))); pc.updateMatrixWorld(true);
-    q.root.updateMatrixWorld(true); const hp = q.head.getWorldPosition(v3()).project(pc), he = q.head.localToWorld(v3(0.7, 0, 0)).project(pc);
+    q.root.updateMatrixWorld(true); const fb = new THREE.Box3().setFromObject(q.faceSheet), fcn = fb.getCenter(v3()), fs = fb.getSize(v3());
+    pc.position.set(PS.x + 0.4, fcn.y + 0.3, PS.z + 12.5); pc.lookAt(PS.x + 0.4, fcn.y - 0.5, PS.z); pc.updateMatrixWorld(true);
+    const hp = fcn.clone().project(pc), he = fcn.clone().add(v3(Math.max(fs.x, fs.y) * 0.62, 0, 0)).project(pc);
     const rt = RT(512, 640); snap(rt, pc);
     const hu = (hp.x + 1) / 2, hv = (hp.y + 1) / 2, ru = Math.abs(he.x - hp.x) / 2 * 1.25;
     W.portraitM.push(printMat({ tex: rt.texture, scratch: scratchTex([[hu, hv + 0.01, ru, ru * 0.8 * 1.15]], 7 + i), border: 0.05, seed: 11 + i, gain: 1.1 }));
@@ -315,21 +335,24 @@ function renderPrints() {
   const fc = new THREE.PerspectiveCamera(38, 4 / 5, 0.5, 400);
   const C0 = v3(-11, 0, -4.5);
   hideAll(); T.root.visible = true; T.reset(); T.root.position.copy(C0); T.root.rotation.set(0, 0, 0); pose(T, 'still', 0); T.setFace('lash:neutral'); T.faceSheet.visible = true;
-  W.guests.forEach((q, i) => { q.root.visible = true; q.reset(); const a = (-0.62 + (i / 11) * 1.24) * Math.PI + Math.PI;   // a ring open toward the camera
+  const A = W.x, G = W.guests, twelve = [A.ruby, G[0], A.pearls, A.tophat, G[1], A.oldlady, A.butler, G[2], A.waistcoat, G[3], A.gown, G[4]];
+  Object.values(A).forEach((q) => { q.setFace(faceN(q, 'neutral')); q.faceSheet.visible = true; });
+  twelve.forEach((q, i) => { q.root.visible = true; q.reset(); const a = (-0.62 + (i / 11) * 1.24) * Math.PI + Math.PI;   // a ring open toward the camera
     const R = 5.6; q.root.position.copy(C0).add(v3(Math.sin(a) * R, 0, Math.cos(a) * R)); q.root.rotation.set(0, Math.atan2(C0.x - q.root.position.x, C0.z - q.root.position.z), 0); pose(q, 'still', 0); });
   lightSet('hall', 0, C0);
   setL(0, C0.clone().add(v3(4, 15, 9)), '#fff0d8', 320, 45); fc.position.copy(C0).add(v3(0.8, 8.5, 19)); fc.lookAt(C0.clone().add(v3(0, 2.4, -1.2))); fc.updateMatrixWorld(true);
   const rtA = RT(1080, 1350); snap(rtA, fc);
   // B: three rows facing the camera; the back rows on the dais tiers; Charlotte centre of the middle row, no face
   const rows = [[-4.65, -1.55, 1.55, 4.65], [-6.2, -3.1, 0, 3.1, 6.2], [-4.65, -1.55, 1.55, 4.65]], rz = [-16.4, -13.2, -9.6], ry = [1.6, 0.8, 0], all = [];
-  let gi = 0; rows.forEach((row, ri) => row.forEach((x, k) => { if (ri === 1 && k === 2) all.push([T, x, ri]); else all.push([W.guests[gi++], x, ri]); }));
+  let gi = 0; rows.forEach((row, ri) => row.forEach((x, k) => { if (ri === 1 && k === 2) all.push([T, x, ri]); else all.push([twelve[gi++], x, ri]); }));
+  Object.values(A).forEach((q) => { q.faceSheet.visible = false; });
   all.forEach(([q, x, ri]) => { q.root.visible = true; q.reset(); q.root.position.set(-11 + x, ry[ri], rz[ri]); q.root.rotation.set(0, (x > 0 ? -1 : 1) * 0.06, 0); pose(q, 'still', 0); });
   T.faceSheet.visible = false;
   const CB = v3(-11, 0, -13);
   fc.fov = 40; fc.updateProjectionMatrix(); fc.position.copy(CB).add(v3(0, 7.5, 24)); fc.lookAt(CB.clone().add(v3(0, 4.2, 0))); fc.updateMatrixWorld(true);
   lightSet('hall', 0, CB); setL(0, CB.clone().add(v3(3, 15, 12)), '#fff0d8', 320, 45);
   const rtB = RT(1080, 1350); snap(rtB, fc);
-  T.faceSheet.visible = true; hideAll();
+  T.faceSheet.visible = true; Object.values(A).forEach((q) => { q.faceSheet.visible = true; }); hideAll();
   W.finalA = printMat({ tex: rtA.texture, border: 0.035, seed: 41, gain: 1.05 }); W.finalB = printMat({ tex: rtB.texture, border: 0.035, seed: 41, gain: 1.05 });
   W.finalA.uniforms.sepia.value = W.finalB.uniforms.sepia.value = 0.92; setL(0, v3(), '#fff', 0, 1);
   only('bed', 'ext', 'in');
@@ -355,45 +378,63 @@ function shots() {
   const s = (i) => L(i).start, e = EV, S = [], add = (name, t0, f) => S.push({ name, t0: () => t0, f, t1: () => 0 });
   const dk = (i) => B(PHX[i], 4.03, -9.3);
   const over = (p, h, back, u, push = 0) => ({ pos: p.clone().add(v3(0, lerp(h, h - push, u), back * lerp(1, 0.88, u))), look: p.clone().add(v3(0, 0, -0.05)), fov: 46 });
+  const port = (i) => W.portraits[i].position;
+  // the bedroom: the photograph comes under the door (steady), the push-ins on the prints
   add('slip', 0, (u) => ({ pos: B(6.2, 1.1, 1.6), look: B(10.6, 0.25, 3.6), fov: 52 }));
   add('turn', e.turn - 0.1, (u) => ({ pos: lp3(B(2.6, 5.0, -3.6), B(2.4, 5.0, -3.9), u), look: B(-3, 4.2, -7.0), fov: 60 }));
   add('p1', s(1) - 0.1, (u) => over(dk(0), 3.6, 0.95, easeOut(u), 0.3));
   add('p1win', s(2) - 0.1, (u) => { const p = dk(0), wv = W.winOn(0); return { pos: lp3(p.clone().add(v3(0, 3.3, 0.86)), wv.clone().add(v3(0, 1.25, 0.32)), easeInOut(u)), look: lp3(p, wv, easeInOut(u)), fov: 46 }; });
   add('girl', s(3) - 0.1, (u) => { const wv = W.winOn(0); return { pos: wv.clone().add(v3(0, lerp(1.2, 0.95, u), 0.3)), look: wv.clone().add(v3(0.03, 0, -0.02)), fov: 46 }; });
   add('face', s(3) + 1.05, (u) => ({ pos: lp3(B(1.4, 5.5, -9.9), B(1.1, 5.45, -9.7), u), look: B(-3, 4.25, -6.9), fov: 56 }));
-  add('morning', s(4) - 0.1, (u) => ({ pos: lp3(B(9.6, 6.2, 9.2), B(9.4, 6.0, 8.6), u), look: B(7.0, 2.0, 2.4), fov: 60 }));
-  add('p2', s(5) - 0.1, (u) => { const a = dk(1), wv = W.winOn(1); const k = easeInOut(clamp(u * 1.3 - 0.15)); return { pos: lp3(a.clone().add(v3(0, 3.5, 0.9)), wv.clone().add(v3(0, 1.3, 0.34)), k), look: lp3(a, wv, k), fov: 46 }; });
-  add('p3', s(6) - 0.1, (u) => { const p = dk(2), wv = W.winOn(2); return { pos: lp3(p.clone().add(v3(0, 3.5, 0.9)), wv.clone().add(v3(0, 1.6, 0.42)), easeInOut(u)), look: lp3(p, wv, easeInOut(u)), fov: 46 }; });
-  add('invite', s(8) - 0.1, (u) => ({ pos: lp3(B(-3.6, 8.6, -6.7), B(-3.6, 8.3, -7.0), u), look: B(-3.6, 4.03, -9.0), fov: 58 }));
-  add('address', s(9) - 0.1, (u) => ({ pos: lp3(B(-3.6, 7.9, -7.3), B(-3.6, 7.2, -7.8), easeInOut(u)), look: B(-3.6, 4.03, -9.0), fov: 52 }));
-  add('arrive', s(10) - 0.15, (u) => ({ pos: lp3(X(0, 7.5, 70), X(0, 7.8, 66), u), look: X(0, 16, 0), fov: 60 }));
-  add('ballroom', s(11) - 0.1, (u) => ({ pos: lp3(v3(0, 6.5, 20.5), v3(0, 6.5, 18.5), u), look: v3(-2, 6.4, -30), fov: 62 }));
-  add('gram', s(11) + 1.15, (u) => ({ pos: lp3(v3(18.6, 7.6, 12.6), v3(19.2, 7.4, 12.9), u), look: v3(24, 4.8, 15.2), fov: 50 }));
-  add('table', s(12) - 0.1, (u) => ({ pos: lp3(v3(TX - 2.0, 7.4, TZ + 21), v3(TX - 1.4, 6.8, TZ + 14), easeInOut(u)), look: v3(TX + 0.4, 4.4, TZ - 8), fov: 56 }));
-  add('stairs', s(13) - 0.1, (u) => ({ pos: lp3(v3(-11, 5.6, 17), v3(-12, 6.0, 16), u), look: v3(-26, 9.5, -8), fov: 60 }));
-  add('guests', s(14) - 0.1, (u) => { const z = lerp(7.2, 1.6, easeInOut(u)); return { pos: v3(-24.7, stairY(z) + 7.2, z), look: v3(-30, stairY(z) + 7.2, z), fov: 68 }; });
-  add('scratch', s(15) - 0.1, (u) => { const f = W.portraits[2].position, z = f.z; return { pos: lp3(v3(-24.8, f.y + 0.1, z + 1.0), v3(-25.6, f.y + 0.05, z + 0.5), u), look: v3(-30, f.y, z), fov: 46 }; });
-  add('climb', e.climb, (u) => ({ pos: lp3(v3(-12.5, 15.0, -22), v3(-13.0, 15.4, -24), u), look: v3(-26, 13.6, -34), fov: 56 }));
-  add('final', s(17) - 0.1, (u) => ({ pos: lp3(v3(-24.8, GAL + 6.6, -35.9), v3(-25.7, GAL + 6.7, -37.7), easeInOut(u)), look: v3(-26.5, GAL + 6.2, -43.6), fov: 50 }));
-  add('twelve', s(18) - 0.1, (u) => ({ pos: lp3(v3(-26.5, GAL + 5.6, -36.0), v3(-26.5, GAL + 5.6, -36.6), u), look: FINAL.clone().add(v3(0, -1.2, 0)), fov: 54 }));
-  add('turnaround', s(19) - 0.1, (u) => ({ pos: lp3(v3(-25.2, GAL + 5.1, -35.7), v3(-25.3, GAL + 5.0, -36.0), u), look: v3(-26.5, GAL + 3.9, -38.6), fov: 74 }));
-  add('empty', s(20) - 0.1, (u) => ({ pos: lp3(v3(-25.4, GAL + 6.2, -37.0), v3(-24.8, GAL + 6.6, -36.2), u), look: v3(4, 3.0, -2), fov: 64 }));
+  // Ruby: a two-shot that orbits a little, then her line over Charlotte's shoulder
+  add('ruby', s(4) - 0.15, (u) => ({ pos: lp3(B(6.8, 7.2, 1.4), B(6.0, 6.8, 0.4), easeInOut(u)), look: B(-1.0, 4.2, -5.6), fov: 56 }));
+  add('prank', s(5) - 0.15, (u) => ({ pos: lp3(B(-3.5, 5.4, -2.4), B(-3.2, 5.3, -2.9), u), look: B(1.2, 4.4, -4.6), fov: 50 }));
+  add('morning', s(6) - 0.1, (u) => ({ pos: lp3(B(9.6, 6.2, 9.2), B(9.4, 6.0, 8.6), u), look: B(7.0, 2.0, 2.4), fov: 60 }));
+  add('p2', s(6) + 1.15, (u) => { const a = dk(1), wv = W.winOn(1); const k = easeInOut(clamp(u * 1.3 - 0.15)); return { pos: lp3(a.clone().add(v3(0, 3.5, 0.9)), wv.clone().add(v3(0, 1.3, 0.34)), k), look: lp3(a, wv, k), fov: 46 }; });
+  add('p3', s(7) - 0.1, (u) => { const p = dk(2), wv = W.winOn(2); return { pos: lp3(p.clone().add(v3(0, 3.5, 0.9)), wv.clone().add(v3(0, 1.6, 0.42)), easeInOut(u)), look: lp3(p, wv, easeInOut(u)), fov: 46 }; });
+  add('gone', s(8) - 0.15, (u) => ({ pos: lp3(B(1.5, 5.6, -9.95), B(1.2, 5.45, -9.7), u), look: B(-3, 4.15, -6.9), fov: 56 }));
+  add('invite', s(9) - 0.1, (u) => ({ pos: lp3(B(-3.6, 8.6, -6.7), B(-3.6, 8.3, -7.0), u), look: B(-3.6, 4.03, -9.0), fov: 58 }));
+  add('address', s(10) - 0.1, (u) => ({ pos: lp3(B(-3.6, 7.9, -7.3), B(-3.6, 7.2, -7.8), easeInOut(u)), look: B(-3.6, 4.03, -9.0), fov: 52 }));
+  // the mansion: she walks up, the door opens; the butler, from below the steps
+  add('arrive', s(11) - 0.15, (u) => ({ pos: lp3(X(0, 7.5, 70), X(0, 7.6, 66.5), u), look: X(0, 10, 0), fov: 54 }));
+  add('butler', s(11) + 1.0, (u) => ({ pos: lp3(X(2.4, 3.4, 12.5), X(1.9, 3.6, 10.8), easeInOut(u)), look: X(0.4, 6.6, 1.2), fov: 52 }));
+  // the party, then nobody
+  add('enter', s(12) - 0.15, (u) => ({ pos: lp3(v3(4.2, 6.6, 21.0), v3(2.0, 6.2, 19.6), easeInOut(u)), look: v3(-2.6, 4.4, 7.5), fov: 58 }));
+  add('hostess', s(13) - 0.15, (u) => ({ pos: lp3(v3(1.5, 5.5, 15.0), v3(1.2, 5.4, 14.4), u), look: v3(-1.2, 4.5, 8.4), fov: 40 }));
+  add('glance', s(14) - 0.15, (u) => ({ pos: lp3(v3(5.4, 5.2, 13.8), v3(5.0, 5.1, 13.3), u), look: v3(-1.4, 4.2, 11.6), fov: 50 }));
+  add('empty', e.vanish, (u) => ({ pos: lp3(v3(0.4, 9.6, 20.6), v3(0.2, 9.0, 19.0), easeOut(u)), look: v3(-3, 3.5, -4), fov: 62 }));
+  add('table', s(15) - 0.1, (u) => ({ pos: lp3(v3(TX - 2.0, 7.4, TZ + 21), v3(TX - 1.4, 6.8, TZ + 14), easeInOut(u)), look: v3(TX + 0.4, 4.4, TZ - 8), fov: 56 }));
+  // the staircase of portraits
+  add('stairs', s(16) - 0.1, (u) => ({ pos: lp3(v3(-11, 4.6, 17), v3(-12, 5.0, 16), u), look: v3(-26, 9.5, -8), fov: 60 }));
+  add('guests', s(16) + 1.25, (u) => ({ pos: lp3(v3(-22.6, 9.0, 11.0), v3(-23.2, 11.2, 4.6), easeInOut(u)), look: v3(-29.3, 13.5, -9), fov: 58 }));
+  add('scratch', s(17) - 0.1, (u) => { const f = port(2), z = f.z; return { pos: lp3(v3(-24.8, f.y + 0.1, z + 1.0), v3(-25.6, f.y + 0.05, z + 0.5), u), look: v3(-30, f.y, z), fov: 46 }; });
+  add('scratch2', s(17) + 1.1, (u) => { const f = port(4), z = f.z; return { pos: lp3(v3(-25.0, f.y + 0.2, z - 1.5), v3(-25.0, f.y + 0.1, z + 0.8), easeInOut(u)), look: v3(-29.3, f.y, z), fov: 48 }; });
+  add('rubyp', s(18) - 0.15, (u) => { const f = port(5), z = f.z; return { pos: lp3(v3(-23.6, f.y + 0.1, z + 0.5), v3(-24.5, f.y + 0.02, z + 0.2), easeOut(u)), look: v3(-29.3, f.y - 0.4, z), fov: 50 }; });
+  // up to the final photograph (a high angle from the gallery), then the photograph
+  add('climb', e.climb, (u) => ({ pos: lp3(v3(-25.6, GAL + 7.4, -42.4), v3(-25.8, GAL + 7.8, -42.6), u), look: v3(-26.5, 13.0, -31), fov: 56 }));
+  add('final', e.top, (u) => ({ pos: lp3(v3(-24.6, GAL + 5.3, -34.6), v3(-25.3, GAL + 5.4, -35.8), easeInOut(u)), look: v3(-26.5, GAL + 5.7, -43.6), fov: 52 }));
+  add('twelve', s(20) - 0.1, (u) => ({ pos: lp3(v3(-26.5, GAL + 5.6, -36.0), v3(-26.5, GAL + 5.6, -36.6), u), look: FINAL.clone().add(v3(0, -1.2, 0)), fov: 54 }));
+  add('twelveC', s(20) + 1.6, (u) => ({ pos: lp3(v3(-26.2, GAL + 7.4, -39.6), v3(-26.35, GAL + 7.5, -40.3), easeOut(u)), look: FINAL.clone().add(v3(0, 0.9, 0)), fov: 50 }));
+  // the chairs
   add('chairs', s(21) - 0.1, (u) => ({ pos: lp3(v3(TX - 13.0, 4.0, TZ + 15), v3(TX - 12.4, 4.0, TZ + 14), u), look: v3(TX - 4, 2.6, TZ - 1), fov: 54 }));
-  add('onebyone', s(22) - 0.15, (u) => ({ pos: lp3(v3(TX + 14, 9.0, TZ + 17), v3(TX + 13, 8.6, TZ + 12), u), look: v3(TX, 2.8, TZ - 4), fov: 58 }));
-  add('whisper', s(23) - 0.1, (u) => ({ pos: lp3(v3(-26.0, GAL + 5.1, -35.7), v3(-26.1, GAL + 5.0, -36.1), u), look: v3(-26.5, GAL + 3.9, -38.6), fov: 74 }));
-  add('lookback', e.lookBack - 0.2, (u) => ({ pos: lp3(v3(-24.6, GAL + 6.0, -35.8), v3(-25.0, GAL + 6.2, -36.6), u), look: v3(-26.6, GAL + 5.6, -43.6), fov: 56 }));
-  add('thirteen', s(26) - 0.1, (u) => ({ pos: lp3(v3(-26.5, GAL + 5.6, -36.0), v3(-26.5, GAL + 5.6, -36.7), easeOut(u)), look: FINAL.clone().add(v3(0, -1.2, 0)), fov: 54 }));
-  add('faces', s(27) - 0.1, (u) => ({ pos: lp3(v3(-26.5, GAL + 6.0, -36.4), v3(-26.5, GAL + 6.1, -38.2), easeInOut(clamp(u * 1.2))), look: FINAL.clone().add(v3(0, -0.5, 0)), fov: 54 }));
+  add('onebyone', s(21) + 1.5, (u) => ({ pos: lp3(v3(TX + 14, 9.0, TZ + 17), v3(TX + 13, 8.6, TZ + 12), u), look: v3(TX, 2.8, TZ - 4), fov: 58 }));
+  // the whisper: in front of her, the dark ballroom behind; then over her shoulder to the photograph
+  add('whisper', s(22) - 0.1, (u) => ({ pos: lp3(v3(-26.0, GAL + 5.0, -42.2), v3(-26.1, GAL + 4.95, -41.8), u), look: v3(-26.5, GAL + 4.3, -38.6), fov: 50 }));
+  add('whisperC', s(23) - 0.1, (u) => ({ pos: lp3(v3(-24.1, GAL + 5.2, -42.7), v3(-24.3, GAL + 5.1, -42.3), u), look: v3(-26.5, GAL + 4.2, -38.6), fov: 50 }));
+  add('lookback', s(24) - 0.15, (u) => ({ pos: lp3(v3(-25.0, GAL + 5.2, -35.4), v3(-25.4, GAL + 5.3, -36.2), u), look: v3(-26.6, GAL + 5.6, -43.6), fov: 56 }));
+  add('thirteen', s(25) - 0.1, (u) => ({ pos: lp3(v3(-26.5, GAL + 5.6, -36.0), v3(-26.5, GAL + 5.6, -36.7), easeOut(u)), look: FINAL.clone().add(v3(0, -1.2, 0)), fov: 54 }));
+  add('faces', s(26) - 0.1, (u) => ({ pos: lp3(v3(-26.5, GAL + 6.0, -36.4), v3(-26.5, GAL + 6.1, -38.2), easeInOut(clamp(u * 1.2))), look: FINAL.clone().add(v3(0, -0.5, 0)), fov: 54 }));
   S.forEach((x, i) => { if (S[i + 1]) { const v = S[i + 1].t0(); x.t1 = () => v; } });
   S[S.length - 1].t1 = () => ctx.dur + 1;
   return S;
 }
 
 // ---- a frame ----
-function faceOf(c, name, t, ph) { c.setFace(c.faceStyle ? c.faceStyle(name) : name, { blink: blinkAt(t, ph) && !['shocked', 'terrified'].includes(name) }); }
-const SETS = { slip: 'bedN', turn: 'bedN', p1: 'bedN', p1win: 'bedN', girl: 'bedN', face: 'bedN', morning: 'bedM', p2: 'bedM', p3: 'bedM', three: 'bedM', invite: 'bedE', address: 'bedE',
-  arrive: 'out', ballroom: 'hall', gram: 'hall', table: 'hall', stairs: 'hall', guests: 'hall', scratch: 'hall', climb: 'hall', final: 'hall', twelve: 'hall', turnaround: 'hall', empty: 'hall',
-  chairs: 'hall', onebyone: 'hall', whisper: 'hall', lookback: 'hall', thirteen: 'hall', faces: 'hall' };
+function faceOf(c, name, t, ph, viseme) { c.setFace(c.faceStyle ? c.faceStyle(name) : name, { blink: blinkAt(t, ph) && !['shocked', 'terrified', 'laugh'].includes(name), viseme }); }
+const talk = (i, t) => { const l = L(i); return visemeAt(l.text, l.start + 0.02, l.end - 0.02, t); };
+const SETS = { slip: 'bedN', turn: 'bedN', p1: 'bedN', p1win: 'bedN', girl: 'bedN', face: 'bedN', ruby: 'bedN', prank: 'bedN', morning: 'bedM', p2: 'bedM', p3: 'bedM', gone: 'bedM',
+  invite: 'bedE', address: 'bedE', arrive: 'out', butler: 'out' };
+for (const n of ['enter', 'hostess', 'glance', 'empty', 'table', 'stairs', 'guests', 'scratch', 'scratch2', 'rubyp', 'climb', 'final', 'twelve', 'twelveC', 'chairs', 'onebyone', 'whisper', 'whisperC', 'lookback', 'thirteen', 'faces']) SETS[n] = 'hall';
 const PAL = { bedN: BEDN, bedM: BEDM, bedE: BEDE, out: OUTN, hall: HALLP };
 
 function renderAt(t) {
@@ -413,10 +454,20 @@ function renderAt(t) {
     const k = smooth(e.slide, e.slide + 1.15, t);
     W.floorP.visible = n === 'slip'; W.floorP.position.set(lerp(12.4, 9.0, easeOut(k)), 0.03, 3.4);
     W.floorP2.visible = n === 'morning';
-    W.desk[0].visible = n !== 'slip' && !eve; W.desk[1].visible = ['p2', 'p3', 'three'].includes(n); W.desk[2].visible = ['p3', 'three'].includes(n);
+    W.desk[0].visible = n !== 'slip' && !eve; W.desk[1].visible = ['p2', 'p3', 'gone'].includes(n); W.desk[2].visible = ['p3', 'gone'].includes(n);
     W.inv.visible = W.inv.env.visible = eve; W.backP.visible = eve;
     if (n === 'slip' || n === 'turn') { cp.copy(B(-3, 0, -6.9)); const tk = smooth(e.turn, e.turn + 0.9, t); C.root.rotation.y = Math.PI + lerp(0, -2.2, easeInOut(tk)); pose(C, 'idle', t); faceOf(C, tk > 0.3 ? 'surprised' : 'neutral', t, 0.3); C.root.visible = n === 'turn'; }
-    else if (n === 'face') { cp.copy(B(-3, 0, -6.9)); C.root.rotation.y = Math.PI - 0.15; pose(C, 'idle', t); C.neck.rotation.x = 0.32; faceOf(C, 'shocked', t, 0.3); }
+    else if (n === 'face') { cp.copy(B(-3, 0, -6.9)); C.root.rotation.y = Math.PI - 0.6; pose(C, 'idle', t); C.neck.rotation.x = 0.32; faceOf(C, 'shocked', t, 0.3); }
+    else if (n === 'gone') { cp.copy(B(-3, 0, -6.9)); C.root.rotation.y = Math.PI - 0.6; pose(C, 'idle', t); C.neck.rotation.x = 0.3; faceOf(C, 'scared', t, 0.3); }
+    else if (n === 'ruby' || n === 'prank') {
+      // Ruby laughs it off beside the desk; Charlotte, holding nothing, turned to her
+      const rp = B(1.2, 0, -4.6); cp.copy(B(-3, 0, -6.4)); C.root.rotation.y = Math.atan2(rp.x - cp.x, rp.z - cp.z) - (n === 'ruby' ? 0.3 : 0); pose(C, 'idle', t); C.neck.rotation.x = 0.05; faceOf(C, 'nervous', t, 0.3);
+      const R = W.x.ruby; R.root.visible = true; R.root.position.copy(rp); R.root.rotation.set(0, Math.atan2(cp.x - rp.x, cp.z - rp.z), 0); pose(R, 'idle', t + 1.3);
+      const l4 = L(4), lk = smooth(l4.start + 0.05, l4.start + 0.35, t) * (1 - smooth(l4.end + 0.05, l4.end + 0.3, t));
+      R.torso.rotation.x += 0.07 * lk * (0.5 + 0.5 * Math.sin(t * 16)); R.neck.rotation.x -= 0.16 * lk;
+      if (t < L(5).start) faceOf(R, lk > 0.3 ? 'laugh' : 'smile', t, 0.15);
+      else { faceOf(R, 'smile', t, 0.15, talk(5, t)); R.arms[1].rotation.x = -0.45 * smooth(L(5).start + 0.3, L(5).start + 0.7, t); R.arms[1].rotation.z = 0.12; R.neck.rotation.z = 0.08; }
+    }
     else if (n === 'morning') { cp.copy(B(5.4, 0, 1.2)); C.root.rotation.y = 0.94; pose(C, 'idle', t); C.neck.rotation.x = 0.42; faceOf(C, 'nervous', t, 0.3); }
     else C.root.visible = false;
     focus = cp.clone();
@@ -424,6 +475,9 @@ function renderAt(t) {
   // ---- the mansion outside ----
   if (set === 'out') {
     W.house.lights(1); W.house.setSash(0); W.house.blow(0, t);
+    const dk = easeInOut(smooth(e.door, e.door + 1.2, t)); W.doorK = dk; W.doorLit.scale.x = Math.max(0.001, dk); W.doorEdge.visible = dk > 0.92;
+    const Bt = W.x.butler; Bt.root.visible = dk > 0.6; Bt.root.position.copy(X(0.5, 2.2, 0.95)); Bt.root.rotation.set(0, 0, 0); pose(Bt, 'still', t);
+    const bw = smooth(e.bow, e.bow + 0.5, t) * (1 - smooth(e.bow + 1.1, e.bow + 1.6, t)); Bt.torso.rotation.x = 0.3 * bw; Bt.neck.rotation.x = 0.18 * bw; faceOf(Bt, 'neutral', t, 0.5);
     cp.copy(X(0.6, 0, lerp(56, 53.5, smooth(e.gate, e.gate + 2.6, t)))); C.root.rotation.y = Math.PI; pose(C, smooth(e.gate, e.gate + 2.6, t) < 1 && t > e.gate ? 'walk' : 'idle', t * 0.7); C.neck.rotation.x = -0.3; faceOf(C, 'nervous', t, 0.3);
     focus = cp.clone();
   }
@@ -436,23 +490,30 @@ function renderAt(t) {
     const M = new THREE.Matrix4(); W.candles.forEach((p, i) => { const f = 1 + 0.12 * Math.sin(t * 13 + i * 2.1) + 0.06 * Math.sin(t * 29 + i); M.makeScale(1 / f, f, 1 / f).setPosition(p.x + 0.02 * Math.sin(t * 7 + i), p.y + 0.12 * f, p.z); W.flames.setMatrixAt(i, M); }); W.flames.instanceMatrix.needsUpdate = true;
     // the chairs: tucked in, until they scrape back one by one (the order along the table, near end first)
     const order = [5, 11, 4, 10, 3, 9, 2, 8, 1, 7, 0, 6];
-    W.chairs.forEach((q, i) => { const j = order.indexOf(i), k = smooth(e.scrape + j * 0.42, e.scrape + j * 0.42 + 0.7, t); q.c.position.x = q.x + q.side * 2.4 * easeOut(k); q.c.rotation.y = (q.side < 0 ? Math.PI / 2 : -Math.PI / 2) + q.side * 0.18 * k * (j % 2 ? 1 : -1); });
+    W.chairs.forEach((q, i) => { const j = order.indexOf(i), k = smooth(e.scrape + j * 0.3, e.scrape + j * 0.3 + 0.6, t); q.c.position.x = q.x + q.side * 2.4 * easeOut(k); q.c.rotation.y = (q.side < 0 ? Math.PI / 2 : -Math.PI / 2) + q.side * 0.18 * k * (j % 2 ? 1 : -1); });
+    // the party (until she turns back)
+    const party = t < e.vanish && ['enter', 'hostess', 'glance'].includes(n);
+    for (const [k, [x, z, face]] of Object.entries(PARTY)) { const q = W.x[k]; q.root.visible = party; if (!party) continue;
+      q.root.position.set(x, 0, z); q.root.rotation.set(0, Math.atan2(CP.x - x, CP.z - z), 0); pose(q, 'idle', t + CAST[k].ph * 3);
+      faceOf(q, face, t, CAST[k].ph, k === 'pearls' ? talk(13, t) : null); }
+    if (party) { const P0 = W.x.pearls, sp = smooth(L(13).start - 0.1, L(13).start + 0.3, t) * (1 - smooth(L(13).end, L(13).end + 0.4, t)); P0.neck.rotation.z = 0.07 * sp; P0.arms[0].rotation.x = -0.35 * sp; P0.arms[0].rotation.z = -0.1 * sp; }
     // Charlotte
-    if (n === 'ballroom') { const k = smooth(s0(11) - 0.3, s0(12), t); cp.set(lerp(1.0, 0.4, k), 0, lerp(16.5, 11.5, k)); C.root.rotation.y = Math.PI; pose(C, k < 1 ? 'walk' : 'idle', t * 0.7); faceOf(C, 'nervous', t, 0.3); }
+    if (n === 'enter') { const k = smooth(e.enter, s0(13) - 0.2, t); cp.set(lerp(0.6, CP.x, k), 0, lerp(17.2, CP.z, k)); C.root.rotation.y = Math.PI; pose(C, k < 1 ? 'walk' : 'idle', t * 0.7); faceOf(C, 'nervous', t, 0.3); }
+    else if (n === 'hostess') { cp.copy(CP); C.root.rotation.y = Math.PI + 0.19; pose(C, 'idle', t); faceOf(C, 'nervous', t, 0.3); }
+    else if (n === 'glance') { cp.copy(CP); const k = smooth(s0(14) + 0.1, s0(14) + 0.9, t); C.root.rotation.y = lerp(Math.PI + 0.19, 0.35, easeInOut(k)); pose(C, 'idle', t); faceOf(C, 'nervous', t, 0.3); }
+    else if (n === 'empty') { cp.copy(CP); const k = smooth(e.vanish + 0.05, e.vanish + 0.85, t); C.root.rotation.y = lerp(0.35, Math.PI, easeInOut(k)); pose(C, 'idle', t); faceOf(C, k > 0.5 ? 'scared' : 'surprised', t, 0.3); }
     else if (n === 'stairs') { cp.set(-21.5, 0, 10.5); C.root.rotation.y = Math.PI + 0.75; pose(C, 'lookUp', t, { amt: 0.32 }); faceOf(C, 'surprised', t, 0.3); }
-    else if (n === 'guests' || n === 'scratch') C.root.visible = false;
-    else if (n === 'climb') { const z = lerp(-19, SZ1 - 1.6, smooth(e.climb, s0(17) - 0.05, t)); cp.set(-26.5, stairY(z), z); C.root.rotation.y = Math.PI; pose(C, t < s0(17) - 0.1 ? 'walk' : 'idle', t * 0.65); faceOf(C, 'nervous', t, 0.3); }
-    else if (['final', 'twelve'].includes(n)) { cp.copy(LAND); C.root.rotation.y = Math.PI; pose(C, 'still', t); faceOf(C, 'scared', t, 0.3); C.root.visible = n === 'final'; }
-    else if (n === 'turnaround' || n === 'whisper') { cp.copy(LAND); const k = n === 'turnaround' ? smooth(s0(19) + 0.05, s0(19) + 0.95, t) : 1; C.root.rotation.y = lerp(Math.PI, 0.08, easeInOut(k)); pose(C, 'still', t);
-      faceOf(C, n === 'whisper' ? (t > s0(24) ? 'shocked' : 'scared') : 'scared', t, 0.3); if (n === 'whisper') { C.neck.rotation.y = 0.18 * smooth(s0(24), s0(24) + 0.8, t); } }
-    else if (n === 'empty') { cp.copy(LAND); C.root.rotation.y = 0.08; pose(C, 'still', t); faceOf(C, 'scared', t, 0.3); }
-    else if (n === 'lookback') { cp.copy(LAND); const k = smooth(e.lookBack, e.lookBack + 0.9, t); C.root.rotation.y = lerp(0.08, Math.PI, easeInOut(k)); pose(C, 'still', t); faceOf(C, 'shocked', t, 0.3); }
-    else if (n === 'thirteen' || n === 'faces') { C.root.visible = false; }
+    else if (n === 'climb') { const z = lerp(-31, LAND.z, smooth(e.climb, e.top - 0.05, t)); cp.set(-26.5, stairY(z), z); C.root.rotation.y = Math.PI; pose(C, t < e.top - 0.1 ? 'walk' : 'idle', t * 0.65); faceOf(C, 'nervous', t, 0.3); }
+    else if (n === 'final') { cp.copy(LAND); C.root.rotation.y = Math.PI; pose(C, 'still', t); faceOf(C, 'scared', t, 0.3); }
+    else if (n === 'whisper' || n === 'whisperC') { cp.copy(LAND); C.root.rotation.y = Math.PI; pose(C, 'still', t);
+      C.neck.rotation.y = -0.5 * smooth(e.hear, e.hear + 0.6, t); faceOf(C, t > s0(23) + 0.4 ? 'shocked' : 'scared', t, 0.3); }
+    else if (n === 'lookback') { cp.copy(LAND); C.root.rotation.y = Math.PI; pose(C, 'still', t); C.neck.rotation.y = -0.5 * (1 - smooth(e.lookBack, e.lookBack + 0.7, t)); faceOf(C, 'shocked', t, 0.3); }
     else C.root.visible = false;
     W.final.pic.material = t >= e.swap ? W.finalB : W.finalA;
     focus = C.root.visible ? cp.clone() : v3(TX, 2, TZ);
-    if (['guests', 'scratch'].includes(n)) focus = v3(-28, stairY(-8) + 5, -8);
-    if (['final', 'twelve', 'thirteen', 'faces', 'lookback'].includes(n)) focus = v3(-26.5, GAL + 2, -40);
+    if (['guests', 'scratch', 'scratch2', 'rubyp'].includes(n)) focus = v3(-28, stairY(-12) + 5, -12);
+    if (['final', 'twelve', 'twelveC', 'thirteen', 'faces', 'lookback', 'whisper', 'whisperC'].includes(n)) focus = v3(-26.5, GAL + 2, -40);
+    if (party) focus = CP.clone();
   }
   lightSet(set === 'out' ? 'out' : set === 'hall' ? 'hall' : set, t, focus);
   W.air.update(t); W.air.list.dust.position.copy(set === 'hall' ? v3(0, 0, -8) : set === 'out' ? X(0, 0, 40) : BR); W.air.list.dust.visible = set !== 'out';
@@ -462,8 +523,9 @@ function renderAt(t) {
 const s0 = (i) => L(i).start;
 
 export async function setup() {
-  ctx = await initStage('ep28', { look: 'pro', avatars: ['farm_charlotte'] }); L = ctx.L; EV = events();
-  await loadAlti(['neutral', 'surprised', 'shocked', 'scared', 'terrified', 'nervous', 'sad', ...['neutral', 'surprised', 'shocked', 'scared', 'terrified', 'nervous', 'sad'].map((x) => 'lash:' + x)]);
+  ctx = await initStage('ep28', { look: 'pro', avatars: ['farm_charlotte', ...Object.values(CAST).map((c) => c.avatar)] }); L = ctx.L; EV = events();
+  const FX = ['neutral', 'surprised', 'shocked', 'scared', 'terrified', 'nervous', 'sad', 'smile', 'happy', 'smug', 'laugh'];
+  await loadAlti([...FX, ...FX.map((x) => 'lash:' + x)]);
   const { scene, camera } = ctx; camera.far = 3000; camera.near = 0.1; camera.updateProjectionMatrix();
   rig(); bedroom(); outside(); ballroom(); studio(); people();
   // where the real window sits on each desk print (world), for the push-ins

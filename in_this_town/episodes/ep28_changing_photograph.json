@@ -1,561 +1,583 @@
 {
- "id": "ep28",
- "number": 28,
- "title": "The Photograph That Kept Changing",
- "output": "InThisTown_Episode28_ChangingPhotograph.mp4",
- "tts": "openrouter",
- "youtube_title": "The Photograph That Kept Changing...",
- "tiktok_caption": "Every morning a new photograph came under her door. Every time, the girl in the window was closer.",
- "hashtags": "#InThisTown #LiminalSpaces #RobloxHorror #Shorts",
- "thumbnail_text": "13 GUESTS",
- "thumbnail_rec": "An antique gilt-framed sepia photograph of thirteen faceless guests in a candlelit ballroom, one of them a girl in a purple jacket with long brown hair; beside it, Charlotte's wide-eyed face in the dark.",
- "lead_in": 0.3,
- "tail": 2.4,
- "voices": {
-  "narrator": {
-   "openrouter": {
-    "model": "elevenlabs/eleven-v3-conversational",
-    "voice": "ErXwobaYiN019PkySvjV",
-    "pitch": 1.1,
-    "tempo": 1.12,
-    "max_tempo": 1.15,
-    "pace": [
-     2.5,
-     2.95
-    ],
-    "min_tempo": 1.04
-   },
-   "kokoro": "am_michael",
-   "speed": 1.0,
-   "note": "Antoni (American), In This Town preset el:ErXwobaYiN019PkySvjV:1.1:1.12 - same narrator every episode"
+  "id": "ep28",
+  "number": 28,
+  "title": "The Photograph That Kept Changing",
+  "output": "InThisTown_Episode28_ChangingPhotograph.mp4",
+  "tts": "openrouter",
+  "youtube_title": "The Photograph That Kept Changing...",
+  "tiktok_caption": "Every morning a new photograph came under her door. Every time, the girl in the window was closer.",
+  "hashtags": "#InThisTown #LiminalSpaces #RobloxHorror #Shorts",
+  "thumbnail_text": "13 GUESTS",
+  "thumbnail_rec": "An antique gilt-framed sepia photograph of thirteen faceless guests in a candlelit ballroom (a top hat, pearls, a butler, a girl in a hoodie), Charlotte in the middle row; Charlotte's wide-eyed face in the dark beside it.",
+  "lead_in": 0.3,
+  "tail": 2.4,
+  "voices": {
+    "narrator": {
+      "openrouter": {
+        "model": "elevenlabs/eleven-v3-conversational",
+        "voice": "ErXwobaYiN019PkySvjV",
+        "pitch": 1.1,
+        "tempo": 1.12,
+        "max_tempo": 1.15,
+        "pace": [
+          2.5,
+          2.95
+        ],
+        "min_tempo": 1.04
+      },
+      "kokoro": "am_michael",
+      "speed": 1.0,
+      "note": "Antoni (American), In This Town preset el:ErXwobaYiN019PkySvjV:1.1:1.12 - same narrator every episode"
+    },
+    "guests": {
+      "openrouter": {
+        "model": "elevenlabs/eleven-v3-conversational",
+        "voice": "laura",
+        "pitch": 0.94,
+        "tempo": 0.95
+      },
+      "kokoro": "af_heart",
+      "speed": 1.0
+    },
+    "ruby": {
+      "openrouter": {
+        "model": "elevenlabs/eleven-v3-conversational",
+        "voice": "jessica",
+        "pitch": 1.0,
+        "tempo": 1.0
+      },
+      "kokoro": "af_heart",
+      "speed": 1.0
+    },
+    "hostess": {
+      "openrouter": {
+        "model": "elevenlabs/eleven-v3-conversational",
+        "voice": "lily",
+        "pitch": 0.97,
+        "tempo": 0.95
+      },
+      "kokoro": "af_heart",
+      "speed": 1.0
+    }
   },
-  "guests": {
-   "openrouter": {
-    "model": "elevenlabs/eleven-v3-conversational",
-    "voice": "laura",
-    "pitch": 0.94,
-    "tempo": 0.95
-   },
-   "kokoro": "af_heart",
-   "speed": 1.0
-  }
- },
- "highlights": {
-  "PHOTOGRAPH": "yellow",
-  "MANSION": "yellow",
-  "UPSTAIRS WINDOW": "yellow",
-  "EXACTLY LIKE CHARLOTTE": "red",
-  "ANOTHER PHOTOGRAPH": "yellow",
-  "CLOSER": "red",
-  "WINDOW WAS OPEN": "purple",
-  "GONE": "red",
-  "INVITATION": "yellow",
-  "ADDRESS MATCHED": "red",
-  "EMPTY BALLROOM": "purple",
-  "TWELVE UNTOUCHED PLATES": "yellow",
-  "STAIRCASE": "yellow",
-  "DIFFERENT GUEST": "yellow",
-  "SCRATCHED OUT": "red",
-  "FINAL PHOTOGRAPH": "yellow",
-  "IN THE BALLROOM": "purple",
-  "TWELVE PEOPLE": "red",
-  "TURNED AROUND": "yellow",
-  "STILL EMPTY": "purple",
-  "ONE BY ONE": "red",
-  "BEHIND HER": "red",
-  "LAST ONE WE NEEDED": "red",
-  "AGAIN": "yellow",
-  "THIRTEEN": "red",
-  "NONE OF THEM HAD FACES": "red",
-  "CHAIRS SCRAPED": "red",
-  "SILENT": "cyan"
- },
- "lines": [
-  {
-   "text": "Charlotte found a photograph slipped under her bedroom door.",
-   "tag": "[calm]",
-   "pause": 0.2
+  "highlights": {
+    "PHOTOGRAPH": "yellow",
+    "MANSION": "yellow",
+    "UPSTAIRS WINDOW": "yellow",
+    "EXACTLY LIKE CHARLOTTE": "red",
+    "CLOSER": "red",
+    "WINDOW WAS OPEN": "purple",
+    "GONE": "red",
+    "INVITATION": "yellow",
+    "ADDRESS MATCHED": "red",
+    "TWELVE UNTOUCHED PLATES": "yellow",
+    "STAIRCASE": "yellow",
+    "SCRATCHED OUT": "red",
+    "FINAL PHOTOGRAPH": "yellow",
+    "TWELVE PEOPLE": "red",
+    "ONE BY ONE": "red",
+    "BEHIND HER": "red",
+    "LAST ONE WE NEEDED": "red",
+    "AGAIN": "yellow",
+    "THIRTEEN": "red",
+    "NONE OF THEM HAD FACES": "red",
+    "CHAIRS SCRAPED": "red",
+    "RUBY": "yellow",
+    "BUTLER": "yellow",
+    "GUESTS": "yellow",
+    "EMPTY": "purple",
+    "EVEN RUBY'S": "red"
   },
-  {
-   "text": "It showed a mansion she'd never visited.",
-   "tag": "[mysterious]",
-   "pause": 0.18
-  },
-  {
-   "text": "In the upstairs window stood a girl.",
-   "tag": "[mysterious]",
-   "pause": 0.18
-  },
-  {
-   "text": "The girl looked exactly like Charlotte.",
-   "tag": "[softly]",
-   "pause": 0.27
-  },
-  {
-   "text": "The next morning, another photograph arrived.",
-   "tag": "[calm]",
-   "pause": 0.18
-  },
-  {
-   "text": "This time, she stood closer to the window.",
-   "tag": "[mysterious]",
-   "pause": 0.2
-  },
-  {
-   "text": "On the third day, the window was open.",
-   "tag": "[calm]",
-   "pause": 0.18
-  },
-  {
-   "text": "And the girl was gone.",
-   "tag": "[softly]",
-   "pause": 0.27
-  },
-  {
-   "text": "That evening, she was invited to a party.",
-   "tag": "[calm]",
-   "pause": 0.18
-  },
-  {
-   "text": "The address matched the mansion.",
-   "tag": "[mysterious]",
-   "pause": 0.27
-  },
-  {
-   "text": "When she arrived, the house was silent.",
-   "tag": "[softly]",
-   "pause": 0.18
-  },
-  {
-   "text": "Music played from an empty ballroom.",
-   "tag": "[mysterious]",
-   "pause": 0.18
-  },
-  {
-   "text": "Dinner was served at a table with twelve untouched plates.",
-   "tag": "[calm]",
-   "pause": 0.2
-  },
-  {
-   "text": "Then she noticed photographs along the staircase.",
-   "tag": "[calm]",
-   "pause": 0.18
-  },
-  {
-   "text": "Each showed a different guest.",
-   "tag": "[mysterious]",
-   "pause": 0.15
-  },
-  {
-   "text": "But every face had been scratched out.",
-   "tag": "[softly]",
-   "pause": 0.28
-  },
-  {
-   "text": "At the top hung one final photograph.",
-   "tag": "[calm]",
-   "pause": 0.18
-  },
-  {
-   "text": "It showed Charlotte in the ballroom.",
-   "tag": "[mysterious]",
-   "pause": 0.15
-  },
-  {
-   "text": "Surrounded by twelve people.",
-   "tag": "[softly]",
-   "pause": 0.27
-  },
-  {
-   "text": "She turned around.",
-   "tag": "[softly]",
-   "pause": 0.15
-  },
-  {
-   "text": "The room was still empty.",
-   "tag": "[mysterious]",
-   "pause": 0.28
-  },
-  {
-   "text": "Then chairs scraped across the floor.",
-   "tag": "[calm]",
-   "pause": 0.18
-  },
-  {
-   "text": "One by one.",
-   "tag": "[softly]",
-   "pause": 0.28
-  },
-  {
-   "text": "A voice whispered behind her,",
-   "tag": "[softly]",
-   "pause": 0.15
-  },
-  {
-   "text": "“You're the last one we needed.”",
-   "tag": "[whispers]",
-   "pause": 0.4,
-   "speak": "You're the last one we needed.",
-   "voice": "guests",
-   "fx": "whisper"
-  },
-  {
-   "text": "Charlotte looked at the photograph again.",
-   "tag": "[calm]",
-   "pause": 0.18
-  },
-  {
-   "text": "Now thirteen people stood in it.",
-   "tag": "[mysterious]",
-   "pause": 0.2
-  },
-  {
-   "text": "And none of them had faces.",
-   "tag": "[whispers]",
-   "pause": 0.15
-  }
- ],
- "samples": {},
- "sound": {
-  "key": 45,
-  "music_gain": 0.3,
-  "music": [
-   [
-    "0",
-    "silence"
-   ],
-   [
-    "L11-0.5",
-    "waltz"
-   ],
-   [
-    "ev:scrape-0.2",
-    "silence"
-   ],
-   [
-    "L25",
-    "waltz_warp"
-   ]
+  "lines": [
+    {
+      "text": "Charlotte found a photograph slipped under her door.",
+      "tag": "[calm]",
+      "pause": 0.2
+    },
+    {
+      "text": "It showed a mansion she'd never visited.",
+      "tag": "[mysterious]",
+      "pause": 0.18
+    },
+    {
+      "text": "In the upstairs window stood a girl.",
+      "tag": "[mysterious]",
+      "pause": 0.18
+    },
+    {
+      "text": "The girl looked exactly like Charlotte.",
+      "tag": "[softly]",
+      "pause": 0.27
+    },
+    {
+      "text": "Her friend Ruby laughed.",
+      "tag": "[calm]",
+      "pause": 0.15
+    },
+    {
+      "text": "“It's just a prank, Charlotte.”",
+      "tag": "[laughs]",
+      "pause": 0.3,
+      "speak": "It's just a prank, Charlotte.",
+      "voice": "ruby"
+    },
+    {
+      "text": "The next morning, the girl stood closer.",
+      "tag": "[mysterious]",
+      "pause": 0.2
+    },
+    {
+      "text": "On the third day, the window was open.",
+      "tag": "[calm]",
+      "pause": 0.18
+    },
+    {
+      "text": "And the girl was gone.",
+      "tag": "[softly]",
+      "pause": 0.27
+    },
+    {
+      "text": "That evening, an invitation arrived.",
+      "tag": "[calm]",
+      "pause": 0.15
+    },
+    {
+      "text": "The address matched the mansion.",
+      "tag": "[mysterious]",
+      "pause": 0.27
+    },
+    {
+      "text": "A butler opened the door without a word.",
+      "tag": "[mysterious]",
+      "pause": 0.18
+    },
+    {
+      "text": "Guests were waiting inside.",
+      "tag": "[calm]",
+      "pause": 0.2
+    },
+    {
+      "text": "“We've been expecting you.”",
+      "tag": "[warmly]",
+      "pause": 0.3,
+      "speak": "We've been expecting you.",
+      "voice": "hostess"
+    },
+    {
+      "text": "When she turned, the ballroom was empty.",
+      "tag": "[mysterious]",
+      "pause": 0.2
+    },
+    {
+      "text": "Twelve untouched plates waited on the table.",
+      "tag": "[calm]",
+      "pause": 0.2
+    },
+    {
+      "text": "Photographs of every guest lined the staircase.",
+      "tag": "[calm]",
+      "pause": 0.15
+    },
+    {
+      "text": "Every face had been scratched out.",
+      "tag": "[softly]",
+      "pause": 0.15
+    },
+    {
+      "text": "Even Ruby's.",
+      "tag": "[softly]",
+      "pause": 0.3
+    },
+    {
+      "text": "At the top hung one final photograph.",
+      "tag": "[calm]",
+      "pause": 0.18
+    },
+    {
+      "text": "It showed Charlotte in the ballroom, surrounded by twelve people.",
+      "tag": "[mysterious]",
+      "pause": 0.25
+    },
+    {
+      "text": "Then chairs scraped across the floor, one by one.",
+      "tag": "[calm]",
+      "pause": 0.25
+    },
+    {
+      "text": "A voice whispered behind her,",
+      "tag": "[softly]",
+      "pause": 0.15
+    },
+    {
+      "text": "“You're the last one we needed.”",
+      "tag": "[whispers]",
+      "pause": 0.4,
+      "speak": "You're the last one we needed.",
+      "voice": "guests",
+      "fx": "whisper"
+    },
+    {
+      "text": "She looked at the photograph again.",
+      "tag": "[calm]",
+      "pause": 0.18
+    },
+    {
+      "text": "Now thirteen people stood in it.",
+      "tag": "[mysterious]",
+      "pause": 0.2
+    },
+    {
+      "text": "And none of them had faces.",
+      "tag": "[whispers]",
+      "pause": 0.15
+    }
   ],
-  "cues": [
-   [
-    "0",
-    "tick",
-    0.12,
-    {
-     "dur": 23.4
-    }
-   ],
-   [
-    "ev:slide",
-    "paper",
-    0.45,
-    {
-     "dur": 0.9
-    }
-   ],
-   [
-    "L1",
-    "drone",
-    0.16,
-    {
-     "dur": 8.5,
-     "f": 55
-    }
-   ],
-   [
-    "L3",
-    "sting",
-    0.2
-   ],
-   [
-    "ev:morning",
-    "paper",
-    0.35,
-    {
-     "dur": 0.8,
-     "seed": 4
-    }
-   ],
-   [
-    "L6",
-    "wind",
-    0.16,
-    {
-     "dur": 4.0
-    }
-   ],
-   [
-    "L7",
-    "whisper",
-    0.1,
-    {
-     "dur": 1.6
-    }
-   ],
-   [
-    "ev:invite",
-    "paper",
-    0.32,
-    {
-     "dur": 0.7,
-     "seed": 6
-    }
-   ],
-   [
-    "L10-0.4",
-    "wind",
-    0.28,
-    {
-     "dur": 3.2
-    }
-   ],
-   [
-    "ev:gate",
-    "creak",
-    0.32,
-    {
-     "dur": 1.6
-    }
-   ],
-   [
-    "ev:enter",
-    "creak",
-    0.2,
-    {
-     "dur": 1.2
-    }
-   ],
-   [
-    "ev:enter",
-    "footsteps",
-    0.16,
-    {
-     "dur": 2.2,
-     "rate": 1.8
-    }
-   ],
-   [
-    "L13",
-    "footsteps",
-    0.13,
-    {
-     "dur": 2.0,
-     "rate": 1.6
-    }
-   ],
-   [
-    "ev:climb",
-    "footsteps",
-    0.17,
-    {
-     "dur": 2.5,
-     "rate": 1.8
-    }
-   ],
-   [
-    "ev:climb+0.4",
-    "creak",
-    0.12,
-    {
-     "dur": 1.0
-    }
-   ],
-   [
-    "L17",
-    "drone",
-    0.34,
-    {
-     "dur": 7.0,
-     "f": 49
-    }
-   ],
-   [
-    "ev:turnAround",
-    "whoosh",
-    0.12,
-    {
-     "dur": 0.8
-    }
-   ],
-   [
-    "ev:scrape-0.2",
-    "winddown",
-    0.4,
-    {
-     "dur": 2.4,
-     "key": 45
-    }
-   ],
-   [
-    "ev:scrape",
-    "drone",
-    0.3,
-    {
-     "dur": 6.0,
-     "f": 44
-    }
-   ],
-   [
-    "L23",
-    "heartbeat",
-    0.25,
-    {
-     "dur": 4.5,
-     "bpm": 72
-    }
-   ],
-   [
-    "ev:out",
-    "whoosh",
-    0.4,
-    {
-     "dur": 0.9
-    }
-   ],
-   [
-    "ev:out+0.1",
-    "drone",
-    0.42,
-    {
-     "dur": 10.0,
-     "f": 41
-    }
-   ],
-   [
-    "ev:swap",
-    "sting",
-    0.32
-   ],
-   [
-    "L27",
-    "rumble",
-    0.2,
-    {
-     "dur": 5.0
-    }
-   ],
-   [
-    "ev:scrape+0.00",
-    "scrape",
-    0.55,
-    {
-     "dur": 0.7,
-     "seed": 3,
-     "pan": 0.4
-    }
-   ],
-   [
-    "ev:scrape+0.42",
-    "scrape",
-    0.535,
-    {
-     "dur": 0.7,
-     "seed": 4,
-     "pan": -0.4
-    }
-   ],
-   [
-    "ev:scrape+0.84",
-    "scrape",
-    0.52,
-    {
-     "dur": 0.7,
-     "seed": 5,
-     "pan": 0.2
-    }
-   ],
-   [
-    "ev:scrape+1.26",
-    "scrape",
-    0.505,
-    {
-     "dur": 0.7,
-     "seed": 6,
-     "pan": -0.2
-    }
-   ],
-   [
-    "ev:scrape+1.68",
-    "scrape",
-    0.49,
-    {
-     "dur": 0.7,
-     "seed": 7,
-     "pan": 0.4
-    }
-   ],
-   [
-    "ev:scrape+2.10",
-    "scrape",
-    0.475,
-    {
-     "dur": 0.7,
-     "seed": 8,
-     "pan": -0.4
-    }
-   ],
-   [
-    "ev:scrape+2.52",
-    "scrape",
-    0.46,
-    {
-     "dur": 0.7,
-     "seed": 9,
-     "pan": 0.2
-    }
-   ],
-   [
-    "ev:scrape+2.94",
-    "scrape",
-    0.445,
-    {
-     "dur": 0.7,
-     "seed": 10,
-     "pan": -0.2
-    }
-   ],
-   [
-    "ev:scrape+3.36",
-    "scrape",
-    0.43,
-    {
-     "dur": 0.7,
-     "seed": 11,
-     "pan": 0.4
-    }
-   ],
-   [
-    "ev:scrape+3.78",
-    "scrape",
-    0.415,
-    {
-     "dur": 0.7,
-     "seed": 12,
-     "pan": -0.4
-    }
-   ],
-   [
-    "ev:scrape+4.20",
-    "scrape",
-    0.4,
-    {
-     "dur": 0.7,
-     "seed": 13,
-     "pan": 0.2
-    }
-   ],
-   [
-    "ev:scrape+4.62",
-    "scrape",
-    0.385,
-    {
-     "dur": 0.7,
-     "seed": 14,
-     "pan": -0.2
-    }
-   ]
-  ]
- },
- "fps": 60
+  "samples": {},
+  "sound": {
+    "key": 45,
+    "music_gain": 0.3,
+    "music": [
+      [
+        "0",
+        "silence"
+      ],
+      [
+        "ev:door",
+        "waltz"
+      ],
+      [
+        "ev:scrape-0.2",
+        "silence"
+      ],
+      [
+        "L25",
+        "waltz_warp"
+      ]
+    ],
+    "cues": [
+      [
+        "0",
+        "tick",
+        0.12,
+        {
+          "dur": 24.6
+        }
+      ],
+      [
+        "ev:slide",
+        "paper",
+        0.45,
+        {
+          "dur": 0.9
+        }
+      ],
+      [
+        "L1",
+        "drone",
+        0.16,
+        {
+          "dur": 8.5,
+          "f": 55
+        }
+      ],
+      [
+        "L3",
+        "sting",
+        0.2
+      ],
+      [
+        "ev:morning",
+        "paper",
+        0.35,
+        {
+          "dur": 0.8,
+          "seed": 4
+        }
+      ],
+      [
+        "L7",
+        "wind",
+        0.16,
+        {
+          "dur": 4.0
+        }
+      ],
+      [
+        "L8",
+        "whisper",
+        0.1,
+        {
+          "dur": 1.6
+        }
+      ],
+      [
+        "ev:invite",
+        "paper",
+        0.32,
+        {
+          "dur": 0.7,
+          "seed": 6
+        }
+      ],
+      [
+        "L11-0.4",
+        "wind",
+        0.28,
+        {
+          "dur": 3.2
+        }
+      ],
+      [
+        "ev:gate",
+        "creak",
+        0.32,
+        {
+          "dur": 1.6
+        }
+      ],
+      [
+        "ev:door",
+        "creak",
+        0.3,
+        {
+          "dur": 1.4
+        }
+      ],
+      [
+        "ev:enter",
+        "footsteps",
+        0.16,
+        {
+          "dur": 2.2,
+          "rate": 1.8
+        }
+      ],
+      [
+        "ev:vanish-0.05",
+        "whoosh",
+        0.2,
+        {
+          "dur": 0.8
+        }
+      ],
+      [
+        "ev:vanish",
+        "sting",
+        0.22
+      ],
+      [
+        "L16",
+        "footsteps",
+        0.13,
+        {
+          "dur": 1.6,
+          "rate": 1.6
+        }
+      ],
+      [
+        "ev:climb",
+        "footsteps",
+        0.17,
+        {
+          "dur": 2.0,
+          "rate": 1.8
+        }
+      ],
+      [
+        "ev:climb+0.4",
+        "creak",
+        0.12,
+        {
+          "dur": 1.0
+        }
+      ],
+      [
+        "L20",
+        "drone",
+        0.34,
+        {
+          "dur": 7.0,
+          "f": 49
+        }
+      ],
+      [
+        "ev:scrape-0.2",
+        "winddown",
+        0.4,
+        {
+          "dur": 2.4,
+          "key": 45
+        }
+      ],
+      [
+        "ev:scrape",
+        "drone",
+        0.3,
+        {
+          "dur": 6.0,
+          "f": 44
+        }
+      ],
+      [
+        "L22",
+        "heartbeat",
+        0.25,
+        {
+          "dur": 4.5,
+          "bpm": 72
+        }
+      ],
+      [
+        "ev:out",
+        "whoosh",
+        0.4,
+        {
+          "dur": 0.9
+        }
+      ],
+      [
+        "ev:out+0.1",
+        "drone",
+        0.42,
+        {
+          "dur": 10.0,
+          "f": 41
+        }
+      ],
+      [
+        "ev:swap",
+        "sting",
+        0.32
+      ],
+      [
+        "L26",
+        "rumble",
+        0.2,
+        {
+          "dur": 5.0
+        }
+      ],
+      [
+        "ev:scrape+0.00",
+        "scrape",
+        0.55,
+        {
+          "dur": 0.6,
+          "seed": 3,
+          "pan": 0.4
+        }
+      ],
+      [
+        "ev:scrape+0.30",
+        "scrape",
+        0.538,
+        {
+          "dur": 0.6,
+          "seed": 4,
+          "pan": -0.4
+        }
+      ],
+      [
+        "ev:scrape+0.60",
+        "scrape",
+        0.526,
+        {
+          "dur": 0.6,
+          "seed": 5,
+          "pan": 0.2
+        }
+      ],
+      [
+        "ev:scrape+0.90",
+        "scrape",
+        0.514,
+        {
+          "dur": 0.6,
+          "seed": 6,
+          "pan": -0.2
+        }
+      ],
+      [
+        "ev:scrape+1.20",
+        "scrape",
+        0.502,
+        {
+          "dur": 0.6,
+          "seed": 7,
+          "pan": 0.4
+        }
+      ],
+      [
+        "ev:scrape+1.50",
+        "scrape",
+        0.49,
+        {
+          "dur": 0.6,
+          "seed": 8,
+          "pan": -0.4
+        }
+      ],
+      [
+        "ev:scrape+1.80",
+        "scrape",
+        0.478,
+        {
+          "dur": 0.6,
+          "seed": 9,
+          "pan": 0.2
+        }
+      ],
+      [
+        "ev:scrape+2.10",
+        "scrape",
+        0.466,
+        {
+          "dur": 0.6,
+          "seed": 10,
+          "pan": -0.2
+        }
+      ],
+      [
+        "ev:scrape+2.40",
+        "scrape",
+        0.454,
+        {
+          "dur": 0.6,
+          "seed": 11,
+          "pan": 0.4
+        }
+      ],
+      [
+        "ev:scrape+2.70",
+        "scrape",
+        0.442,
+        {
+          "dur": 0.6,
+          "seed": 12,
+          "pan": -0.4
+        }
+      ],
+      [
+        "ev:scrape+3.00",
+        "scrape",
+        0.43,
+        {
+          "dur": 0.6,
+          "seed": 13,
+          "pan": 0.2
+        }
+      ],
+      [
+        "ev:scrape+3.30",
+        "scrape",
+        0.418,
+        {
+          "dur": 0.6,
+          "seed": 14,
+          "pan": -0.2
+        }
+      ]
+    ]
+  },
+  "fps": 60
 }

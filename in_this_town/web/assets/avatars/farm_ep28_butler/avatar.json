@@ -1,0 +1,35 @@
+{
+ "key": "farm_ep28_butler",
+ "source": {
+  "route": "one-off Studio capture (Episode 28), the steps of tools/farm_avatars.py",
+  "scene": "scenes/sandbox/avcap_ep28.lua",
+  "catalog_items": [
+   14965237324,
+   5330985959,
+   128977425250405
+  ],
+  "label": "The butler (Episode 28): butler suit, black suit pants, grey slicked-back hair"
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-07",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_Accessory_GrayTest1Accessory"
+ ]
+}

@@ -1,0 +1,35 @@
+{
+ "key": "farm_ep28_waistcoat",
+ "source": {
+  "route": "one-off Studio capture (Episode 28), the steps of tools/farm_avatars.py",
+  "scene": "scenes/sandbox/avcap_ep28.lua",
+  "catalog_items": [
+   15624543996,
+   13562588748,
+   14077895264
+  ],
+  "label": "The young man (Episode 28): waistcoat, black suit pants, red curly hair"
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-07",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_Hair"
+ ]
+}

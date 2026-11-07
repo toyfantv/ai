@@ -227,6 +227,15 @@ change. Episode 17 imports its package, model house and cardboard sky from the l
 * Gotchas: `Batch.box` with a negative size (`Z0 - GZ` when Z0 < GZ) builds a huge inverted slab that blacks out shots: always pass positive
   sizes. A low camera hides a deep window room behind a portico pediment: keep the photo camera level with the window. A 60 fps take with
   film grain encodes at ~28 Mbps at crf 20; cap it (`-crf 21 -maxrate 12M -bufsize 24M`, ~9 Mbps). The episode JSON needs `"fps": 60` for qc.py.
+* Re-made 2026-11-07 (the user: more characters from Roblox avatars, 6-8, interacting; more camera moves and cuts): 27 lines, 64.7 s, about
+  45 shots of 1.2-2.5 s. Seven new avatars, each from catalog items (ids in each `avatar.json`): `farm_ep28_ruby` (her friend, ElevenLabs
+  `jessica`), `farm_ep28_butler`, and the guests `farm_ep28_pearls` (the hostess, `lily`), `farm_ep28_tophat`, `farm_ep28_oldlady`,
+  `farm_ep28_waistcoat`, `farm_ep28_gown`. Their portraits (scratched) line the stair; they and five procedural guests are the twelve in the
+  last photograph. The avatars' alti face skin is `#d49a74` (their captured head colour); girls wear the lash eyes.
+* The mansion's front door opens inward as a lit gap widening from the latch side (`W.doorLit`, a plane scaled in x over the dark door) plus
+  the leaf's edge at the hinge: the facade is solid behind the door, so nothing can swing into it. A portrait of an avatar is framed from
+  its `faceSheet` bounding box (the head group's origin is the neck pivot, and hats push a head box's centre up).
+* `render.js frames <ep> <fps> <start> <end>` takes frame indices, not seconds.
 
 ### Free models from other sites
 

@@ -1,0 +1,35 @@
+{
+ "key": "farm_ep28_ruby",
+ "source": {
+  "route": "one-off Studio capture (Episode 28), the steps of tools/farm_avatars.py",
+  "scene": "scenes/sandbox/avcap_ep28.lua",
+  "catalog_items": [
+   2620718447,
+   5063597468,
+   6794704014
+  ],
+  "label": "Ruby (Episode 28): Charlotte's best friend, red hoodie, blue jeans with white sneakers, black ponytail"
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-07",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_MeshPartAccessory"
+ ]
+}

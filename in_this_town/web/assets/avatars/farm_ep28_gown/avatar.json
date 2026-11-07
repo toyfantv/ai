@@ -1,0 +1,35 @@
+{
+ "key": "farm_ep28_gown",
+ "source": {
+  "route": "one-off Studio capture (Episode 28), the steps of tools/farm_avatars.py",
+  "scene": "scenes/sandbox/avcap_ep28.lua",
+  "catalog_items": [
+   16250849726,
+   9489650951,
+   134413747914962
+  ],
+  "label": "The girl in the gown (Episode 28): ivory ball gown, white ball-gown skirt, ginger curly twin-bun updo"
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-07",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_Accessory_Elegant_Curly_Updo_Twin_Bun_Ginger"
+ ]
+}

@@ -1,0 +1,37 @@
+{
+ "key": "farm_ep28_pearls",
+ "source": {
+  "route": "one-off Studio capture (Episode 28), the steps of tools/farm_avatars.py",
+  "scene": "scenes/sandbox/avcap_ep28.lua",
+  "catalog_items": [
+   1694720928,
+   139069995209328,
+   135089676872143,
+   13981387904
+  ],
+  "label": "The lady in pearls (Episode 28): Victorian dress, Victorian skirt, pearl necklace, brown-blonde updo"
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-07",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_Accessory_MeshPartAccessory",
+  "acc_Elegant_Frizzled_Updo_in_Brown_Blonde"
+ ]
+}

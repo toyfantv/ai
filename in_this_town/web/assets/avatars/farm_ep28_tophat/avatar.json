@@ -1,0 +1,39 @@
+{
+ "key": "farm_ep28_tophat",
+ "source": {
+  "route": "one-off Studio capture (Episode 28), the steps of tools/farm_avatars.py",
+  "scene": "scenes/sandbox/avcap_ep28.lua",
+  "catalog_items": [
+   3324860683,
+   17776777008,
+   5029259191,
+   98222711968065,
+   93466934451365
+  ],
+  "label": "The gentleman (Episode 28): tuxedo, tuxedo pants, top hat, monocle, short brown combed-back hair"
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-07",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_Accessory_Monocle",
+  "acc_Accessory_tripo_node_e06c8afa",
+  "acc_MeshPartAccessory"
+ ]
+}
