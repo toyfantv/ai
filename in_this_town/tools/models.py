@@ -21,6 +21,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import urllib.parse
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 LIB = ROOT / "web" / "assets" / "models"
@@ -80,6 +81,29 @@ def cmd_credits(ep):
     print("\n".join(lines) if lines else f"{ep}: nothing to credit ({len(used)} library models used, none need it)")
 
 
+def external_files(src):
+    """The textures and buffers a .gltf / .glb names by relative path (none outside its folder), to copy along with it."""
+    if src.suffix.lower() not in (".glb", ".gltf"):
+        return []
+    data = src.read_bytes()
+    if src.suffix.lower() == ".glb":
+        n = int.from_bytes(data[12:16], "little")
+        data = data[20:20 + n]
+    j = json.loads(data)
+    out = []
+    for item in j.get("images", []) + j.get("buffers", []):
+        uri = item.get("uri", "")
+        if not uri or uri.startswith("data:") or re.match(r"^[a-z]+:", uri, re.I):
+            continue
+        rel = pathlib.PurePosixPath(urllib.parse.unquote(uri))
+        if rel.is_absolute() or ".." in rel.parts:
+            sys.exit(f"refused: {src.name} points outside its folder ({uri})")
+        if not (src.parent / rel).is_file():
+            sys.exit(f"{src.name} needs {uri}, which isn't next to it: keep the pack's folders as they came")
+        out.append(rel)
+    return out
+
+
 def cmd_add(a):
     name = a.name
     if not re.fullmatch(r"[a-z0-9_]+", name) or name.startswith("farm_"):
@@ -103,6 +127,9 @@ def cmd_add(a):
     with tempfile.TemporaryDirectory() as tmp:   # the download in a folder of its own, read as data
         work = pathlib.Path(tmp) / src.name
         shutil.copy(src, work)
+        for rel in external_files(src):   # Kenney's GLBs keep their colours in Textures/colormap.png beside them
+            (work.parent / rel).parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy(src.parent / rel, work.parent / rel)
         hits = sorted(glob.glob(r"C:\Program Files\Blender Foundation\Blender *\blender.exe"))
         exe = os.environ.get("BLENDER_EXE") or (hits[-1] if hits else "blender")
         r = subprocess.run([exe, "-b", "--disable-autoexec", "--python", str(ROOT / "tools" / "model_import.py"), "--", str(work), str(dest / "model.glb"), str(a.tris), str(a.tex)],
