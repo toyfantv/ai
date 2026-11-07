@@ -114,6 +114,18 @@ python3 tools/sheet.py build/ep06 build/ep06/sheet.jpg 1 5 10 20 30 40 50 60
 * `audio2.py`: moods `tender`, `tender_hope`, `musicbox`; effects `flutter` (wing beats), `chirp` (a small creature's squeak). `glass` needs `dur` >= 1.
 * `render.js frames <ep> 60 <start> <end> 1` takes frame numbers, not seconds.
 
+### Episode 25 notes (the survival camp)
+
+* `web/engine/camp.js`: `campfire()` (stone ring, logs, embers, orange flames, sparks, one shadowed warm light; `.update(t)`, `.level(k)`),
+  `tent()` (sagging canvas grid, seams, flaps, poles, guy ropes), `logSeat`, `woodPile`, `axeStump`, `lantern`, `cookPot`, `bedroll`, `supplyCrate`,
+  `pines(scene, list)` (instanced frosted pines; `.vanish(fn)` shrinks them in a wave), `exitGate()` (portal disc with `.set({ open, close, t })`),
+  `beast()` (glowing-eyed forest creature), `snow()`. Library names: `campfire`, `camp_tent`, `camp_props`, `snowy_pines`, `exit_gate`, `forest_beast`, `snowfall`.
+* Campfire glare: `flame()` colours are HDR (x2.6); at night recolour them near 1.0 or a telephoto shot reads as a white cone.
+* A camera that starts inside a pine canopy renders a flat teal frame: start aerials well above the tallest tree (y 44+ for this forest).
+* A portal jump bridge: cap the whiteout near 0.7 over a dark set (a 0.95 flash reads as a white screen, i.e. glare); keep the gate visible until the cut.
+* A child running hand in hand right behind the lead hides from a front camera: shoot the sprint side-on.
+* `local_voice.py` rewrites the spec with the copy it loaded at the start: don't edit the spec (e.g. its `sound`) while it runs.
+
 ## Engine (`web/engine/`)
 
 | file | what it makes |

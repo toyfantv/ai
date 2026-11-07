@@ -1,0 +1,615 @@
+{
+  "id": "ep25",
+  "number": 25,
+  "title": "We Survived 99 Nights, But the Forest Wouldn't Let Us Leave",
+  "output": "InThisTown_Episode25_99Nights.mp4",
+  "tts": "openrouter",
+  "youtube_title": "We Survived 99 Nights, But the Forest Wouldn't Let Us Leave...",
+  "tiktok_caption": "Night 99. The exit gate finally opened. Then it said one player was still missing.",
+  "hashtags": "#Roblox #99NightsInTheForest #RobloxStories #InThisTown #Shorts",
+  "thumbnail_text": "NIGHT 99",
+  "thumbnail_rec": "Noah in his green jacket running hand in hand with the small child in the red jacket through a dark forest, a campfire glowing behind them and the closing golden exit gate ahead.",
+  "lead_in": 0.3,
+  "tail": 3.6,
+  "voices": {
+    "narrator": {
+      "openrouter": {
+        "model": "elevenlabs/eleven-v3-conversational",
+        "voice": "ErXwobaYiN019PkySvjV",
+        "pitch": 1.1,
+        "tempo": 1.12,
+        "max_tempo": 1.15,
+        "pace": [
+          2.8,
+          3.4
+        ],
+        "min_tempo": 1.0
+      },
+      "kokoro": "am_michael",
+      "speed": 1.0,
+      "note": "Antoni (American), In This Town preset el:ErXwobaYiN019PkySvjV:1.1:1.12 - same narrator every episode"
+    },
+    "system": {
+      "openrouter": {
+        "model": "elevenlabs/eleven-v3-conversational",
+        "voice": "eric",
+        "pitch": 0.84,
+        "tempo": 0.95
+      },
+      "kokoro": "af_heart",
+      "speed": 1.0
+    },
+    "boy": {
+      "openrouter": {
+        "model": "elevenlabs/eleven-v3-conversational",
+        "voice": "liam",
+        "pitch": 1.28,
+        "tempo": 1.0
+      },
+      "kokoro": "af_heart",
+      "speed": 1.0
+    }
+  },
+  "highlights": {
+    "NINETY-NINTH NIGHT": "red",
+    "EXIT": "yellow",
+    "GLOWING GATE": "cyan",
+    "SURVIVED": "yellow",
+    "CREATURES": "red",
+    "FREEZING NIGHTS": "cyan",
+    "ENDLESS DARKNESS": "purple",
+    "MESSAGE": "yellow",
+    "ONE PLAYER STILL MISSING": "red",
+    "TEAM LIST": "yellow",
+    "ACCOUNTED FOR": "yellow",
+    "STRANGE": "purple",
+    "CAMPFIRE": "yellow",
+    "TINY FIGURE": "purple",
+    "OLD RED JACKET": "red",
+    "NEVER SEEN HIM": "purple",
+    "GOING HOME": "yellow",
+    "HESITATED": "yellow",
+    "BEGINNING TO CLOSE": "red",
+    "LEAVE": "yellow",
+    "GO BACK": "yellow",
+    "RAN": "yellow",
+    "GRABBED": "yellow",
+    "SPRINTED": "yellow",
+    "VANISHED": "red",
+    "BRIGHT ROBLOX TOWN": "yellow",
+    "SMILED": "yellow",
+    "THANK YOU": "yellow",
+    "NOTIFICATION": "yellow",
+    "THE FIRST PLAYER HAS FINALLY ESCAPED": "cyan",
+    "DISAPPEARED FROM THE MAP": "purple"
+  },
+  "lines": [
+    {
+      "text": "On the ninety-ninth night, Noah finally saw the exit.",
+      "tag": "[mysterious]",
+      "pause": 0.3,
+      "audio": "build/ep25/local_lines/line_00.wav"
+    },
+    {
+      "text": "A glowing gate appeared between the trees.",
+      "tag": "[in awe]",
+      "pause": 0.3,
+      "audio": "build/ep25/local_lines/line_01.wav"
+    },
+    {
+      "text": "He had survived the forest.",
+      "tag": "[conversational]",
+      "pause": 0.2,
+      "audio": "build/ep25/local_lines/line_02.wav"
+    },
+    {
+      "text": "The creatures.",
+      "tag": "[ominous]",
+      "pause": 0.12,
+      "audio": "build/ep25/local_lines/line_03.wav"
+    },
+    {
+      "text": "The freezing nights.",
+      "tag": "[ominous]",
+      "pause": 0.12,
+      "audio": "build/ep25/local_lines/line_04.wav"
+    },
+    {
+      "text": "And the endless darkness.",
+      "tag": "[ominous]",
+      "pause": 0.65,
+      "audio": "build/ep25/local_lines/line_05.wav"
+    },
+    {
+      "text": "But when Noah approached the gate, a message appeared.",
+      "tag": "[mysterious]",
+      "pause": 0.55,
+      "audio": "build/ep25/local_lines/line_06.wav"
+    },
+    {
+      "text": "\"ONE PLAYER STILL MISSING.\"",
+      "tag": "[slowly]",
+      "pause": 0.4,
+      "speak": "One player still missing.",
+      "voice": "system",
+      "audio": "build/ep25/local_lines/line_07.wav"
+    },
+    {
+      "text": "Noah checked his team list.",
+      "tag": "[conversational]",
+      "pause": 0.15,
+      "audio": "build/ep25/local_lines/line_08.wav"
+    },
+    {
+      "text": "Everyone was accounted for.",
+      "tag": "[mysterious]",
+      "pause": 0.6,
+      "audio": "build/ep25/local_lines/line_09.wav"
+    },
+    {
+      "text": "Then he noticed something strange.",
+      "tag": "[mysterious]",
+      "pause": 0.15,
+      "audio": "build/ep25/local_lines/line_10.wav"
+    },
+    {
+      "text": "The campfire was still burning.",
+      "tag": "[mysterious]",
+      "pause": 0.25,
+      "audio": "build/ep25/local_lines/line_11.wav"
+    },
+    {
+      "text": "And beside it sat a tiny figure.",
+      "tag": "[softly]",
+      "pause": 0.15,
+      "speak": "And beside it, sat a tiny figure.",
+      "local": {
+        "src": "en_us_007"
+      },
+      "audio": "build/ep25/local_lines/line_12.wav"
+    },
+    {
+      "text": "A child wearing an old red jacket.",
+      "tag": "[softly]",
+      "pause": 0.6,
+      "audio": "build/ep25/local_lines/line_13.wav"
+    },
+    {
+      "text": "Noah had never seen him before.",
+      "tag": "[mysterious]",
+      "pause": 0.55,
+      "audio": "build/ep25/local_lines/line_14.wav"
+    },
+    {
+      "text": "The child looked up.",
+      "tag": "[softly]",
+      "pause": 0.15,
+      "audio": "build/ep25/local_lines/line_15.wav"
+    },
+    {
+      "text": "\"Are we going home now?\"",
+      "tag": "[softly]",
+      "pause": 0.4,
+      "speak": "Are we going home now?",
+      "voice": "boy",
+      "audio": "build/ep25/local_lines/line_16.wav"
+    },
+    {
+      "text": "Noah hesitated.",
+      "tag": "[tense]",
+      "pause": 0.45,
+      "audio": "build/ep25/local_lines/line_17.wav"
+    },
+    {
+      "text": "The gate was beginning to close.",
+      "tag": "[tense]",
+      "pause": 0.15,
+      "audio": "build/ep25/local_lines/line_18.wav"
+    },
+    {
+      "text": "He could leave.",
+      "tag": "[tense]",
+      "pause": 0.4,
+      "audio": "build/ep25/local_lines/line_19.wav"
+    },
+    {
+      "text": "Or go back.",
+      "tag": "[tense]",
+      "pause": 0.3,
+      "audio": "build/ep25/local_lines/line_20.wav"
+    },
+    {
+      "text": "Noah ran toward the campfire.",
+      "tag": "[urgent]",
+      "pause": 0.1,
+      "speak": "Noah. Ran toward the campfire.",
+      "local": {
+        "src": "en_us_009",
+        "rate": 0.95
+      },
+      "audio": "build/ep25/local_lines/line_21.wav"
+    },
+    {
+      "text": "He grabbed the child's hand.",
+      "tag": "[urgent]",
+      "pause": 0.1,
+      "audio": "build/ep25/local_lines/line_22.wav"
+    },
+    {
+      "text": "And sprinted toward the gate.",
+      "tag": "[urgent]",
+      "pause": 0.1,
+      "audio": "build/ep25/local_lines/line_23.wav"
+    },
+    {
+      "text": "They jumped through just as it vanished.",
+      "tag": "[urgent]",
+      "pause": 0.75,
+      "local": {
+        "src": "en_us_009",
+        "rate": 1.0
+      },
+      "audio": "build/ep25/local_lines/line_24.wav",
+      "speak": "They jumped through, just as it vanished."
+    },
+    {
+      "text": "Suddenly, Noah was standing in a bright Roblox town.",
+      "tag": "[warm]",
+      "pause": 0.25,
+      "audio": "build/ep25/local_lines/line_25.wav",
+      "speak": "Suddenly, Noah was, standing in a bright Roblox town.",
+      "local": {
+        "src": "en_us_007",
+        "rate": 0.95
+      }
+    },
+    {
+      "text": "The child smiled.",
+      "tag": "[warm]",
+      "pause": 0.45,
+      "audio": "build/ep25/local_lines/line_26.wav"
+    },
+    {
+      "text": "\"Thank you.\"",
+      "tag": "[softly]",
+      "pause": 0.35,
+      "speak": "Thank you.",
+      "voice": "boy",
+      "audio": "build/ep25/local_lines/line_27.wav"
+    },
+    {
+      "text": "Then a notification appeared.",
+      "tag": "[mysterious]",
+      "pause": 0.2,
+      "audio": "build/ep25/local_lines/line_28.wav"
+    },
+    {
+      "text": "\"THE FIRST PLAYER HAS FINALLY ESCAPED.\"",
+      "tag": "[slowly]",
+      "pause": 0.75,
+      "speak": "The first player has finally escaped.",
+      "voice": "system",
+      "audio": "build/ep25/local_lines/line_29.wav"
+    },
+    {
+      "text": "And the forest disappeared from the map.",
+      "tag": "[warm]",
+      "pause": 0.3,
+      "audio": "build/ep25/local_lines/line_30.wav"
+    }
+  ],
+  "samples": {},
+  "sound": {
+    "key": 45,
+    "music_gain": 0.5,
+    "music": [
+      [
+        "0",
+        "mystery"
+      ],
+      [
+        "L3-0.1",
+        "dread"
+      ],
+      [
+        "L6-0.1",
+        "suspense"
+      ],
+      [
+        "L11-0.1",
+        "mystery"
+      ],
+      [
+        "L15-0.1",
+        "tender"
+      ],
+      [
+        "L18-0.1",
+        "suspense"
+      ],
+      [
+        "ev:through-0.2",
+        "silence"
+      ],
+      [
+        "ev:town",
+        "tender_hope"
+      ],
+      [
+        "L28-0.1",
+        "mystery"
+      ],
+      [
+        "ev:erase-0.2",
+        "wonder"
+      ]
+    ],
+    "cues": [
+      [
+        "0",
+        "wind",
+        0.09,
+        {
+          "dur": 6
+        }
+      ],
+      [
+        "0",
+        "crackle",
+        0.1,
+        {
+          "dur": 5,
+          "density": 40
+        }
+      ],
+      [
+        "ev:flip",
+        "ding",
+        0.16
+      ],
+      [
+        "ev:glimpse",
+        "shimmer",
+        0.16,
+        {
+          "dur": 2.2
+        }
+      ],
+      [
+        "L3",
+        "groan",
+        0.08,
+        {
+          "dur": 2.4
+        }
+      ],
+      [
+        "L4",
+        "wind",
+        0.12,
+        {
+          "dur": 3.2
+        }
+      ],
+      [
+        "L5",
+        "rumble",
+        0.08,
+        {
+          "dur": 3.0
+        }
+      ],
+      [
+        "ev:walk",
+        "footsteps",
+        0.1,
+        {
+          "dur": 2.6,
+          "rate": 2.2
+        }
+      ],
+      [
+        "ev:msg",
+        "glitch",
+        0.1,
+        {
+          "dur": 0.35
+        }
+      ],
+      [
+        "ev:msg+0.05",
+        "sting",
+        0.12,
+        {
+          "dur": 2.4
+        }
+      ],
+      [
+        "L8",
+        "tick",
+        0.06,
+        {
+          "dur": 1.4,
+          "rate": 8
+        }
+      ],
+      [
+        "L9",
+        "ding",
+        0.1
+      ],
+      [
+        "ev:turn",
+        "whoosh",
+        0.08,
+        {
+          "dur": 0.8
+        }
+      ],
+      [
+        "L11",
+        "crackle",
+        0.16,
+        {
+          "dur": 4,
+          "density": 70
+        }
+      ],
+      [
+        "ev:look",
+        "heartbeat",
+        0.1,
+        {
+          "dur": 3.5,
+          "bpm": 80
+        }
+      ],
+      [
+        "L16",
+        "crackle",
+        0.08,
+        {
+          "dur": 3,
+          "density": 50
+        }
+      ],
+      [
+        "ev:close",
+        "rumble",
+        0.14,
+        {
+          "dur": 3.0
+        }
+      ],
+      [
+        "ev:close",
+        "hum",
+        0.07,
+        {
+          "dur": 3.0,
+          "f": 55
+        }
+      ],
+      [
+        "L19",
+        "heartbeat",
+        0.12,
+        {
+          "dur": 3.0,
+          "bpm": 120
+        }
+      ],
+      [
+        "ev:run",
+        "run",
+        0.12,
+        {
+          "dur": 1.6
+        }
+      ],
+      [
+        "ev:grab",
+        "pop",
+        0.12
+      ],
+      [
+        "ev:sprint",
+        "run",
+        0.14,
+        {
+          "dur": 2.2
+        }
+      ],
+      [
+        "ev:leap-0.5",
+        "riser",
+        0.14,
+        {
+          "dur": 0.5
+        }
+      ],
+      [
+        "ev:leap",
+        "whoosh",
+        0.18,
+        {
+          "dur": 1.2
+        }
+      ],
+      [
+        "ev:through",
+        "boom",
+        0.16
+      ],
+      [
+        "ev:through",
+        "shimmer",
+        0.22,
+        {
+          "dur": 2.4
+        }
+      ],
+      [
+        "ev:town",
+        "chirp",
+        0.08,
+        {
+          "f": 1500
+        }
+      ],
+      [
+        "ev:town+0.6",
+        "chirp",
+        0.06,
+        {
+          "f": 1800,
+          "up": -1
+        }
+      ],
+      [
+        "L26+0.3",
+        "chime",
+        0.1
+      ],
+      [
+        "ev:notify",
+        "ding",
+        0.16
+      ],
+      [
+        "ev:notify+0.3",
+        "tick",
+        0.06,
+        {
+          "dur": 1.2,
+          "rate": 14
+        }
+      ],
+      [
+        "ev:erase",
+        "whoosh",
+        0.12,
+        {
+          "dur": 1.6
+        }
+      ],
+      [
+        "ev:erase+0.2",
+        "shimmer",
+        0.2,
+        {
+          "dur": 3.0
+        }
+      ],
+      [
+        "ev:erase+0.4",
+        "glitch",
+        0.06,
+        {
+          "dur": 0.5
+        }
+      ]
+    ]
+  },
+  "fps": 60
+}

@@ -728,5 +728,75 @@
     "source": "this renderer",
     "type": "builder",
     "url": ""
+  },
+  "campfire": {
+    "author": "toyfantv",
+    "desc": "a stone-ring campfire with crossed logs, embers, orange flames, rising sparks and one warm shadowed light",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep25",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "camp_tent": {
+    "author": "toyfantv",
+    "desc": "an A-frame canvas tent with sagging sides, seams, open flaps, poles, guy ropes and pegs",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep25",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "camp_props": {
+    "author": "toyfantv",
+    "desc": "survival camp props: log seat, wood pile, axe in a stump, lantern on a post, cook pot, bedroll, supply crate",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep25",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "snowy_pines": {
+    "author": "toyfantv",
+    "desc": "instanced dark pines with frost on the tips, for a night survival forest; can vanish in a wave",
+    "kind": "nature",
+    "licence": "own",
+    "made_for": "ep25",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "exit_gate": {
+    "author": "toyfantv",
+    "desc": "a stone exit gate with an arch, glowing runes and a swirling portal that opens and irises shut",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep25",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "forest_beast": {
+    "author": "toyfantv",
+    "desc": "a blocky wolf-like forest creature with glowing red eyes that blink",
+    "kind": "character",
+    "licence": "own",
+    "made_for": "ep25",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "snowfall": {
+    "author": "toyfantv",
+    "desc": "falling snow points over an area",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep25",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
   }
 }

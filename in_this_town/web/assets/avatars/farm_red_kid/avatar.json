@@ -1,0 +1,34 @@
+{
+ "key": "farm_red_kid",
+ "source": {
+  "route": "one-off Studio capture, the steps of tools/farm_avatars.py",
+  "catalog_items": [
+   15915053894,
+   4831133446,
+   99464418162334
+  ],
+  "label": "The child in the red jacket (Episode 25): dark-red hoodie jacket, light jeans, short dark hair"
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-07",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_Accessory_8"
+ ]
+}

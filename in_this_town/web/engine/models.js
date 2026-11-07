@@ -12,6 +12,7 @@ import { doorLeaf, plate, exitSign, flashlight, ceilingTiles, rubble, hotelTower
 import { gown, dressForm, starPaddle } from './runway.js';
 import { goldenDragon, goldenKey, goldenEgg } from './pets.js';
 import { cottage, mailbox, framedPhoto } from './pastel.js';
+import { campfire, tent, logSeat, woodPile, axeStump, lantern, cookPot, bedroll, supplyCrate, pines, exitGate, beast, snow } from './camp.js';
 import { cubeSeed, cubeStairs, gardenPlot, seedStall, wateringCan, wheelbarrow, scarecrow, floatingIsland, glassField, nameTree, bloomField } from './garden.js';
 
 // ---------- Episode 17 ----------
@@ -361,4 +362,12 @@ export const BUILD = {
   glass_plants: (o) => glassField(o.parent, o.list || [], o),   // instanced glowing blue glass plants (tulip, crystal, mush, fern, tree, bell, hedge); .update(t)
   name_tree: (o) => { const t = nameTree(o); put(o, t.g); return t; },   // a giant white-bark tree with a blue glass crown; .radius(y) to carve names (forest.js namePatches / heroPatch)
   bloom_field: (o) => bloomField(o.parent, o.spots || [], o),   // flowers that grow in a wave from a centre: .t0, .update(t)
+  campfire: (o) => put(o, campfire(o)),   // a stone-ring campfire: logs, embers, orange flames, sparks, one shadowed warm light; .update(t), .level(k)
+  camp_tent: (o) => put(o, tent(o)),   // an A-frame canvas tent with sagging sides, seams, open flaps, poles, guy ropes and pegs (w, d, h, color)
+  camp_props: (o) => put(o, inGroup((g) => { const a = logSeat(5, 3), b = woodPile(4), c = axeStump(5), d = lantern(), e = cookPot(), f = bedroll(), h = supplyCrate(1);
+    a.position.set(-5, 0, 0); b.position.set(-1, 0, 0); c.position.set(2.5, 0, 0); d.position.set(4.5, 0, 0); e.position.set(6.5, 0, 0); f.position.set(9, 0, 0); h.position.set(12, 0, 0); g.add(a, b, c, d, e, f, h); })),   // log seat, wood pile, axe stump, lantern, cook pot, bedroll, supply crate
+  snowy_pines: (o) => pines(o.parent, o.list || [], o),   // instanced dark pines with frosted tips; list [{x, z, s}]; .vanish(fn)
+  exit_gate: (o) => put(o, exitGate(o)),   // stone pillars and an arch with runes around a swirling portal; .set({ open, close, t })
+  forest_beast: (o) => put(o, beast(o)),   // a blocky wolf-like creature with glowing eyes that blink; .update(t)
+  snowfall: (o) => snow(o.parent, o),   // falling snow points (centre, size, height, count)
 };
