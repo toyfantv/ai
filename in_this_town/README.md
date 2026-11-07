@@ -62,6 +62,8 @@ python tools/local_voice.py episodes/specs/ep21.json --check          # faster-w
   `"local": {"src": "en_us_007"}` (Episode 21 tried five; splicing the word from another line was unintelligible). Spell numbers in `speak`.
 * A child's voice: `en_us_006` with `"pitch": 1.28` and no conversion (the `boy` role).
 * The converted lines haven't been judged by ear, only by transcript: say so in the manifest.
+* A source voice too slow for the series pace (Episode 22: about 2.4 words a second at the 1.15 tempo cap): `"local_rate": 1.22` in the spec
+  makes Silencio speak faster natively (`"local": {"rate": ...}` per line), so the tempo cap holds.
 
 ### Rendering on RunPod
 

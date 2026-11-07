@@ -3,7 +3,7 @@
 
 Usage: python tools/audio2.py episodes/epXX.json
 The episode JSON has a "sound" block:
-  "music": [[time, mood], ...]       moods: wonder, mystery, playful, suspense, dread, cosmic, silence
+  "music": [[time, mood], ...]       moods: wonder, mystery, playful, suspense, dread, cosmic, silence, runway, runway_dark
   "cues":  [[time, sfx, gain, {opts}], ...]
 Times: "0", "L3" (start of line 3), "L3e" (end of line 3), "ev:name" (director event), each with optional "+x"/"-x".
 """
@@ -245,6 +245,19 @@ def mood(name, d, key=50, seed=1):
         notes = [key + 24 + n for n in (0, 4, 7, 12, 16, 19, 24)]
         t, i = 0.6, 0
         while t < d: add(int(t * SR), bell(hz(notes[i % 7]), 2.6), 0.1); t += 0.4; i += 1
+    elif name in ('runway', 'runway_dark'):
+        # a fashion-show beat (Episode 22): four-on-the-floor at 122 bpm, off-beat hats, a minor pad, a plucked arpeggio; runway_dark drops the
+        # kick for a filtered, colder pulse
+        beat = 60 / 122; dark = name == 'runway_dark'
+        add(0, pad([hz(key + n) for n in (0, 3, 7, 10, 15)], d + 0.5, a=0.4, r=0.8, bright=900 if dark else 2000, detune=0.008), 0.34)
+        hat = bp(r.standard_normal(int(0.05 * SR)), 6000, 12000) * np.exp(-np.linspace(0, 9, int(0.05 * SR)))
+        arp = [key + 12 + n for n in (0, 3, 7, 10, 12, 10, 7, 3)]
+        t, i = 0.0, 0
+        while t < d:
+            if not dark: add(int(t * SR), impact(0.35, 110, 48, 0.0), 0.3)
+            add(int((t + beat / 2) * SR), hat, 0.05 if dark else 0.09)
+            add(int(t * SR), bell(hz(arp[i % 8]), 0.5), 0.05 if dark else 0.08); add(int((t + beat / 2) * SR), bell(hz(arp[(i + 4) % 8] + 12), 0.4), 0.04)
+            t += beat; i += 1
     elif name == 'mystery':
         add(0, pad([hz(key + n) for n in (0, 3, 7, 10, 14)], d + 0.5, a=0.8, r=1.0, bright=1500), 0.45)
         notes = [key + 24 + n for n in (0, 3, 7, 10, 12, 15)]

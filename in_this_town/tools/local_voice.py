@@ -8,7 +8,8 @@ so timings carry over by themselves.
   python tools/local_voice.py episodes/specs/ep21.json --check                          # transcript of every line, WER per line and overall
 
 A spec line's voice picks its entry in VOICES; "speak" is the text said, "text" what the captions show. "local" on a line overrides
-source voice, tempo and pitch for that line ({"src": "en_us_006", "tempo": 1.0}).
+source voice, tempo, pitch and rate for that line ({"src": "en_us_006", "tempo": 1.0}). A spec's "local_rate" (Episode 22: 1.22) makes Silencio
+speak every narrator line that much faster before conversion: the source voice runs about 2.4 words a second, too slow for the 1.15 tempo cap.
 """
 import json, os, pathlib, re, subprocess, sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -51,10 +52,16 @@ def make(spec, ep, only, src):
     jobs = []
     for i, l in enumerate(spec["lines"]):
         if only and i not in only: continue
-        cfg = {**VOICES[l.get("voice", "narrator")], **l.get("local", {})}
+        cfg = {**VOICES[l.get("voice", "narrator")], **({"rate": spec["local_rate"]} if spec.get("local_rate") and l.get("voice", "narrator") == "narrator" else {}), **l.get("local", {})}
         if src and l.get("voice", "narrator") == "narrator": cfg["src"] = src
         jobs.append((i, l, cfg))
-    say = [{"voice": c["src"], "text": say_text(l), "out": str(d / f"src_{i:02d}.wav"), "cfg": str(T.voice_file(c["src"]))} for i, l, c in jobs]
+    def cfg_of(c):
+        """Silencio's voice file; "rate" > 1 has it speak faster natively (a cleaner way to pace than atempo past 1.15)"""
+        f = T.voice_file(c["src"]); r = c.get("rate", 1.0)
+        if abs(r - 1) < 1e-3: return str(f)
+        v = json.loads(f.read_text(encoding="utf-8")); v["speed"] = v["speed"] * r
+        out = d / f"cfg_{c['src']}_{r:.2f}.json"; out.write_text(json.dumps(v), encoding="utf-8"); return str(out)
+    say = [{"voice": c["src"], "text": say_text(l), "out": str(d / f"src_{i:02d}.wav"), "cfg": cfg_of(c)} for i, l, c in jobs]
     T.run_worker(T.SILENCIO_PY, "_say", say)
     vc = [{"src": str(d / f"src_{i:02d}.wav"), "out": str(d / f"vc_{i:02d}.wav"), "ref": str(REFS / c["ref"])} for i, l, c in jobs if c.get("ref")]
     if vc: T.run_worker(T.SEEDVC_PY, "_polish", vc)
@@ -65,7 +72,7 @@ def make(spec, ep, only, src):
         l["audio"] = f"build/{ep}/local_lines/line_{i:02d}.wav"
 
 
-NUM = {"99": "ninety nine", "100": "one hundred", "000": "zero zero zero", "0": "zero", "5": "five"}
+NUM = {"99": "ninety nine", "100": "one hundred", "000": "zero zero zero", "0": "zero", "5": "five", "10": "ten", "20": "twenty"}
 
 
 def norm(s):

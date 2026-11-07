@@ -1,0 +1,647 @@
+{
+ "number": 22,
+ "title": "The Dress That Won Every Competition",
+ "output": "InThisTown_Episode22_SilverDress.mp4",
+ "youtube_title": "The Dress That Won Every Competition...",
+ "tiktok_caption": "She lost 20 fashion shows. Then she found a silver dress behind the mirrors, and it never let her lose again.",
+ "hashtags": "#Roblox #RobloxStories #InThisTown #DressToImpress #Shorts",
+ "thumbnail_text": "WINNER FOREVER",
+ "thumbnail_rec": "Bella in the glowing silver dress and tiara alone on a silver-lit runway, a giant screen behind her reading WINNER SELECTED FOREVER, frozen contestants in the dark.",
+ "tail": 4.0,
+ "fps": 60,
+ "narrator": {
+  "min_tempo": 1.0,
+  "pace": [
+   2.6,
+   3.4
+  ]
+ },
+ "cast": {
+  "system": {
+   "voice": "eric",
+   "pitch": 0.84,
+   "tempo": 0.95
+  }
+ },
+ "highlights": {
+  "TWENTY": "yellow",
+  "LOST": "red",
+  "SILVER DRESS": "cyan",
+  "MIRRORS": "purple",
+  "BEAUTIFUL": "yellow",
+  "GLOWING DIAMONDS": "cyan",
+  "SILENT": "yellow",
+  "FUTURE ROYALTY": "purple",
+  "STAGE": "yellow",
+  "FIVE STARS": "yellow",
+  "FIRST PLACE": "yellow",
+  "WON AGAIN": "yellow",
+  "LOVED": "yellow",
+  "STOPPED MOVING": "red",
+  "FROZE": "red",
+  "RUNWAY SCREEN": "cyan",
+  "WINNER SELECTED FOREVER": "red",
+  "LEAVE": "red",
+  "EXIT BUTTON": "red",
+  "TIGHTENING": "red",
+  "SPOTLIGHT": "yellow",
+  "TEN SECONDS": "red",
+  "AUDIENCE": "yellow",
+  "EMPTY": "red",
+  "EXCEPT ONE": "yellow",
+  "WATCHING": "red",
+  "ORIGINAL OUTFIT": "purple"
+ },
+ "lines": [
+  {
+   "text": "Bella had entered twenty fashion competitions.",
+   "tag": "[mysterious]",
+   "pause": 0.34,
+   "audio": "build/ep22/local_lines/line_00.wav"
+  },
+  {
+   "text": "And lost every single one.",
+   "tag": "[mysterious]",
+   "pause": 0.62,
+   "audio": "build/ep22/local_lines/line_01.wav"
+  },
+  {
+   "text": "Until she discovered a silver dress hidden behind the dressing room mirrors.",
+   "tag": "[mysterious]",
+   "pause": 0.34,
+   "audio": "build/ep22/local_lines/line_02.wav"
+  },
+  {
+   "text": "It was beautiful.",
+   "tag": "[in awe]",
+   "pause": 0.34,
+   "audio": "build/ep22/local_lines/line_03.wav"
+  },
+  {
+   "text": "Covered in tiny glowing diamonds.",
+   "tag": "[in awe]",
+   "pause": 0.34,
+   "audio": "build/ep22/local_lines/line_04.wav"
+  },
+  {
+   "text": "And when Bella put it on, the entire lobby went silent.",
+   "tag": "[mysterious]",
+   "pause": 0.62,
+   "audio": "build/ep22/local_lines/line_05.wav"
+  },
+  {
+   "text": "The runway theme was \"Future Royalty.\"",
+   "speak": "The runway theme was Future Royalty.",
+   "tag": "[conversational]",
+   "pause": 0.34,
+   "audio": "build/ep22/local_lines/line_06.wav"
+  },
+  {
+   "text": "Bella walked onto the stage.",
+   "tag": "[conversational]",
+   "pause": 0.34,
+   "audio": "build/ep22/local_lines/line_07.wav"
+  },
+  {
+   "text": "Every judge gave her five stars.",
+   "tag": "[excited]",
+   "pause": 0.34,
+   "audio": "build/ep22/local_lines/line_08.wav"
+  },
+  {
+   "text": "She won first place.",
+   "tag": "[excited]",
+   "pause": 0.34,
+   "audio": "build/ep22/local_lines/line_09.wav"
+  },
+  {
+   "text": "Then she entered another round.",
+   "tag": "[conversational]",
+   "pause": 0.34,
+   "audio": "build/ep22/local_lines/line_10.wav",
+   "local": {
+    "src": "en_us_007"
+   }
+  },
+  {
+   "text": "And won again.",
+   "tag": "[conversational]",
+   "pause": 0.34,
+   "audio": "build/ep22/local_lines/line_11.wav"
+  },
+  {
+   "text": "No matter what outfit she wore, the game kept giving her first place.",
+   "tag": "[mysterious]",
+   "pause": 0.34,
+   "audio": "build/ep22/local_lines/line_12.wav"
+  },
+  {
+   "text": "At first, Bella loved it.",
+   "tag": "[conversational]",
+   "pause": 0.34,
+   "audio": "build/ep22/local_lines/line_13.wav"
+  },
+  {
+   "text": "Until the other contestants stopped moving.",
+   "tag": "[whispers]",
+   "pause": 0.34,
+   "audio": "build/ep22/local_lines/line_14.wav"
+  },
+  {
+   "text": "Their faces froze.",
+   "tag": "[whispers]",
+   "pause": 0.34,
+   "audio": "build/ep22/local_lines/line_15.wav"
+  },
+  {
+   "text": "And a message appeared on the runway screen.",
+   "tag": "[mysterious]",
+   "pause": 0.62,
+   "audio": "build/ep22/local_lines/line_16.wav"
+  },
+  {
+   "text": "\"WINNER SELECTED FOREVER.\"",
+   "speak": "Winner selected forever.",
+   "voice": "system",
+   "fx": "giant",
+   "tag": "[slowly, deep]",
+   "pause": 0.62,
+   "audio": "build/ep22/local_lines/line_17.wav"
+  },
+  {
+   "text": "Bella tried to leave the game.",
+   "tag": "[urgent]",
+   "pause": 0.34,
+   "audio": "build/ep22/local_lines/line_18.wav"
+  },
+  {
+   "text": "But the exit button was gone.",
+   "tag": "[urgent]",
+   "pause": 0.34,
+   "audio": "build/ep22/local_lines/line_19.wav"
+  },
+  {
+   "text": "Then the silver dress began tightening around her.",
+   "tag": "[urgent]",
+   "pause": 0.34,
+   "audio": "build/ep22/local_lines/line_20.wav"
+  },
+  {
+   "text": "A spotlight turned on.",
+   "tag": "[mysterious]",
+   "pause": 0.34,
+   "audio": "build/ep22/local_lines/line_21.wav"
+  },
+  {
+   "text": "And a voice announced,",
+   "tag": "[mysterious]",
+   "pause": 0.34,
+   "audio": "build/ep22/local_lines/line_22.wav"
+  },
+  {
+   "text": "\"NEXT ROUND BEGINS IN TEN SECONDS.\"",
+   "speak": "Next round begins in ten seconds.",
+   "voice": "system",
+   "fx": "giant",
+   "tag": "[slowly, deep]",
+   "pause": 0.62,
+   "audio": "build/ep22/local_lines/line_23.wav"
+  },
+  {
+   "text": "Bella looked toward the audience.",
+   "tag": "[mysterious]",
+   "pause": 0.34,
+   "audio": "build/ep22/local_lines/line_24.wav"
+  },
+  {
+   "text": "Every seat was empty.",
+   "tag": "[mysterious]",
+   "pause": 0.34,
+   "audio": "build/ep22/local_lines/line_25.wav"
+  },
+  {
+   "text": "Except one.",
+   "tag": "[whispers]",
+   "pause": 0.62,
+   "audio": "build/ep22/local_lines/line_26.wav"
+  },
+  {
+   "text": "Someone was watching.",
+   "tag": "[whispers]",
+   "pause": 0.34,
+   "audio": "build/ep22/local_lines/line_27.wav"
+  },
+  {
+   "text": "And they were wearing her original outfit.",
+   "tag": "[mysterious]",
+   "pause": 0.34,
+   "audio": "build/ep22/local_lines/line_28.wav",
+   "local": {
+    "src": "en_us_010"
+   },
+   "speak": "And they were, wearing her original outfit."
+  }
+ ],
+ "samples": {},
+ "sound": {
+  "key": 50,
+  "music_gain": 0.5,
+  "music": [
+   [
+    "0",
+    "runway_dark"
+   ],
+   [
+    "L2-0.2",
+    "mystery"
+   ],
+   [
+    "ev:slide",
+    "wonder"
+   ],
+   [
+    "ev:silent",
+    "silence"
+   ],
+   [
+    "L6-0.1",
+    "runway"
+   ],
+   [
+    "ev:freeze-0.1",
+    "silence"
+   ],
+   [
+    "ev:glitch-0.3",
+    "suspense"
+   ],
+   [
+    "ev:forever",
+    "dread"
+   ],
+   [
+    "ev:spot-0.1",
+    "silence"
+   ],
+   [
+    "ev:count",
+    "dread"
+   ],
+   [
+    "L25-0.2",
+    "silence"
+   ],
+   [
+    "ev:spec-0.2",
+    "cosmic"
+   ]
+  ],
+  "cues": [
+   [
+    "0",
+    "hum",
+    0.04,
+    {
+     "dur": 13
+    }
+   ],
+   [
+    "0",
+    "footsteps",
+    0.1,
+    {
+     "dur": 3,
+     "rate": 2.6
+    }
+   ],
+   [
+    "L1+0.2",
+    "sting",
+    0.14,
+    {
+     "dur": 2.6
+    }
+   ],
+   [
+    "ev:slide-0.4",
+    "glass",
+    0.08,
+    {
+     "dur": 0.6
+    }
+   ],
+   [
+    "ev:slide",
+    "creak",
+    0.16,
+    {
+     "dur": 1.4
+    }
+   ],
+   [
+    "ev:slide",
+    "whoosh",
+    0.1,
+    {
+     "dur": 1.2
+    }
+   ],
+   [
+    "ev:slide+0.5",
+    "shimmer",
+    0.24,
+    {
+     "dur": 3
+    }
+   ],
+   [
+    "L4",
+    "glass",
+    0.14,
+    {
+     "dur": 2
+    }
+   ],
+   [
+    "ev:swap-0.7",
+    "riser",
+    0.16,
+    {
+     "dur": 0.75
+    }
+   ],
+   [
+    "ev:swap",
+    "shimmer",
+    0.26,
+    {
+     "dur": 2
+    }
+   ],
+   [
+    "ev:swap",
+    "whoosh",
+    0.2,
+    {
+     "dur": 0.8
+    }
+   ],
+   [
+    "L6",
+    "hum",
+    0.04,
+    {
+     "dur": 24
+    }
+   ],
+   [
+    "L7",
+    "footsteps",
+    0.12,
+    {
+     "dur": 3,
+     "rate": 2.4
+    }
+   ],
+   [
+    "ev:j1",
+    "ding",
+    0.18
+   ],
+   [
+    "ev:j2",
+    "ding",
+    0.18
+   ],
+   [
+    "ev:j3",
+    "ding",
+    0.2
+   ],
+   [
+    "ev:conf1",
+    "pop",
+    0.2
+   ],
+   [
+    "ev:conf1",
+    "crackle",
+    0.2,
+    {
+     "dur": 3,
+     "density": 150
+    }
+   ],
+   [
+    "ev:conf1+0.05",
+    "chime",
+    0.14
+   ],
+   [
+    "L10",
+    "footsteps",
+    0.1,
+    {
+     "dur": 3,
+     "rate": 2.6
+    }
+   ],
+   [
+    "ev:conf2",
+    "pop",
+    0.18
+   ],
+   [
+    "ev:conf2",
+    "crackle",
+    0.18,
+    {
+     "dur": 2.5,
+     "density": 150
+    }
+   ],
+   [
+    "ev:outfits",
+    "crackle",
+    0.14,
+    {
+     "dur": 5.8,
+     "density": 130
+    }
+   ],
+   [
+    "ev:outfits",
+    "tick",
+    0.07,
+    {
+     "dur": 5,
+     "rate": 2.4
+    }
+   ],
+   [
+    "ev:freeze",
+    "glitch",
+    0.16,
+    {
+     "dur": 0.3
+    }
+   ],
+   [
+    "ev:freeze",
+    "hum",
+    0.08,
+    {
+     "dur": 12
+    }
+   ],
+   [
+    "ev:glitch",
+    "glitch",
+    0.2,
+    {
+     "dur": 0.5,
+     "seed": 5
+    }
+   ],
+   [
+    "ev:forever",
+    "boom",
+    0.3
+   ],
+   [
+    "ev:forever",
+    "sting",
+    0.24,
+    {
+     "dur": 3
+    }
+   ],
+   [
+    "ev:menu",
+    "pop",
+    0.12
+   ],
+   [
+    "ev:click",
+    "knock",
+    0.1
+   ],
+   [
+    "ev:gone",
+    "glitch",
+    0.18,
+    {
+     "dur": 0.4,
+     "seed": 7
+    }
+   ],
+   [
+    "ev:tight",
+    "creak",
+    0.2,
+    {
+     "dur": 2
+    }
+   ],
+   [
+    "ev:tight",
+    "heartbeat",
+    0.16,
+    {
+     "dur": 4,
+     "bpm": 100
+    }
+   ],
+   [
+    "ev:spot",
+    "boom",
+    0.3
+   ],
+   [
+    "ev:spot",
+    "hum",
+    0.07,
+    {
+     "dur": 10
+    }
+   ],
+   [
+    "ev:count",
+    "tick",
+    0.14,
+    {
+     "dur": 8.5,
+     "rate": 1.11
+    }
+   ],
+   [
+    "ev:turn",
+    "whoosh",
+    0.1,
+    {
+     "dur": 0.7
+    }
+   ],
+   [
+    "L25",
+    "wind",
+    0.05,
+    {
+     "dur": 9
+    }
+   ],
+   [
+    "ev:spec",
+    "sting",
+    0.2,
+    {
+     "dur": 3
+    }
+   ],
+   [
+    "ev:spec",
+    "shimmer",
+    0.12,
+    {
+     "dur": 2
+    }
+   ],
+   [
+    "ev:clap+0.00",
+    "knock",
+    0.15
+   ],
+   [
+    "ev:clap+0.62",
+    "knock",
+    0.15
+   ],
+   [
+    "ev:clap+1.24",
+    "knock",
+    0.15
+   ],
+   [
+    "ev:clap+1.86",
+    "knock",
+    0.15
+   ],
+   [
+    "ev:clap+2.48",
+    "knock",
+    0.15
+   ],
+   [
+    "ev:clap+3.10",
+    "knock",
+    0.15
+   ],
+   [
+    "ev:clap+3.72",
+    "knock",
+    0.15
+   ]
+  ]
+ },
+ "local_rate": 1.22
+}

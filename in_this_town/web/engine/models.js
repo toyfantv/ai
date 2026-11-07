@@ -9,6 +9,7 @@ import { makeHouse, makeTree, mergeGroup, buildHeroHouse, buildTown } from './to
 import { makeLeg, footAt, makeEye, canvasTex, glowSprite } from './props.js';
 import { secCam, fridge, diningChair, diningTable, bed, sofa, plant, pcDesk, selectionBox, modernHouse } from './home.js';
 import { doorLeaf, plate, exitSign, flashlight, ceilingTiles, rubble, hotelTower } from './hotel.js';
+import { gown, dressForm, starPaddle } from './runway.js';
 
 // ---------- Episode 17 ----------
 // The black package: four walls that fold out (open(angle)), a lid, a RETURN ADDRESS label.
@@ -337,4 +338,8 @@ export const BUILD = {
   ceiling_tiles: (o) => ceilingTiles(o.parent, o),        // .update(t): tiles drop at fall(cell) seconds
   rubble_pile: (o) => rubble(o.parent, o),                // .update(t): chunks drop at list[i].t0
   hotel_tower: (o) => hotelTower(o.parent, o),            // .update(tGreen, tSweep, tFall, t): windows go green floor by floor, floors pancake
+  // ---------- Episode 22 (engine/runway.js) ----------
+  silver_gown: (o) => { const g = gown(o); if (o.parent) o.parent.add(g.mesh); return g; },   // put on a character's hips; .set(k, t): 0 flowing, 1 cinched
+  dress_form: (o) => put(o, dressForm(o)),                // a dark-silver form wearing the gown, sparkling (.mat, .geo)
+  star_paddle: (o) => put(o, starPaddle(o.arm ?? 2.2)),   // a judge's five-star card on a stick, for a character's arm
 };

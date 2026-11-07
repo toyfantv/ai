@@ -109,6 +109,16 @@
     "type": "builder",
     "url": ""
   },
+  "dress_form": {
+    "author": "toyfantv",
+    "desc": "a dark-silver dress form wearing the sparkling gown",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep22",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "exit_sign": {
     "author": "toyfantv",
     "desc": "a glowing green EXIT sign",
@@ -449,6 +459,16 @@
     "type": "builder",
     "url": ""
   },
+  "silver_gown": {
+    "author": "toyfantv",
+    "desc": "a silver sequinned gown for a character, flowing or cinched round the legs",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep22",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "star": {
     "author": "toyfantv",
     "desc": "a glowing star sprite",
@@ -465,6 +485,16 @@
     "kind": "prop",
     "licence": "own",
     "made_for": "ep11",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "star_paddle": {
+    "author": "toyfantv",
+    "desc": "a judge's five-star score paddle",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep22",
     "source": "this renderer",
     "type": "builder",
     "url": ""
