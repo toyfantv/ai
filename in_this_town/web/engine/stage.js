@@ -6,6 +6,7 @@ import { buildSky } from './sky.js';
 import { loadAvatars } from './roblox.js';
 import { loadModels } from './library.js';
 import { winMat, lampMat } from './town.js';
+import { installLook, jitter } from './look.js';
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
@@ -40,7 +41,9 @@ export const DUSK = P({ top: '#2a2f6e', horizon: '#ff9a6a', haze: '#d89a8a', sun
   sunDisc: 1, sunSize: 1.4, stars: 0.2, moon: 0, hemiSky: '#c8a0c0', hemiGround: '#4a4a40', hemiI: 0.9, amb: 0.14,
   caus: '#ffffff', causI: 0, exposure: 1.0, vig: 0.35, win: 0.8, lamp: 1.2, fogNear: 200, fogFar: 700, bloom: 0.35 });
 
-export async function initStage(ep, { avatars = [], models = [] } = {}) {
+export async function initStage(ep, { avatars = [], models = [], look = 'classic' } = {}) {
+  const q = new URLSearchParams(location.search);
+  look = q.get('look') || look;
   const tr = await fetch(`/build/${ep}/timeline.json`);
   // check pages (e.g. episodes/avatars.js) have no narration: fall back to an empty 6 s timeline
   const TL = tr.ok ? await tr.json() : { duration: 6, lines: [], captions: [] };
@@ -79,6 +82,7 @@ export async function initStage(ep, { avatars = [], models = [] } = {}) {
   composer.addPass(bloom); composer.addPass(new OutputPass());
   const ctx = { renderer, scene, camera, hemi, amb, sun, sky, TL, L, dur: TL.duration, composer, bloom,
     cap: el('cap'), black: el('black'), flash: el('flash'), grade: el('grade'), thumbMode: false };
+  if (look === 'pro') installLook(ctx, { samples: parseInt(q.get('samples') || '1', 10), fps: parseFloat(q.get('fps') || '30') });
   return ctx;
 }
 
@@ -98,6 +102,7 @@ export function applyEnv(ctx, e) {
   winMat.emissiveIntensity = e.win; lampMat.emissiveIntensity = e.lamp;
   renderer.toneMappingExposure = e.exposure;
   if (ctx.bloom) ctx.bloom.strength = e.bloom ?? 0.4;
+  if (ctx.pro) ctx.pro.env(e);
   ctx.env = e;
 }
 
@@ -132,6 +137,8 @@ const tmp = new THREE.Vector3();
 // Finish a frame: camera (+shake), shadow focus, overlays, captions, render.
 export function frame(ctx, t, sh, o = {}) {
   const { camera, sun, renderer, scene } = ctx;
+  const sub = ctx.sub, jit = sub && sub.N > 1 ? jitter(sub.i) : null;
+  ctx.shotName = sh.name;
   camera.position.copy(sh.pos); camera.fov = sh.fov || 60; camera.updateProjectionMatrix();
   const look = sh.look.clone();
   const shake = o.shake || 0;
@@ -147,26 +154,32 @@ export function frame(ctx, t, sh, o = {}) {
   camera.up.set(0, 1, 0);
   if (sh.roll) camera.up.set(Math.sin(sh.roll), Math.cos(sh.roll), 0);
   camera.lookAt(look);
+  if (jit) camera.setViewOffset(1080, 1920, jit[0], jit[1], 1080, 1920);   // sub-pixel: cleaner edges
   camera.getWorldDirection(tmp);
   const focus = camera.position.clone().add(tmp.multiplyScalar(30)); focus.y = Math.max(0, Math.min(focus.y, 40));
   sun.target.position.copy(focus);
   const sd = ctx.env ? ctx.env.sunDir.clone().normalize() : v3(0.3, 0.8, 0.4);
+  if (jit) { sd.x += jit[0] * 0.09; sd.z += jit[1] * 0.09; sd.normalize(); }   // an area light: soft shadow edges
   sun.position.copy(focus).add(sd.multiplyScalar(180));
   sun.castShadow = o.shadows !== false;
-  captionAt(ctx, t, o.captionsOff ?? 1e9);
-  ctx.flash.style.opacity = (o.flash || 0).toFixed(3);
-  ctx.flash.style.background = o.flashColor || '#ffffff';
-  ctx.black.style.opacity = String(o.black || 0);
-  const vig = (ctx.env ? ctx.env.vig : 0.3) + (o.vig || 0);
-  ctx.grade.style.background = `radial-gradient(ellipse at 50% 45%, rgba(0,0,0,0) 45%, rgba(0,0,0,${vig.toFixed(2)}) 100%)` +
-    (o.tint ? `, ${o.tint}` : '');
+  if (!sub || sub.i === 0) {   // overlays come from t itself, not from the shutter's earlier sub-frames
+    captionAt(ctx, t, o.captionsOff ?? 1e9);
+    ctx.flash.style.opacity = (o.flash || 0).toFixed(3);
+    ctx.flash.style.background = o.flashColor || '#ffffff';
+    ctx.black.style.opacity = String(o.black || 0);
+    const vig = (ctx.pro ? 0 : ctx.env ? ctx.env.vig : 0.3) + (o.vig || 0);   // the pro look has no vignette unless a shot asks
+    ctx.grade.style.background = `radial-gradient(ellipse at 50% 45%, rgba(0,0,0,0) 45%, rgba(0,0,0,${vig.toFixed(2)}) 100%)` +
+      (o.tint ? `, ${o.tint}` : '');
+  }
   ctx.sky.uniforms.uTime.value = t;
   U.uTime.value = t;
   if (ctx.composer) ctx.composer.render(); else renderer.render(scene, camera);
+  if (jit) camera.clearViewOffset();
 }
 
 // expose to the renderer; thumbText is drawn large at the top
-export function expose(ctx, renderAt, thumbT, events = {}) {
+export function expose(ctx, renderScene, thumbT, events = {}) {
+  const renderAt = ctx.pro && ctx.pro.accumulate ? (t) => ctx.pro.accumulate(renderScene, t) : renderScene;
   window.__render = renderAt;
   window.__events = events; window.__duration = ctx.dur;
   window.__thumb = (text) => {

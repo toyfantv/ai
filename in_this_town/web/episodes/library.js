@@ -6,7 +6,7 @@ import { BUILD } from '../engine/models.js';
 import { model } from '../engine/library.js';
 import { initStage, applyEnv, frame, expose, DAY } from '../engine/stage.js';
 
-const SKIP = ['town', 'cardboard_sky'];
+const SKIP = ['town', 'cardboard_sky', 'kit_skyline', 'kit_crowd'];
 export async function setup() {
   const index = await (await fetch('/web/assets/models/index.json')).json();
   const files = Object.keys(index).filter((n) => index[n].type === 'file');

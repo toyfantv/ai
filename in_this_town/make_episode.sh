@@ -8,7 +8,7 @@ cd "$(dirname "$0")"
 EPJSON=$1; WORKERS=${2:-3}; PY=${PYTHON:-python3}
 EP=$(node -e "console.log(require('./$EPJSON').id)")
 OUT=$(node -e "console.log(require('./$EPJSON').output)")
-FPS=30
+FPS=${FPS:-30}
 mkdir -p output
 $PY tools/tts.py "$EPJSON"
 # 1) try a RunPod GPU (<= $0.50/hr, see tools/runpod_render.py); 2) otherwise render locally

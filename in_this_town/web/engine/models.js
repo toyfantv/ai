@@ -1,5 +1,6 @@
 // The renderer's own models. Episodes reach them through engine/library.js: model('package_box').
 // Each builder takes one options object and returns the model; the catalogue is web/assets/models/index.json.
+import { building, skyline, crowd, crate, barrel, lamp, sign } from './kit.js';
 import * as THREE from 'three';
 import { v3, rng, mat, box, wallRects, lerp } from './core.js';
 import { makeHouse, makeTree, mergeGroup, buildHeroHouse, buildTown } from './town.js';
@@ -242,6 +243,13 @@ const inGroup = (fn2) => { const g = new THREE.Group(); fn2(g); return g; };
 // name -> builder. o.parent, when given, receives the model.
 const put = (o, m) => { if (o.parent) o.parent.add(m.isObject3D ? m : m.g || m.root); return m; };
 export const BUILD = {
+  kit_building: (o) => put(o, building(o)),
+  kit_skyline: (o) => skyline(o),
+  kit_crowd: (o) => crowd(o),
+  kit_crate: (o) => put(o, crate(o)),
+  kit_barrel: (o) => put(o, barrel(o)),
+  kit_lamp: (o) => put(o, lamp(o)),
+  kit_sign: (o) => put(o, sign(o.text || 'SIGN', o)),
   package_box: (o) => makeBox(o.parent),
   hero_house: (o) => buildHeroHouse(o.parent, o.x || 0, o.z || 0),
   model_house: (o) => cutaway(buildHeroHouse(o.parent, o.x || 0, o.z || 0)),

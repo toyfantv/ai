@@ -25,18 +25,22 @@ function serve() {
   });
 }
 
-async function openPage(ep, scale) {
+async function openPage(ep, scale, fps = 30) {
   const srv = await serve();
   // RENDER_GL_ARGS (JSON array) / RENDER_CHANNEL let a GPU machine pick a hardware GL backend.
   const glArgs = process.env.RENDER_GL_ARGS ? JSON.parse(process.env.RENDER_GL_ARGS)
-    : ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'];
+    : process.platform === 'win32'   // this PC: the NVIDIA card, about 10 times software GL
+      ? ['--use-angle=d3d11', '--ignore-gpu-blocklist', '--enable-gpu', '--force_high_performance_gpu']
+      : ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'];
   const opts = { args: glArgs };
   if (process.env.RENDER_CHANNEL) opts.channel = process.env.RENDER_CHANNEL;
   const browser = await chromium.launch(opts);
   const page = await browser.newPage({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: scale });
   page.on('console', (m) => { if (m.type() === 'error' || m.type() === 'warning') console.error('[page]', m.text().slice(0, 400)); });
   page.on('pageerror', (e) => console.error('[pageerror]', e.message));
-  await page.goto(`http://127.0.0.1:${srv.address().port}/?ep=${ep}`);
+  // RENDER_LOOK overrides the episode's look; RENDER_SAMPLES = sub-frames per frame (pro look: motion blur, soft shadows)
+  const look = process.env.RENDER_LOOK ? `&look=${process.env.RENDER_LOOK}` : '';
+  await page.goto(`http://127.0.0.1:${srv.address().port}/?ep=${ep}&fps=${fps}&samples=${process.env.RENDER_SAMPLES || 1}${look}`);
   await page.waitForFunction(() => window.__ready !== undefined);
   const info = await page.evaluate(() => window.__ready);
   return { srv, browser, page, info };
@@ -76,7 +80,7 @@ async function shoot(page, t, file) {
     await browser.close(); srv.close();
   } else if (mode === 'frames') {
     const fps = parseFloat(a); const [s, e, sc] = rest.map(Number);
-    const { srv, browser, page, info } = await openPage(ep, sc || 1);
+    const { srv, browser, page, info } = await openPage(ep, sc || 1, fps);
     fs.writeFileSync(path.join(out, 'events.json'), JSON.stringify(info, null, 1));
     const dir = path.join(out, 'frames'); fs.mkdirSync(dir, { recursive: true });
     const last = Math.min(e, Math.ceil(info.duration * fps));

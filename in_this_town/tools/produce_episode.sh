@@ -25,15 +25,15 @@ for attempt in 1 2; do
 done
 if [ $GPU_OK = 0 ]; then
   log "local render fallback"
-  N=$(node -e "console.log(Math.ceil(require('./build/$EP/timeline.json').duration*30))"); W=3; PER=$(( (N + W - 1) / W ))
+  N=$(node -e "console.log(Math.ceil(require('./build/$EP/timeline.json').duration*${FPS:-30}))"); W=3; PER=$(( (N + W - 1) / W ))
   rm -rf "build/$EP/frames"
-  for ((w=0; w<W; w++)); do node render.js frames "$EP" 30 $((w*PER)) $(((w+1)*PER)) 1 > "build/$EP/render_$w.log" 2>&1 & done; wait
-  ffmpeg -y -loglevel error -framerate 30 -i "build/$EP/frames/%05d.jpg" -c:v libx264 -preset medium -crf 16 -pix_fmt yuv420p "build/$EP/video_gpu.mp4"
+  for ((w=0; w<W; w++)); do node render.js frames "$EP" ${FPS:-30} $((w*PER)) $(((w+1)*PER)) 1 > "build/$EP/render_$w.log" 2>&1 & done; wait
+  ffmpeg -y -loglevel error -framerate ${FPS:-30} -i "build/$EP/frames/%05d.jpg" -c:v libx264 -preset medium -crf 16 -pix_fmt yuv420p "build/$EP/video_gpu.mp4"
 fi
 log mix; $PY tools/audio2.py "$EPJSON" || exit 1
 log thumb; node render.js thumb "$EP" "$(node -e "console.log(require('./$EPJSON').thumbnail_text)")"
 log encode
 ffmpeg -y -loglevel error -i "build/$EP/video_gpu.mp4" -i "build/$EP/mix.wav" -c:v libx264 -preset slow -crf 20 -pix_fmt yuv420p \
-  -profile:v high -r 30 -af "loudnorm=I=-14:TP=-1.0:LRA=11" -c:a aac -b:a 192k -ar 48000 -shortest -movflags +faststart "$SEASON/$OUT" || exit 1
+  -profile:v high -r ${FPS:-30} -af "loudnorm=I=-14:TP=-1.0:LRA=11" -c:a aac -b:a 192k -ar 48000 -shortest -movflags +faststart "$SEASON/$OUT" || exit 1
 cp "build/$EP/thumbnail.jpg" "$SEASON/${OUT%.mp4}_thumbnail.jpg"
 log qc; $PY tools/qc.py "$EPJSON" "$SEASON/$OUT" "$([ $GPU_OK = 1 ] && echo runpod || echo local)"

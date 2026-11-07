@@ -144,7 +144,25 @@ look, and keep real brand logos out of shot.
 `--no-redistribute` keeps the file in `web/assets/models/local/`, which git ignores and pod bundles skip: it lives on this PC only,
 so an episode using it renders here. Sites that need an account: the user signs in, Claude never creates one or enters a password.
 
+Sketchfab goes through the `sketchfab` MCP server (`D:\Claude\sketchfab-mcp-server`), not the browser: `sketchfab-search` (CC0 and CC-BY by default), then `sketchfab-model-details` before each download to confirm the licence, then `sketchfab-download` into a new empty folder. Take `--licence`, `--author`, `--url` and the title from `sketchfab-model-details`, not search, whose links can be odd `none-<uid>` ones. Only a session started after the server's install has these tools.
+
 Every model with a CC-BY licence needs its credit line in the video's description: `python tools/models.py credits <ep>`.
+
+## The pro look (every new episode)
+
+Quality target: @zaylento.yt's level of detail, effects and post. New episodes call `initStage(ep, { look: 'pro' })`;
+older episodes stay on `classic`, and `RENDER_LOOK=pro|classic` overrides either for a test.
+
+- `engine/look.js`: ambient occlusion, sky-coloured environment light, ground bounce, soft shadows, neutral tone mapping,
+  a final grade (`GRADE`; a palette can set `saturation`, `contrast`, `clarity`, `envI`, `bounce`). No vignette.
+- **Sub-frames**: `RENDER_SAMPLES=4` gives motion blur, softer sun shadows and cleaner edges. A frame must depend only on
+  t, and shots need a `name` so a cut stays clean. `FPS=60 RENDER_SAMPLES=4 tools/produce_episode.sh ...` for a final.
+- `engine/kit.js`: tiling surfaces (`surf('brick', colour)`), `Batch` (bevelled parts merged per material), `building`,
+  `skyline`, `crowd`, `crate`, `barrel`, `lamp`, `sign`. Detail comes from layers: trims, frames, ledges, signs.
+- `engine/atmos.js`: `dust`, `sparkles`, `shaft`, `flame`, `clouds`. Call `.update(t)` each frame.
+- **Extras**: crowds and unnamed characters may use `crowd()` or procedural bodies when that renders faster; named
+  characters keep their cast model.
+- Check page: `node render.js stills lookdemo 1 0.5 2.5 3.5`. On Windows, render.js uses the NVIDIA card by itself.
 
 ## Real Roblox avatars
 
