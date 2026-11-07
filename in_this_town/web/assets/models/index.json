@@ -82,7 +82,7 @@
   "kit_crowd": {
     "author": "toyfantv",
     "desc": "JavaScript-built extras, hundreds as instanced meshes; .update(t) to move them",
-    "kind": "crowd",
+    "kind": "prop",
     "licence": "own",
     "made_for": "the detail kit",
     "source": "this renderer",
