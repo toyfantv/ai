@@ -52,7 +52,6 @@
   "RECORDING": "red",
   "BEDROOM WALL": "red",
   "OPENED": "red",
-  "ROBLOX AVATAR": "yellow",
   "ORDINARY": "yellow",
   "NO USERNAME": "red",
   "STRANGER": "red",
@@ -68,7 +67,8 @@
   "FRONT DOOR": "yellow",
   "DISAPPEARED": "red",
   "WINDOW": "yellow",
-  "STOP": "red"
+  "STOP": "red",
+  "FIGURE": "yellow"
  },
  "lines": [
   {
@@ -118,9 +118,10 @@
    "pause": 0.9
   },
   {
-   "text": "A Roblox avatar stepped out.",
+   "text": "A figure stepped out.",
    "tag": "[whispers]",
-   "pause": 0.5
+   "pause": 0.5,
+   "audio": "build/ep19/local_lines/line_09.wav"
   },
   {
    "text": "It looked like an ordinary player.",
