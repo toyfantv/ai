@@ -14,6 +14,7 @@ import { goldenDragon, goldenKey, goldenEgg } from './pets.js';
 import { cottage, mailbox, framedPhoto } from './pastel.js';
 import { campfire, tent, logSeat, woodPile, axeStump, lantern, cookPot, bedroll, supplyCrate, pines, exitGate, beast, snow } from './camp.js';
 import { obbyPlatform, laserCross, controlChair } from './obby.js';
+import { ornateFrame, printMat, loosePrint, invitation, chandelier, sconce, bigChair, banquetTable, gramophone, grandClock, curtainWindow, panelDoor, bareTrees, mansion, guest } from './mansion.js';
 import { hospitalBed, wardDoor, fluorPanel, crtTV, ivPole, cabinet, paSpeaker, roomPlate, bedChart, nurse, wardBeds, hospitalBlock, noticeSign } from './hospital.js';
 import { cubeSeed, cubeStairs, gardenPlot, seedStall, wateringCan, wheelbarrow, scarecrow, floatingIsland, glassField, nameTree, bloomField } from './garden.js';
 
@@ -388,4 +389,19 @@ export const BUILD = {
   notice_sign: (o) => put(o, noticeSign(o.lines ?? ['DEMOLITION NOTICE'], o)),
   forest_beast: (o) => put(o, beast(o)),   // a blocky wolf-like creature with glowing eyes that blink; .update(t)
   snowfall: (o) => snow(o.parent, o),   // falling snow points (centre, size, height, count)
+  // Episode 28 (engine/mansion.js): a Victorian mansion and its ballroom
+  ornate_frame: (o) => put(o, ornateFrame(o.w ?? 3.4, o.h ?? 4.3, o)),   // a gilt picture frame facing +z; put a material on .pic (.picW x .picH)
+  antique_print: (o) => put(o, loosePrint(o.mat || printMat(o), o.w ?? 2.4, o.h ?? 3.0, o)),   // a loose sepia photograph lying flat (printMat: a render target as an old print, scratches)
+  invitation_card: (o) => put(o, invitation(o.lines ?? [['YOU ARE INVITED', 46, '700'], ['to a party', 40, 'italic']], o)),   // a gilt-edged card lying flat; .env its envelope with a wax seal
+  chandelier: (o) => put(o, chandelier(o)),   // a brass candle chandelier with crystal drops; .level(k)
+  wall_sconce: (o) => put(o, sconce(o)),   // a two-candle brass wall sconce, faces +z; .level(k)
+  big_chair: (o) => put(o, bigChair(o)),   // a high-backed velvet dining chair, seat front +z
+  banquet_table: (o) => put(o, banquetTable(o.len ?? 32, o.wid ?? 5, o)),   // a long cloth-covered table, runner; top height at .top
+  gramophone: (o) => put(o, gramophone(o)),   // a horn gramophone on a side table
+  grand_clock: (o) => put(o, grandClock(o)),   // a grandfather clock; .set(t) moves its hands and pendulum
+  curtain_window: (o) => put(o, curtainWindow(o.w ?? 7, o.h ?? 15, o)),   // a tall night window with draped curtains, faces +z
+  panel_door: (o) => put(o, panelDoor(o)),   // a panelled door leaf, hinge at the origin (.leaf)
+  bare_trees: (o) => bareTrees(o.parent, o.spots ?? [[0, 0]], o),   // leafless winter trees at [x, z] spots
+  victorian_mansion: (o) => put(o, mansion(o)),   // a two-storey mansion, front +z; .winRoom a lit room behind the upstairs window, .setSash(k), .blow(k, t), .lights(k)
+  victorian_guest: (o) => put(o, guest(o.i ?? 0, o).root),   // one of 12 faceless Victorian party guests (gowns, top hats, pearls); a character rig
 };

@@ -211,6 +211,23 @@ and a line to the catalogue). Those from Episodes 7 to 16 are copies: the episod
 change. Episode 17 imports its package, model house and cardboard sky from the library. Model files are one `.glb` each in
 `web/assets/models/<name>/`: GLB loads in one request and keeps the look of the source.
 
+### Episode 28 notes (the changing photograph; Liminal Horror, Episodes 27-31)
+
+* Same narrator settings as Episode 27. The brief ran 69.3 s; ten small wording trims and tighter pauses gave 64.9 s. The guests' whisper is
+  ElevenLabs `laura` (pitch 0.94, tempo 0.95) with `fx: "whisper"`.
+* `web/engine/mansion.js`: `damask`, `parquet`, `plaster` surfaces; `wainscot`, `ornateFrame(w, h)` (`.pic`), `printMat({ tex, detail, rect,
+  scratch })` (a render target as a sepia print; `detail` + `rect` is a sharper render of one rectangle, made with `camera.setViewOffset`, so a
+  push-in to the window stays crisp), `scratchTex`, `loosePrint`, `invitation(lines)` (`.env`), `chandelier`, `sconce`, `bigChair`,
+  `banquetTable`, `placeSetting`, `candelabrum`, `gramophone`, `grandClock`, `curtainWindow`, `panelDoor`, `bareTrees`, `ironFence`,
+  `mansion()` (`.winRoom` a lit room behind the upstairs window, `.setSash`, `.blow`, `.lights`), `guest(i)` (12 faceless Victorian guests).
+  Library names: `ornate_frame`, `antique_print`, `invitation_card`, `chandelier`, `wall_sconce`, `big_chair`, `banquet_table`, `gramophone`,
+  `grand_clock`, `curtain_window`, `panel_door`, `bare_trees`, `victorian_mansion`, `victorian_guest`. Avatar `farm_charlotte`.
+* `tools/audio2.py` gained `scrape` (a chair dragged on parquet), `paper`, `winddown` (a gramophone running down) and the moods `waltz` /
+  `waltz_warp` (a distant record, then the same waltz slowing and detuning).
+* Gotchas: `Batch.box` with a negative size (`Z0 - GZ` when Z0 < GZ) builds a huge inverted slab that blacks out shots: always pass positive
+  sizes. A low camera hides a deep window room behind a portico pediment: keep the photo camera level with the window. A 60 fps take with
+  film grain encodes at ~28 Mbps at crf 20; cap it (`-crf 21 -maxrate 12M -bufsize 24M`, ~9 Mbps). The episode JSON needs `"fps": 60` for qc.py.
+
 ### Free models from other sites
 
 Only when a story needs one; no bulk downloads. Add it with the licence recorded:

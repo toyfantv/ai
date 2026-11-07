@@ -1,0 +1,34 @@
+{
+ "key": "farm_charlotte",
+ "source": {
+  "route": "one-off Studio capture, the steps of tools/farm_avatars.py",
+  "catalog_items": [
+   8456850174,
+   8884585013,
+   108514581533705
+  ],
+  "label": "Charlotte (Episode 28): purple zip jacket, black pants with white sneakers, long straight brown hair (middle part)"
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-07",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_Accessory_Long_Straight_Hair_Brown"
+ ]
+}

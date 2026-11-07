@@ -229,6 +229,8 @@ SFX = {
     'sample': lambda o: sample(o), 'scratch': lambda o: scratch(o.get('dur', 3.0), o.get('rate', 7.0)),
     'buzz': lambda o: tube_buzz(o.get('dur', 8.0), o.get('f', 120)), 'vent': lambda o: vent(o.get('dur', 8.0)), 'pachime': lambda o: pa_chime(),
     'static': lambda o: static(o.get('dur', 3.0)), 'clunk': lambda o: clunk(), 'drone': lambda o: drone(o.get('dur', 8.0), o.get('f', 55)), 'flick': lambda o: flick(o.get('dur', 0.6)),
+    'scrape': lambda o: scrape(o.get('dur', 0.7), o.get('seed', 3)), 'paper': lambda o: paper(o.get('dur', 0.9), o.get('seed', 2)),
+    'winddown': lambda o: winddown(o.get('dur', 2.4), o.get('key', 45)),
     'flutter': lambda o: flutter(o.get('dur', 1.2), o.get('rate', 9.0)), 'chirp': lambda o: chirp(o.get('f', 1300), o.get('dur', 0.32), o.get('up', 1)),
 }
 
@@ -280,6 +282,44 @@ def scratch(d=3.0, rate=7.0, seed=4):
         n = int(r.uniform(0.05, 0.11) * SR); s = bp(r.standard_normal(n), r.uniform(1400, 2400), r.uniform(5000, 8000)) * np.hanning(n) * r.uniform(0.6, 1.0)
         i = int(t * SR); x[i:i + n] += s[: len(x[i:i + n])]; t += 1 / rate * r.uniform(0.7, 1.3)
     return x / (np.max(np.abs(x)) + 1e-9) * 0.7
+
+
+# Episode 28: a heavy chair dragged over parquet (stick-slip judder through a wooden body); paper sliding over a floor
+def scrape(d=0.7, seed=3):
+    r = np.random.default_rng(seed); t = tt(d); n = len(t)
+    jr = r.uniform(26, 44) * (1 + 0.25 * np.sin(2 * np.pi * r.uniform(1.5, 3) * t))
+    ph = np.cumsum(jr) / SR; judder = (np.abs(np.sin(np.pi * ph)) ** 6)
+    body = bp(r.standard_normal(n), 220, 1400) * (0.35 + judder) + bp(r.standard_normal(n), 1500, 3800) * judder * 0.35
+    thump = np.sin(2 * np.pi * 95 * t) * np.exp(-t * 30) * 0.6
+    e = np.minimum(1, t / 0.03) * np.minimum(1, (d - t) / 0.12)
+    x = (body * e + thump); return reverb(x / (np.max(np.abs(x)) + 1e-9) * 0.75, 1.6, 0.35)
+
+
+def paper(d=0.9, seed=2):
+    r = np.random.default_rng(seed); t = tt(d); n = len(t)
+    x = bp(r.standard_normal(n), 1800, 7000) * (0.6 + 0.4 * lp(r.standard_normal(n), 30) * 8) * np.sin(np.pi * t / d) ** 0.7
+    return x / (np.max(np.abs(x)) + 1e-9) * 0.5
+
+
+# a gramophone running down: the waltz's last bar sagging in pitch and tempo into silence
+def winddown(d=2.4, key=45):
+    t = tt(d); sag = np.exp(-t * 1.4)
+    out = np.zeros(len(t))
+    for k, n in enumerate((12, 16, 19, 24)):
+        f = hz(key + n) * (0.55 + 0.45 * sag); ph = 2 * np.pi * np.cumsum(f) / SR
+        out += np.sin(ph) * np.exp(-((t - k * 0.32) % 0.9) * 2.5) * (t > k * 0.32) * 0.25
+    out = lp(out * sag, 1800) + bp(np.random.default_rng(4).standard_normal(len(t)), 900, 4000) * 0.02 * sag
+    return reverb(out, 1.8, 0.4)
+
+
+def _gramo(x, warp=0.0, seed=9):
+    """a distant record: band-limited, a little wow, crackle, a big empty room"""
+    r = np.random.default_rng(seed); n = len(x); t = np.arange(n) / SR
+    wow = 1 + (0.0025 + warp * 0.012) * np.sin(2 * np.pi * 0.55 * t) + warp * 0.006 * np.sin(2 * np.pi * 0.13 * t)
+    idx = np.clip(np.cumsum(wow) - 1, 0, n - 1); x = np.interp(idx, np.arange(n), x)
+    x = bp(x, 260, 2600 - warp * 900)
+    x = x + reverb(crackle(n / SR, 40), 0.4, 0.2)[:n] * 0.05
+    return reverb(x, 2.6, 0.55)[:n]
 
 
 # ---------- music moods ----------
@@ -352,6 +392,22 @@ def mood(name, d, key=50, seed=1):
         t, i = 0.05, 0
         while t < d:
             add(int(t * SR), reverb(musicbox(hz(key + 24 + tune[i % 16])), 1.2, 0.3), 0.26); t += 0.3; i += 1
+    elif name in ('waltz', 'waltz_warp'):
+        # Episode 28: an old waltz from an empty ballroom (3/4, oom-pah-pah under a slow melody), heard through doors; waltz_warp slows and
+        # detunes it, as if the record were melting
+        warp = 1.0 if name == 'waltz_warp' else 0.0
+        prog = [(0, 4, 7), (-5, 2, 7), (-5, 2, 5), (0, 4, 7), (-3, 0, 4), (2, 5, 9), (-5, 2, 7), (0, 4, 7)]
+        mel = [16, 19, 24, 23, 21, 19, 17, 14, 19, 17, 16, 14, 16, 12, 16, 19, 21, 24, 23, 21, 19, 17, 14, 12]
+        x = np.zeros(int(d * SR) + 3 * SR); t, i = 0.05, 0; beat = 0.42
+        def ad(i0, sg, g):
+            x[i0:i0 + len(sg)] += sg[: len(x) - i0] * g
+        while t < d:
+            c = prog[(i // 3) % 8]; b = i % 3
+            if b == 0: ad(int(t * SR), piano(hz(key - 12 + c[0]), 1.6, 0.8), 0.45)
+            else: ad(int(t * SR), piano(hz(key + c[1]), 0.8, 0.5), 0.22); ad(int(t * SR), piano(hz(key + c[2]), 0.8, 0.5), 0.2)
+            if b != 2: ad(int(t * SR), piano(hz(key + 12 + mel[(i // 3 * 2 + b) % 24] - 12), 2.0, 0.7), 0.32)
+            t += beat * (1 + warp * 0.35 * (t / max(d, 1))); i += 1
+        add(0, _gramo(x, warp, seed), 1.0)
     elif name == 'mystery':
         add(0, pad([hz(key + n) for n in (0, 3, 7, 10, 14)], d + 0.5, a=0.8, r=1.0, bright=1500), 0.45)
         notes = [key + 24 + n for n in (0, 3, 7, 10, 12, 15)]
