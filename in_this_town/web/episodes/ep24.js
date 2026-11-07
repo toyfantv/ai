@@ -29,9 +29,9 @@ const TP = () => v3(0, islandY(0, -60) - 0.35, -60);   // the name tree's base
 const GDAY = { ...DAY, ...P({ top: '#3b8ff0', horizon: '#d6f0ff', haze: '#cfe8ff', sunColor: '#fff1d6', hemiSky: '#d2e9ff', hemiGround: '#7a9a5a' }),
   sunI: 2.5, sunDir: v3(0.85, 0.7, 0.2), sunDisc: 1, hemiI: 0.92, amb: 0.15, envI: 0.9, exposure: 1.0, bloom: 0.16, fogNear: 320, fogFar: 1500, saturation: 1.16, contrast: 1.05, bounce: 0.3 };
 const SKY = { ...GDAY, ...P({ top: '#2a63d8', horizon: '#ffe4c8', haze: '#e6ecff', sunColor: '#fff0dc', hemiSky: '#dae4ff', hemiGround: '#7a8ab0' }),
-  sunI: 2.4, sunDir: v3(0.5, 0.62, 0.6), hemiI: 0.95, envI: 0.95, exposure: 1.0, bloom: 0.22, fogNear: 600, fogFar: 2800, saturation: 1.14, contrast: 1.05 };
+  sunI: 2.4, sunDir: v3(0.5, 0.62, 0.6), hemiI: 0.95, envI: 0.95, exposure: 1.0, bloom: 0.15, fogNear: 600, fogFar: 2800, saturation: 1.14, contrast: 1.05 };
 const GOLDEN = { ...GDAY, ...P({ top: '#4f78e0', horizon: '#ffd2a2', haze: '#ffdcbc', sunColor: '#ffd8a4', hemiSky: '#ffe4cc', hemiGround: '#8a8a5a' }),
-  sunI: 2.5, sunDir: v3(0.8, 0.42, 0.42), sunSize: 1.4, exposure: 1.04, saturation: 1.2, bloom: 0.2 };
+  sunI: 2.5, sunDir: v3(0.8, 0.42, 0.42), sunSize: 1.4, exposure: 1.02, saturation: 1.2, bloom: 0.14 };
 
 function events() {
   const s = (i) => L(i).start, e = (i) => L(i).end;
@@ -555,10 +555,10 @@ function renderAt(t) {
   A.petals.visible = n === 'bloom' || n === 'aerial'; A.fadeSpark.visible = n === 'return';
   A.clouds.visible = true; A.cloudSea.visible = true;
   leafT(t);
-  const fl = n === 'grow' && t >= e.sprout && t < e.sprout + 0.25 ? 0.35 * (1 - (t - e.sprout) / 0.25) : n === 'ownname' && t >= e.name && t < e.name + 0.2 ? 0.15 * (1 - (t - e.name) / 0.2) : 0;
-  const shake = n === 'grow' ? 0.35 * smooth(e.sprout - 0.05, e.sprout + 0.1, t) * (1 - smooth(e.sprout + 0.4, e.sprout + 1.4, t)) : 0;
+  const fl = n === 'grow' && t >= e.sprout && t < e.sprout + 0.25 ? 0.18 * (1 - (t - e.sprout) / 0.25) : n === 'ownname' && t >= e.name && t < e.name + 0.2 ? 0.15 * (1 - (t - e.name) / 0.2) : 0;
+  const shake = n === 'grow' ? 0.22 * smooth(e.sprout - 0.05, e.sprout + 0.1, t) * (1 - smooth(e.sprout + 0.4, e.sprout + 1.4, t)) : 0;
   { const cq = new URLSearchParams(location.search).get('cam'); if (cq) { const q = cq.split(',').map(Number); sh.pos = v3(q[0], q[1], q[2]); sh.look = v3(q[3], q[4], q[5]); sh.fov = q[6]; } }
-  frame(ctx, t, sh, { shake, shadowSpan: ['arrive', 'alone', 'aerial', 'rise', 'tree'].includes(n) ? 110 : 45, flash: fl, flashColor: '#bfeaff', steady: ['names', 'faded', 'cube'].includes(n) });
+  frame(ctx, t, sh, { shake, shadowSpan: ['arrive', 'alone', 'aerial', 'rise', 'tree'].includes(n) ? 110 : 45, flash: fl, flashColor: '#bfeaff', steady: ['macro', 'dig', 'shop', 'chat', 'cube', 'plant', 'names', 'faded'].includes(n) || (n === 'grow' && t < e.sprout - 0.05) });
   if (first) drawHud(t, n);
   return n;
 }
