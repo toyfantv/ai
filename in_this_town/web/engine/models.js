@@ -8,6 +8,7 @@ import { v3, rng, mat, box, wallRects, lerp } from './core.js';
 import { makeHouse, makeTree, mergeGroup, buildHeroHouse, buildTown } from './town.js';
 import { makeLeg, footAt, makeEye, canvasTex, glowSprite } from './props.js';
 import { secCam, fridge, diningChair, diningTable, bed, sofa, plant, pcDesk, selectionBox, modernHouse } from './home.js';
+import { doorLeaf, plate, exitSign, flashlight, ceilingTiles, rubble, hotelTower } from './hotel.js';
 
 // ---------- Episode 17 ----------
 // The black package: four walls that fold out (open(angle)), a lid, a RETURN ADDRESS label.
@@ -328,4 +329,12 @@ export const BUILD = {
   // a whole first-version city on the seabed: .set(t, t0, dur, depth) raises it; o = { keep(x, z), inner, outer, rings }
   ancient_city: (o) => city(o.parent, o),
   great_temple: (o) => put(o, greatTemple(o)),
+  // ---------- Episode 21 (engine/hotel.js) ----------
+  hotel_door: (o) => put(o, doorLeaf(o)),                 // hinge at the origin, leaf along +x; .handle (local)
+  door_plate: (o) => put(o, plate(o.text || '100', o)),   // a lit brass number plate
+  exit_sign: (o) => put(o, exitSign(o.text || 'EXIT')),
+  flashlight: (o) => put(o, flashlight()),                // .lens along -y, .glass
+  ceiling_tiles: (o) => ceilingTiles(o.parent, o),        // .update(t): tiles drop at fall(cell) seconds
+  rubble_pile: (o) => rubble(o.parent, o),                // .update(t): chunks drop at list[i].t0
+  hotel_tower: (o) => hotelTower(o.parent, o),            // .update(tGreen, tSweep, tFall, t): windows go green floor by floor, floors pancake
 };

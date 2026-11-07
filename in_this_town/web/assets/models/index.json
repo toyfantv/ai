@@ -49,6 +49,16 @@
     "type": "builder",
     "url": ""
   },
+  "ceiling_tiles": {
+    "author": "toyfantv",
+    "desc": "a drop ceiling whose tiles fall one by one",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep21",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "clock": {
     "author": "toyfantv",
     "desc": "a round clock, setTime(minutes)",
@@ -85,6 +95,36 @@
     "kind": "prop",
     "licence": "own",
     "made_for": "ep19",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "door_plate": {
+    "author": "toyfantv",
+    "desc": "a brass hotel room number plate, lit or scuffed",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep21",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "exit_sign": {
+    "author": "toyfantv",
+    "desc": "a glowing green EXIT sign",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep21",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "flashlight": {
+    "author": "toyfantv",
+    "desc": "a yellow handheld flashlight with a glowing lens",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep21",
     "source": "this renderer",
     "type": "builder",
     "url": ""
@@ -175,6 +215,26 @@
     "kind": "prop",
     "licence": "own",
     "made_for": "ep19",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "hotel_door": {
+    "author": "toyfantv",
+    "desc": "a panelled hotel room door with brass handle, hinged, any size or colour",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep21",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "hotel_tower": {
+    "author": "toyfantv",
+    "desc": "a tall hotel with instanced windows that turn green floor by floor, then pancakes",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep21",
     "source": "this renderer",
     "type": "builder",
     "url": ""
@@ -345,6 +405,16 @@
     "kind": "prop",
     "licence": "own",
     "made_for": "ep19",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "rubble_pile": {
+    "author": "toyfantv",
+    "desc": "concrete chunks that fall and settle",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep21",
     "source": "this renderer",
     "type": "builder",
     "url": ""

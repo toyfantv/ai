@@ -47,6 +47,22 @@ sent as `Authorization: Bearer $OPENROUTER_API_KEY`; in Claude cloud sessions th
 
 Kokoro (offline) is still available with `TTS_BACKEND=kokoro`.
 
+**Local narration when OpenRouter has no credit (Episode 21).** `tools/local_voice.py` makes every line with no paid voice: Silencio
+(the video-farm's local TikTok-voice copies) speaks it, Seed-VC converts it onto clips of the series voices in `voice_samples/local_refs/`
+(`ref_narrator.wav`, `ref_system.wav`), then the pace is set (2.9 words a second, tempo 1.0-1.15). It writes `build/<ep>/local_lines/` and
+sets each spec line's `"audio"`, which `tts.py` then uses as it is; delete the `"audio"` keys to go back to ElevenLabs.
+
+```bash
+python tools/local_voice.py episodes/specs/ep21.json                  # all lines
+python tools/local_voice.py episodes/specs/ep21.json --only 3,24      # remake some
+python tools/local_voice.py episodes/specs/ep21.json --check          # faster-whisper transcript, WER per line and overall
+```
+
+* A word the converted voice keeps mangling ("Door" came out "Jawr") is fixed by another *source* voice for that line:
+  `"local": {"src": "en_us_007"}` (Episode 21 tried five; splicing the word from another line was unintelligible). Spell numbers in `speak`.
+* A child's voice: `en_us_006` with `"pitch": 1.28` and no conversion (the `boy` role).
+* The converted lines haven't been judged by ear, only by transcript: say so in the manifest.
+
 ### Rendering on RunPod
 
 `tools/runpod_render.py` rents a GPU pod at **$0.50/hr or less**. It reads live prices, requests only GPUs under
@@ -296,6 +312,10 @@ bake cleanest; `--shirts`, `--pants`, `--hair`), put them in a throwaway `scenes
 { skin = ... }, anchored = true }` rows (farm_avatars.py's `scene_text` is the template; 12 candidates fit one scene), run sync, Play,
 `still_capture.py`, `still_build.py`, then `blender_avatar.py ... auto` and `roblox_avatar.py import farm_<x>`. Compare the candidates on the
 check page and delete the rejects. The items of each avatar are in its `avatar.json`. Name it `farm_...`: other names load in every episode.
+Gotchas from Episode 21: give `blender_avatar.py` an **absolute** output path (a relative one bakes without textures: transparent bodies,
+404s); captured avatars face 180°, so set `"yaw": 0` in the new `avatar.json`; a hoodie that bakes too dark or with short sleeves takes
+`LeftLowerArm=#hex RightLowerArm=#hex gain:UpperTorso/LowerTorso/LeftUpperArm/RightUpperArm=r,g,b` on the bake line. Characters are big
+in a 9:16 frame (about 38° across at fov 64): a two-shot needs them side-on to the camera and close together, cheated toward it.
 
 ## Making the next episode
 

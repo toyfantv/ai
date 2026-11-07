@@ -1,0 +1,566 @@
+{
+ "number": 21,
+ "title": "Door 000 Wasn't Supposed to Exist",
+ "output": "InThisTown_Episode21_Door000.mp4",
+ "youtube_title": "Door 000 Wasn't Supposed to Exist...",
+ "tiktok_caption": "She had opened 99 doors. Then a door that wasn't on the map started crying.",
+ "hashtags": "#Roblox #RobloxStories #InThisTown #Mystery #Shorts",
+ "thumbnail_text": "DOOR 000",
+ "thumbnail_rec": "Mia in her lavender hoodie in a dark green-lit hotel corridor, facing two doors: a grand Door 100 and a child-sized Door 000 with light under it.",
+ "tail": 4.0,
+ "fps": 60,
+ "narrator": {
+  "min_tempo": 1.0,
+  "pace": [
+   2.6,
+   3.4
+  ]
+ },
+ "cast": {
+  "system": {
+   "voice": "eric",
+   "pitch": 0.84,
+   "tempo": 0.95
+  },
+  "boy": {
+   "voice": "liam",
+   "pitch": 1.28,
+   "tempo": 1.0
+  }
+ },
+ "highlights": {
+  "NINETY-NINE": "yellow",
+  "DOORS": "yellow",
+  "100": "yellow",
+  "000": "purple",
+  "MAP": "yellow",
+  "CRYING": "red",
+  "LEAVE ME": "red",
+  "SMALLER DOOR": "purple",
+  "TINY": "purple",
+  "ALONE": "red",
+  "FLASHLIGHT": "yellow",
+  "EXIT": "yellow",
+  "NODDED": "yellow",
+  "SMILED": "yellow",
+  "GREEN": "cyan",
+  "NOTIFICATION": "cyan",
+  "LOST PLAYER RECOVERED": "cyan",
+  "COLLAPSING": "red",
+  "RAN": "red",
+  "CEILING FELL": "red",
+  "MORNING SKY": "yellow",
+  "USERNAME": "cyan",
+  "DISAPPEARED": "red",
+  "FIVE YEARS AGO": "red"
+ },
+ "lines": [
+  {
+   "text": "Mia had already opened ninety-nine doors.",
+   "tag": "[mysterious]",
+   "pause": 0.38,
+   "audio": "build/ep21/local_lines/line_00.wav"
+  },
+  {
+   "text": "Only one remained.",
+   "tag": "[mysterious]",
+   "pause": 0.38,
+   "audio": "build/ep21/local_lines/line_01.wav"
+  },
+  {
+   "text": "But when she reached the end of the hallway, there were two.",
+   "tag": "[mysterious]",
+   "pause": 0.6,
+   "audio": "build/ep21/local_lines/line_02.wav"
+  },
+  {
+   "text": "Door 100.",
+   "speak": "Door one hundred.",
+   "tag": "[mysterious]",
+   "pause": 0.38,
+   "audio": "build/ep21/local_lines/line_03.wav",
+   "local": {
+    "src": "en_us_007"
+   }
+  },
+  {
+   "text": "And a smaller door labeled 000.",
+   "speak": "And a smaller door labeled zero zero zero.",
+   "tag": "[mysterious]",
+   "pause": 0.38,
+   "audio": "build/ep21/local_lines/line_04.wav"
+  },
+  {
+   "text": "The second door wasn't on the map.",
+   "tag": "[mysterious]",
+   "pause": 0.38,
+   "audio": "build/ep21/local_lines/line_05.wav"
+  },
+  {
+   "text": "Mia tried to ignore it.",
+   "tag": "[conversational]",
+   "pause": 0.38,
+   "audio": "build/ep21/local_lines/line_06.wav",
+   "local": {
+    "src": "en_us_006"
+   }
+  },
+  {
+   "text": "Then she heard someone crying behind it.",
+   "tag": "[whispers]",
+   "pause": 0.38,
+   "audio": "build/ep21/local_lines/line_07.wav"
+  },
+  {
+   "text": "\"Please don't leave me here.\"",
+   "speak": "Please don't leave me here.",
+   "voice": "boy",
+   "tag": "[crying]",
+   "pause": 0.6,
+   "audio": "build/ep21/local_lines/line_08.wav"
+  },
+  {
+   "text": "She opened the smaller door.",
+   "tag": "[mysterious]",
+   "pause": 0.38,
+   "audio": "build/ep21/local_lines/line_09.wav"
+  },
+  {
+   "text": "Inside was a tiny hotel room.",
+   "tag": "[mysterious]",
+   "pause": 0.38,
+   "audio": "build/ep21/local_lines/line_10.wav"
+  },
+  {
+   "text": "A Roblox character sat alone on the floor.",
+   "tag": "[mysterious]",
+   "pause": 0.38,
+   "audio": "build/ep21/local_lines/line_11.wav"
+  },
+  {
+   "text": "It was a little boy holding a flashlight.",
+   "tag": "[softly]",
+   "pause": 0.38,
+   "audio": "build/ep21/local_lines/line_12.wav"
+  },
+  {
+   "text": "He looked up and asked,",
+   "tag": "[softly]",
+   "pause": 0.38,
+   "audio": "build/ep21/local_lines/line_13.wav"
+  },
+  {
+   "text": "\"Did you find the exit?\"",
+   "speak": "Did you find the exit?",
+   "voice": "boy",
+   "tag": "[softly]",
+   "pause": 0.5,
+   "audio": "build/ep21/local_lines/line_14.wav"
+  },
+  {
+   "text": "Mia nodded.",
+   "tag": "[softly]",
+   "pause": 0.38,
+   "audio": "build/ep21/local_lines/line_15.wav"
+  },
+  {
+   "text": "The boy smiled.",
+   "tag": "[softly]",
+   "pause": 0.55,
+   "audio": "build/ep21/local_lines/line_16.wav"
+  },
+  {
+   "text": "Then every light in the hotel turned green.",
+   "tag": "[mysterious]",
+   "pause": 0.38,
+   "audio": "build/ep21/local_lines/line_17.wav"
+  },
+  {
+   "text": "A notification appeared.",
+   "tag": "[mysterious]",
+   "pause": 0.38,
+   "audio": "build/ep21/local_lines/line_18.wav"
+  },
+  {
+   "text": "\"LOST PLAYER RECOVERED.\"",
+   "speak": "Lost player recovered.",
+   "voice": "system",
+   "fx": "giant",
+   "tag": "[slowly, deep]",
+   "pause": 0.6,
+   "audio": "build/ep21/local_lines/line_19.wav"
+  },
+  {
+   "text": "Suddenly, the hotel began collapsing.",
+   "tag": "[urgent]",
+   "pause": 0.38,
+   "audio": "build/ep21/local_lines/line_20.wav"
+  },
+  {
+   "text": "Mia grabbed the boy's hand and ran.",
+   "tag": "[urgent]",
+   "pause": 0.38,
+   "audio": "build/ep21/local_lines/line_21.wav"
+  },
+  {
+   "text": "They reached Door 100 just as the ceiling fell.",
+   "speak": "They reached Door one hundred just as the ceiling fell.",
+   "tag": "[urgent]",
+   "pause": 0.5,
+   "audio": "build/ep21/local_lines/line_22.wav"
+  },
+  {
+   "text": "Outside was a bright morning sky.",
+   "tag": "[in awe]",
+   "pause": 0.5,
+   "audio": "build/ep21/local_lines/line_23.wav"
+  },
+  {
+   "text": "And for the first time, the boy's username appeared.",
+   "tag": "[mysterious]",
+   "pause": 0.8,
+   "audio": "build/ep21/local_lines/line_24.wav",
+   "local": {
+    "src": "en_us_010"
+   }
+  },
+  {
+   "text": "It was the name of a player who'd disappeared five years ago.",
+   "tag": "[mysterious]",
+   "pause": 0.38,
+   "audio": "build/ep21/local_lines/line_25.wav",
+   "local": {
+    "src": "en_us_010"
+   }
+  }
+ ],
+ "samples": {},
+ "sound": {
+  "key": 50,
+  "music_gain": 0.5,
+  "music": [
+   [
+    "0",
+    "mystery"
+   ],
+   [
+    "ev:cry-0.3",
+    "silence"
+   ],
+   [
+    "L10",
+    "mystery"
+   ],
+   [
+    "ev:green-0.1",
+    "suspense"
+   ],
+   [
+    "ev:fall-0.2",
+    "dread"
+   ],
+   [
+    "ev:flash",
+    "wonder"
+   ],
+   [
+    "ev:tag-0.2",
+    "cosmic"
+   ]
+  ],
+  "cues": [
+   [
+    "0",
+    "hum",
+    0.05,
+    {
+     "dur": 20
+    }
+   ],
+   [
+    "0",
+    "footsteps",
+    0.12,
+    {
+     "dur": 5.2,
+     "rate": 2.0
+    }
+   ],
+   [
+    "L1",
+    "tick",
+    0.07,
+    {
+     "dur": 1.2,
+     "rate": 3
+    }
+   ],
+   [
+    "ev:reveal",
+    "shimmer",
+    0.22,
+    {
+     "dur": 2.4
+    }
+   ],
+   [
+    "ev:reveal",
+    "glitch",
+    0.1,
+    {
+     "dur": 0.3
+    }
+   ],
+   [
+    "L4",
+    "sting",
+    0.22,
+    {
+     "dur": 2.2
+    }
+   ],
+   [
+    "L5",
+    "pop",
+    0.1
+   ],
+   [
+    "ev:hand",
+    "knock",
+    0.1
+   ],
+   [
+    "ev:freeze",
+    "heartbeat",
+    0.16,
+    {
+     "dur": 4.2,
+     "bpm": 80
+    }
+   ],
+   [
+    "ev:cry",
+    "whisper",
+    0.1,
+    {
+     "dur": 2.4
+    }
+   ],
+   [
+    "ev:press",
+    "creak",
+    0.22,
+    {
+     "dur": 1.6
+    }
+   ],
+   [
+    "ev:open",
+    "whoosh",
+    0.12,
+    {
+     "dur": 1.0
+    }
+   ],
+   [
+    "L10",
+    "wind",
+    0.05,
+    {
+     "dur": 10
+    }
+   ],
+   [
+    "ev:look",
+    "chime",
+    0.14
+   ],
+   [
+    "ev:nod",
+    "pop",
+    0.08
+   ],
+   [
+    "ev:rise",
+    "shimmer",
+    0.12,
+    {
+     "dur": 1.6
+    }
+   ],
+   [
+    "ev:green",
+    "glitch",
+    0.18,
+    {
+     "dur": 0.35
+    }
+   ],
+   [
+    "ev:green",
+    "hum",
+    0.14,
+    {
+     "dur": 5
+    }
+   ],
+   [
+    "ev:sweep",
+    "riser",
+    0.2,
+    {
+     "dur": 1.4
+    }
+   ],
+   [
+    "ev:toast",
+    "ding",
+    0.28
+   ],
+   [
+    "ev:toast+0.15",
+    "chime",
+    0.18
+   ],
+   [
+    "ev:fall",
+    "rumble",
+    0.36,
+    {
+     "dur": 9
+    }
+   ],
+   [
+    "ev:fall",
+    "boom",
+    0.36
+   ],
+   [
+    "ev:fall+0.4",
+    "groan",
+    0.22,
+    {
+     "dur": 3.4
+    }
+   ],
+   [
+    "ev:fall+1.1",
+    "impact",
+    0.26,
+    {
+     "dur": 2
+    }
+   ],
+   [
+    "ev:fall+2.0",
+    "stomp",
+    0.2
+   ],
+   [
+    "ev:grab",
+    "whoosh",
+    0.18,
+    {
+     "dur": 0.6
+    }
+   ],
+   [
+    "ev:run",
+    "run",
+    0.22,
+    {
+     "dur": 4.2
+    }
+   ],
+   [
+    "ev:run+0.8",
+    "impact",
+    0.2,
+    {
+     "dur": 1.6
+    }
+   ],
+   [
+    "ev:run+2.1",
+    "stomp",
+    0.2
+   ],
+   [
+    "ev:push",
+    "whoosh",
+    0.3,
+    {
+     "dur": 1.0
+    }
+   ],
+   [
+    "ev:fell",
+    "boom",
+    0.42
+   ],
+   [
+    "ev:fell",
+    "impact",
+    0.32,
+    {
+     "dur": 2.6
+    }
+   ],
+   [
+    "ev:flash",
+    "wind",
+    0.08,
+    {
+     "dur": 12
+    }
+   ],
+   [
+    "ev:flash+0.2",
+    "chime",
+    0.12,
+    {
+     "note": 92
+    }
+   ],
+   [
+    "ev:tag",
+    "shimmer",
+    0.26,
+    {
+     "dur": 2.6
+    }
+   ],
+   [
+    "ev:tag",
+    "tick",
+    0.16,
+    {
+     "dur": 0.7,
+     "rate": 16
+    }
+   ],
+   [
+    "ev:card",
+    "ding",
+    0.2
+   ],
+   [
+    "ev:card+0.1",
+    "sting",
+    0.26,
+    {
+     "dur": 2.6
+    }
+   ],
+   [
+    "ev:mia",
+    "heartbeat",
+    0.14,
+    {
+     "dur": 3,
+     "bpm": 96
+    }
+   ]
+  ]
+ }
+}

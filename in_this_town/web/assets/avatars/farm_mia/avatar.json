@@ -1,0 +1,34 @@
+{
+ "key": "farm_mia",
+ "source": {
+  "route": "one-off Studio capture, the steps of tools/farm_avatars.py",
+  "catalog_items": [
+   117595000264680,
+   3890514537,
+   82316549302120
+  ],
+  "label": "Mia (Episode 21): lavender hoodie, black pants, shoulder-length black bob"
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-07",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_Accessory_8"
+ ]
+}
