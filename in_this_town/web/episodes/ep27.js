@@ -184,11 +184,12 @@ function ward() {
   const near = [], far = [], CX = 7.5, CZ = 13;
   W.wardCols = CX; W.wardRows = CZ;
   for (let i = -26; i <= 26; i++) for (let j = -22; j <= 22; j++) {
-    const c = { x: i * CX, z: j * CZ, i, j, empty: i === 0 && j === 0 };
+    const c = { x: i * CX, z: j * CZ, i, j, empty: (i === 0 && j === 0) || WARDX.some(([, a, b]) => a === i && b === j) };
     (Math.abs(i) <= 9 && Math.abs(j) <= 8 ? near : far).push(c);
   }
   const face = new THREE.CanvasTexture(altiCanvas('neutral', { blink: true })); face.colorSpace = THREE.SRGBColorSpace;
   wardBeds(g, near, { faceMap: face, shadows: true, seed: 3 });
+  W.bedTop = 3.9; wardExtras(g, CX, CZ);
   // far beds: one cheap merged shape each (frame, white sheet, a head)
   const fb = new Batch(); fb.box(paint('#e8ece8', { metalness: 0.3, roughness: 0.4 }), 4.2, 0.4, 8.6, 0, 2.9, 0, { r: 0.08 }); fb.box(paint('#eef1ec', { roughness: 0.88 }), 4.0, 1.4, 8.2, 0, 3.7, 0, { r: 0.4 });
   fb.box(paint('#d9b48e'), 1.3, 1.1, 1.25, 0, 4.7, -3.0, { r: 0.28 }); fb.box(paint('#e8ece8'), 4.3, 2.6, 0.24, 0, 4.1, -4.35, { r: 0.1 }); for (const [x, z] of [[-1.9, -4], [1.9, -4], [-1.9, 4], [1.9, 4]]) fb.cyl(paint('#e8ece8'), 0.11, 0.11, 2.6, x, 1.4, z);
@@ -219,6 +220,59 @@ function people() {
   const mk = () => { const c = makeCharacter({ avatar: 'farm_grayson', alti: true, skin: GSKIN, caustic: false }); ctx.scene.add(c.root); return c; };
   W.g = mk(); W.tape = mk();
   W.n = nurse(); ctx.scene.add(W.n.root); W.n.root.traverse((o) => { if (o.isMesh) o.castShadow = true; });
+  extras();
+}
+
+// ---- the others: a few people in the corridor, still and slightly wrong; they are in the beds at the end ----
+const XS = {
+  desk: { skin: '#f0d2bc', shirt: '#c99aa6', sleeves: '#c99aa6', pants: '#5b4a52', shoes: '#2b2326', hair: '#7a3b2a', hairStyle: 'bun', female: true, collar: '#f4eee2', caustic: false },
+  jan: { skin: '#c68a5a', shirt: '#5f6f7a', sleeves: '#5f6f7a', pants: '#56646e', shoes: '#26292b', hair: '#77736e', hairStyle: 'short', caustic: false },
+  kid: { skin: '#f5d6b8', shirt: '#b9d4e6', sleeves: '#b9d4e6', pants: '#b9d4e6', shoes: '#ece8e0', hair: '#d8b25a', hairStyle: 'pigtails', tie: '#9fc0d8', female: true, scale: 0.72, caustic: false },
+  ord: { skin: '#e0ac7e', shirt: '#3f8f86', sleeves: '#3f8f86', pants: '#3a817a', shoes: '#f0f0ec', hair: '#1e1a17', hairStyle: 'short', caustic: false },
+};
+function dressX(ch, k) {
+  const b = new Batch();
+  if (k === 'jan') { b.box(paint('#3d4a52', { roughness: 0.8 }), 1.5, 0.42, 1.48, 0, 1.52, 0.02, { r: 0.12 }); b.box(paint('#3d4a52', { roughness: 0.8 }), 1.2, 0.1, 0.6, 0, 1.33, 0.9, { r: 0.04 }); }
+  if (k === 'ord') { b.box(paint('#3f8f86', { roughness: 0.85 }), 1.5, 0.46, 1.48, 0, 1.5, -0.02, { r: 0.16 }); b.box(paint('#eef2ef', { roughness: 0.9 }), 0.92, 0.48, 0.12, 0, 0.42, 0.64, { r: 0.05 }); }   // scrub cap, surgical mask
+  if (k === 'desk') { b.box(paint('#1d1a1a', { roughness: 0.4 }), 1.1, 0.08, 0.06, 0, 0.9, 0.66, { r: 0.02 }); }   // a thin glasses bar
+  if (k !== 'kid') ch.neck.add(b.done());
+  if (k === 'kid') { const g = new Batch(); g.box(paint('#b9d4e6', { roughness: 0.85 }), 2.16, 1.5, 1.2, 0, -0.55, 0, { r: 0.14 }); ch.hips.add(g.done()); }   // the gown's hem
+  ch.root.traverse((o) => { if (o.isMesh) o.castShadow = true; });
+}
+function extras() {
+  const X = (k) => { const c = makeCharacter(XS[k]); dressX(c, k); W.corr.add(c.root); return c; };
+  W.x = { desk: X('desk'), jan: X('jan'), kid: X('kid'), ord: X('ord') };
+  // the reception desk at the corridor's start (left side), a bell and a ledger
+  const b = new Batch(), top = paint('#e9eee8', { roughness: 0.5 }), front = paint('#9fc5b0', { roughness: 0.6 });
+  b.box(front, 1.4, 3.4, 7.0, -4.3, 1.7, -9, { r: 0.08 }); b.box(top, 2.4, 0.22, 7.4, -4.6, 3.5, -9, { r: 0.06 }); b.box(front, 2.0, 0.2, 7.0, -5.8, 2.6, -9, { r: 0.04 });
+  b.box(paint('#f3efe2', { roughness: 0.8 }), 1.3, 0.12, 1.0, -4.5, 3.66, -10.6, { r: 0.03 }); b.cyl(paint('#c9a24a', { metalness: 0.8, roughness: 0.3 }), 0.28, 0.32, 0.22, -4.4, 3.72, -7.4);
+  b.done(W.corr);
+  const sg = canvasTex(512, 128, (x, w, h) => { x.fillStyle = '#f4f7f2'; x.fillRect(0, 0, w, h); x.fillStyle = '#3f6f5c'; x.font = '900 64px ITTInter, sans-serif'; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillText('RECEPTION', w / 2, h / 2 + 4); }); sg.colorSpace = THREE.SRGBColorSpace;
+  const sm = new THREE.Mesh(new THREE.PlaneGeometry(4.2, 1.05), new THREE.MeshStandardMaterial({ map: sg, roughness: 0.6 })); sm.position.set(-6.94, 7.4, -9); sm.rotation.y = Math.PI / 2; W.corr.add(sm);
+  // the janitor's mop and bucket
+  const m = new Batch(); m.cyl(paint('#b8bcb6', { metalness: 0.6, roughness: 0.35 }), 0.09, 0.09, 6.2, 0, 3.1, 0); m.box(paint('#d9d4c4', { roughness: 0.95 }), 1.5, 0.3, 0.6, 0, 0.15, 0, { r: 0.1 });
+  W.mop = m.done(); W.corr.add(W.mop);
+  const bk = new Batch(); bk.cyl(paint('#e3b92c', { roughness: 0.55 }), 0.95, 0.8, 1.5, 0, 0.75, 0, { seg: 20 }); bk.box(paint('#8e9a9c', { metalness: 0.5, roughness: 0.4 }), 1.1, 1.0, 0.3, 0, 1.9, -0.9, { r: 0.04 });
+  const bucket = bk.done(); bucket.position.set(5.9, 0, -44.2); W.corr.add(bucket);
+  const wet = canvasTex(256, 360, (x, w, h) => { x.fillStyle = '#e7c23a'; x.fillRect(0, 0, w, h); x.fillStyle = '#1a1a1a'; x.font = '900 62px ITTInter, sans-serif'; x.textAlign = 'center'; x.fillText('WET', w / 2, 150); x.fillText('FLOOR', w / 2, 230); }); wet.colorSpace = THREE.SRGBColorSpace;
+  const wf = new THREE.Mesh(new THREE.PlaneGeometry(1.3, 1.9), new THREE.MeshStandardMaterial({ map: wet, roughness: 0.5, side: THREE.DoubleSide })); wf.position.set(5.2, 1.0, -52.5); wf.rotation.set(-0.18, -0.5, 0); W.corr.add(wf);
+  // the orderly's gurney: a low bed, nobody on it
+  W.gurney = hospitalBed({}); W.gurney.scale.setScalar(0.86); W.gurney.traverse((o) => { if (o.isMesh) o.castShadow = true; }); W.corr.add(W.gurney);
+}
+
+// the same four, asleep in the ward, under blankets that cover them properly (feet tented, folded sheet at the shoulders)
+const WARDX = [['desk', -1, 0], ['jan', 0, 1], ['kid', 2, 1], ['ord', 4, 1]];
+function wardExtras(g, CX, CZ) {
+  W.wx = [];
+  for (const [k, i, j] of WARDX) {
+    const c = makeCharacter(XS[k]); dressX(c, k); g.add(c.root); c.reset(); c.setFace('calm'); if (c.lid) c.lid.visible = false;
+    const sc = XS[k].scale ?? 1, bz = j * CZ, bx = i * CX;
+    c.root.rotation.order = 'YXZ'; c.root.rotation.set(-Math.PI / 2, 0, 0); c.root.position.set(bx, W.bedTop + 0.5, bz + 1.4 - (1 - sc) * 5.0);
+    const sb = new Batch(), bm = paint('#9ec3b4', { roughness: 0.92 });
+    sb.box(bm, 4.6, 1.15, 4.7, 0, 0, 0, { r: 0.42 }); sb.box(bm, 4.6, 2.2, 2.1, 0, 0.5, 1.55, { r: 0.8 }); sb.box(paint('#eef1ec', { roughness: 0.88 }), 4.66, 0.32, 0.75, 0, 0.5, -2.1, { r: 0.13 });
+    const bl = sb.done(); bl.position.set(bx, W.bedTop + 0.66, bz - 0.3 + (k === 'kid' ? -0.2 : 0)); if (k === 'kid') bl.scale.set(1, 0.8, 0.86); g.add(bl);
+    W.wx.push(c);
+  }
 }
 
 // ---- lights: a pool of points that follow the set, and one shadowed key ----
@@ -266,12 +320,14 @@ function shots() {
   add('sign', s(1) - 0.15, (u) => ({ pos: lp3(X(-11.2, 4.4, 83), X(-11.4, 4.5, 80), easeOut(u)), look: X(-12, 6.2, 66), fov: 50 }));
   add('road', s(2) - 0.1, (u, t) => { const z = gRoadZ(t); return { pos: X(4.5, 4.2, z + 22), look: X(-0.6, 9, z - 40), fov: 60 }; });
   add('hall', s(3) - 0.15, (u, t) => ({ pos: v3(0, 5.4, lerp(7, 5.6, u)), look: v3(0, 4.2, -60), fov: 62 }));
+  add('desk', s(3) + 1.3, (u) => ({ pos: lp3(v3(4.4, 5.4, -15.8), v3(4.1, 5.4, -15.0), u), look: v3(-3.7, 4.6, -9.8), fov: 66 }));
   add('tube', s(4) - 0.1, (u) => { const z = gStop() - 1.2; return { pos: lp3(v3(2.0, 3.0, z + 3.8), v3(1.8, 3.1, z + 3.5), u), look: v3(-0.2, 5.5, z - 2.5), fov: 62 }; });
   add('peek', s(5) - 0.1, (u) => { const d = DOORS.find((q) => q.s < 0 && q.z < -30 && q.z > -50); return { pos: lp3(v3(-15.5, 5.4, d.z - 4.6), v3(-15.0, 5.3, d.z - 4.3), u), look: v3(-6, 3.4, d.z + 0.6), fov: 58 }; });
-  add('spk', s(6) - 0.85, (u) => ({ pos: lp3(v3(-2.6, 6.8, -55.5), v3(-2.4, 7.0, -56.4), u), look: v3(0, H - 0.4, -63.5), fov: 48 }));
+  add('mop', s(5) + 0.95, (u) => ({ pos: lp3(v3(-2.2, 4.4, -56.5), v3(-2.0, 4.4, -55.7), u), look: v3(2.6, 3.4, -47.0), fov: 58 }));
+  add('spk', s(6) - 0.5, (u) => ({ pos: lp3(v3(-2.6, 6.8, -55.5), v3(-2.4, 7.0, -56.4), u), look: v3(0, H - 0.4, -63.5), fov: 48 }));
   add('look', s(6) + 1.0, (u) => ({ pos: lp3(v3(1.4, 4.0, gStop() - 6.6), v3(1.3, 4.1, gStop() - 6.0), u), look: v3(0, 4.3, gStop()), fov: 56 }));
   add('froze', s(7) - 0.1, (u) => ({ pos: lp3(v3(0.6, 4.6, gStop() - 4.6), v3(0.55, 4.6, gStop() - 4.2), u), look: v3(0, 4.25, gStop()), fov: 52 }));
-  add('never', s(8) - 0.1, (u) => ({ pos: lp3(v3(-1.6, 4.8, gStop() - 8.0), v3(-1.4, 4.7, gStop() - 7.2), easeOut(u)), look: v3(0.2, 3.6, gStop() + 2), fov: 64 }));
+  add('never', s(8) - 0.1, (u) => ({ pos: lp3(v3(6.0, 5.0, gStop() - 11.5), v3(5.7, 4.9, gStop() - 10.7), easeOut(u)), look: v3(-2.6, 3.9, gStop() - 0.4), fov: 62 }));
   add('nurse', s(9) - 0.1, (u) => ({ pos: lp3(v3(2.4, 5.6, gStop() + 6.4), v3(2.3, 5.5, gStop() + 5.0), u), look: v3(0, 4.6, -150), fov: lerp(50, 36, easeInOut(u)) }));
   add('mask', s(10) - 0.1, (u) => ({ pos: lp3(v3(0.1, 4.9, NURSE.z + 9.5), v3(0.05, 4.95, NURSE.z + 5.6), easeInOut(u)), look: v3(0, 4.55, NURSE.z), fov: 46 }));
   add('point', s(11) - 0.1, (u) => ({ pos: lp3(v3(-5.0, 5.6, NURSE.z - 8.0), v3(-4.8, 5.6, NURSE.z - 7.3), u), look: v3(0.9, 4.6, NURSE.z + 4), fov: 62 }));
@@ -296,7 +352,8 @@ function shots() {
   return S;
 }
 const gRoadZ = (t) => 150 - Math.max(0, t - (L(2).start - 0.6)) * 4.2;
-const gStop = () => -58;   // where the PA stops him, under the speaker
+const gStop = () => -58;
+const ORD_T = 19.55;   // the gurney passes Grayson (the PA line)   // where the PA stops him, under the speaker
 
 // ---- the tape's text ----
 const F = (px) => `700 ${px}px "Courier New", monospace`;
@@ -326,7 +383,7 @@ function renderPhoto() {
   G.reset(); G.root.position.set(BEDC.x - 1.4, W.bed.top + 0.5, BEDC.z); G.root.rotation.set(0, 0, 0); G.root.rotation.order = 'YXZ'; G.root.rotation.y = -Math.PI / 2; G.root.rotation.x = -Math.PI / 2;
   G.setFace('neutral', { blink: true }); G.neck.rotation.y = 0.25;
   lightSet('room', 0, STAND); applyEnv(ctx, ROOM);
-  c.position.set(BEDC.x - 6.5, 9.5, BEDC.z - 1.2); c.lookAt(BEDC.x + 2.0, W.bed.top + 0.6, BEDC.z - 0.1); c.updateMatrixWorld(true);
+  c.position.set(BEDC.x - 1.6, 9.4, BEDC.z - 1.9); c.lookAt(BEDC.x + 2.9, W.bed.top + 0.7, BEDC.z - 0.1); c.updateMatrixWorld(true);
   const sh = W.sheetOver; sh.visible = true;
   ctx.renderer.setRenderTarget(W.photoRT); ctx.renderer.clear(); ctx.renderer.render(ctx.scene, c); ctx.renderer.setRenderTarget(null);
   sh.visible = false; G.root.rotation.set(0, 0, 0); G.root.rotation.order = 'XYZ';
@@ -342,7 +399,7 @@ const faceTo = (c, p) => { c.root.rotation.y = Math.atan2(p.x - c.root.position.
 function renderAt(t) {
   if (!W.photoDone) { renderPhoto(); W.photoDone = true; }
   const first = !ctx.sub || ctx.sub.i === 0, sh = shotAt(W.shots, t), n = sh.name, e = EV, G = W.g, N = W.n, T = W.tape;
-  const sets = { ext: 'out', sign: 'out', road: 'out', hall: 'hall', tube: 'hall', peek: 'hall', spk: 'hall', look: 'hall', froze: 'hall', never: 'hall', nurse: 'hall', mask: 'hall', point: 'hall', plate: 'hall', open: 'hall',
+  const sets = { ext: 'out', sign: 'out', road: 'out', hall: 'hall', desk: 'hall', tube: 'hall', peek: 'hall', mop: 'hall', spk: 'hall', look: 'hall', froze: 'hall', never: 'hall', nurse: 'hall', mask: 'hall', point: 'hall', plate: 'hall', open: 'hall',
     bed: 'room', tv: 'room', photo: 'room', tvon: 'room', feed: 'room', date: 'room', turn: 'room', whisper: 'room', behind: 'room', real: 'room', wake: 'ward', rows: 'ward', occ: 'ward', his: 'ward' };
   const set = sets[n];
   applyEnv(ctx, set === 'out' ? OUT : set === 'ward' ? WARDP : set === 'room' ? ROOM : HALL);
@@ -367,6 +424,15 @@ function renderAt(t) {
     G.root.visible = n === 'road';
   } else if (n === 'hall') {
     gp.set(0.3, 0, hallZ(t)); G.root.rotation.y = Math.PI; pose(G, 'walk', t * 0.75); faceOf(G, 'neutral', t, 0.4); focus = gp.clone();
+  } else if (n === 'desk') {
+    // he slows at the desk, looks at the smiling receptionist; she points down the corridor; he goes on
+    const t0 = L(3).start + 1.3, k = smooth(t0, L(4).start - 0.05, t);
+    gp.set(0.4, 0, lerp(hallZ(t0), hallZ(t0) - 4.2, k * k * (1.6 - 0.6 * k))); G.root.rotation.y = Math.PI; pose(G, 'walk', t * 0.6);
+    G.neck.rotation.y = 0.75 * smooth(t0 + 0.1, t0 + 0.5, t) * (1 - smooth(t0 + 1.05, t0 + 1.4, t)); faceOf(G, 'nervous', t, 0.4); focus = gp.clone();
+  } else if (n === 'mop') {
+    // he passes the janitor, glances at him; the janitor never looks up
+    const t0 = L(5).start + 0.95; gp.set(-0.4, 0, lerp(-42.5, -46.8, clamp((t - t0) / 1.4))); G.root.rotation.y = Math.PI; pose(G, 'walk', t * 0.6);
+    G.neck.rotation.y = -0.7 * smooth(t0 + 0.15, t0 + 0.55, t); faceOf(G, 'nervous', t, 0.4); focus = gp.clone();
   } else if (n === 'tube') {
     gp.set(0.3, 0, gStop() - 1.2); G.root.rotation.y = Math.PI; pose(G, 'lookUp', t, { amt: 0.5 }); faceOf(G, 'surprised', t, 0.4); focus = gp.clone();
     G.root.rotation.y = 0.15;
@@ -376,7 +442,10 @@ function renderAt(t) {
     gp.set(0.2, 0, gStop()); G.root.rotation.y = Math.PI; focus = gp.clone();
     if (n === 'spk' || n === 'look') { pose(G, 'lookUp', t, { amt: 0.45 }); faceOf(G, 'surprised', t, 0.4); }
     if (n === 'froze') { pose(G, 'still', t); faceOf(G, 'scared', t, 0.4); G.neck.rotation.x = -0.05; }
-    if (n === 'never') { pose(G, 'idle', t); G.neck.rotation.y = 0.35 * Math.sin((t - L(8).start) * 1.6); faceOf(G, 'nervous', t, 0.4); }
+    if (n === 'never') { pose(G, 'idle', t); G.neck.rotation.y = 0.85 * smooth(L(8).start + 0.15, L(8).start + 0.6, t); gp.x += 0.55 * smooth(L(8).start + 0.5, L(8).start + 0.9, t); faceOf(G, 'nervous', t, 0.4); }
+    // the gurney passes on his left: he steps aside and watches it go
+    gp.x += 0.6 * smooth(ORD_T - 0.45, ORD_T - 0.05, t);
+    if (n === 'look') G.neck.rotation.y = 0.55 * smooth(ORD_T - 0.5, ORD_T - 0.1, t);
     if (n === 'nurse') { G.root.rotation.y = Math.PI; pose(G, 'still', t); faceOf(G, 'scared', t, 0.4); }
   } else if (n === 'point' || n === 'mask') {
     G.root.visible = n === 'point'; gp.set(0.2, 0, gStop() - 30); G.root.rotation.y = Math.PI; pose(G, 'still', t);
@@ -386,10 +455,12 @@ function renderAt(t) {
   } else if (n === 'open') {
     gp.set(HW - 2.6, 0, D217 + 1.7); G.root.rotation.y = Math.PI / 2; pose(G, 'idle', t); focus = gp.clone();
     const d = W.d217; d.updateMatrixWorld(true); const hp = d.localToWorld(d.handle.clone());
-    const reach = smooth(L(12).start + 0.05, e.open - 0.05, t), rel = smooth(e.open + 0.85, e.open + 1.2, t);
+    // he pushes the door a crack, lets it swing, steps to the middle of the doorway, then walks in (never into the jamb or the leaf)
+    const reach = smooth(L(12).start + 0.05, e.open - 0.05, t), rel = smooth(e.open + 0.2, e.open + 0.5, t);
     const a = armTo(G, 0, hp.y); G.arms[0].rotation.x = -a * reach * (1 - rel); G.arms[0].rotation.z = 0;
-    if (reach >= 1 && rel < 1) { const h = hand(G, 0); const dz = (hp.z - h.z), dx = (hp.x - h.x); gp.x += dx * (1 - rel); gp.z += dz * (1 - rel); }
-    if (t > e.open + 1.0) { gp.x += Math.min(2.5, (t - e.open - 1.0) * 1.8); gp.z = lerp(gp.z, D217 - 0.2, smooth(e.open + 1.0, e.open + 1.7, t)); pose(G, 'walk', t * 0.6); }
+    if (reach >= 1 && rel <= 0) { const h = hand(G, 0); gp.x += clamp(hp.x - h.x, -0.6, 0.6); gp.z += clamp(hp.z - h.z, -0.6, 0.6); }
+    const side = smooth(e.open + 0.35, e.open + 0.95, t); gp.z = lerp(gp.z, D217 + 0.05, side);
+    if (t > e.open + 0.95) { gp.x += Math.min(2.5, (t - e.open - 0.95) * 1.8); pose(G, 'walk', t * 0.6); }
     faceOf(G, 'nervous', t, 0.4);
   } else if (n === 'bed') {
     gp.set(lerp(9.4, 11.6, smooth(L(13).start - 0.15, L(13).end + 0.3, t)), 0, -157.4); G.root.rotation.y = Math.PI / 2 - 0.12; pose(G, 'walk', t * 0.55); faceOf(G, 'nervous', t, 0.4);
@@ -404,6 +475,28 @@ function renderAt(t) {
     if (n === 'wake') { const k = smooth(L(24).start + 0.3, L(24).end, t); G.neck.rotation.y = lerp(0.5, -0.45, k); }
     faceOf(G, n === 'wake' ? 'scared' : 'terrified', t, 0.4); if (n === 'his') { G.neck.rotation.x = 0.32; faceOf(G, 'sad', t, 0.4); }
     focus = gp.clone();
+  }
+
+  // ---- the others in the corridor ----
+  if (W.corr.visible) {
+    const x = W.x;
+    // receptionist: behind the desk, facing the corridor, the same smile; her arm rises once and points the way
+    x.desk.root.position.set(-6.3, 0.85, -9.2); x.desk.root.rotation.set(0, Math.PI / 2, 0); pose(x.desk, 'still', t); x.desk.setFace('creepy');
+    const pk = smooth(L(3).start + 1.75, L(3).start + 2.3, t), A = x.desk.arms[1]; A.rotation.x = -1.55 * pk; A.rotation.z = 1.05 * pk;
+    x.desk.neck.rotation.y = 0.25 * smooth(L(3).start + 0.4, L(3).start + 1.6, t);
+    // janitor: mopping in slow arcs, head down, never looks up
+    const jx = 4.6, jz = -47.5, sw = Math.sin(t * 1.7) * 0.5; x.jan.root.position.set(jx, 0, jz); x.jan.root.rotation.set(0, -Math.PI / 2 + sw * 0.3, 0); pose(x.jan, 'idle', t);
+    x.jan.torso.rotation.x = 0.28; x.jan.neck.rotation.x = 0.42; x.jan.arms.forEach((a, i) => { a.rotation.x = -0.95 - i * 0.2; a.rotation.z = (i ? -1 : 1) * 0.12; }); x.jan.setFace('neutral');
+    W.mop.position.set(jx - 2.6 + sw * 0.2, 0, jz + sw * 1.4); W.mop.rotation.set(0, sw * 0.4, -0.42);
+    // child in a gown: in the doorway of the next room, watching; then turns and goes back in
+    const kd = DOORS.find((q) => q.s < 0 && Math.abs(q.z - (gStop() - 1)) < 4.6); const tz = kd ? kd.z : gStop() - 1;
+    const turn = smooth(L(8).end - 0.55, L(8).end + 0.05, t), back = smooth(L(8).end - 0.05, L(8).end + 0.6, t);
+    x.kid.root.position.set(lerp(-6.1, -8.4, back), 0, tz); x.kid.root.rotation.set(0, lerp(Math.PI / 2 - 0.15, -Math.PI / 2, turn), 0); pose(x.kid, back > 0 ? 'walk' : 'still', t * 0.5); x.kid.setFace('neutral');
+    x.kid.root.visible = t < L(9).start;
+    // orderly: an empty gurney pushed past him, eyes ahead, never stopping
+    const gz = gStop() - (t - ORD_T) * 3.4; W.gurney.position.set(-3.8, 0, gz); W.gurney.rotation.y = 0;
+    x.ord.root.position.set(-3.8, 0, gz + 5.3); x.ord.root.rotation.set(0, Math.PI, 0); pose(x.ord, 'walk', t * 0.55); x.ord.arms.forEach((a) => { a.rotation.x = -1.15; a.rotation.z = 0; }); x.ord.setFace('neutral');
+    const ov = n === 'spk' || n === 'look'; x.ord.root.visible = ov; W.gurney.visible = ov;
   }
 
   // ---- the Grayson on the tape (only ever drawn into the feed) ----
@@ -437,7 +530,9 @@ function renderAt(t) {
   W.air.list.dust.visible = set !== 'out';
   const black = (t > e.out && t < e.back) ? 1 : n === 'real' && t > e.out - 0.04 ? 1 : 0;
   const span = set === 'out' ? 220 : 60;
-  frame(ctx, t, sh, { steady: true, shake: 0, shadowSpan: span, shadows: set === 'out', black });
+  const dc = typeof location !== 'undefined' && new URLSearchParams(location.search).get('dbgcam');   // close checks: ?dbgcam=x,y,z,lx,ly,lz,fov
+  const dq = dc ? dc.split(',').map(Number) : null, shx = dq ? { ...sh, pos: v3(dq[0], dq[1], dq[2]), look: v3(dq[3], dq[4], dq[5]), fov: dq[6] || 40 } : sh;
+  frame(ctx, t, shx, { steady: true, shake: 0, shadowSpan: span, shadows: set === 'out', black });
   return n;
 }
 
@@ -447,7 +542,7 @@ export async function setup() {
   const { scene, camera } = ctx; camera.far = 3000; camera.near = 0.2; camera.updateProjectionMatrix();
   rig(); outside(); corridor(); room217(); ward(); people();
   // a blanket drawn over the sleeping Grayson for the photograph only
-  const sb = new Batch(); sb.box(paint('#9ec3b4', { roughness: 0.92 }), 3.8, 0.9, 5.8, 0, 0, 0, { r: 0.35 }); W.sheetOver = sb.done(); W.sheetOver.position.set(BEDC.x + 0.4, W.bed.top + 0.62, BEDC.z); W.sheetOver.rotation.y = -Math.PI / 2; W.sheetOver.visible = false; W.room.add(W.sheetOver);
+  const sb = new Batch(); const bm = paint('#9ec3b4', { roughness: 0.92 }); sb.box(bm, 4.6, 1.15, 4.7, 0, 0, 0, { r: 0.42 }); sb.box(bm, 4.6, 2.2, 2.1, 0, 0.5, 1.55, { r: 0.8 }); sb.box(paint('#eef1ec', { roughness: 0.88 }), 4.66, 0.32, 0.75, 0, 0.5, -2.1, { r: 0.13 }); W.sheetOver = sb.done(); W.sheetOver.position.set(BEDC.x + 0.3, W.bed.top + 0.66, BEDC.z); W.sheetOver.rotation.y = -Math.PI / 2; W.sheetOver.visible = false; W.room.add(W.sheetOver);
   const list = { dust: dust(scene, { size: 40, height: 10, centre: v3(0, 5, 0), count: 380, color: '#eef6e6', amount: 0.18, pointSize: 0.4 }) };
   W.air = atmos(...Object.values(list)); W.air.list = list;
   W.shots = shots();

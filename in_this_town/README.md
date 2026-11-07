@@ -158,6 +158,12 @@ python3 tools/sheet.py build/ep06 build/ep06/sheet.jpg 1 5 10 20 30 40 50 60
   `vent`, `pachime`, `static`, `clunk` (breaker), `drone`, `flick`. A liminal mix is buzz + vent at ~0.2-0.3 with no music; the voice still sits 10+ dB over it.
 * Local 60 fps pro-look renders run ~400 frames a minute per three workers on this PC: about 20 minutes for a 65 s episode.
 * A camera placed inside a wall shows a flat colour: keep room shots inside the room's bounds (the first bed shot sat in the door wall).
+* Re-make lessons (2026-11-07 review): never move a character's body to follow a swinging door handle (it drags him into the jamb); push the door a crack, let go,
+  centre him in the doorway, then walk in. A blanket over a lying R15/blocky body must be wider than the arms (4.6 for a 4.0-wide body), tented over the
+  feet (the shoes point up) and folded at the shoulders, and the shot must see the face. `?dbgcam=x,y,z,lx,ly,lz,fov` in `RENDER_QUERY` swaps any
+  shot for a fixed debug camera (Episode 27), for close contact checks.
+* Liminal extras without narration: give each a one-beat shot inside an existing line (the receptionist on "fresh paint", the janitor on "perfectly
+  clean", the gurney under the PA, the child on "never been there"), Grayson reacting with a glance or a step aside; then put them in the final beds.
 
 ## Engine (`web/engine/`)
 
