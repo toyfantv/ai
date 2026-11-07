@@ -136,7 +136,8 @@ look, and keep real brand logos out of shot.
 | Site | Licence | Stored in git? | Sign-in |
 |---|---|---|---|
 | Poly Haven | CC0, no credit needed; its page allows redistribution | yes | not stated on the licence page |
-| Kenney | CC0, no credit needed; the page doesn't mention repositories, CC0 allows it | yes | not stated on the support page |
+| Kenney | CC0, no credit needed; the page doesn't mention repositories, CC0 allows it. Tools can't fetch it: the user downloads the pack in their browser (robots.txt shuts out bots, and the download link answers 403 to a plain request, 2026-11-06) | yes | no account: "Continue without donating" |
+| BlenderKit (now Blendkit) | per asset: CC0, or its Royalty Free licence (commercial use and animations allowed, no credit, no re-selling the model; blendkit.com/docs/licenses, read 2026-11-06). Free assets only | CC0 yes; Royalty Free: `--licence royalty-free --no-redistribute` | none for free assets |
 | Quaternius | read the licence link on the site first (not verified, 2026-11-06) | if CC0 | check |
 | Sketchfab | per model: read its page. CC0 and CC-BY only (`--licence CC-BY` needs `--author` and `--url`). Site terms not verified: the page didn't load, 2026-11-06 | CC0 / CC-BY yes; otherwise `--no-redistribute` | account |
 | TurboSquid | royalty-free licence: video is a permitted use, but "giving away the 3D model file itself is not allowed" | no: `--licence royalty-free --no-redistribute` | account |
@@ -145,6 +146,8 @@ look, and keep real brand logos out of shot.
 so an episode using it renders here. Sites that need an account: the user signs in, Claude never creates one or enters a password.
 
 Sketchfab goes through the `sketchfab` MCP server (`D:\Claude\sketchfab-mcp-server`), not the browser: `sketchfab-search` (CC0 and CC-BY by default), then `sketchfab-model-details` before each download to confirm the licence, then `sketchfab-download` into a new empty folder. Take `--licence`, `--author`, `--url` and the title from `sketchfab-model-details`, not search, whose links can be odd `none-<uid>` ones. Only a session started after the server's install has these tools.
+
+BlenderKit goes through `tools/asset_fetch.py` in the video-farm repo (`D:\Claude\crash-sandbox`), or the `3d-assets` MCP server's `search_assets` / `get_asset` / `download_asset` in a session started after its install: `search "low poly tree" --cc0`, then `get <id>`, which saves the download and a `LICENCE.json` in `D:\Claude\3d-assets\<source>-<id>\` and prints the `models.py add` line with the licence, author and URL filled in. It takes free assets only and leaves paid and plan-only ones alone. A Kenney pack the user has downloaded goes in with its `record` command.
 
 Every model with a CC-BY licence needs its credit line in the video's description: `python tools/models.py credits <ep>`.
 
