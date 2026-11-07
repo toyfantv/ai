@@ -1,0 +1,29 @@
+{
+ "key": "farm_hc_sheriff_boone",
+ "source": {
+  "farm_cast": "hc_sheriff_boone",
+  "route": "tools/farm_avatars.py"
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-06",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_Accessory_Wild_West_Sheriff_Cowboy_Hat_Brown"
+ ]
+}

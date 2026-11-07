@@ -4,6 +4,7 @@ import * as THREE from 'three';
 import { U, clamp, lerp, easeOut, noise1, v3 } from './core.js';
 import { buildSky } from './sky.js';
 import { loadAvatars } from './roblox.js';
+import { loadModels } from './library.js';
 import { winMat, lampMat } from './town.js';
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
@@ -39,12 +40,14 @@ export const DUSK = P({ top: '#2a2f6e', horizon: '#ff9a6a', haze: '#d89a8a', sun
   sunDisc: 1, sunSize: 1.4, stars: 0.2, moon: 0, hemiSky: '#c8a0c0', hemiGround: '#4a4a40', hemiI: 0.9, amb: 0.14,
   caus: '#ffffff', causI: 0, exposure: 1.0, vig: 0.35, win: 0.8, lamp: 1.2, fogNear: 200, fogFar: 700, bloom: 0.35 });
 
-export async function initStage(ep) {
+export async function initStage(ep, { avatars = [], models = [] } = {}) {
   const tr = await fetch(`/build/${ep}/timeline.json`);
   // check pages (e.g. episodes/avatars.js) have no narration: fall back to an empty 6 s timeline
   const TL = tr.ok ? await tr.json() : { duration: 6, lines: [], captions: [] };
   await document.fonts.load('900 100px ITTInter');
-  await loadAvatars();   // real Roblox avatars from web/assets/avatars (none -> procedural cast)
+  // real Roblox avatars from web/assets/avatars (none -> procedural cast); models: the library (engine/library.js)
+  await loadAvatars(avatars === 'all' ? 'all' : [...avatars, ...models.filter((m) => m.startsWith('farm_'))]);
+  await loadModels(models);
   const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true, powerPreference: 'high-performance' });
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(1080, 1920);

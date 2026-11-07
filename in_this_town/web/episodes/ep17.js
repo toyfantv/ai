@@ -8,6 +8,7 @@ import { CAST } from '../engine/cast.js';
 import { buildTown, buildHeroHouse } from '../engine/town.js';
 import { initStage, applyEnv, shotAt, frame, expose, P, mixP, NIGHT } from '../engine/stage.js';
 import { canvasTex, glowSprite } from '../engine/props.js';
+import { makeBox, cutaway, cardboardSky } from '../engine/models.js';
 
 let ctx, L, EV;
 const W = {};
@@ -34,42 +35,6 @@ function events() {
 }
 
 // ---------- props ----------
-function makeBox(parent) {
-  const g = new THREE.Group(); parent.add(g);
-  const out = mat('#17171d', { caustic: false }), inn = mat('#3a3038', { caustic: false }), gold = mat('#a98a4a', { caustic: false });
-  box(2, 0.06, 2, inn, 0, 0.03, 0, g);
-  const P4 = [[0, 1, 'x', 1], [0, -1, 'x', -1], [1, 0, 'z', -1], [-1, 0, 'z', 1]].map(([x, z, ax, sg]) => {
-    const p = new THREE.Group(); p.position.set(x, 0, z); g.add(p);
-    const side = ax === 'z';
-    box(side ? 0.05 : 2, 1.7, side ? 2 : 0.05, out, 0, 0.85, 0, p);
-    box(side ? 0.02 : 1.96, 1.66, side ? 1.96 : 0.02, inn, side ? -sg * -0.035 * -1 : 0, 0.85, side ? 0 : -sg * 0.035, p);
-    return { p, ax, sg };
-  });
-  // the label: no return address
-  const lab = canvasTex(512, 320, (c, w, h) => {
-    c.fillStyle = '#efe7d4'; c.fillRect(0, 0, w, h); c.strokeStyle = '#2a2420'; c.lineWidth = 8; c.strokeRect(10, 10, w - 20, h - 20);
-    c.fillStyle = '#2a2420'; c.font = '900 42px ITTInter, sans-serif'; c.textAlign = 'left'; c.fillText('RETURN ADDRESS:', 34, 74);
-    c.fillRect(34, 138, w - 68, 5); c.fillRect(34, 206, w - 68, 5); c.fillRect(34, 274, w - 68, 5);
-  });
-  const label = new THREE.Mesh(new THREE.PlaneGeometry(1.2, 0.75), new THREE.MeshStandardMaterial({ map: lab, roughness: 0.8 }));
-  label.position.set(0, 0.92, 0.035); P4[0].p.add(label);
-  const lid = new THREE.Group(); lid.position.y = 1.7; g.add(lid);
-  box(2.14, 0.22, 2.14, out, 0, 0.11, 0, lid);
-  box(0.16, 0.24, 2.16, gold, 0, 0.11, 0, lid); box(2.16, 0.24, 0.16, gold, 0, 0.11, 0, lid);
-  return { g, lid, open(a) { P4.forEach(({ p, ax, sg }) => { p.rotation[ax] = sg * a; }); } };
-}
-
-// A house as a model: no roof, ceiling, hedge or lights.
-function cutaway(house) {
-  for (const c of [...house.group.children]) {
-    if (c.isLight) { c.intensity = 0; c.visible = false; continue; }
-    const p = c.position, gp = c.geometry && c.geometry.parameters;
-    if (!gp) continue;
-    if (gp.radialSegments || (p.y > 13.6 && gp.height < 1)) house.group.remove(c);
-    else if (p.z > 11 && p.y < 1) house.group.remove(c);   // hedge
-  }
-  return house;
-}
 
 // Same covers and card in all three houses (the channel's easter eggs).
 function dress(house, tex) {
@@ -178,34 +143,7 @@ async function build() {
 
   // the sky is a box: two pairs of flaps with night on the inside, a lit room beyond
   const C = v3(HX, 300, -300), A = 520; W.skyC = C;
-  const night = canvasTex(1024, 1024, (c, w, h) => {
-    c.fillStyle = '#0d1540'; c.fillRect(0, 0, w, h);
-    for (let i = 0; i < 700; i++) { const a = 0.3 + 0.7 * Math.abs(Math.sin(i * 12.9898)); c.fillStyle = `rgba(255,255,255,${a})`; const s = 1 + (i % 3); c.fillRect(Math.abs(Math.sin(i * 78.233)) * w, Math.abs(Math.sin(i * 39.425)) * h, s, s); }
-    // the sky is printed on cardboard: bare kraft at the edges
-    c.strokeStyle = '#b98a5a'; c.lineWidth = 46; c.strokeRect(0, 0, w, h);
-  });
-  night.anisotropy = 16;
-  const nightM = new THREE.MeshBasicMaterial({ map: night, fog: false, side: THREE.DoubleSide, toneMapped: false });
-  const card = new THREE.MeshBasicMaterial({ color: '#b98a5a', fog: false, toneMapped: false });
-  const flap = (ax, sg, y) => {
-    const p = new THREE.Group(); p.position.copy(C); p.position.y = y; p.position[ax] += sg * A; scene.add(p);
-    const m = new THREE.Mesh(new THREE.BoxGeometry(ax === 'x' ? A : 2 * A, 16, ax === 'x' ? 2 * A : A), [card, card, card, nightM, card, card]);
-    m.position[ax] = -sg * A / 2; p.add(m);
-    return { p, ax, sg };
-  };
-  W.flaps = [flap('x', 1, C.y + 18), flap('x', -1, C.y + 18), flap('z', 1, C.y), flap('z', -1, C.y)];
-  W.tape = new THREE.Mesh(new THREE.PlaneGeometry(10, 2 * A), new THREE.MeshBasicMaterial({ color: '#ffe2b0', fog: false, transparent: true, opacity: 0, toneMapped: false, side: THREE.DoubleSide }));
-  W.tape.rotation.x = Math.PI / 2; W.tape.position.copy(C); W.tape.position.y = C.y + 9; scene.add(W.tape);
-  // the box's walls keep the rest of the giant out of the night
-  W.walls = new THREE.Group(); scene.add(W.walls);
-  const wm = new THREE.MeshBasicMaterial({ color: '#141c4c', fog: false, side: THREE.DoubleSide });
-  const wall = (x, z, ry) => { const m = new THREE.Mesh(new THREE.PlaneGeometry(2 * A, C.y + 60), wm); m.position.set(x, (C.y - 60) / 2, z); m.rotation.y = ry; W.walls.add(m); };
-  wall(C.x, C.z - A, 0); wall(C.x + A, C.z, Math.PI / 2); wall(C.x - A, C.z, Math.PI / 2);
-  const beyond = canvasTex(1024, 1024, (c, w, h) => {
-    const g = c.createRadialGradient(w / 2, h / 2, 40, w / 2, h / 2, w * 0.62); g.addColorStop(0, '#fff2d8'); g.addColorStop(0.45, '#f0c48c'); g.addColorStop(1, '#a8703f'); c.fillStyle = g; c.fillRect(0, 0, w, h);
-  });
-  W.beyond = new THREE.Mesh(new THREE.PlaneGeometry(14000, 14000), new THREE.MeshBasicMaterial({ map: beyond, fog: false, side: THREE.DoubleSide, toneMapped: false }));
-  W.beyond.rotation.x = Math.PI / 2; W.beyond.position.set(C.x, 3400, C.z); scene.add(W.beyond);
+  Object.assign(W, cardboardSky(scene, C, A));
   W.top = makeCharacter({ ...CAST.emily, scale: TOPS, caustic: false }); scene.add(W.top.root);
   W.faceLight = new THREE.DirectionalLight('#ffe6c8', 0); W.faceLight.position.copy(H(0, 0, 500)); W.faceLight.target.position.set(HX, 1120, -600); scene.add(W.faceLight, W.faceLight.target);
   W.dust = [];
@@ -385,7 +323,7 @@ function renderAt(t) {
 }
 
 export async function setup() {
-  ctx = await initStage('ep17'); L = ctx.L; EV = events();
+  ctx = await initStage('ep17', { avatars: ['farm_emma'] }); L = ctx.L; EV = events();
   await build();
   W.shots = shots();
   const api = expose(ctx, renderAt, ctx.dur - 1.0, EV);

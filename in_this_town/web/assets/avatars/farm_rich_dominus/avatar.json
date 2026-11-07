@@ -1,0 +1,27 @@
+{
+ "key": "farm_rich_dominus",
+ "source": {
+  "farm_cast": "rich_dominus",
+  "route": "tools/farm_avatars.py"
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-06",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightHand",
+  "RightLowerArm",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_HoodedAssassin"
+ ]
+}

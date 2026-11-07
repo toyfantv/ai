@@ -11,7 +11,7 @@ import { initStage, applyEnv, frame, expose, DAY } from '../engine/stage.js';
 
 const POSES = ['idle', 'walk', 'wave', 'point', 'sit', 'run'];
 export async function setup() {
-  const ctx = await initStage('avatars');
+  const ctx = await initStage('avatars', { avatars: Object.values(CAST).map((c) => c.avatar).filter(Boolean) });
   const ground = new THREE.Mesh(new THREE.PlaneGeometry(400, 400), new THREE.MeshStandardMaterial({ color: '#7dbb5a', roughness: 0.9 }));
   ground.rotation.x = -Math.PI / 2; ground.position.y = 0.35; ground.receiveShadow = true; ctx.scene.add(ground);
   const only = new URLSearchParams(location.search).get('only');

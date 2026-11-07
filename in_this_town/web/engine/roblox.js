@@ -26,12 +26,14 @@ function partOf(name) {
   return null;
 }
 
-// Load every avatar listed in web/assets/avatars/index.json (written by the fetch tool).
-// Missing index -> no avatars, everyone stays procedural.
-export async function loadAvatars() {
+// Load the avatars listed in web/assets/avatars/index.json (written by the fetch tool).
+// Missing index -> no avatars, everyone stays procedural. The farm library (farm_*) is opt-in: an episode loads only the
+// ones it names (initStage(ep, { avatars: [...] })); 'all' is for the check pages.
+export async function loadAvatars(want = []) {
   let idx = {};
   try { const r = await fetch(BASE + 'index.json'); if (r.ok) idx = await r.json(); } catch { /* none */ }
   if (new URLSearchParams(location.search).get('avatars') === '0') idx = {};
+  if (want !== 'all') idx = Object.fromEntries(Object.entries(idx).filter(([k]) => !k.startsWith('farm_') || want.includes(k)));
   await Promise.all(Object.entries(idx).map(async ([key, rel]) => {
     try { REG.set(key, await loadOne(key, BASE + rel)); } catch (e) { console.error(`avatar ${key} failed to load: ${e.message}`); }
   }));

@@ -1,0 +1,162 @@
+{
+ "bird": {
+  "author": "toyfantv",
+  "desc": "a blocky bird with wings to flap",
+  "kind": "prop",
+  "licence": "own",
+  "made_for": "ep14",
+  "source": "this renderer",
+  "type": "builder",
+  "url": ""
+ },
+ "car": {
+  "author": "toyfantv",
+  "desc": "a simple car, any colour",
+  "kind": "vehicle",
+  "licence": "own",
+  "made_for": "ep14",
+  "source": "this renderer",
+  "type": "builder",
+  "url": ""
+ },
+ "cardboard_sky": {
+  "author": "toyfantv",
+  "desc": "the sky as a box whose flaps open",
+  "kind": "environment",
+  "licence": "own",
+  "made_for": "ep17",
+  "source": "this renderer",
+  "type": "builder",
+  "url": ""
+ },
+ "clock": {
+  "author": "toyfantv",
+  "desc": "a round clock, setTime(minutes)",
+  "kind": "prop",
+  "licence": "own",
+  "made_for": "ep14",
+  "source": "this renderer",
+  "type": "builder",
+  "url": ""
+ },
+ "hero_house": {
+  "author": "toyfantv",
+  "desc": "Emma's two-storey house with a furnished interior",
+  "kind": "building",
+  "licence": "own",
+  "made_for": "town",
+  "source": "this renderer",
+  "type": "builder",
+  "url": ""
+ },
+ "living_cloud": {
+  "author": "toyfantv",
+  "desc": "a cloud with a face, setFace(kind)",
+  "kind": "prop",
+  "licence": "own",
+  "made_for": "ep13",
+  "source": "this renderer",
+  "type": "builder",
+  "url": ""
+ },
+ "model_house": {
+  "author": "toyfantv",
+  "desc": "hero_house as a roofless cutaway: at 0.1 scale, the miniature",
+  "kind": "building",
+  "licence": "own",
+  "made_for": "ep17",
+  "source": "this renderer",
+  "type": "builder",
+  "url": ""
+ },
+ "package_box": {
+  "author": "toyfantv",
+  "desc": "black package, folding walls, lid, blank label",
+  "kind": "prop",
+  "licence": "own",
+  "made_for": "ep17",
+  "source": "this renderer",
+  "type": "builder",
+  "url": ""
+ },
+ "star": {
+  "author": "toyfantv",
+  "desc": "a glowing star sprite",
+  "kind": "prop",
+  "licence": "own",
+  "made_for": "ep11",
+  "source": "this renderer",
+  "type": "builder",
+  "url": ""
+ },
+ "star_jar": {
+  "author": "toyfantv",
+  "desc": "a glass jar of stars",
+  "kind": "prop",
+  "licence": "own",
+  "made_for": "ep11",
+  "source": "this renderer",
+  "type": "builder",
+  "url": ""
+ },
+ "suburban_house": {
+  "author": "toyfantv",
+  "desc": "a street house, one or two floors, seeded",
+  "kind": "building",
+  "licence": "own",
+  "made_for": "town",
+  "source": "this renderer",
+  "type": "builder",
+  "url": ""
+ },
+ "town": {
+  "author": "toyfantv",
+  "desc": "the whole night or day town: streets, houses, lamps",
+  "kind": "environment",
+  "licence": "own",
+  "made_for": "town",
+  "source": "this renderer",
+  "type": "builder",
+  "url": ""
+ },
+ "train_car": {
+  "author": "toyfantv",
+  "desc": "a silver lit train carriage, any length",
+  "kind": "vehicle",
+  "licence": "own",
+  "made_for": "ep15",
+  "source": "this renderer",
+  "type": "builder",
+  "url": ""
+ },
+ "tree": {
+  "author": "toyfantv",
+  "desc": "a blocky street tree, seeded",
+  "kind": "prop",
+  "licence": "own",
+  "made_for": "town",
+  "source": "this renderer",
+  "type": "builder",
+  "url": ""
+ },
+ "walking_house": {
+  "author": "toyfantv",
+  "desc": "a house on eight legs",
+  "kind": "building",
+  "licence": "own",
+  "made_for": "ep07",
+  "source": "this renderer",
+  "type": "builder",
+  "url": ""
+ },
+ "watching_house": {
+  "author": "toyfantv",
+  "desc": "a dark house with an eye behind the door",
+  "kind": "building",
+  "licence": "own",
+  "made_for": "ep07",
+  "source": "this renderer",
+  "type": "builder",
+  "url": ""
+ }
+}

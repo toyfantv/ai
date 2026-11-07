@@ -5,6 +5,9 @@
       [split:<part>=<x>]               cut a layered top at +-x from the body's centre into a torso and two sleeves
       [gain:<part>=r,g,b]              scale a baked texture (a colour the bake came out darker than in Roblox)
       [fill:<name>=x,y0,y1,z,#rrggbb]  a hidden box under the clothes (x, z half sizes in studs)
+      [auto]                           do all of that by measuring the character (tools/farm_avatars.py): a wide layered
+                                       top is split, what it hides takes its colour, the gaps are filled, limb textures
+                                       are smaller. Writes look.json (mean colours) beside the model.
 
 No Studio export needed: still_capture.py lists the dressed character over MCP, still_build.py rebuilds it with layered
 clothing fitted and classic clothing composited, and this script writes what `tools/roblox_avatar.py import` reads.
@@ -13,6 +16,7 @@ accessories are named from their Accessory. A split top goes out as UpperTorso2 
 piece moves whole with its bone and an arm lifts with a clean edge instead of torn triangles. The covers and fills are
 there so nothing shows through a gap when a limb swings.
 """
+import json
 import os
 import re
 import sys
@@ -26,7 +30,10 @@ S = 0.28
 argv = sys.argv[sys.argv.index("--") + 1:]
 char, out = argv[0], argv[1]
 cover, split, gain, fills = {}, {}, {}, []
+auto = "auto" in argv[2:]
 for a in argv[2:]:
+    if a == "auto":
+        continue
     k, v = a.split("=")
     if k.startswith("split:"):
         split[k[6:]] = float(v)
@@ -63,9 +70,29 @@ def part_name(path):
     return "acc_" + re.sub(r"[^A-Za-z0-9]+", "_", rest[0]).strip("_")
 
 
-vlines, mlines, vi, ti, ni = [], [], 1, 1, 1
+vlines, mlines, vi = [], [], 1
+vts, vns = {}, {}   # shared texture coordinates and normals: most of an OBJ's size is these, repeated per corner
+
+
+def vt_id(x, y):
+    k = "vt %.4f %.4f" % (x, y)
+    if k not in vts:
+        vts[k] = len(vts) + 1
+        vlines.append(k)
+    return vts[k]
+
+
+def vn_id(x, y, z):
+    k = "vn %.3f %.3f %.3f" % (x, y, z)
+    if k not in vns:
+        vns[k] = len(vns) + 1
+        vlines.append(k)
+    return vns[k]
+
+
 body = [ob.matrix_world @ Vector(c) for ob in obs if not part_name(ob["roblox_path"]).startswith("acc_") for c in ob.bound_box]
 cx = (min(v.x for v in body) + max(v.x for v in body)) / 2
+cy = (min(v.y for v in body) + max(v.y for v in body)) / 2
 
 
 def hexrgb(c):
@@ -75,7 +102,7 @@ def hexrgb(c):
 
 def write_split(ob, name, x):
     """The top, cut exactly at +-x: every triangle lies wholly in the torso or a sleeve."""
-    global vi, ti, ni
+    global vi
     x *= S
     bm = bmesh.new()
     bm.from_mesh(ob.data)
@@ -102,11 +129,7 @@ def write_split(ob, name, x):
                     ids[v.index] = vi + len(ids)
                     vlines.append("v %.4f %.4f %.4f" % (v.co.x / S, v.co.z / S, -v.co.y / S))
                 u = lp[uv].uv
-                vlines.append("vt %.4f %.4f" % (u.x, u.y))
-                vlines.append("vn %.3f %.3f %.3f" % (v.normal.x, v.normal.z, -v.normal.y))
-                idx.append(f"{ids[v.index]}/{ti}/{ni}")
-                ti += 1
-                ni += 1
+                idx.append(f"{ids[v.index]}/{vt_id(u.x, u.y)}/{vn_id(v.normal.x, v.normal.z, -v.normal.y)}")
             fl.append("f " + " ".join(idx))
         vlines.extend(fl)
         vi += len(ids)
@@ -114,9 +137,53 @@ def write_split(ob, name, x):
     bm.free()
 
 
+def box_of(ob):
+    w = [ob.matrix_world @ Vector(c) for c in ob.bound_box]
+    return (min(v.x for v in w), max(v.x for v in w), min(v.z for v in w), max(v.z for v in w), min(v.y for v in w), max(v.y for v in w))
+
+
+def mean_colour(img):
+    """The bake's mean, ignoring the black outside its UV islands."""
+    px = np.empty(img.size[0] * img.size[1] * 4, dtype=np.float32)
+    img.pixels.foreach_get(px)
+    px = px.reshape(-1, 4)[:, :3]
+    px = px[px.sum(axis=1) > 0.02]
+    if not len(px):
+        return None
+    srgb = np.where(px.mean(axis=0) <= 0.0031308, px.mean(axis=0) * 12.92, 1.055 * px.mean(axis=0) ** (1 / 2.4) - 0.055)
+    return "#%02x%02x%02x" % tuple(int(max(0, min(1, c)) * 255) for c in srgb)
+
+
+parts = {part_name(ob["roblox_path"]): ob for ob in obs}
+torso = parts.get("UpperTorso") or parts.get("Torso")
+look, tops = {}, {}
+if auto and torso:
+    tb = box_of(torso)
+    half = (tb[1] - tb[0]) / 2
+    for n, ob in parts.items():
+        b = box_of(ob)
+        wide = max(cx - b[0], b[1] - cx) > half * 1.35 and min(cx - b[0], b[1] - cx) > half * 1.35
+        over = min(b[3], tb[3]) - max(b[2], tb[2]) > 0.6 * (tb[3] - tb[2])
+        # a top wraps the torso and stops at the neck; wings and capes are thin or stand clear of the shoulders
+        if n.startswith("acc_") and ob.data.uv_layers and wide and over and b[3] < tb[3] + 0.45 * (tb[3] - tb[2]) and b[5] - b[4] < 3 * (tb[1] - tb[0]):
+            tops[n] = ob
+            split[n] = half / S * 1.06
+    obs.sort(key=lambda o: part_name(o["roblox_path"]) not in tops)
+    print("AVATAR tops", list(tops))
+
+
+def sleeve_reach(ob):
+    """The lowest point of the top beyond the shoulders."""
+    mw = ob.matrix_world
+    z = [(mw @ v.co).z for v in ob.data.vertices if abs((mw @ v.co).x - cx) > half * 1.06]
+    return min(z) if z else None
+
+
 for ob in obs:
     name = part_name(ob["roblox_path"])
     size = 1024 if name == "Head" or name.startswith("acc_") else 512
+    if auto and name != "Head":
+        size = 512 if name.startswith("acc_") else 256
     me = ob.data
     has_uv = bool(me.uv_layers)
     mlines.append(f"newmtl m_{name}")
@@ -137,6 +204,17 @@ for ob in obs:
         ob.select_set(True)
         bpy.ops.object.bake(type="DIFFUSE")
         fn = f"t_{name}.jpg"
+        look[name] = mean_colour(img)
+        if name in tops and look[name]:
+            cover.setdefault("UpperTorso", look[name])
+            reach = sleeve_reach(ob)
+            for arm in ("Left", "Right"):
+                for seg in ("UpperArm", "LowerArm"):
+                    p = parts.get(arm + seg)
+                    if p and reach is not None:
+                        b = box_of(p)
+                        if reach < (b[2] + b[3]) / 2:
+                            cover.setdefault(arm + seg, look[name])
         k = next((v for n, v in gain.items() if name.startswith(n)), None)
         if k:
             px = np.empty(size * size * 4, dtype=np.float32)
@@ -145,6 +223,7 @@ for ob in obs:
             px[:, :3] = np.clip(px[:, :3] * np.array(k, dtype=np.float32), 0, 1)
             img.pixels.foreach_set(px.ravel())
             img.update()
+        sc.render.image_settings.quality = 82
         img.filepath_raw = os.path.join(out, fn)
         img.file_format = "JPEG"
         img.save()
@@ -163,29 +242,34 @@ for ob in obs:
         vlines.append("v %.4f %.4f %.4f" % (w.x / S, w.z / S, -w.y / S))
     uvl = me.uv_layers.active.data if has_uv else None
     n3 = mw.to_3x3().inverted().transposed()
+    me.calc_loop_triangles()
     nrm = me.corner_normals
     faces = []
     for t in me.loop_triangles:
         idx = []
         for k in range(3):
             lp = t.loops[k]
-            if uvl:
-                u = uvl[lp].uv
-                vlines.append("vt %.4f %.4f" % (u.x, u.y))
+            tv = vt_id(*uvl[lp].uv) if uvl else ""
             n = (n3 @ nrm[lp].vector).normalized()
-            vlines.append("vn %.3f %.3f %.3f" % (n.x, n.z, -n.y))
-            idx.append(f"{vi + t.vertices[k]}/{ti if uvl else ''}/{ni}")
-            ti += 1 if uvl else 0
-            ni += 1
+            idx.append(f"{vi + t.vertices[k]}/{tv}/{vn_id(n.x, n.z, -n.y)}")
         faces.append("f " + " ".join(idx))
     vlines += faces
     vi += len(me.vertices)
     print("AVATAR", name, len(me.vertices), "verts", len(faces), "tris")
 
+if auto and tops:
+    tb = box_of(torso)
+    tw, y0, y1, hz = half / S, tb[2] / S, tb[3] / S, (tb[5] - tb[4]) / 2 / S
+    fills.append(("UpperTorso3", tw, y0, y1, hz * 0.96, cover["UpperTorso"]))
+    low = parts.get("LowerTorso")
+    if low is not None and look.get("LowerTorso"):
+        lb = box_of(low)
+        fills.append(("LowerTorso2", tw * 0.97, lb[2] / S, lb[3] / S, hz * 0.94, look["LowerTorso"]))
+
 for fname, hx, y0, y1, hz, col in fills:
     mlines.append(f"newmtl m_{fname}\nKd %.4f %.4f %.4f\n" % tuple(hexrgb(col)))
     vlines.append(f"o {fname}\nusemtl m_{fname}")
-    c = [(cx / S + sx * hx, y, sz * hz) for y in (y0, y1) for sx in (-1, 1) for sz in (-1, 1)]
+    c = [(cx / S + sx * hx, y, -cy / S + sz * hz) for y in (y0, y1) for sx in (-1, 1) for sz in (-1, 1)]
     vlines += ["v %.4f %.4f %.4f" % p for p in c]
     for q in ((0, 1, 3, 2), (4, 6, 7, 5), (0, 4, 5, 1), (2, 3, 7, 6), (0, 2, 6, 4), (1, 5, 7, 3)):
         vlines.append("f " + " ".join(str(vi + i) for i in q))
@@ -195,3 +279,6 @@ with open(os.path.join(out, "model.obj"), "w") as f:
     f.write("mtllib model.mtl\n" + "\n".join(vlines) + "\n")
 with open(os.path.join(out, "model.mtl"), "w") as f:
     f.write("\n".join(mlines) + "\n")
+if auto:
+    with open(os.path.join(out, "look.json"), "w") as f:
+        json.dump({"tops": list(tops), "colours": look}, f)

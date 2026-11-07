@@ -88,6 +88,64 @@ python3 tools/sheet.py build/ep06 build/ep06/sheet.jpg 1 5 10 20 30 40 50 60
 dread → crack), the shot list (camera paths keyed to narration lines), character blocking, captions and the
 camera-shake and flash overlays.
 
+## Production quality (every JavaScript video)
+
+The user's standing rule (2026-11-06): every video from this renderer gets high-quality detailed models (buildings,
+vehicles, accessories), environment and ambient effects, and cinematic lighting. Plan them into the director from the start.
+Episode 17 was made before the rule and stays as it is.
+
+## Model library
+
+One place for everything an episode can pull in by name: buildings, vehicles, props, accessories, environments and avatars.
+**Check it before building something new, and add anything new when a video is done.**
+
+```bash
+python tools/models.py list            # everything, avatars included
+python tools/models.py list vehicle    # one kind
+python tools/models.py credits ep20    # the credit lines for the models an episode uses
+node render.js stills library 0.5 0 1 2   # check page: still n shows model n
+```
+
+Using a model takes one line, and an episode loads and bundles only the names it uses:
+
+```js
+import { model } from '../engine/library.js';
+const ctx = await initStage('ep20', { models: ['old_truck', 'farm_maya'] });   // files and avatars to load
+const box = model('package_box', { parent: ctx.scene });       // a builder: its own options, see engine/models.js
+const truck = model('old_truck', { parent: ctx.scene, height: 8 });   // a file: scaled to 8 studs high
+```
+
+The catalogue is `web/assets/models/index.json`. Models made in code are builders in `web/engine/models.js` (add one to `BUILD`,
+and a line to the catalogue). Those from Episodes 7 to 16 are copies: the episodes keep their own code, so their renders can't
+change. Episode 17 imports its package, model house and cardboard sky from the library. Model files are one `.glb` each in
+`web/assets/models/<name>/`: GLB loads in one request and keeps the look of the source.
+
+### Free models from other sites
+
+Only when a story needs one; no bulk downloads. Add it with the licence recorded:
+
+```bash
+python tools/models.py add old_truck D:/downloads/old_truck/truck.glb --kind vehicle --desc "a rusty pickup" \
+  --source "Poly Haven" --author "Name" --licence CC0 --url https://polyhaven.com/a/... --tris 30000 --tex 1024
+```
+
+`add` takes `.glb .gltf .fbx .obj` only, reads the file in a folder of its own with Blender's scripts off, reduces the polygons
+and textures to the limits given, and refuses NonCommercial, NoDerivatives, editorial and unclear licences. Match the scene's
+look, and keep real brand logos out of shot.
+
+| Site | Licence | Stored in git? | Sign-in |
+|---|---|---|---|
+| Poly Haven | CC0, no credit needed; its page allows redistribution | yes | not stated on the licence page |
+| Kenney | CC0, no credit needed; the page doesn't mention repositories, CC0 allows it | yes | not stated on the support page |
+| Quaternius | read the licence link on the site first (not verified, 2026-11-06) | if CC0 | check |
+| Sketchfab | per model: read its page. CC0 and CC-BY only (`--licence CC-BY` needs `--author` and `--url`). Site terms not verified: the page didn't load, 2026-11-06 | CC0 / CC-BY yes; otherwise `--no-redistribute` | account |
+| TurboSquid | royalty-free licence: video is a permitted use, but "giving away the 3D model file itself is not allowed" | no: `--licence royalty-free --no-redistribute` | account |
+
+`--no-redistribute` keeps the file in `web/assets/models/local/`, which git ignores and pod bundles skip: it lives on this PC only,
+so an episode using it renders here. Sites that need an account: the user signs in, Claude never creates one or enters a password.
+
+Every model with a CC-BY licence needs its credit line in the video's description: `python tools/models.py credits <ep>`.
+
 ## Real Roblox avatars
 
 This is an alternative, not the default: the procedural blocky bodies stay the look of the series. An episode opts in
@@ -105,8 +163,27 @@ node render.js stills avatars 0.5 0.5 1.5 2.5 3.5 4.5 5.5               # check:
 No cookie? In Roblox Studio, select the character Model, right-click > Export Selection > .obj, then
 `python tools/roblox_avatar.py import ethan path/to/export/`.
 
-From the video-farm cast, with no clicks in Studio: capture the character in Play and rebuild it in Blender
-(`tools/blender/still_capture.py`, `still_build.py` in video-farm), then bake that `scene.blend` to an OBJ the rig can split:
+### The farm library
+
+Video-farm cast members are exported in bulk, with no clicks in Studio. Studio must be free; it comes to the front during capture:
+
+```bash
+python tools/farm_avatars.py all                    # the whole list in the script; finished characters are skipped
+python tools/farm_avatars.py all --only maya,jake   # or any cast names
+```
+
+It captures 12 characters per throwaway scene, rebuilds them in Blender, bakes each with `tools/blender_avatar.py auto`,
+imports it as `farm_<name>`, writes `web/engine/farm_cast.js` and tiles three poses of each into `build/roster/sheet_*.jpg`.
+A failed character is recorded in `build/avatars/batch.json` and the run goes on; running it again retries what isn't done.
+
+An episode names the avatars it uses, and only those load or go in a pod bundle:
+
+```js
+ctx = await initStage('ep20', { avatars: ['farm_maya', 'farm_john'] });
+const maya = makeCharacter(farm('maya'));           // import { farm } from '../engine/farm_cast.js'
+```
+
+By hand, for one character (`auto` measures everything below; the options override it):
 
 ```bash
 blender -b scene.blend --python tools/blender_avatar.py -- <character> <out dir> split:acc_Sweater=1.06 ...

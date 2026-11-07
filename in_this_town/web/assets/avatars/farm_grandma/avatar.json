@@ -1,0 +1,35 @@
+{
+ "key": "farm_grandma",
+ "source": {
+  "farm_cast": "grandma",
+  "route": "tools/farm_avatars.py"
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-06",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperArm2",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "LowerTorso2",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperArm2",
+  "RightUpperLeg",
+  "UpperTorso",
+  "UpperTorso2",
+  "UpperTorso3",
+  "acc_Accessory_Business_Lady_Bun_in",
+  "acc_Accessory_Oval_Frame_Glasses"
+ ]
+}

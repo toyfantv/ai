@@ -15,6 +15,7 @@ import base64
 import io
 import json
 import os
+import re
 import sys
 import tarfile
 import time
@@ -59,7 +60,14 @@ def bundle(ep):
         for p in ["web/engine", "web/index.html", f"web/episodes/{ep}.js", "web/fonts/README.txt", "render.js", "package.json", "tools/runpod", f"build/{ep}/timeline.json"]:
             tf.add(os.path.join(ROOT, p), p, filter=lambda ti: None if ti.name.endswith(".otf") else ti)
         if os.path.isdir(os.path.join(ROOT, "web/assets")):   # real Roblox avatars (tools/roblox_avatar.py), covers
-            tf.add(os.path.join(ROOT, "web/assets"), "web/assets")
+            code = open(os.path.join(ROOT, f"web/episodes/{ep}.js"), encoding="utf-8").read()
+            used = set(re.findall(r"\w+", code)) | {"farm_" + n for n in re.findall(r"farm\(['\"](\w+)", code)}
+            def skip(ti):   # the libraries stay home: an episode carries the avatars and model files it names
+                m = re.match(r"web/assets/(?:avatars/(farm_\w+)|models/(?:local/)?(\w+)(?:/|$))", ti.name)
+                if "web/assets/models/local" in ti.name:   # files whose licence keeps them on this PC
+                    return None
+                return None if m and (m.group(1) or m.group(2)) not in used else ti
+            tf.add(os.path.join(ROOT, "web/assets"), "web/assets", filter=skip)
     return base64.b64encode(buf.getvalue()).decode()
 
 
