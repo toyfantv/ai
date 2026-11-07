@@ -36,7 +36,7 @@ const NIGHT23 = { ...NIGHT, ...P({ top: '#0b1236', horizon: '#2a2f6a', haze: '#1
   sunI: 0.75, sunDir: v3(0.4, 0.62, -0.5), stars: 1, moon: 1, hemiI: 1.15, amb: 0.22, envI: 0.75, exposure: 1.2, bloom: 0.28, lamp: 3.0, win: 1.6, fogNear: 200, fogFar: 700, saturation: 1.08, contrast: 1.03, bounce: 0.2 };
 const SHOP = { ...DAY, ...P({ top: '#ffe8f2', horizon: '#fff4e8', haze: '#fff0f4', sunColor: '#fff4e6', hemiSky: '#fff2f6', hemiGround: '#c8a0b8' }),
   sunI: 0, sunDisc: 0, hemiI: 0.8, amb: 0.16, envI: 0.55, exposure: 0.84, bloom: 0.2, fogNear: 200, fogFar: 600, saturation: 1.12, contrast: 1.02, bounce: 0.3 };
-const ROOM = { ...NIGHT23, ...P({ haze: '#1a1830', hemiSky: '#ffd8b8', hemiGround: '#5a3a30' }), sunI: 0.25, hemiI: 0.62, amb: 0.14, envI: 0.45, exposure: 1.18, stars: 1, saturation: 1.1 };
+const ROOM = { ...NIGHT23, ...P({ haze: '#1a1830', hemiSky: '#ffd8b8', hemiGround: '#5a3a30' }), sunI: 0.25, hemiI: 0.62, amb: 0.14, envI: 0.45, exposure: 1.1, bloom: 0.1, stars: 1, saturation: 1.1 };
 
 function events() {
   const s = (i) => L(i).start, e = (i) => L(i).end;
@@ -100,7 +100,7 @@ function town() {
   for (const [x, z, s] of [[-6, -20, 0.7], [5, -27, 0.9], [-9, -38, 1.1], [8, -44, 0.8], [-2, -31, 0.5]]) pb.box(surf('cobble', '#b8b0a4'), s * 1.4, s * 0.6, s, PX + x, s * 0.2, z, { r: 0.2, ry: x });
   pb.done(g);
   const dand = []; for (let i = 0; i < 70; i++) dand.push({ x: PX - 14 + r() * 28, z: HZ - 12 + r() * 30 });
-  flowers(g, dand, { seed: 9, colors: ['#fff4b0', '#ffffff', '#ffd24a', '#c8b0ff'] });
+  W.dand = flowers(g, dand, { seed: 9, colors: ['#fff4b0', '#ffffff', '#ffd24a', '#c8b0ff'] });
   W.oldBox = mailbox({ old: true }); W.oldBox.position.set(PX + 4.2, 0, -13.6); g.add(W.oldBox);
   b.done(g);
   // parked cars along the kerb would break the pastel calm: the street stays clear, a few bikes instead
@@ -260,10 +260,45 @@ function shop() {
   W.shoppers = crowd({ count: 3, w: 10, d: 4, look: v3(0, 0, -20), cheer: 0, seed: 31, scale: 1.0 }); W.shoppers.position.copy(SP(-11, 0, 9)); ctx.scene.add(W.shoppers);
 }
 
+// ---- Lily's face must read in close-ups: the fringe is lifted above her brows, the face's dark lines are made bold and dark ----
+function trimFringe(ch) {
+  const skin = [], hair = [], box = new THREE.Box3();
+  ch.head.children.forEach((m) => { if (!m.isMesh || m === ch.faceSheet) return; (m.material.emissive && m.material.emissive.getHex() !== 0xffffff && m.material.emissiveIntensity > 0 && !m.material.map ? skin : hair).push(m); });
+  skin.forEach((m) => { m.geometry.computeBoundingBox(); box.union(m.geometry.boundingBox); });
+  if (box.isEmpty()) return;
+  const c = box.getCenter(v3(0, 0, 0)), h = box.getSize(v3(0, 0, 0)).multiplyScalar(0.5), brow = c.y + 0.5 * h.y, zf = c.z + 0.15 * h.z;
+  hair.forEach((m) => {
+    const g = m.geometry.clone(), p = g.attributes.position;
+    for (let i = 0; i < p.count; i++) {
+      const x = p.getX(i), y = p.getY(i), z = p.getZ(i);
+      if (z < zf || y >= brow || Math.abs(x - c.x) > 0.97 * h.x || y < c.y - 1.6 * h.y) continue;
+      p.setY(i, brow + (y - brow) * 0.12);   // squash the fringe into a short band above the brows
+      p.setZ(i, Math.max(z - 0.05, c.z + h.z * 0.9 + 0.04));
+    }
+    p.needsUpdate = true; g.computeVertexNormals(); g.computeBoundingSphere(); m.geometry = g;
+  });
+  W.fringe = { brow, c, h, skin: skin.length, hair: hair.length };
+}
+function boldFace(ch) {
+  const m = ch.faceSheet.material; m.emissiveIntensity *= 0.5;
+  ch.head.children.forEach((k) => { if (k.isMesh && k !== ch.faceSheet && k.material.emissive && !k.material.map && k.material.emissiveIntensity > 0) k.material.emissiveIntensity *= 0.6; });   // less skin glow: the warm key lights her
+  const done = new WeakSet(), orig = ch.setFace.bind(ch);
+  ch.setFace = function (expr, f) {
+    orig(expr, f); const t = m.map; if (!t || done.has(t)) return; done.add(t);
+    const cv = t.image, x = cv.getContext('2d'), W2 = cv.width, H2 = cv.height, img = x.getImageData(0, 0, W2, H2), d = img.data, n = W2 * H2, dark = new Uint8Array(n);
+    for (let i = 0; i < n; i++) { const a = d[i * 4 + 3], l = (0.3 * d[i * 4] + 0.59 * d[i * 4 + 1] + 0.11 * d[i * 4 + 2]) / 255; const r0 = d[i * 4], g0 = d[i * 4 + 1], pink = r0 > 170 && r0 - g0 > 45; if (a > 40 && l < 0.86 && !pink) dark[i] = 1; }
+    const out = new Uint8Array(n), R = 1;
+    for (let yy = 0; yy < H2; yy++) for (let xx = 0; xx < W2; xx++) { if (!dark[yy * W2 + xx]) continue; for (let dy = -R; dy <= R; dy++) for (let dx = -R; dx <= R; dx++) { const X = xx + dx, Y = yy + dy; if (X >= 0 && Y >= 0 && X < W2 && Y < H2 && dx * dx + dy * dy <= R * R + 1) out[Y * W2 + X] = 1; } }
+    for (let i = 0; i < n; i++) if (out[i]) { const k = i * 4, a = d[k + 3] / 255; d[k] = Math.round(18 + d[k] * 0.12 * a); d[k + 1] = Math.round(12 + d[k + 1] * 0.12 * a); d[k + 2] = Math.round(12 + d[k + 2] * 0.12 * a); d[k + 3] = Math.max(d[k + 3], 235); }
+    x.putImageData(img, 0, 0); t.needsUpdate = true;
+  };
+}
+
 // ---- people and the pet ----
 function people() {
   const sc = ctx.scene;
   W.lily = makeCharacter({ avatar: 'farm_lily_pink', alti: true, skin: '#f2c79a', caustic: false }); sc.add(W.lily.root);
+  trimFringe(W.lily); boldFace(W.lily);
   W.girl = makeCharacter({ avatar: 'farm_memory_girl', alti: true, skin: '#f1c9a0', caustic: false, scale: 0.84 }); sc.add(W.girl.root);
   W.girl.setFace('happy'); W.girlV = vanisher(W.girl, '#ffd36a');   // the vanisher clones the face material: set her face first (it stays)
   W.drag = goldenDragon(); sc.add(W.drag.g);
@@ -294,8 +329,8 @@ function lightSet(set, t, focus, night) {
     pl[2].position.copy(PL(-6, 8, 0)); pl[2].color.set('#ffe6cc'); pl[2].intensity = 70 * op; pl[2].distance = 30;            // ceiling
     pl[3].position.copy(PL(0, 4.6, 10)); pl[3].color.set('#ffcf6a'); pl[3].intensity = (60 + 260 * smooth(EV.girl - 0.6, EV.girl, t) * (1 - smooth(EV.fade - 0.2, EV.fade + 0.6, t))) * 1; pl[3].distance = 24;   // her light at the door
     pl[4].position.copy(PL(-9, 7, -9)); pl[4].color.set('#9fb4ff'); pl[4].intensity = 40 * op; pl[4].distance = 22;          // moon through the back window
-    pl[5].position.set(focus.x + 2, focus.y + 3, focus.z + 4); pl[5].color.set('#ffe0c0'); pl[5].intensity = 34; pl[5].distance = 12;   // a soft fill on faces
-    W.key3.position.copy(PL(-6, 9.6, 7)); W.key3.target.position.copy(focus); W.key3.color.set('#ffe2c0'); W.key3.intensity = 260 * op; W.key3.angle = 0.5; W.key3.distance = 40;
+    pl[5].position.set(focus.x + 2, focus.y + 3, focus.z + 4); pl[5].color.set('#ffe0c0'); pl[5].intensity = 14; pl[5].distance = 12;   // a soft fill on faces
+    W.key3.position.copy(PL(-6, 9.6, 7)); W.key3.target.position.copy(focus); W.key3.color.set('#ffe2c0'); W.key3.intensity = 160 * op; W.key3.angle = 0.5; W.key3.distance = 40;
     void o;
   } else {
     // outdoors: the sun does the key; at night the street lamps near the camera, the porch lamps, the magic
@@ -426,7 +461,8 @@ function renderAt(t) {
   else if (['follow', 'land', 'nohouse', 'key', 'pick'].includes(n)) { const k = smooth(s(5), s(11), t); pal = mixP(DUSK2, NIGHT23, k * 0.75); night = 0.35 + 0.5 * k; }
   else { pal = NIGHT23; night = 1; }
   applyEnv(ctx, pal);
-  W.shop.visible = W.shoppers.visible = set === 'shop'; W.town.visible = set !== 'shop'; W.trees.groups.forEach((g2) => { g2.bark.visible = g2.leaves.visible = set !== 'shop'; });
+  W.shop.visible = W.shoppers.visible = set === 'shop';
+  W.tufts.visible = W.dand.head.visible = W.dand.stem.visible = set !== 'room';   // the plot's grass would poke through the room's floor W.town.visible = set !== 'shop'; W.trees.groups.forEach((g2) => { g2.bark.visible = g2.leaves.visible = set !== 'shop'; });
   W.lampGlows.forEach((m) => m.color.set('#ffe2a8').multiplyScalar(lerp(0.5, 3.2, night)));
   W.houses.forEach(({ c }) => { c.lampM.emissiveIntensity = 2.2 * night; });
   WIN.emissiveIntensity = lerp(0.05, 1.5, night);
