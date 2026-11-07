@@ -1,0 +1,755 @@
+{
+ "number": 24,
+ "title": "The Seed That Grew a Whole New Server",
+ "output": "InThisTown_Episode24_ServerZero.mp4",
+ "youtube_title": "The Seed That Grew a Whole New Server...",
+ "tiktok_caption": "He dug up a blue cube seed nobody had seen before. It grew a staircase above the clouds.",
+ "hashtags": "#Roblox #GrowAGarden #RobloxStories #InThisTown #Shorts",
+ "thumbnail_text": "SERVER ZERO",
+ "thumbnail_rec": "Oliver at the top of a glowing blue cube staircase above the clouds, the floating island of blue glass plants and the giant name tree behind him.",
+ "tail": 5.0,
+ "fps": 60,
+ "local_rate": 1.1,
+ "local_wps": 3.1,
+ "narrator": {
+  "min_tempo": 1.0,
+  "pace": [
+   2.8,
+   3.4
+  ]
+ },
+ "cast": {
+  "system": {
+   "voice": "eric",
+   "pitch": 0.84,
+   "tempo": 0.95
+  }
+ },
+ "highlights": {
+  "STRANGE SEED": "yellow",
+  "ROBLOX GARDEN": "yellow",
+  "SEED SHOP": "yellow",
+  "NOBODY": "red",
+  "TINY BLUE CUBE": "cyan",
+  "PLANTED IT": "yellow",
+  "GLOWING STAIRCASE": "cyan",
+  "HIGHER THAN THE CLOUDS": "cyan",
+  "CLIMBING": "yellow",
+  "FLOATING ISLAND": "cyan",
+  "GARDENS": "yellow",
+  "GLOWING BLUE GLASS": "cyan",
+  "NO OTHER PLAYERS": "red",
+  "WOODEN SIGN": "yellow",
+  "SERVER ZERO": "purple",
+  "EXPLORED": "yellow",
+  "GIANT TREE": "yellow",
+  "THOUSANDS OF NAMES": "cyan",
+  "PLAYER": "yellow",
+  "GLOWING": "cyan",
+  "FADED AWAY": "red",
+  "OWN NAME": "yellow",
+  "SMALL BRANCH": "yellow",
+  "GLOWING SEED": "cyan",
+  "MESSAGE": "yellow",
+  "FORGOTTEN TO GROW": "purple",
+  "RETURNED": "yellow",
+  "EVERY EMPTY PLOT": "yellow",
+  "BLOOMING": "cyan"
+ },
+ "lines": [
+  {
+   "text": "Oliver found a strange seed while digging in his Roblox garden.",
+   "tag": "[curious]",
+   "pause": 0.35,
+   "audio": "build/ep24/local_lines/line_00.wav"
+  },
+  {
+   "text": "It wasn't in the seed shop.",
+   "tag": "[mysterious]",
+   "pause": 0.3,
+   "audio": "build/ep24/local_lines/line_01.wav"
+  },
+  {
+   "text": "And nobody in the server knew what it was.",
+   "tag": "[mysterious]",
+   "pause": 0.4,
+   "audio": "build/ep24/local_lines/line_02.wav"
+  },
+  {
+   "text": "The seed was shaped like a tiny blue cube.",
+   "tag": "[curious]",
+   "pause": 0.35,
+   "audio": "build/ep24/local_lines/line_03.wav"
+  },
+  {
+   "text": "Oliver planted it anyway.",
+   "tag": "[conversational]",
+   "pause": 0.65,
+   "audio": "build/ep24/local_lines/line_04.wav"
+  },
+  {
+   "text": "Five minutes later, a glowing staircase grew out of the soil.",
+   "tag": "[in awe]",
+   "pause": 0.35,
+   "audio": "build/ep24/local_lines/line_05.wav",
+   "local": {
+    "rate": 1.0
+   }
+  },
+  {
+   "text": "It stretched higher than the clouds.",
+   "tag": "[in awe]",
+   "pause": 0.55,
+   "audio": "build/ep24/local_lines/line_06.wav"
+  },
+  {
+   "text": "Oliver started climbing.",
+   "tag": "[conversational]",
+   "pause": 0.5,
+   "audio": "build/ep24/local_lines/line_07.wav"
+  },
+  {
+   "text": "At the top was a floating island.",
+   "tag": "[in awe]",
+   "pause": 0.3,
+   "audio": "build/ep24/local_lines/line_08.wav"
+  },
+  {
+   "text": "Covered in gardens.",
+   "tag": "[in awe]",
+   "pause": 0.35,
+   "audio": "build/ep24/local_lines/line_09.wav"
+  },
+  {
+   "text": "But every plant was made of glowing blue glass.",
+   "tag": "[mysterious]",
+   "pause": 0.45,
+   "audio": "build/ep24/local_lines/line_10.wav",
+   "local": {
+    "rate": 1.0
+   }
+  },
+  {
+   "text": "There were no other players.",
+   "tag": "[mysterious]",
+   "pause": 0.3,
+   "audio": "build/ep24/local_lines/line_11.wav"
+  },
+  {
+   "text": "Just a wooden sign.",
+   "tag": "[mysterious]",
+   "pause": 0.5,
+   "audio": "build/ep24/local_lines/line_12.wav"
+  },
+  {
+   "text": "\"SERVER ZERO.\"",
+   "tag": "[slowly]",
+   "pause": 0.65,
+   "speak": "Server zero.",
+   "voice": "system",
+   "audio": "build/ep24/local_lines/line_13.wav"
+  },
+  {
+   "text": "Oliver explored the island.",
+   "tag": "[conversational]",
+   "pause": 0.3,
+   "audio": "build/ep24/local_lines/line_14.wav"
+  },
+  {
+   "text": "Then he found a giant tree with thousands of names carved into its trunk.",
+   "tag": "[in awe]",
+   "pause": 0.4,
+   "audio": "build/ep24/local_lines/line_15.wav"
+  },
+  {
+   "text": "Every name belonged to a player.",
+   "tag": "[mysterious]",
+   "pause": 0.3,
+   "audio": "build/ep24/local_lines/line_16.wav",
+   "local": {
+    "rate": 1.0
+   }
+  },
+  {
+   "text": "Some were glowing.",
+   "tag": "[mysterious]",
+   "pause": 0.3,
+   "audio": "build/ep24/local_lines/line_17.wav"
+  },
+  {
+   "text": "Others had faded away.",
+   "tag": "[softly]",
+   "pause": 0.65,
+   "audio": "build/ep24/local_lines/line_18.wav",
+   "local": {
+    "rate": 1.0
+   }
+  },
+  {
+   "text": "Suddenly, Oliver's own name appeared.",
+   "tag": "[mysterious]",
+   "pause": 0.4,
+   "audio": "build/ep24/local_lines/line_19.wav"
+  },
+  {
+   "text": "A small branch grew from the tree.",
+   "tag": "[in awe]",
+   "pause": 0.3,
+   "audio": "build/ep24/local_lines/line_20.wav"
+  },
+  {
+   "text": "And a glowing seed fell into his hand.",
+   "tag": "[in awe]",
+   "pause": 0.4,
+   "audio": "build/ep24/local_lines/line_21.wav"
+  },
+  {
+   "text": "A message appeared.",
+   "tag": "[mysterious]",
+   "pause": 0.4,
+   "audio": "build/ep24/local_lines/line_22.wav"
+  },
+  {
+   "text": "\"PLANT THIS WHERE SOMEONE HAS FORGOTTEN TO GROW.\"",
+   "tag": "[slowly]",
+   "pause": 0.7,
+   "speak": "Plant this where someone has forgotten... to grow.",
+   "voice": "system",
+   "audio": "build/ep24/local_lines/line_23.wav",
+   "local": {
+    "rate": 1.0
+   }
+  },
+  {
+   "text": "When Oliver returned to his garden, every empty plot in town had begun blooming.",
+   "tag": "[warm]",
+   "pause": 0.4,
+   "audio": "build/ep24/local_lines/line_24.wav",
+   "local": {
+    "src": "en_us_010"
+   },
+   "speak": "When Oliver returned to his garden, every, empty plot in town had begun blooming."
+  }
+ ],
+ "samples": {},
+ "sound": {
+  "key": 50,
+  "music_gain": 0.5,
+  "music": [
+   [
+    "0",
+    "playful"
+   ],
+   [
+    "L1-0.1",
+    "mystery"
+   ],
+   [
+    "L4-0.1",
+    "musicbox"
+   ],
+   [
+    "ev:sprout-0.3",
+    "fantasy"
+   ],
+   [
+    "L8-0.1",
+    "wonder"
+   ],
+   [
+    "L11-0.1",
+    "mystery"
+   ],
+   [
+    "L14-0.1",
+    "ancient"
+   ],
+   [
+    "L18-0.1",
+    "tender"
+   ],
+   [
+    "ev:name-0.3",
+    "cosmic"
+   ],
+   [
+    "L22-0.1",
+    "tender_hope"
+   ],
+   [
+    "ev:bloom-0.3",
+    "wonder"
+   ]
+  ],
+  "cues": [
+   [
+    "0",
+    "chirp",
+    0.1,
+    {
+     "f": 1500
+    }
+   ],
+   [
+    "0.2",
+    "scratch",
+    0.12,
+    {
+     "dur": 1.2
+    }
+   ],
+   [
+    "ev:find-0.1",
+    "crackle",
+    0.12,
+    {
+     "dur": 0.5,
+     "density": 80
+    }
+   ],
+   [
+    "ev:find",
+    "shimmer",
+    0.18,
+    {
+     "dur": 1.4
+    }
+   ],
+   [
+    "ev:lift",
+    "pop",
+    0.18
+   ],
+   [
+    "ev:lift+0.15",
+    "ding",
+    0.2
+   ],
+   [
+    "L1",
+    "footsteps",
+    0.08,
+    {
+     "dur": 1.4,
+     "rate": 2.2
+    }
+   ],
+   [
+    "L1+0.45",
+    "tick",
+    0.06,
+    {
+     "dur": 0.7,
+     "rate": 12
+    }
+   ],
+   [
+    "L1+1.3",
+    "glitch",
+    0.08,
+    {
+     "dur": 0.3
+    }
+   ],
+   [
+    "L2",
+    "ding",
+    0.12
+   ],
+   [
+    "L2+0.5",
+    "ding",
+    0.1
+   ],
+   [
+    "L2+1.0",
+    "ding",
+    0.1
+   ],
+   [
+    "L2+1.5",
+    "ding",
+    0.1
+   ],
+   [
+    "L3",
+    "hum",
+    0.06,
+    {
+     "dur": 3
+    }
+   ],
+   [
+    "L3",
+    "shimmer",
+    0.12,
+    {
+     "dur": 2
+    }
+   ],
+   [
+    "L4+0.3",
+    "scratch",
+    0.1,
+    {
+     "dur": 0.8
+    }
+   ],
+   [
+    "ev:plant",
+    "pop",
+    0.14
+   ],
+   [
+    "ev:plant+0.3",
+    "knock",
+    0.06
+   ],
+   [
+    "ev:plant+0.5",
+    "knock",
+    0.06
+   ],
+   [
+    "L5",
+    "tick",
+    0.1,
+    {
+     "dur": 1.2,
+     "rate": 10
+    }
+   ],
+   [
+    "ev:sprout-0.25",
+    "ding",
+    0.18
+   ],
+   [
+    "ev:sprout-0.4",
+    "riser",
+    0.14,
+    {
+     "dur": 0.4
+    }
+   ],
+   [
+    "ev:sprout",
+    "boom",
+    0.2
+   ],
+   [
+    "ev:sprout",
+    "shimmer",
+    0.26,
+    {
+     "dur": 3
+    }
+   ],
+   [
+    "ev:sprout",
+    "rumble",
+    0.12,
+    {
+     "dur": 2.4
+    }
+   ],
+   [
+    "ev:sprout+0.2",
+    "whoosh",
+    0.18,
+    {
+     "dur": 1.6
+    }
+   ],
+   [
+    "L6",
+    "wind",
+    0.08,
+    {
+     "dur": 3.5
+    }
+   ],
+   [
+    "L6+0.2",
+    "hum",
+    0.06,
+    {
+     "dur": 3
+    }
+   ],
+   [
+    "L7",
+    "footsteps",
+    0.1,
+    {
+     "dur": 3.4,
+     "rate": 3
+    }
+   ],
+   [
+    "L7",
+    "wind",
+    0.08,
+    {
+     "dur": 3.5
+    }
+   ],
+   [
+    "ev:arrive-0.3",
+    "whoosh",
+    0.12,
+    {
+     "dur": 1.0
+    }
+   ],
+   [
+    "L8",
+    "shimmer",
+    0.2,
+    {
+     "dur": 2.4
+    }
+   ],
+   [
+    "L9",
+    "chime",
+    0.12
+   ],
+   [
+    "L10",
+    "glass",
+    0.14,
+    {
+     "dur": 1.6
+    }
+   ],
+   [
+    "L10+0.6",
+    "chime",
+    0.1
+   ],
+   [
+    "L11",
+    "wind",
+    0.07,
+    {
+     "dur": 2.4
+    }
+   ],
+   [
+    "L12+0.2",
+    "creak",
+    0.1,
+    {
+     "dur": 1.0
+    }
+   ],
+   [
+    "ev:sign",
+    "sting",
+    0.14,
+    {
+     "dur": 2.6
+    }
+   ],
+   [
+    "L14",
+    "footsteps",
+    0.08,
+    {
+     "dur": 1.6,
+     "rate": 2.2
+    }
+   ],
+   [
+    "L15",
+    "shimmer",
+    0.16,
+    {
+     "dur": 2.6
+    }
+   ],
+   [
+    "L15+0.4",
+    "hum",
+    0.06,
+    {
+     "dur": 4
+    }
+   ],
+   [
+    "L16",
+    "whisper",
+    0.05,
+    {
+     "dur": 2.0
+    }
+   ],
+   [
+    "L17",
+    "chime",
+    0.12
+   ],
+   [
+    "L18",
+    "wind",
+    0.07,
+    {
+     "dur": 2.2
+    }
+   ],
+   [
+    "ev:name-0.3",
+    "riser",
+    0.14,
+    {
+     "dur": 0.5
+    }
+   ],
+   [
+    "ev:name",
+    "shimmer",
+    0.26,
+    {
+     "dur": 2.4
+    }
+   ],
+   [
+    "ev:name",
+    "bell",
+    0.1
+   ],
+   [
+    "ev:branch",
+    "creak",
+    0.1,
+    {
+     "dur": 1.2
+    }
+   ],
+   [
+    "ev:branch+0.3",
+    "shimmer",
+    0.14,
+    {
+     "dur": 1.6
+    }
+   ],
+   [
+    "ev:drop",
+    "whoosh",
+    0.08,
+    {
+     "dur": 0.8
+    }
+   ],
+   [
+    "ev:catch",
+    "pop",
+    0.16
+   ],
+   [
+    "ev:catch",
+    "chime",
+    0.16
+   ],
+   [
+    "ev:msg",
+    "ding",
+    0.2
+   ],
+   [
+    "L23",
+    "tick",
+    0.05,
+    {
+     "dur": 2.4,
+     "rate": 14
+    }
+   ],
+   [
+    "ev:ret-0.2",
+    "whoosh",
+    0.12,
+    {
+     "dur": 1.4
+    }
+   ],
+   [
+    "ev:ret",
+    "shimmer",
+    0.16,
+    {
+     "dur": 2.2
+    }
+   ],
+   [
+    "ev:ret+0.5",
+    "footsteps",
+    0.08,
+    {
+     "dur": 1.4,
+     "rate": 2.2
+    }
+   ],
+   [
+    "ev:bloom",
+    "boom",
+    0.12
+   ],
+   [
+    "ev:bloom",
+    "shimmer",
+    0.26,
+    {
+     "dur": 4
+    }
+   ],
+   [
+    "ev:bloom+0.1",
+    "pop",
+    0.12
+   ],
+   [
+    "ev:bloom+0.4",
+    "pop",
+    0.1
+   ],
+   [
+    "ev:bloom+0.8",
+    "pop",
+    0.1
+   ],
+   [
+    "ev:bloom+0.3",
+    "chirp",
+    0.14,
+    {
+     "f": 1500
+    }
+   ],
+   [
+    "ev:bloom+0.9",
+    "chirp",
+    0.12,
+    {
+     "f": 1800
+    }
+   ],
+   [
+    "ev:bloom+1.5",
+    "flutter",
+    0.1,
+    {
+     "dur": 2.4,
+     "rate": 9
+    }
+   ],
+   [
+    "ev:bloom+2.0",
+    "chime",
+    0.12
+   ]
+  ]
+ }
+}

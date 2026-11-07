@@ -10,6 +10,7 @@ so timings carry over by themselves.
 A spec line's voice picks its entry in VOICES; "speak" is the text said, "text" what the captions show. "local" on a line overrides
 source voice, tempo, pitch and rate for that line ({"src": "en_us_006", "tempo": 1.0}). A spec's "local_rate" (Episode 22: 1.22) makes Silencio
 speak every narrator line that much faster before conversion: the source voice runs about 2.4 words a second, too slow for the 1.15 tempo cap.
+A spec's "local_wps" (Episode 24: 3.1) changes the narrator pace aimed for (2.9 by default), for a long script.
 """
 import json, os, pathlib, re, subprocess, sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -53,7 +54,8 @@ def make(spec, ep, only, src):
     jobs = []
     for i, l in enumerate(spec["lines"]):
         if only and i not in only: continue
-        cfg = {**VOICES[l.get("voice", "narrator")], **({"rate": spec["local_rate"]} if spec.get("local_rate") and l.get("voice", "narrator") == "narrator" else {}), **l.get("local", {})}
+        cfg = {**VOICES[l.get("voice", "narrator")], **({"rate": spec["local_rate"]} if spec.get("local_rate") and l.get("voice", "narrator") == "narrator" else {}),
+               **({"wps": spec["local_wps"]} if spec.get("local_wps") and l.get("voice", "narrator") == "narrator" else {}), **l.get("local", {})}
         if src and l.get("voice", "narrator") == "narrator": cfg["src"] = src
         jobs.append((i, l, cfg))
     def cfg_of(c):

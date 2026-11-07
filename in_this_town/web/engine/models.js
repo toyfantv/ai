@@ -12,6 +12,7 @@ import { doorLeaf, plate, exitSign, flashlight, ceilingTiles, rubble, hotelTower
 import { gown, dressForm, starPaddle } from './runway.js';
 import { goldenDragon, goldenKey, goldenEgg } from './pets.js';
 import { cottage, mailbox, framedPhoto } from './pastel.js';
+import { cubeSeed, cubeStairs, gardenPlot, seedStall, wateringCan, wheelbarrow, scarecrow, floatingIsland, glassField, nameTree, bloomField } from './garden.js';
 
 // ---------- Episode 17 ----------
 // The black package: four walls that fold out (open(angle)), a lid, a RETURN ADDRESS label.
@@ -350,4 +351,14 @@ export const BUILD = {
   pastel_cottage: (o) => { const c = cottage(o); put(o, c.g); return c; },   // a pastel two-storey house with porch, siding, shutters; .door hinge, .edges for an outline, own:true for revealMat
   mailbox: (o) => put(o, mailbox(o)),                    // a street mailbox; old:true = rusty, leaning, no name
   framed_photo: (o) => { const f = framedPhoto(o.kind || 'dragon', o.face || null, o); put(o, f); return f; },   // a drawn photo in a frame; .setFace(0..1) restores an erased face
+  // Episode 24 (engine/garden.js): a Grow-a-Garden town, a cube staircase to a floating island of glass plants, the name tree
+  cube_seed: (o) => put(o, cubeSeed(o)),   // a tiny glowing blue cube seed (o.size, o.glow, o.sprout: a little sprout on top)
+  cube_stairs: (o) => { const s = cubeStairs(o); if (o.parent) o.parent.add(s.g); return s; },   // a spiral of glowing cube steps round a light column; .update(t, height, fade), .at(k) step top, .angle(k)
+  seed_stall: (o) => put(o, seedStall(o)),   // a garden seed stall with awning, seed packets and a SEED SHOP sign (front +z)
+  garden_plot: (o) => { const b = new Batch(); gardenPlot(b, o.x || 0, o.z || 0, o); const g = new THREE.Group(); b.done(g); return put(o, g); },   // a soil plot with plank border; kind 'empty' or crops
+  garden_props: (o) => put(o, inGroup((g) => { const a = wateringCan(), b = wheelbarrow(), c = scarecrow(); a.position.set(-3, 0, 0); c.position.set(3, 0, 0); g.add(a, b, c); })),   // watering can, wheelbarrow, scarecrow
+  floating_island: (o) => put(o, floatingIsland(o)),   // a grassy floating island with rock underside, roots, floating rocks, waterfalls; .update(t)
+  glass_plants: (o) => glassField(o.parent, o.list || [], o),   // instanced glowing blue glass plants (tulip, crystal, mush, fern, tree, bell, hedge); .update(t)
+  name_tree: (o) => { const t = nameTree(o); put(o, t.g); return t; },   // a giant white-bark tree with a blue glass crown; .radius(y) to carve names (forest.js namePatches / heroPatch)
+  bloom_field: (o) => bloomField(o.parent, o.spots || [], o),   // flowers that grow in a wave from a centre: .t0, .update(t)
 };

@@ -638,5 +638,95 @@
     "source": "this renderer",
     "type": "builder",
     "url": ""
+  },
+  "bloom_field": {
+    "author": "toyfantv",
+    "desc": "flowers that sprout and bloom in a wave spreading from a centre",
+    "kind": "nature",
+    "licence": "own",
+    "made_for": "ep24",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "cube_seed": {
+    "author": "toyfantv",
+    "desc": "a tiny glowing blue cube seed with circuit lines, optional sprout",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep24",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "cube_stairs": {
+    "author": "toyfantv",
+    "desc": "a spiral staircase of glowing blue cube steps round a light column with a vine, grows to any height and dissolves",
+    "kind": "structure",
+    "licence": "own",
+    "made_for": "ep24",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "floating_island": {
+    "author": "toyfantv",
+    "desc": "a grassy floating island with a rocky underside, hanging roots, floating rocks and waterfalls",
+    "kind": "set",
+    "licence": "own",
+    "made_for": "ep24",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "garden_plot": {
+    "author": "toyfantv",
+    "desc": "a Grow-a-Garden soil plot with plank border and furrows, empty or with crops (carrot, cabbage, sunflower, tomato, pumpkin, berry, corn)",
+    "kind": "set",
+    "licence": "own",
+    "made_for": "ep24",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "garden_props": {
+    "author": "toyfantv",
+    "desc": "watering can, wheelbarrow and scarecrow",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep24",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "glass_plants": {
+    "author": "toyfantv",
+    "desc": "instanced glowing blue glass plants: tulips, crystals, mushrooms, ferns, trees, bells, hedges",
+    "kind": "nature",
+    "licence": "own",
+    "made_for": "ep24",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "name_tree": {
+    "author": "toyfantv",
+    "desc": "a giant white-bark tree with a blue glass crown, its trunk ready for carved and glowing names",
+    "kind": "nature",
+    "licence": "own",
+    "made_for": "ep24",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "seed_stall": {
+    "author": "toyfantv",
+    "desc": "a garden seed stall with green-white awning, seed packets and a SEED SHOP sign",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep24",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
   }
 }
