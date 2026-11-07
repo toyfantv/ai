@@ -3,15 +3,17 @@
  "farm_buff_noob": "farm_buff_noob/avatar.json",
  "farm_casey": "farm_casey/avatar.json",
  "farm_cowboy": "farm_cowboy/avatar.json",
+ "farm_daniel": "farm_daniel/avatar.json",
+ "farm_danielle": "farm_danielle/avatar.json",
  "farm_emma": "farm_emma/avatar.json",
  "farm_grandma": "farm_grandma/avatar.json",
  "farm_hazmat": "farm_hazmat/avatar.json",
  "farm_hc_sheriff_boone": "farm_hc_sheriff_boone/avatar.json",
+ "farm_jake_blue": "farm_jake_blue/avatar.json",
  "farm_john": "farm_john/avatar.json",
  "farm_maya": "farm_maya/avatar.json",
  "farm_noob": "farm_noob/avatar.json",
  "farm_rich_dominus": "farm_rich_dominus/avatar.json",
- "farm_witch": "farm_witch/avatar.json",
- "farm_daniel": "farm_daniel/avatar.json",
- "farm_danielle": "farm_danielle/avatar.json"
+ "farm_stranger": "farm_stranger/avatar.json",
+ "farm_witch": "farm_witch/avatar.json"
 }

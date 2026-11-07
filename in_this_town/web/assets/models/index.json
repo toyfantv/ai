@@ -49,6 +49,26 @@
     "type": "builder",
     "url": ""
   },
+  "dining_chair": {
+    "author": "toyfantv",
+    "desc": "a modern dining chair",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep19",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "dining_table": {
+    "author": "toyfantv",
+    "desc": "a modern wood dining table, any size",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep19",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "forest_tree": {
     "author": "toyfantv",
     "desc": "a tree with real bark and rustling leaves, any size or colours; instanced in numbers",
@@ -75,6 +95,36 @@
     "kind": "environment",
     "licence": "own",
     "made_for": "ep18",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "home_bed": {
+    "author": "toyfantv",
+    "desc": "a made bed with headboard and pillows",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep19",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "home_fridge": {
+    "author": "toyfantv",
+    "desc": "a steel fridge, hollow, with a door that opens and a light inside",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep19",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "home_sofa": {
+    "author": "toyfantv",
+    "desc": "a modern sofa with cushions",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep19",
     "source": "this renderer",
     "type": "builder",
     "url": ""
@@ -169,12 +219,62 @@
     "type": "builder",
     "url": ""
   },
+  "modern_house": {
+    "author": "toyfantv",
+    "desc": "a modern two-volume suburban house: stucco, wood cladding, big windows, garage",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep19",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "package_box": {
     "author": "toyfantv",
     "desc": "black package, folding walls, lid, blank label",
     "kind": "prop",
     "licence": "own",
     "made_for": "ep17",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "pc_desk": {
+    "author": "toyfantv",
+    "desc": "a desk with a big monitor, keyboard, mouse and lit PC tower",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep19",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "potted_plant": {
+    "author": "toyfantv",
+    "desc": "a potted house plant, seeded",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep19",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "security_cam": {
+    "author": "toyfantv",
+    "desc": "a pan-and-tilt home security camera: .head turns, red .led",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep19",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "selection_box": {
+    "author": "toyfantv",
+    "desc": "the blue outline Roblox Studio draws round a selected part",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep19",
     "source": "this renderer",
     "type": "builder",
     "url": ""

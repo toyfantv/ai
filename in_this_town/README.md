@@ -186,6 +186,12 @@ older episodes stay on `classic`, and `RENDER_LOOK=pro|classic` overrides either
   subject (aiming up moves things down the frame).
 - **Extras**: crowds and unnamed characters may use `crowd()` or procedural bodies when that renders faster; named
   characters keep their cast model.
+- `engine/home.js` (Episode 19): a modern home kit, in the library as `security_cam`, `home_fridge`, `dining_chair`, `dining_table`, `home_bed`,
+  `home_sofa`, `potted_plant`, `pc_desk`, `selection_box` (Studio's blue outline) and `modern_house`.
+- **Episode 19's lessons**: footage inside the story = a `ShaderPass` added last to the composer (mono, tear, blocks) plus a 2D HUD canvas placed after
+  `ctx.grade`, and a `WebGLRenderTarget` of the same world for a monitor. The feed is linear and skips the tone map, so scale it down (x0.5). Infrared wants
+  low point lights (70 near the lens, one per room): the first try at 420 blew every face out. Top-down shots need `steady: true`, or the noise drift tilts
+  them. Check sightlines from a fixed camera with arithmetic before seating anyone. Cues with a built-in tail (`impact`, `sting`) crash under 2.4 s `dur`.
 - **60 fps** from Episode 18: `FPS=60 RENDER_SAMPLES=4`, and `"fps": 60` in the spec so `qc.py` checks it. About 6 frames a second on the
   GTX 1060 with three workers (`node render.js frames epXX 60 <start> <end> 1`, one range each; existing frames are skipped, so a pass can
   stop and carry on). Run `tools/caption_sync.py` before frames: captions are in the frames. Clarity is clamped so it can't draw an outline

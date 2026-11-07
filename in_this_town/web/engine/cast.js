@@ -13,6 +13,8 @@ export const CAST = {
   grace: { avatar: 'grace', skin: '#f4cca6', shirt: '#b39ddb', collar: '#9a84c8', pants: '#1b1b22', shoes: '#ffffff', hair: '#6b4226', hairStyle: 'wavy', female: true, acc: ['beanie:#7a5acb'], accent: '#ffffff' },
   leo: { avatar: 'leo', skin: '#f6d2b0', shirt: '#d83a3a', pocket: '#c02e2e', hood: true, pants: '#2f5aa8', shoes: '#ffffff', hair: '#f2d06a', hairStyle: 'bacon', decal: 'star', decalColor: '#ffffff' },
   // Episode 18: brother and sister, the same family colouring
+  jake: { avatar: 'farm_jake_blue', alti: true, skin: '#f2c79a', shirt: '#1b6fd6', hood: true, pants: '#14233f', shoes: '#14233f', hair: '#4a2c1a', hairStyle: 'short' },
+  stranger: { avatar: 'farm_stranger', alti: true, skin: '#f2c79a', shirt: '#9a9a9a', hood: true, pants: '#17171b', shoes: '#17171b', hair: '#121214', hairStyle: 'spiky' },
   daniel: { avatar: 'farm_daniel', alti: true, skin: '#f2c79a', shirt: '#2c6b45', pocket: '#255c3b', hood: true, pants: '#17171c', shoes: '#ffffff', shoeTrim: '#d4d4d4', hair: '#4a2e1c', hairStyle: 'short' },
   danielle: { avatar: 'farm_danielle', alti: true, skin: '#f2c79a', shirt: '#f29ac0', pants: '#f7d9e6', shoes: '#ffffff', hair: '#3a2416', hairStyle: 'pigtails', tie: '#ffd23f', female: true, decal: 'star', decalColor: '#ffffff', scale: 0.72 },
   // Opt-in real-avatar characters (the alternative route; procedural bodies stay the default): an episode uses one by

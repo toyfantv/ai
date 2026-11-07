@@ -1,0 +1,536 @@
+{
+ "id": "ep19",
+ "number": 19,
+ "title": "Someone Was Living Inside the Walls of Brookhaven",
+ "output": "InThisTown_Episode19_BrookhavenWalls.mp4",
+ "tts": "openrouter",
+ "youtube_title": "Someone Was Living Inside the Walls of My Brookhaven House...",
+ "tiktok_caption": "Jake put a camera in his hallway. At 3:17 AM, his bedroom wall opened. 📹",
+ "hashtags": "#Roblox #Brookhaven #RobloxStories #InThisTown #Shorts",
+ "thumbnail_text": "NO USERNAME",
+ "thumbnail_rec": "Night-vision security frame of a blank avatar with no name tag sitting at a kitchen table, looking straight into the lens, REC and 03:17 AM on screen.",
+ "lead_in": 0.3,
+ "tail": 5.0,
+ "voices": {
+  "narrator": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "ErXwobaYiN019PkySvjV",
+    "pitch": 1.1,
+    "tempo": 1.12,
+    "max_tempo": 1.15,
+    "pace": [
+     2.5,
+     3.4
+    ],
+    "min_tempo": 1.0
+   },
+   "kokoro": "am_michael",
+   "speed": 1.0,
+   "note": "Antoni (American), In This Town preset el:ErXwobaYiN019PkySvjV:1.1:1.12 - same narrator every episode"
+  },
+  "homeowner": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "roger",
+    "pitch": 0.8,
+    "tempo": 0.95
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  }
+ },
+ "highlights": {
+  "BROOKHAVEN": "yellow",
+  "THREE MONTHS": "yellow",
+  "DIFFERENT": "yellow",
+  "MOVED": "yellow",
+  "DISAPPEARING": "red",
+  "CAMERA": "cyan",
+  "3:17 AM": "red",
+  "MOVEMENT": "red",
+  "RECORDING": "red",
+  "BEDROOM WALL": "red",
+  "OPENED": "red",
+  "ROBLOX AVATAR": "yellow",
+  "ORDINARY": "yellow",
+  "NO USERNAME": "red",
+  "STRANGER": "red",
+  "REFRIGERATOR": "yellow",
+  "CALMLY": "yellow",
+  "DIRECTLY": "red",
+  "MESSAGE": "cyan",
+  "PLAYER LIST": "cyan",
+  "TWO PLAYERS": "yellow",
+  "HIMSELF": "yellow",
+  "HOMEOWNER": "red",
+  "WALLS": "red",
+  "FRONT DOOR": "yellow",
+  "DISAPPEARED": "red",
+  "WINDOW": "yellow",
+  "STOP": "red"
+ },
+ "lines": [
+  {
+   "text": "Jake had lived in the same Brookhaven house for three months.",
+   "tag": "[conversational]",
+   "pause": 0.3
+  },
+  {
+   "text": "But every morning, something was different.",
+   "tag": "[curious]",
+   "pause": 0.35
+  },
+  {
+   "text": "A chair had moved.",
+   "tag": "[uneasy]",
+   "pause": 0.5
+  },
+  {
+   "text": "A window was open.",
+   "tag": "[uneasy]",
+   "pause": 0.5
+  },
+  {
+   "text": "And food kept disappearing from his kitchen.",
+   "tag": "[uneasy]",
+   "pause": 0.45
+  },
+  {
+   "text": "So one night, Jake placed a camera in the hallway.",
+   "tag": "[conversational]",
+   "pause": 0.6
+  },
+  {
+   "text": "At 3:17 AM, the camera detected movement.",
+   "speak": "At three seventeen A M, the camera detected movement.",
+   "tag": "[mysterious]",
+   "pause": 0.45
+  },
+  {
+   "text": "Jake watched the recording.",
+   "tag": "[tense]",
+   "pause": 0.5
+  },
+  {
+   "text": "His bedroom wall slowly opened.",
+   "tag": "[ominous]",
+   "pause": 0.9
+  },
+  {
+   "text": "A Roblox avatar stepped out.",
+   "tag": "[whispers]",
+   "pause": 0.5
+  },
+  {
+   "text": "It looked like an ordinary player.",
+   "tag": "[uneasy]",
+   "pause": 0.3
+  },
+  {
+   "text": "Except it had no username.",
+   "tag": "[ominous]",
+   "pause": 0.6
+  },
+  {
+   "text": "The stranger walked into Jake's kitchen.",
+   "tag": "[tense]",
+   "pause": 0.4
+  },
+  {
+   "text": "Opened the refrigerator.",
+   "tag": "[tense]",
+   "pause": 0.5
+  },
+  {
+   "text": "And calmly sat at the table.",
+   "tag": "[uneasy]",
+   "pause": 0.6
+  },
+  {
+   "text": "Then it looked directly into the camera.",
+   "tag": "[ominous]",
+   "pause": 0.75
+  },
+  {
+   "text": "A message appeared on Jake's screen.",
+   "tag": "[tense]",
+   "pause": 0.3
+  },
+  {
+   "text": "\"STOP RECORDING MY HOUSE.\"",
+   "speak": "Stop recording my house.",
+   "voice": "homeowner",
+   "fx": "radio",
+   "tag": "[menacing, slowly]",
+   "pause": 0.65
+  },
+  {
+   "text": "Jake checked the server player list.",
+   "tag": "[tense]",
+   "pause": 0.35
+  },
+  {
+   "text": "There were only two players online.",
+   "tag": "[uneasy]",
+   "pause": 0.45
+  },
+  {
+   "text": "Himself.",
+   "tag": "[tense]",
+   "pause": 0.5
+  },
+  {
+   "text": "And someone named HOMEOWNER.",
+   "speak": "And someone named Homeowner.",
+   "tag": "[ominous]",
+   "pause": 0.75
+  },
+  {
+   "text": "Suddenly, the walls around Jake began moving.",
+   "tag": "[urgent]",
+   "pause": 0.6
+  },
+  {
+   "text": "And the front door disappeared.",
+   "tag": "[ominous]",
+   "pause": 0.3
+  }
+ ],
+ "samples": {},
+ "sound": {
+  "key": 44,
+  "music_gain": 0.5,
+  "music": [
+   [
+    "0",
+    "mystery"
+   ],
+   [
+    "L6-0.2",
+    "suspense"
+   ],
+   [
+    "ev:turn",
+    "silence"
+   ],
+   [
+    "L16",
+    "dread"
+   ]
+  ],
+  "cues": [
+   [
+    "0",
+    "wind",
+    0.07,
+    {
+     "dur": 3.6
+    }
+   ],
+   [
+    "L2",
+    "creak",
+    0.2,
+    {
+     "dur": 0.7
+    }
+   ],
+   [
+    "L3",
+    "wind",
+    0.15,
+    {
+     "dur": 2.0
+    }
+   ],
+   [
+    "L4-0.2",
+    "hum",
+    0.1,
+    {
+     "dur": 2.4,
+     "f": 60
+    }
+   ],
+   [
+    "ev:cam",
+    "glitch",
+    0.2,
+    {
+     "dur": 0.3
+    }
+   ],
+   [
+    "ev:cam+0.2",
+    "ding",
+    0.2
+   ],
+   [
+    "L7",
+    "hum",
+    0.06,
+    {
+     "dur": 14,
+     "f": 50
+    }
+   ],
+   [
+    "ev:motion",
+    "ding",
+    0.2
+   ],
+   [
+    "ev:motion+0.28",
+    "ding",
+    0.2
+   ],
+   [
+    "ev:wall",
+    "creak",
+    0.4,
+    {
+     "dur": 2.4
+    }
+   ],
+   [
+    "ev:wall",
+    "rumble",
+    0.16,
+    {
+     "dur": 2.4
+    }
+   ],
+   [
+    "ev:step",
+    "heartbeat",
+    0.3,
+    {
+     "dur": 6.4,
+     "bpm": 84
+    }
+   ],
+   [
+    "ev:walk",
+    "footsteps",
+    0.16,
+    {
+     "dur": 2.3,
+     "rate": 1.2
+    }
+   ],
+   [
+    "ev:stop",
+    "sting",
+    0.3,
+    {
+     "dur": 2.6
+    }
+   ],
+   [
+    "ev:go",
+    "glitch",
+    0.16,
+    {
+     "dur": 0.25
+    }
+   ],
+   [
+    "ev:go+0.1",
+    "footsteps",
+    0.14,
+    {
+     "dur": 2.1,
+     "rate": 1.2
+    }
+   ],
+   [
+    "ev:skip1",
+    "glitch",
+    0.16,
+    {
+     "dur": 0.25
+    }
+   ],
+   [
+    "ev:fopen",
+    "creak",
+    0.16,
+    {
+     "dur": 0.5
+    }
+   ],
+   [
+    "ev:fopen",
+    "hum",
+    0.12,
+    {
+     "dur": 1.6,
+     "f": 120
+    }
+   ],
+   [
+    "ev:skip2",
+    "glitch",
+    0.16,
+    {
+     "dur": 0.25
+    }
+   ],
+   [
+    "ev:skip2+0.3",
+    "creak",
+    0.18,
+    {
+     "dur": 0.6
+    }
+   ],
+   [
+    "ev:turn+0.4",
+    "riser",
+    0.3,
+    {
+     "dur": 1.9
+    }
+   ],
+   [
+    "ev:freeze",
+    "impact",
+    0.42,
+    {
+     "dur": 2.6
+    }
+   ],
+   [
+    "ev:freeze",
+    "glitch",
+    0.26,
+    {
+     "dur": 0.5
+    }
+   ],
+   [
+    "ev:msg",
+    "tick",
+    0.34,
+    {
+     "dur": 1.8,
+     "rate": 2.6
+    }
+   ],
+   [
+    "L17",
+    "sting",
+    0.34,
+    {
+     "dur": 2.6
+    }
+   ],
+   [
+    "ev:list",
+    "ding",
+    0.14
+   ],
+   [
+    "ev:himself",
+    "pop",
+    0.16
+   ],
+   [
+    "ev:owner",
+    "impact",
+    0.46,
+    {
+     "dur": 2.6
+    }
+   ],
+   [
+    "ev:owner",
+    "whisper",
+    0.16,
+    {
+     "dur": 2.2
+    }
+   ],
+   [
+    "ev:walls",
+    "rumble",
+    0.46,
+    {
+     "dur": 9
+    }
+   ],
+   [
+    "ev:walls",
+    "groan",
+    0.3,
+    {
+     "dur": 4
+    }
+   ],
+   [
+    "ev:walls+0.5",
+    "stomp",
+    0.28
+   ],
+   [
+    "ev:walls+1",
+    "run",
+    0.22,
+    {
+     "dur": 2.2
+    }
+   ],
+   [
+    "ev:del",
+    "glitch",
+    0.4,
+    {
+     "dur": 0.9
+    }
+   ],
+   [
+    "ev:seal",
+    "impact",
+    0.5,
+    {
+     "dur": 2.6
+    }
+   ],
+   [
+    "ev:seal",
+    "creak",
+    0.3,
+    {
+     "dur": 4
+    }
+   ],
+   [
+    "ev:seal+0.4",
+    "heartbeat",
+    0.4,
+    {
+     "dur": 4.2,
+     "bpm": 128
+    }
+   ],
+   [
+    "ev:end-2.4",
+    "glitch",
+    0.2,
+    {
+     "dur": 0.2
+    }
+   ],
+   [
+    "ev:end-0.14",
+    "impact",
+    0.5,
+    {
+     "dur": 2.6
+    }
+   ]
+  ]
+ },
+ "fps": 60
+}

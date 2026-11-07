@@ -6,6 +6,7 @@ import * as THREE from 'three';
 import { v3, rng, mat, box, wallRects, lerp } from './core.js';
 import { makeHouse, makeTree, mergeGroup, buildHeroHouse, buildTown } from './town.js';
 import { makeLeg, footAt, makeEye, canvasTex, glowSprite } from './props.js';
+import { secCam, fridge, diningChair, diningTable, bed, sofa, plant, pcDesk, selectionBox, modernHouse } from './home.js';
 
 // ---------- Episode 17 ----------
 // The black package: four walls that fold out (open(angle)), a lid, a RETURN ADDRESS label.
@@ -268,6 +269,16 @@ export function makeClockTower() {
 const put = (o, m) => { if (o.parent) o.parent.add(m.isObject3D ? m : m.g || m.root); return m; };
 export const BUILD = {
   kit_building: (o) => put(o, building(o)),
+  security_cam: (o) => put(o, secCam()),
+  home_fridge: (o) => put(o, fridge()),
+  dining_chair: (o) => put(o, diningChair(o)),
+  dining_table: (o) => put(o, diningTable(o)),
+  home_bed: (o) => put(o, bed(o)),
+  home_sofa: (o) => put(o, sofa(o)),
+  potted_plant: (o) => put(o, plant(o)),
+  pc_desk: (o) => put(o, pcDesk(o)),
+  selection_box: (o) => put(o, selectionBox(o.w || 4, o.h || 4, o.d || 4, o)),
+  modern_house: (o) => put(o, modernHouse(o)),
   kit_skyline: (o) => skyline(o),
   kit_crowd: (o) => crowd(o),
   kit_crate: (o) => put(o, crate(o)),
