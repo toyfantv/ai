@@ -225,6 +225,7 @@ older episodes stay on `classic`, and `RENDER_LOOK=pro|classic` overrides either
   `ctx.grade`, and a `WebGLRenderTarget` of the same world for a monitor. The feed is linear and skips the tone map, so scale it down (x0.5). Infrared wants
   low point lights (70 near the lens, one per room): the first try at 420 blew every face out. Top-down shots need `steady: true`, or the noise drift tilts
   them. Check sightlines from a fixed camera with arithmetic before seating anyone. Cues with a built-in tail (`impact`, `sting`) crash under 2.4 s `dur`.
+  The user wants no camera shake at the start of a story (2026-11-07): opening shots `steady: true`, `shake: 0`; shake only where a beat calls for it.
 - **Episode 20's lessons** (`engine/isles.js`, the islands kit): a grid mesh built ring by ring needs its winding checked on the first still: the island's top was
   culled for a whole draft and the sea showed through, which read as "Kai is wading". If the ground looks like water, lower the sea in a debug still before
   touching colours. A held prop on `arms[1]` blocks the face from the +x side: orbit from `yaw - 0.4..0.6` and aim between head and hand. A portrait frame is

@@ -653,7 +653,6 @@ function renderAt(t) {
   // the picture's own trouble
   const bursts = [[e.go - 0.05, e.go + 0.14], [e.cam - 0.28, e.cam + 0.06], [e.wall - 0.05, e.wall + 0.12], [e.skip1 - 0.05, e.skip1 + 0.16], [e.skip2 - 0.05, e.skip2 + 0.16], [L(16).start - 0.3, L(16).start + 0.02], [ctx.dur - 2.4, ctx.dur - 2.28]];
   let tear = 0; for (const [a, b] of bursts) if (t >= a && t < b) tear = 1;
-  if (t < 0.36) tear = 1 - t / 0.36;
   if (n === 'cam2' && t > e.step && t < e.step + 0.2) tear = 0.4;
   if (n === 'cam9') tear = Math.max(tear, t > e.freeze + 0.2 ? (Math.floor(t * 9) % 3 === 0 ? 0.25 : 0) : 0);
   const on = cctv || top;
@@ -664,10 +663,10 @@ function renderAt(t) {
   if (first) {
     const x = W.h2; x.clearRect(0, 0, 1080, 1920);
   }
-  const shake = { wake: 0.5, chair: 0.35, window: 0.4, fridge: 0.35, place: 0.4, selfie: 0.6, street: 0.35, wallmove: 1.1, plan: 0.2, door: 0.9, cu: 0.5, trapped: 0.5 }[n] || 0;
+  const shake = { wallmove: 1.1, plan: 0.2, door: 0.9, cu: 0.5, trapped: 0.5 }[n] || 0;
   const span = ext ? 170 : n === 'plan' ? 120 : 70;
   const rumble = t > e.walls ? 0.25 : 0;
-  frame(ctx, t, sh, { shake: top || n === 'plan' ? 0 : shake + rumble * (cctv ? 0 : 1), steady: cctv || top || n === 'plan', shadowSpan: span, shadows: !cctv && !top && !['plan'].includes(n), black: t > ctx.dur - 0.12 ? 1 : 0 });
+  frame(ctx, t, sh, { shake: top || n === 'plan' ? 0 : shake + rumble * (cctv ? 0 : 1), steady: cctv || top || n === 'plan' || PHONE.includes(n), shadowSpan: span, shadows: !cctv && !top && !['plan'].includes(n), black: t > ctx.dur - 0.12 ? 1 : 0 });
   if (first) {
     if (PHONE.includes(n)) hudPhone(t, n);
     else if (cctv) hudCam(t, n);
