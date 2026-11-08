@@ -1,0 +1,33 @@
+{
+ "key": "farm_ep32_atlanta",
+ "source": {
+  "route": "one-off Studio capture (Episode 32), the steps of tools/farm_avatars.py",
+  "scene": "scenes/sandbox/avcap_ep32.lua",
+  "label": "Atlanta94275 (user id 5706341004), as worn: grey blocky body, light-blue Atlanta shirt, sword on the back, a wild hat with a climbing figure; Episode 32 side character (a sword hunter)",
+  "user_id": 5706341004
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-07",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_Accessory_104_CrestoftheCanyon",
+  "acc_Accessory_TA_Rivals_Blue",
+  "acc_Accessory_XXVisor20th_Acc"
+ ]
+}

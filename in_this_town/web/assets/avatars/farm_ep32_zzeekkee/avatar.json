@@ -1,0 +1,31 @@
+{
+ "key": "farm_ep32_zzeekkee",
+ "source": {
+  "route": "one-off Studio capture (Episode 32), the steps of tools/farm_avatars.py",
+  "scene": "scenes/sandbox/avcap_ep32.lua",
+  "label": "Zzeekkee26 (user id 3808619611), as worn on capture day 2026-11-07: brown swept hair, grey-blue tee with a Roblox logo, grey/white pants; Episode 32 side character (boat hand at the dock)",
+  "user_id": 3808619611
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-07",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_Hat1"
+ ]
+}

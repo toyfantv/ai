@@ -213,6 +213,121 @@ def flick(d=0.6, seed=8):
     return x * 0.7
 
 
+# ---------- Episode 32: swords, stone, storm ----------
+def clash(seed=1, f=1900):
+    # steel on steel: a bright inharmonic ring over a noise crack, then a short metallic tail
+    r = np.random.default_rng(seed); t = tt(1.6)
+    ring = sum(a * np.sin(2 * np.pi * f * m * t + r.random() * 6) * np.exp(-t * dec) for m, a, dec in [(1, 1, 5), (1.53, 0.7, 7), (2.41, 0.5, 9), (3.7, 0.35, 12), (5.2, 0.2, 16)])
+    crack = hp(r.standard_normal(len(t)), 2500) * np.exp(-t * 60)
+    thump = impact(1.6, 120, 50, 0.0)[: len(t)]
+    return reverb(ring * 0.5 + crack * 0.8 + thump * 0.5, 1.4, 0.3)
+
+
+def swish(d=0.45, seed=2):
+    # a blade cutting air: band noise sweeping up then down, fast
+    r = np.random.default_rng(seed); n = int(d * SR); t = np.arange(n) / SR
+    x = r.standard_normal(n); out = np.zeros(n); k = 512
+    for i in range(0, n, k):
+        u = i / n; fc = 600 + 3800 * np.sin(np.pi * u) ** 2
+        out[i:i + k] = bp(x[i:i + k], fc * 0.6, min(fc * 1.6, 16000))
+    return out * np.sin(np.pi * t / d) ** 1.5 * 1.6
+
+
+def rockbreak(d=2.2, seed=3):
+    # stone splitting: a deep hit, a crunch, then debris
+    r = np.random.default_rng(seed); t = tt(d)
+    crunch = lp(r.standard_normal(len(t)), 2400) * np.exp(-t * 7)
+    deb = np.zeros(len(t))
+    for _ in range(40):
+        i = int((0.08 + r.random() ** 2 * (d - 0.4)) * SR); g = np.exp(-np.arange(int(0.05 * SR)) / (0.006 * SR))
+        deb[i:i + len(g)] += bp(r.standard_normal(len(g)), 900, 5000) * g * (0.15 + r.random() * 0.4) * (1 - i / len(t))
+    return reverb(impact(d, 90, 26, 0.8)[: len(t)] * 0.9 + crunch * 0.6 + deb, 1.6, 0.3)
+
+
+def thunder(d=4.5, seed=4):
+    r = np.random.default_rng(seed); t = tt(d)
+    x = lp(np.cumsum(r.standard_normal(len(t))), 300); x = hp(x, 25); x /= np.max(np.abs(x)) + 1e-9
+    crack = hp(r.standard_normal(len(t)), 1800) * np.exp(-t * 18) * 0.5
+    env = np.exp(-t * 0.9) * (1 + 0.5 * np.sin(2 * np.pi * 1.7 * t) ** 2)
+    return reverb(x * env + crack, 2.5, 0.35)
+
+
+def rain(d=10.0, seed=5):
+    r = np.random.default_rng(seed); x = bp(r.standard_normal(int(d * SR)), 1200, 9000) * 0.5
+    x += lp(r.standard_normal(len(x)), 500) * 0.25
+    drops = (r.random(len(x)) < 0.0012) * r.random(len(x)); x += hp(drops, 3000) * 2.0
+    f = int(0.6 * SR); x[:f] *= np.linspace(0, 1, f); x[-f:] *= np.linspace(1, 0, f)
+    return x
+
+
+def sea(d=10.0, seed=6):
+    r = np.random.default_rng(seed); t = tt(d)
+    x = lp(r.standard_normal(len(t)), 700) * (0.5 + 0.5 * np.sin(2 * np.pi * t / 4.3) ** 2)
+    f = int(0.8 * SR); x[:f] *= np.linspace(0, 1, f); x[-f:] *= np.linspace(1, 0, f)
+    return x
+
+
+def watersplit(d=3.5, seed=7):
+    # the ocean tearing open: a rising roar of water with a low boom under it
+    r = np.random.default_rng(seed); t = tt(d)
+    roar = water_whoosh(d)[: len(t)] * 1.2 + lp(r.standard_normal(len(t)), 900) * np.sin(np.pi * np.minimum(t / d * 1.2, 1)) * 0.8
+    return reverb(roar + impact(d, 70, 24, 0.4)[: len(t)] * 0.7, 2.4, 0.35)
+
+
+def freeze(d=2.2, seed=8):
+    # time stops: a whoosh dropping into a glassy held tone
+    t = tt(d); x = sum(np.sin(2 * np.pi * f * t) for f in (880, 1320, 1975)) * np.exp(-t * 1.2) * 0.25
+    s = whoosh(0.6); x[: len(s)] += s[: len(x)] * 0.6
+    return reverb(x, 3.0, 0.5)
+
+
+def crackopen(d=2.6, seed=9):
+    # a tear in time: a rising tone that splits with a glassy crack
+    r = np.random.default_rng(seed); t = tt(d)
+    f = 300 * (1 + 4 * t / d) ** 1.2; x = np.sin(2 * np.pi * np.cumsum(f) / SR) * np.sin(np.pi * t / d) * 0.3
+    i = int(0.62 * SR); g = glass_pings(1.6, 40)[: len(t) - i]; x[i:i + len(g)] += g * 0.8
+    c = hp(r.standard_normal(int(0.4 * SR)), 2000) * np.exp(-np.arange(int(0.4 * SR)) / (0.04 * SR)); x[i:i + len(c)] += c
+    sh = shimmer(d, seed)[: len(t)]; x[: len(sh)] += sh * 0.3
+    return reverb(x, 2.5, 0.45)
+
+
+def armorbreak(d=3.0, seed=10):
+    # plate armour bursting: a heavy clash, shards of metal and glass, plates landing
+    r = np.random.default_rng(seed); x = np.zeros(int(d * SR))
+    c = clash(seed, 1400); x[: len(c)] += c[: len(x)] * 1.0
+    g = glass_pings(1.8, 70); x[: len(g)] += g[: len(x)] * 0.5
+    for k in range(9):
+        i = int((0.55 + r.random() * 1.8) * SR); n = int(0.5 * SR)
+        h = clash(seed + k + 1, 700 + r.random() * 900)[:n] * np.exp(-np.arange(n) / (0.08 * SR))
+        x[i:i + n] += h[: len(x) - i] * (0.25 + 0.2 * r.random())
+    return x
+
+
+def wallcrash(d=2.6, seed=11):
+    # a body through a stone wall: the hit, the bricks tumbling
+    x = rockbreak(d, seed); s = impact(1.5, 140, 45, 0.9); x[: len(s)] += s[: len(x)] * 0.9
+    return x
+
+
+def swordwake(d=6.0, seed=12):
+    # thousands of blades waking: a swelling metallic shimmer over a sub drone, scattered rings
+    r = np.random.default_rng(seed); t = tt(d); x = np.zeros(len(t)); dr = drone(d, 41)[: len(t)]; x[: len(dr)] += dr * 0.6
+    for _ in range(90):
+        i = int(r.random() ** 0.6 * (d - 1.2) * SR); f = 1200 + r.random() * 3000
+        h = np.sin(2 * np.pi * f * tt(1.0)) * np.exp(-tt(1.0) * 6) * (0.03 + 0.06 * r.random()) * (i / len(t) + 0.2)
+        x[i:i + len(h)] += h[: len(t) - i]
+    return reverb(x * np.minimum(1, t / 1.5), 3.0, 0.5)
+
+
+def helmet_voice(a):
+    # a voice from inside an empty helmet: a metallic comb (short resonant delays), a boxed band, a long cold hall
+    a = bp(a, 220, 4200)
+    for ms, g in ((3.1, 0.55), (7.4, 0.35)):
+        n = int(ms / 1000 * SR); y = np.zeros_like(a); y[n:] = a[:-n] * g; a = a + y
+    a = a * (0.13 / (np.sqrt(np.mean(a[np.abs(a) > 0.004] ** 2)) + 1e-9))
+    return reverb(a, 3.2, 0.4)
+
+
 SFX = {
     'impact': lambda o: impact(o.get('dur', 3.0), 100, 28, 0.7), 'boom': lambda o: impact(4.0, 130, 22, 1.1),
     'stomp': lambda o: stomp(), 'knock': lambda o: knock(), 'whoosh': lambda o: whoosh(o.get('dur', 1.2)), 'shimmer': lambda o: shimmer(o.get('dur', 2.5)),
@@ -233,6 +348,15 @@ SFX = {
     'winddown': lambda o: winddown(o.get('dur', 2.4), o.get('key', 45)),
     'flutter': lambda o: flutter(o.get('dur', 1.2), o.get('rate', 9.0)), 'chirp': lambda o: chirp(o.get('f', 1300), o.get('dur', 0.32), o.get('up', 1)),
 }
+
+
+SFX.update({
+    'clash': lambda o: clash(o.get('seed', 1), o.get('f', 1900)), 'swish': lambda o: swish(o.get('dur', 0.45), o.get('seed', 2)),
+    'rockbreak': lambda o: rockbreak(o.get('dur', 2.2), o.get('seed', 3)), 'thunder': lambda o: thunder(o.get('dur', 4.5), o.get('seed', 4)),
+    'rain': lambda o: rain(o.get('dur', 10.0)), 'sea': lambda o: sea(o.get('dur', 10.0)), 'watersplit': lambda o: watersplit(o.get('dur', 3.5)),
+    'freeze': lambda o: freeze(o.get('dur', 2.2)), 'crackopen': lambda o: crackopen(o.get('dur', 2.6)), 'armorbreak': lambda o: armorbreak(o.get('dur', 3.0)),
+    'wallcrash': lambda o: wallcrash(o.get('dur', 2.6)), 'swordwake': lambda o: swordwake(o.get('dur', 6.0)),
+})
 
 
 # Episode 23: a small dragon's wings (soft feathery beats) and its voice (a bright squeak that bends up or down)
@@ -408,6 +532,19 @@ def mood(name, d, key=50, seed=1):
             if b != 2: ad(int(t * SR), piano(hz(key + 12 + mel[(i // 3 * 2 + b) % 24] - 12), 2.0, 0.7), 0.32)
             t += beat * (1 + warp * 0.35 * (t / max(d, 1))); i += 1
         add(0, _gramo(x, warp, seed), 1.0)
+    elif name in ('action', 'action_hit'):
+        # Episode 32: a sword fight in a storm: a driving low minor ostinato in 8ths, taiko-like hits, a brass-like fifth stab every bar;
+        # action_hit doubles the drums
+        beat = 60 / 132; hit = name == 'action_hit'
+        add(0, pad([hz(key - 12 + n) for n in (0, 7, 12, 15)], d + 0.5, a=0.3, r=0.6, bright=1300, detune=0.008), 0.3)
+        ost = [0, 0, 12, 0, 3, 0, 12, 7]
+        t, i = 0.0, 0
+        while t < d:
+            add(int(t * SR), pad([hz(key - 12 + ost[i % 8])], 0.22, a=0.005, r=0.08, bright=1600), 0.32)
+            if i % 4 == 0: add(int(t * SR), impact(0.7, 95, 42, 0.15), 0.34 if hit else 0.24)
+            if hit and i % 4 == 2: add(int(t * SR), impact(0.5, 120, 60, 0.2), 0.18)
+            if i % 16 == 0: add(int(t * SR), pad([hz(key + n) for n in (0, 7, 12)], beat * 1.5, a=0.02, r=0.4, bright=2600), 0.22)
+            t += beat / 2; i += 1
     elif name == 'mystery':
         add(0, pad([hz(key + n) for n in (0, 3, 7, 10, 14)], d + 0.5, a=0.8, r=1.0, bright=1500), 0.45)
         notes = [key + 24 + n for n in (0, 3, 7, 10, 12, 15)]
@@ -456,6 +593,7 @@ def main():
         fx = ln.get('fx')
         if fx == 'radio': a = bp(a, 350, 3500); a = np.clip(a * (0.14 / (np.sqrt(np.mean(a[np.abs(a) > 0.005] ** 2)) + 1e-9)), -0.98, 0.98)
         if fx == 'giant': a = reverb(a, 3.0, 0.45)
+        if fx == 'helmet': a = helmet_voice(a)
         if fx == 'whisper': a = reverb(a, 1.6, 0.3)
         if fx == 'pa':  # a ceiling loudspeaker in a long hard corridor
             a = bp(a, 450, 3200); a = np.tanh(a * 3.0) / 3.0

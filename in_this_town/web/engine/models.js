@@ -15,6 +15,8 @@ import { cottage, mailbox, framedPhoto } from './pastel.js';
 import { campfire, tent, logSeat, woodPile, axeStump, lantern, cookPot, bedroll, supplyCrate, pines, exitGate, beast, snow } from './camp.js';
 import { obbyPlatform, laserCross, controlChair } from './obby.js';
 import { ornateFrame, printMat, loosePrint, invitation, chandelier, sconce, bigChair, banquetTable, gramophone, grandClock, curtainWindow, panelDoor, bareTrees, mansion, guest } from './mansion.js';
+import { stormIsland, courtyard, clockTower, postClock, brickWall, crater, stormSea, rain as stormRain, timeCrack, cavern } from './ruins.js';
+import { blackSword, whiteBlade, armorSuit, swordField } from './blades.js';
 import { hospitalBed, wardDoor, fluorPanel, crtTV, ivPole, cabinet, paSpeaker, roomPlate, bedChart, nurse, wardBeds, hospitalBlock, noticeSign } from './hospital.js';
 import { cubeSeed, cubeStairs, gardenPlot, seedStall, wateringCan, wheelbarrow, scarecrow, floatingIsland, glassField, nameTree, bloomField } from './garden.js';
 
@@ -389,6 +391,21 @@ export const BUILD = {
   notice_sign: (o) => put(o, noticeSign(o.lines ?? ['DEMOLITION NOTICE'], o)),
   forest_beast: (o) => put(o, beast(o)),   // a blocky wolf-like creature with glowing eyes that blink; .update(t)
   snowfall: (o) => snow(o.parent, o),   // falling snow points (centre, size, height, count)
+  // Episode 32 (engine/ruins.js, engine/blades.js): a storm island, its ruins, swords and armour
+  storm_island: (o) => { const i = stormIsland(o); if (o.parent) o.parent.add(i.group); return i; },   // a rocky island with a flat plateau at .top; .heightAt(x, z)
+  ruin_courtyard: (o) => put(o, courtyard(o)),   // a flagstone courtyard disc with a soft edge
+  ruin_clock_tower: (o) => put(o, clockTower(o)),   // a ruined stone clock tower; .set(sec) ticks the hands, .facePos
+  post_clock: (o) => put(o, postClock()),   // a street post clock; .set(sec)
+  brick_wall: (o) => put(o, brickWall(o)),   // an instanced brick wall (x0..x1 at z); .set(t, tHit, hitPoint, dir) bursts it, a pure function of t
+  crater: (o) => put(o, crater(o)),   // a ground crater with cracks; .set(t, tHit) opens it
+  storm_sea: (o) => stormSea(o.parent, o),   // a storm sea shader that can split into a trench with water walls; .update(tw, split, flash), .floorY(x, z)
+  storm_rain: (o) => stormRain(o.parent, o),   // rain streaks round .centre; .update(tw)
+  time_crack: (o) => put(o, timeCrack(o)),   // a glowing violet crack in the air; .set(k, t)
+  sword_cavern: (o) => put(o, cavern(o)),   // a dark cavern under an island; .floorY
+  black_sword: (o) => put(o, blackSword(o)),   // a pure-black longsword (blade along +z from the grip, flat faces +y); .setGlow(k), .hilt2
+  white_greatsword: (o) => put(o, whiteBlade(o)),   // a glowing white greatsword; .setGlow(k)
+  plate_armor: (o) => armorSuit(o.character, o),   // dark plate armour fitted onto a character (o.character); .wind(t), .shatter(k, opts) for an empty suit bursting
+  sword_field: (o) => swordField(o.parent, o),   // thousands of upright black swords stuck in the ground (instanced); .wake(t, speed, glow)
   // Episode 28 (engine/mansion.js): a Victorian mansion and its ballroom
   ornate_frame: (o) => put(o, ornateFrame(o.w ?? 3.4, o.h ?? 4.3, o)),   // a gilt picture frame facing +z; put a material on .pic (.picW x .picH)
   antique_print: (o) => put(o, loosePrint(o.mat || printMat(o), o.w ?? 2.4, o.h ?? 3.0, o)),   // a loose sepia photograph lying flat (printMat: a render target as an old print, scratches)

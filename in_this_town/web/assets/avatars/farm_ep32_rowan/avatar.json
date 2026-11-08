@@ -1,0 +1,35 @@
+{
+ "key": "farm_ep32_rowan",
+ "source": {
+  "route": "one-off Studio capture (Episode 32), the steps of tools/farm_avatars.py",
+  "scene": "scenes/sandbox/avcap_ep32.lua",
+  "label": "Rowan (Episode 32): messy black hair, dark red (maroon) jacket over a white tee, black pants with boots",
+  "catalog_items": [
+   133670926701773,
+   6281551523,
+   1203006843
+  ]
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-07",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_Accessory_Default1Accessory"
+ ]
+}

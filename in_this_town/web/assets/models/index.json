@@ -79,12 +79,32 @@
     "type": "builder",
     "url": ""
   },
+  "black_sword": {
+    "author": "toyfantv",
+    "desc": "a pure-black longsword with a violet-grey edge sheen and an optional glow",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep32",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "bloom_field": {
     "author": "toyfantv",
     "desc": "flowers that sprout and bloom in a wave spreading from a centre",
     "kind": "nature",
     "licence": "own",
     "made_for": "ep24",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "brick_wall": {
+    "author": "toyfantv",
+    "desc": "an instanced brick wall that bursts when a body is thrown through it (deterministic, ballistic bricks)",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep32",
     "source": "this renderer",
     "type": "builder",
     "url": ""
@@ -185,6 +205,16 @@
     "kind": "prop",
     "licence": "own",
     "made_for": "ep26",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "crater": {
+    "author": "toyfantv",
+    "desc": "a ground crater with radial cracks that opens on a strike",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep32",
     "source": "this renderer",
     "type": "builder",
     "url": ""
@@ -839,12 +869,32 @@
     "type": "builder",
     "url": ""
   },
+  "plate_armor": {
+    "author": "toyfantv",
+    "desc": "dark plate armour with a featureless helmet fitted onto any character; can shatter off an empty suit",
+    "kind": "accessory",
+    "licence": "own",
+    "made_for": "ep32",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "porcelain_nurse": {
     "author": "toyfantv",
     "desc": "an original faceless nurse in a white uniform and cap with a cracked porcelain mask (horror, no gore)",
     "kind": "character",
     "licence": "own",
     "made_for": "ep27",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "post_clock": {
+    "author": "toyfantv",
+    "desc": "an iron street post clock with a ticking face",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep32",
     "source": "this renderer",
     "type": "builder",
     "url": ""
@@ -875,6 +925,26 @@
     "kind": "effect",
     "licence": "own",
     "made_for": "ep21",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "ruin_clock_tower": {
+    "author": "toyfantv",
+    "desc": "a stone clock tower whose second hand ticks (set(sec)) and stops",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep32",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "ruin_courtyard": {
+    "author": "toyfantv",
+    "desc": "a flagstone courtyard disc with a soft alpha edge",
+    "kind": "environment",
+    "licence": "own",
+    "made_for": "ep32",
     "source": "this renderer",
     "type": "builder",
     "url": ""
@@ -979,12 +1049,72 @@
     "type": "builder",
     "url": ""
   },
+  "storm_island": {
+    "author": "toyfantv",
+    "desc": "a rocky storm island with a flat ruined plateau, vertex-coloured cliffs",
+    "kind": "environment",
+    "licence": "own",
+    "made_for": "ep32",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "storm_rain": {
+    "author": "toyfantv",
+    "desc": "rain streaks that follow the camera",
+    "kind": "environment",
+    "licence": "own",
+    "made_for": "ep32",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "storm_sea": {
+    "author": "toyfantv",
+    "desc": "a storm sea shader that splits apart into a trench between two walls of water",
+    "kind": "environment",
+    "licence": "own",
+    "made_for": "ep32",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "suburban_house": {
     "author": "toyfantv",
     "desc": "a street house, one or two floors, seeded",
     "kind": "building",
     "licence": "own",
     "made_for": "town",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "sword_cavern": {
+    "author": "toyfantv",
+    "desc": "a dark cavern beneath an island",
+    "kind": "environment",
+    "licence": "own",
+    "made_for": "ep32",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "sword_field": {
+    "author": "toyfantv",
+    "desc": "thousands of upright black swords stuck in a cavern floor that light up as they wake",
+    "kind": "environment",
+    "licence": "own",
+    "made_for": "ep32",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "time_crack": {
+    "author": "toyfantv",
+    "desc": "a glowing violet crack torn through the air (a crack in time)",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep32",
     "source": "this renderer",
     "type": "builder",
     "url": ""
@@ -1095,6 +1225,16 @@
     "kind": "building",
     "licence": "own",
     "made_for": "ep07",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "white_greatsword": {
+    "author": "toyfantv",
+    "desc": "a glowing white greatsword",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep32",
     "source": "this renderer",
     "type": "builder",
     "url": ""

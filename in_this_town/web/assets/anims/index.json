@@ -1,0 +1,260 @@
+{
+ "_readme": "Animation library: retargeted Mixamo sets (web/assets/anims/mixamo/<set>.json, git-ignored, made by tools/anim_retarget.py) and hand-keyed clips (engine/anims.js KEYED). Use: await loadAnimSet(set); sample(name, t). Credit Mixamo clips in the video .txt.",
+ "clips": {
+  "gs_idle": {
+   "set": "sword_set",
+   "source": "Mixamo (Adobe), Great Sword pack: gs_idle (video-farm assets/mixamo/fbx, clip mx_gs_idle)",
+   "licence": "Mixamo (Adobe) free licence: use in animations and videos, the raw files not redistributed (git-ignored; rebuild with tools/anim_retarget.py from video-farm assets/mixamo/fbx)",
+   "frames": 112,
+   "fps": 30,
+   "made_for": "ep32"
+  },
+  "gs_attack": {
+   "set": "sword_set",
+   "source": "Mixamo (Adobe), Great Sword pack: gs_attack (video-farm assets/mixamo/fbx, clip mx_gs_attack)",
+   "licence": "Mixamo (Adobe) free licence: use in animations and videos, the raw files not redistributed (git-ignored; rebuild with tools/anim_retarget.py from video-farm assets/mixamo/fbx)",
+   "frames": 37,
+   "fps": 30,
+   "made_for": "ep32"
+  },
+  "gs_block": {
+   "set": "sword_set",
+   "source": "Mixamo (Adobe), Great Sword pack: gs_block (video-farm assets/mixamo/fbx, clip mx_gs_block)",
+   "licence": "Mixamo (Adobe) free licence: use in animations and videos, the raw files not redistributed (git-ignored; rebuild with tools/anim_retarget.py from video-farm assets/mixamo/fbx)",
+   "frames": 30,
+   "fps": 30,
+   "made_for": "ep32"
+  },
+  "gs_impact": {
+   "set": "sword_set",
+   "source": "Mixamo (Adobe), Great Sword pack: gs_impact (video-farm assets/mixamo/fbx, clip mx_gs_impact)",
+   "licence": "Mixamo (Adobe) free licence: use in animations and videos, the raw files not redistributed (git-ignored; rebuild with tools/anim_retarget.py from video-farm assets/mixamo/fbx)",
+   "frames": 37,
+   "fps": 30,
+   "made_for": "ep32"
+  },
+  "gs_spin": {
+   "set": "sword_set",
+   "source": "Mixamo (Adobe), Great Sword pack: gs_spin (video-farm assets/mixamo/fbx, clip mx_gs_spin)",
+   "licence": "Mixamo (Adobe) free licence: use in animations and videos, the raw files not redistributed (git-ignored; rebuild with tools/anim_retarget.py from video-farm assets/mixamo/fbx)",
+   "frames": 57,
+   "fps": 30,
+   "made_for": "ep32"
+  },
+  "gs_slash_a": {
+   "set": "sword_set",
+   "source": "Mixamo (Adobe), Great Sword pack: gs_slash_a (video-farm assets/mixamo/fbx, clip gs_slash_a)",
+   "licence": "Mixamo (Adobe) free licence: use in animations and videos, the raw files not redistributed (git-ignored; rebuild with tools/anim_retarget.py from video-farm assets/mixamo/fbx)",
+   "frames": 107,
+   "fps": 30,
+   "made_for": "ep32"
+  },
+  "ss_slash": {
+   "set": "sword_set",
+   "source": "Mixamo (Adobe), Sword And Shield pack: ss_slash (video-farm assets/mixamo/fbx, clip mx_ss_slash)",
+   "licence": "Mixamo (Adobe) free licence: use in animations and videos, the raw files not redistributed (git-ignored; rebuild with tools/anim_retarget.py from video-farm assets/mixamo/fbx)",
+   "frames": 46,
+   "fps": 30,
+   "made_for": "ep32"
+  },
+  "ss_attack": {
+   "set": "sword_set",
+   "source": "Mixamo (Adobe), Sword And Shield pack: ss_attack (video-farm assets/mixamo/fbx, clip mx_ss_attack)",
+   "licence": "Mixamo (Adobe) free licence: use in animations and videos, the raw files not redistributed (git-ignored; rebuild with tools/anim_retarget.py from video-farm assets/mixamo/fbx)",
+   "frames": 40,
+   "fps": 30,
+   "made_for": "ep32"
+  },
+  "ss_block": {
+   "set": "sword_set",
+   "source": "Mixamo (Adobe), Sword And Shield pack: ss_block (video-farm assets/mixamo/fbx, clip mx_ss_block)",
+   "licence": "Mixamo (Adobe) free licence: use in animations and videos, the raw files not redistributed (git-ignored; rebuild with tools/anim_retarget.py from video-farm assets/mixamo/fbx)",
+   "frames": 18,
+   "fps": 30,
+   "made_for": "ep32"
+  },
+  "ss_impact": {
+   "set": "sword_set",
+   "source": "Mixamo (Adobe), Sword And Shield pack: ss_impact (video-farm assets/mixamo/fbx, clip mx_ss_impact)",
+   "licence": "Mixamo (Adobe) free licence: use in animations and videos, the raw files not redistributed (git-ignored; rebuild with tools/anim_retarget.py from video-farm assets/mixamo/fbx)",
+   "frames": 22,
+   "fps": 30,
+   "made_for": "ep32"
+  },
+  "ss_run": {
+   "set": "sword_set",
+   "source": "Mixamo (Adobe), Sword And Shield pack: ss_run (video-farm assets/mixamo/fbx, clip mx_ss_run)",
+   "licence": "Mixamo (Adobe) free licence: use in animations and videos, the raw files not redistributed (git-ignored; rebuild with tools/anim_retarget.py from video-farm assets/mixamo/fbx)",
+   "frames": 17,
+   "fps": 30,
+   "made_for": "ep32"
+  },
+  "dodge_back": {
+   "set": "sword_set",
+   "source": "Mixamo (Adobe): dodge_back (video-farm assets/mixamo/fbx, clip mx_dodge_back)",
+   "licence": "Mixamo (Adobe) free licence: use in animations and videos, the raw files not redistributed (git-ignored; rebuild with tools/anim_retarget.py from video-farm assets/mixamo/fbx)",
+   "frames": 50,
+   "fps": 30,
+   "made_for": "ep32"
+  },
+  "dodge_right": {
+   "set": "sword_set",
+   "source": "Mixamo (Adobe): dodge_right (video-farm assets/mixamo/fbx, clip mx_dodge_right)",
+   "licence": "Mixamo (Adobe) free licence: use in animations and videos, the raw files not redistributed (git-ignored; rebuild with tools/anim_retarget.py from video-farm assets/mixamo/fbx)",
+   "frames": 30,
+   "fps": 30,
+   "made_for": "ep32"
+  },
+  "react_big": {
+   "set": "sword_set",
+   "source": "Mixamo (Adobe): react_big (video-farm assets/mixamo/fbx, clip mx_react_big)",
+   "licence": "Mixamo (Adobe) free licence: use in animations and videos, the raw files not redistributed (git-ignored; rebuild with tools/anim_retarget.py from video-farm assets/mixamo/fbx)",
+   "frames": 50,
+   "fps": 30,
+   "made_for": "ep32"
+  },
+  "knocked_down": {
+   "set": "sword_set",
+   "source": "Mixamo (Adobe): knocked_down (video-farm assets/mixamo/fbx, clip mx_knocked)",
+   "licence": "Mixamo (Adobe) free licence: use in animations and videos, the raw files not redistributed (git-ignored; rebuild with tools/anim_retarget.py from video-farm assets/mixamo/fbx)",
+   "frames": 85,
+   "fps": 30,
+   "made_for": "ep32"
+  },
+  "getting_up": {
+   "set": "sword_set",
+   "source": "Mixamo (Adobe): getting_up (video-farm assets/mixamo/fbx, clip mx_getup)",
+   "licence": "Mixamo (Adobe) free licence: use in animations and videos, the raw files not redistributed (git-ignored; rebuild with tools/anim_retarget.py from video-farm assets/mixamo/fbx)",
+   "frames": 82,
+   "fps": 30,
+   "made_for": "ep32"
+  },
+  "standing_block": {
+   "set": "sword_set",
+   "source": "Mixamo (Adobe): standing_block (video-farm assets/mixamo/fbx, clip mx_block)",
+   "licence": "Mixamo (Adobe) free licence: use in animations and videos, the raw files not redistributed (git-ignored; rebuild with tools/anim_retarget.py from video-farm assets/mixamo/fbx)",
+   "frames": 61,
+   "fps": 30,
+   "made_for": "ep32"
+  },
+  "keyed:pull": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 32)",
+   "licence": "own",
+   "desc": "reach to a hilt in stone, grip (contact 0.7), pull free (1.35), lift",
+   "made_for": "ep32"
+  },
+  "keyed:guard": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 32)",
+   "licence": "own",
+   "desc": "two-handed sword guard (loop)",
+   "made_for": "ep32"
+  },
+  "keyed:inspect": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 32)",
+   "licence": "own",
+   "desc": "the sword upright before the face (loop)",
+   "made_for": "ep32"
+  },
+  "keyed:blockHigh": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 32)",
+   "licence": "own",
+   "desc": "a high block, knees give at contact 0.32",
+   "made_for": "ep32"
+  },
+  "keyed:parry": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 32)",
+   "licence": "own",
+   "desc": "a parry to the right, knocked aside at 0.2",
+   "made_for": "ep32"
+  },
+  "keyed:smash": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 32)",
+   "licence": "own",
+   "desc": "overhead two-handed smash, contact 0.55, blade buried",
+   "made_for": "ep32"
+  },
+  "keyed:sweep": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 32)",
+   "licence": "own",
+   "desc": "flat swing from the right, contact 0.47, follow-through",
+   "made_for": "ep32"
+  },
+  "keyed:raise": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 32)",
+   "licence": "own",
+   "desc": "blade raised high overhead, held",
+   "made_for": "ep32"
+  },
+  "keyed:flung": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 32)",
+   "licence": "own",
+   "desc": "thrown backward by a blow (move the root along the flight)",
+   "made_for": "ep32"
+  },
+  "keyed:rise": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 32)",
+   "licence": "own",
+   "desc": "lying on the back to one knee, hand to the brow, standing",
+   "made_for": "ep32"
+  },
+  "keyed:rift": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 32)",
+   "licence": "own",
+   "desc": "slash through the air low right to high left, held",
+   "made_for": "ep32"
+  },
+  "keyed:chop": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 32)",
+   "licence": "own",
+   "desc": "the swordsman's overhead chop onto a high block (contact 0.55)",
+   "made_for": "ep32"
+  },
+  "keyed:low": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 32)",
+   "licence": "own",
+   "desc": "standing with the blade low",
+   "made_for": "ep32"
+  },
+  "keyed:leap": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 32)",
+   "licence": "own",
+   "desc": "knees up, blade drawn back over the shoulder",
+   "made_for": "ep32"
+  },
+  "keyed:landing": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 32)",
+   "licence": "own",
+   "desc": "landing crouch back to guard",
+   "made_for": "ep32"
+  },
+  "keyed:crouch": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 32)",
+   "licence": "own",
+   "desc": "crouched, looking at a hilt (loop)",
+   "made_for": "ep32"
+  },
+  "keyed:lowered": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 32)",
+   "licence": "own",
+   "desc": "sword lowered at the side (loop)",
+   "made_for": "ep32"
+  }
+ }
+}

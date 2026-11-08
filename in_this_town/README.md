@@ -237,6 +237,33 @@ change. Episode 17 imports its package, model house and cardboard sky from the l
   its `faceSheet` bounding box (the head group's origin is the neck pivot, and hats push a head box's centre up).
 * `render.js frames <ep> <fps> <start> <end>` takes frame indices, not seconds.
 
+### Episode 32 notes (the time sword; Action, Episodes 32-34)
+
+* **Animation** (`web/engine/anims.js`): retargeted Mixamo clips plus hand-keyed clips on the renderer's one-joint-per-limb rig.
+  `tools/anim_retarget.py` turns Mixamo FBX (video-farm `assets/mixamo/fbx`) into `web/assets/anims/mixamo/<set>.json` (git-ignored: Mixamo's
+  licence allows use in videos, not redistribution; rebuild on a new PC). `await loadAnimSet('sword_set')`, then `sample(name, t, { loop, from, to })`,
+  `blend`, `applyPose(ch, P)`, `holdProp(ch, 0, sword, P)` (the blade follows the pose's `blade` vector), `aimArm(ch, side, world, amt)` (a second hand
+  on the hilt). Hand-keyed clips are `keyed([{ t, ease, torso, neck, aR, aL, lR, lL, h, blade }...])` in degrees; the library ones are `KEYED`
+  (pull, guard, inspect, blockHigh, parry, smash, sweep, raise, flung, rise, rift, chop, low, leap, landing, crouch, lowered). Sources and licences:
+  `web/assets/anims/index.json`; the check page is `episodes/animcheck.js` (`RENDER_QUERY="clips=a,b&cam=..."`).
+* **Hits**: key each strike's contact time, then build the hit around it: a hit-stop (`hs(t)` subtracts a short hold at every contact), sparks at a
+  contact point computed from the roots at that time (deterministic across workers), a flash and shake on the contact frame, and a reaction clip.
+  Never compute effects lazily from the previous frame: every frame must be a pure function of t.
+* **Time freeze**: run world time `tw(t)` (rain, sea, clouds, cape wind, lightning) and the side characters on `min(t, FRZ)`; only the hero uses t.
+* `web/engine/ruins.js`: `stormIsland` (flat plateau, `.heightAt`), `courtyard`, `column`, `arch`, `lowWall`, `rubble`, `clockTower` / `postClock`
+  (`.set(sec)`), `brickWall` (`.set(t, tHit, hit, dir)`: a body through it), `crater`, `stormSea` (a shader that splits into a trench with water
+  walls; `noAO`), `rain`, `bolt` / `flashAt`, `timeCrack`, `cavern`. `web/engine/blades.js`: `blackSword`, `whiteBlade`, `armorSuit(ch)` (hide
+  the body; `.shatter(k)` bursts it off an empty suit), `swordField` (instanced upright swords, `.wake(t, speed, glow)`). In the library as
+  `storm_island`, `ruin_courtyard`, `ruin_clock_tower`, `post_clock`, `brick_wall`, `crater`, `storm_sea`, `storm_rain`, `time_crack`,
+  `sword_cavern`, `black_sword`, `white_greatsword`, `plate_armor`, `sword_field`. Avatars `farm_ep32_rowan`, `farm_ep32_atlanta`, `farm_ep32_zzeekkee`.
+* A camera near plane under ~0.1 breaks the GTAO depth on big shader surfaces (the sea went black): keep 0.2 except for real close-ups.
+* A render-target "mirror" on a thin blade didn't read (a dark helmet in a night scene reflects as black); the reflection shot became the armoured
+  helmet framed behind the upright black blade.
+* `audio2.py`: SFX `clash`, `swish`, `rockbreak`, `wallcrash`, `thunder`, `rain`, `sea`, `watersplit`, `freeze`, `crackopen`, `armorbreak`,
+  `swordwake`; moods `action` / `action_hit` (a 132 bpm minor ostinato with taiko hits); voice fx `helmet` (comb + band + cold hall).
+  Keep the clash / crack cues under ~0.5 when they land in a line, or the voice margin drops under 10 dB.
+* Local 60 fps pro-look renders ran ~3900 frames in about 16 minutes with three workers.
+
 ### Free models from other sites
 
 Only when a story needs one; no bulk downloads. Add it with the licence recorded:

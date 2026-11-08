@@ -1,0 +1,653 @@
+{
+ "number": 32,
+ "title": "The Sword That Could Cut Through Time",
+ "output": "InThisTown_Episode32_TimeSword.mp4",
+ "youtube_title": "The Sword That Could Cut Through Time...",
+ "tiktok_caption": "He found a black sword under a ruined island. The moment he touched it, every clock stopped.",
+ "hashtags": "#InThisTown #RobloxStory #SwordFight #DarkFantasy #Shorts",
+ "thumbnail_text": "IT WAS HIM",
+ "thumbnail_rec": "Rowan in his dark red jacket on a storm-dark ruined island, gripping a pure-black sword whose edge shows his reflection wearing the faceless armored helmet; a glowing white crack splits the frozen air between him and the armored swordsman's raised white blade.",
+ "tail": 1.9,
+ "fps": 60,
+ "narrator": {
+  "pace": [
+   2.5,
+   2.95
+  ],
+  "min_tempo": 1.04
+ },
+ "cast": {
+  "whisper": {
+   "voice": "callum",
+   "pitch": 0.94,
+   "tempo": 0.95
+  },
+  "helmet": {
+   "voice": "callum",
+   "pitch": 0.86,
+   "tempo": 1.0
+  }
+ },
+ "highlights": {
+  "SWORD": "yellow",
+  "RUINED ISLAND": "yellow",
+  "COMPLETELY BLACK": "purple",
+  "EVERY CLOCK STOPPED": "red",
+  "HE'S COMING": "red",
+  "OCEAN": "cyan",
+  "SPLIT APART": "cyan",
+  "ARMORED SWORDSMAN": "red",
+  "ATTACKED": "red",
+  "FIRST STRIKE": "yellow",
+  "SHATTERED": "red",
+  "STONE WALL": "yellow",
+  "SMALL CUT": "red",
+  "GLOWING BLADE": "cyan",
+  "ISLAND FROZE": "cyan",
+  "EVERYTHING STOPPED": "cyan",
+  "EXCEPT ROWAN": "yellow",
+  "BLACK SWORD": "purple",
+  "GLOWING CRACK": "purple",
+  "EVERY ATTACK": "yellow",
+  "DODGED": "yellow",
+  "COUNTERED": "yellow",
+  "ACROSS THE CHEST": "red",
+  "ARMOR SHATTERED": "red",
+  "NOBODY": "red",
+  "ONLY DARKNESS": "red",
+  "EMPTY HELMET": "red",
+  "FINALLY LEARNED": "red",
+  "REFLECTION": "yellow",
+  "WEARING THE ARMOR": "red",
+  "THOUSANDS": "red",
+  "WAKING UP": "red"
+ },
+ "lines": [
+  {
+   "text": "Rowan found the sword buried beneath a ruined island.",
+   "tag": "[mysterious]",
+   "pause": 0.08
+  },
+  {
+   "text": "Its blade was completely black.",
+   "tag": "[softly]",
+   "pause": 0.09
+  },
+  {
+   "text": "The moment he touched it, every clock stopped.",
+   "tag": "[mysterious]",
+   "pause": 0.13
+  },
+  {
+   "text": "A voice whispered,",
+   "tag": "[softly]",
+   "pause": 0.05
+  },
+  {
+   "text": "“He's coming.”",
+   "tag": "[whispers]",
+   "pause": 0.09,
+   "speak": "He's coming...",
+   "voice": "whisper",
+   "fx": "whisper"
+  },
+  {
+   "text": "The ocean split apart.",
+   "tag": "[serious]",
+   "pause": 0.09
+  },
+  {
+   "text": "An armored swordsman rose from the water.",
+   "tag": "[mysterious]",
+   "pause": 0.09
+  },
+  {
+   "text": "Without warning, he attacked.",
+   "tag": "[serious]",
+   "pause": 0.08
+  },
+  {
+   "text": "Rowan barely blocked the first strike.",
+   "tag": "[excited]",
+   "pause": 0.06
+  },
+  {
+   "text": "The second shattered the ground beneath him.",
+   "tag": "[excited]",
+   "pause": 0.06
+  },
+  {
+   "text": "The third sent him flying through a stone wall.",
+   "tag": "[excited]",
+   "pause": 0.13
+  },
+  {
+   "text": "Rowan stood, bleeding from a small cut above his eyebrow.",
+   "tag": "[serious]",
+   "pause": 0.09
+  },
+  {
+   "text": "The swordsman raised his glowing blade.",
+   "tag": "[serious]",
+   "pause": 0.07
+  },
+  {
+   "text": "The entire island froze.",
+   "tag": "[mysterious]",
+   "pause": 0.18
+  },
+  {
+   "text": "Everything stopped.",
+   "tag": "[softly]",
+   "pause": 0.08
+  },
+  {
+   "text": "Except Rowan.",
+   "tag": "[softly]",
+   "pause": 0.15
+  },
+  {
+   "text": "He looked at his black sword. Then swung it through the air.",
+   "tag": "[slowly]",
+   "pause": 0.13,
+   "speak": "He looked at his black sword... Then swung it through the air."
+  },
+  {
+   "text": "A glowing crack opened in time.",
+   "tag": "[mysterious]",
+   "pause": 0.11
+  },
+  {
+   "text": "Rowan could see every attack before it happened.",
+   "tag": "[excited]",
+   "pause": 0.07
+  },
+  {
+   "text": "He dodged.",
+   "tag": "[excited]",
+   "pause": 0.05
+  },
+  {
+   "text": "Countered.",
+   "tag": "[excited]",
+   "pause": 0.05
+  },
+  {
+   "text": "And struck the swordsman across the chest.",
+   "tag": "[excited]",
+   "pause": 0.13
+  },
+  {
+   "text": "The armor shattered.",
+   "tag": "[serious]",
+   "pause": 0.09
+  },
+  {
+   "text": "But underneath was nobody.",
+   "tag": "[softly]",
+   "pause": 0.09
+  },
+  {
+   "text": "Only darkness.",
+   "tag": "[whispers]",
+   "pause": 0.15
+  },
+  {
+   "text": "A voice echoed from the empty helmet.",
+   "tag": "[mysterious]",
+   "pause": 0.07
+  },
+  {
+   "text": "“You've finally learned.”",
+   "tag": "[slowly]",
+   "pause": 0.18,
+   "speak": "You've finally learned.",
+   "voice": "helmet",
+   "fx": "helmet"
+  },
+  {
+   "text": "Rowan looked at his reflection in the blade.",
+   "tag": "[calm]",
+   "pause": 0.08,
+   "speak": "Rowan looked at his reflection, in the blade."
+  },
+  {
+   "text": "He was wearing the armor.",
+   "tag": "[softly]",
+   "pause": 0.18
+  },
+  {
+   "text": "Beneath the island, thousands of identical swords began waking up.",
+   "tag": "[mysterious]",
+   "pause": 0.07
+  }
+ ],
+ "samples": {},
+ "sound": {
+  "key": 40,
+  "music_gain": 0.32,
+  "music": [
+   [
+    "0",
+    "mystery"
+   ],
+   [
+    "ev:split0",
+    "suspense"
+   ],
+   [
+    "ev:land-0.3",
+    "action"
+   ],
+   [
+    "ev:FRZ",
+    "silence"
+   ],
+   [
+    "ev:crack+0.8",
+    "cosmic"
+   ],
+   [
+    "ev:RES",
+    "action_hit"
+   ],
+   [
+    "ev:SH+0.6",
+    "silence"
+   ],
+   [
+    "L25",
+    "dread"
+   ],
+   [
+    "ev:cave",
+    "dread"
+   ]
+  ],
+  "cues": [
+   [
+    "0",
+    "rain",
+    0.2,
+    {
+     "dur": 29.0
+    }
+   ],
+   [
+    "0",
+    "sea",
+    0.2,
+    {
+     "dur": 10.9
+    }
+   ],
+   [
+    "0",
+    "wind",
+    0.12,
+    {
+     "dur": 28.9
+    }
+   ],
+   [
+    "0.5",
+    "thunder",
+    0.3,
+    {
+     "seed": 4
+    }
+   ],
+   [
+    "0",
+    "tick",
+    0.16,
+    {
+     "dur": 5.73
+    }
+   ],
+   [
+    "ev:clock",
+    "clunk",
+    0.45
+   ],
+   [
+    "ev:clock",
+    "sting",
+    0.25
+   ],
+   [
+    "ev:pull",
+    "scrape",
+    0.32
+   ],
+   [
+    "ev:touch",
+    "shimmer",
+    0.2,
+    {
+     "dur": 1.6
+    }
+   ],
+   [
+    "ev:free",
+    "swish",
+    0.4
+   ],
+   [
+    "L3",
+    "drone",
+    0.25,
+    {
+     "dur": 3.0,
+     "f": 44
+    }
+   ],
+   [
+    "ev:split0",
+    "watersplit",
+    0.6
+   ],
+   [
+    "ev:split0",
+    "rumble",
+    0.35,
+    {
+     "dur": 4.0
+    }
+   ],
+   [
+    "ev:split0+3.5",
+    "sea",
+    0.25,
+    {
+     "dur": 18.1
+    }
+   ],
+   [
+    "ev:rise0",
+    "water",
+    0.35,
+    {
+     "dur": 2.0
+    }
+   ],
+   [
+    "ev:rise0+0.9",
+    "thunder",
+    0.3,
+    {
+     "seed": 7
+    }
+   ],
+   [
+    "ev:leap0",
+    "whoosh",
+    0.45
+   ],
+   [
+    "ev:land",
+    "rockbreak",
+    0.55,
+    {
+     "dur": 1.6,
+     "seed": 5
+    }
+   ],
+   [
+    "ev:C1-0.22",
+    "swish",
+    0.45
+   ],
+   [
+    "ev:C1",
+    "clash",
+    0.85,
+    {
+     "seed": 1
+    }
+   ],
+   [
+    "ev:C2-0.22",
+    "swish",
+    0.45,
+    {
+     "seed": 3
+    }
+   ],
+   [
+    "ev:C2",
+    "clash",
+    0.5,
+    {
+     "seed": 3,
+     "f": 1500
+    }
+   ],
+   [
+    "ev:C2",
+    "rockbreak",
+    0.85,
+    {
+     "seed": 6
+    }
+   ],
+   [
+    "ev:C3-0.22",
+    "swish",
+    0.5,
+    {
+     "seed": 4
+    }
+   ],
+   [
+    "ev:C3",
+    "clash",
+    0.75,
+    {
+     "seed": 4,
+     "f": 1700
+    }
+   ],
+   [
+    "ev:wall",
+    "wallcrash",
+    0.85
+   ],
+   [
+    "ev:rise",
+    "groan",
+    0.12,
+    {
+     "dur": 1.5
+    }
+   ],
+   [
+    "ev:raise-0.3",
+    "thunder",
+    0.35,
+    {
+     "seed": 9
+    }
+   ],
+   [
+    "ev:raise",
+    "shimmer",
+    0.25,
+    {
+     "dur": 2.0
+    }
+   ],
+   [
+    "ev:FRZ",
+    "freeze",
+    0.65
+   ],
+   [
+    "ev:FRZ+0.3",
+    "drone",
+    0.3,
+    {
+     "dur": 10.0,
+     "f": 46
+    }
+   ],
+   [
+    "ev:rift-0.3",
+    "swish",
+    0.4,
+    {
+     "seed": 8,
+     "dur": 0.5
+    }
+   ],
+   [
+    "ev:crack",
+    "crackopen",
+    0.4
+   ],
+   [
+    "ev:RES",
+    "glitch",
+    0.3,
+    {
+     "dur": 0.4
+    }
+   ],
+   [
+    "ev:RES",
+    "rain",
+    0.2,
+    {
+     "dur": 19.6
+    }
+   ],
+   [
+    "ev:RES",
+    "wind",
+    0.1,
+    {
+     "dur": 19.6
+    }
+   ],
+   [
+    "ev:leap2",
+    "whoosh",
+    0.45
+   ],
+   [
+    "ev:C4-0.2",
+    "swish",
+    0.5,
+    {
+     "seed": 11
+    }
+   ],
+   [
+    "ev:C4",
+    "clash",
+    0.6,
+    {
+     "seed": 5,
+     "f": 2100
+    }
+   ],
+   [
+    "ev:C5-0.2",
+    "swish",
+    0.5,
+    {
+     "seed": 12
+    }
+   ],
+   [
+    "ev:C5",
+    "clash",
+    0.7,
+    {
+     "seed": 6,
+     "f": 1800
+    }
+   ],
+   [
+    "ev:C6-0.2",
+    "swish",
+    0.5,
+    {
+     "seed": 13
+    }
+   ],
+   [
+    "ev:C6",
+    "clash",
+    0.75,
+    {
+     "seed": 7,
+     "f": 1600
+    }
+   ],
+   [
+    "ev:C7-0.25",
+    "swish",
+    0.6,
+    {
+     "seed": 14,
+     "dur": 0.5
+    }
+   ],
+   [
+    "ev:C7",
+    "clash",
+    0.9,
+    {
+     "seed": 8,
+     "f": 1300
+    }
+   ],
+   [
+    "ev:C7",
+    "boom",
+    0.35
+   ],
+   [
+    "ev:SH",
+    "armorbreak",
+    0.6
+   ],
+   [
+    "L24",
+    "drone",
+    0.3,
+    {
+     "dur": 8.0,
+     "f": 41
+    }
+   ],
+   [
+    "ev:armor-0.1",
+    "sting",
+    0.35
+   ],
+   [
+    "ev:armor",
+    "clunk",
+    0.3
+   ],
+   [
+    "ev:cave",
+    "rumble",
+    0.4,
+    {
+     "dur": 5.5
+    }
+   ],
+   [
+    "ev:cave+0.1",
+    "swordwake",
+    0.75,
+    {
+     "dur": 5.8
+    }
+   ]
+  ]
+ }
+}
