@@ -350,6 +350,21 @@ change. Episode 17 imports its package, model house and cardboard sky from the l
 * `render.js frames` skips frames that exist: delete a range before re-rendering it.
 * New avatars: `farm_ep35_nora`, `farm_ep35_girl` (one-off Studio captures; sources in their `avatar.json`).
 
+### Episode 37 notes (the woman beneath the stairs; Psychological Horror, Episodes 35-39)
+
+* **`web/engine/folklore.js`** holds everything original to this episode: `puppet` (a long-limbed figure posed by world points through two-joint IK;
+  poles choose which way knees and elbows bend, so backward knees are a sign change), `socketHead` (real holes in a front plate, black discs set
+  behind the skull's front face), `hairCurtain` (camera-facing ribbons hung by world gravity; `part` 0 to 1 opens the front strands), `stairHall`,
+  `schoolCorridor`, `satchel`, `flashlightProp`, `strawRope`, `ofuda`, `dustFall`, `handPrint`. In the library as `stair_hall`, `school_corridor`,
+  `folklore_puppet`, `eyeless_head`, `child_satchel`, `folklore_flashlight`, `straw_rope`, `paper_charm`.
+* **The creature wears a real head**: a second copy of the brother's avatar has its `neck` group re-parented to the puppet's `mount` (scale 1.6), with a
+  ragged ring (stitches, raw edge) on a transparent plane in front of the face, so the Alti face still shows through it.
+* **The same staircase**: the exit door at z -72 opens on a clone of the hall rotated 180 degrees about (0, -36). Only that shot shows it.
+* **Grip**: `g.grip[hand]` on the puppet is the point between the knuckles after `set`; call `set` once before reading it to hang a prop from the hand.
+* **Hard-won**: a figure crouched next to a POV camera fills the lens (Quinn is hidden for the close shots of the woman); non-front hair strands must not
+  root on the face side; a captured avatar's hair can leave head skin showing from behind (`W.q`'s dark rounded backing fixes it); `qc.py` reports 60 fps
+  as an issue, ignore that for this series.
+
 ### Episode 36 notes (the last contestant; Psychological Horror, Episodes 35-39)
 
 * **Sets in one scene, far apart**: the bedroom at the origin stands on the arena floor (its four walls are hinged flats that fall

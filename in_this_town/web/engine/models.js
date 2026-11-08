@@ -21,6 +21,7 @@ import { trainingRifle, soldierGear, syncRanks, muzzleFlashes, tracers, eventPar
 import { magicArena, arenaGround, voidRocks, fallingRocks, fireWall, energyOrb, runeShield, shardBurst, shockwave, sigil, beam, decal, arcBolt, fireStream, driftParticles, shadowCrowd, teleportFx, cloak } from './arena.js';
 import { blackSword, whiteBlade, armorSuit, swordField } from './blades.js';
 import { hospitalBed, wardDoor, fluorPanel, crtTV, ivPole, cabinet, paSpeaker, roomPlate, bedChart, nurse, wardBeds, hospitalBlock, noticeSign } from './hospital.js';
+import { puppet, socketHead, stairHall, schoolCorridor, satchel, flashlightProp, strawRope, ofuda } from './folklore.js';
 import { cubeSeed, cubeStairs, gardenPlot, seedStall, wateringCan, wheelbarrow, scarecrow, floatingIsland, glassField, nameTree, bloomField } from './garden.js';
 
 // ---------- Episode 17 ----------
@@ -283,6 +284,15 @@ export function makeClockTower() {
 // name -> builder. o.parent, when given, receives the model.
 const put = (o, m) => { if (o.parent) o.parent.add(m.isObject3D ? m : m.g || m.root); return m; };
 export const BUILD = {
+  // Episode 37 (web/engine/folklore.js)
+  stair_hall: (o) => put(o, stairHall()),
+  school_corridor: (o) => put(o, schoolCorridor()),
+  folklore_puppet: (o) => put(o, puppet(o)),
+  eyeless_head: (o) => put(o, socketHead(o)),
+  child_satchel: (o) => put(o, satchel(o)),
+  folklore_flashlight: (o) => put(o, flashlightProp()),
+  straw_rope: (o) => put(o, strawRope(o.a, o.b, o)),
+  paper_charm: (o) => put(o, ofuda(o.seed ?? 1, o.w, o.h)),
   kit_building: (o) => put(o, building(o)),
   security_cam: (o) => put(o, secCam()),
   home_fridge: (o) => put(o, fridge()),

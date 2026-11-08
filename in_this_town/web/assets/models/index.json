@@ -209,6 +209,16 @@
     "type": "builder",
     "url": ""
   },
+  "child_satchel": {
+    "author": "toyfantv",
+    "desc": "a child's red satchel with a lifting flap, buckle and a yellow name tag",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep37",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "clock": {
     "author": "toyfantv",
     "desc": "a round clock, setTime(minutes)",
@@ -399,6 +409,16 @@
     "type": "builder",
     "url": ""
   },
+  "eyeless_head": {
+    "author": "toyfantv",
+    "desc": "a pale head with two real, deep black eye sockets, cracks, black runs and an opening mouth",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep37",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "falling_rocks": {
     "author": "toyfantv",
     "desc": "rocks breaking off an underside as it tears free (deterministic)",
@@ -475,6 +495,26 @@
     "kind": "prop",
     "licence": "own",
     "made_for": "ep27",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "folklore_flashlight": {
+    "author": "toyfantv",
+    "desc": "a small handheld flashlight with a lit lens",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep37",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "folklore_puppet": {
+    "author": "toyfantv",
+    "desc": "a long-limbed figure posed by world points (two-joint IK, knees that can bend backward), robe, curtain of hair; hand-key it point by point",
+    "kind": "character",
+    "licence": "own",
+    "made_for": "ep37",
     "source": "this renderer",
     "type": "builder",
     "url": ""
@@ -1099,6 +1139,16 @@
     "type": "builder",
     "url": ""
   },
+  "paper_charm": {
+    "author": "toyfantv",
+    "desc": "a paper charm with brush marks and a torn lower edge",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep37",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "pastel_cottage": {
     "author": "toyfantv",
     "desc": "a pastel suburban house with porch, lap siding, shutters, flower boxes; can build up from light",
@@ -1239,6 +1289,16 @@
     "type": "builder",
     "url": ""
   },
+  "school_corridor": {
+    "author": "toyfantv",
+    "desc": "a long abandoned school corridor with lockers, flickering ceiling tubes, loose papers and double exit doors with a green sign",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep37",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "seat_banks": {
     "author": "toyfantv",
     "desc": "tiered stadium seat banks round an arena floor (instanced)",
@@ -1359,6 +1419,16 @@
     "type": "builder",
     "url": ""
   },
+  "stair_hall": {
+    "author": "toyfantv",
+    "desc": "an abandoned school stairwell hall: worn floorboards, a roped-off wooden staircase with numbered steps, boarded windows, tally marks and paper charms in the cavity under the stairs",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep37",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "star": {
     "author": "toyfantv",
     "desc": "a glowing star sprite",
@@ -1425,6 +1495,16 @@
     "kind": "environment",
     "licence": "own",
     "made_for": "ep32",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "straw_rope": {
+    "author": "toyfantv",
+    "desc": "a sagging straw rope with paper streamers, a barrier for a forbidden place",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep37",
     "source": "this renderer",
     "type": "builder",
     "url": ""

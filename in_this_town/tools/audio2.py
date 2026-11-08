@@ -909,6 +909,7 @@ def main():
         if fx == 'giant': a = reverb(a, 3.0, 0.45)
         if fx == 'helmet': a = helmet_voice(a)
         if fx == 'whisper': a = reverb(a, 1.6, 0.3)
+        if fx == 'muffled': a = reverb(bp(a, 260, 2700), 0.5, 0.2)  # a small voice from inside a closed bag (Episode 37)
         if fx == 'pa':  # a ceiling loudspeaker in a long hard corridor
             a = bp(a, 450, 3200); a = np.tanh(a * 3.0) / 3.0
             a = a * (0.13 / (np.sqrt(np.mean(a[np.abs(a) > 0.004] ** 2)) + 1e-9)); a = reverb(a, 2.6, 0.42)

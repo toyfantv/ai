@@ -502,6 +502,27 @@
    "licence": "own",
    "desc": "shot in the chest, falling on the back",
    "made_for": "ep34"
+  },
+  "ep37:seated_backward_knees": {
+   "set": "engine/folklore.js puppet, poses in episodes/ep37.js",
+   "source": "hand-keyed in the In This Town renderer (Episode 37)",
+   "licence": "own",
+   "desc": "the woman sitting under the stairs with her knees bent backward, her head lifting in small ticks, the lunge out of the dark",
+   "made_for": "ep37"
+  },
+  "ep37:stand_backward_knees": {
+   "set": "engine/folklore.js puppet, poses in episodes/ep37.js",
+   "source": "hand-keyed in the In This Town renderer (Episode 37)",
+   "licence": "own",
+   "desc": "standing on backward-bent knees, one arm reaching out in ticks with a satchel hooked on the fingers",
+   "made_for": "ep37"
+  },
+  "ep37:ceiling_crawl": {
+   "set": "engine/folklore.js puppet, poses in episodes/ep37.js",
+   "source": "hand-keyed in the In This Town renderer (Episode 37)",
+   "licence": "own",
+   "desc": "a belly-up crawl along a ceiling with planted hands and feet; the head snaps round, inverted, then ticks upright",
+   "made_for": "ep37"
   }
  }
 }

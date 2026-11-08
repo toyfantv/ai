@@ -1,0 +1,34 @@
+{
+ "key": "farm_ep37_brother",
+ "source": {
+  "route": "one-off Studio capture (scenes/sandbox/avcap_ep37.lua), the steps of tools/farm_avatars.py",
+  "label": "Quinn's little brother (Episode 37): yellow hoodie, khaki shorts, black middle-part hair",
+  "catalog_items": [
+   2072082108,
+   7762168223,
+   126342058704598
+  ]
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-08",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_Accessory_Middle_Part_Anime_Short_Boy_Hair_Black"
+ ]
+}

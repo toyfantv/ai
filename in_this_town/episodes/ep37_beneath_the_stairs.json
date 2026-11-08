@@ -1,0 +1,864 @@
+{
+ "id": "ep37",
+ "number": 37,
+ "title": "The Woman Beneath the Stairs",
+ "output": "InThisTown_Episode37_BeneathTheStairs.mp4",
+ "tts": "openrouter",
+ "youtube_title": "The Woman Beneath the Stairs...",
+ "tiktok_caption": "Nobody uses the old staircase. Every night, something underneath it counts the steps. Quinn went looking for her brother anyway.",
+ "hashtags": "#InThisTown #HorrorStory #ScaryStories #RobloxStory #Shorts",
+ "thumbnail_text": "DON'T LOOK UP",
+ "thumbnail_rec": "Low angle from the bottom of an old wooden school staircase, Quinn in a violet jacket frozen and looking up; above her a long pale thing clings to the ceiling, wearing a little boy's face. Text: \"DON'T LOOK UP\".",
+ "lead_in": 0.3,
+ "tail": 2.15,
+ "voices": {
+  "narrator": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "ErXwobaYiN019PkySvjV",
+    "pitch": 1.1,
+    "tempo": 1.12,
+    "max_tempo": 1.15,
+    "pace": [
+     2.5,
+     2.95
+    ],
+    "min_tempo": 1.04
+   },
+   "kokoro": "am_michael",
+   "speed": 1.0,
+   "note": "Antoni (American), In This Town preset el:ErXwobaYiN019PkySvjV:1.1:1.12 - same narrator every episode"
+  },
+  "woman": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "matilda",
+    "pitch": 0.9,
+    "tempo": 0.92
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  },
+  "brother": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "will",
+    "pitch": 1.3,
+    "tempo": 0.95
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  },
+  "quinn": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "jessica",
+    "pitch": 1.0,
+    "tempo": 1.0
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  }
+ },
+ "highlights": {
+  "STAIRCASE": "yellow",
+  "ABANDONED SCHOOL": "yellow",
+  "COUNTED THE STEPS": "red",
+  "ONE.": "red",
+  "TWO.": "red",
+  "THREE.": "red",
+  "FOUR.": "red",
+  "FIVE.": "red",
+  "SIX.": "red",
+  "MISSING BROTHER": "yellow",
+  "UNDERNEATH": "red",
+  "DARKNESS": "purple",
+  "BENT BACKWARD": "red",
+  "MY SON": "purple",
+  "NO EYES": "red",
+  "BLACK HOLES": "red",
+  "SCREAMED": "red",
+  "FASTER": "red",
+  "EXIT": "yellow",
+  "SAME STAIRCASE": "red",
+  "BOTTOM": "purple",
+  "BACKPACK": "yellow",
+  "HER BROTHER'S": "red",
+  "DON'T LOOK UP": "red",
+  "FROZE": "yellow",
+  "CEILING": "red",
+  "BROTHER'S FACE": "red"
+ },
+ "lines": [
+  {
+   "text": "In the abandoned school, there was a staircase nobody used.",
+   "tag": "[mysterious]",
+   "pause": 0.15
+  },
+  {
+   "text": "Not because it was broken.",
+   "tag": "[mysterious]",
+   "pause": 0.15
+  },
+  {
+   "text": "Because every night, someone counted the steps.",
+   "tag": "[mysterious]",
+   "pause": 0.4
+  },
+  {
+   "text": "One.",
+   "speak": "One...",
+   "tag": "[whispers]",
+   "pause": 0.45,
+   "fx": "whisper",
+   "voice": "woman"
+  },
+  {
+   "text": "Two.",
+   "speak": "Two...",
+   "tag": "[whispers]",
+   "pause": 0.45,
+   "fx": "whisper",
+   "voice": "woman"
+  },
+  {
+   "text": "Three.",
+   "speak": "Three...",
+   "tag": "[whispers]",
+   "pause": 0.5,
+   "fx": "whisper",
+   "voice": "woman"
+  },
+  {
+   "text": "Quinn heard it while searching for her missing brother.",
+   "tag": "[mysterious]",
+   "pause": 0.12
+  },
+  {
+   "text": "The voice was coming from underneath the stairs.",
+   "tag": "[quietly]",
+   "pause": 0.15
+  },
+  {
+   "text": "She crouched down.",
+   "tag": "[quietly]",
+   "pause": 0.2
+  },
+  {
+   "text": "A woman was sitting in the darkness.",
+   "tag": "[quietly]",
+   "pause": 0.12
+  },
+  {
+   "text": "Her hair covered her face.",
+   "tag": "[quietly]",
+   "pause": 0.12
+  },
+  {
+   "text": "Her knees were bent backward.",
+   "tag": "[serious]",
+   "pause": 0.25
+  },
+  {
+   "text": "“Have you seen my son?”",
+   "speak": "Have you seen my son?",
+   "tag": "[whispers]",
+   "pause": 0.4,
+   "fx": "whisper",
+   "voice": "woman"
+  },
+  {
+   "text": "Quinn shook her head.",
+   "tag": "[quietly]",
+   "pause": 0.15
+  },
+  {
+   "text": "The woman slowly lifted her face.",
+   "tag": "[quietly]",
+   "pause": 0.95
+  },
+  {
+   "text": "There were no eyes.",
+   "tag": "[serious]",
+   "pause": 0.2
+  },
+  {
+   "text": "Only two deep, black holes.",
+   "tag": "[serious]",
+   "pause": 0.2
+  },
+  {
+   "text": "Quinn screamed and ran.",
+   "tag": "[urgent]",
+   "pause": 0.12
+  },
+  {
+   "text": "Behind her, the counting became faster.",
+   "tag": "[urgent]",
+   "pause": 0.14
+  },
+  {
+   "text": "Four.",
+   "speak": "Four!",
+   "tag": "[whispers urgently]",
+   "pause": 0.12,
+   "fx": "whisper",
+   "voice": "woman"
+  },
+  {
+   "text": "Five.",
+   "speak": "Five.",
+   "tag": "[whispers urgently]",
+   "pause": 0.1,
+   "fx": "whisper",
+   "voice": "woman"
+  },
+  {
+   "text": "Six.",
+   "speak": "Six!",
+   "tag": "[whispers urgently]",
+   "pause": 0.18,
+   "fx": "whisper",
+   "voice": "woman"
+  },
+  {
+   "text": "She reached the exit.",
+   "tag": "[urgent]",
+   "pause": 0.1
+  },
+  {
+   "text": "But the door opened onto the same staircase.",
+   "tag": "[serious]",
+   "pause": 0.2
+  },
+  {
+   "text": "The woman was waiting at the bottom.",
+   "tag": "[quietly]",
+   "pause": 0.15
+  },
+  {
+   "text": "This time, she was holding a child's backpack.",
+   "tag": "[quietly]",
+   "pause": 0.12
+  },
+  {
+   "text": "Quinn recognized it.",
+   "tag": "[quietly]",
+   "pause": 0.14
+  },
+  {
+   "text": "Her brother's.",
+   "tag": "[quietly]",
+   "pause": 0.25
+  },
+  {
+   "text": "A small voice whispered from inside the backpack,",
+   "tag": "[quietly]",
+   "pause": 0.1
+  },
+  {
+   "text": "“Quinn, don't look up.”",
+   "speak": "Quinn. Don't look up.",
+   "tag": "[whispers]",
+   "pause": 0.4,
+   "fx": "muffled",
+   "voice": "brother"
+  },
+  {
+   "text": "She froze.",
+   "tag": "[quietly]",
+   "pause": 0.65
+  },
+  {
+   "text": "Something was crawling across the ceiling.",
+   "tag": "[quietly]",
+   "pause": 0.75
+  },
+  {
+   "text": "And it was wearing her brother's face.",
+   "tag": "[serious]",
+   "pause": 0.1
+  }
+ ],
+ "samples": {
+  "q_scream": {
+   "text": "Aaaaaaah!",
+   "voice": "quinn",
+   "tag": "[screams]"
+  }
+ },
+ "sound": {
+  "key": 38,
+  "music_gain": 0.22,
+  "music": [
+   [
+    "0",
+    "mystery"
+   ],
+   [
+    "8.213",
+    "dread"
+   ],
+   [
+    "28.366",
+    "silence"
+   ],
+   [
+    "29.116",
+    "dread"
+   ],
+   [
+    "34.242",
+    "suspense"
+   ],
+   [
+    "40.761",
+    "silence"
+   ],
+   [
+    "41.361",
+    "dread"
+   ],
+   [
+    "58.096",
+    "silence"
+   ],
+   [
+    "59.746",
+    "cosmic"
+   ]
+  ],
+  "cues": [
+   [
+    "0",
+    "wind",
+    0.2,
+    {
+     "dur": 2.1
+    }
+   ],
+   [
+    "0",
+    "drone",
+    0.16,
+    {
+     "dur": 28.315999999999995,
+     "f": 41
+    }
+   ],
+   [
+    "1.9",
+    "buzz",
+    0.1,
+    {
+     "dur": 1.6
+    }
+   ],
+   [
+    "3.4",
+    "roomtone",
+    0.2,
+    {
+     "dur": 25.016
+    }
+   ],
+   [
+    "8.193",
+    "creak",
+    0.42,
+    {
+     "dur": 0.5,
+     "seed": 31
+    }
+   ],
+   [
+    "8.213",
+    "clunk",
+    0.22,
+    {
+     "seed": 41
+    }
+   ],
+   [
+    "8.563",
+    "flick",
+    0.14,
+    {
+     "seed": 44
+    }
+   ],
+   [
+    "9.358",
+    "creak",
+    0.47,
+    {
+     "dur": 0.5,
+     "seed": 32
+    }
+   ],
+   [
+    "9.378",
+    "clunk",
+    0.22,
+    {
+     "seed": 42
+    }
+   ],
+   [
+    "9.728",
+    "flick",
+    0.14,
+    {
+     "seed": 45
+    }
+   ],
+   [
+    "10.149",
+    "creak",
+    0.52,
+    {
+     "dur": 0.5,
+     "seed": 33
+    }
+   ],
+   [
+    "10.169",
+    "clunk",
+    0.22,
+    {
+     "seed": 43
+    }
+   ],
+   [
+    "10.519",
+    "flick",
+    0.14,
+    {
+     "seed": 46
+    }
+   ],
+   [
+    "10.9",
+    "footsteps",
+    0.38,
+    {
+     "dur": 3.1999999999999993,
+     "rate": 1.5
+    }
+   ],
+   [
+    "15",
+    "footsteps",
+    0.38,
+    {
+     "dur": 1.3999999999999986,
+     "rate": 1.5,
+     "seed": 5
+    }
+   ],
+   [
+    "16.744",
+    "curtain",
+    0.22,
+    {
+     "dur": 0.5
+    }
+   ],
+   [
+    "L9",
+    "whisper",
+    0.1,
+    {
+     "dur": 10.615999999999996
+    }
+   ],
+   [
+    "L10",
+    "scrape",
+    0.14,
+    {
+     "dur": 1.0,
+     "seed": 6
+    }
+   ],
+   [
+    "L13",
+    "heartbeat",
+    0.34,
+    {
+     "dur": 3.415999999999997,
+     "bpm": 92
+    }
+   ],
+   [
+    "L14",
+    "crackle",
+    0.42,
+    {
+     "dur": 1.9,
+     "seed": 21
+    }
+   ],
+   [
+    "28.796",
+    "whoosh",
+    0.6,
+    {
+     "dur": 0.2
+    }
+   ],
+   [
+    "28.906",
+    "scarehit",
+    0.98,
+    {
+     "dur": 2.4
+    }
+   ],
+   [
+    "28.936",
+    "groan",
+    0.34,
+    {
+     "dur": 2.0
+    }
+   ],
+   [
+    "28.966",
+    "drone",
+    0.18,
+    {
+     "dur": 5.326000000000008,
+     "f": 37
+    }
+   ],
+   [
+    "32.992",
+    "sample",
+    1.0,
+    {
+     "name": "q_scream"
+    }
+   ],
+   [
+    "33.292",
+    "clunk",
+    0.5,
+    {
+     "seed": 47
+    }
+   ],
+   [
+    "33.412",
+    "clunk",
+    0.3,
+    {
+     "seed": 48
+    }
+   ],
+   [
+    "34.242",
+    "run",
+    0.5,
+    {
+     "dur": 5.307999999999993
+    }
+   ],
+   [
+    "34.242",
+    "heartbeat",
+    0.34,
+    {
+     "dur": 5.307999999999993,
+     "bpm": 148
+    }
+   ],
+   [
+    "36.951",
+    "clunk",
+    0.5,
+    {
+     "seed": 71
+    }
+   ],
+   [
+    "37.011",
+    "flick",
+    0.32,
+    {
+     "seed": 74
+    }
+   ],
+   [
+    "37.011",
+    "creak",
+    0.5,
+    {
+     "dur": 0.4,
+     "seed": 77
+    }
+   ],
+   [
+    "37.811",
+    "clunk",
+    0.5,
+    {
+     "seed": 72
+    }
+   ],
+   [
+    "37.871",
+    "flick",
+    0.32,
+    {
+     "seed": 75
+    }
+   ],
+   [
+    "37.871",
+    "creak",
+    0.5,
+    {
+     "dur": 0.4,
+     "seed": 78
+    }
+   ],
+   [
+    "38.53",
+    "clunk",
+    0.5,
+    {
+     "seed": 73
+    }
+   ],
+   [
+    "38.59",
+    "flick",
+    0.32,
+    {
+     "seed": 76
+    }
+   ],
+   [
+    "38.59",
+    "creak",
+    0.5,
+    {
+     "dur": 0.4,
+     "seed": 79
+    }
+   ],
+   [
+    "39.55",
+    "doorboom",
+    0.62,
+    {
+     "seed": 47
+    }
+   ],
+   [
+    "40.761",
+    "creak",
+    0.55,
+    {
+     "dur": 0.9,
+     "seed": 54
+    }
+   ],
+   [
+    "40.861",
+    "sting",
+    0.34,
+    {
+     "dur": 2.2
+    }
+   ],
+   [
+    "39.75",
+    "drone",
+    0.15,
+    {
+     "dur": 24.85,
+     "f": 38
+    }
+   ],
+   [
+    "41.061",
+    "roomtone",
+    0.16,
+    {
+     "dur": 23.539,
+     "seed": 9
+    }
+   ],
+   [
+    "L25+0.1",
+    "creak",
+    0.3,
+    {
+     "dur": 1.6,
+     "seed": 62
+    }
+   ],
+   [
+    "L26",
+    "heartbeat",
+    0.26,
+    {
+     "dur": 4.6,
+     "bpm": 74
+    }
+   ],
+   [
+    "L28",
+    "scrape",
+    0.1,
+    {
+     "dur": 1.4,
+     "seed": 63
+    }
+   ],
+   [
+    "56.796",
+    "scrape",
+    0.34,
+    {
+     "dur": 0.3,
+     "seed": 80
+    }
+   ],
+   [
+    "57.346",
+    "scrape",
+    0.39,
+    {
+     "dur": 0.3,
+     "seed": 81
+    }
+   ],
+   [
+    "57.796",
+    "scrape",
+    0.44000000000000006,
+    {
+     "dur": 0.3,
+     "seed": 82
+    }
+   ],
+   [
+    "58.196",
+    "scrape",
+    0.49000000000000005,
+    {
+     "dur": 0.3,
+     "seed": 83
+    }
+   ],
+   [
+    "58.546",
+    "scrape",
+    0.54,
+    {
+     "dur": 0.3,
+     "seed": 84
+    }
+   ],
+   [
+    "58.846",
+    "scrape",
+    0.5900000000000001,
+    {
+     "dur": 0.3,
+     "seed": 85
+    }
+   ],
+   [
+    "59.356",
+    "whoosh",
+    0.7,
+    {
+     "dur": 0.18
+    }
+   ],
+   [
+    "59.486",
+    "scarehit",
+    0.98,
+    {
+     "dur": 3.0
+    }
+   ],
+   [
+    "59.516",
+    "groan",
+    0.3,
+    {
+     "dur": 2.0,
+     "seed": 4
+    }
+   ],
+   [
+    "60.436",
+    "crackle",
+    0.6,
+    {
+     "dur": 0.16,
+     "seed": 90
+    }
+   ],
+   [
+    "60.676",
+    "crackle",
+    0.6,
+    {
+     "dur": 0.16,
+     "seed": 91
+    }
+   ],
+   [
+    "60.916",
+    "crackle",
+    0.6,
+    {
+     "dur": 0.16,
+     "seed": 92
+    }
+   ],
+   [
+    "61.156",
+    "crackle",
+    0.6,
+    {
+     "dur": 0.16,
+     "seed": 93
+    }
+   ],
+   [
+    "L32e+0.15",
+    "scrape",
+    0.3,
+    {
+     "dur": 0.5,
+     "seed": 95
+    }
+   ],
+   [
+    "L32e+0.9",
+    "scrape",
+    0.3,
+    {
+     "dur": 0.5,
+     "seed": 96
+    }
+   ],
+   [
+    "L32e+0.3",
+    "wind",
+    0.14,
+    {
+     "dur": 1.7
+    }
+   ]
+  ]
+ }
+}
