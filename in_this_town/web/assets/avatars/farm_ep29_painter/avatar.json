@@ -1,0 +1,35 @@
+{
+ "key": "farm_ep29_painter",
+ "source": {
+  "route": "one-off Studio capture (Episode 29), the steps of tools/farm_avatars.py",
+  "scene": "scenes/sandbox/avcap_ep29.lua",
+  "label": "The man repainting the platforms (Episode 29): overalls, brown work pants with boots, bald",
+  "catalog_items": [
+   6473622329,
+   7010721364,
+   118538226182844
+  ]
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-08",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_Accessory_Placeholder"
+ ]
+}

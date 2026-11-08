@@ -360,6 +360,16 @@ change. Episode 17 imports its package, model house and cardboard sky from the l
 * **Reverse angles:** when a camera stands where the other character is, that character is hidden for the shot (`ask`, `smile`, `final`, and `shake` to `stare`).
 * **Voices:** `fx: "cave"` and `fx: "mimic"` were added to `audio2.py`. `mimic` is the speaker's own take plus a faint detuned copy, so "So am I." stays recognisably Daniel. `tools/ep39_sound.py` writes the sound block. Note that a `sample` cue's `rev` is a room size in seconds (0 crashes it), and `groan` needs `dur` of at least 1.7 and `rumble` over 2.
 
+### Episode 29 notes (the tower with no ground floor; Liminal Horror, Episodes 27-31)
+
+* **`web/engine/infinitetower.js`** holds everything original to this episode: the tower (`TW` sizes; `levelPos(n, tw, {rad, side, up})` is every placement on a platform, in level numbers), the instanced platforms that bob until the story stops them (`.update(tw)` with a frozen `tw`), the white door wall with its 416 chalked tallies on the far side, the crumbling ledge and the endless field of towers for the last image. All in the model library (`infinite_tower`, `tower_door_wall`, `tower_ledge`, `tower_field`, `tower_platform`, `chalk_stick`, `paint_kit`).
+* **Alti faces and `gaze:`:** `loadAlti` preloads only forward gaze, blink and visemes; a `gaze:` option throws "alti image not loaded". Don't pass one without preloading it.
+* **Keyed clips must be on `KEYED`** (`KEYED.ep29jump = keyed([...])`): `sample` takes a name.
+* **`?dbgcam=x,y,z,lx,ly,lz,fov` and `?dbgchar=name,azimuth,height`** (through `RENDER_QUERY`) override the camera for a close contact or hair check; a hard-coded shot can hide a contact the debug camera shows is fine, and the reverse.
+* **Read the render's own output when testing a patch:** a still that throws leaves the previous `build/<ep>/stills/*.jpg` in place, so a sheet can show the old frame.
+* **`renderAt` poses before it has the shot:** use `shotName(t)`, not the `sh` local, above the shot line.
+* **Sound:** `tools/ep29_sound.py` writes the spec's sound block from `build/ep29/events.json`. `loudnorm` TP -2.0 lands at -2.0 dBFS here. `ffmpeg -af ...,aresample=48000` failed on the mix's unknown channel layout; pass `-ar 48000 -ac 2`.
+
 ### Episode 38 notes (the recording from tomorrow; Psychological Horror, Episodes 35-39)
 
 * **`web/engine/cursedtape.js`** holds everything original to this episode: `bedroom(U)` (wallpaper and carpet overlays that creep out from the door through a shared radius; `.chair` is a separate object), `laptop` (`.setLid`, a screen shader with a UI canvas or a live feed), `hotelHall`, `tapeHead` and `TapeShader` (tear, roll and wash for anything seen on the recording).

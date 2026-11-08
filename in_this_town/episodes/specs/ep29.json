@@ -1,0 +1,800 @@
+{
+ "number": 29,
+ "title": "The Tower With No Ground Floor",
+ "output": "InThisTown_Episode29_InfiniteTower.mp4",
+ "youtube_title": "The Tower With No Ground Floor...",
+ "tiktok_caption": "He reached level 100. There was a white door. Behind it was the same tower.",
+ "hashtags": "#InThisTown #LiminalHorror #RobloxHorror #Shorts",
+ "thumbnail_text": "ATTEMPT 417",
+ "thumbnail_rec": "Eli at the white door on a bright platform over black, the same tower hanging upside down behind it, a boy in the same orange hoodie climbing toward him; ATTEMPT 417 in chalk.",
+ "tail": 3.8,
+ "fps": 60,
+ "narrator": {
+  "pace": [
+   2.5,
+   2.95
+  ],
+  "min_tempo": 1.04
+ },
+ "cast": {
+  "girl": {
+   "voice": "matilda",
+   "pitch": 1.04,
+   "tempo": 0.97
+  },
+  "painter": {
+   "voice": "brian",
+   "pitch": 0.97,
+   "tempo": 0.96
+  },
+  "old": {
+   "voice": "bill",
+   "pitch": 0.96,
+   "tempo": 0.95
+  },
+  "pa": {
+   "voice": "sarah",
+   "pitch": 0.98,
+   "tempo": 0.92
+  }
+ },
+ "highlights": {
+  "THREE HOURS": "yellow",
+  "FARTHER AWAY": "red",
+  "NO WINDOWS": "yellow",
+  "BLACK VOID": "purple",
+  "TUESDAY": "yellow",
+  "LAST TIME": "red",
+  "KEEP COUNT": "yellow",
+  "LEVEL FIFTY": "yellow",
+  "STOP COUNTING": "red",
+  "LEVEL SEVENTY": "yellow",
+  "STOPPED MOVING": "red",
+  "EVERYONE": "red",
+  "LEVEL NINETY": "yellow",
+  "FOOTSTEPS": "red",
+  "NO ONE": "red",
+  "ONE HUNDRED": "yellow",
+  "WHITE DOOR": "yellow",
+  "SAME TOWER": "purple",
+  "UPSIDE DOWN": "red",
+  "SAME CLOTHES": "red",
+  "POINTED": "yellow",
+  "TALLY MARKS": "yellow",
+  "416 TIMES": "red",
+  "SLAMMED": "red",
+  "417": "red",
+  "FLOOR DISAPPEARED": "red"
+ },
+ "lines": [
+  {
+   "text": "Eli had been climbing the tower for three hours.",
+   "tag": "[calm]",
+   "pause": 0.14
+  },
+  {
+   "text": "But every time he looked down, the ground was farther away.",
+   "tag": "[mysterious]",
+   "pause": 0.16
+  },
+  {
+   "text": "Only colored platforms, floating above an endless black void.",
+   "tag": "[mysterious]",
+   "pause": 0.22
+  },
+  {
+   "text": "“Is it still Tuesday?”",
+   "speak": "Is it still Tuesday?",
+   "voice": "girl",
+   "tag": "[softly]",
+   "pause": 0.22
+  },
+  {
+   "text": "“Fresh coat. Same as last time.”",
+   "speak": "Fresh coat. Same as last time.",
+   "voice": "painter",
+   "tag": "[flatly]",
+   "pause": 0.22
+  },
+  {
+   "text": "“Keep count, kid.”",
+   "speak": "Keep count, kid.",
+   "voice": "old",
+   "tag": "[quietly]",
+   "pause": 0.23
+  },
+  {
+   "text": "At level fifty, a message was scratched into the wall.",
+   "tag": "[calm]",
+   "pause": 0.14
+  },
+  {
+   "text": "“STOP COUNTING.”",
+   "speak": "Stop counting.",
+   "tag": "[whispers]",
+   "pause": 0.19
+  },
+  {
+   "text": "He ignored it.",
+   "tag": "[calm]",
+   "pause": 0.22
+  },
+  {
+   "text": "At level seventy, the platforms stopped moving.",
+   "tag": "[mysterious]",
+   "pause": 0.18
+  },
+  {
+   "text": "So did everyone on them.",
+   "tag": "[softly]",
+   "pause": 0.24
+  },
+  {
+   "text": "At level ninety, he heard footsteps above him.",
+   "tag": "[mysterious]",
+   "pause": 0.14
+  },
+  {
+   "text": "But no one had climbed this high.",
+   "tag": "[softly]",
+   "pause": 0.22
+  },
+  {
+   "text": "Finally, level one hundred.",
+   "tag": "[calm]",
+   "pause": 0.13
+  },
+  {
+   "text": "There was a white door.",
+   "tag": "[mysterious]",
+   "pause": 0.1
+  },
+  {
+   "text": "He opened it.",
+   "tag": "[softly]",
+   "pause": 0.24
+  },
+  {
+   "text": "Behind it was the same tower.",
+   "tag": "[calm]",
+   "pause": 0.1
+  },
+  {
+   "text": "But everything was upside down.",
+   "tag": "[softly]",
+   "pause": 0.26
+  },
+  {
+   "text": "Someone was climbing toward him.",
+   "tag": "[mysterious]",
+   "pause": 0.13
+  },
+  {
+   "text": "A boy wearing the exact same clothes.",
+   "tag": "[softly]",
+   "pause": 0.2
+  },
+  {
+   "text": "He stopped, and pointed behind Eli.",
+   "tag": "[calm]",
+   "pause": 0.22
+  },
+  {
+   "text": "On the wall were hundreds of tally marks.",
+   "tag": "[mysterious]",
+   "pause": 0.14
+  },
+  {
+   "text": "“YOU HAVE REACHED THE TOP 416 TIMES.”",
+   "speak": "You have reached the top, four hundred sixteen times.",
+   "tag": "[softly]",
+   "pause": 0.22
+  },
+  {
+   "text": "Eli stepped backward.",
+   "tag": "[calm]",
+   "pause": 0.09
+  },
+  {
+   "text": "The door slammed shut.",
+   "tag": "[calm]",
+   "pause": 0.23
+  },
+  {
+   "text": "“Attempt 417 begins now.”",
+   "speak": "Attempt four seventeen begins now.",
+   "voice": "pa",
+   "tag": "[calm]",
+   "pause": 0.22,
+   "fx": "pa"
+  },
+  {
+   "text": "And the floor disappeared.",
+   "tag": "[softly]",
+   "pause": 0.14
+  }
+ ],
+ "samples": {},
+ "sound": {
+  "key": 29,
+  "music_gain": 0.16,
+  "music": [
+   [
+    "0",
+    "dread"
+   ],
+   [
+    "23.139",
+    "silence"
+   ],
+   [
+    "26.474",
+    "dread"
+   ],
+   [
+    "33.349",
+    "mystery"
+   ],
+   [
+    "36.003",
+    "dread"
+   ],
+   [
+    "54.723",
+    "silence"
+   ],
+   [
+    "59.054",
+    "dread"
+   ]
+  ],
+  "cues": [
+   [
+    "0",
+    "buzz",
+    0.2,
+    {
+     "dur": 23.788999999999998,
+     "f": 120
+    }
+   ],
+   [
+    "0",
+    "vent",
+    0.17,
+    {
+     "dur": 23.788999999999998
+    }
+   ],
+   [
+    "0",
+    "wind",
+    0.16,
+    {
+     "dur": 23.788999999999998,
+     "seed": 3
+    }
+   ],
+   [
+    "0",
+    "drone",
+    0.13,
+    {
+     "dur": 23.788999999999998,
+     "f": 46
+    }
+   ],
+   [
+    "0.63",
+    "swish",
+    0.2
+   ],
+   [
+    "1.32",
+    "clunk",
+    0.34,
+    {
+     "seed": 20
+    }
+   ],
+   [
+    "2.18",
+    "swish",
+    0.2
+   ],
+   [
+    "2.87",
+    "clunk",
+    0.34,
+    {
+     "seed": 21
+    }
+   ],
+   [
+    "7.13",
+    "swish",
+    0.2
+   ],
+   [
+    "7.82",
+    "clunk",
+    0.34,
+    {
+     "seed": 22
+    }
+   ],
+   [
+    "8.63",
+    "swish",
+    0.2
+   ],
+   [
+    "9.32",
+    "clunk",
+    0.34,
+    {
+     "seed": 23
+    }
+   ],
+   [
+    "9.98",
+    "swish",
+    0.2
+   ],
+   [
+    "10.67",
+    "clunk",
+    0.34,
+    {
+     "seed": 24
+    }
+   ],
+   [
+    "12.947",
+    "swish",
+    0.2
+   ],
+   [
+    "13.637",
+    "clunk",
+    0.34,
+    {
+     "seed": 25
+    }
+   ],
+   [
+    "16.751",
+    "swish",
+    0.2
+   ],
+   [
+    "17.441",
+    "clunk",
+    0.34,
+    {
+     "seed": 26
+    }
+   ],
+   [
+    "22.169",
+    "swish",
+    0.2
+   ],
+   [
+    "22.859",
+    "clunk",
+    0.34,
+    {
+     "seed": 27
+    }
+   ],
+   [
+    "26.704",
+    "swish",
+    0.2
+   ],
+   [
+    "27.394",
+    "clunk",
+    0.34,
+    {
+     "seed": 28
+    }
+   ],
+   [
+    "31.934",
+    "swish",
+    0.2
+   ],
+   [
+    "32.624",
+    "clunk",
+    0.34,
+    {
+     "seed": 29
+    }
+   ],
+   [
+    "2.6",
+    "footsteps",
+    0.12,
+    {
+     "dur": 1.4,
+     "rate": 0.9,
+     "seed": 30
+    }
+   ],
+   [
+    "5.4",
+    "footsteps",
+    0.12,
+    {
+     "dur": 1.2,
+     "rate": 0.9,
+     "seed": 31
+    }
+   ],
+   [
+    "9.0",
+    "footsteps",
+    0.12,
+    {
+     "dur": 1.0,
+     "rate": 0.9,
+     "seed": 32
+    }
+   ],
+   [
+    "14.4",
+    "footsteps",
+    0.12,
+    {
+     "dur": 1.1,
+     "rate": 0.9,
+     "seed": 33
+    }
+   ],
+   [
+    "12.067",
+    "scrape",
+    0.14,
+    {
+     "dur": 1.3,
+     "seed": 8
+    }
+   ],
+   [
+    "15.414",
+    "tick",
+    0.26
+   ],
+   [
+    "18.321",
+    "whisper",
+    0.1,
+    {
+     "dur": 2.4,
+     "seed": 12
+    }
+   ],
+   [
+    "21.132",
+    "scrape",
+    0.34,
+    {
+     "dur": 0.786999999999999,
+     "seed": 15
+    }
+   ],
+   [
+    "23.709",
+    "clunk",
+    0.74,
+    {
+     "seed": 41
+    }
+   ],
+   [
+    "23.739",
+    "doorboom",
+    0.4,
+    {
+     "seed": 42
+    }
+   ],
+   [
+    "23.839",
+    "buzz",
+    0.08,
+    {
+     "dur": 9.41,
+     "f": 120
+    }
+   ],
+   [
+    "23.939",
+    "wind",
+    0.08,
+    {
+     "dur": 9.41,
+     "seed": 17
+    }
+   ],
+   [
+    "23.939",
+    "drone",
+    0.1,
+    {
+     "dur": 9.41,
+     "f": 38
+    }
+   ],
+   [
+    "27.624",
+    "knock",
+    0.46,
+    {
+     "rev": 0.6
+    }
+   ],
+   [
+    "27.634",
+    "creak",
+    0.08,
+    {
+     "dur": 0.2,
+     "seed": 60
+    }
+   ],
+   [
+    "28.044",
+    "knock",
+    0.44,
+    {
+     "rev": 0.6
+    }
+   ],
+   [
+    "28.054",
+    "creak",
+    0.08,
+    {
+     "dur": 0.2,
+     "seed": 61
+    }
+   ],
+   [
+    "28.464",
+    "knock",
+    0.42000000000000004,
+    {
+     "rev": 0.6
+    }
+   ],
+   [
+    "28.474",
+    "creak",
+    0.08,
+    {
+     "dur": 0.2,
+     "seed": 62
+    }
+   ],
+   [
+    "28.884",
+    "knock",
+    0.4,
+    {
+     "rev": 0.6
+    }
+   ],
+   [
+    "28.894",
+    "creak",
+    0.08,
+    {
+     "dur": 0.2,
+     "seed": 63
+    }
+   ],
+   [
+    "29.304",
+    "knock",
+    0.38,
+    {
+     "rev": 0.6
+    }
+   ],
+   [
+    "29.314",
+    "creak",
+    0.08,
+    {
+     "dur": 0.2,
+     "seed": 64
+    }
+   ],
+   [
+    "29.787",
+    "whisper",
+    0.08,
+    {
+     "dur": 1.4,
+     "seed": 14
+    }
+   ],
+   [
+    "33.349",
+    "roomtone",
+    0.13,
+    {
+     "dur": 21.674000000000003
+    }
+   ],
+   [
+    "35.022",
+    "clunk",
+    0.28,
+    {
+     "seed": 71
+    }
+   ],
+   [
+    "35.122",
+    "creak",
+    0.38,
+    {
+     "dur": 1.3,
+     "seed": 72
+    }
+   ],
+   [
+    "36.103",
+    "groan",
+    0.18,
+    {
+     "dur": 2.6,
+     "seed": 73
+    }
+   ],
+   [
+    "36.003",
+    "drone",
+    0.16,
+    {
+     "dur": 18.72,
+     "f": 33
+    }
+   ],
+   [
+    "36.003",
+    "wind",
+    0.14,
+    {
+     "dur": 18.72,
+     "seed": 31
+    }
+   ],
+   [
+    "40.733",
+    "knock",
+    0.3,
+    {
+     "rev": 1.6
+    }
+   ],
+   [
+    "42.216",
+    "knock",
+    0.3,
+    {
+     "rev": 1.6
+    }
+   ],
+   [
+    "43.698",
+    "knock",
+    0.3,
+    {
+     "rev": 1.6
+    }
+   ],
+   [
+    "44.851",
+    "swish",
+    0.14
+   ],
+   [
+    "47.04",
+    "heartbeat",
+    0.26,
+    {
+     "dur": 7.383,
+     "bpm": 68
+    }
+   ],
+   [
+    "49.768",
+    "whisper",
+    0.12,
+    {
+     "dur": 2.6,
+     "seed": 44
+    }
+   ],
+   [
+    "54.583",
+    "whoosh",
+    0.5,
+    {
+     "dur": 0.18
+    }
+   ],
+   [
+    "54.723",
+    "doorboom",
+    0.86,
+    {
+     "seed": 91
+    }
+   ],
+   [
+    "54.743",
+    "clunk",
+    0.58,
+    {
+     "seed": 92
+    }
+   ],
+   [
+    "55.023",
+    "drone",
+    0.12,
+    {
+     "dur": 4.231000000000003,
+     "f": 29
+    }
+   ],
+   [
+    "55.83",
+    "pachime",
+    0.3
+   ],
+   [
+    "59.594",
+    "rockbreak",
+    0.5,
+    {
+     "dur": 1.0,
+     "seed": 95
+    }
+   ],
+   [
+    "59.674",
+    "whoosh",
+    0.42,
+    {
+     "dur": 0.5
+    }
+   ],
+   [
+    "59.904",
+    "wind",
+    0.42,
+    {
+     "dur": 4.41199999999999,
+     "seed": 37
+    }
+   ],
+   [
+    "60.604",
+    "drone",
+    0.2,
+    {
+     "dur": 3.8619999999999877,
+     "f": 36
+    }
+   ]
+  ]
+ }
+}

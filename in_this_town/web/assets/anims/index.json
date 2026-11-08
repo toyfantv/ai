@@ -571,6 +571,42 @@
    "source": "hand-keyed in the In This Town renderer (Episode 39)",
    "licence": "own",
    "desc": "a hand reaching to a wet wall, the elbow almost straight"
+  },
+  "ep29:jump": {
+   "set": "KEYED.ep29jump in episodes/ep29.js",
+   "source": "hand-keyed in the In This Town renderer (Episode 29)",
+   "licence": "own",
+   "desc": "a platform jump: crouch, push, arms up, tucked knees, landing"
+  },
+  "ep29:fall": {
+   "set": "KEYED.ep29fall in episodes/ep29.js",
+   "source": "hand-keyed in the In This Town renderer (Episode 29)",
+   "licence": "own",
+   "desc": "a slow tumbling fall, limbs trailing"
+  },
+  "ep29:hang_edge": {
+   "set": "poses in episodes/ep29.js",
+   "source": "hand-keyed in the In This Town renderer (Episode 29)",
+   "licence": "own",
+   "desc": "hanging by both hands from a platform edge, legs dangling"
+  },
+  "ep29:door_handle": {
+   "set": "poses in episodes/ep29.js",
+   "source": "hand-keyed in the In This Town renderer (Episode 29)",
+   "licence": "own",
+   "desc": "a hand reaching to a door handle and pushing the door"
+  },
+  "ep29:tally_stroke": {
+   "set": "poses in episodes/ep29.js",
+   "source": "hand-keyed in the In This Town renderer (Episode 29)",
+   "licence": "own",
+   "desc": "drawing one chalk stroke on a wall"
+  },
+  "ep29:roller": {
+   "set": "poses in episodes/ep29.js",
+   "source": "hand-keyed in the In This Town renderer (Episode 29)",
+   "licence": "own",
+   "desc": "kneeling and pushing a paint roller"
   }
  }
 }

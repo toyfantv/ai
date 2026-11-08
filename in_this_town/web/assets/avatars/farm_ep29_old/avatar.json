@@ -1,0 +1,35 @@
+{
+ "key": "farm_ep29_old",
+ "source": {
+  "route": "one-off Studio capture (Episode 29), the steps of tools/farm_avatars.py",
+  "scene": "scenes/sandbox/avcap_ep29.lua",
+  "label": "The old climber (Episode 29): red mountain climbing jacket with harness, black work pants, grey slicked hair",
+  "catalog_items": [
+   892340531,
+   6510173979,
+   128977425250405
+  ]
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-08",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_Accessory_GrayTest1Accessory"
+ ]
+}

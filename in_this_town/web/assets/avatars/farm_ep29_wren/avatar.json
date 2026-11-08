@@ -1,0 +1,35 @@
+{
+ "key": "farm_ep29_wren",
+ "source": {
+  "route": "one-off Studio capture (Episode 29), the steps of tools/farm_avatars.py",
+  "scene": "scenes/sandbox/avcap_ep29.lua",
+  "label": "The girl at level twelve (Episode 29): maroon windbreaker, jeans with sneakers, brown ponytail",
+  "catalog_items": [
+   17716947368,
+   8715065932,
+   16546852532
+  ]
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-08",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_Accessory_Ponytail_Brown"
+ ]
+}

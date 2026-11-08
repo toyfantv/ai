@@ -21,6 +21,7 @@ import { screenMat, flatTV, seatBanks, mallRing, jumbotron, countdownDraw, rollG
 import { trainingRifle, soldierGear, syncRanks, muzzleFlashes, tracers, eventParticles, bulletHoles, smokeHaze, jerseyBarrier, steelDoor, securityCam, wallClock, trainingHall, controlRoom, feedWall, industrialDistrict, bloodFX } from './tactical.js';
 import { magicArena, arenaGround, voidRocks, fallingRocks, fireWall, energyOrb, runeShield, shardBurst, shockwave, sigil, beam, decal, arcBolt, fireStream, driftParticles, shadowCrowd, teleportFx, cloak } from './arena.js';
 import { blackSword, whiteBlade, armorSuit, swordField } from './blades.js';
+import { buildTower as infiniteTower, loosePlatform as towerPlatform, doorWall as towerDoorWall, ledge as towerLedge, towerField, chalkStick, paintKit } from './infinitetower.js';
 import { hospitalBed, wardDoor, fluorPanel, crtTV, ivPole, cabinet, paSpeaker, roomPlate, bedChart, nurse, wardBeds, hospitalBlock, noticeSign } from './hospital.js';
 import { voiceTunnel, drips as tunnelDrips, hillside as tunnelHillside, floodTripod, cautionTape, tapePost, rescueRadio, rescueTruck, campTable, wallFaces } from './tunnel.js';
 import { puppet, socketHead, stairHall, schoolCorridor, satchel, flashlightProp, strawRope, ofuda } from './folklore.js';
@@ -308,6 +309,13 @@ export const BUILD = {
   flood_tripod: (o) => put(o, floodTripod(o)),
   caution_tape: (o) => put(o, cautionTape(o.a, o.b)),
   tape_post: (o) => put(o, tapePost()),
+  infinite_tower: (o) => put(o, infiniteTower(o)),
+  tower_platform: (o) => put(o, towerPlatform(o.color ?? '#50aebf', o.w, o.d)),
+  tower_door_wall: (o) => put(o, towerDoorWall()),
+  tower_ledge: (o) => put(o, towerLedge()),
+  tower_field: (o) => put(o, towerField(o.rows)),
+  chalk_stick: (o) => put(o, chalkStick()),
+  paint_kit: (o) => put(o, paintKit()),
   rescue_radio: (o) => put(o, rescueRadio()),
   rescue_truck: (o) => put(o, rescueTruck(o)),
   camp_table: (o) => put(o, campTable()),

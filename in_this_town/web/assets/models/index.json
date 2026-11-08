@@ -219,6 +219,16 @@
     "type": "builder",
     "url": ""
   },
+  "chalk_stick": {
+    "author": "toyfantv",
+    "desc": "a stick of white chalk",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep29",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "chandelier": {
     "author": "toyfantv",
     "desc": "a brass candle chandelier with crystal drops",
@@ -849,6 +859,16 @@
     "type": "builder",
     "url": ""
   },
+  "infinite_tower": {
+    "author": "toyfantv",
+    "desc": "a huge cylindrical liminal tower with fluorescent tubes and a spiral of 100+ bobbing candy-coloured platforms running on past the bottom; .update(t) moves them",
+    "kind": "set",
+    "licence": "own",
+    "made_for": "ep29",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "invitation_card": {
     "author": "toyfantv",
     "desc": "a gilt-edged party invitation card and its sealed envelope",
@@ -1165,6 +1185,16 @@
     "kind": "prop",
     "licence": "own",
     "made_for": "ep17",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "paint_kit": {
+    "author": "toyfantv",
+    "desc": "a paint roller on a pole and a bucket (.roller)",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep29",
     "source": "this renderer",
     "type": "builder",
     "url": ""
@@ -1705,6 +1735,46 @@
     "kind": "effect",
     "licence": "own",
     "made_for": "ep34",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "tower_door_wall": {
+    "author": "toyfantv",
+    "desc": "a flat wall with a white panel door on a hinge (.hinge, .handle), its far side chalked with 416 tallies and a message",
+    "kind": "set",
+    "licence": "own",
+    "made_for": "ep29",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "tower_field": {
+    "author": "toyfantv",
+    "desc": "rows of copies of the spiral tower receding into black for an endless-field final image; .update(y)",
+    "kind": "set",
+    "licence": "own",
+    "made_for": "ep29",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "tower_ledge": {
+    "author": "toyfantv",
+    "desc": "a floating ledge of 15 stone tiles that drop away one by one; .set(t, t0)",
+    "kind": "set",
+    "licence": "own",
+    "made_for": "ep29",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "tower_platform": {
+    "author": "toyfantv",
+    "desc": "one loose candy-coloured floating platform with a glowing lip",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep29",
     "source": "this renderer",
     "type": "builder",
     "url": ""

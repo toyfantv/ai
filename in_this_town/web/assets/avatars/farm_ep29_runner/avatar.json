@@ -1,0 +1,35 @@
+{
+ "key": "farm_ep29_runner",
+ "source": {
+  "route": "one-off Studio capture (Episode 29), the steps of tools/farm_avatars.py",
+  "scene": "scenes/sandbox/avcap_ep29.lua",
+  "label": "The runner frozen in mid-air (Episode 29): white tank top, cargo pants, orange short hair",
+  "catalog_items": [
+   10307321983,
+   9264474774,
+   83862711301315
+  ]
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-08",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_Accessory_railinq_wimsy_werewolf_cutAccessory"
+ ]
+}

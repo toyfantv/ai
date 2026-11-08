@@ -1,0 +1,35 @@
+{
+ "key": "farm_ep29_hang",
+ "source": {
+  "route": "one-off Studio capture (Episode 29), the steps of tools/farm_avatars.py",
+  "scene": "scenes/sandbox/avcap_ep29.lua",
+  "label": "The boy hanging from a platform (Episode 29): green climbing jacket, jeans with sneakers, orange messy hair",
+  "catalog_items": [
+   518797328,
+   5223843674,
+   125807612691806
+  ]
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-08",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_Accessory_short1Accessory"
+ ]
+}
