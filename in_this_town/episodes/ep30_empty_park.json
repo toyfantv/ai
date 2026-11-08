@@ -1,0 +1,745 @@
+{
+ "id": "ep30",
+ "number": 30,
+ "title": "The Amusement Park That Never Opens",
+ "output": "InThisTown_Episode30_EmptyAmusementPark.mp4",
+ "tts": "openrouter",
+ "youtube_title": "The Amusement Park That Never Opens...",
+ "tiktok_caption": "Nobody ever went in. So who was riding the Ferris wheel?",
+ "hashtags": "#InThisTown #LiminalHorror #RobloxHorror #Shorts",
+ "thumbnail_text": "THE FINAL SHIFT",
+ "thumbnail_rec": "Piper alone at a lit ticket booth at night, a red balloon with her name in her hand, the sign just turned to OPEN, a huge faded Ferris wheel behind her.",
+ "lead_in": 0.3,
+ "tail": 3.4,
+ "voices": {
+  "narrator": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "ErXwobaYiN019PkySvjV",
+    "pitch": 1.1,
+    "tempo": 1.12,
+    "max_tempo": 1.15,
+    "pace": [
+     2.5,
+     2.95
+    ],
+    "min_tempo": 1.04
+   },
+   "kokoro": "am_michael",
+   "speed": 1.0,
+   "note": "Antoni (American), In This Town preset el:ErXwobaYiN019PkySvjV:1.1:1.12 - same narrator every episode"
+  },
+  "theo": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "liam",
+    "pitch": 1.03,
+    "tempo": 0.97
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  },
+  "ticket": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "bill",
+    "pitch": 0.95,
+    "tempo": 0.93
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  },
+  "seller": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "laura",
+    "pitch": 0.98,
+    "tempo": 0.95
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  },
+  "boy": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "will",
+    "pitch": 1.3,
+    "tempo": 0.95
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  },
+  "pa": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "sarah",
+    "pitch": 0.98,
+    "tempo": 0.92
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  }
+ },
+ "highlights": {
+  "AMUSEMENT PARK": "yellow",
+  "RIDES": "yellow",
+  "NEVER OPENED": "red",
+  "WIDE OPEN": "yellow",
+  "LATE": "red",
+  "EVERY RIDE": "yellow",
+  "LAST ONE": "yellow",
+  "BLUE CREATURE": "purple",
+  "RED BALLOON": "red",
+  "FERRIS WHEEL": "yellow",
+  "FULL": "red",
+  "OCCUPIED": "red",
+  "NOBODY": "red",
+  "MUSIC STOPPED": "yellow",
+  "ONE GUEST": "red",
+  "THE BALLOON": "red",
+  "LOCKED": "red",
+  "HER NAME": "red",
+  "FINAL SHIFT": "red",
+  "STOPPED": "yellow",
+  "INVISIBLE FOOTSTEPS": "red",
+  "CLOSED": "yellow",
+  "OPEN": "red"
+ },
+ "lines": [
+  {
+   "text": "Piper had never seen anyone enter the old amusement park.",
+   "tag": "[calm]",
+   "pause": 0.14
+  },
+  {
+   "text": "But every night, the rides started moving.",
+   "tag": "[mysterious]",
+   "pause": 0.16
+  },
+  {
+   "text": "The Ferris wheel turned.",
+   "tag": "[calm]",
+   "pause": 0.1
+  },
+  {
+   "text": "The carousel played music.",
+   "tag": "[calm]",
+   "pause": 0.1
+  },
+  {
+   "text": "And the ticket booth lights switched on.",
+   "tag": "[mysterious]",
+   "pause": 0.15
+  },
+  {
+   "text": "“My grandpa says it never opened.”",
+   "speak": "My grandpa says it never opened.",
+   "voice": "theo",
+   "tag": "[quietly]",
+   "pause": 0.15
+  },
+  {
+   "text": "One evening, the gates stood wide open.",
+   "tag": "[mysterious]",
+   "pause": 0.16
+  },
+  {
+   "text": "An old man handed her a ticket.",
+   "tag": "[calm]",
+   "pause": 0.12
+  },
+  {
+   "text": "“You're late.”",
+   "speak": "You're late.",
+   "voice": "ticket",
+   "tag": "[flatly]",
+   "pause": 0.15
+  },
+  {
+   "text": "No guests. But every ride was running.",
+   "tag": "[softly]",
+   "pause": 0.18
+  },
+  {
+   "text": "“Sold my last one.”",
+   "speak": "Sold my last one.",
+   "voice": "seller",
+   "tag": "[flatly]",
+   "pause": 0.15
+  },
+  {
+   "text": "Then Piper saw a blue creature, alone on the carousel.",
+   "tag": "[mysterious]",
+   "pause": 0.1
+  },
+  {
+   "text": "It was holding a red balloon.",
+   "tag": "[softly]",
+   "pause": 0.16
+  },
+  {
+   "text": "It slowly turned, and pointed at the Ferris wheel.",
+   "tag": "[mysterious]",
+   "pause": 0.16
+  },
+  {
+   "text": "“It's full.”",
+   "speak": "It's full.",
+   "voice": "boy",
+   "tag": "[softly]",
+   "pause": 0.16
+  },
+  {
+   "text": "Every seat was occupied.",
+   "tag": "[calm]",
+   "pause": 0.1
+  },
+  {
+   "text": "But nobody was visible.",
+   "tag": "[softly]",
+   "pause": 0.17
+  },
+  {
+   "text": "The carousel music stopped.",
+   "tag": "[calm]",
+   "pause": 0.19
+  },
+  {
+   "text": "“One guest remains.”",
+   "speak": "One guest remains.",
+   "voice": "pa",
+   "tag": "[calm]",
+   "pause": 0.17,
+   "fx": "pa"
+  },
+  {
+   "text": "The workers set down their tools.",
+   "tag": "[calm]",
+   "pause": 0.14
+  },
+  {
+   "text": "The creature handed Piper the balloon.",
+   "tag": "[softly]",
+   "pause": 0.14
+  },
+  {
+   "text": "It walked through the exit gate, and the gate locked behind it.",
+   "tag": "[mysterious]",
+   "pause": 0.15,
+   "speak": "It walked through the exit gate... and the gate locked behind it."
+  },
+  {
+   "text": "Written on the balloon was her name.",
+   "tag": "[softly]",
+   "pause": 0.17,
+   "speak": "Written on the balloon... was her name."
+  },
+  {
+   "text": "“Thank you for taking the final shift.”",
+   "speak": "Thank you for taking the final shift.",
+   "voice": "pa",
+   "tag": "[calm]",
+   "pause": 0.19,
+   "fx": "pa"
+  },
+  {
+   "text": "Every ride stopped.",
+   "tag": "[calm]",
+   "pause": 0.17
+  },
+  {
+   "text": "Then hundreds of invisible footsteps began approaching.",
+   "tag": "[mysterious]",
+   "pause": 0.16
+  },
+  {
+   "text": "And the ticket booth switched from CLOSED to OPEN.",
+   "tag": "[softly]",
+   "pause": 0.14
+  }
+ ],
+ "samples": {},
+ "sound": {
+  "key": 50,
+  "music_gain": 0.3,
+  "music": [
+   [
+    "0",
+    "silence"
+   ],
+   [
+    "6.935",
+    "carousel"
+   ],
+   [
+    "37.907",
+    "silence"
+   ],
+   [
+    "49.203",
+    "dread"
+   ],
+   [
+    "54.485",
+    "silence"
+   ]
+  ],
+  "cues": [
+   [
+    "0",
+    "wind",
+    0.15,
+    {
+     "dur": 54.885,
+     "seed": 3
+    }
+   ],
+   [
+    "0",
+    "drone",
+    0.08,
+    {
+     "dur": 60.367,
+     "f": 44
+    }
+   ],
+   [
+    "3.568",
+    "clunk",
+    0.42,
+    {
+     "seed": 11
+    }
+   ],
+   [
+    "3.618",
+    "groan",
+    0.14,
+    {
+     "dur": 1.9,
+     "seed": 12
+    }
+   ],
+   [
+    "3.718",
+    "ridehum",
+    0.16,
+    {
+     "dur": 51.367,
+     "rate": 0.9
+    }
+   ],
+   [
+    "6.125",
+    "creak",
+    0.2,
+    {
+     "dur": 1.3,
+     "seed": 13
+    }
+   ],
+   [
+    "20.811",
+    "creak",
+    0.14,
+    {
+     "dur": 1.2,
+     "seed": 14
+    }
+   ],
+   [
+    "34.185",
+    "creak",
+    0.16,
+    {
+     "dur": 1.4,
+     "seed": 15
+    }
+   ],
+   [
+    "9.388",
+    "flick",
+    0.42
+   ],
+   [
+    "9.508",
+    "buzz",
+    0.1,
+    {
+     "dur": 2.0,
+     "f": 120
+    }
+   ],
+   [
+    "13.517",
+    "creak",
+    0.3,
+    {
+     "dur": 1.5,
+     "seed": 16
+    }
+   ],
+   [
+    "13.817",
+    "clunk",
+    0.2,
+    {
+     "seed": 17
+    }
+   ],
+   [
+    "13.767",
+    "footsteps",
+    0.2,
+    {
+     "dur": 2.3340000000000005,
+     "rate": 2.4
+    }
+   ],
+   [
+    "17.251",
+    "tick",
+    0.3
+   ],
+   [
+    "19.461",
+    "footsteps",
+    0.2,
+    {
+     "dur": 2.777,
+     "rate": 2.6
+    }
+   ],
+   [
+    "24.025",
+    "footsteps",
+    0.2,
+    {
+     "dur": 1.6,
+     "rate": 2.3
+    }
+   ],
+   [
+    "19.661",
+    "scrape",
+    0.09,
+    {
+     "dur": 1.4,
+     "seed": 18
+    }
+   ],
+   [
+    "25.575",
+    "drone",
+    0.14,
+    {
+     "dur": 7.532,
+     "f": 37
+    }
+   ],
+   [
+    "29.953",
+    "creak",
+    0.2,
+    {
+     "dur": 1.3,
+     "seed": 19
+    }
+   ],
+   [
+    "30.953",
+    "swish",
+    0.14
+   ],
+   [
+    "34.385",
+    "whisper",
+    0.1,
+    {
+     "dur": 2.8,
+     "seed": 20
+    }
+   ],
+   [
+    "34.735",
+    "tick",
+    0.14
+   ],
+   [
+    "35.94",
+    "tick",
+    0.13
+   ],
+   [
+    "37.037",
+    "clunk",
+    0.58,
+    {
+     "seed": 21
+    }
+   ],
+   [
+    "37.357",
+    "groan",
+    0.17,
+    {
+     "dur": 1.9,
+     "seed": 22
+    }
+   ],
+   [
+    "38.722",
+    "pachime",
+    0.3
+   ],
+   [
+    "38.622",
+    "static",
+    0.1,
+    {
+     "dur": 2.371000000000002
+    }
+   ],
+   [
+    "41.013",
+    "clunk",
+    0.22,
+    {
+     "seed": 23
+    }
+   ],
+   [
+    "41.313",
+    "tick",
+    0.18
+   ],
+   [
+    "41.563",
+    "footsteps",
+    0.16,
+    {
+     "dur": 3.2,
+     "rate": 3.1
+    }
+   ],
+   [
+    "41.963",
+    "creak",
+    0.28,
+    {
+     "dur": 1.2,
+     "seed": 24
+    }
+   ],
+   [
+    "42.513",
+    "knock",
+    0.3,
+    {
+     "rev": 0.4
+    }
+   ],
+   [
+    "43.569",
+    "knock",
+    0.26,
+    {
+     "rev": 0.4
+    }
+   ],
+   [
+    "44.049",
+    "swish",
+    0.1
+   ],
+   [
+    "44.069",
+    "tick",
+    0.2
+   ],
+   [
+    "45.239",
+    "knock",
+    0.26,
+    {
+     "rev": 0.5
+    }
+   ],
+   [
+    "45.799",
+    "knock",
+    0.26,
+    {
+     "rev": 0.5
+    }
+   ],
+   [
+    "46.359",
+    "knock",
+    0.26,
+    {
+     "rev": 0.5
+    }
+   ],
+   [
+    "46.919",
+    "knock",
+    0.26,
+    {
+     "rev": 0.5
+    }
+   ],
+   [
+    "47.479",
+    "knock",
+    0.26,
+    {
+     "rev": 0.5
+    }
+   ],
+   [
+    "48.039",
+    "knock",
+    0.26,
+    {
+     "rev": 0.5
+    }
+   ],
+   [
+    "48.199",
+    "whoosh",
+    0.34,
+    {
+     "dur": 0.18
+    }
+   ],
+   [
+    "48.339",
+    "doorboom",
+    0.74,
+    {
+     "seed": 31
+    }
+   ],
+   [
+    "48.359",
+    "clunk",
+    0.55,
+    {
+     "seed": 32
+    }
+   ],
+   [
+    "48.679",
+    "clunk",
+    0.4,
+    {
+     "seed": 33
+    }
+   ],
+   [
+    "48.959",
+    "tick",
+    0.48
+   ],
+   [
+    "49.403",
+    "heartbeat",
+    0.2,
+    {
+     "dur": 3.2089999999999974,
+     "bpm": 62
+    }
+   ],
+   [
+    "51.882",
+    "pachime",
+    0.28
+   ],
+   [
+    "51.782",
+    "static",
+    0.09,
+    {
+     "dur": 2.6629999999999967
+    }
+   ],
+   [
+    "54.455",
+    "clunk",
+    0.6,
+    {
+     "seed": 41
+    }
+   ],
+   [
+    "54.485",
+    "groan",
+    0.2,
+    {
+     "dur": 2.0,
+     "seed": 42
+    }
+   ],
+   [
+    "54.885",
+    "roomtone",
+    0.06,
+    {
+     "dur": 5.881999999999998
+    }
+   ],
+   [
+    "55.655",
+    "crowdsteps",
+    0.62,
+    {
+     "dur": 4.711999999999999,
+     "seed": 5,
+     "per_s": 62
+    }
+   ],
+   [
+    "56.905",
+    "heartbeat",
+    0.22,
+    {
+     "dur": 3.361999999999999,
+     "bpm": 96
+    }
+   ],
+   [
+    "60.357",
+    "flick",
+    0.5
+   ],
+   [
+    "60.407",
+    "buzz",
+    0.16,
+    {
+     "dur": 4.539000000000009,
+     "f": 120
+    }
+   ],
+   [
+    "60.467",
+    "drone",
+    0.08,
+    {
+     "dur": 4.439000000000009,
+     "f": 30
+    }
+   ],
+   [
+    "63.406",
+    "knock",
+    0.42,
+    {
+     "rev": 0.8
+    }
+   ]
+  ]
+ },
+ "fps": 60
+}

@@ -1,0 +1,36 @@
+{
+ "key": "farm_ep30_boy",
+ "source": {
+  "route": "one-off Studio capture (Episode 30), the steps of tools/farm_avatars.py",
+  "scene": "scenes/sandbox/avcap_ep30.lua",
+  "candidate": "boy",
+  "label": "The little boy in line (Episode 30): red striped shirt with vest, jeans, messy brown hair",
+  "catalog_items": [
+   6391094201,
+   5223843674,
+   116466812453585
+  ]
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-08",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_Accessory_Messy_Fluffy_Boy_Hair"
+ ]
+}

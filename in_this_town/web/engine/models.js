@@ -26,6 +26,7 @@ import { hospitalBed, wardDoor, fluorPanel, crtTV, ivPole, cabinet, paSpeaker, r
 import { voiceTunnel, drips as tunnelDrips, hillside as tunnelHillside, floodTripod, cautionTape, tapePost, rescueRadio, rescueTruck, campTable, wallFaces } from './tunnel.js';
 import { puppet, socketHead, stairHall, schoolCorridor, satchel, flashlightProp, strawRope, ofuda } from './folklore.js';
 import { cubeSeed, cubeStairs, gardenPlot, seedStall, wateringCan, wheelbarrow, scarecrow, floatingIsland, glassField, nameTree, bloomField } from './garden.js';
+import { ferrisWheel, carousel, ticketBooth, parkArch, exitGate as parkExitGate, chainFence, midwayStall, parkLamp, paSpeakers as parkPaSpeakers, broom, controlLever, ticketStub, bareStrings, popcornTub, balloon as nameBalloon, teaCups, swingRide, coaster as parkCoaster, blueCreature } from './amusement.js';
 
 // ---------- Episode 17 ----------
 // The black package: four walls that fold out (open(angle)), a lid, a RETURN ADDRESS label.
@@ -287,6 +288,25 @@ export function makeClockTower() {
 // name -> builder. o.parent, when given, receives the model.
 const put = (o, m) => { if (o.parent) o.parent.add(m.isObject3D ? m : m.g || m.root); return m; };
 export const BUILD = {
+  ferris_wheel: () => ferrisWheel(),
+  carousel_ride: () => carousel(),
+  ticket_booth: () => ticketBooth(),
+  park_arch: () => parkArch('MERRIWAY PARK'),
+  park_exit_gate: () => parkExitGate(),
+  chain_fence: () => chainFence(40),
+  midway_stall: () => midwayStall('RING TOSS'),
+  park_lamp: () => parkLamp(),
+  park_pa_speakers: () => parkPaSpeakers(),
+  push_broom: () => broom(),
+  control_lever: () => controlLever(),
+  ticket_stub: () => ticketStub(),
+  bare_strings: () => bareStrings(),
+  popcorn_tub: () => popcornTub(),
+  name_balloon: () => nameBalloon('PIPER'),
+  tea_cups: () => teaCups(),
+  swing_ride: () => swingRide(),
+  park_coaster: () => parkCoaster(),
+  blue_creature: () => blueCreature().root,
   // Episode 38 (web/engine/cursedtape.js)
   recording_bedroom: (o) => put(o, recordingBedroom(o.U ?? { value: 0 })),
   cursed_laptop: (o) => put(o, cursedLaptop(o)),

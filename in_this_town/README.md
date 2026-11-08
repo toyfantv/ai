@@ -360,6 +360,14 @@ change. Episode 17 imports its package, model house and cardboard sky from the l
 * **Reverse angles:** when a camera stands where the other character is, that character is hidden for the shot (`ask`, `smile`, `final`, and `shake` to `stare`).
 * **Voices:** `fx: "cave"` and `fx: "mimic"` were added to `audio2.py`. `mimic` is the speaker's own take plus a faint detuned copy, so "So am I." stays recognisably Daniel. `tools/ep39_sound.py` writes the sound block. Note that a `sample` cue's `rev` is a room size in seconds (0 crashes it), and `groan` needs `dur` of at least 1.7 and `rumble` over 2.
 
+### Episode 30 notes (the amusement park that never opens; Liminal Horror, Episodes 27-31)
+`web/episodes/ep30.js` + `web/engine/amusement.js` (the park kit, in the model library as `ferris_wheel`, `carousel_ride`, `ticket_booth`, `blue_creature`, `name_balloon`...). `tools/ep30_sound.py` writes the sound block; `audio2.py` gained the `carousel` mood (an original band-organ tune that runs down at the end of its segment), and the SFX `crowdsteps` and `ridehum`.
+- Shots are found by time in list order: when two shots swap times, swap their lines too.
+- A name on a balloon: `renderAt` turns the balloon's body from the camera each frame until the line that reveals it, so no cut shows it early.
+- Text on a sphere: keep it under about 90 degrees of the texture's width or a straight-on view crops it.
+- A captured hair whose fringe covers the eyes: flatten the fringe's vertices above about 80% of the head's height (`people()` in ep30.js); moving the whole mesh doesn't help.
+- A held string in a hand: hold the hand out to the side (right hand: `sd * -2`), or the arm crosses the face in every front shot.
+
 ### Episode 29 notes (the tower with no ground floor; Liminal Horror, Episodes 27-31)
 
 * **`web/engine/infinitetower.js`** holds everything original to this episode: the tower (`TW` sizes; `levelPos(n, tw, {rad, side, up})` is every placement on a platform, in level numbers), the instanced platforms that bob until the story stops them (`.update(tw)` with a frozen `tw`), the white door wall with its 416 chalked tallies on the far side, the crumbling ledge and the endless field of towers for the last image. All in the model library (`infinite_tower`, `tower_door_wall`, `tower_ledge`, `tower_field`, `tower_platform`, `chalk_stick`, `paint_kit`).

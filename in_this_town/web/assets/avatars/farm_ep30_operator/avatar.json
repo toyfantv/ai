@@ -1,0 +1,36 @@
+{
+ "key": "farm_ep30_operator",
+ "source": {
+  "route": "one-off Studio capture (Episode 30), the steps of tools/farm_avatars.py",
+  "scene": "scenes/sandbox/avcap_ep30.lua",
+  "candidate": "operator",
+  "label": "The carousel operator (Episode 30): red striped park vest, black dress pants, black ponytail",
+  "catalog_items": [
+   10781756475,
+   12878208887,
+   6794704014
+  ]
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-08",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_MeshPartAccessory"
+ ]
+}

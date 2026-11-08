@@ -607,6 +607,42 @@
    "source": "hand-keyed in the In This Town renderer (Episode 29)",
    "licence": "own",
    "desc": "kneeling and pushing a paint roller"
+  },
+  "ep30:hand_over_ticket": {
+   "set": "poses in episodes/ep30.js",
+   "source": "hand-keyed in the In This Town renderer (Episode 30)",
+   "licence": "own",
+   "desc": "a stiff arm held out passing a small ticket hand to hand"
+  },
+  "ep30:sweep_lay_down": {
+   "set": "poses in episodes/ep30.js",
+   "source": "hand-keyed in the In This Town renderer (Episode 30)",
+   "licence": "own",
+   "desc": "sweeping with a push broom, then crouching to lay it flat on the ground"
+  },
+  "ep30:pull_lever": {
+   "set": "poses in episodes/ep30.js",
+   "source": "hand-keyed in the In This Town renderer (Episode 30)",
+   "licence": "own",
+   "desc": "a hand gripping a lever knob and pulling it through"
+  },
+  "ep30:creature_sit_turn_point": {
+   "set": "poses in episodes/ep30.js",
+   "source": "hand-keyed in the In This Town renderer (Episode 30)",
+   "licence": "own",
+   "desc": "the large creature seated on a carousel bench, head and shoulders turning slowly, one arm raised to point"
+  },
+  "ep30:creature_stand_give": {
+   "set": "poses in episodes/ep30.js",
+   "source": "hand-keyed in the In This Town renderer (Episode 30)",
+   "licence": "own",
+   "desc": "the creature rising off the bench and holding a balloon string out to someone"
+  },
+  "ep30:hold_balloon": {
+   "set": "poses in episodes/ep30.js",
+   "source": "hand-keyed in the In This Town renderer (Episode 30)",
+   "licence": "own",
+   "desc": "an arm held out to the side holding a balloon string"
   }
  }
 }

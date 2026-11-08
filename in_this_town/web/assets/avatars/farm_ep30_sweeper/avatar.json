@@ -1,0 +1,35 @@
+{
+ "key": "farm_ep30_sweeper",
+ "source": {
+  "route": "one-off Studio capture (Episode 30), the steps of tools/farm_avatars.py",
+  "scene": "scenes/sandbox/avcap_ep30.lua",
+  "label": "The park sweeper (Episode 30): red striped vest, khaki pants, black cap",
+  "catalog_items": [
+   6275555406,
+   203906064,
+   15373338157
+  ]
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-08",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_Accessory_Red_Cap"
+ ]
+}

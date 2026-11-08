@@ -1,0 +1,35 @@
+{
+ "key": "farm_ep30_piper",
+ "source": {
+  "route": "one-off Studio capture (Episode 30), the steps of tools/farm_avatars.py",
+  "scene": "scenes/sandbox/avcap_ep30.lua",
+  "label": "Piper (Episode 30): pink hoodie, blue jeans with white sneakers, shoulder-length blonde hair",
+  "catalog_items": [
+   120306059275285,
+   330315106,
+   5802169541
+  ]
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-08",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_Mid_Length_Parted_Blonde_Hair"
+ ]
+}

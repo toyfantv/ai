@@ -49,6 +49,16 @@
     "type": "builder",
     "url": ""
   },
+  "bare_strings": {
+    "author": "toyfantv",
+    "desc": "a bunch of balloon strings with nothing on them",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep30",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "bare_trees": {
     "author": "toyfantv",
     "desc": "leafless winter trees",
@@ -115,6 +125,16 @@
     "kind": "nature",
     "licence": "own",
     "made_for": "ep24",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "blue_creature": {
+    "author": "toyfantv",
+    "desc": "an original large, tired, soft blue park creature with a lanyard (rigged: root, hips, torso, neck, arms, legs, setFace, aim)",
+    "kind": "character",
+    "licence": "own",
+    "made_for": "ep30",
     "source": "this renderer",
     "type": "builder",
     "url": ""
@@ -199,6 +219,16 @@
     "type": "builder",
     "url": ""
   },
+  "carousel_ride": {
+    "author": "toyfantv",
+    "desc": "a faded carousel with a striped canopy, horses and pigs, one bench",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep30",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "caution_tape": {
     "author": "toyfantv",
     "desc": "a sagging strip of caution tape between two points",
@@ -215,6 +245,16 @@
     "kind": "effect",
     "licence": "own",
     "made_for": "ep21",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "chain_fence": {
+    "author": "toyfantv",
+    "desc": "a chain-link fence run",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep30",
     "source": "this renderer",
     "type": "builder",
     "url": ""
@@ -275,6 +315,16 @@
     "kind": "prop",
     "licence": "own",
     "made_for": "ep26",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "control_lever": {
+    "author": "toyfantv",
+    "desc": "a ride control box with a big red-knobbed lever",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep30",
     "source": "this renderer",
     "type": "builder",
     "url": ""
@@ -475,6 +525,16 @@
     "kind": "effect",
     "licence": "own",
     "made_for": "ep34",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "ferris_wheel": {
+    "author": "toyfantv",
+    "desc": "an old fairground Ferris wheel with 16 gondolas (dented cushions, closed belts), bulbs",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep30",
     "source": "this renderer",
     "type": "builder",
     "url": ""
@@ -1089,6 +1149,16 @@
     "type": "builder",
     "url": ""
   },
+  "midway_stall": {
+    "author": "toyfantv",
+    "desc": "a fairground stall with a striped awning and a shelf of plush prizes",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep30",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "mimic_puppet": {
     "author": "toyfantv",
     "desc": "a long-limbed grey thing in the rags of a yellow raincoat: a folklore puppet with a mount for a stolen head",
@@ -1125,6 +1195,16 @@
     "kind": "effect",
     "licence": "own",
     "made_for": "ep34",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "name_balloon": {
+    "author": "toyfantv",
+    "desc": "a red balloon with a name lettered on one side",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep30",
     "source": "this renderer",
     "type": "builder",
     "url": ""
@@ -1229,6 +1309,56 @@
     "type": "builder",
     "url": ""
   },
+  "park_arch": {
+    "author": "toyfantv",
+    "desc": "an amusement park entrance arch with bulbs and an iron gate",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep30",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "park_coaster": {
+    "author": "toyfantv",
+    "desc": "a small roller coaster with a train",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep30",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "park_exit_gate": {
+    "author": "toyfantv",
+    "desc": "an EXIT gate with iron bars, a bolt and a padlock",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep30",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "park_lamp": {
+    "author": "toyfantv",
+    "desc": "a fairground lamp post",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep30",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "park_pa_speakers": {
+    "author": "toyfantv",
+    "desc": "a pole with three weathered PA horns",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep30",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "pastel_cottage": {
     "author": "toyfantv",
     "desc": "a pastel suburban house with porch, lap siding, shutters, flower boxes; can build up from light",
@@ -1269,6 +1399,16 @@
     "type": "builder",
     "url": ""
   },
+  "popcorn_tub": {
+    "author": "toyfantv",
+    "desc": "a striped popcorn tub",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep30",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "porcelain_nurse": {
     "author": "toyfantv",
     "desc": "an original faceless nurse in a white uniform and cap with a cracked porcelain mask (horror, no gore)",
@@ -1295,6 +1435,16 @@
     "kind": "prop",
     "licence": "own",
     "made_for": "ep19",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "push_broom": {
+    "author": "toyfantv",
+    "desc": "a worn push broom",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep30",
     "source": "this renderer",
     "type": "builder",
     "url": ""
@@ -1659,6 +1809,16 @@
     "type": "builder",
     "url": ""
   },
+  "swing_ride": {
+    "author": "toyfantv",
+    "desc": "a chair-swing ride",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep30",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "sword_cavern": {
     "author": "toyfantv",
     "desc": "a dark cavern beneath an island",
@@ -1709,12 +1869,42 @@
     "type": "builder",
     "url": ""
   },
+  "tea_cups": {
+    "author": "toyfantv",
+    "desc": "a spinning tea-cup ride",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep30",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "teleport_fx": {
     "author": "toyfantv",
     "desc": "a vanish / appear flash column and ring",
     "kind": "effect",
     "licence": "own",
     "made_for": "ep33",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "ticket_booth": {
+    "author": "toyfantv",
+    "desc": "a faded fairground ticket booth with a neon CLOSED / OPEN sign",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep30",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "ticket_stub": {
+    "author": "toyfantv",
+    "desc": "a small paper admission ticket",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep30",
     "source": "this renderer",
     "type": "builder",
     "url": ""

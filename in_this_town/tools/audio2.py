@@ -164,6 +164,22 @@ def footsteps(d=2.0, rate=2.2):
     return x
 
 
+# Episode 30: a crowd of feet, thin at first and thick at the end; each step a slightly different size
+def crowdsteps(d=4.0, seed=5, per_s=40):
+    x = np.zeros(int(d * SR) + SR); r = np.random.default_rng(seed); n = int(d * per_s)
+    for k in range(n):
+        u = (k + r.random()) / n; t = d * u ** 0.62; s0 = footstep(); st = 0.8 + r.random() * 0.5
+        s1 = np.interp(np.arange(0, len(s0), st), np.arange(len(s0)), s0); i = int(t * SR); g = (0.22 + 0.78 * u) * (0.45 + 0.55 * r.random())
+        x[i:i + len(s1)] += s1[: max(0, len(x) - i)] * g
+    return x[: int(d * SR)] / (np.max(np.abs(x)) + 1e-9) * 0.95
+
+
+# Episode 30: old ride machinery: a low motor with a slow mechanical turn-over
+def ridehum(d=4.0, rate=1.3):
+    t = tt(d); am = 0.72 + 0.28 * np.sin(2 * np.pi * rate * t) ** 2
+    return (np.sin(2 * np.pi * 49 * t) * 0.5 + np.sin(2 * np.pi * 98.5 * t) * 0.3 + np.sin(2 * np.pi * 147.5 * t) * 0.12) * am * np.minimum(1, t / 0.5) * np.minimum(1, (d - t) / 0.5 + 1e-3) * 0.6
+
+
 def heartbeats(d=4.0, bpm=90):
     x = np.zeros(int(d * SR) + SR); t = 0.0
     while t < d:
@@ -333,6 +349,7 @@ SFX = {
     'stomp': lambda o: stomp(), 'knock': lambda o: knock(), 'whoosh': lambda o: whoosh(o.get('dur', 1.2)), 'shimmer': lambda o: shimmer(o.get('dur', 2.5)),
     'chime': lambda o: reverb(bell(hz(o.get('note', 88)), 2.5), 2.0, 0.4), 'footsteps': lambda o: footsteps(o.get('dur', 2.0), o.get('rate', 2.2)),
     'run': lambda o: footsteps(o.get('dur', 2.0), 8.5), 'heartbeat': lambda o: heartbeats(o.get('dur', 4.0), o.get('bpm', 90)),
+    'crowdsteps': lambda o: crowdsteps(o.get('dur', 4.0), o.get('seed', 5), o.get('per_s', 40)), 'ridehum': lambda o: ridehum(o.get('dur', 4.0), o.get('rate', 1.3)),
     'creak': lambda o: creak(o.get('dur', 1.6)), 'wind': lambda o: wind(o.get('dur', 6.0)), 'rumble': lambda o: rumble(o.get('dur', 6.0)),
     'glitch': lambda o: glitch(o.get('dur', 1.5), o.get('seed', 3)), 'whisper': lambda o: whisper(o.get('dur', 3.0)),
     'crackle': lambda o: reverb(crackle(o.get('dur', 2.0), o.get('density', 60)), 1.5, 0.3), 'glass': lambda o: reverb(glass_pings(o.get('dur', 2.0), 30), 2.0, 0.4),
@@ -830,6 +847,29 @@ def mood(name, d, key=50, seed=1):
         t, i = 0.05, 0
         while t < d:
             add(int(t * SR), reverb(musicbox(hz(key + 24 + tune[i % 16])), 1.2, 0.3), 0.26); t += 0.3; i += 1
+    elif name in ('carousel', 'carousel_warp'):
+        # Episode 30: an original band-organ tune in 6/8 (oom-pah-pah, reedy pipes) played by a machine nobody has serviced: out of tune and
+        # wavering; in its last second and a half the mechanism runs down
+        warp = 0.55 if name == 'carousel_warp' else 0.3
+        def organ(f, dd):
+            tv = tt(dd); y = sum(a * np.sin(2 * np.pi * f * h * (1 + 0.0016 * h) * tv) for h, a in ((1, 1.0), (2, 0.55), (3, 0.6), (4, 0.24), (5, 0.3), (7, 0.12)))
+            return y * np.minimum(1, tv / 0.012) * np.minimum(1, (dd - tv) / 0.04 + 1e-3) * (1 + 0.12 * np.sin(2 * np.pi * 6.2 * tv)) * 0.22
+        e8 = 0.215; prog = [(0, 3, 7), (0, 3, 7), (-4, 0, 3), (-5, -1, 2), (0, 3, 7), (-7, -3, 0), (-5, -1, 2), (0, 3, 7)]
+        mel = [12, 15, 19, 18, 15, 12, 11, 14, 17, 15, 14, 11, 8, 12, 15, 20, 19, 15, 11, 14, 19, 17, 14, 11, 12, 15, 19, 24, 22, 19, 17, 14, 12, 10, 8, 5, 7, 11, 14, 17, 14, 11, 12, 15, 12, 7, 12, 12]
+        x = np.zeros(int(d * SR) + 3 * SR); t, i = 0.05, 0
+        def ad(i0, sg, g):
+            x[i0:i0 + len(sg)] += sg[: max(0, len(x) - i0)] * g
+        while t < d + 1:
+            b = i % 6; c = prog[(i // 6) % 8]; i0 = int(t * SR)
+            if b in (0, 3): ad(i0, organ(hz(key - 24 + c[0] + (7 if b == 3 else 0)), e8 * 1.5), 0.6)
+            else: ad(i0, organ(hz(key - 12 + c[1]), e8 * 0.8), 0.3); ad(i0, organ(hz(key - 12 + c[2]), e8 * 0.8), 0.28)
+            ad(i0, organ(hz(key + mel[i % 48]), e8 * 0.95), 0.62)
+            if b == 0: ad(i0, impact(0.22, 90, 48, 0.1), 0.2)
+            t += e8; i += 1
+        y = _gramo(x, warp, seed)[: int(d * SR)]
+        # run down: time stretches out toward the end, so the pitch sinks and the notes stop
+        n = len(y); m = min(n, int(1.5 * SR)); pre = n - m; u = np.linspace(0, 1, m); pos = pre + np.cumsum(1 - 0.88 * u ** 1.4); y[pre:] = np.interp(pos, np.arange(n), y) * (1 - u ** 3)
+        add(0, y, 1.0)
     elif name in ('waltz', 'waltz_warp'):
         # Episode 28: an old waltz from an empty ballroom (3/4, oom-pah-pah under a slow melody), heard through doors; waltz_warp slows and
         # detunes it, as if the record were melting
