@@ -244,8 +244,8 @@ function shots() {
   add('duelA', T.pt - 0.1, (u, t) => { const q = quinnRoot(t).p.clone().setY(0), k = easeInOut(u); return { pos: q.clone().add(v3(lerp(3.6, 2.2, k), lerp(7.6, 6.8, k), lerp(9.4, 9.0, k))), look: v3(0, 1.4, q.z - 11), fov: 72 }; });
   add('duelB', s(9) - 0.1, (u, t) => wide(t, { az: lerp(-0.55, -0.2, easeInOut(u)), el: 0.12, fov: 52, k: lerp(1.15, 1.02, u) }));
   add('duelC', s(10) - 0.06, (u, t) => wide(t, { az: lerp(0.5, 0.15, easeInOut(u)) - 0.75 * easeInOut(smooth(T.th3 + 0.55, T.th3 + 0.75, t)), el: lerp(0.06, 0.12, u), fov: 52 }));
-  add('duelD', s(12) - 0.08, (u, t) => wide(t, { az: lerp(-0.5, -0.12, easeInOut(u)), el: lerp(0.12, 0.04, u), fov: 54, k: lerp(1.4, 1.28, easeOut(u)) }));
-  add('fly', T.kc + 0.2, (u, t) => { const p = Qp(t); return { pos: v3(12, 4.4, p.z + 1.5), look: p.clone().add(v3(0, 2.0, 0)), fov: 52 }; });
+  add('duelD', s(12) - 0.08, (u, t) => wide(t, { az: lerp(-0.5, -0.16, easeInOut(u)), el: lerp(0.12, 0.06, u), fov: 54, k: lerp(1.6, 1.5, easeOut(u)), ly: 1.7 }));
+  add('fly', T.kc + 0.42, (u, t) => { const p = Qp(t); return { pos: v3(17, 5.0, p.z + 2.0), look: p.clone().add(v3(0, 2.4, 0)), fov: 56 }; });
   // three energy blasts, the one-hand block
   // reappears behind her: the kick
   add('getup', s(14) - 0.05, (u) => ({ pos: lp3(v3(2.6, 3.0, QZF + 9.5), v3(2.2, 3.8, QZF + 8.4), easeInOut(u)), look: v3(0, 2.6, QZF), fov: 56 }));
@@ -258,7 +258,8 @@ function shots() {
   add('eyes', s(18) - 0.06, (u) => ({ pos: lp3(v3(1.2, 4.9, QZF + 4.6), v3(1.1, 4.9, QZF + 4.2), u), look: v3(0, 4.3, QZF), fov: 46 }));
   add('power', s(19) - 0.05, (u) => { const a = lerp(-0.6, 0.5, easeInOut(u)); return { pos: v3(Math.sin(a) * 10.5, lerp(1.6, 2.6, u), QZF + Math.cos(a) * 10.5), look: v3(0, 3.6, QZF), fov: 56 }; });
   add('duelE', T.fire - 0.08, (u) => ({ pos: lp3(v3(5.5, 7.4, -22.0), v3(4.2, 6.6, -21.0), easeInOut(u)), look: v3(0, 3.0, -0.5), fov: 56 }));
-  add('shock', T.rel - 0.12, (u) => ({ pos: lp3(v3(10, 18, -46), v3(16, 30, -66), easeOut(u)), look: v3(0, lerp(5, 2, u), 0), fov: 56 }));
+  add('shockW', T.rel - 0.12, (u, t) => wide(t, { az: lerp(0.72, 0.58, easeInOut(u)), el: lerp(0.1, 0.14, u), fov: 54, k: lerp(1.3, 1.22, u), ly: 2.0 }));
+  add('shock', T.shk + 0.55, (u) => ({ pos: lp3(v3(10, 18, -46), v3(16, 30, -66), easeOut(u)), look: v3(0, lerp(5, 2, u), 0), fov: 56 }));
   // the cloak dissolves; a little girl
   add('dissolve', s(21) - 0.06, (u) => ({ pos: lp3(v3(-3.4, 3.6, 9.6 + 8.2), v3(-3.0, 3.8, 9.6 + 7.4), u), look: v3(0, 3.0, 9.6), fov: 54 }));
   add('girl', s(22) - 0.06, (u) => ({ pos: lp3(v3(1.6, 3.0, 9.6 - 7.4), v3(1.3, 3.1, 9.6 - 6.6), u), look: v3(0, 2.8, 9.6), fov: 52 }));
@@ -302,7 +303,6 @@ function fxAt(t, n, cam, v = t) {
   if (n === 'lift') o.streak = 0.35 * smooth(e.lift0, e.lift0 + 0.5, t);
   o.angle = n === 'lift' ? Math.PI / 2 : 0;
   // impact frames: only the two strikes that decide the duel (the kick, the shockwave)
-  const hc = held(v); if (hc !== undefined) { o.impact = 3; o.focus = 1; [o.cx, o.cy] = scr(hc === e.kc ? v3(0, 2.6, QZ1 + 0.6) : quinnRoot(e.shk).p.clone().add(v3(0, 3, 0))); o.streak = 0; }
   o.streak = clamp(o.streak);
   return o;
 }
@@ -323,32 +323,54 @@ function setLights(t, focus, k = 1) {
   r.position.copy(focus).add(W.camSide.clone().multiplyScalar(-5)).add(v3(0, 6, 0)); r.intensity = 55 * k; r.color.set('#a9b4ff'); r.distance = 26;
 }
 
-// ---- the speed edit round the two strikes that decide the duel (the kick, the shockwave; the user's action rule, 2026-11-07) ----
-// a ramp up, slow motion into the contact, the frame held in a dim film negative, a speed ramp out. v is video time, the scene runs on
-// remap(v): the contact stays at its own time (on its sound) and the scene is back on video time when the ramp ends (Episode 32's remap).
-const SE = { PRE: 0.8, SLOW: 0.6, RS: 0.3, HOLD: 0.22, POST: 0.8 };
-const SEC = () => [T.kc, T.shk];
+// ---- the speed edit round the two strikes that decide the duel (the kick, the shockwave), after the user's guide (2026-11-07) ----
+// the wind-up in slow motion, a snap into the strike (faster than life), the contact held for a few impact frames, the follow-through,
+// then a slightly fast stretch that brings the scene back onto video time (so the narration stays in sync). Impact frames: white
+// silhouettes on black, black on a dim grey, white on black again, with radial lines: stark but never a bright flash.
+const SPD = () => [
+  { c: T.kc, wind: 0.62, snap: 0.14, slow: 0.42, fast: 2.3, rec: 1.3, at: () => v3(0, 2.6, QZ1 + 0.6) },
+  { c: T.shk, wind: 0.75, snap: 0.16, slow: 0.42, fast: 2.3, rec: 1.25, at: () => quinnRoot(T.shk).p.clone().add(v3(0, 3, 0)) },
+];
+const HOLDF = 5, IMPSEQ = ['w', 'w', 'b', 'b', 'w'];   // the impact frames at 60 fps
+let MAP = null;
+function buildMap() {
+  const dt = 1 / 2400;
+  MAP = SPD().map((p) => {
+    const v0 = p.c - p.wind, pts = [];
+    let v = v0, x = v0, ph = 0, cv = 0, tEnd = 0;
+    for (let guard = 0; guard < 2400 * 8; guard++) {
+      pts.push(x);
+      let sp = 1;
+      if (ph === 0) { sp = lerp(1, p.slow, clamp((v - v0) / 0.12)); if (x >= p.c - p.snap) ph = 1; }
+      if (ph === 1) { sp = p.fast; if (x + sp * dt >= p.c) { x = p.c; cv = v + dt; ph = 2; } }
+      if (ph === 2) { sp = 0; if (v >= cv + HOLDF / 60) { ph = 3; tEnd = v + 0.12; } }
+      if (ph === 3) { sp = 1; if (v >= tEnd) ph = 4; }
+      if (ph === 4) { const gap = v - x; sp = 1 + (p.rec - 1) * clamp(gap / 0.06); if (gap < 0.0015) break; }
+      if (ph !== 2) x += sp * dt;
+      v += dt;
+    }
+    return { ...p, v0, v1: v, dt, pts, cv };
+  });
+}
 function remap(v) {
-  const { PRE, SLOW, RS, HOLD, POST } = SE;
-  for (const c of SEC()) {
-    const a0 = c - SLOW - PRE, a1 = c - SLOW, b1 = c + HOLD + POST;
-    if (v < a0 || v >= b1) continue;
-    const gain = SLOW * (1 - RS);
-    if (v < a1) { const u = (v - a0) / PRE; return v + gain * (u - Math.sin(2 * Math.PI * u) / (2 * Math.PI)); }
-    if (v < c) return c - (c - v) * RS;
-    if (v < c + HOLD) return c;
-    const u = (v - c - HOLD) / POST; return v - HOLD * (1 - u) ** 3;
+  if (!MAP) return v;
+  for (const m of MAP) {
+    if (v < m.v0 || v >= m.v1) continue;
+    const f = (v - m.v0) / m.dt, i = Math.floor(f), a = m.pts[Math.min(i, m.pts.length - 1)], b = m.pts[Math.min(i + 1, m.pts.length - 1)];
+    return a + (b - a) * (f - i);
   }
   return v;
 }
-const held = (v) => SEC().find((c) => v >= c && v < c + SE.HOLD);
+// the strike whose impact frames are showing at video time v (and which of them), or null
+function held(v) { if (!MAP) return null; for (const m of MAP) { const k = Math.floor((v - m.cv) * 60 + 1e-4); if (k >= 0 && k < HOLDF) return { m, k }; } return null; }
 // the video time at which the scene reaches scene time s (for the sound cues: events are handed out on video time)
 function unmap(s) { let a = s - 2, b = s + 2; for (let i = 0; i < 50; i++) { const m = (a + b) / 2; if (remap(m) < s) a = m; else b = m; } return b; }
 // the kicking foot's past positions (the trail): pose the rig at that time and read the right leg
 function footSeg(tau) { const g = W.g, sr = strangerRoot(tau); g.reset(); g.root.position.copy(sr.p); g.root.rotation.set(0, sr.ry, 0); applyPose(g, strangerPose(tau), { travel: tau >= T.app && tau < T.app + 1.2 ? 1 : 0 }); g.root.updateMatrixWorld(true); const l = W.g.legs[1]; return { base: l.localToWorld(v3(0, -1.0, 0)), tip: l.localToWorld(v3(0, -1.9, 0.3)), root: W.g.root.position.clone() }; }
 
 function renderAt(v) {
-  const t = remap(v), hold = held(v);
+  const vN = ctx.sub && ctx.pro ? v + ctx.pro.shutter * ctx.sub.i / ctx.sub.N : v, hold = held(vN);
+  const t = hold ? hold.m.c : remap(v);
   let sh = shotAt(W.shots, t); const n = sh.name, e = T;
   const trailOn = t >= T.kick - 0.05 && t < T.kc + 0.12;
   if (trailOn) { const smp = []; for (let i = 0; i <= 10; i++) smp.push(footSeg(t - i / 60)); W.trK.set(smp); } else W.trK.visible = false;
@@ -494,15 +516,27 @@ function renderAt(v) {
   W.fill.position.y = focus.y + 4.5;
   const near = ['cut', 'eyes', 'terrified', 'quinnR', 'hands'].includes(n) ? 0.06 : 0.2; if (ctx.camera.near !== near) { ctx.camera.near = near; ctx.camera.updateProjectionMatrix(); }
   const steady = t < e.bell;
-  if (hold !== undefined) flash = 0;
+  let sil = null;
+  if (hold) {
+    flash = 0; sil = IMPSEQ[hold.k];
+    const keep = new Set([W.q.root, W.g.root, W.trK]);
+    W.hid = ctx.scene.children.filter((o) => o.visible && !keep.has(o) && !o.isLight && !o.isCamera); W.hid.forEach((o) => { o.visible = false; });
+    ctx.scene.overrideMaterial = sil === 'w' ? W.silW : W.silB;
+    ctx.scene.background.set(sil === 'w' ? '#000000' : '#5d5968'); ctx.scene.fog.near = 1e5; ctx.scene.fog.far = 2e5;
+  }
   frame(ctx, t, sh, { capT: v, steady, shake: steady ? 0 : shake, shadowSpan: ['open', 'lift', 'void', 'shock', 'turn', 'final', 'fill', 'seats'].includes(n) ? 90 : 34, flash, flashColor: fcol, shadows: true });
-  W.fx.set(v, fxAt(t, n, ctx.camera, v));
+  if (sil) {
+    W.hid.forEach((o) => { o.visible = true; }); ctx.scene.overrideMaterial = null;
+    const q = hold.m.at().project(ctx.camera);
+    W.fx.set(vN, { focus: 1, cx: clamp(q.x * 0.5 + 0.5), cy: clamp(0.5 - q.y * 0.5), color: sil === 'w' ? 'rgba(255,255,255,0.85)' : 'rgba(0,0,0,0.85)', inner: 0.4, seed: hold.k * 7 });
+  } else W.fx.set(v, fxAt(t, n, ctx.camera, v));
   return n;
 }
 
 export async function setup() {
   ctx = await initStage('ep33', { look: 'pro', avatars: ['farm_ep33_quinn', 'farm_ep33_girl', 'farm_ep33_salinger'] }); L = ctx.L;
   const EV = events();
+  buildMap();
   HOLDS = [[T.strike, 0.04], [T.hit[0], 0.03], [T.hit[1], 0.03], [T.hit[2], 0.05], ];
   T.tpFlash = T.app;
   await loadAnimSet('magic_set');
@@ -513,6 +547,7 @@ export async function setup() {
   world(); people();
   W.fx = installActionFX(ctx);
   W.trK = weaponTrail({ color: '#b48cff', gain: 1.1 }); ctx.scene.add(W.trK);
+  W.silW = new THREE.MeshBasicMaterial({ color: '#ffffff', fog: false, toneMapped: false }); W.silB = new THREE.MeshBasicMaterial({ color: '#000000', fog: false, toneMapped: false });
   // the spectators' seats (Salinger's is the front-row seat nearest to his angle) and their timing jitter
   const seats = W.arena.seats, r = rng(7);
   let best = 0, bd = 1e9; seats.forEach((s, i) => { if (s.row !== 0) return; const d = Math.hypot(s.x - 23.5, s.z - (-11)); if (d < bd) { bd = d; best = i; } });

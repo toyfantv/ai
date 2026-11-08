@@ -291,6 +291,15 @@ change. Episode 17 imports its package, model house and cardboard sky from the l
 * **Framing**: these avatars are ~5.8 studs tall; in 9:16 the horizontal field is narrow, so a two-shot needs the camera 11-16 studs away or a
   side angle; frontal 3/4 angles avoid a near arm filling the frame. Additive fire planes seen edge-on stack into glare: shoot a fire wall across,
   not along. Light a floating island against a black void with a glow sprite and a big point light under it, or it reads as a silhouette.
+* **Impact sequences (the user's guide, 2026-11-07; replaces the film-negative hold)**: `ep33.js` `SPD` / `buildMap()` / `remap()` / `held()`.
+  Per strike: the wind-up in slow motion (~0.42x for ~0.5 s of scene), a snap into the contact (~2.3x for the last ~0.15 s), the contact
+  held for 5 frames at 60 fps, the follow-through at 1x for 0.12 s, then 1.25-1.3x until the scene is back on video time (a speed
+  profile integrated into a lookup table at setup). Impact frames: `scene.overrideMaterial` white on a black background with every
+  non-character object hidden, then black on a dim grey (#5d5968), then white again, radial lines from `fx.set({ focus: 1, color, inner:
+  0.4 })`; decide them from the frame's nominal time (`v + shutter * sub.i / sub.N`) so every motion-blur sub-frame agrees, and pin
+  the scene time to the contact while they show. Never a bright full-frame flash. Frame the impact moments wide, both fighters head
+  to feet above the captions (`wide()` with a lower `ly`, ~1.7-2.0, and k ~1.2-1.6; a diagonal az when they stand far apart). Sound:
+  a whoosh on the snap, the hit plus a bass boom on the contact. Events are handed to the mix on video time (`unmap`).
 * `episodes/animcheck.js` takes `sets=a,b`, `prop=none` and `dist=` now; `altiface.js` keeps `ch.headParts` (the cloak sizes its hood from them).
 
 ### Free models from other sites
