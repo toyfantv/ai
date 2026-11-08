@@ -68,6 +68,33 @@ function studio() {   // a plain seamless backdrop for the flyers' photographs
 // ---- people ----
 const KIDS = [['farm_mia', 'MIA', 'AGE 12'], ['farm_noah', 'NOAH', 'AGE 11'], ['farm_finn', 'FINN', 'AGE 10'], ['farm_red_kid', 'SAM', 'AGE 9'], ['farm_young_kid', 'LEO', 'AGE 8']];
 const ALLC = () => [W.q, W.bro, W.bf, ...W.kids];
+// Quinn's capture: the head's corners stand out through the hair, the forehead is bare to the crown, and the drawn mouth lands on the jaw.
+// A wig shell (the head itself, a little larger, cut away over the face along a hairline) covers the skull from every angle; the face sheet's v is squeezed so the mouth sits on the face.
+function fitQuinnHead() {
+  const Q = W.q, B = new THREE.Box3(); Q.headParts.forEach((h) => { h.geometry.computeBoundingBox(); B.union(h.geometry.boundingBox); });
+  const c = B.getCenter(new THREE.Vector3()), S = B.getSize(new THREE.Vector3()).multiplyScalar(0.5);
+  const mat = new THREE.MeshStandardMaterial({ color: '#15142a', roughness: 0.72, metalness: 0, envMapIntensity: 0.5 });
+  mat.onBeforeCompile = (sh) => {
+    sh.uniforms.uC = { value: c }; sh.uniforms.uS = { value: S };
+    sh.vertexShader = sh.vertexShader.replace('void main() {', 'varying vec3 vHP;\nvoid main() {\n  vHP = position;');
+    sh.fragmentShader = sh.fragmentShader.replace('void main() {', `varying vec3 vHP; uniform vec3 uC; uniform vec3 uS;
+void main() {
+  vec3 P = (vHP - uC) / uS; float ax = abs(P.x);
+  float line = 0.76 - 0.12 * smoothstep(0.0, 0.55, ax) - 0.16 * smoothstep(0.54, 0.68, ax) - 2.4 * smoothstep(0.66, 0.92, ax);
+  if (P.z > -0.3 && P.y < line) discard;`);
+  };
+  mat.customProgramCacheKey = () => 'ep37-wig';
+  Q.headParts.forEach((h) => {
+    const g = h.geometry.clone(), P = g.attributes.position;
+    for (let i = 0; i < P.count; i++) P.setXYZ(i, c.x + (P.getX(i) - c.x) * 1.04, c.y + (P.getY(i) - c.y) * 1.04, c.z + (P.getZ(i) - c.z) * 1.04);
+    const m = new THREE.Mesh(g, mat); m.userData.noAO = true; m.receiveShadow = true; h.parent.add(m);
+  });
+  const g = Q.faceSheet.geometry, P = g.attributes.position, U = g.attributes.uv, Y = (i) => (P.getY(i) - c.y) / S.y, n = P.count - 1, slope = (U.getY(n) - U.getY(0)) / (Y(n) - Y(0)), v0 = U.getY(0) - slope * Y(0);
+  const a = 0.8125, b = 0.1025;   // eyes from Y 0.12 to 0.20, the mouth from -0.84 to -0.58
+  for (let i = 0; i <= n; i++) { U.setY(i, v0 + slope * ((Y(i) - b) / a)); U.setX(i, 0.5 + (U.getX(i) - 0.5) / 0.9); }
+  U.needsUpdate = true;
+}
+
 function people() {
   const mk = (avatar, skin) => { const c = makeCharacter({ avatar, alti: true, skin, caustic: false }); ctx.scene.add(c.root); c.root.traverse((o) => { if (o.isMesh) o.castShadow = true; }); c.root.visible = false; return c; };
   W.q = mk('farm_ep33_quinn', QSKIN); W.bro = mk('farm_ep37_brother', BSKIN); W.bf = mk('farm_ep37_brother', BSKIN);
@@ -84,7 +111,7 @@ function people() {
   const seam = canvasTex(512, 512, (x, w, h) => { x.clearRect(0, 0, w, h); x.fillStyle = 'rgba(92,16,20,0.96)'; const c = (a, rx, ry) => [w / 2 + Math.cos(a) * rx, h * 0.5 + Math.sin(a) * ry]; const N = 42, pts = [], out = []; for (let i = 0; i < N; i++) { const a = (i / N) * Math.PI * 2, j = 7 * Math.sin(i * 7.3) + 5 * Math.sin(i * 3.1), k = 9 * Math.sin(i * 5.7) + 5 * Math.sin(i * 2.3); pts.push(c(a, w * 0.41 + j, h * 0.41 + j)); out.push(c(a, w * 0.475 + k, h * 0.475 + k)); } x.beginPath(); x.moveTo(out[0][0], out[0][1]); for (let i = 1; i < N; i++) x.lineTo(out[i][0], out[i][1]); x.closePath(); x.moveTo(pts[0][0], pts[0][1]); for (let i = N - 1; i >= 0; i--) x.lineTo(pts[i][0], pts[i][1]); x.closePath(); x.fill('evenodd');
     x.strokeStyle = '#150406'; x.lineWidth = 8; x.lineCap = 'round'; for (let i = 0; i < N; i += 2) { const [px, py] = pts[i], [dx, dy] = [px - w / 2, py - h / 2], l = Math.hypot(dx, dy), ux = dx / l, uy = dy / l; x.beginPath(); x.moveTo(px - ux * 15 - uy * 3, py - uy * 15 + ux * 3); x.lineTo(px + ux * 16 + uy * 3, py + uy * 16 - ux * 3); x.stroke(); } x.strokeStyle = 'rgba(30,4,8,0.9)'; x.lineWidth = 4; x.beginPath(); x.moveTo(pts[0][0], pts[0][1]); for (let i = 1; i < N; i++) x.lineTo(pts[i][0], pts[i][1]); x.closePath(); x.stroke(); });
   seam.colorSpace = THREE.SRGBColorSpace; const sm = new THREE.Mesh(new THREE.PlaneGeometry(sw * 1.0, sh * 1.0), new THREE.MeshStandardMaterial({ map: seam, transparent: true, roughness: 0.55, depthWrite: false })); sm.position.set((bx.min.x + bx.max.x) / 2, (bx.min.y + bx.max.y) / 2, bx.max.z + 0.05); sm.userData.noAO = true; n.add(sm); W.seam = sm;
-  { const B = new THREE.Box3(), m = W.q.neck; W.q.headParts.forEach((h) => { h.geometry.computeBoundingBox(); B.union(h.geometry.boundingBox); }); const w = B.max.x - B.min.x, h = B.max.y - B.min.y, d = B.max.z - B.min.z, cap = new THREE.Mesh(new RoundedBoxGeometry(w * 1.04, h * 1.04, d * 0.56, 4, Math.min(w, h) * 0.22), new THREE.MeshStandardMaterial({ color: '#15142a', roughness: 0.72, metalness: 0, envMapIntensity: 0.5 })); cap.position.set((B.min.x + B.max.x) / 2, (B.min.y + B.max.y) / 2, B.min.z + d * 0.28 - 0.03); cap.castShadow = true; m.add(cap); }
+  fitQuinnHead();
   // props
   W.sat = satchel({ name: 'THEO' }); ctx.scene.add(W.sat); W.sat.visible = false; W.pSat = satchel({ name: 'THEO' }); ctx.scene.add(W.pSat); W.pSat.visible = false;
   W.fl = flashlightProp(); ctx.scene.add(W.fl); W.fl.visible = false;
@@ -225,7 +252,7 @@ function poseQuinn(t, n) {
   // the flyer in her left hand as she walks in
   if (t < e.stop + 0.05) { const ap = R.p.clone().add(v3(Math.sin(R.yaw) * 1.7 + 2.1, 3.3, Math.cos(R.yaw) * 1.7)); aimArm(Q, 1, ap, 1); const hp = handOf(Q, 1); W.held.visible = true; W.held.position.copy(hp).add(v3(0, 1.0, 0)); const hd = Q.neck.getWorldPosition(v3()).add(v3(0, 0.6, 0)); W.held.lookAt(hd); W.flyerP.copy(W.held.position); W.flyerN.copy(hd).sub(W.held.position).normalize(); }
   const fx = t < e.stop ? 'nervous' : t < e.at ? 'surprised' : t < L(9).start + 0.9 ? 'nervous' : t < e.S1 ? 'scared' : 'terrified';
-  face(Q, fx, t, 0.3, { viseme: t > e.scream && t < e.scream + 0.8 ? 'A' : undefined, noBlink: t > e.S1 });
+  face(Q, fx, t, 0.3, { viseme: t > e.scream && t < e.scream + 1.5 ? 'A' : undefined, noBlink: t > e.S1 });
 }
 
 // ---- the woman ----
@@ -355,7 +382,7 @@ function renderAt(t) {
   const needQ = !['ext', 'corr', 'stairs', 'treads', 'count1', 'count2', 'count3'].includes(n) && !(t >= e.door + 0.05 && n === 'same' && false);
   if (needQ) { poseQuinn(t, n); W.q.root.updateMatrixWorld(true); W.qh.copy(W.q.neck.getWorldPosition(v3())).add(v3(0, 0.75, 0)); }
   poseWoman(t, n, set);
-  const flOn = W.fl.visible; if (['dark', 'hair', 'son', 'lift', 'scare1', 'holes'].includes(n) && !location.search.includes('dbgcam')) { W.q.root.visible = false; W.fl.visible = false; }
+  const flOn = W.fl.visible; if (['dark', 'hair', 'son', 'lift', 'scare1', 'holes'].includes(n) && !location.search.includes('dbg')) { W.q.root.visible = false; W.fl.visible = false; }
   if (n === 'crawl' || n === 'whip' || n === 'final') { W.cr.visible = true; W.crP = crawlerPose(t, null); W.bf.neck.visible = true; const smile = t >= e.S2; W.bf.setFace(smile ? 'happy' : 'neutral', { blink: false }); W.seam.visible = true; } else { W.cr.visible = false; W.bf.neck.visible = false; }
   const focus = n === 'chase' || n === 'exit' || n === 'same' ? W.qp.clone() : ['stairs', 'treads', 'count1', 'count2', 'count3', 'bottom', 'arm', 'tag', 'small', 'dont', 'crawl', 'whip', 'final', 'qsame', 'recog', 'froze'].includes(n) ? v3(2.4, 0, 8) : n === 'corr' ? v3(0, 0, -30) : v3(1, 0, 32);
   const lset = n === 'chase' && t < e.hallEnd ? 'hall' : set;
@@ -373,7 +400,7 @@ function renderAt(t) {
   ctx.scene.updateMatrixWorld(true);
   const sh = shotAt(W.shots, t);
   const dc = typeof location !== 'undefined' && new URLSearchParams(location.search).get('dbgcam');
-  const dq = dc ? dc.split(',').map(Number) : null, shx = dq ? { ...sh, pos: v3(dq[0], dq[1], dq[2]), look: v3(dq[3], dq[4], dq[5]), fov: dq[6] || 40 } : sh;
+  const dq = dc ? dc.split(',').map(Number) : null, dh = typeof location !== 'undefined' && new URLSearchParams(location.search).get('dbgq'), dv = dh ? dh.split(',').map(Number) : null, shx = dv ? { ...sh, pos: W.qh.clone().add(v3(dv[0], dv[1], dv[2]).applyQuaternion(W.q.neck.getWorldQuaternion(new THREE.Quaternion()))), look: W.qh.clone().add(v3(0, -1.5, 0)), fov: dv[3] || 40 } : dq ? { ...sh, pos: v3(dq[0], dq[1], dq[2]), look: v3(dq[3], dq[4], dq[5]), fov: dq[6] || 40 } : sh;
   if (W.woP) { W.woP.camera = shx.pos; W.wo.set(W.woP); }
   if (W.cr.visible) { W.crP.camera = shx.pos; W.cr.set(W.crP); }
   ctx.scene.updateMatrixWorld(true);

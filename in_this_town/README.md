@@ -362,7 +362,7 @@ change. Episode 17 imports its package, model house and cardboard sky from the l
 * **The same staircase**: the exit door at z -72 opens on a clone of the hall rotated 180 degrees about (0, -36). Only that shot shows it.
 * **Grip**: `g.grip[hand]` on the puppet is the point between the knuckles after `set`; call `set` once before reading it to hang a prop from the hand.
 * **Hard-won**: a figure crouched next to a POV camera fills the lens (Quinn is hidden for the close shots of the woman); non-front hair strands must not
-  root on the face side; a captured avatar's hair can leave head skin showing from behind (`W.q`'s dark rounded backing fixes it); `qc.py` reports 60 fps
+  root on the face side; a captured avatar's hair can leave head skin showing through it (`fitQuinnHead` in `ep37.js`: a wig shell made from the head itself, 4% larger, cut away over the face along a hairline in the shader; the same function moves a drawn mouth off the jaw by squeezing the face sheet's UVs; `?dbgq=x,y,z,fov` is a debug camera in head space for checking it from any angle); `qc.py` reports 60 fps
   as an issue, ignore that for this series.
 
 ### Episode 36 notes (the last contestant; Psychological Horror, Episodes 35-39)
