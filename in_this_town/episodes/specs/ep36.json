@@ -1,0 +1,971 @@
+{
+ "number": 36,
+ "title": "The Last Contestant",
+ "output": "InThisTown_Episode36_LastContestant.mp4",
+ "youtube_title": "The Last Contestant...",
+ "tiktok_caption": "Survive five minutes and you can go home. Grayson survived. Now every TV on his street is watching him.",
+ "hashtags": "#InThisTown #HorrorStory #ScaryStories #RobloxStory #Shorts",
+ "thumbnail_text": "THE LAST CONTESTANT",
+ "thumbnail_rec": "Close on the first hunter's opened mask: the black helmet's CRT screen, crackling with static, shows Grayson's own terrified face, scanlines over it, the steel shutter behind. Text: \"THE LAST CONTESTANT\".",
+ "tail": 1.85,
+ "fps": 60,
+ "narrator": {
+  "pace": [
+   2.5,
+   2.95
+  ],
+  "min_tempo": 1.04
+ },
+ "cast": {
+  "host": {
+   "voice": "eric",
+   "pitch": 1.0,
+   "tempo": 1.1
+  }
+ },
+ "highlights": {
+  "SELECTED": "yellow",
+  "BY ITSELF": "red",
+  "SMILING HOST": "yellow",
+  "FIVE MINUTES": "red",
+  "GO HOME": "yellow",
+  "WALLS COLLAPSED": "red",
+  "SHOPPING MALL": "yellow",
+  "EMPTY SEATS": "purple",
+  "COUNTDOWN": "yellow",
+  "HUNTERS": "red",
+  "MASKED": "red",
+  "RAN": "yellow",
+  "GUNSHOTS": "red",
+  "SECURITY GATE": "yellow",
+  "METAL PIPE": "yellow",
+  "MASK": "red",
+  "CRACKED": "red",
+  "TELEVISION SCREEN": "cyan",
+  "GRAYSON'S FACE": "red",
+  "TACKLED": "red",
+  "KICKED": "yellow",
+  "EXIT": "yellow",
+  "TEN SECONDS": "red",
+  "NINE": "red",
+  "EIGHT": "red",
+  "FINAL DOOR": "yellow",
+  "BEDROOM FLOOR": "yellow",
+  "APPLAUDED": "purple",
+  "YOU'VE WON": "yellow",
+  "EMPTY": "purple",
+  "TELEVISION": "cyan",
+  "SHOWED HIM": "red",
+  "SMILED": "purple",
+  "THE HUNTER": "red"
+ },
+ "lines": [
+  {
+   "text": "“Congratulations, Grayson. You've been selected.”",
+   "tag": "[cheerfully]",
+   "pause": 0.12,
+   "voice": "host",
+   "fx": "tv",
+   "speak": "Congratulations, Grayson! You've been selected."
+  },
+  {
+   "text": "The television switched on by itself.",
+   "tag": "[mysterious]",
+   "pause": 0.06
+  },
+  {
+   "text": "A smiling host appeared.",
+   "tag": "[mysterious]",
+   "pause": 0.06
+  },
+  {
+   "text": "“Survive for five minutes, and you can go home.”",
+   "tag": "[cheerfully]",
+   "pause": 0.5,
+   "voice": "host",
+   "fx": "tv",
+   "speak": "Survive for five minutes, and you can go home."
+  },
+  {
+   "text": "Grayson's bedroom walls collapsed.",
+   "tag": "[serious]",
+   "pause": 0.25
+  },
+  {
+   "text": "He was inside an enormous shopping mall.",
+   "tag": "[mysterious]",
+   "pause": 0.06
+  },
+  {
+   "text": "Thousands of empty seats surrounded him.",
+   "tag": "[mysterious]",
+   "pause": 0.06
+  },
+  {
+   "text": "A countdown appeared overhead.",
+   "tag": "[mysterious]",
+   "pause": 0.08
+  },
+  {
+   "text": "FIVE MINUTES.",
+   "tag": "[serious]",
+   "pause": 0.12,
+   "speak": "Five minutes."
+  },
+  {
+   "text": "“Release the hunters.”",
+   "tag": "[excited]",
+   "pause": 0.15,
+   "voice": "host",
+   "fx": "pa",
+   "speak": "Release the hunters!"
+  },
+  {
+   "text": "Three masked figures emerged from the darkness.",
+   "tag": "[serious]",
+   "pause": 0.06
+  },
+  {
+   "text": "Grayson ran.",
+   "tag": "[urgent]",
+   "pause": 0.1
+  },
+  {
+   "text": "Gunshots shattered the glass behind him.",
+   "tag": "[urgent]",
+   "pause": 0.06
+  },
+  {
+   "text": "He slid beneath a closing security gate.",
+   "tag": "[urgent]",
+   "pause": 0.06
+  },
+  {
+   "text": "Grabbed a metal pipe.",
+   "tag": "[urgent]",
+   "pause": 0.06
+  },
+  {
+   "text": "And struck the first hunter across the mask.",
+   "tag": "[urgent]",
+   "pause": 0.15
+  },
+  {
+   "text": "It cracked.",
+   "tag": "[serious]",
+   "pause": 0.2
+  },
+  {
+   "text": "Inside was a television screen.",
+   "tag": "[quietly]",
+   "pause": 0.06
+  },
+  {
+   "text": "Showing Grayson's face.",
+   "tag": "[quietly]",
+   "pause": 0.1
+  },
+  {
+   "text": "The second hunter tackled him.",
+   "tag": "[urgent]",
+   "pause": 0.06
+  },
+  {
+   "text": "Grayson kicked it away and sprinted toward the exit.",
+   "tag": "[urgent]",
+   "pause": 0.06
+  },
+  {
+   "text": "“TEN SECONDS. NINE. EIGHT.”",
+   "tag": "[excited]",
+   "pause": 0.1,
+   "voice": "host",
+   "fx": "pa",
+   "speak": "Ten seconds! Nine! Eight!"
+  },
+  {
+   "text": "He smashed through the final door.",
+   "tag": "[urgent]",
+   "pause": 0.1
+  },
+  {
+   "text": "And collapsed onto his bedroom floor.",
+   "tag": "[serious]",
+   "pause": 0.25
+  },
+  {
+   "text": "The television applauded.",
+   "tag": "[mysterious]",
+   "pause": 0.06
+  },
+  {
+   "text": "“Congratulations! You've won!”",
+   "tag": "[excited]",
+   "pause": 0.25,
+   "voice": "host",
+   "fx": "tv",
+   "speak": "Congratulations! You've won!"
+  },
+  {
+   "text": "Grayson looked outside.",
+   "tag": "[quietly]",
+   "pause": 0.06
+  },
+  {
+   "text": "Every house on his street was empty.",
+   "tag": "[mysterious]",
+   "pause": 0.06
+  },
+  {
+   "text": "Every window contained a television.",
+   "tag": "[mysterious]",
+   "pause": 0.06
+  },
+  {
+   "text": "And every television showed him.",
+   "tag": "[serious]",
+   "pause": 0.25
+  },
+  {
+   "text": "The host smiled.",
+   "tag": "[quietly]",
+   "pause": 0.2
+  },
+  {
+   "text": "“Now, let's see how long you survive as the hunter.”",
+   "tag": "[cheerfully]",
+   "pause": 0.1,
+   "voice": "host",
+   "fx": "tv",
+   "speak": "Now, let's see how long you survive as the hunter."
+  }
+ ],
+ "samples": {},
+ "sound": {
+  "key": 40,
+  "music_gain": 0.3,
+  "music": [
+   [
+    "0",
+    "suspense"
+   ],
+   [
+    "9.085",
+    "silence"
+   ],
+   [
+    "10.555",
+    "dread"
+   ],
+   [
+    "20.176",
+    "suspense"
+   ],
+   [
+    "22.917",
+    "action"
+   ],
+   [
+    "31.011",
+    "action_hit"
+   ],
+   [
+    "35.396",
+    "silence"
+   ],
+   [
+    "36.433",
+    "action_hit"
+   ],
+   [
+    "43.775",
+    "silence"
+   ],
+   [
+    "48.052",
+    "suspense"
+   ],
+   [
+    "51.526",
+    "dread"
+   ],
+   [
+    "61.042",
+    "cosmic"
+   ]
+  ],
+  "cues": [
+   [
+    "0.12",
+    "static",
+    0.35,
+    {
+     "dur": 0.45
+    }
+   ],
+   [
+    "0.12",
+    "clunk",
+    0.3
+   ],
+   [
+    "0.32",
+    "fanfare",
+    0.22,
+    {
+     "dur": 2.0
+    }
+   ],
+   [
+    "0.42",
+    "applause",
+    0.12,
+    {
+     "dur": 2.2
+    }
+   ],
+   [
+    "0",
+    "roomtone",
+    0.2,
+    {
+     "dur": 9.135
+    }
+   ],
+   [
+    "9.015",
+    "creak",
+    0.45,
+    {
+     "dur": 0.7
+    }
+   ],
+   [
+    "9.655",
+    "wallcrash",
+    0.6
+   ],
+   [
+    "9.705",
+    "rumble",
+    0.28,
+    {
+     "dur": 3.2
+    }
+   ],
+   [
+    "9.185",
+    "clunk",
+    0.55
+   ],
+   [
+    "9.405",
+    "clunk",
+    0.45000000000000007
+   ],
+   [
+    "9.625",
+    "clunk",
+    0.35000000000000003
+   ],
+   [
+    "10.055",
+    "vent",
+    0.16,
+    {
+     "dur": 13.262000000000002
+    }
+   ],
+   [
+    "16.369",
+    "beep",
+    0.4,
+    {
+     "f": 990,
+     "dur": 0.25
+    }
+   ],
+   [
+    "18.669",
+    "tick",
+    0.18,
+    {
+     "dur": 22.434900000000003,
+     "rate": 1.6
+    }
+   ],
+   [
+    "20.176",
+    "rollgate",
+    0.45,
+    {
+     "dur": 1.4
+    }
+   ],
+   [
+    "20.176",
+    "servo",
+    0.35,
+    {
+     "dur": 1.4
+    }
+   ],
+   [
+    "21.526",
+    "clunk",
+    0.6
+   ],
+   [
+    "20.526",
+    "footsteps",
+    0.55,
+    {
+     "dur": 2.1000000000000014,
+     "rate": 1.6
+    }
+   ],
+   [
+    "22.626",
+    "stomp",
+    0.7
+   ],
+   [
+    "20.376",
+    "drone",
+    0.2,
+    {
+     "dur": 2.741000000000003,
+     "f": 46
+    }
+   ],
+   [
+    "23.167",
+    "run",
+    0.35,
+    {
+     "dur": 3.782499999999999
+    }
+   ],
+   [
+    "24.057",
+    "gunburst",
+    0.4,
+    {
+     "times": [
+      0.0,
+      0.155,
+      0.31,
+      0.465,
+      0.62,
+      0.775,
+      0.93,
+      1.085,
+      1.24,
+      1.395,
+      1.55,
+      1.705,
+      1.86,
+      2.015,
+      2.17,
+      2.325,
+      2.48,
+      2.635
+     ],
+     "stack": 1,
+     "far": 0.0,
+     "casings": true,
+     "seed": 7,
+     "rev": 2.2
+    }
+   ],
+   [
+    "24.078",
+    "shatter",
+    0.5,
+    {
+     "seed": 70
+    }
+   ],
+   [
+    "24.402",
+    "shatter",
+    0.42,
+    {
+     "seed": 71
+    }
+   ],
+   [
+    "24.554",
+    "shatter",
+    0.42,
+    {
+     "seed": 72
+    }
+   ],
+   [
+    "24.695",
+    "shatter",
+    0.42,
+    {
+     "seed": 73
+    }
+   ],
+   [
+    "25.174",
+    "shatter",
+    0.42,
+    {
+     "seed": 74
+    }
+   ],
+   [
+    "25.318",
+    "shatter",
+    0.42,
+    {
+     "seed": 75
+    }
+   ],
+   [
+    "25.793",
+    "shatter",
+    0.42,
+    {
+     "seed": 76
+    }
+   ],
+   [
+    "25.937",
+    "shatter",
+    0.42,
+    {
+     "seed": 77
+    }
+   ],
+   [
+    "26.415",
+    "shatter",
+    0.42,
+    {
+     "seed": 78
+    }
+   ],
+   [
+    "26.558",
+    "shatter",
+    0.42,
+    {
+     "seed": 79
+    }
+   ],
+   [
+    "39.445",
+    "shatter",
+    0.42,
+    {
+     "seed": 80
+    }
+   ],
+   [
+    "25.233",
+    "splat",
+    0.35,
+    {
+     "seed": 81
+    }
+   ],
+   [
+    "25.6",
+    "rollgate",
+    0.32,
+    {
+     "dur": 3.0095000000000027,
+     "seed": 64
+    }
+   ],
+   [
+    "26.899",
+    "whoosh",
+    0.4,
+    {
+     "dur": 0.7
+    }
+   ],
+   [
+    "26.95",
+    "scrape",
+    0.38,
+    {
+     "dur": 0.9
+    }
+   ],
+   [
+    "27.509",
+    "scrape",
+    0.4,
+    {
+     "dur": 0.9,
+     "seed": 5
+    }
+   ],
+   [
+    "28.36",
+    "clunk",
+    0.85
+   ],
+   [
+    "29.05",
+    "clunk",
+    0.45
+   ],
+   [
+    "29.07",
+    "scrape",
+    0.3,
+    {
+     "dur": 0.4,
+     "seed": 8
+    }
+   ],
+   [
+    "30.691",
+    "whoosh",
+    0.65,
+    {
+     "dur": 0.5
+    }
+   ],
+   [
+    "31.011",
+    "clash",
+    0.95,
+    {
+     "f": 1150,
+     "seed": 3
+    }
+   ],
+   [
+    "31.011",
+    "kickhit",
+    0.6,
+    {
+     "seed": 39
+    }
+   ],
+   [
+    "31.031",
+    "crackopen",
+    0.35,
+    {
+     "dur": 1.2
+    }
+   ],
+   [
+    "32.51",
+    "crackopen",
+    0.65,
+    {
+     "dur": 1.8,
+     "seed": 11
+    }
+   ],
+   [
+    "33.484",
+    "glass",
+    0.45,
+    {
+     "dur": 1.2
+    }
+   ],
+   [
+    "33.504",
+    "static",
+    0.5,
+    {
+     "dur": 1.9620999999999995
+    }
+   ],
+   [
+    "35.426",
+    "scarehit",
+    0.95,
+    {
+     "dur": 2.6
+    }
+   ],
+   [
+    "35.546",
+    "static",
+    0.25,
+    {
+     "dur": 0.6,
+     "seed": 9
+    }
+   ],
+   [
+    "36.433",
+    "run",
+    0.3,
+    {
+     "dur": 0.7199999999999989
+    }
+   ],
+   [
+    "37.153",
+    "bodyfall",
+    0.62
+   ],
+   [
+    "37.153",
+    "kickhit",
+    0.35,
+    {
+     "seed": 40
+    }
+   ],
+   [
+    "37.553",
+    "bodyfall",
+    0.42,
+    {
+     "seed": 50
+    }
+   ],
+   [
+    "38.864",
+    "whoosh",
+    0.55,
+    {
+     "dur": 0.4
+    }
+   ],
+   [
+    "39.064",
+    "kickhit",
+    0.95,
+    {
+     "seed": 38
+    }
+   ],
+   [
+    "39.907",
+    "run",
+    0.55,
+    {
+     "dur": 3.868400000000001
+    }
+   ],
+   [
+    "39.907",
+    "heartbeat",
+    0.35,
+    {
+     "dur": 3.868400000000001,
+     "bpm": 150
+    }
+   ],
+   [
+    "41.104",
+    "beep",
+    0.45,
+    {
+     "f": 1320
+    }
+   ],
+   [
+    "41.989",
+    "beep",
+    0.45,
+    {
+     "f": 1320
+    }
+   ],
+   [
+    "42.689",
+    "beep",
+    0.45,
+    {
+     "f": 1320
+    }
+   ],
+   [
+    "43.775",
+    "doorboom",
+    0.9
+   ],
+   [
+    "43.795",
+    "whoosh",
+    0.5,
+    {
+     "dur": 0.6
+    }
+   ],
+   [
+    "44.025",
+    "doorboom",
+    0.55,
+    {
+     "seed": 47
+    }
+   ],
+   [
+    "45.595",
+    "bodyfall",
+    0.8,
+    {
+     "seed": 51
+    }
+   ],
+   [
+    "45.795",
+    "heartbeat",
+    0.4,
+    {
+     "dur": 1.957000000000002,
+     "bpm": 120
+    }
+   ],
+   [
+    "44.325",
+    "roomtone",
+    0.22,
+    {
+     "dur": 20.661000000000005
+    }
+   ],
+   [
+    "47.652",
+    "applause",
+    0.4,
+    {
+     "dur": 3.628999999999999
+    }
+   ],
+   [
+    "48.901",
+    "fanfare",
+    0.32,
+    {
+     "dur": 2.2,
+     "key": 52
+    }
+   ],
+   [
+    "51.926",
+    "curtain",
+    0.4,
+    {
+     "dur": 0.7
+    }
+   ],
+   [
+    "52.276",
+    "wind",
+    0.22,
+    {
+     "dur": 12.710000000000004
+    }
+   ],
+   [
+    "54.907",
+    "clunk",
+    0.3,
+    {
+     "seed": 0
+    }
+   ],
+   [
+    "55.087",
+    "clunk",
+    0.27999999999999997,
+    {
+     "seed": 1
+    }
+   ],
+   [
+    "55.267",
+    "clunk",
+    0.26,
+    {
+     "seed": 2
+    }
+   ],
+   [
+    "55.447",
+    "clunk",
+    0.24,
+    {
+     "seed": 3
+    }
+   ],
+   [
+    "55.627",
+    "clunk",
+    0.21999999999999997,
+    {
+     "seed": 4
+    }
+   ],
+   [
+    "55.807",
+    "clunk",
+    0.19999999999999998,
+    {
+     "seed": 5
+    }
+   ],
+   [
+    "55.987",
+    "clunk",
+    0.18,
+    {
+     "seed": 6
+    }
+   ],
+   [
+    "54.907",
+    "hum",
+    0.16,
+    {
+     "dur": 10.079000000000008,
+     "f": 60
+    }
+   ],
+   [
+    "L30-0.1",
+    "sting",
+    0.3,
+    {
+     "dur": 2.6
+    }
+   ],
+   [
+    "60.922",
+    "glitch",
+    0.45,
+    {
+     "dur": 0.6,
+     "seed": 12
+    }
+   ],
+   [
+    "61.042",
+    "scarehit",
+    0.75,
+    {
+     "dur": 3.2
+    }
+   ],
+   [
+    "61.042",
+    "drone",
+    0.24,
+    {
+     "dur": 3.9440000000000026,
+     "f": 41
+    }
+   ]
+  ]
+ }
+}

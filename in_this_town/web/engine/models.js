@@ -16,6 +16,7 @@ import { campfire, tent, logSeat, woodPile, axeStump, lantern, cookPot, bedroll,
 import { obbyPlatform, laserCross, controlChair } from './obby.js';
 import { ornateFrame, printMat, loosePrint, invitation, chandelier, sconce, bigChair, banquetTable, gramophone, grandClock, curtainWindow, panelDoor, bareTrees, mansion, guest } from './mansion.js';
 import { stormIsland, courtyard, clockTower, postClock, brickWall, crater, stormSea, rain as stormRain, timeCrack, cavern } from './ruins.js';
+import { screenMat, flatTV, seatBanks, mallRing, jumbotron, countdownDraw, rollGate, glassShatter, hunterHelmet, metalPipe, tvHouse, studioSet, shopSign, shopWindowMat } from './gameshow.js';
 import { trainingRifle, soldierGear, syncRanks, muzzleFlashes, tracers, eventParticles, bulletHoles, smokeHaze, jerseyBarrier, steelDoor, securityCam, wallClock, trainingHall, controlRoom, feedWall, industrialDistrict, bloodFX } from './tactical.js';
 import { magicArena, arenaGround, voidRocks, fallingRocks, fireWall, energyOrb, runeShield, shardBurst, shockwave, sigil, beam, decal, arcBolt, fireStream, driftParticles, shadowCrowd, teleportFx, cloak } from './arena.js';
 import { blackSword, whiteBlade, armorSuit, swordField } from './blades.js';
@@ -393,6 +394,20 @@ export const BUILD = {
   notice_sign: (o) => put(o, noticeSign(o.lines ?? ['DEMOLITION NOTICE'], o)),
   forest_beast: (o) => put(o, beast(o)),   // a blocky wolf-like creature with glowing eyes that blink; .update(t)
   snowfall: (o) => snow(o.parent, o),   // falling snow points (centre, size, height, count)
+  // Episode 36 (engine/gameshow.js): a game show arena in an empty mall, hunters' masks, TVs on a street
+  tv_screen_mat: (o) => screenMat(o),   // a CRT/LED screen material from a render target (o.rt) and/or a canvas texture (o.ui); uniforms rtK, uiK, k, noise, lines, crop, t
+  flat_tv: (o) => put(o, flatTV(o.mat || screenMat(o), o)),   // a flat TV on a foot stand, screen faces +z; .screen, .base
+  seat_banks: (o) => put(o, seatBanks(o)),   // tiered stadium seats round a square floor (instanced), gaps for tunnels
+  mall_ring: (o) => put(o, mallRing(o)),   // an enormous mall's upper floors in a ring: balconies, lit and dark shopfronts with signs
+  jumbotron: (o) => put(o, jumbotron(o.mat || screenMat(o), o)),   // a four-faced hanging scoreboard with LED rims; .screens
+  countdown_draw: (o) => countdownDraw(o.ctx, o.w, o.h, o.sec, o),   // draws MM:SS (red under 10 s), a label and a bar on a 2D canvas
+  roll_gate: (o) => put(o, rollGate(o)),   // a steel roll-down security shutter between posts; .set(bottomY)
+  glass_shatter: (o) => glassShatter(o.parent, o.events, o),   // shop windows bursting into shards: [{t, c, n, w, h, p, push, power}]; .update(t)
+  hunter_helmet: (o) => hunterHelmet(o.character, o),   // a black helmet with a white domed faceplate (o.number) over a CRT screen; .crack(k), .open(t, t0), .screen
+  metal_pipe: (o) => put(o, metalPipe(o)),   // a scaffold pipe along +z; .tipLocal
+  tv_house: (o) => put(o, tvHouse(o)),   // a suburban house facing -x whose five windows each hold a glowing TV (o.tvMat); .tvs
+  studio_set: (o) => put(o, studioSet(o)),   // a game-show stage: podium, glitter backdrop, logo, 12 audience seats (.seats)
+  shop_sign: (o) => shopSign(o.text, o),   // a glowing shop-sign material
   // Episode 34 (engine/tactical.js): a training facility, rifles, masked soldiers in sync, gunfire effects, toon blood
   training_rifle: (o) => put(o, trainingRifle(o)),   // along +z from the grip; .mag/.magRest, .muzzle, .guard; hold with tactical.js holdRifle(ch, rifle, aim, {recoil, down})
   masked_soldier_gear: (o) => soldierGear(o.character, o),   // a white featureless mask, a helmet, a target plate (o.number) on a character

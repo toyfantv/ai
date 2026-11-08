@@ -1,0 +1,32 @@
+{
+ "key": "farm_ep36_hunter_b",
+ "source": {
+  "route": "one-off Studio capture (scenes/sandbox/avcap_ep36.lua), the steps of tools/farm_avatars.py",
+  "catalog_items": [
+   6768647069,
+   13425258126
+  ],
+  "label": "Hunter body (black turtleneck, tactical pants)"
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-08",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso"
+ ]
+}

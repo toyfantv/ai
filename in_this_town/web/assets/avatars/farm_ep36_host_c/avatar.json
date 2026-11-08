@@ -1,0 +1,34 @@
+{
+ "key": "farm_ep36_host_c",
+ "source": {
+  "route": "one-off Studio capture (scenes/sandbox/avcap_ep36.lua), the steps of tools/farm_avatars.py",
+  "catalog_items": [
+   5925700956,
+   6445441940,
+   136947344683347
+  ],
+  "label": "Game-show host (purple sparkly suit, black tie, slicked hair)"
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-08",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_Accessory_slick_back_hair"
+ ]
+}

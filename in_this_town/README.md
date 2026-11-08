@@ -350,6 +350,32 @@ change. Episode 17 imports its package, model house and cardboard sky from the l
 * `render.js frames` skips frames that exist: delete a range before re-rendering it.
 * New avatars: `farm_ep35_nora`, `farm_ep35_girl` (one-off Studio captures; sources in their `avatar.json`).
 
+### Episode 36 notes (the last contestant; Psychological Horror, Episodes 35-39)
+
+* **Sets in one scene, far apart**: the bedroom at the origin stands on the arena floor (its four walls are hinged flats that fall
+  outward, the ceiling lifts away; wallpaper inside, plywood with braces and a "SET 36-B" stencil outside); the chase corridor at
+  `CO = (1000, 0, 0)` (+z along it); the host's studio at `HS = (0, 0, -3000)`, seen only through render targets; the end street round the
+  bedroom with its ground 12 studs down (the bedroom is upstairs). `only(...)` toggles them per shot.
+* **Three render targets**: the host's studio feed (the bedroom TV, the jumbotron during "Release the hunters"), Grayson's live face (the
+  hunter's CRT inside the mask) and the street feed (Grayson at his window from across the street, masked after the host's last line: a
+  hidden masked copy takes his pose for that render only). A `screenMat` shows a canvas UI where the render target is off: set
+  `uiK = 1 - rtK` or the UI's opaque black hides the feed.
+* **The countdown canvas** is redrawn only when its key changes; the key must include "shown / blank", not just the seconds (05:00 was
+  cached as blank).
+* **hunterHelmet**: the faceplate's dome must be rotated to face +z (`SphereGeometry`'s phi 0 is -x: the first version wore it on the
+  ear). Its `.crack(k)` and `.open(t, t0)` are pure functions of t. Shots of the mask aim along the head's world +z.
+* **Wall braces** skip window and door holes (a brace crossed the window in the end shots).
+* **Lying on the back**: `place(c, p, yaw, -(PI/2 - 0.08))` (negative rx falls backward); arms out with `rotation.z`. Prone with arms
+  forward pushes them through the floor.
+* **The reflection**: a transparent masked copy (opacity 0.42) mirrored across the window plane; frame it beside Grayson, not behind him.
+* Gunfire: shots alternate between the two armed hunters every 0.155 s, aimed into shop windows behind Grayson; the first hit on a pane
+  shatters it (`glassShatter`), later hits spark. All computed in setup so every worker agrees. `tools/ep36_sound.py` builds the cues from
+  `events.json` (shots, glass, the two impact sequences' unmapped times).
+* New SFX in `audio2.py`: applause, fanfare, beep, rollgate, shatter.
+* Impact sequences (Episode 33's code) on the pipe strike and the kick; the tackle gets shake and focus lines only.
+* New avatars: `farm_ep36_host_a`, `farm_ep36_host_c` (the host), `farm_ep36_hunter_a/b/c` (hunter bodies; the helmet hides their heads).
+  The audience is library avatars. No Mixamo clips (the Mixamo site was unreachable): renderer poses plus hand-keyed moments.
+
 ### Free models from other sites
 
 Only when a story needs one; no bulk downloads. Add it with the licence recorded:

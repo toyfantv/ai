@@ -557,6 +557,52 @@ SFX.update({
 })
 
 
+# Episode 36: a game show (a studio audience's applause, a brassy fanfare, the countdown's beeps), a roll-down security shutter,
+# a shop window shattering
+def applause(d=4.0, seed=61, n=260):
+    r = np.random.default_rng(seed); x = np.zeros(int(d * SR)); clap = lambda: bp(r.standard_normal(int(0.03 * SR)), 900, 5200) * np.exp(-tt(0.03) * 160)
+    for _ in range(int(n * d)):
+        i = int(r.random() * (d - 0.05) * SR); c = clap() * (0.4 + 0.6 * r.random()); x[i:i + len(c)] += c[: len(x) - i]
+    e = np.minimum(1, tt(d) / 0.25) * np.minimum(1, (d - tt(d)) / 0.9); return reverb(np.tanh(x * e * 0.5), 1.8, 0.35)
+
+
+def fanfare(d=2.4, key=50):
+    # three brassy chords (a saw stack with a soft attack), the last held
+    t = tt(d); x = np.zeros(len(t))
+    for t0, dur, notes in ((0.0, 0.18, (0, 4, 7)), (0.2, 0.18, (2, 5, 9)), (0.42, d - 0.5, (4, 7, 12, 16))):
+        i0, n = int(t0 * SR), int(dur * SR); tl = tt(dur)
+        for nn in notes:
+            f = hz(key + nn); v = sum(np.sin(2 * np.pi * f * k * tl) / k for k in range(1, 7)) * 0.16
+            x[i0:i0 + n] += (v * np.minimum(1, tl / 0.02) * np.minimum(1, (dur - tl) / 0.08))[: len(x) - i0]
+    return reverb(lp(x, 4200), 1.6, 0.3)
+
+
+def beep(f=1320, d=0.14):
+    t = tt(d); return (np.sign(np.sin(2 * np.pi * f * t)) * 0.25 + np.sin(2 * np.pi * f * t) * 0.5) * np.minimum(1, t / 0.004) * np.minimum(1, (d - t) / 0.02)
+
+
+def rollgate(d=2.0, seed=62):
+    # a steel shutter rattling down its rails: a fast irregular slat clatter over a low metallic rumble
+    r = np.random.default_rng(seed); t = tt(d); x = bp(r.standard_normal(len(t)), 60, 400) * 0.35
+    k = 0.0
+    while k < d - 0.03:
+        c = bp(r.standard_normal(int(0.02 * SR)), 1500, 6000) * np.exp(-tt(0.02) * 220) * (0.4 + 0.6 * r.random()); i = int(k * SR); x[i:i + len(c)] += c[: len(x) - i]; k += 0.018 + 0.03 * r.random()
+    return reverb(x * np.minimum(1, t / 0.05) * np.minimum(1, (d - t) / 0.2), 1.6, 0.3)
+
+
+def shatter(seed=63):
+    r = np.random.default_rng(seed); burst = hp(r.standard_normal(int(0.5 * SR)), 2500) * np.exp(-tt(0.5) * 14) * 0.8
+    thump = impact(0.4, 110, 40, 0.0)[: int(0.4 * SR)] * 0.6; tink = glass_pings(1.6, 40) * 0.8
+    return reverb(_seq([(0, burst), (0, thump), (0.04, tink)]), 1.8, 0.3)
+
+
+SFX.update({
+    'applause': lambda o: applause(o.get('dur', 4.0), o.get('seed', 61)), 'fanfare': lambda o: fanfare(o.get('dur', 2.4), o.get('key', 50)),
+    'beep': lambda o: beep(o.get('f', 1320), o.get('dur', 0.14)), 'rollgate': lambda o: rollgate(o.get('dur', 2.0), o.get('seed', 62)),
+    'shatter': lambda o: shatter(o.get('seed', 63)),
+})
+
+
 # Episode 23: a small dragon's wings (soft feathery beats) and its voice (a bright squeak that bends up or down)
 # ---------- Episode 35: phone, locks, curtain, the scare ----------
 def phonebuzz(d=0.9, seed=51):

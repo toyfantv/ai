@@ -1,0 +1,32 @@
+{
+ "key": "farm_ep36_hunter_c",
+ "source": {
+  "route": "one-off Studio capture (scenes/sandbox/avcap_ep36.lua), the steps of tools/farm_avatars.py",
+  "catalog_items": [
+   99681808145175,
+   8642175276
+  ],
+  "label": "Hunter body (black tactical jacket, grey pants)"
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-08",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso"
+ ]
+}
