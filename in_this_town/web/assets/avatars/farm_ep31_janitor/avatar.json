@@ -1,0 +1,35 @@
+{
+ "key": "farm_ep31_janitor",
+ "source": {
+  "route": "one-off Studio capture (Episode 31), the steps of tools/farm_avatars.py",
+  "scene": "scenes/sandbox/avcap_ep31.lua",
+  "label": "The janitor (Episode 31): grey work shirt and pants",
+  "catalog_items": [
+   12383541110,
+   110607811535531,
+   128660233600965
+  ]
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-08",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_Accessory_Short_Black_Hair"
+ ]
+}

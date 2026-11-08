@@ -1,0 +1,35 @@
+{
+ "key": "farm_ep31_walt",
+ "source": {
+  "route": "one-off Studio capture (Episode 31), the steps of tools/farm_avatars.py",
+  "scene": "scenes/sandbox/avcap_ep31.lua",
+  "label": "Walt (Episode 31): old man on the bench, sweater, tan slacks, grey hair",
+  "catalog_items": [
+   7032331225,
+   133095651023007,
+   93836142479226
+  ]
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-08",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_Accessory_BaldingBossHair"
+ ]
+}

@@ -1,0 +1,35 @@
+{
+ "key": "farm_ep31_boy",
+ "source": {
+  "route": "one-off Studio capture (Episode 31), the steps of tools/farm_avatars.py",
+  "scene": "scenes/sandbox/avcap_ep31.lua",
+  "label": "The waiting boy (Episode 31): blue striped shirt, jeans, messy brown hair",
+  "catalog_items": [
+   6059194371,
+   10567403270,
+   81202218399440
+  ]
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-08",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_Accessory_f"
+ ]
+}

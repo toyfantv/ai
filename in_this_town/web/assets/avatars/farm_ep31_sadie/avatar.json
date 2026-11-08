@@ -1,0 +1,35 @@
+{
+ "key": "farm_ep31_sadie",
+ "source": {
+  "route": "one-off Studio capture (Episode 31), the steps of tools/farm_avatars.py",
+  "scene": "scenes/sandbox/avcap_ep31.lua",
+  "label": "Sadie (Episode 31): light blue denim jacket over a white tee, black pants with white sneakers, long straight dark-brown hair",
+  "catalog_items": [
+   6752656949,
+   12653140105,
+   108468526622002
+  ]
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-08",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_Accessory_Long_Stylish_Straight_Hair_x"
+ ]
+}

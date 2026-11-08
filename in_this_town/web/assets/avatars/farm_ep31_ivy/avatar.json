@@ -1,0 +1,35 @@
+{
+ "key": "farm_ep31_ivy",
+ "source": {
+  "route": "one-off Studio capture (Episode 31), the steps of tools/farm_avatars.py",
+  "scene": "scenes/sandbox/avcap_ep31.lua",
+  "label": "Ivy (Episode 31): Sadie's friend, green sweater, jeans with brown boots, blonde ponytail",
+  "catalog_items": [
+   16929538502,
+   10567403270,
+   5865680140
+  ]
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-08",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_PonytailBlonde"
+ ]
+}

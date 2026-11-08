@@ -1,0 +1,642 @@
+{
+ "number": 31,
+ "title": "The Mall That Wasn't on Any Map",
+ "output": "InThisTown_Episode31_EndlessMall.mp4",
+ "youtube_title": "The Mall That Wasn't on Any Map...",
+ "tiktok_caption": "It's been 4:45 for a long time in here.",
+ "hashtags": "#InThisTown #LiminalHorror #LiminalSpaces #RobloxHorror #Shorts",
+ "thumbnail_text": "YOU ARE HERE",
+ "thumbnail_rec": "Sadie, small, at the top of a bank of escalators in a blindingly clean empty mall; rows of motionless people rise toward her with their backs turned; her phone reads 4:45 PM.",
+ "tail": 2.4,
+ "fps": 60,
+ "narrator": {
+  "pace": [
+   2.5,
+   2.95
+  ],
+  "min_tempo": 1.04
+ },
+ "cast": {
+  "dana": {
+   "voice": "matilda",
+   "pitch": 0.98,
+   "tempo": 0.95
+  },
+  "sadie": {
+   "voice": "jessica",
+   "pitch": 1.03,
+   "tempo": 1.08
+  },
+  "guard": {
+   "voice": "eric",
+   "pitch": 0.96,
+   "tempo": 1.06
+  },
+  "pa": {
+   "voice": "sarah",
+   "pitch": 0.98,
+   "tempo": 1.07
+  }
+ },
+ "highlights": {
+  "4:45 PM": "yellow",
+  "STILL 4:45": "red",
+  "4:45": "yellow",
+  "COMPLETELY EMPTY": "yellow",
+  "NO EMPLOYEES": "yellow",
+  "NO CUSTOMERS": "yellow",
+  "NO MUSIC": "red",
+  "ANOTHER SHOPPING MALL": "yellow",
+  "EXACTLY THE SAME": "red",
+  "DISAPPEARED": "red",
+  "STILL?": "red",
+  "YOU ARE HERE": "red",
+  "REMAIN": "red",
+  "ESCALATOR": "yellow",
+  "PERSON": "yellow",
+  "PERFECTLY STILL": "yellow",
+  "BACKWARD": "red",
+  "MOTIONLESS": "red",
+  "FIVE MINUTES": "yellow",
+  "TURNED TOWARD HER": "red",
+  "DIMMED": "yellow",
+  "REPLACEMENT": "red",
+  "SADIE'S CLOTHES": "red"
+ },
+ "lines": [
+  {
+   "text": "Sadie entered the shopping mall at 4:45 PM.",
+   "speak": "Sadie entered the shopping mall at four forty-five P M.",
+   "tag": "[calm]",
+   "pause": 0.09
+  },
+  {
+   "text": "When she checked her phone, it was still 4:45.",
+   "speak": "When she checked her phone, it was still four forty-five.",
+   "tag": "[mysterious]",
+   "pause": 0.11
+  },
+  {
+   "text": "The mall was completely empty.",
+   "tag": "[calm]",
+   "pause": 0.08
+  },
+  {
+   "text": "Every store was open.",
+   "tag": "[calm]",
+   "pause": 0.05
+  },
+  {
+   "text": "Every light was on.",
+   "tag": "[calm]",
+   "pause": 0.06
+  },
+  {
+   "text": "But no employees.",
+   "tag": "[softly]",
+   "pause": 0.05
+  },
+  {
+   "text": "No customers.",
+   "tag": "[softly]",
+   "pause": 0.05
+  },
+  {
+   "text": "And no music.",
+   "tag": "[softly]",
+   "pause": 0.13
+  },
+  {
+   "text": "Sadie walked toward the exit.",
+   "tag": "[calm]",
+   "pause": 0.06
+  },
+  {
+   "text": "The automatic doors opened.",
+   "tag": "[calm]",
+   "pause": 0.09
+  },
+  {
+   "text": "Behind them was another shopping mall.",
+   "tag": "[mysterious]",
+   "pause": 0.09
+  },
+  {
+   "text": "Exactly the same.",
+   "tag": "[softly]",
+   "pause": 0.13
+  },
+  {
+   "text": "She turned around.",
+   "tag": "[calm]",
+   "pause": 0.06
+  },
+  {
+   "text": "The first mall had disappeared.",
+   "tag": "[mysterious]",
+   "pause": 0.13
+  },
+  {
+   "text": "“What time do you have?”",
+   "speak": "What time do you have?",
+   "voice": "dana",
+   "tag": "[quietly]",
+   "pause": 0.05
+  },
+  {
+   "text": "“4:45.”",
+   "speak": "Four forty-five.",
+   "voice": "sadie",
+   "tag": "[nervously]",
+   "pause": 0.05
+  },
+  {
+   "text": "“Still?”",
+   "speak": "Still?",
+   "voice": "dana",
+   "tag": "[flatly]",
+   "pause": 0.09
+  },
+  {
+   "text": "“You are here.”",
+   "speak": "You are here.",
+   "voice": "guard",
+   "tag": "[flatly]",
+   "pause": 0.09
+  },
+  {
+   "text": "“Attention shoppers. Please remain where you are.”",
+   "speak": "Attention shoppers. Please remain where you are.",
+   "voice": "pa",
+   "tag": "[calm]",
+   "pause": 0.1,
+   "fx": "pa"
+  },
+  {
+   "text": "A distant escalator began moving.",
+   "tag": "[mysterious]",
+   "pause": 0.08
+  },
+  {
+   "text": "A person slowly rose into view.",
+   "tag": "[calm]",
+   "pause": 0.09
+  },
+  {
+   "text": "They were standing perfectly still.",
+   "tag": "[softly]",
+   "pause": 0.05
+  },
+  {
+   "text": "Facing backward.",
+   "tag": "[softly]",
+   "pause": 0.11
+  },
+  {
+   "text": "Then another.",
+   "tag": "[calm]",
+   "pause": 0.05
+  },
+  {
+   "text": "And another.",
+   "tag": "[calm]",
+   "pause": 0.08
+  },
+  {
+   "text": "Every escalator was carrying motionless people.",
+   "tag": "[mysterious]",
+   "pause": 0.09
+  },
+  {
+   "text": "“Store closing in five minutes.”",
+   "speak": "Store closing in five minutes.",
+   "voice": "pa",
+   "tag": "[calm]",
+   "pause": 0.09,
+   "fx": "pa"
+  },
+  {
+   "text": "Sadie checked her phone.",
+   "tag": "[calm]",
+   "pause": 0.06
+  },
+  {
+   "text": "4:45 PM.",
+   "speak": "Four forty-five P M.",
+   "tag": "[softly]",
+   "pause": 0.11
+  },
+  {
+   "text": "Every person on the escalators turned toward her.",
+   "tag": "[mysterious]",
+   "pause": 0.1
+  },
+  {
+   "text": "The lights dimmed.",
+   "tag": "[softly]",
+   "pause": 0.09
+  },
+  {
+   "text": "“Thank you for shopping with us.”",
+   "speak": "Thank you for shopping with us.",
+   "voice": "pa",
+   "tag": "[calm]",
+   "pause": 0.13,
+   "fx": "pa"
+  },
+  {
+   "text": "“Your replacement has arrived.”",
+   "speak": "Your replacement has arrived.",
+   "voice": "pa",
+   "tag": "[calm]",
+   "pause": 0.18,
+   "fx": "pa"
+  },
+  {
+   "text": "Across the mall, someone wearing Sadie's clothes stepped through the entrance.",
+   "tag": "[mysterious]",
+   "pause": 0.09
+  }
+ ],
+ "samples": {},
+ "sound": {
+  "key": 50,
+  "music_gain": 0.0,
+  "music": [
+   [
+    "0",
+    "silence"
+   ]
+  ],
+  "cues": [
+   [
+    "1.9",
+    "buzz",
+    0.1,
+    {
+     "dur": 51.942,
+     "f": 120
+    }
+   ],
+   [
+    "1.9",
+    "vent",
+    0.1,
+    {
+     "dur": 62.904,
+     "seed": 3
+    }
+   ],
+   [
+    "53.842",
+    "buzz",
+    0.05,
+    {
+     "dur": 10.962000000000005,
+     "f": 100
+    }
+   ],
+   [
+    "0",
+    "wind",
+    0.08,
+    {
+     "dur": 2.2,
+     "seed": 2
+    }
+   ],
+   [
+    "0.3",
+    "footsteps",
+    0.2,
+    {
+     "dur": 3.2,
+     "rate": 2.2
+    }
+   ],
+   [
+    "1",
+    "whoosh",
+    0.18,
+    {
+     "dur": 0.6
+    }
+   ],
+   [
+    "4.0",
+    "clunk",
+    0.16,
+    {
+     "seed": 6
+    }
+   ],
+   [
+    "7.553",
+    "footsteps",
+    0.13,
+    {
+     "dur": 6.625000000000001,
+     "rate": 2.2,
+     "rev": 0.35
+    }
+   ],
+   [
+    "15.567",
+    "footsteps",
+    0.18,
+    {
+     "dur": 1.5640000000000014,
+     "rate": 2.4,
+     "rev": 0.3
+    }
+   ],
+   [
+    "4.233",
+    "tick",
+    0.16
+   ],
+   [
+    "14.378",
+    "creak",
+    0.05,
+    {
+     "dur": 1.2,
+     "seed": 7
+    }
+   ],
+   [
+    "17.351",
+    "whoosh",
+    0.22,
+    {
+     "dur": 0.7
+    }
+   ],
+   [
+    "22.59",
+    "clunk",
+    0.16,
+    {
+     "seed": 8
+    }
+   ],
+   [
+    "21.091",
+    "footsteps",
+    0.18,
+    {
+     "dur": 0.7,
+     "rate": 2.3
+    }
+   ],
+   [
+    "23.41",
+    "whoosh",
+    0.2,
+    {
+     "dur": 0.7
+    }
+   ],
+   [
+    "23.91",
+    "drone",
+    0.09,
+    {
+     "dur": 2.0,
+     "f": 46
+    }
+   ],
+   [
+    "28.582",
+    "footsteps",
+    0.12,
+    {
+     "dur": 1.0,
+     "rate": 2.4
+    }
+   ],
+   [
+    "30.132",
+    "pachime",
+    0.3
+   ],
+   [
+    "30.112",
+    "static",
+    0.09,
+    {
+     "dur": 3.9470000000000027
+    }
+   ],
+   [
+    "32.032",
+    "clunk",
+    0.42,
+    {
+     "seed": 11
+    }
+   ],
+   [
+    "32.152",
+    "tick",
+    0.2
+   ],
+   [
+    "30.732",
+    "crowdsteps",
+    0.2,
+    {
+     "dur": 3.3,
+     "seed": 5,
+     "per_s": 9
+    }
+   ],
+   [
+    "34.159",
+    "clunk",
+    0.34,
+    {
+     "seed": 13
+    }
+   ],
+   [
+    "34.259",
+    "ridehum",
+    0.13,
+    {
+     "dur": 17.32699999999999,
+     "rate": 0.7
+    }
+   ],
+   [
+    "39.404",
+    "clunk",
+    0.22,
+    {
+     "seed": 14
+    }
+   ],
+   [
+    "39.454",
+    "ridehum",
+    0.07,
+    {
+     "dur": 11.931999999999995,
+     "rate": 0.8
+    }
+   ],
+   [
+    "40.089",
+    "clunk",
+    0.22,
+    {
+     "seed": 15
+    }
+   ],
+   [
+    "40.139",
+    "ridehum",
+    0.07,
+    {
+     "dur": 11.246999999999993,
+     "rate": 0.8700000000000001
+    }
+   ],
+   [
+    "41.078",
+    "clunk",
+    0.22,
+    {
+     "seed": 16
+    }
+   ],
+   [
+    "41.128",
+    "ridehum",
+    0.07,
+    {
+     "dur": 10.257999999999996,
+     "rate": 0.9400000000000001
+    }
+   ],
+   [
+    "36.337",
+    "drone",
+    0.08,
+    {
+     "dur": 7.091000000000001,
+     "f": 38
+    }
+   ],
+   [
+    "43.228",
+    "heartbeat",
+    0.14,
+    {
+     "dur": 5.078999999999998,
+     "bpm": 66
+    }
+   ],
+   [
+    "45.286",
+    "pachime",
+    0.28
+   ],
+   [
+    "45.266",
+    "static",
+    0.08,
+    {
+     "dur": 2.840999999999994
+    }
+   ],
+   [
+    "48.297",
+    "tick",
+    0.16
+   ],
+   [
+    "51.306",
+    "clunk",
+    0.5,
+    {
+     "seed": 21
+    }
+   ],
+   [
+    "51.386",
+    "groan",
+    0.12,
+    {
+     "dur": 1.9,
+     "seed": 22
+    }
+   ],
+   [
+    "51.406",
+    "crowdsteps",
+    0.32,
+    {
+     "dur": 0.55,
+     "seed": 6,
+     "per_s": 40
+    }
+   ],
+   [
+    "51.886",
+    "heartbeat",
+    0.2,
+    {
+     "dur": 2.056000000000002,
+     "bpm": 88
+    }
+   ],
+   [
+    "53.742",
+    "flick",
+    0.32
+   ],
+   [
+    "53.792",
+    "drone",
+    0.14,
+    {
+     "dur": 11.012000000000004,
+     "f": 33
+    }
+   ],
+   [
+    "54.589",
+    "pachime",
+    0.26
+   ],
+   [
+    "54.569",
+    "static",
+    0.08,
+    {
+     "dur": 3.6169999999999973
+    }
+   ],
+   [
+    "58.616",
+    "whoosh",
+    0.14,
+    {
+     "dur": 0.7,
+     "rev": 0.7
+    }
+   ],
+   [
+    "59.066",
+    "footsteps",
+    0.1,
+    {
+     "dur": 5.588000000000005,
+     "rate": 1.9,
+     "rev": 0.8
+    }
+   ]
+  ]
+ }
+}

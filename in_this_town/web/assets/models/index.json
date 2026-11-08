@@ -1109,12 +1109,112 @@
     "type": "builder",
     "url": ""
   },
+  "mall_auto_door": {
+    "author": "toyfantv",
+    "desc": "automatic sliding double doors with frosted glass",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep31",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "mall_block_wall": {
+    "author": "toyfantv",
+    "desc": "a grey cinder block wall that fills a door opening",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep31",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "mall_bucket": {
+    "author": "toyfantv",
+    "desc": "a yellow mop bucket",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep31",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "mall_claw_machine": {
+    "author": "toyfantv",
+    "desc": "an arcade claw machine with a joystick",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep31",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "mall_directory": {
+    "author": "toyfantv",
+    "desc": "a mall directory board where every spot reads YOU ARE HERE",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep31",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "mall_facade": {
+    "author": "toyfantv",
+    "desc": "the outside of a shopping mall: parking lot, entrance canopy, sign",
+    "kind": "environment",
+    "licence": "own",
+    "made_for": "ep31",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "mall_hall": {
+    "author": "toyfantv",
+    "desc": "a bright two-level mall hall: terrazzo floor, fluorescent ceiling, generic shops, a sunken well with a bank of four escalators, bridges, planters and benches",
+    "kind": "environment",
+    "licence": "own",
+    "made_for": "ep31",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "mall_mop": {
+    "author": "toyfantv",
+    "desc": "a string mop on a long wooden handle",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep31",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "mall_pa_horn": {
+    "author": "toyfantv",
+    "desc": "a ceiling-hung PA horn speaker",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep31",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "mall_ring": {
     "author": "toyfantv",
     "desc": "an enormous mall's upper floors in a ring with lit and dark shopfronts",
     "kind": "set",
     "licence": "own",
     "made_for": "ep36",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "mall_wet_sign": {
+    "author": "toyfantv",
+    "desc": "a yellow caution wet floor sign",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep31",
     "source": "this renderer",
     "type": "builder",
     "url": ""
@@ -1375,6 +1475,16 @@
     "kind": "prop",
     "licence": "own",
     "made_for": "ep19",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "phone_445": {
+    "author": "toyfantv",
+    "desc": "a phone whose lock screen reads 4:45 PM",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep31",
     "source": "this renderer",
     "type": "builder",
     "url": ""
@@ -1645,6 +1755,16 @@
     "kind": "material",
     "licence": "own",
     "made_for": "ep36",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "shopping_bag": {
+    "author": "toyfantv",
+    "desc": "a paper shopping bag with a rope handle",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep31",
     "source": "this renderer",
     "type": "builder",
     "url": ""

@@ -360,6 +360,16 @@ change. Episode 17 imports its package, model house and cardboard sky from the l
 * **Reverse angles:** when a camera stands where the other character is, that character is hidden for the shot (`ask`, `smile`, `final`, and `shake` to `stare`).
 * **Voices:** `fx: "cave"` and `fx: "mimic"` were added to `audio2.py`. `mimic` is the speaker's own take plus a faint detuned copy, so "So am I." stays recognisably Daniel. `tools/ep39_sound.py` writes the sound block. Note that a `sample` cue's `rev` is a room size in seconds (0 crashes it), and `groan` needs `dur` of at least 1.7 and `rumble` over 2.
 
+### Episode 31 notes (the mall that wasn't on any map; Liminal Horror, Episodes 27-31)
+`web/episodes/ep31.js` + `web/engine/mall.js` (the mall kit, in the model library as `mall_hall`, `mall_directory`, `mall_auto_door`, `phone_445`...). `tools/ep31_sound.py` writes the sound block (no music at all, the fluorescent hum carries it).
+- `floorMirror(ctx, mat, {w,h})` is a planar reflection pass for one flat floor: call `.render(pos, look, fov, hideList)` before `frame()`, and keep `uReflK` at 0 outdoors. Reflection strength is low on purpose: a strong one glares.
+- A long escalator bank, seen from the floor, is mostly its underside. Don't run upper escalators through the well's view; this set has only the four lanes going down.
+- A rider's head comes over the floor line slowly (0.36 studs a second here): shoot it with a long lens (fov 30) from just above floor level, centred on the lane, and start the lane about 2 s before the cut.
+- Roblox legs are short: a bench seat at y 1.35 (not 2.25) lets a seated person keep the feet near the floor without the thighs going through the slats.
+- An insert of a phone: put the camera on the line from the phone to her eyes and raise it 0.36, or the arm covers the screen. Keep the phone up until after the cut: the arm comes down through the camera otherwise.
+- `RENDER_QUERY` `dbgchar` and `dbgcam` take a `;`-separated list, picked by `round(t*100) % n`: one launch renders many checks (times 29.40, 29.41...).
+- A one-line arrow function can't take a `//` comment: it swallows the rest of the line.
+
 ### Episode 30 notes (the amusement park that never opens; Liminal Horror, Episodes 27-31)
 `web/episodes/ep30.js` + `web/engine/amusement.js` (the park kit, in the model library as `ferris_wheel`, `carousel_ride`, `ticket_booth`, `blue_creature`, `name_balloon`...). `tools/ep30_sound.py` writes the sound block; `audio2.py` gained the `carousel` mood (an original band-organ tune that runs down at the end of its segment), and the SFX `crowdsteps` and `ridehum`.
 - Shots are found by time in list order: when two shots swap times, swap their lines too.

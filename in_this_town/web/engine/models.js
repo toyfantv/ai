@@ -26,6 +26,7 @@ import { hospitalBed, wardDoor, fluorPanel, crtTV, ivPole, cabinet, paSpeaker, r
 import { voiceTunnel, drips as tunnelDrips, hillside as tunnelHillside, floodTripod, cautionTape, tapePost, rescueRadio, rescueTruck, campTable, wallFaces } from './tunnel.js';
 import { puppet, socketHead, stairHall, schoolCorridor, satchel, flashlightProp, strawRope, ofuda } from './folklore.js';
 import { cubeSeed, cubeStairs, gardenPlot, seedStall, wateringCan, wheelbarrow, scarecrow, floatingIsland, glassField, nameTree, bloomField } from './garden.js';
+import { mallHall, polishedFloor, directoryKiosk, clawMachine, automaticDoor, wetSign, mop as mallMop, bucket as mopBucket, shoppingBag, phoneProp, blockWall, exteriorFacade, paHorn } from './mall.js';
 import { ferrisWheel, carousel, ticketBooth, parkArch, exitGate as parkExitGate, chainFence, midwayStall, parkLamp, paSpeakers as parkPaSpeakers, broom, controlLever, ticketStub, bareStrings, popcornTub, balloon as nameBalloon, teaCups, swingRide, coaster as parkCoaster, blueCreature } from './amusement.js';
 
 // ---------- Episode 17 ----------
@@ -288,6 +289,18 @@ export function makeClockTower() {
 // name -> builder. o.parent, when given, receives the model.
 const put = (o, m) => { if (o.parent) o.parent.add(m.isObject3D ? m : m.g || m.root); return m; };
 export const BUILD = {
+  mall_hall: () => mallHall({ floorMat: polishedFloor(), arcade: true }),
+  mall_directory: () => directoryKiosk(),
+  mall_claw_machine: () => clawMachine(),
+  mall_auto_door: () => automaticDoor(),
+  mall_wet_sign: () => wetSign(),
+  mall_mop: () => mallMop(),
+  mall_bucket: () => mopBucket(),
+  shopping_bag: () => shoppingBag(),
+  phone_445: () => phoneProp(),
+  mall_block_wall: () => blockWall(),
+  mall_facade: () => exteriorFacade(),
+  mall_pa_horn: () => paHorn(),
   ferris_wheel: () => ferrisWheel(),
   carousel_ride: () => carousel(),
   ticket_booth: () => ticketBooth(),
