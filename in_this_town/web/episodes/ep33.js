@@ -19,7 +19,7 @@ import { loadAnimSet, sample, blend, applyPose, aimArm } from '../engine/anims.j
 import { bolt, flashAt } from '../engine/ruins.js';
 import { magicArena, arenaGround, voidRocks, fallingRocks, fireWall, energyOrb, runeShield, shardBurst, shockwave, sigil, beam, decal, arcBolt, fireStream, driftParticles, shadowCrowd, teleportFx, cloak, glow, sparksField } from '../engine/arena.js';
 import { dust } from '../engine/atmos.js';
-import { installActionFX } from '../engine/actionfx.js';
+import { installActionFX, weaponTrail } from '../engine/actionfx.js';
 
 let ctx, L;
 const W = {};
@@ -244,7 +244,7 @@ function shots() {
   add('duelA', T.pt - 0.1, (u, t) => { const q = quinnRoot(t).p.clone().setY(0), k = easeInOut(u); return { pos: q.clone().add(v3(lerp(3.6, 2.2, k), lerp(7.6, 6.8, k), lerp(9.4, 9.0, k))), look: v3(0, 1.4, q.z - 11), fov: 72 }; });
   add('duelB', s(9) - 0.1, (u, t) => wide(t, { az: lerp(-0.55, -0.2, easeInOut(u)), el: 0.12, fov: 52, k: lerp(1.15, 1.02, u) }));
   add('duelC', s(10) - 0.06, (u, t) => wide(t, { az: lerp(0.5, 0.15, easeInOut(u)) - 0.75 * easeInOut(smooth(T.th3 + 0.55, T.th3 + 0.75, t)), el: lerp(0.06, 0.12, u), fov: 52 }));
-  add('duelD', s(12) - 0.08, (u, t) => wide(t, { az: lerp(-0.6, -0.95, easeInOut(u)), el: lerp(0.12, 0.02, u), fov: 54, k: lerp(1.45, 1.32, easeOut(u)) }));
+  add('duelD', s(12) - 0.08, (u, t) => wide(t, { az: lerp(-0.5, -0.12, easeInOut(u)), el: lerp(0.12, 0.04, u), fov: 54, k: lerp(1.4, 1.28, easeOut(u)) }));
   add('fly', T.kc + 0.2, (u, t) => { const p = Qp(t); return { pos: v3(12, 4.4, p.z + 1.5), look: p.clone().add(v3(0, 2.0, 0)), fov: 52 }; });
   // three energy blasts, the one-hand block
   // reappears behind her: the kick
@@ -290,7 +290,7 @@ function wide(t, o = {}) {
   return { pos, look, fov };
 }
 // speed lines and impact frames (engine/actionfx.js): a pure function of the frame's time
-function fxAt(t, n, cam) {
+function fxAt(t, n, cam, v = t) {
   const e = T, o = { focus: 0, streak: 0, impact: 0, cx: 0.5, cy: 0.45 };
   const bump = (c, a, b) => smooth(c - a, c, t) * (1 - smooth(c, c + b, t));
   const scr = (p) => { const q = p.clone().project(cam); return [clamp(q.x * 0.5 + 0.5), clamp(0.5 - q.y * 0.5)]; };
@@ -302,7 +302,7 @@ function fxAt(t, n, cam) {
   if (n === 'lift') o.streak = 0.35 * smooth(e.lift0, e.lift0 + 0.5, t);
   o.angle = n === 'lift' ? Math.PI / 2 : 0;
   // impact frames: only the two strikes that decide the duel (the kick, the shockwave)
-  for (const [c, p] of [[e.kc, v3(0, 2.6, QZ1 + 0.6)], [e.shk, quinnRoot(e.shk).p.clone().add(v3(0, 3, 0))]]) { const d = t - c; if (d >= 0 && d < 0.1) { o.impact = d < 0.034 ? 1 : d < 0.067 ? 2 : 1; [o.cx, o.cy] = scr(p); } }
+  const hc = held(v); if (hc !== undefined) { o.impact = 3; o.focus = 1; [o.cx, o.cy] = scr(hc === e.kc ? v3(0, 2.6, QZ1 + 0.6) : quinnRoot(e.shk).p.clone().add(v3(0, 3, 0))); o.streak = 0; }
   o.streak = clamp(o.streak);
   return o;
 }
@@ -323,8 +323,35 @@ function setLights(t, focus, k = 1) {
   r.position.copy(focus).add(W.camSide.clone().multiplyScalar(-5)).add(v3(0, 6, 0)); r.intensity = 55 * k; r.color.set('#a9b4ff'); r.distance = 26;
 }
 
-function renderAt(t) {
+// ---- the speed edit round the two strikes that decide the duel (the kick, the shockwave; the user's action rule, 2026-11-07) ----
+// a ramp up, slow motion into the contact, the frame held in a dim film negative, a speed ramp out. v is video time, the scene runs on
+// remap(v): the contact stays at its own time (on its sound) and the scene is back on video time when the ramp ends (Episode 32's remap).
+const SE = { PRE: 0.8, SLOW: 0.6, RS: 0.3, HOLD: 0.22, POST: 0.8 };
+const SEC = () => [T.kc, T.shk];
+function remap(v) {
+  const { PRE, SLOW, RS, HOLD, POST } = SE;
+  for (const c of SEC()) {
+    const a0 = c - SLOW - PRE, a1 = c - SLOW, b1 = c + HOLD + POST;
+    if (v < a0 || v >= b1) continue;
+    const gain = SLOW * (1 - RS);
+    if (v < a1) { const u = (v - a0) / PRE; return v + gain * (u - Math.sin(2 * Math.PI * u) / (2 * Math.PI)); }
+    if (v < c) return c - (c - v) * RS;
+    if (v < c + HOLD) return c;
+    const u = (v - c - HOLD) / POST; return v - HOLD * (1 - u) ** 3;
+  }
+  return v;
+}
+const held = (v) => SEC().find((c) => v >= c && v < c + SE.HOLD);
+// the video time at which the scene reaches scene time s (for the sound cues: events are handed out on video time)
+function unmap(s) { let a = s - 2, b = s + 2; for (let i = 0; i < 50; i++) { const m = (a + b) / 2; if (remap(m) < s) a = m; else b = m; } return b; }
+// the kicking foot's past positions (the trail): pose the rig at that time and read the right leg
+function footSeg(tau) { const g = W.g, sr = strangerRoot(tau); g.reset(); g.root.position.copy(sr.p); g.root.rotation.set(0, sr.ry, 0); applyPose(g, strangerPose(tau), { travel: tau >= T.app && tau < T.app + 1.2 ? 1 : 0 }); g.root.updateMatrixWorld(true); const l = W.g.legs[1]; return { base: l.localToWorld(v3(0, -1.0, 0)), tip: l.localToWorld(v3(0, -1.9, 0.3)), root: W.g.root.position.clone() }; }
+
+function renderAt(v) {
+  const t = remap(v), hold = held(v);
   let sh = shotAt(W.shots, t); const n = sh.name, e = T;
+  const trailOn = t >= T.kick - 0.05 && t < T.kc + 0.12;
+  if (trailOn) { const smp = []; for (let i = 0; i <= 10; i++) smp.push(footSeg(t - i / 60)); W.trK.set(smp); } else W.trK.visible = false;
   { const cq = typeof location !== 'undefined' && new URLSearchParams(location.search).get('dbgcam'); if (cq) { const q = cq.split(',').map(Number); sh = { ...sh, pos: v3(q[0], q[1], q[2]), look: v3(q[3], q[4], q[5]), fov: q[6] }; } }
   const lift = easeInOut(smooth(e.lift0, e.lift1, t)), inVoid = t >= e.void;
   applyEnv(ctx, t >= e.fill ? DREAD : (n === 'lift' || n === 'void') ? (t >= e.void ? VOIDWIDE : { ...MOON, ...P({ hemiGround: '#4a4070', hemiI: 1.8, amb: 0.35, exposure: 1.32 }) }) : inVoid ? VOID : MOON);
@@ -467,15 +494,16 @@ function renderAt(t) {
   W.fill.position.y = focus.y + 4.5;
   const near = ['cut', 'eyes', 'terrified', 'quinnR', 'hands'].includes(n) ? 0.06 : 0.2; if (ctx.camera.near !== near) { ctx.camera.near = near; ctx.camera.updateProjectionMatrix(); }
   const steady = t < e.bell;
-  frame(ctx, t, sh, { steady, shake: steady ? 0 : shake, shadowSpan: ['open', 'lift', 'void', 'shock', 'turn', 'final', 'fill', 'seats'].includes(n) ? 90 : 34, flash, flashColor: fcol, shadows: true });
-  W.fx.set(t, fxAt(t, n, ctx.camera));
+  if (hold !== undefined) flash = 0;
+  frame(ctx, t, sh, { capT: v, steady, shake: steady ? 0 : shake, shadowSpan: ['open', 'lift', 'void', 'shock', 'turn', 'final', 'fill', 'seats'].includes(n) ? 90 : 34, flash, flashColor: fcol, shadows: true });
+  W.fx.set(v, fxAt(t, n, ctx.camera, v));
   return n;
 }
 
 export async function setup() {
   ctx = await initStage('ep33', { look: 'pro', avatars: ['farm_ep33_quinn', 'farm_ep33_girl', 'farm_ep33_salinger'] }); L = ctx.L;
   const EV = events();
-  HOLDS = [[T.strike, 0.04], [T.hit[0], 0.03], [T.hit[1], 0.03], [T.hit[2], 0.05], [T.kc, 0.09], [T.shk, 0.07]];
+  HOLDS = [[T.strike, 0.04], [T.hit[0], 0.03], [T.hit[1], 0.03], [T.hit[2], 0.05], ];
   T.tpFlash = T.app;
   await loadAnimSet('magic_set');
   await loadAlti(['neutral', 'sad', 'nervous', 'scared', 'lash:neutral', 'lash:surprised', 'lash:nervous', 'lash:scared', 'lash:suspicious', 'lash:shocked', 'lash:angry', 'lash:terrified', 'lash:sad']);
@@ -484,6 +512,7 @@ export async function setup() {
   W.camSide = v3(0, 0, 1);
   world(); people();
   W.fx = installActionFX(ctx);
+  W.trK = weaponTrail({ color: '#b48cff', gain: 1.1 }); ctx.scene.add(W.trK);
   // the spectators' seats (Salinger's is the front-row seat nearest to his angle) and their timing jitter
   const seats = W.arena.seats, r = rng(7);
   let best = 0, bd = 1e9; seats.forEach((s, i) => { if (s.row !== 0) return; const d = Math.hypot(s.x - 23.5, s.z - (-11)); if (d < bd) { bd = d; best = i; } });
@@ -502,7 +531,8 @@ export async function setup() {
   W.cloakP = driftParticles(W.cloak.surfacePoints(1100), { dur: 2.6, size: 0.055, c1: '#c9b48a', c2: '#6a4aa8', wind: v3(0, 0.4, 0.6) }); ctx.scene.add(W.cloakP);
   W.shots = shots();
   void noise1;
-  return expose(ctx, renderAt, L(23).start + 0.7, EV);
+  const EVV = Object.fromEntries(Object.entries(EV).map(([k, x]) => [k, typeof x === 'number' ? unmap(x) : Array.isArray(x) ? x.map((y) => (typeof y === 'number' ? unmap(y) : y)) : x]));
+  return expose(ctx, renderAt, unmap(L(23).start + 0.7), EVV);
 }
 // pose the characters for time t without drawing (used in setup to sample points)
 function renderPoseOnly(t) {
