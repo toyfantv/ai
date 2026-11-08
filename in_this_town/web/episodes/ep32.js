@@ -16,6 +16,7 @@ import { burst, clouds } from '../engine/atmos.js';
 import { dock, sailboat } from '../engine/isles.js';
 import { loadAnimSet, sample, blend, keyed, applyPose, holdProp, aimArm, propPoint, KEYED } from '../engine/anims.js';
 import { blackSword, whiteBlade, armorSuit, swordField } from '../engine/blades.js';
+import { installActionFX, weaponTrail } from '../engine/actionfx.js';
 import { stormIsland, courtyard, column, arch, lowWall, rubble, clockTower, postClock, brickWall, crater, stormSea, rain, bolt, flashAt, timeCrack, cavern } from '../engine/ruins.js';
 
 let ctx, L, EV;
@@ -264,59 +265,53 @@ function shots() {
   const s = (i) => L(i).start, S = [], add = (name, t0, f) => S.push({ name, t0: () => t0, f, t1: () => 0 });
   const R = (x, y, z) => R0.clone().add(v3(x, y, z)), Q = (x, y, z) => RL.clone().add(v3(x, y, z));
   const fy = () => W.sea.floorY(0, SZ);
-  // the island under the storm (steady), the sword hunter in the ruins, Rowan at the slab
-  add('open', 0, (u) => ({ pos: lp3(v3(70, 46, 120), v3(58, 40, 104), easeInOut(u)), look: v3(-2, 6, -4), fov: 52 }));
-  add('hunter', 1.55, (u) => ({ pos: lp3(ATL.clone().add(v3(6.5, 3.6, 7.5)), ATL.clone().add(v3(5.6, 3.4, 6.2)), u), look: ATL.clone().add(v3(-0.6, 2.8, -1.8)), fov: 56 }));
-  add('found', 2.4, (u) => ({ pos: lp3(RSL.clone().add(v3(-6.4, 3.4, 6.8)), RSL.clone().add(v3(-5.6, 3.5, 5.8)), easeOut(u)), look: SLAB.clone().add(v3(0.3, 2.6, -0.9)), fov: 56 }));
-  add('blade', s(1) - 0.08, (u) => ({ pos: lp3(SLAB.clone().add(v3(2.6, 1.8, 2.2)), SLAB.clone().add(v3(2.3, 3.6, 1.9)), easeInOut(u)), look: lp3(SLAB.clone().add(v3(0, 2.0, 0)), SLAB.clone().add(v3(0, 3.4, 0)), easeInOut(u)), fov: 44 }));
-  add('touch', T.pull + 0.15, (u) => ({ pos: lp3(SLAB.clone().add(v3(3.0, 2.6, 4.2)), SLAB.clone().add(v3(3.6, 3.8, 5.6)), easeOut(u)), look: lp3(SLAB.clone().add(v3(0, 3.6, -0.6)), SLAB.clone().add(v3(0, 4.6, -1.2)), easeOut(u)), fov: 52 }));
+  // (the second fight's frame of reference: Rowan backs off from RL, the swordsman lands at z -11.6 and steps in)
+  const M = (x, y, z) => v3(-0.8 + x, TOP + y, -15.0 + z), F = (x, y, z) => RF.clone().add(v3(x, y, z));
+  // A fight is shot WIDE (the user, 2026-11-07): both fighters head to feet in the vertical frame, few cuts, the camera moving
+  // (orbits, a low push-in, whip pans) like action anime; close shots of a determined face only as short inserts.
+  // the island under the storm (steady), Rowan at the slab
+  add('open', 0, (u) => ({ pos: lp3(v3(70, 46, 120), v3(52, 34, 92), easeInOut(u)), look: v3(-4, 5, -2), fov: 52 }));
+  add('found', 2.4, (u) => ({ pos: lp3(RSL.clone().add(v3(-7.6, 3.6, 8.4)), RSL.clone().add(v3(-4.6, 3.4, 5.2)), easeInOut(u)), look: lp3(SLAB.clone().add(v3(0.3, 3.0, -0.9)), SLAB.clone().add(v3(0, 3.0, 0)), u), fov: 54 }));
+  add('touch', T.pull + 0.15, (u) => ({ pos: lp3(SLAB.clone().add(v3(4.6, 3.0, 6.4)), SLAB.clone().add(v3(5.0, 4.2, 7.6)), easeOut(u)), look: lp3(SLAB.clone().add(v3(0, 3.4, -0.6)), SLAB.clone().add(v3(0, 4.2, -1.2)), easeOut(u)), fov: 54 }));
   add('clock', T.free + 0.15, (u) => { const f = W.tower.localToWorld(W.tower.facePos.clone()); const n = v3(Math.sin(0.55), 0, Math.cos(0.55)); return { pos: f.clone().addScaledVector(n, lerp(10, 8.2, u)).add(v3(0, -1.2, 0)), look: f, fov: 34 }; });
   add('dockclock', s(2) + 1.9, (u) => ({ pos: lp3(ZZ.clone().add(v3(-4.6, 3.2, -8.6)), ZZ.clone().add(v3(-4.2, 3.3, -8.0)), u), look: ZZ.clone().add(v3(-1.4, 4.6, -2)), fov: 56 }));
-  add('whisper', s(3) - 0.1, (u) => ({ pos: lp3(RSL.clone().add(v3(0.7, 4.5, 3.4)), RSL.clone().add(v3(0.6, 4.4, 2.9)), u), look: RSL.clone().add(v3(0, 4.4, 0)), fov: 52 }));
-  add('coming', s(4) - 0.05, (u) => ({ pos: lp3(R(2.6, 6.0, -6.6), R(2.3, 5.9, -5.9), u), look: R(-1.0, 3.6, 40), fov: 56 }));
+  add('whisper', s(3) - 0.1, (u) => ({ pos: lp3(RSL.clone().add(v3(1.8, 4.4, 6.4)), RSL.clone().add(v3(1.3, 4.3, 5.2)), easeInOut(u)), look: RSL.clone().add(v3(0, 3.5, 0)), fov: 54 }));
+  add('coming', s(4) - 0.05, (u) => ({ pos: lp3(R(3.4, 6.0, -8.6), R(2.4, 5.8, -6.4), easeInOut(u)), look: R(-1.0, 3.6, 40), fov: 56 }));
   // the ocean splits; the boat hand stares; the swordsman rises out of the trench
   add('split', s(5) - 0.05, (u) => ({ pos: lp3(v3(-8, 14, 46), v3(-6, 19, 50), easeOut(u)), look: v3(0, -14, 130), fov: 62 }));
-  add('stare', s(5) + 0.85, (u) => ({ pos: lp3(ZZ.clone().add(v3(-3.2, 4.4, 4.6)), ZZ.clone().add(v3(-2.8, 4.3, 4.0)), u), look: ZZ.clone().add(v3(0, 3.9, 0)), fov: 54 }));
-  add('rise', s(6) - 0.05, (u) => ({ pos: lp3(v3(6, fy() + 1.6, SZ - 22), v3(5, fy() + 2.0, SZ - 20), u), look: v3(0, fy() + 6, SZ), fov: 60 }));
-  add('rise2', s(6) + 1.2, (u) => ({ pos: lp3(v3(2.4, fy() + 2.2, SZ - 9), v3(2.0, fy() + 2.0, SZ - 8.2), u), look: v3(0, fy() + 4.2, SZ), fov: 54 }));
-  // the leap and the first strike
-  add('leap', T.leap0 - 0.05, (u, t) => { const s2 = swordsRoot(t).p; return { pos: s2.clone().add(v3(7.5, 1.5, 11 - 6 * u)), look: s2.clone().add(v3(0, 2.4, -6)), fov: 64 }; });
-  add('charge', T.land + 0.1, (u) => ({ pos: lp3(R(2.2, 6.2, -4.4), R(1.9, 6.0, -3.8), u), look: R(0, 3.6, 6), fov: 58 }));
-  add('strike1', T.C1 - 0.3, (u) => ({ pos: lp3(R(-5.0, 2.4, -3.6), R(-5.6, 2.2, -4.0), easeOut(u)), look: R(0, 5.6, 1.4), fov: 62 }));
-  add('strain', T.C1 + 0.55, (u) => ({ pos: lp3(R(2.2, 6.0, 3.0), R(1.9, 5.9, 2.6), u), look: R(0, 5.4, 0.2), fov: 52 }));
-  add('strike2', T.C2 - 0.4, (u) => ({ pos: lp3(R(7.5, 13, -6.5), R(6.5, 11, -5.5), easeOut(u)), look: R(0, 1.5, 1.5), fov: 56 }));
-  add('debris', T.C2 + 0.35, (u) => ({ pos: lp3(R(-6.4, 1.4, 6.8), R(-6.8, 1.6, 7.2), u), look: R(0, 3.0, 0.6), fov: 60 }));
-  add('strike3', T.C3 - 0.42, (u) => ({ pos: lp3(R(-7.6, 3.6, 1.6), R(-7.2, 3.4, 1.0), u), look: R(0, 3.6, 1.6), fov: 60 }));
-  add('flung', T.C3 + 0.08, (u, t) => { const p = rowanRoot(t).p; return { pos: v3(-12, 6.2, p.z + 3.4), look: p.clone().add(v3(0, 1.8, -1.5)), fov: 60 }; });
-  add('land', T.landR + 0.12, (u) => ({ pos: lp3(Q(4.6, 1.2, -5.2), Q(4.0, 1.3, -4.6), u), look: Q(0, 0.6, 1.8), fov: 58 }));
-  add('getup', T.rise - 0.05, (u) => ({ pos: lp3(Q(-3.4, 2.6, 6.5), Q(-3.0, 3.4, 5.6), easeInOut(u)), look: Q(0, 2.2, 0), fov: 56 }));
+  add('stare', s(5) + 0.85, (u) => ({ pos: lp3(ZZ.clone().add(v3(-3.6, 4.0, 6.4)), ZZ.clone().add(v3(-3.0, 4.0, 5.4)), u), look: ZZ.clone().add(v3(0, 3.4, 0)), fov: 56 }));
+  add('rise', s(6) - 0.05, (u) => ({ pos: lp3(v3(6, fy() + 1.6, SZ - 22), v3(3.2, fy() + 2.4, SZ - 13), easeInOut(u)), look: v3(0, fy() + lerp(6, 4.8, u), SZ), fov: 58 }));
+  // the leap (tracked wide, low) and the first fight: one wide orbit through the block, a face insert, a high wide through the
+  // smash and the third strike (a whip pan between them), Rowan flung through the wall (tracked from the side)
+  add('leap', T.leap0 - 0.05, (u, t) => { const s2 = swordsRoot(t).p; return { pos: s2.clone().add(v3(12, 0.5 - 4 * u, 17 - 9 * u)), look: s2.clone().add(v3(0, 3.0, -7)), fov: 62 }; });
+  add('duel1', T.land + 0.1, (u, t) => wide(t, { az: lerp(0.3, 0.7, easeInOut(u)), el: lerp(-0.05, 0.06, u), fov: 52 }));
+  add('strain', T.C1 + 0.55, (u) => ({ pos: lp3(R(2.6, 5.9, 3.6), R(2.2, 5.8, 3.0), u), look: R(0, 5.2, 0.4), fov: 54 }));
+  add('duel1b', T.C1 + 1.35, (u, t) => wide(t, { az: -0.3 + 0.15 * u + 0.75 * easeInOut(smooth(T.C2 + 0.5, T.C2 + 0.72, t)), el: lerp(0.2, 0.06, easeOut(u)), fov: 54 }));
+  add('flung', T.C3 + 0.08, (u, t) => { const p = rowanRoot(t).p; return { pos: v3(9.4, 10.5, p.z + 5.0), look: p.clone().add(v3(0, 1.6, -2.0)), fov: 64 }; });
+  add('getup', T.landR + 0.12, (u) => ({ pos: lp3(Q(-4.2, 5.2, 8.0), Q(-3.8, 4.4, 7.2), easeInOut(u)), look: lp3(Q(0, 1.0, 0), Q(0, 2.8, 0), easeInOut(u)), fov: 58 }));
   add('cut', s(11) + 1.55, (u) => ({ pos: lp3(Q(-0.7, 5.0, 2.5), Q(-0.65, 4.95, 2.2), u), look: Q(0.05, 4.75, 0), fov: 46 }));
-  add('raise', s(12) - 0.1, (u) => ({ pos: lp3(Q(1.6, 1.6, 4.6), Q(1.3, 1.3, 5.4), u), look: v3(0, TOP + 6.0, WALLZ + 2.4), fov: 56 }));
+  add('raise', s(12) - 0.1, (u, t) => { const sp = swordsRoot(t).p; return { pos: sp.clone().add(lp3(v3(8.8, 1.0, 1.2), v3(8.0, 0.8, 0.4), u)), look: sp.clone().add(v3(0, 4.6, -1.2)), fov: 56 }; });
   // the island freezes
   add('freeze', T.FRZ - 0.45, (u) => ({ pos: lp3(v3(26, 22, -40), v3(22, 20, -36), easeInOut(u)), look: v3(0, 6, -8), fov: 58 }));
-  add('stopA', s(14) - 0.1, (u) => { const a = lerp(-0.6, 0.15, easeInOut(u)), c = W.atl.root.position; return { pos: c.clone().add(v3(Math.sin(a) * 8.6, 4.0, Math.cos(a) * 8.6)), look: c.clone().add(v3(0, 3.0, 0)), fov: 54 }; });
+  add('stopA', s(14) - 0.1, (u) => { const a = lerp(-0.6, 0.15, easeInOut(u)), c = W.atl.root.position; return { pos: c.clone().add(v3(Math.sin(a) * 9.6, 4.0, Math.cos(a) * 9.6)), look: c.clone().add(v3(0, 3.0, 0)), fov: 54 }; });
   add('stopZ', s(14) + 0.6, (u) => ({ pos: lp3(ZZ.clone().add(v3(2.6, 4.2, -5.0)), ZZ.clone().add(v3(2.2, 4.1, -4.4)), u), look: ZZ.clone().add(v3(-3, 3.2, 6)), fov: 56 }));
-  add('except', s(15) - 0.1, (u) => ({ pos: lp3(Q(1.2, 5.0, 3.4), Q(1.0, 5.0, 3.0), u), look: Q(0, 4.5, 0), fov: 50 }));
-  add('look', s(16) - 0.12, (u) => ({ pos: lp3(Q(-1.9, 5.6, 2.8), Q(-1.6, 5.5, 2.4), u), look: Q(0, 5.0, 0.6), fov: 48 }));
-  add('swing', T.rift - 0.25, (u) => ({ pos: lp3(Q(-6.4, 3.8, 6.4), Q(-5.6, 4.0, 5.6), easeOut(u)), look: Q(0.2, 4.2, 1.4), fov: 60 }));
-  add('crack', s(17) - 0.15, (u) => ({ pos: lp3(Q(-2.6, 4.6, -6.4), Q(-1.6, 4.9, -4.2), easeInOut(u)), look: Q(0.6, 5.2, 2.4), fov: 56 }));
-  // he sees every attack before it lands
-  // (the second fight: Rowan backs off from RL toward z -17.8, the swordsman lands at z -11.6 and steps in; M2 is between them)
-  const M = (x, y, z) => v3(-0.8 + x, TOP + y, -15.0 + z), F = (x, y, z) => RF.clone().add(v3(x, y, z));
-  add('ghost', T.RES - 0.1, (u) => ({ pos: lp3(M(6.4, 4.4, -6.4), M(5.8, 4.2, -5.6), u), look: M(-0.4, 3.4, 3.6), fov: 58 }));
-  add('ghost2', T.C4 - 0.3, (u) => ({ pos: lp3(M(10.6, 2.6, 0.6), M(9.8, 2.8, 0.2), u), look: M(0, 3.2, 0.2), fov: 56 }));
-  add('dodge', s(19) - 0.05, (u) => ({ pos: lp3(M(-9.2, 1.4, 2.2), M(-9.6, 1.6, 1.6), u), look: M(0, 3.2, -0.2), fov: 58 }));
-  add('counter', s(20) - 0.05, (u) => ({ pos: lp3(M(6.8, 6.4, -3.6), M(6.2, 6.0, -3.0), u), look: M(0, 3.8, 0.4), fov: 54 }));
-  add('strike', T.C7 - 0.55, (u) => ({ pos: lp3(M(3.6, 1.8, -5.6), M(3.0, 1.6, -4.8), easeOut(u)), look: M(0.2, 3.8, 2.4), fov: 58 }));
-  add('stagger', T.C7 + 0.55, (u) => ({ pos: lp3(M(2.6, 3.2, 8.6), M(2.2, 3.1, 7.8), u), look: M(0.3, 3.4, 2.4), fov: 54 }));
-  add('shatter', T.SH - 0.15, (u) => ({ pos: lp3(M(6.4, 3.6, 7.6), M(5.6, 3.4, 6.8), u), look: M(0.6, 3.2, 2.4), fov: 58 }));
+  add('look', s(15) - 0.1, (u) => { const a = lerp(-0.75, -0.3, easeInOut(u)); return { pos: Q(Math.sin(a) * 7.4, 4.4, Math.cos(a) * 7.4), look: Q(0, 3.3, 0.4), fov: 54 }; });
+  add('swing', T.rift - 0.25, (u) => ({ pos: lp3(Q(-8.6, 3.8, 9.2), Q(-7.4, 4.0, 8.0), easeOut(u)), look: Q(0.2, 3.8, 1.4), fov: 58 }));
+  add('crack', s(17) - 0.15, (u) => ({ pos: lp3(Q(-3.6, 4.4, -9.4), Q(-2.4, 4.8, -7.0), easeInOut(u)), look: Q(0.6, 4.4, 2.4), fov: 56 }));
+  // the second fight: the swordsman leaps in (wide, the ghost of his next move), Rowan's eyes, one wide moving shot through the
+  // dodge and the counter (a whip pan), the chest strike from low as the camera pushes in, the armour bursting
+  add('ghost', T.RES - 0.1, (u, t) => wide(t, { az: lerp(0.1, 0.45, easeInOut(u)), el: lerp(0.32, 0.2, u), fov: 54, k: 1.12 }));
+  add('eyes', T.C4 + 0.5, (u, t) => { const r = rowanRoot(t).p, sp = swordsRoot(t).p, d = sp.clone().sub(r).setY(0).normalize(), sd = v3(d.z, 0, -d.x);
+    return { pos: r.clone().add(v3(0, 5.0, 0)).addScaledVector(d, lerp(3.6, 3.3, u)).addScaledVector(sd, 1.5), look: r.clone().add(v3(0, 4.75, 0)), fov: 48 }; });
+  add('duel2', T.C4 + 1.2, (u, t) => wide(t, { az: lerp(0.25, -0.05, u) - 0.9 * easeInOut(smooth(T.C5 + 0.28, T.C5 + 0.48, t)), el: 0.06, fov: 54 }));
+  add('strike', T.C7 - 0.55, (u, t) => wide(t, { az: lerp(0.15, 0.4, u), el: -0.1, fov: 56, k: lerp(1.3, 1.02, easeOut(u)) }));
+  add('shatter', T.C7 + 0.55, (u) => ({ pos: lp3(M(8.4, 4.0, 10.0), M(7.2, 3.6, 8.6), u), look: M(0.6, 3.0, 2.4), fov: 56 }));
   add('nobody', s(23) - 0.05, (u) => ({ pos: lp3(M(2.2, 1.6, 9.6), M(1.8, 1.3, 8.0), easeInOut(u)), look: M(0.4, 1.4, 0), fov: 56 }));
   add('dark', s(24) - 0.08, (u) => { const h = W.helmRest || M(0, 0.5, 3); return { pos: h.clone().add(lp3(v3(0.6, 1.9, 3.2), v3(0.08, 0.7, 1.0), easeInOut(u))), look: h.clone().add(v3(0, 0.25, 0)), fov: 46 }; });
-  add('helmet', s(25) - 0.1, (u) => { const h = W.helmRest || M(0, 0.5, 3); return { pos: lp3(h.clone().add(v3(1.4, 0.7, 2.8)), h.clone().add(v3(1.1, 0.8, 2.4)), u), look: lp3(h.clone().add(v3(-0.4, 0.8, -2)), RF.clone().add(v3(0, 4, 0)), 0.5), fov: 58 }; });
-  add('learned', s(26) - 0.1, (u) => ({ pos: lp3(F(0.9, 5.0, 3.6), F(0.75, 4.95, 3.1), u), look: F(0, 4.6, 0), fov: 50 }));
-  add('lookblade', s(27) - 0.1, (u) => ({ pos: lp3(F(1.2, 5.0, 4.8), F(1.0, 5.0, 4.2), u), look: F(0, 4.8, 0.6), fov: 52 }));
+  add('helmet', s(25) - 0.1, (u) => { const h = W.helmRest || M(0, 0.5, 3); return { pos: lp3(h.clone().add(v3(1.6, 0.8, 3.4)), h.clone().add(v3(1.1, 0.9, 2.6)), easeInOut(u)), look: lp3(h.clone().add(v3(-0.4, 0.8, -2)), RF.clone().add(v3(0, 4, 0)), 0.5), fov: 58 }; });
+  add('lookblade', s(27) - 0.1, (u) => ({ pos: lp3(F(1.6, 5.0, 5.6), F(1.0, 5.0, 4.2), u), look: F(0, 4.6, 0.6), fov: 54 }));
   add('reflect', T.armor, (u) => W.reflectCam(u));
-  add('armored', s(28) - 0.08, (u) => ({ pos: lp3(F(1.8, 4.8, 5.6), F(5.6, 6.8, 13.5), easeInOut(u)), look: F(0, 3.6, 0), fov: 54 }));
+  add('armored', s(28) - 0.08, (u) => ({ pos: lp3(F(1.8, 4.8, 7.0), F(5.6, 6.8, 13.5), easeInOut(u)), look: F(0, 3.4, 0), fov: 54 }));
   // beneath the island
   add('field', T.cave, (u) => ({ pos: CAV.clone().add(lp3(v3(0.5, 4.2, 9), v3(0, 24, 76), easeInOut(clamp(u * 1.08)))), look: CAV.clone().add(lp3(v3(0, 3.2, -6), v3(0, 1, -16), u)), fov: 58 }));
   S.forEach((x, i) => { if (S[i + 1]) { const v = S[i + 1].t0(); x.t1 = () => v; } });
@@ -343,6 +338,59 @@ function setLights(t, focus, set, flash) {
   W.flashL.intensity = flash * 4.5;
 }
 
+// The wide two-shot: frames both fighters head to feet (and a raised blade) in the 9:16 frame from azimuth az (radians round the
+// pair; 0 = from +x) and elevation el; the distance comes from the fov and the pair's spread across the view. k > 1 backs off.
+const COLS = [[-11, 4], [-11, -6], [-11, -16], [11, 4], [11, -6], [11, -16], [-18, 14], [16, 15], [-24, -2], [22, -4], [-20, -13]];   // standing columns + the clock tower
+// distance from point c to the segment p-q in the ground plane
+const segDist = (p, q, c) => { const dx = q.x - p.x, dz = q.z - p.z, l = dx * dx + dz * dz || 1, k = clamp(((c[0] - p.x) * dx + (c[1] - p.z) * dz) / l); return Math.hypot(p.x + dx * k - c[0], p.z + dz * k - c[1]); };
+function wide(t, o = {}) {
+  let az = o.az ?? 0.6;
+  for (let i = 0; i < 8; i++) { const r = wide1(t, { ...o, az }); if (!COLS.some((c) => segDist(r.pos, r.look, c) < 1.9)) return r; az += 0.22; }
+  return wide1(t, o);
+}
+function wide1(t, o = {}) {
+  const a = rowanRoot(t).p, b = swordsRoot(t).p, m = a.clone().lerp(b, 0.5); m.y = TOP;
+  const az = o.az ?? 0.6, el = o.el ?? 0.1, fov = o.fov ?? 52, dir = v3(Math.cos(az), 0, Math.sin(az));
+  const vf = fov * Math.PI / 360, hf = Math.atan(Math.tan(vf) * 1080 / 1920);
+  const ab = b.clone().sub(a), perp = Math.abs(ab.x * dir.z - ab.z * dir.x);
+  const near = Math.max(a.clone().sub(m).dot(dir), b.clone().sub(m).dot(dir), 0);   // the nearer fighter must fit too
+  const d = Math.max((o.H ?? 10.2) / 2 / Math.tan(vf) + near, (perp / 2 + 1.9) / Math.tan(hf)) * (o.k ?? 1.08);
+  const look = m.clone().add(v3(0, o.ly ?? 4.1, 0));
+  const pos = look.clone().addScaledVector(dir, d * Math.cos(el)).add(v3(0, d * Math.sin(el), 0)); pos.y = Math.max(pos.y, TOP + 0.7);
+  return { pos, look, fov };
+}
+// the blades' base and tip at an earlier time (for the trails): pose the rig at that time and read the sword
+function segR(tau) {
+  const r = W.r, rr = rowanRoot(tau), P = rowanPose(tau);
+  r.reset(); r.root.position.copy(rr.p); r.root.rotation.set(rr.rx, rr.ry, 0); applyPose(r, P, { travel: 0 }); holdProp(r, 0, W.sw, P);
+  return { base: propPoint(W.sw, v3(0, 0, 2.6)), tip: propPoint(W.sw, W.sw.tip), root: rr.p.clone() };
+}
+function segS(tau) {
+  if (walking(tau) || tau < T.land) return null;
+  const sc = W.s, sr = swordsRoot(tau);
+  if (tau >= T.land2) sr.ry = Math.atan2(rowanRoot(tau).p.x - sr.p.x, rowanRoot(tau).p.z - sr.p.z);
+  sc.reset(); sc.root.position.copy(sr.p); sc.root.rotation.set(0, sr.ry, 0); applyPose(sc, swordsPose(tau), { travel: tau >= T.C7 ? 0.6 : 0 }); holdProp(sc, 0, W.wb, sc._pose);
+  return { base: propPoint(W.wb, v3(0, 0, 2.8)), tip: propPoint(W.wb, W.wb.tip), root: sr.p.clone() };
+}
+// speed lines and impact frames: a pure function of the frame's time
+function fxAt(t, n, cam) {
+  const e = T, o = { focus: 0, streak: 0, impact: 0, cx: 0.5, cy: 0.45 };
+  const bump = (c, a, b) => smooth(c - a, c, t) * (1 - smooth(c, c + b, t));
+  const scr = (p) => { const q = p.clone().project(cam); return [clamp(q.x * 0.5 + 0.5), clamp(0.5 - q.y * 0.5)]; };
+  const C = [[e.C1, 0], [e.C2, 1], [e.C3, 2], [e.C6, 3], [e.C7, 4], [e.C5, 5]];
+  for (const [c, i] of C) { const k = bump(c, 0.12, 0.32) * 0.9; if (k > o.focus) { o.focus = k * 0.8; [o.cx, o.cy] = scr(contactPoint(i, c)); } }
+  if (t >= e.leap0 && t < e.land + 0.2) { o.focus = Math.max(o.focus, 0.65 * smooth(e.leap0, e.leap0 + 0.2, t)); [o.cx, o.cy] = scr(swordsRoot(t).p.clone().add(v3(0, 3, 0))); }
+  if (t >= e.leap2 - 0.05 && t < e.land2 + 0.2) { const k = 0.6 * bump(e.land2, 0.6, 0.25); if (k > o.focus) { o.focus = k; [o.cx, o.cy] = scr(swordsRoot(t).p.clone().add(v3(0, 3, 0))); } }
+  if (n === 'flung') o.streak = 0.85 * (1 - smooth(e.landR - 0.15, e.landR + 0.1, t));
+  if (n === 'duel1b') o.streak = Math.max(o.streak, bump(e.C2 + 0.61, 0.12, 0.14));       // the whip pan
+  if (n === 'duel2') o.streak = Math.max(o.streak, bump(e.C5 + 0.38, 0.12, 0.14));
+  if (n === 'swing' || n === 'crack') { const k = 0.5 * bump(e.rift + 0.62, 0.2, 0.6); if (k > o.focus) { o.focus = k; o.color = 'rgba(205,190,255,0.55)'; [o.cx, o.cy] = scr(RL.clone().add(v3(0.4, 4.6, 2.4))); } }
+  // impact frames: the two strikes that decide each fight (the throw through the wall, the cut across the chest)
+  for (const c of [e.C3, e.C7]) { const d = t - c; if (d >= 0 && d < 0.1) { o.impact = d < 0.034 ? 1 : d < 0.067 ? 2 : 1; [o.cx, o.cy] = scr(contactPoint(c === e.C3 ? 2 : 4, c)); } }
+  o.streak = clamp(o.streak); o.angle = 0;
+  return o;
+}
+
 function renderAt(t) {
   let sh = shotAt(W.shots, t); const n = sh.name, e = T;
   const w = tw(t), frozen = t >= e.FRZ && t < e.RES, cave = n === 'field';
@@ -364,14 +412,17 @@ function renderAt(t) {
   W.tower.set(Math.min(t, e.clock) + 37230); W.pclock.set(Math.min(t, e.clock) + 37230 + 1800);
   W.wall.set(t, e.wall, v3(0, TOP + 3.0, WALLZ), v3(0, 0, -1), 1.9, TOP);
   W.crater.position.set(R0.x, TOP, R0.z + 0.2); W.crater.set(t, e.C2);
+  // ---- sword trails: the blades' past positions (the real poses below overwrite these) ----
+  const trailOn = !cave && t >= e.free + 0.25 && t < e.SH && !(t > e.C3 && t < e.rise + 1.2), sR = [], sS = [];
+  if (trailOn) for (let i = 1; i <= 10; i++) { const tau = t - i / 60; sR[i] = segR(tau); sS[i] = segS(tau); }
   // ---- Rowan ----
   const r = W.r, ra = W.ra, armor = t >= e.armor && !cave;
   r.root.visible = !armor && !cave && n !== 'open'; ra.root.visible = armor;
   const RC = armor ? ra : r, rr = rowanRoot(t), RP = rowanPose(t);
   RC.reset(); RC.root.position.copy(rr.p); RC.root.rotation.set(rr.rx, rr.ry, 0);
   applyPose(RC, RP, { travel: 0 });
-  if (n === 'except') { RC.neck.rotation.y = 0.5 * Math.sin((t - L(15).start) * 4.2); }
-  if (n === 'land' || (t >= e.landR && t < e.rise)) RC.hips.position.y = RC.hipY * 0.18;
+  if (n === 'look' && t < L(16).start) { RC.neck.rotation.y = 0.5 * Math.sin((t - L(15).start) * 4.2); }
+  if (t >= e.landR && t < e.rise) RC.hips.position.y = RC.hipY * 0.18;
   const sword = armor ? W.rasw : W.sw;
   if (t < e.touch) { // the sword stands in the slab, point down
     if (W.sw.parent !== ctx.scene) ctx.scene.add(W.sw);
@@ -412,7 +463,7 @@ function renderAt(t) {
   } else { W.suit.shatter(0); W.helm.visible = false; }
   W.helm.visible = W.helm.visible && !cave && t < e.armor + 2;
   // ghost: the swordsman's next move, 0.45 s early
-  const gv = t >= e.RES && t < e.C6 + 0.2 && ['ghost', 'ghost2', 'dodge'].includes(n);
+  const gv = t >= e.RES && t < e.C6 + 0.2 && ['ghost', 'duel2'].includes(n);
   W.g.root.visible = gv; W.gb.visible = gv;
   if (gv) {
     const ta = t + 0.45, g = W.g, gr = swordsRoot(ta); g.reset(); g.root.position.copy(gr.p); g.root.rotation.set(0, gr.ry, 0); applyPose(g, swordsPose(ta), { travel: 0 }); holdProp(g, 0, W.gb, g._pose); aimArm(g, 1, propPoint(W.gb, W.gb.hilt2), 0.85);
@@ -437,6 +488,12 @@ function renderAt(t) {
   pose(Z, t < e.split0 ? 'idle' : 'scared', Math.min(t, e.FRZ), { amt: 0.1 }); if (t < e.split0) Z.neck.rotation.x = -0.3 * smooth(e.clock, e.clock + 0.6, t);
   faceOf(Z, t < e.clock + 0.5 ? 'neutral' : t < e.split0 ? 'surprised' : 'terrified', Math.min(t, e.FRZ), 0.8);
   // ---- effects ----
+  if (trailOn) {
+    sR[0] = { base: propPoint(W.sw, v3(0, 0, 2.6)), tip: propPoint(W.sw, W.sw.tip), root: rr.p.clone() };
+    sS[0] = walking(t) ? null : { base: propPoint(W.wb, v3(0, 0, 2.8)), tip: propPoint(W.wb, W.wb.tip), root: sr.p.clone() };
+    W.trR.set(sR); if (sS.every(Boolean) && sS.length === 11) W.trS.set(sS); else W.trS.visible = false;
+    W.trR.visible = W.trR.visible && r.root.visible; W.trS.visible = W.trS.visible && W.s.root.visible;
+  } else { W.trR.visible = false; W.trS.visible = false; }
   W.rain.visible = island; W.rain.centre.copy(sh.pos).add(sh.look.clone().sub(sh.pos).normalize().multiplyScalar(18)); W.rain.centre.y = Math.max(TOP - 2, sh.pos.y - 20); W.rain.update(w);
   const hit = (c) => t >= c && t < c + 0.7;
   const C = [[e.C1, 0], [e.C2, 1], [e.C3, 2], [e.C6, 3], [e.C7, 4], [e.C5, 5]];
@@ -453,12 +510,13 @@ function renderAt(t) {
   if (t >= e.wall && t < e.wall + 0.6) shake = Math.max(shake, 1.4 * Math.exp(-(t - e.wall) * 8));
   if (t >= e.SH && t < e.SH + 0.3) flash = Math.max(flash, 0.15 * Math.exp(-(t - e.SH) * 20));
   // focus (the key light follows it)
-  const focus = cave ? CAV.clone() : ['hunter', 'stopA'].includes(n) ? A.root.position.clone() : ['dockclock', 'stare', 'stopZ'].includes(n) ? ZZ.clone() : n.startsWith('rise') ? sr.p.clone() : RC.root.position.clone().lerp(sr.p, ['strike1', 'strike2', 'strike3', 'charge', 'counter', 'strike', 'ghost', 'ghost2', 'dodge'].includes(n) ? 0.5 : 0);
+  const focus = cave ? CAV.clone() : ['hunter', 'stopA'].includes(n) ? A.root.position.clone() : ['dockclock', 'stare', 'stopZ'].includes(n) ? ZZ.clone() : n.startsWith('rise') ? sr.p.clone() : RC.root.position.clone().lerp(sr.p, ['leap', 'duel1', 'duel1b', 'raise', 'ghost', 'duel2', 'strike'].includes(n) ? 0.5 : 0);
   ctx.shotName2 = n; setLights(t, focus, set, fl);
   if (n === 'reflect') { ctx.scene.updateMatrixWorld(true); sh = shotAt(W.shots, t); }   // the reflect shot reads this frame's pose
   const near = ['reflect', 'blade', 'dark'].includes(n) ? 0.03 : 0.2; if (ctx.camera.near !== near) { ctx.camera.near = near; ctx.camera.updateProjectionMatrix(); }
   const steady = t < e.leap0;
   frame(ctx, t, sh, { steady, shake: steady ? 0 : shake, shadowSpan: n === 'open' || n === 'freeze' ? 90 : n === 'split' || n.startsWith('rise') ? 70 : 34, flash, flashColor: '#ffffff', shadows: !cave });
+  W.fx.set(t, cave ? {} : fxAt(t, n, ctx.camera));
   return n;
 }
 // where the blades meet: from the two roots at the contact time (pure functions of time, so every worker agrees)
@@ -483,6 +541,8 @@ export async function setup() {
   W.flashL = new THREE.DirectionalLight('#c8c4ff', 0); W.flashL.position.set(-60, 200, 240);
   [W.key, W.fill, W.rim, W.flashL].forEach((l) => ctx.scene.add(l));
   world(); people();
+  W.fx = installActionFX(ctx);
+  W.trR = weaponTrail({ color: '#a98cff', gain: 1.2 }); W.trS = weaponTrail({ color: '#9fcbff', gain: 0.9 }); ctx.scene.add(W.trR, W.trS);
   W.sparkAt = []; W.reflectCam = () => ({ pos: v3(0, 10, 10), look: v3(0, 0, 0), fov: 50 });
   W.shots = shots();
   void noise1;

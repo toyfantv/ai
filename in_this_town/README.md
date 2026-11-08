@@ -185,6 +185,14 @@ The user's standing rule (2026-11-06): every video from this renderer gets high-
 vehicles, accessories), environment and ambient effects, and cinematic lighting. Plan them into the director from the start.
 Episode 17 was made before the rule and stays as it is.
 
+**Action (the user, 2026-11-07, on Episode 32): shoot fights wide.** Both fighters head to feet in the vertical frame, few cuts (hold
+an exchange in one moving shot: orbits, a low push-in, whip pans), close shots of a determined face only as short inserts, like action
+anime (Jujutsu Kaisen, Demon Slayer). Speed / focus lines on dashes and hits, a trail on every swing, and one or two impact frames for
+the strikes that decide a fight. `web/engine/actionfx.js`: `installActionFX(ctx)` -> `fx.set(t, { focus, cx, cy, streak, angle, impact })`
+(a canvas over the 3D view plus a CSS two-tone filter for impact frames; call it after `frame()`), `weaponTrail({ color })` ->
+`.set([{ base, tip, root }...])` (newest first; speed is measured against the body so a flying body leaves no trail). Episode 32's
+`wide(t, { az, el, fov, k })` frames a pair from any azimuth, fits the nearer fighter and steps round columns: copy it.
+
 ## Model library
 
 One place for everything an episode can pull in by name: buildings, vehicles, props, accessories, environments and avatars.
