@@ -349,6 +349,42 @@ K.cower = keyed([
   { t: 1.5, torso: [16, 0, 0], neck: [12, 0, 0], aR: [-66, 0, 28], aL: [-64, 0, -28], lR: [-8, 0, -2], lL: [8, 0, 2], h: 0.955 },
   { t: 3, torso: [14, 0, 0], neck: [10, 0, 0], aR: [-62, 0, 26], aL: [-62, 0, -26], lR: [-8, 0, -2], lL: [8, 0, 2], h: 0.96 },
 ], { loop: true, ...H33 });
+// ---------------- hand-keyed tactical clips (Episode 34; reusable: no prop, the rifle is held by tactical.js holdRifle) ----------------
+const H34 = { src: 'hand-keyed (Episode 34)' };
+// kneeling low behind cover (the head under a 3-stud barrier): the right leg forward, the left knee down, hunched
+const KN = { hips: [-8, 0, 0], torso: [26, 0, 0], neck: [-14, 0, 0], aR: [-40, 0, 10], aL: [-36, 0, -12], lR: [-88, 0, -6], lL: [74, 0, 6], h: 0.42 };
+K.kneel = keyed([{ t: 0, ...KN }, { t: 1.4, ...KN, torso: [28, 0, 0], h: 0.415 }, { t: 2.8, ...KN }], { loop: true, ...H34 });
+// up from the kneel to fire over the barrier (torso upright, still on one knee) and back down
+const KU = { hips: [-4, 0, 0], torso: [0, 0, 0], neck: [-2, 0, 0], aR: [-40, 0, 10], aL: [-36, 0, -12], lR: [-86, 0, -6], lL: [70, 0, 6], h: 0.6 };
+K.kneelUp = keyed([{ t: 0, ...KN }, { t: 0.22, ease: 'out', ...KU }, { t: 1.0, ...KU }], H34);
+K.kneelDown = keyed([{ t: 0, ...KU }, { t: 0.25, ease: 'io', ...KN }], H34);
+// the dive: a low push off, flat in the air (arms reaching ahead, legs trailing), a shoulder landing, a roll into the kneel.
+// The episode moves and pitches the root along the flight (root rotation x: 0 -> ~1.35 -> 0); contact with the floor at 0.55
+K.dive = keyed([
+  { t: 0, torso: [24, 0, 0], neck: [-16, 0, 0], aR: [-60, 0, -20], aL: [-60, 0, 20], lR: [-50, 0, -4], lL: [30, 0, 4], h: 0.72 },
+  { t: 0.12, ease: 'out', torso: [6, 0, 0], neck: [-40, 0, 0], aR: [-168, 0, -12], aL: [-168, 0, 12], lR: [8, 0, -6], lL: [22, 0, 6], h: 1 },
+  { t: 0.5, torso: [0, 0, 0], neck: [-46, 0, 0], aR: [-160, 0, -18], aL: [-160, 0, 18], lR: [10, 0, -8], lL: [26, 0, 8], h: 1 },
+  { t: 0.62, ease: 'snap', torso: [40, 0, 0], neck: [-10, 0, 0], aR: [-90, 0, -30], aL: [-30, 0, 40], lR: [-70, 0, -8], lL: [-30, 0, 8], h: 0.5 },
+  { t: 0.95, ease: 'io', ...KN },
+], H34);
+// a hand slapped flat on top of the cover as he lands behind it (the episode aims the left arm at the barrier's top)
+K.slap = keyed([{ t: 0, ...KN }, { t: 0.1, ease: 'snap', ...KN, aL: [-150, 0, -10], torso: [20, 0, 0] }, { t: 0.7, ...KN, aL: [-140, 0, -8], torso: [22, 0, 0] }, { t: 1.0, ...KN }], H34);
+// a front door kick: chamber the knee, drive the heel through (contact at 0.32), recoil, step down onto the threshold
+K.doorKick = keyed([
+  { t: 0, torso: [10, 0, 0], neck: [-6, 0, 0], aR: [-36, 0, 10], aL: [-30, 0, -14], lR: [-14, 0, -4], lL: [14, 0, 4], h: 0.97 },
+  { t: 0.18, ease: 'out', torso: [-4, 0, 0], neck: [4, 0, 0], aR: [-50, 0, -30], aL: [-44, 0, 34], lR: [-100, 0, -4], lL: [6, 0, 4], h: 0.96 },
+  { t: 0.32, ease: 'snap', torso: [-22, 0, 0], neck: [16, 0, 0], aR: [-30, 0, -54], aL: [-36, 0, 50], lR: [-84, 0, -2], lL: [8, 0, 4], h: 1, p: [0, 0.34] },
+  { t: 0.46, torso: [-18, 0, 0], neck: [12, 0, 0], aR: [-32, 0, -48], aL: [-38, 0, 46], lR: [-80, 0, -2], lL: [8, 0, 4], h: 1, p: [0, 0.36] },
+  { t: 0.8, ease: 'io', torso: [12, 0, 0], neck: [-6, 0, 0], aR: [-36, 0, 10], aL: [-30, 0, -14], lR: [-24, 0, -4], lL: [18, 0, 4], h: 0.97, p: [0, 0.5] },
+], H34);
+// a soldier taking a hit in the chest plate: snapped back, a step, the knees go, down on the back (contact at 0)
+K.shotDown = keyed([
+  { t: 0, torso: [0, 0, 0], neck: [0, 0, 0], aR: [-70, 0, 10], aL: [-70, 0, -30], h: 1 },
+  { t: 0.08, ease: 'snap', torso: [-26, 0, 0], neck: [-30, 0, 0], aR: [-110, 0, -30], aL: [-100, 0, 30], lR: [-20, 0, -4], lL: [10, 0, 4], h: 1, p: [0, -0.18] },
+  { t: 0.45, torso: [-10, 0, 0], neck: [-20, 0, 0], aR: [-60, 0, -50], aL: [-40, 0, 50], lR: [-40, 0, -6], lL: [30, 0, 6], h: 0.72, p: [0, -0.4] },
+  { t: 0.8, ease: 'in', hips: [-80, 0, 0], torso: [6, 0, 0], neck: [10, 0, 0], aR: [-20, 0, -70], aL: [-10, 0, 66], lR: [-30, 0, -10], lL: [-12, 0, 10], h: 0.2, p: [0, -0.9] },
+  { t: 1.1, hips: [-88, 0, 0], torso: [2, 0, 0], neck: [6, 0, 0], aR: [-14, 0, -76], aL: [-8, 0, 72], lR: [-10, 0, -10], lL: [-4, 0, 10], h: 0.17, p: [0, -1.0] },
+], H34);
 export const KEYED_CLIPS = K;
 export const KEYED = K;
 export { PARTS };

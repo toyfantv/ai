@@ -300,6 +300,31 @@ change. Episode 17 imports its package, model house and cardboard sky from the l
   a whoosh on the snap, the hit plus a bass boom on the contact. Events are handed to the mix on video time (`unmap`).
 * `episodes/animcheck.js` takes `sets=a,b`, `prop=none` and `dist=` now; `altiface.js` keeps `ch.headParts` (the cloak sizes its hood from them).
 
+### Episode 34 notes (the endless training facility; Action, Episodes 32-34)
+
+* `web/engine/tactical.js`: `trainingRifle`, `holdRifle(ch, rifle, aim, {down, recoil, blade, shoulder, leftAt})` (blades the torso, aims both
+  arms at the grip and handguard, puts the rifle at the measured fist; returns `{muzzle, dir}`), `soldierGear` (a white featureless mask, helmet,
+  target plate), `syncRanks(scene, template, places, {extra: [rifle]})` (instanced copies of ONE posed template: the anchor is the template
+  root's position only, so its turn carries into every copy; pass its rifle in `extra`, it is parented to the scene), `muzzleFlashes` /
+  `flashK`, `tracers`, `eventParticles` (spark / dust / chip / brass), `bulletHoles`, `smokeHaze`, `jerseyBarrier`, `steelDoor`, `securityCam`,
+  `wallClock`, `trainingHall` (its roofs never cast shadows: the sun is the hall's top light), `controlRoom`, `feedWall` (a CCTV wall from a
+  render target with a focus tile that grows to fill the screen, labels and a message overlay; it tone-maps the HDR feed itself), `industrialDistrict`,
+  and **`bloodFX`** (toon blood: see below). All are in the model library (`training_rifle`, `sync_ranks`, `toon_blood`...).
+* **Gunfire** (no impact frames: they are for melee): the director makes the volley times once (`bursts()`), poses the template at each, ray-casts
+  every shot against the barriers' boxes, the floor and the walls in setup, and turns the hits into sparks / dust / chips / holes on their own
+  times, so the parallel workers agree. The volley and Eli's shot lists go to `events.json` (`vol`, `esh`) and `tools/ep34_sound.py` writes the
+  sound cues from them (synced `gunburst` with stacked copies; the shots heard through the walls are muffled). New SFX in `audio2.py`:
+  gunburst / gunshot, rack, magout, magin, ricochet, concrete, doorboom, alarm, servo, splat, bodyfall.
+* **Toon blood (the user, 2026-11-07: dramatic, toon-shaded; bursts when shot or cut, bleeding, spraying)**: `bloodFX(scene, [{t, p, dir, n,
+  power, pool: {at: (t) => Vector3|null}, drip, end}])`: stretched cel-shaded droplets with a dark outline out of the wound along the shot, a
+  fast thin spray, splats where they land, drips and a pool that grows under the body (follow the torso with `at`), all gone at `end` (the
+  body vanishing). Use dark crimson (#9a0010) in red-lit sets or it reads pink; frame the kill with full bodies close enough to read it.
+* **Render-target feeds**: re-apply the env for each feed (`applyEnv(ctx, RED)` for the hall, a night env for the viewer) and put the main
+  env back after; aim a feed camera so the subject sits at the centre of the 16:9 tile, because a 9:16 shot of the screen sees only its middle.
+  A camera in the room (the "viewer" reveal) should be the phone itself: hide the phone mesh in that render.
+* Hand-keyed clips: kneel, kneelUp, kneelDown, dive, slap, doorKick, shotDown (`keyed:<name>`). Mixamo was unreachable (its Chrome profile
+  exits with code 21).
+
 ### Free models from other sites
 
 Only when a story needs one; no bulk downloads. Add it with the licence recorded:

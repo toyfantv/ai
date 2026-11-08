@@ -1,0 +1,35 @@
+{
+ "key": "farm_ep34_eli",
+ "source": {
+  "route": "one-off Studio capture (Episode 34), the steps of tools/farm_avatars.py",
+  "scene": "scenes/sandbox/avcap_ep34.lua",
+  "label": "Eli (Episode 34): black tactical jacket 11946822518, grey pants with boots 11834613943, short black hair 128660233600965",
+  "catalog_items": [
+   11946822518,
+   11834613943,
+   128660233600965
+  ]
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-07",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_Accessory_Short_Black_Hair"
+ ]
+}

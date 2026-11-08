@@ -129,6 +129,16 @@
     "type": "builder",
     "url": ""
   },
+  "bullet_holes": {
+    "author": "toyfantv",
+    "desc": "bullet-hole decals appearing on hit times",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep34",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "camp_props": {
     "author": "toyfantv",
     "desc": "survival camp props: log seat, wood pile, axe in a stump, lantern on a post, cook pot, bedroll, supply crate",
@@ -225,6 +235,16 @@
     "kind": "prop",
     "licence": "own",
     "made_for": "ep26",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "control_room": {
+    "author": "toyfantv",
+    "desc": "a control room with desk rows, monitors, server racks, a giant screen wall and a security camera",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep34",
     "source": "this renderer",
     "type": "builder",
     "url": ""
@@ -375,6 +395,16 @@
     "kind": "effect",
     "licence": "own",
     "made_for": "ep33",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "feed_wall": {
+    "author": "toyfantv",
+    "desc": "a wall of CCTV feeds from a render target, with a focus tile, labels and a message overlay",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep34",
     "source": "this renderer",
     "type": "builder",
     "url": ""
@@ -599,6 +629,16 @@
     "type": "builder",
     "url": ""
   },
+  "hit_particles": {
+    "author": "toyfantv",
+    "desc": "sparks, concrete dust, chips and brass casings on event times",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep34",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "home_bed": {
     "author": "toyfantv",
     "desc": "a made bed with headboard and pillows",
@@ -679,6 +719,16 @@
     "type": "builder",
     "url": ""
   },
+  "industrial_district": {
+    "author": "toyfantv",
+    "desc": "an empty industrial district at night: wet street, warehouses, fences, sodium streetlights, a facility gate and sign",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep34",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "invitation_card": {
     "author": "toyfantv",
     "desc": "a gilt-edged party invitation card and its sealed envelope",
@@ -695,6 +745,16 @@
     "kind": "prop",
     "licence": "own",
     "made_for": "ep27",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "jersey_barrier": {
+    "author": "toyfantv",
+    "desc": "a concrete jersey barrier with hazard stripes",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep34",
     "source": "this renderer",
     "type": "builder",
     "url": ""
@@ -849,6 +909,16 @@
     "type": "builder",
     "url": ""
   },
+  "masked_soldier_gear": {
+    "author": "toyfantv",
+    "desc": "a white featureless mask, a helmet and a numbered target plate for a soldier",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep34",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "model_house": {
     "author": "toyfantv",
     "desc": "hero_house as a roofless cutaway: at 0.1 scale, the miniature",
@@ -865,6 +935,16 @@
     "kind": "building",
     "licence": "own",
     "made_for": "ep19",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "muzzle_flashes": {
+    "author": "toyfantv",
+    "desc": "star-card muzzle flashes",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep34",
     "source": "this renderer",
     "type": "builder",
     "url": ""
@@ -1081,10 +1161,10 @@
   },
   "security_cam": {
     "author": "toyfantv",
-    "desc": "a pan-and-tilt home security camera: .head turns, red .led",
+    "desc": "a ceiling security camera with a pan/tilt head and a red LED",
     "kind": "prop",
     "licence": "own",
-    "made_for": "ep19",
+    "made_for": "ep34",
     "source": "this renderer",
     "type": "builder",
     "url": ""
@@ -1149,6 +1229,16 @@
     "type": "builder",
     "url": ""
   },
+  "smoke_haze": {
+    "author": "toyfantv",
+    "desc": "drifting smoke haze points",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep34",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "snowfall": {
     "author": "toyfantv",
     "desc": "falling snow points over an area",
@@ -1195,6 +1285,16 @@
     "kind": "prop",
     "licence": "own",
     "made_for": "ep22",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "steel_door": {
+    "author": "toyfantv",
+    "desc": "a steel door with a CONTROL ROOM label, hinged",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep34",
     "source": "this renderer",
     "type": "builder",
     "url": ""
@@ -1269,6 +1369,16 @@
     "type": "builder",
     "url": ""
   },
+  "sync_ranks": {
+    "author": "toyfantv",
+    "desc": "instanced ranks of identical soldiers copying one posed template in perfect sync",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep34",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "teleport_fx": {
     "author": "toyfantv",
     "desc": "a vanish / appear flash column and ring",
@@ -1289,6 +1399,16 @@
     "type": "builder",
     "url": ""
   },
+  "toon_blood": {
+    "author": "toyfantv",
+    "desc": "toon-shaded blood for shots and cuts: bursts, spray, splats, drips and a growing pool",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep34",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "town": {
     "author": "toyfantv",
     "desc": "the whole night or day town: streets, houses, lamps",
@@ -1299,12 +1419,42 @@
     "type": "builder",
     "url": ""
   },
+  "tracers": {
+    "author": "toyfantv",
+    "desc": "bullet tracers",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep34",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "train_car": {
     "author": "toyfantv",
     "desc": "a silver lit train carriage, any length",
     "kind": "vehicle",
     "licence": "own",
     "made_for": "ep15",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "training_hall": {
+    "author": "toyfantv",
+    "desc": "a long industrial training hall with columns, beams, pipes, tube lights, red beacons and a side corridor",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep34",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "training_rifle": {
+    "author": "toyfantv",
+    "desc": "a blocky training rifle (orange tip) with a removable magazine",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep34",
     "source": "this renderer",
     "type": "builder",
     "url": ""
@@ -1375,6 +1525,16 @@
     "kind": "building",
     "licence": "own",
     "made_for": "ep07",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "wall_clock": {
+    "author": "toyfantv",
+    "desc": "an industrial wall clock with moving hands",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep34",
     "source": "this renderer",
     "type": "builder",
     "url": ""

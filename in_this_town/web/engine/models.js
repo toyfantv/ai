@@ -16,6 +16,7 @@ import { campfire, tent, logSeat, woodPile, axeStump, lantern, cookPot, bedroll,
 import { obbyPlatform, laserCross, controlChair } from './obby.js';
 import { ornateFrame, printMat, loosePrint, invitation, chandelier, sconce, bigChair, banquetTable, gramophone, grandClock, curtainWindow, panelDoor, bareTrees, mansion, guest } from './mansion.js';
 import { stormIsland, courtyard, clockTower, postClock, brickWall, crater, stormSea, rain as stormRain, timeCrack, cavern } from './ruins.js';
+import { trainingRifle, soldierGear, syncRanks, muzzleFlashes, tracers, eventParticles, bulletHoles, smokeHaze, jerseyBarrier, steelDoor, securityCam, wallClock, trainingHall, controlRoom, feedWall, industrialDistrict, bloodFX } from './tactical.js';
 import { magicArena, arenaGround, voidRocks, fallingRocks, fireWall, energyOrb, runeShield, shardBurst, shockwave, sigil, beam, decal, arcBolt, fireStream, driftParticles, shadowCrowd, teleportFx, cloak } from './arena.js';
 import { blackSword, whiteBlade, armorSuit, swordField } from './blades.js';
 import { hospitalBed, wardDoor, fluorPanel, crtTV, ivPole, cabinet, paSpeaker, roomPlate, bedChart, nurse, wardBeds, hospitalBlock, noticeSign } from './hospital.js';
@@ -392,6 +393,24 @@ export const BUILD = {
   notice_sign: (o) => put(o, noticeSign(o.lines ?? ['DEMOLITION NOTICE'], o)),
   forest_beast: (o) => put(o, beast(o)),   // a blocky wolf-like creature with glowing eyes that blink; .update(t)
   snowfall: (o) => snow(o.parent, o),   // falling snow points (centre, size, height, count)
+  // Episode 34 (engine/tactical.js): a training facility, rifles, masked soldiers in sync, gunfire effects, toon blood
+  training_rifle: (o) => put(o, trainingRifle(o)),   // along +z from the grip; .mag/.magRest, .muzzle, .guard; hold with tactical.js holdRifle(ch, rifle, aim, {recoil, down})
+  masked_soldier_gear: (o) => soldierGear(o.character, o),   // a white featureless mask, a helmet, a target plate (o.number) on a character
+  sync_ranks: (o) => syncRanks(o.parent, o.template, o.places, o),   // instanced copies of a posed template character (o.extra: its rifle); .update()
+  muzzle_flashes: (o) => muzzleFlashes(o.parent, o.n ?? 64, o),   // .clear(), .set(i, pos, dir, k, size), .end(); flashK(times, t)
+  tracers: (o) => tracers(o.parent, o.list, o),   // [{t, a, b, speed}]; .update(t)
+  hit_particles: (o) => eventParticles(o.parent, o.events, o),   // kind spark | dust | chip | brass; [{t, p, n}]; .update(t)
+  bullet_holes: (o) => bulletHoles(o.parent, o.holes),   // [{t, p, n}]; .update(t)
+  smoke_haze: (o) => smokeHaze(o.parent, o),   // .update(t, amount)
+  jersey_barrier: (o) => put(o, jerseyBarrier(o)),   // concrete barrier along x (o.len), top 3.08
+  steel_door: (o) => put(o, steelDoor(o)),   // leaf along +x from the hinge; .set(angle)
+  security_cam: (o) => put(o, securityCam()),   // .aim(yaw, pitch, led)
+  wall_clock: (o) => put(o, wallClock(o)),   // faces +z; .set(h, m, s)
+  training_hall: (o) => put(o, trainingHall(o)),   // a long industrial hall along -z with a side corridor; .lights(white, red, t), .beacons
+  control_room: (o) => put(o, controlRoom(o)),   // desks, racks, a giant screen (.screen, give it a material), .cam
+  feed_wall: (o) => feedWall(o.map, o),   // a CCTV wall material from a render target; .set({focus, msg, red, altK, t}), uniforms over/msgT/alt
+  industrial_district: (o) => { const d = industrialDistrict(o); if (o.parent) o.parent.add(d.group); return d; },   // a night street to a facility gate; .lamps
+  toon_blood: (o) => bloodFX(o.parent, o.events, o),   // shots / cuts: bursts, spray, splats, drips, pools; [{t, p, dir, n, power, pool:{at}, drip, end}]; .update(t)
   // Episode 33 (engine/arena.js): a floating magic arena and duel magic
   magic_arena: (o) => { const a = magicArena(o); if (o.parent) o.parent.add(a.group); return a; },   // .seats, .clock.set(h), .bell.set(a, ring), .update(t, {brazier, runes}), .under
   arena_ground: (o) => put(o, arenaGround(o)),   // ground round the arena (o.hole); move it down for the lift

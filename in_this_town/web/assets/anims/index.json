@@ -453,6 +453,55 @@
    "licence": "own",
    "desc": "a small, frightened cower, hands to the chest (loop)",
    "made_for": "ep33"
+  },
+  "keyed:kneel": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 34)",
+   "licence": "own",
+   "desc": "kneeling behind cover, rifle low (loop)",
+   "made_for": "ep34"
+  },
+  "keyed:kneelUp": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 34)",
+   "licence": "own",
+   "desc": "popping up from cover to aim",
+   "made_for": "ep34"
+  },
+  "keyed:kneelDown": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 34)",
+   "licence": "own",
+   "desc": "dropping back behind cover",
+   "made_for": "ep34"
+  },
+  "keyed:dive": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 34)",
+   "licence": "own",
+   "desc": "a dive for cover (contact at 0.55 s)",
+   "made_for": "ep34"
+  },
+  "keyed:slap": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 34)",
+   "licence": "own",
+   "desc": "the left hand slapped onto cover",
+   "made_for": "ep34"
+  },
+  "keyed:doorKick": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 34)",
+   "licence": "own",
+   "desc": "a front kick into a door (contact at 0.32 s)",
+   "made_for": "ep34"
+  },
+  "keyed:shotDown": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 34)",
+   "licence": "own",
+   "desc": "shot in the chest, falling on the back",
+   "made_for": "ep34"
   }
  }
 }

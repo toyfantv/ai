@@ -440,6 +440,120 @@ SFX.update({
 })
 
 
+# Episode 34: tactical sounds (rifle shots, machine-synced volleys, casings, a reload, ricochets, concrete hits, a steel door
+# kicked open, an alarm, a security camera's servo, wet hits for the toon blood)
+_GS = {}
+def gunshot(seed=0, far=0.0):
+    key = (seed, round(far, 2))
+    if key in _GS: return _GS[key]
+    r = np.random.default_rng(400 + seed); t = tt(0.9)
+    crack = hp(r.standard_normal(len(t)), 1800) * np.exp(-t * 110)
+    body = bp(r.standard_normal(len(t)), 140, 1600) * np.exp(-t * 32)
+    thump = np.sin(2 * np.pi * (62 + 8 * r.random()) * t) * np.exp(-t * 22)
+    mech = bp(r.standard_normal(len(t)), 2500, 6000) * np.exp(-np.maximum(0, t - 0.035) * 160) * (t > 0.035) * 0.25
+    x = crack * (1.1 - 0.8 * far) + body * 0.85 + thump * (1.0 - 0.3 * far) + mech * (1 - far)
+    if far > 0: x = lp(x, 6000 - 4800 * far)
+    x = np.tanh(x * 1.6) / 1.6
+    _GS[key] = x; return x
+
+
+def gunburst(times, seed=1, far=0.0, stack=1, rev=2.4, wet=0.35, jitter=0.006, casings=False):
+    # every time in times (seconds from the cue) gets a shot; stack copies with a few ms jitter thicken a synced volley
+    r = np.random.default_rng(seed); end = max(times) + 1.2 if times else 1.0; x = np.zeros(int(end * SR))
+    for k, t0 in enumerate(times):
+        for j in range(stack):
+            g = gunshot(int(r.integers(6)), far) * (1.0 if j == 0 else 0.55); i = int((t0 + (r.random() * jitter if j else 0)) * SR)
+            x[i:i + len(g)] += g[: len(x) - i]
+        if casings and k % 2 == 0:
+            for c in range(2):
+                tc = t0 + 0.32 + 0.09 * c + r.random() * 0.05; i = int(tc * SR); f = 3400 + r.random() * 2200
+                h = (np.sin(2 * np.pi * f * tt(0.18)) + 0.5 * np.sin(2 * np.pi * f * 1.47 * tt(0.18))) * np.exp(-tt(0.18) * 28) * 0.12
+                x[i:i + len(h)] += h[: max(0, len(x) - i)]
+    x = x / (np.max(np.abs(x)) + 1e-9) * 0.9
+    return reverb(x, rev, wet)
+
+
+def _click(f=2400, d=0.05, seed=0):
+    r = np.random.default_rng(seed); t = tt(d)
+    return (bp(r.standard_normal(len(t)), f * 0.6, f * 2.2) * np.exp(-t * 140) + np.sin(2 * np.pi * f * 0.5 * t) * np.exp(-t * 90) * 0.4)
+
+
+def _slide(d=0.12, f0=900, f1=3000, seed=0):
+    r = np.random.default_rng(seed); t = tt(d)
+    return bp(r.standard_normal(len(t)), f0, f1) * np.sin(np.pi * t / d) * 0.5
+
+
+def _seq(parts):
+    end = max(t0 + len(a) / SR for t0, a in parts) + 0.05; x = np.zeros(int(end * SR))
+    for t0, a in parts: i = int(t0 * SR); x[i:i + len(a)] += a[: len(x) - i]
+    return x
+
+
+def rack(seed=41):
+    return reverb(_seq([(0, _click(2100, 0.05, seed)), (0.03, _slide(0.1, 800, 3200, seed)), (0.14, _click(2600, 0.06, seed + 1) * 1.2)]), 0.6, 0.15)
+
+
+def magout(seed=42):
+    return reverb(_seq([(0, _click(1800, 0.05, seed)), (0.02, _slide(0.14, 500, 2200, seed) * 0.7), (0.42, impact(0.4, 160, 60, 0.0)[: int(0.4 * SR)] * 0.5)]), 0.6, 0.2)
+
+
+def magin(seed=43):
+    return reverb(_seq([(0, _slide(0.1, 600, 2400, seed) * 0.6), (0.1, _click(1500, 0.07, seed) * 1.4), (0.1, impact(0.3, 140, 70, 0.0)[: int(0.3 * SR)] * 0.4)]), 0.6, 0.15)
+
+
+def ricochet(seed=44, d=0.55):
+    r = np.random.default_rng(seed); t = tt(d); f = (3400 + 600 * r.random()) * (1 - 0.55 * t / d)
+    wh = np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-t * 6) * 0.35 + hp(r.standard_normal(len(t)), 3000) * np.exp(-t * 50) * 0.6
+    return reverb(wh, 1.4, 0.35)
+
+
+def concrete(seed=45, d=0.7):
+    r = np.random.default_rng(seed); t = tt(d)
+    c = hp(r.standard_normal(len(t)), 1200) * np.exp(-t * 70) + bp(r.standard_normal(len(t)), 200, 1200) * np.exp(-t * 25) * 0.6
+    return reverb(c + crackle(d, 50)[: len(t)] * 0.25 * np.exp(-t * 4), 1.2, 0.3)
+
+
+def doorboom(seed=46, d=3.0):
+    r = np.random.default_rng(seed); t = tt(d)
+    ring = sum(a * np.sin(2 * np.pi * f * t) * np.exp(-t * dc) for f, a, dc in [(118, 1, 2.2), (263, 0.7, 3.2), (447, 0.5, 4.5), (731, 0.35, 6), (1180, 0.25, 9)])
+    bang = impact(d, 110, 20, 1.0)[: len(t)] + hp(r.standard_normal(len(t)), 1500) * np.exp(-t * 60) * 0.8
+    rattle = bp(r.standard_normal(len(t)), 600, 3000) * np.exp(-t * 5) * (0.5 + 0.5 * np.sign(np.sin(2 * np.pi * 21 * t))) * 0.25
+    return reverb(bang * 0.9 + ring * 0.35 + rattle, 2.6, 0.35)
+
+
+def alarm(d=6.0, f1=760, f2=570, rate=1.6):
+    t = tt(d); f = np.where((t * rate) % 1 < 0.5, f1, f2); ph = 2 * np.pi * np.cumsum(f) / SR
+    sq = np.sign(np.sin(ph)) * 0.5 + np.sin(ph) * 0.5
+    return reverb(bp(sq, 300, 3000) * 0.35 * np.minimum(1, t / 0.05) * np.minimum(1, (d - t) / 0.2), 2.8, 0.45)
+
+
+def servo(d=2.4, seed=47):
+    r = np.random.default_rng(seed); t = tt(d); f = 180 + 120 * np.sin(np.pi * t / d)
+    ph = 2 * np.pi * np.cumsum(f) / SR; m = (np.sign(np.sin(ph)) * 0.4 + np.sin(2 * ph) * 0.3) * (0.7 + 0.3 * np.sin(2 * np.pi * 31 * t))
+    gear = bp(r.standard_normal(len(t)), 1500, 5000) * 0.15
+    env = np.minimum(1, t / 0.08) * np.minimum(1, (d - t) / 0.12)
+    return reverb(bp(m, 120, 4000) * env * 0.5 + gear * env, 1.0, 0.2)
+
+
+def splat(seed=48):
+    r = np.random.default_rng(seed); t = tt(0.6)
+    wet = lp(r.standard_normal(len(t)), 1400) * np.exp(-t * 18) * 1.2 + bp(r.standard_normal(len(t)), 2500, 7000) * np.exp(-t * 35) * 0.3
+    return reverb(wet + impact(0.6, 90, 45, 0.0)[: len(t)] * 0.8, 0.7, 0.2)
+
+
+def bodyfall(seed=49):
+    r = np.random.default_rng(seed); return _seq([(0, impact(0.8, 85, 30, 0.2)[: int(0.8 * SR)]), (0.12, impact(0.6, 120, 40, 0.0)[: int(0.6 * SR)] * 0.5), (0.05, _click(900, 0.1, seed) * 0.6)])
+
+
+SFX.update({
+    'gunburst': lambda o: gunburst(o['times'], o.get('seed', 1), o.get('far', 0.0), o.get('stack', 1), o.get('rev', 2.4), o.get('wet', 0.35), casings=o.get('casings', False)),
+    'gunshot': lambda o: reverb(gunshot(o.get('seed', 0), o.get('far', 0.0)), 2.4, 0.35), 'rack': lambda o: rack(o.get('seed', 41)),
+    'magout': lambda o: magout(o.get('seed', 42)), 'magin': lambda o: magin(o.get('seed', 43)), 'ricochet': lambda o: ricochet(o.get('seed', 44)),
+    'concrete': lambda o: concrete(o.get('seed', 45)), 'doorboom': lambda o: doorboom(o.get('seed', 46)), 'alarm': lambda o: alarm(o.get('dur', 6.0)),
+    'servo': lambda o: servo(o.get('dur', 2.4)), 'splat': lambda o: splat(o.get('seed', 48)), 'bodyfall': lambda o: bodyfall(o.get('seed', 49)),
+})
+
+
 # Episode 23: a small dragon's wings (soft feathery beats) and its voice (a bright squeak that bends up or down)
 def flutter(d=1.2, rate=9.0, seed=5):
     r = np.random.default_rng(seed); x = np.zeros(int(d * SR)); t = 0.0

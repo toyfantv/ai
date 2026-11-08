@@ -1,0 +1,41 @@
+{
+ "key": "farm_ep34_gregy",
+ "source": {
+  "route": "one-off Studio capture (Episode 34), the steps of tools/farm_avatars.py",
+  "scene": "scenes/sandbox/avcap_ep34.lua",
+  "label": "Gregy_dinosour (user id 9712132170), as worn on capture day: small body, a framed 300 x 250 Large Rectangle ad board with a yellow hat; Episode 34 cameo as a training target",
+  "user_id": 9712132170
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-07",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperArm2",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "LowerTorso2",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperArm2",
+  "RightUpperLeg",
+  "UpperTorso",
+  "UpperTorso2",
+  "UpperTorso3",
+  "acc_Hair_MP",
+  "acc_International_Fedora",
+  "acc_LeftShoe",
+  "acc_LivignArt_SSN",
+  "acc_Pant1",
+  "acc_RightShoe"
+ ]
+}

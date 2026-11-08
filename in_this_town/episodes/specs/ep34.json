@@ -1,0 +1,908 @@
+{
+ "number": 34,
+ "title": "The Soldiers Who Never Missed",
+ "output": "InThisTown_Episode34_EndlessTraining.mp4",
+ "youtube_title": "The Soldiers Who Never Missed...",
+ "tiktok_caption": "At exactly 2 AM, every soldier at the abandoned training facility woke up. None of them were alive.",
+ "hashtags": "#InThisTown #RobloxStory #Horror #TacticalAction #Shorts",
+ "thumbnail_text": "NEVER MISSED",
+ "thumbnail_rec": "Eli in his dark tactical jacket crouched behind a concrete barrier in a red-lit corridor, sparks and dust bursting off the concrete, a long row of identical white-masked soldiers firing in sync through the smoke behind him.",
+ "tail": 1.8,
+ "fps": 60,
+ "narrator": {
+  "pace": [
+   2.5,
+   2.95
+  ],
+  "min_tempo": 1.04
+ },
+ "cast": {
+  "pa": {
+   "voice": "sarah",
+   "pitch": 0.92,
+   "tempo": 0.98
+  }
+ },
+ "highlights": {
+  "2 AM": "red",
+  "ABANDONED TRAINING FACILITY": "yellow",
+  "NONE OF THEM": "red",
+  "ALIVE": "red",
+  "ELI": "yellow",
+  "EMPTY INDUSTRIAL DISTRICT": "cyan",
+  "HUNDREDS OF TARGETS": "yellow",
+  "RED": "red",
+  "TRAINING SESSION RESUMED": "red",
+  "GUNFIRE": "red",
+  "CONCRETE BARRIER": "yellow",
+  "SPARKS AND DUST": "yellow",
+  "TRAINING RIFLE": "cyan",
+  "FIRED BACK": "yellow",
+  "ONE SOLDIER FELL": "yellow",
+  "ANOTHER": "yellow",
+  "NEW SOLDIER": "red",
+  "SPRINTED": "yellow",
+  "STEEL DOOR": "yellow",
+  "CONTROL ROOM": "cyan",
+  "GIANT SCREEN": "cyan",
+  "IDENTICAL TRAINING SESSIONS": "purple",
+  "ALL FEATURING ELI": "red",
+  "ELIMINATE THE ORIGINAL": "red",
+  "STOPPED FIRING": "yellow",
+  "EVERY MASK": "red",
+  "WASN'T HIM": "red",
+  "THE PERSON WATCHING": "red",
+  "TOWARD THE VIEWER": "red",
+  "TURNED TOWARD HIM.": "red"
+ },
+ "lines": [
+  {
+   "text": "At exactly 2 AM, every soldier at the abandoned training facility woke up.",
+   "tag": "[mysterious]",
+   "pause": 0.055,
+   "speak": "At exactly two A.M., every soldier at the abandoned training facility woke up."
+  },
+  {
+   "text": "The strange thing was, none of them were alive.",
+   "tag": "[serious]",
+   "pause": 0.095
+  },
+  {
+   "text": "Eli discovered the facility while exploring an empty industrial district.",
+   "tag": "[mysterious]",
+   "pause": 0.055
+  },
+  {
+   "text": "Inside, hundreds of targets stood perfectly still.",
+   "tag": "[mysterious]",
+   "pause": 0.075
+  },
+  {
+   "text": "Then the lights turned red.",
+   "tag": "[serious]",
+   "pause": 0.15
+  },
+  {
+   "text": "“TRAINING SESSION RESUMED.”",
+   "tag": "[calm]",
+   "pause": 0.095,
+   "speak": "Training session resumed.",
+   "voice": "pa",
+   "fx": "pa"
+  },
+  {
+   "text": "Every target turned toward him.",
+   "tag": "[serious]",
+   "pause": 0.075
+  },
+  {
+   "text": "Gunfire erupted.",
+   "tag": "[excited]",
+   "pause": 0.3
+  },
+  {
+   "text": "Eli dove behind a concrete barrier.",
+   "tag": "[excited]",
+   "pause": 0.04
+  },
+  {
+   "text": "Bullets struck the wall, sending sparks and dust into the air.",
+   "tag": "[excited]",
+   "pause": 0.055
+  },
+  {
+   "text": "He grabbed a training rifle.",
+   "tag": "[serious]",
+   "pause": 0.04
+  },
+  {
+   "text": "And fired back.",
+   "tag": "[excited]",
+   "pause": 0.15
+  },
+  {
+   "text": "One soldier fell.",
+   "tag": "[serious]",
+   "pause": 0.04
+  },
+  {
+   "text": "Then another.",
+   "tag": "[serious]",
+   "pause": 0.055
+  },
+  {
+   "text": "But every time one collapsed, a new soldier appeared.",
+   "tag": "[mysterious]",
+   "pause": 0.075
+  },
+  {
+   "text": "Eli sprinted through the facility.",
+   "tag": "[excited]",
+   "pause": 0.04
+  },
+  {
+   "text": "He kicked open a steel door.",
+   "tag": "[excited]",
+   "pause": 0.04
+  },
+  {
+   "text": "And found the control room.",
+   "tag": "[mysterious]",
+   "pause": 0.075
+  },
+  {
+   "text": "Inside was a giant screen.",
+   "tag": "[mysterious]",
+   "pause": 0.04
+  },
+  {
+   "text": "It showed hundreds of identical training sessions.",
+   "tag": "[mysterious]",
+   "pause": 0.04
+  },
+  {
+   "text": "All featuring Eli.",
+   "tag": "[serious]",
+   "pause": 0.095
+  },
+  {
+   "text": "Then a message appeared.",
+   "tag": "[mysterious]",
+   "pause": 0.055
+  },
+  {
+   "text": "“FINAL TEST: ELIMINATE THE ORIGINAL.”",
+   "tag": "[calm]",
+   "pause": 0.095,
+   "speak": "Final test. Eliminate the original.",
+   "voice": "pa",
+   "fx": "pa"
+  },
+  {
+   "text": "The soldiers stopped firing.",
+   "tag": "[serious]",
+   "pause": 0.04
+  },
+  {
+   "text": "Every mask turned toward the screen.",
+   "tag": "[mysterious]",
+   "pause": 0.075
+  },
+  {
+   "text": "Eli looked closer.",
+   "tag": "[softly]",
+   "pause": 0.055
+  },
+  {
+   "text": "The original wasn't him.",
+   "tag": "[serious]",
+   "pause": 0.055
+  },
+  {
+   "text": "It was the person watching the footage.",
+   "tag": "[whispers]",
+   "pause": 0.095
+  },
+  {
+   "text": "Then the control room camera slowly turned toward the viewer.",
+   "tag": "[slowly]",
+   "pause": 0.04
+  }
+ ],
+ "samples": {},
+ "sound": {
+  "key": 38,
+  "music_gain": 0.3,
+  "music": [
+   [
+    "0",
+    "dread"
+   ],
+   [
+    "15.217",
+    "suspense"
+   ],
+   [
+    "20.293",
+    "action"
+   ],
+   [
+    "37.509",
+    "action_hit"
+   ],
+   [
+    "38.964",
+    "dread"
+   ],
+   [
+    "46.921",
+    "suspense"
+   ],
+   [
+    "51.269",
+    "silence"
+   ],
+   [
+    "52.824",
+    "dread"
+   ],
+   [
+    "57.247",
+    "cosmic"
+   ]
+  ],
+  "cues": [
+   [
+    "0",
+    "tick",
+    0.35,
+    {
+     "dur": 2.0,
+     "rate": 1.0
+    }
+   ],
+   [
+    "0",
+    "vent",
+    0.18,
+    {
+     "dur": 7.5
+    }
+   ],
+   [
+    "1.0",
+    "clunk",
+    0.6
+   ],
+   [
+    "3.8",
+    "hum",
+    0.22,
+    {
+     "dur": 4.0,
+     "f": 60
+    }
+   ],
+   [
+    "3.9",
+    "stomp",
+    0.55
+   ],
+   [
+    "7.787",
+    "wind",
+    0.35,
+    {
+     "dur": 4.4
+    }
+   ],
+   [
+    "7.787",
+    "buzz",
+    0.12,
+    {
+     "dur": 4.2,
+     "f": 120
+    }
+   ],
+   [
+    "7.887",
+    "footsteps",
+    0.4,
+    {
+     "dur": 3.9,
+     "rate": 1.9
+    }
+   ],
+   [
+    "11.903",
+    "footsteps",
+    0.45,
+    {
+     "dur": 2.6,
+     "rate": 2.0
+    }
+   ],
+   [
+    "11.903",
+    "vent",
+    0.16,
+    {
+     "dur": 8.0
+    }
+   ],
+   [
+    "15.167",
+    "clunk",
+    0.8
+   ],
+   [
+    "15.217",
+    "alarm",
+    0.22,
+    {
+     "dur": 5.0
+    }
+   ],
+   [
+    "L5-0.55",
+    "pachime",
+    0.45
+   ],
+   [
+    "L22-0.55",
+    "pachime",
+    0.45
+   ],
+   [
+    "18.563",
+    "scrape",
+    0.35,
+    {
+     "dur": 0.4
+    }
+   ],
+   [
+    "19.063",
+    "stomp",
+    0.9
+   ],
+   [
+    "19.763",
+    "rack",
+    0.75
+   ],
+   [
+    "19.783",
+    "rack",
+    0.5,
+    {
+     "seed": 52
+    }
+   ],
+   [
+    "20.393",
+    "gunburst",
+    0.7,
+    {
+     "times": [
+      0.0,
+      0.15,
+      0.3,
+      0.45,
+      0.6,
+      0.75,
+      0.9,
+      1.05,
+      1.2,
+      1.35,
+      1.5,
+      1.65,
+      1.8,
+      1.95,
+      2.1,
+      2.25,
+      2.4,
+      2.55,
+      2.7,
+      2.85,
+      3.0,
+      3.15,
+      3.256,
+      3.406,
+      3.556,
+      3.706,
+      3.856,
+      4.006,
+      4.156,
+      4.306,
+      4.456,
+      4.606,
+      4.756,
+      4.906,
+      5.056,
+      5.206,
+      5.356,
+      5.506,
+      5.656,
+      5.806,
+      5.956,
+      6.106,
+      6.256,
+      6.406,
+      6.556,
+      6.706,
+      6.856,
+      7.006,
+      7.156,
+      7.428,
+      7.728,
+      8.028,
+      8.328,
+      8.881,
+      9.131,
+      9.381,
+      9.631,
+      9.881,
+      10.131,
+      10.381,
+      10.631,
+      10.881,
+      11.131,
+      11.381,
+      11.631,
+      11.881,
+      12.131,
+      12.328,
+      12.488,
+      12.648,
+      12.808,
+      12.968,
+      13.128,
+      13.288,
+      13.448,
+      13.608,
+      13.768,
+      13.928,
+      14.088,
+      14.248,
+      14.408,
+      14.568,
+      14.728,
+      14.779,
+      14.899,
+      15.019,
+      15.139,
+      15.259,
+      15.379,
+      15.499,
+      15.619,
+      15.739,
+      15.859,
+      15.979,
+      16.099,
+      16.219,
+      16.339,
+      16.459,
+      16.579,
+      17.046
+     ],
+     "stack": 3,
+     "far": 0.1,
+     "casings": true,
+     "seed": 3
+    }
+   ],
+   [
+    "37.639",
+    "gunburst",
+    0.32,
+    {
+     "times": [
+      0.0,
+      0.2,
+      0.4,
+      0.6,
+      0.8,
+      1.0,
+      1.2,
+      1.4,
+      1.6,
+      1.8,
+      2.0,
+      2.2,
+      2.4,
+      2.6,
+      2.8,
+      3.0,
+      3.2,
+      3.4,
+      3.6,
+      3.8,
+      4.0,
+      4.2,
+      4.4,
+      4.6,
+      4.8,
+      5.0,
+      5.2,
+      5.4,
+      5.6,
+      5.8,
+      6.0,
+      6.2,
+      6.4,
+      6.6,
+      6.8,
+      7.0,
+      7.2,
+      7.4,
+      7.6,
+      7.8,
+      8.0,
+      8.2,
+      8.4,
+      8.6,
+      8.8,
+      9.0,
+      9.2,
+      9.4,
+      9.6,
+      9.8,
+      10.0,
+      10.2,
+      10.4,
+      10.6,
+      10.8,
+      11.0,
+      11.2,
+      11.4,
+      11.6,
+      11.8,
+      12.0,
+      12.2,
+      12.4,
+      12.6,
+      12.8,
+      13.0,
+      13.2,
+      13.4,
+      13.6
+     ],
+     "stack": 2,
+     "far": 0.8,
+     "seed": 5,
+     "rev": 1.2,
+     "wet": 0.3
+    }
+   ],
+   [
+    "22.449",
+    "whoosh",
+    0.6,
+    {
+     "dur": 0.7
+    }
+   ],
+   [
+    "23.049",
+    "bodyfall",
+    0.8
+   ],
+   [
+    "23.349",
+    "knock",
+    0.4
+   ],
+   [
+    "L9+0.15",
+    "concrete",
+    0.45,
+    {
+     "seed": 60
+    }
+   ],
+   [
+    "L9+0.55",
+    "concrete",
+    0.45,
+    {
+     "seed": 61
+    }
+   ],
+   [
+    "L9+1.05",
+    "concrete",
+    0.45,
+    {
+     "seed": 62
+    }
+   ],
+   [
+    "L9+1.6",
+    "concrete",
+    0.45,
+    {
+     "seed": 63
+    }
+   ],
+   [
+    "L9+2.2",
+    "concrete",
+    0.45,
+    {
+     "seed": 64
+    }
+   ],
+   [
+    "L9+2.9",
+    "concrete",
+    0.45,
+    {
+     "seed": 65
+    }
+   ],
+   [
+    "L9+3.5",
+    "concrete",
+    0.45,
+    {
+     "seed": 66
+    }
+   ],
+   [
+    "L9+0.35",
+    "ricochet",
+    0.45,
+    {
+     "seed": 70
+    }
+   ],
+   [
+    "L9+1.3",
+    "ricochet",
+    0.45,
+    {
+     "seed": 71
+    }
+   ],
+   [
+    "L9+2.5",
+    "ricochet",
+    0.45,
+    {
+     "seed": 72
+    }
+   ],
+   [
+    "L9+3.3",
+    "ricochet",
+    0.45,
+    {
+     "seed": 73
+    }
+   ],
+   [
+    "27.971",
+    "clunk",
+    0.4
+   ],
+   [
+    "28.571",
+    "rack",
+    0.9
+   ],
+   [
+    "29.224",
+    "gunburst",
+    0.75,
+    {
+     "times": [
+      0.0,
+      0.12,
+      0.24,
+      0.36,
+      0.48,
+      1.069,
+      1.189,
+      1.837,
+      1.957,
+      2.077,
+      2.197,
+      4.957,
+      5.077,
+      5.197,
+      5.317
+     ],
+     "stack": 1,
+     "far": 0.0,
+     "casings": true,
+     "seed": 9,
+     "rev": 1.8
+    }
+   ],
+   [
+    "30.453",
+    "splat",
+    0.65,
+    {
+     "seed": 117
+    }
+   ],
+   [
+    "31.313",
+    "bodyfall",
+    0.5
+   ],
+   [
+    "31.461",
+    "splat",
+    0.65,
+    {
+     "seed": 119
+    }
+   ],
+   [
+    "32.321",
+    "bodyfall",
+    0.5
+   ],
+   [
+    "34.581",
+    "splat",
+    0.65,
+    {
+     "seed": 121
+    }
+   ],
+   [
+    "35.441",
+    "bodyfall",
+    0.5
+   ],
+   [
+    "32.571",
+    "glitch",
+    0.4,
+    {
+     "dur": 0.7,
+     "seed": 133
+    }
+   ],
+   [
+    "33.071",
+    "glitch",
+    0.4,
+    {
+     "dur": 0.7,
+     "seed": 134
+    }
+   ],
+   [
+    "34.921",
+    "glitch",
+    0.4,
+    {
+     "dur": 0.7,
+     "seed": 135
+    }
+   ],
+   [
+    "32.691",
+    "magout",
+    0.85
+   ],
+   [
+    "33.491",
+    "magin",
+    0.9
+   ],
+   [
+    "33.791",
+    "rack",
+    0.9,
+    {
+     "seed": 53
+    }
+   ],
+   [
+    "35.422",
+    "run",
+    0.45,
+    {
+     "dur": 1.7670000000000001
+    }
+   ],
+   [
+    "37.559",
+    "doorboom",
+    0.75
+   ],
+   [
+    "37.959",
+    "hum",
+    0.2,
+    {
+     "dur": 26.69399999999999,
+     "f": 50
+    }
+   ],
+   [
+    "L18-0.2",
+    "static",
+    0.25,
+    {
+     "dur": 1.4
+    }
+   ],
+   [
+    "46.871",
+    "sting",
+    0.32,
+    {
+     "dur": 2.5
+    }
+   ],
+   [
+    "51.369",
+    "winddown",
+    0.3,
+    {
+     "dur": 1.6
+    }
+   ],
+   [
+    "52.624",
+    "stomp",
+    0.6
+   ],
+   [
+    "52.674",
+    "scrape",
+    0.4,
+    {
+     "dur": 0.5
+    }
+   ],
+   [
+    "55.812",
+    "glitch",
+    0.35,
+    {
+     "dur": 0.6,
+     "seed": 99
+    }
+   ],
+   [
+    "57.247",
+    "drone",
+    0.22,
+    {
+     "dur": 7.6059999999999945,
+     "f": 41
+    }
+   ],
+   [
+    "57.847",
+    "sting",
+    0.28,
+    {
+     "dur": 3.0
+    }
+   ],
+   [
+    "60.015",
+    "servo",
+    0.7,
+    {
+     "dur": 2.4
+    }
+   ],
+   [
+    "64.253",
+    "clunk",
+    0.5
+   ]
+  ]
+ }
+}

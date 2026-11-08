@@ -1,0 +1,33 @@
+{
+ "key": "farm_ep34_soldier_a",
+ "source": {
+  "route": "one-off Studio capture (Episode 34), the steps of tools/farm_avatars.py",
+  "scene": "scenes/sandbox/avcap_ep34.lua",
+  "label": "Masked soldier body (Episode 34): Combat Uniform Grey 16025807516, Grey Military pants 70545321409350; the white featureless mask is added in code (engine/tactical.js)",
+  "catalog_items": [
+   16025807516,
+   70545321409350
+  ]
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-07",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso"
+ ]
+}
