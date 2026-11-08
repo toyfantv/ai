@@ -1,0 +1,76 @@
+newmtl m_acc_Accessory_Knitted_Cardigan
+Kd 1 1 1
+map_Kd t_acc_Accessory_Knitted_Cardigan.jpg
+
+newmtl m_acc_BoySceneHair
+Kd 1 1 1
+map_Kd t_acc_BoySceneHair.jpg
+
+newmtl m_acc_Accessory_MeshPart
+Kd 1 1 1
+map_Kd t_acc_Accessory_MeshPart.jpg
+
+newmtl m_acc_Accessory_Headphones
+Kd 1 1 1
+map_Kd t_acc_Accessory_Headphones.jpg
+
+newmtl m_Head
+Kd 1 1 1
+map_Kd t_Head.jpg
+
+newmtl m_LeftFoot
+Kd 1 1 1
+map_Kd t_LeftFoot.jpg
+
+newmtl m_LeftHand
+Kd 1 1 1
+map_Kd t_LeftHand.jpg
+
+newmtl m_LeftLowerArm
+Kd 0.6941 0.6902 0.6863
+
+newmtl m_LeftLowerLeg
+Kd 1 1 1
+map_Kd t_LeftLowerLeg.jpg
+
+newmtl m_LeftUpperArm
+Kd 0.6941 0.6902 0.6863
+
+newmtl m_LeftUpperLeg
+Kd 1 1 1
+map_Kd t_LeftUpperLeg.jpg
+
+newmtl m_LowerTorso
+Kd 1 1 1
+map_Kd t_LowerTorso.jpg
+
+newmtl m_RightFoot
+Kd 1 1 1
+map_Kd t_RightFoot.jpg
+
+newmtl m_RightHand
+Kd 1 1 1
+map_Kd t_RightHand.jpg
+
+newmtl m_RightLowerArm
+Kd 0.6941 0.6902 0.6863
+
+newmtl m_RightLowerLeg
+Kd 1 1 1
+map_Kd t_RightLowerLeg.jpg
+
+newmtl m_RightUpperArm
+Kd 0.6941 0.6902 0.6863
+
+newmtl m_RightUpperLeg
+Kd 1 1 1
+map_Kd t_RightUpperLeg.jpg
+
+newmtl m_UpperTorso
+Kd 0.6941 0.6902 0.6863
+
+newmtl m_UpperTorso3
+Kd 0.6941 0.6902 0.6863
+
+newmtl m_LowerTorso2
+Kd 0.9647 0.9647 0.9647

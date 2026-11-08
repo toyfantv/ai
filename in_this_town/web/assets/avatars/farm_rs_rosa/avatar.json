@@ -1,0 +1,31 @@
+{
+ "key": "farm_rs_rosa",
+ "source": {
+  "farm_cast": "rs_rosa",
+  "route": "tools/farm_avatars.py"
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-08",
+ "groups": [
+  "Head",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm2",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "LowerTorso2",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm2",
+  "RightUpperLeg",
+  "UpperTorso",
+  "UpperTorso2",
+  "UpperTorso3",
+  "acc_Accessory_Black_ultra_baggy_Y2K_cyber_cargo_pants",
+  "acc_lilponytails"
+ ]
+}

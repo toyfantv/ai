@@ -1,0 +1,34 @@
+{
+ "key": "farm_lt_cole",
+ "source": {
+  "farm_cast": "lt_cole",
+  "route": "tools/farm_avatars.py"
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-08",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperArm2",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "LowerTorso2",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperArm2",
+  "RightUpperLeg",
+  "UpperTorso",
+  "UpperTorso2",
+  "UpperTorso3",
+  "acc_Dr"
+ ]
+}

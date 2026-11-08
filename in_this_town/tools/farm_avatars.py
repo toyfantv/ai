@@ -160,10 +160,14 @@ def capture(names, force):
 def bake(names, force):
     st = load()
     cast = json.loads((FARM / "cast" / "cast.json").read_text(encoding="utf-8"))
+    stop_at = time.time() + float(os.environ.get("FARM_BAKE_MINUTES", 1e6)) * 60   # stop cleanly between characters; run again to go on
     for n in names:
         c = st["chars"].get(n, {})
         if not c.get("blend") or (c.get("done") and not force):
             continue
+        if time.time() > stop_at:
+            print("bake: time budget used, run again to continue", flush=True)
+            return
         out = OUT / n
         shutil.rmtree(out, ignore_errors=True)
         code, log = run([blender(), "-b", c["blend"], "--python", str(ROOT / "tools" / "blender_avatar.py"), "--", n, str(out), "auto"], FARM, 600)

@@ -1,0 +1,35 @@
+{
+ "key": "farm_rs_kai",
+ "source": {
+  "farm_cast": "rs_kai",
+  "route": "tools/farm_avatars.py"
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-08",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperArm2",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "LowerTorso2",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperArm2",
+  "RightUpperLeg",
+  "UpperTorso",
+  "UpperTorso2",
+  "UpperTorso3",
+  "acc_Accessory_Black_ultra_baggy_Y2K_cyber_cargo_pants",
+  "acc_Accessory_MeshPartAccessory"
+ ]
+}

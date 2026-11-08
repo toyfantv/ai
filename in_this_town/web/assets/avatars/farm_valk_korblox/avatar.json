@@ -1,0 +1,27 @@
+{
+ "key": "farm_valk_korblox",
+ "source": {
+  "farm_cast": "valk_korblox",
+  "route": "tools/farm_avatars.py"
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-08",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightHand",
+  "RightLowerArm",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_ValkyrieHelm"
+ ]
+}

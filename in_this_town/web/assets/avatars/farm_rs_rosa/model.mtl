@@ -1,0 +1,62 @@
+newmtl m_acc_T_Shirt_Black_7178736794
+Kd 1 1 1
+map_Kd t_acc_T_Shirt_Black_7178736794.jpg
+
+newmtl m_acc_Jacket_Leather_Black
+Kd 1 1 1
+map_Kd t_acc_Jacket_Leather_Black.jpg
+
+newmtl m_acc_lilponytails
+Kd 1 1 1
+map_Kd t_acc_lilponytails.jpg
+
+newmtl m_acc_Accessory_Black_ultra_baggy_Y2K_cyber_cargo_pants
+Kd 1 1 1
+map_Kd t_acc_Accessory_Black_ultra_baggy_Y2K_cyber_cargo_pants.jpg
+
+newmtl m_Head
+Kd 1 1 1
+map_Kd t_Head.jpg
+
+newmtl m_LeftHand
+Kd 1 1 1
+map_Kd t_LeftHand.jpg
+
+newmtl m_LeftLowerArm
+Kd 0.3608 0.3608 0.3647
+
+newmtl m_LeftLowerLeg
+Kd 1 1 1
+map_Kd t_LeftLowerLeg.jpg
+
+newmtl m_LeftUpperLeg
+Kd 1 1 1
+map_Kd t_LeftUpperLeg.jpg
+
+newmtl m_LowerTorso
+Kd 1 1 1
+map_Kd t_LowerTorso.jpg
+
+newmtl m_RightHand
+Kd 1 1 1
+map_Kd t_RightHand.jpg
+
+newmtl m_RightLowerArm
+Kd 0.3608 0.3608 0.3647
+
+newmtl m_RightLowerLeg
+Kd 1 1 1
+map_Kd t_RightLowerLeg.jpg
+
+newmtl m_RightUpperLeg
+Kd 1 1 1
+map_Kd t_RightUpperLeg.jpg
+
+newmtl m_UpperTorso
+Kd 0.3608 0.3608 0.3647
+
+newmtl m_UpperTorso3
+Kd 0.3608 0.3608 0.3647
+
+newmtl m_LowerTorso2
+Kd 0.4275 0.4078 0.4196

@@ -180,6 +180,8 @@ def sleeve_reach(ob):
 
 
 for ob in obs:
+    if not ob.data.polygons:   # a tool's empty Handle: nothing to see or bake
+        continue
     name = part_name(ob["roblox_path"])
     size = 1024 if name == "Head" or name.startswith("acc_") else 512
     if auto and name != "Head":

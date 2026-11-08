@@ -1,0 +1,68 @@
+newmtl m_acc_Jacket_Hoodie_Orange_6984765766
+Kd 1 1 1
+map_Kd t_acc_Jacket_Hoodie_Orange_6984765766.jpg
+
+newmtl m_acc_Hair_Female_005_Black
+Kd 1 1 1
+map_Kd t_acc_Hair_Female_005_Black.jpg
+
+newmtl m_Head
+Kd 1 1 1
+map_Kd t_Head.jpg
+
+newmtl m_LeftFoot
+Kd 1 1 1
+map_Kd t_LeftFoot.jpg
+
+newmtl m_LeftHand
+Kd 1 1 1
+map_Kd t_LeftHand.jpg
+
+newmtl m_LeftLowerArm
+Kd 0.8588 0.6902 0.5294
+
+newmtl m_LeftLowerLeg
+Kd 1 1 1
+map_Kd t_LeftLowerLeg.jpg
+
+newmtl m_LeftUpperArm
+Kd 0.8588 0.6902 0.5294
+
+newmtl m_LeftUpperLeg
+Kd 1 1 1
+map_Kd t_LeftUpperLeg.jpg
+
+newmtl m_LowerTorso
+Kd 1 1 1
+map_Kd t_LowerTorso.jpg
+
+newmtl m_RightFoot
+Kd 1 1 1
+map_Kd t_RightFoot.jpg
+
+newmtl m_RightHand
+Kd 1 1 1
+map_Kd t_RightHand.jpg
+
+newmtl m_RightLowerArm
+Kd 0.8588 0.6902 0.5294
+
+newmtl m_RightLowerLeg
+Kd 1 1 1
+map_Kd t_RightLowerLeg.jpg
+
+newmtl m_RightUpperArm
+Kd 0.8588 0.6902 0.5294
+
+newmtl m_RightUpperLeg
+Kd 1 1 1
+map_Kd t_RightUpperLeg.jpg
+
+newmtl m_UpperTorso
+Kd 0.8588 0.6902 0.5294
+
+newmtl m_UpperTorso3
+Kd 0.8588 0.6902 0.5294
+
+newmtl m_LowerTorso2
+Kd 0.9882 0.9882 0.9882

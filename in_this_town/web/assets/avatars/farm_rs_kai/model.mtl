@@ -1,0 +1,72 @@
+newmtl m_acc_Accessory_jacket
+Kd 1 1 1
+map_Kd t_acc_Accessory_jacket.jpg
+
+newmtl m_acc_Accessory_MeshPartAccessory
+Kd 1 1 1
+map_Kd t_acc_Accessory_MeshPartAccessory.jpg
+
+newmtl m_acc_Accessory_Black_ultra_baggy_Y2K_cyber_cargo_pants
+Kd 1 1 1
+map_Kd t_acc_Accessory_Black_ultra_baggy_Y2K_cyber_cargo_pants.jpg
+
+newmtl m_Head
+Kd 1 1 1
+map_Kd t_Head.jpg
+
+newmtl m_LeftFoot
+Kd 1 1 1
+map_Kd t_LeftFoot.jpg
+
+newmtl m_LeftHand
+Kd 1 1 1
+map_Kd t_LeftHand.jpg
+
+newmtl m_LeftLowerArm
+Kd 0.4196 0.4196 0.4235
+
+newmtl m_LeftLowerLeg
+Kd 1 1 1
+map_Kd t_LeftLowerLeg.jpg
+
+newmtl m_LeftUpperArm
+Kd 0.4196 0.4196 0.4235
+
+newmtl m_LeftUpperLeg
+Kd 1 1 1
+map_Kd t_LeftUpperLeg.jpg
+
+newmtl m_LowerTorso
+Kd 1 1 1
+map_Kd t_LowerTorso.jpg
+
+newmtl m_RightFoot
+Kd 1 1 1
+map_Kd t_RightFoot.jpg
+
+newmtl m_RightHand
+Kd 1 1 1
+map_Kd t_RightHand.jpg
+
+newmtl m_RightLowerArm
+Kd 0.4196 0.4196 0.4235
+
+newmtl m_RightLowerLeg
+Kd 1 1 1
+map_Kd t_RightLowerLeg.jpg
+
+newmtl m_RightUpperArm
+Kd 0.4196 0.4196 0.4235
+
+newmtl m_RightUpperLeg
+Kd 1 1 1
+map_Kd t_RightUpperLeg.jpg
+
+newmtl m_UpperTorso
+Kd 0.4196 0.4196 0.4235
+
+newmtl m_UpperTorso3
+Kd 0.4196 0.4196 0.4235
+
+newmtl m_LowerTorso2
+Kd 0.6353 0.5647 0.5098

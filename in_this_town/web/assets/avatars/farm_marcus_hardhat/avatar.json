@@ -1,0 +1,31 @@
+{
+ "key": "farm_marcus_hardhat",
+ "source": {
+  "farm_cast": "marcus_hardhat",
+  "route": "tools/farm_avatars.py"
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-08",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_Accessory_MeshPartAccessory",
+  "acc_Accessory_Yellow_Construction_Helmet_Hard_Hat",
+  "acc_Hair_Male_003_Black"
+ ]
+}

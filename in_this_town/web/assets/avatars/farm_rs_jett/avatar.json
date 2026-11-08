@@ -1,0 +1,36 @@
+{
+ "key": "farm_rs_jett",
+ "source": {
+  "farm_cast": "rs_jett",
+  "route": "tools/farm_avatars.py"
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-08",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperArm2",
+  "LeftUpperLeg",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperArm2",
+  "RightUpperLeg",
+  "UpperTorso",
+  "UpperTorso2",
+  "UpperTorso3",
+  "acc_Beanie",
+  "acc_Hair",
+  "acc_Shoes_Sneakers_2_White_Left",
+  "acc_Shoes_Sneakers_2_White_Right",
+  "acc_Shorts_Bermuda_Black_9174391966"
+ ]
+}

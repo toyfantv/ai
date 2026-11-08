@@ -1,0 +1,32 @@
+{
+ "key": "farm_rs_nova",
+ "source": {
+  "farm_cast": "rs_nova",
+  "route": "tools/farm_avatars.py"
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-08",
+ "groups": [
+  "Head",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_Accessory_Black_Y2K_Jeans_w_Studded_Belt",
+  "acc_Accessory_RightShoeAccessory",
+  "acc_HairBandanaUrbanSplinterCamo",
+  "acc_LongHairr",
+  "acc_Ruffly_Corset_Top",
+  "acc_Y2K_Grunge_Black_Shoulder_Bag"
+ ]
+}
