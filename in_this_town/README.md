@@ -192,10 +192,8 @@ the strikes that decide a fight. `web/engine/actionfx.js`: `installActionFX(ctx)
 (a canvas over the 3D view plus a CSS two-tone filter for impact frames; call it after `frame()`), `weaponTrail({ color })` ->
 `.set([{ base, tip, root }...])` (newest first; speed is measured against the body so a flying body leaves no trail). Episode 32's
 `wide(t, { az, el, fov, k })` frames a pair from any azimuth, fits the nearer fighter and steps round columns: copy it.
-Each impact frame sits in a speed edit (the user, the same day): slow motion into the strike, the frame held ~0.2 s in film negative
-(`impact: 3`), a speed ramp out. Episode 32's `remap(v)` gives the scene time for a video time (a fast ramp before the slow motion keeps the
-contact on the clash in the mix and the narration in sync); pass `capT: v` to `frame()` so captions stay on video time. No cutaway cameos
-in story episodes (the user: they broke the flow).
+Impact frames sit in an impact sequence ("Impact sequences" below, Episodes 32 and 33; it replaced Episode 32's film-negative hold).
+No cutaway cameos in story episodes (the user: they broke the flow).
 
 ## Model library
 

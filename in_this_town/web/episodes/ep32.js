@@ -302,7 +302,7 @@ function shots() {
   add('leap', T.leap0 - 0.05, (u, t) => { const s2 = swordsRoot(t).p; return { pos: s2.clone().add(v3(12, 0.5 - 4 * u, 17 - 9 * u)), look: s2.clone().add(v3(0, 3.0, -7)), fov: 62 }; });
   add('duel1', T.land + 0.1, (u, t) => wide(t, { az: lerp(0.3, 0.7, easeInOut(u)), el: lerp(-0.05, 0.06, u), fov: 52 }));
   add('strain', T.C1 + 0.55, (u) => ({ pos: lp3(R(2.6, 5.9, 3.6), R(2.2, 5.8, 3.0), u), look: R(0, 5.2, 0.4), fov: 54 }));
-  add('duel1b', T.C1 + 1.35, (u, t) => wide(t, { az: -0.3 + 0.15 * u + 0.75 * easeInOut(smooth(T.C2 + 0.5, T.C2 + 0.72, t)), el: lerp(0.2, 0.06, easeOut(u)), fov: 54 }));
+  add('duel1b', T.C1 + 1.35, (u, t) => wide(t, { az: -0.3 + 0.15 * u + 0.75 * easeInOut(smooth(T.C2 + 0.5, T.C2 + 0.72, t)), el: lerp(0.2, 0.06, easeOut(u)), fov: 54, ly: 1.6, k: 1.4 }));
   add('flung', T.C3 + 0.08, (u, t) => { const p = rowanRoot(t).p; return { pos: v3(9.4, 10.5, p.z + 5.0), look: p.clone().add(v3(0, 1.6, -2.0)), fov: 64 }; });
   add('getup', T.landR + 0.12, (u) => ({ pos: lp3(Q(-4.2, 5.2, 8.0), Q(-3.8, 4.4, 7.2), easeInOut(u)), look: lp3(Q(0, 1.0, 0), Q(0, 2.8, 0), easeInOut(u)), fov: 58 }));
   add('cut', s(11) + 1.55, (u) => ({ pos: lp3(Q(-0.7, 5.0, 2.5), Q(-0.65, 4.95, 2.2), u), look: Q(0.05, 4.75, 0), fov: 46 }));
@@ -319,7 +319,7 @@ function shots() {
   add('eyes', T.C4 + 0.5, (u, t) => { const r = rowanRoot(t).p, sp = swordsRoot(t).p, d = sp.clone().sub(r).setY(0).normalize(), sd = v3(d.z, 0, -d.x);
     return { pos: r.clone().add(v3(0, 5.0, 0)).addScaledVector(d, lerp(3.6, 3.3, u)).addScaledVector(sd, 1.5), look: r.clone().add(v3(0, 4.75, 0)), fov: 48 }; });
   add('duel2', T.C4 + 1.2, (u, t) => wide(t, { az: lerp(0.25, -0.05, u) - 0.9 * easeInOut(smooth(T.C5 + 0.28, T.C5 + 0.48, t)), el: 0.06, fov: 54 }));
-  add('strike', T.C7 - 0.55, (u, t) => wide(t, { az: lerp(0.15, 0.4, u), el: -0.1, fov: 56, k: lerp(1.3, 1.02, easeOut(u)) }));
+  add('strike', T.C7 - 0.55, (u, t) => wide(t, { az: lerp(-0.12, -0.42, u), el: 0.04, fov: 56, ly: 1.2, k: lerp(1.75, 1.6, easeOut(u)) }));
   add('shatter', T.C7 + 0.55, (u) => ({ pos: lp3(M(8.4, 4.0, 10.0), M(7.2, 3.6, 8.6), u), look: M(0.6, 3.0, 2.4), fov: 56 }));
   add('nobody', s(23) - 0.05, (u) => ({ pos: lp3(M(2.2, 1.6, 9.6), M(1.8, 1.3, 8.0), easeInOut(u)), look: M(0.4, 1.4, 0), fov: 56 }));
   add('dark', s(24) - 0.08, (u) => { const h = W.helmRest || M(0, 0.5, 3); return { pos: h.clone().add(lp3(v3(0.6, 1.9, 3.2), v3(0.08, 0.7, 1.0), easeInOut(u))), look: h.clone().add(v3(0, 0.25, 0)), fov: 46 }; });
@@ -359,13 +359,14 @@ const COLS = [[-11, 4], [-11, -6], [-11, -16], [11, 4], [11, -6], [11, -16], [-1
 // distance from point c to the segment p-q in the ground plane
 const segDist = (p, q, c) => { const dx = q.x - p.x, dz = q.z - p.z, l = dx * dx + dz * dz || 1, k = clamp(((c[0] - p.x) * dx + (c[1] - p.z) * dz) / l); return Math.hypot(p.x + dx * k - c[0], p.z + dz * k - c[1]); };
 function wide(t, o = {}) {
-  let az = o.az ?? 0.6;
-  for (let i = 0; i < 8; i++) { const r = wide1(t, { ...o, az }); if (!COLS.some((c) => segDist(r.pos, r.look, c) < 1.9)) return r; az += 0.22; }
+  let az = o.az ?? 0.6, rel = o.rel;
+  for (let i = 0; i < 8; i++) { const r = wide1(t, { ...o, az, rel }); if (!COLS.some((c) => segDist(r.pos, r.look, c) < 1.9)) return r; az += 0.22; if (rel !== undefined) rel += 0.22; }
   return wide1(t, o);
 }
 function wide1(t, o = {}) {
   const a = rowanRoot(t).p, b = swordsRoot(t).p, m = a.clone().lerp(b, 0.5); m.y = TOP;
-  const az = o.az ?? 0.6, el = o.el ?? 0.1, fov = o.fov ?? 52, dir = v3(Math.cos(az), 0, Math.sin(az));
+  const ab0 = b.clone().sub(a);
+  const az = o.rel !== undefined ? Math.atan2(ab0.x, -ab0.z) + o.rel : (o.az ?? 0.6), el = o.el ?? 0.1, fov = o.fov ?? 52, dir = v3(Math.cos(az), 0, Math.sin(az));   // rel: side-on to the pair, plus rel
   const vf = fov * Math.PI / 360, hf = Math.atan(Math.tan(vf) * 1080 / 1920);
   const ab = b.clone().sub(a), perp = Math.abs(ab.x * dir.z - ab.z * dir.x);
   const near = Math.max(a.clone().sub(m).dot(dir), b.clone().sub(m).dot(dir), 0);   // the nearer fighter must fit too
@@ -401,32 +402,56 @@ function fxAt(t, n, cam, v = t) {
   if (n === 'duel2') o.streak = Math.max(o.streak, bump(e.C5 + 0.38, 0.12, 0.14));
   if (n === 'swing' || n === 'crack') { const k = 0.5 * bump(e.rift + 0.62, 0.2, 0.6); if (k > o.focus) { o.focus = k; o.color = 'rgba(205,190,255,0.55)'; [o.cx, o.cy] = scr(RL.clone().add(v3(0.4, 4.6, 2.4))); } }
   // impact frames: the two strikes that decide each fight (the throw through the wall, the cut across the chest)
-  const hc = held(v); if (hc !== undefined) { o.impact = 3; o.focus = 1; [o.cx, o.cy] = scr(contactPoint(hc === e.C3 ? 2 : 4, hc)); }
   o.streak = clamp(o.streak); o.angle = 0;
   return o;
 }
 
-// the speed edit round the two strikes that decide each fight (the user, 2026-11-07): a ramp up, slow motion into the contact, the
-// frame held in film negative, a speed ramp out. v is video time, the scene runs on remap(v); the contact stays at its own time (on
-// the clash in the mix) and the scene is back on video time when the ramp ends, so the narration stays in sync.
-const SE = { PRE: 0.8, SLOW: 0.6, RS: 0.3, HOLD: 0.22, POST: 0.8 };
+// the impact sequences round the two strikes that decide each fight, after the user's guide (2026-11-07, the same as Episode 33):
+// the wind-up in slow motion, a snap into the strike (faster than life), the contact held for 5 impact frames (white silhouettes on
+// black, black on a dim grey, white again, with radial lines; never a bright flash), the follow-through, then a slightly fast stretch
+// back onto video time so the narration stays in sync. v is video time; the scene runs on remap(v).
+const SPD = () => [
+  { c: T.C3, wind: 0.62, snap: 0.15, slow: 0.42, fast: 2.3, rec: 1.3, at: () => contactPoint(2, T.C3) },
+  { c: T.C7, wind: 0.7, snap: 0.15, slow: 0.4, fast: 2.3, rec: 1.25, at: () => contactPoint(4, T.C7) },
+];
+const HOLDF = 5, IMPSEQ = ['w', 'w', 'b', 'b', 'w'];
+let MAP = null;
+function buildMap() {
+  const dt = 1 / 2400;
+  MAP = SPD().map((p) => {
+    const v0 = p.c - p.wind, pts = [];
+    let v = v0, x = v0, ph = 0, cv = 0, tEnd = 0;
+    for (let guard = 0; guard < 2400 * 8; guard++) {
+      pts.push(x);
+      let sp = 1;
+      if (ph === 0) { sp = lerp(1, p.slow, clamp((v - v0) / 0.12)); if (x >= p.c - p.snap) ph = 1; }
+      if (ph === 1) { sp = p.fast; if (x + sp * dt >= p.c) { x = p.c; cv = v + dt; ph = 2; } }
+      if (ph === 2) { sp = 0; if (v >= cv + HOLDF / 60) { ph = 3; tEnd = v + 0.12; } }
+      if (ph === 3) { sp = 1; if (v >= tEnd) ph = 4; }
+      if (ph === 4) { const gap = v - x; sp = 1 + (p.rec - 1) * clamp(gap / 0.06); if (gap < 0.0015) break; }
+      if (ph !== 2) x += sp * dt;
+      v += dt;
+    }
+    return { ...p, v0, v1: v, dt, pts, cv };
+  });
+}
 function remap(v) {
-  const { PRE, SLOW, RS, HOLD, POST } = SE;
-  for (const c of [T.C3, T.C7]) {
-    const a0 = c - SLOW - PRE, a1 = c - SLOW, b1 = c + HOLD + POST;
-    if (v < a0 || v >= b1) continue;
-    const gain = SLOW * (1 - RS);
-    if (v < a1) { const u = (v - a0) / PRE; return v + gain * (u - Math.sin(2 * Math.PI * u) / (2 * Math.PI)); }
-    if (v < c) return c - (c - v) * RS;
-    if (v < c + HOLD) return c;
-    const u = (v - c - HOLD) / POST; return v - HOLD * (1 - u) ** 3;
+  if (!MAP) return v;
+  for (const m of MAP) {
+    if (v < m.v0 || v >= m.v1) continue;
+    const f = (v - m.v0) / m.dt, i = Math.floor(f), a = m.pts[Math.min(i, m.pts.length - 1)], b = m.pts[Math.min(i + 1, m.pts.length - 1)];
+    return a + (b - a) * (f - i);
   }
   return v;
 }
-const held = (v) => [T.C3, T.C7].find((c) => v >= c && v < c + SE.HOLD);
+// the strike whose impact frames show at video time v (and which of them), or null
+function held(v) { if (!MAP) return null; for (const m of MAP) { const k = Math.floor((v - m.cv) * 60 + 1e-4); if (k >= 0 && k < HOLDF) return { m, k }; } return null; }
+// the video time at which the scene reaches scene time s (the sound cues are handed out on video time)
+function unmap(s2) { let a = s2 - 2, b = s2 + 2; for (let i = 0; i < 50; i++) { const m = (a + b) / 2; if (remap(m) < s2) a = m; else b = m; } return b; }
 const DBGCAM = (() => { const q = new URLSearchParams(location.search).get('cam'); if (!q) return null; const [a, b, f] = q.split('>'); const P = (x) => v3(...x.split(',').map(Number)); return [P(a), P(b), f ? +f : null]; })();
 function renderAt(v) {
-  const t = remap(v), hold = held(v);
+  const vN = ctx.sub && ctx.pro ? v + ctx.pro.shutter * ctx.sub.i / ctx.sub.N : v, hold = held(vN);   // every motion-blur sub-frame agrees on the impact frame
+  const t = hold ? hold.m.c : remap(v);
   let sh = shotAt(W.shots, t); const n = sh.name, e = T;
   const w = tw(t), frozen = t >= e.FRZ && t < e.RES, cave = n === 'field';
   const freezeK = smooth(e.FRZ, e.FRZ + 0.35, t) * (1 - smooth(e.RES - 0.1, e.RES + 0.3, t));
@@ -560,9 +585,20 @@ function renderAt(v) {
   const near = ['reflect', 'blade', 'dark'].includes(n) ? 0.03 : 0.2; if (ctx.camera.near !== near) { ctx.camera.near = near; ctx.camera.updateProjectionMatrix(); }
   if (DBGCAM) sh = { ...sh, pos: DBGCAM[0], look: DBGCAM[1], fov: DBGCAM[2] ?? 40 };   // ?cam=x,y,z>x,y,z>fov: a fixed check view
   const steady = t < e.leap0;
-  if (hold !== undefined) flash = 0;
+  let sil = null;
+  if (hold) {   // an impact frame: only the fighters, their blades and trails, as flat silhouettes
+    flash = 0; sil = IMPSEQ[hold.k];
+    const keep = new Set([W.r.root, W.s.root, W.trR, W.trS]);
+    W.hid = ctx.scene.children.filter((o) => o.visible && !keep.has(o) && !o.isLight && !o.isCamera); W.hid.forEach((o) => { o.visible = false; });
+    ctx.scene.overrideMaterial = sil === 'w' ? W.silW : W.silB;
+    ctx.scene.background.set(sil === 'w' ? '#000000' : '#5d5968'); ctx.scene.fog.near = 1e5; ctx.scene.fog.far = 2e5;
+  }
   frame(ctx, t, sh, { capT: v, steady, shake: steady ? 0 : shake, shadowSpan: n === 'open' || n === 'freeze' ? 90 : n === 'split' || n.startsWith('rise') ? 70 : 34, flash, flashColor: '#ffffff', shadows: !cave });
-  W.fx.set(v, cave ? {} : fxAt(t, n, ctx.camera, v));
+  if (sil) {
+    W.hid.forEach((o) => { o.visible = true; }); ctx.scene.overrideMaterial = null;
+    const q = hold.m.at().project(ctx.camera);
+    W.fx.set(vN, { focus: 1, cx: clamp(q.x * 0.5 + 0.5), cy: clamp(0.5 - q.y * 0.5), color: sil === 'w' ? 'rgba(255,255,255,0.85)' : 'rgba(0,0,0,0.85)', inner: 0.4, seed: hold.k * 7 });
+  } else W.fx.set(v, cave ? {} : fxAt(t, n, ctx.camera, v));
   return n;
 }
 // where the blades meet: from the two roots at the contact time (pure functions of time, so every worker agrees)
@@ -578,7 +614,9 @@ function contactPoint(i, c) {
 export async function setup() {
   ctx = await initStage('ep32', { look: 'pro', avatars: ['farm_ep32_rowan', 'farm_ep32_atlanta', 'farm_ep32_zzeekkee'] }); L = ctx.L;
   EV = events();
-  HOLDS = [[T.C1, 0.05], [T.C2, 0.06], [T.C3, 0.05], [T.C6, 0.04], [T.C7, 0.09]];
+  HOLDS = [[T.C1, 0.05], [T.C2, 0.06], [T.C6, 0.04]];   // C3 and C7 hold as impact frames instead
+  buildMap();
+  W.silW = new THREE.MeshBasicMaterial({ color: '#ffffff', fog: false, toneMapped: false }); W.silB = new THREE.MeshBasicMaterial({ color: '#000000', fog: false, toneMapped: false });
   await loadAnimSet('sword_set');
   clips();
   await loadAlti(['neutral', 'focused', 'surprised', 'scared', 'nervous', 'shocked', 'angry', 'pain', 'lookleft', 'lookright', 'terrified']);
@@ -592,5 +630,6 @@ export async function setup() {
   W.sparkAt = []; W.reflectCam = () => ({ pos: v3(0, 10, 10), look: v3(0, 0, 0), fov: 50 });
   W.shots = shots();
   void noise1;
-  return expose(ctx, renderAt, L(27).start + 2.2, EV);
+  const EVV = Object.fromEntries(Object.entries(EV).map(([k, x]) => [k, typeof x === 'number' ? unmap(x) : x]));   // the mix places its cues on video time
+  return expose(ctx, renderAt, unmap(L(27).start + 2.2), EVV);
 }
