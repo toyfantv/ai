@@ -16,6 +16,7 @@ import { campfire, tent, logSeat, woodPile, axeStump, lantern, cookPot, bedroll,
 import { obbyPlatform, laserCross, controlChair } from './obby.js';
 import { ornateFrame, printMat, loosePrint, invitation, chandelier, sconce, bigChair, banquetTable, gramophone, grandClock, curtainWindow, panelDoor, bareTrees, mansion, guest } from './mansion.js';
 import { stormIsland, courtyard, clockTower, postClock, brickWall, crater, stormSea, rain as stormRain, timeCrack, cavern } from './ruins.js';
+import { magicArena, arenaGround, voidRocks, fallingRocks, fireWall, energyOrb, runeShield, shardBurst, shockwave, sigil, beam, decal, arcBolt, fireStream, driftParticles, shadowCrowd, teleportFx, cloak } from './arena.js';
 import { blackSword, whiteBlade, armorSuit, swordField } from './blades.js';
 import { hospitalBed, wardDoor, fluorPanel, crtTV, ivPole, cabinet, paSpeaker, roomPlate, bedChart, nurse, wardBeds, hospitalBlock, noticeSign } from './hospital.js';
 import { cubeSeed, cubeStairs, gardenPlot, seedStall, wateringCan, wheelbarrow, scarecrow, floatingIsland, glassField, nameTree, bloomField } from './garden.js';
@@ -391,6 +392,25 @@ export const BUILD = {
   notice_sign: (o) => put(o, noticeSign(o.lines ?? ['DEMOLITION NOTICE'], o)),
   forest_beast: (o) => put(o, beast(o)),   // a blocky wolf-like creature with glowing eyes that blink; .update(t)
   snowfall: (o) => snow(o.parent, o),   // falling snow points (centre, size, height, count)
+  // Episode 33 (engine/arena.js): a floating magic arena and duel magic
+  magic_arena: (o) => { const a = magicArena(o); if (o.parent) o.parent.add(a.group); return a; },   // .seats, .clock.set(h), .bell.set(a, ring), .update(t, {brazier, runes}), .under
+  arena_ground: (o) => put(o, arenaGround(o)),   // ground round the arena (o.hole); move it down for the lift
+  void_rocks: (o) => voidRocks(o.parent, o),   // drifting rocks; .update(t)
+  falling_rocks: (o) => fallingRocks(o.parent, o),   // .set(age)
+  fire_wall: (o) => put(o, fireWall(o)),   // along x; .set(k, t, [partX, partAmt], lightI)
+  energy_orb: (o) => put(o, energyOrb(o)),   // .place(pos, olderPositions, k, t), .addTrailTo(parent)
+  rune_shield: (o) => put(o, runeShield(o)),   // faces +z; .set(open, t, hit)
+  shard_burst: (o) => shardBurst(o.parent, o),   // .fire(t0) then .update(t)
+  shockwave_ring: (o) => put(o, shockwave(o)),   // .set(age, maxR, dur)
+  magic_sigil: (o) => put(o, sigil(o)),   // .set(k, t)
+  summon_beam: (o) => put(o, beam(o)),   // .set(k)
+  ground_decal: (o) => put(o, decal(o.kind ?? 'scorch', o)),   // scorch | skid | crack; .set(opacity), scale the mesh
+  arc_bolt: (o) => put(o, arcBolt(o)),   // .set(a, b, k, seed)
+  fire_stream: (o) => put(o, fireStream(o)),   // .set(a, b, k, t)
+  drift_particles: (o) => put(o, driftParticles(o.positions, o)),   // .set(age)
+  shadow_crowd: (o) => put(o, shadowCrowd(o.seats, o)),   // .set({fill, yaw, eyes}, t)
+  teleport_fx: (o) => put(o, teleportFx(o)),   // .set(age)
+  magic_cloak: (o) => cloak(o.character, o),   // .wear(on), .update(follow) after posing, .dissolveU.uDis.value, .surfacePoints(n)
   // Episode 32 (engine/ruins.js, engine/blades.js): a storm island, its ruins, swords and armour
   storm_island: (o) => { const i = stormIsland(o); if (o.parent) o.parent.add(i.group); return i; },   // a rocky island with a flat plateau at .top; .heightAt(x, z)
   ruin_courtyard: (o) => put(o, courtyard(o)),   // a flagstone courtyard disc with a soft edge

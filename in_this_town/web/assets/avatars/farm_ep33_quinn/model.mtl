@@ -1,0 +1,63 @@
+newmtl m_acc_Accessory_Meshes_hair
+Kd 1 1 1
+map_Kd t_acc_Accessory_Meshes_hair.jpg
+
+newmtl m_Head
+Kd 1 1 1
+map_Kd t_Head.jpg
+
+newmtl m_LeftFoot
+Kd 1 1 1
+map_Kd t_LeftFoot.jpg
+
+newmtl m_LeftHand
+Kd 1 1 1
+map_Kd t_LeftHand.jpg
+
+newmtl m_LeftLowerArm
+Kd 1 1 1
+map_Kd t_LeftLowerArm.jpg
+
+newmtl m_LeftLowerLeg
+Kd 1 1 1
+map_Kd t_LeftLowerLeg.jpg
+
+newmtl m_LeftUpperArm
+Kd 1 1 1
+map_Kd t_LeftUpperArm.jpg
+
+newmtl m_LeftUpperLeg
+Kd 1 1 1
+map_Kd t_LeftUpperLeg.jpg
+
+newmtl m_LowerTorso
+Kd 1 1 1
+map_Kd t_LowerTorso.jpg
+
+newmtl m_RightFoot
+Kd 1 1 1
+map_Kd t_RightFoot.jpg
+
+newmtl m_RightHand
+Kd 1 1 1
+map_Kd t_RightHand.jpg
+
+newmtl m_RightLowerArm
+Kd 1 1 1
+map_Kd t_RightLowerArm.jpg
+
+newmtl m_RightLowerLeg
+Kd 1 1 1
+map_Kd t_RightLowerLeg.jpg
+
+newmtl m_RightUpperArm
+Kd 1 1 1
+map_Kd t_RightUpperArm.jpg
+
+newmtl m_RightUpperLeg
+Kd 1 1 1
+map_Kd t_RightUpperLeg.jpg
+
+newmtl m_UpperTorso
+Kd 1 1 1
+map_Kd t_UpperTorso.jpg

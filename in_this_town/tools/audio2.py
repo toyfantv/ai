@@ -359,6 +359,87 @@ SFX.update({
 })
 
 
+# Episode 33: magic duel sounds (fire wall, energy orbs, a rune shield, electric arcs, a teleport, a deep tower bell,
+# a violet shockwave, a cloak turning to glittering dust)
+def firewall(d=4.0, seed=31):
+    # flames roaring up: a low whoosh swell, a band-noise roar that flickers, crackles on top
+    r = np.random.default_rng(seed); t = tt(d)
+    roar = bp(r.standard_normal(len(t)), 120, 1400) * (0.7 + 0.3 * lp(r.standard_normal(len(t)), 6) * 4)
+    sw = np.minimum(1, t / 0.5) * np.exp(-np.maximum(0, t - d + 1.0) * 3)
+    cr = crackle(d, 90)[: len(t)] * 0.5
+    return reverb(roar * sw * 0.8 + cr * sw, 1.6, 0.25)
+
+
+def orb(d=0.9, seed=32):
+    # an energy blast leaving the hand: a rising buzz and a soft thump
+    r = np.random.default_rng(seed); t = tt(d); f = 180 + 900 * (t / d) ** 0.6
+    buzz = np.sin(2 * np.pi * np.cumsum(f) / SR) * (0.6 + 0.4 * np.sin(2 * np.pi * 37 * t)) * np.exp(-t * 3.5)
+    air = bp(r.standard_normal(len(t)), 800, 5000) * np.exp(-t * 7) * 0.5
+    return reverb(buzz * 0.5 + air + impact(d, 140, 40, 0.0)[: len(t)] * 0.4, 1.2, 0.3)
+
+
+def shieldhit(seed=33):
+    # an orb on the rune shield: a glassy, bell-like ring and a crack
+    r = np.random.default_rng(seed); t = tt(1.8)
+    ring = sum(a * np.sin(2 * np.pi * f * t + r.random() * 6) * np.exp(-t * dc) for f, a, dc in [(620, 1, 3), (1490, 0.6, 5), (2310, 0.4, 7), (3870, 0.25, 11)])
+    crack = hp(r.standard_normal(len(t)), 2000) * np.exp(-t * 40)
+    return reverb(ring * 0.45 + crack * 0.7 + impact(1.8, 110, 35, 0.0)[: len(t)] * 0.6, 1.8, 0.4)
+
+
+def zap(d=1.2, seed=34):
+    # electric arcs: buzzing, crackling, stuttering noise
+    r = np.random.default_rng(seed); t = tt(d)
+    buzz = np.sign(np.sin(2 * np.pi * 95 * t)) * 0.3 + bp(r.standard_normal(len(t)), 1500, 9000)
+    gate = (lp(r.standard_normal(len(t)), 30) > -0.02).astype(float) * 0.7 + 0.3
+    return reverb(buzz * gate * np.minimum(1, t / 0.02) * np.exp(-np.maximum(0, t - d + 0.3) * 8), 1.0, 0.25) * 0.8
+
+
+def teleport(d=0.8, seed=35):
+    # a vanish: a reversed swell into a soft pop
+    r = np.random.default_rng(seed); t = tt(d)
+    sw = bp(r.standard_normal(len(t)), 400, 6000) * (t / d) ** 3
+    return reverb(sw * 0.8 + np.concatenate([np.zeros(int(len(t) * 0.85)), pop()])[: len(t)] * 0.5, 1.4, 0.35)
+
+
+def towerbell(d=6.0, note=40):
+    # one deep, cold toll
+    t = tt(d); f = hz(note)
+    x = sum(a * np.sin(2 * np.pi * f * m * t) * np.exp(-t * dc) for m, a, dc in [(0.5, 0.6, 0.5), (1, 1, 0.7), (2.0, 0.5, 1.2), (2.4, 0.4, 1.4), (3.0, 0.3, 2), (4.2, 0.2, 3)])
+    return reverb(x * 0.5, 4.0, 0.5)
+
+
+def shockboom(d=5.0, seed=36):
+    # the shockwave: a sub drop, a rushing wall of air, debris
+    r = np.random.default_rng(seed); t = tt(d)
+    air = bp(r.standard_normal(len(t)), 150, 4000) * np.exp(-t * 1.4)
+    return reverb(impact(d, 140, 18, 1.2)[: len(t)] + air * 0.5 + rockbreak(d, seed)[: len(t)] * 0.4, 2.8, 0.4)
+
+
+def dustglitter(d=3.0, seed=37):
+    # a cloak dissolving: a soft rising shimmer of tiny chimes, airy
+    r = np.random.default_rng(seed); t = tt(d); x = bp(r.standard_normal(len(t)), 3000, 12000) * 0.12 * np.sin(np.pi * t / d)
+    for _ in range(70):
+        i = int(r.random() * (d - 0.6) * SR); f = 2200 + r.random() * 3500; h = np.sin(2 * np.pi * f * tt(0.5)) * np.exp(-tt(0.5) * 9) * 0.05
+        x[i:i + len(h)] += h[: len(t) - i]
+    return reverb(x, 2.5, 0.5)
+
+
+def kickhit(seed=38):
+    # a kick landing in the ribs: a heavy body punch and a swish
+    r = np.random.default_rng(seed); t = tt(1.0)
+    body = impact(1.0, 95, 45, 0.3)[: len(t)]; slap = lp(r.standard_normal(len(t)), 3500) * np.exp(-t * 35)
+    return reverb(body * 0.9 + slap * 0.6, 0.8, 0.2)
+
+
+SFX.update({
+    'firewall': lambda o: firewall(o.get('dur', 4.0)), 'orb': lambda o: orb(o.get('dur', 0.9), o.get('seed', 32)),
+    'shieldhit': lambda o: shieldhit(o.get('seed', 33)), 'zap': lambda o: zap(o.get('dur', 1.2), o.get('seed', 34)),
+    'teleport': lambda o: teleport(o.get('dur', 0.8)), 'towerbell': lambda o: towerbell(o.get('dur', 6.0), o.get('note', 40)),
+    'shockboom': lambda o: shockboom(o.get('dur', 5.0)), 'dustglitter': lambda o: dustglitter(o.get('dur', 3.0)),
+    'kickhit': lambda o: kickhit(o.get('seed', 38)),
+})
+
+
 # Episode 23: a small dragon's wings (soft feathery beats) and its voice (a bright squeak that bends up or down)
 def flutter(d=1.2, rate=9.0, seed=5):
     r = np.random.default_rng(seed); x = np.zeros(int(d * SR)); t = 0.0

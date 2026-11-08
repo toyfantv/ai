@@ -19,6 +19,26 @@
     "type": "builder",
     "url": ""
   },
+  "arc_bolt": {
+    "author": "toyfantv",
+    "desc": "an electric arc between two points, redrawn per seed",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep33",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "arena_ground": {
+    "author": "toyfantv",
+    "desc": "dark ground round the arena (rocks, dead trees) with a hole for it; move it down to lift the arena",
+    "kind": "set",
+    "licence": "own",
+    "made_for": "ep33",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "banquet_table": {
     "author": "toyfantv",
     "desc": "a long banquet table with cloth and runner",
@@ -299,12 +319,32 @@
     "type": "builder",
     "url": ""
   },
+  "drift_particles": {
+    "author": "toyfantv",
+    "desc": "glowing particles drifting off sampled surface points (a dissolve)",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep33",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "endless_ward": {
     "author": "toyfantv",
     "desc": "instanced endless rows of occupied hospital beds with sleeping patients",
     "kind": "set",
     "licence": "own",
     "made_for": "ep27",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "energy_orb": {
+    "author": "toyfantv",
+    "desc": "a glowing energy orb with a trail and its own light",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep33",
     "source": "this renderer",
     "type": "builder",
     "url": ""
@@ -325,6 +365,36 @@
     "kind": "prop",
     "licence": "own",
     "made_for": "ep21",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "falling_rocks": {
+    "author": "toyfantv",
+    "desc": "rocks breaking off an underside as it tears free (deterministic)",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep33",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "fire_stream": {
+    "author": "toyfantv",
+    "desc": "a stream of fire between two points",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep33",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "fire_wall": {
+    "author": "toyfantv",
+    "desc": "a wall of fire that rises, parts round someone walking through it, embers and warm lights",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep33",
     "source": "this renderer",
     "type": "builder",
     "url": ""
@@ -495,6 +565,16 @@
     "kind": "building",
     "licence": "own",
     "made_for": "ep20",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "ground_decal": {
+    "author": "toyfantv",
+    "desc": "scorch, skid and crack decals on a floor",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep33",
     "source": "this renderer",
     "type": "builder",
     "url": ""
@@ -715,6 +795,36 @@
     "kind": "prop",
     "licence": "own",
     "made_for": "ep13",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "magic_arena": {
+    "author": "toyfantv",
+    "desc": "a floating stone arena: a rune floor, tiers of seats (.seats), gate towers with a midnight clock and a bell, braziers with cold flames, broken stairs, an upside-down ring of arches and a rock underside for lifting it into a void",
+    "kind": "set",
+    "licence": "own",
+    "made_for": "ep33",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "magic_cloak": {
+    "author": "toyfantv",
+    "desc": "a white hooded cloak fitted onto any character (mantle, split skirt that follows the legs, sleeves, hood) that dissolves into glowing particles",
+    "kind": "accessory",
+    "licence": "own",
+    "made_for": "ep33",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "magic_sigil": {
+    "author": "toyfantv",
+    "desc": "a glowing magic circle on the floor or in the sky",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep33",
     "source": "this renderer",
     "type": "builder",
     "url": ""
@@ -949,6 +1059,16 @@
     "type": "builder",
     "url": ""
   },
+  "rune_shield": {
+    "author": "toyfantv",
+    "desc": "a rune shield disc in front of a palm that flares on each hit",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep33",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "sailboat": {
     "author": "toyfantv",
     "desc": "a small wooden boat with a striped sail",
@@ -985,6 +1105,36 @@
     "kind": "prop",
     "licence": "own",
     "made_for": "ep19",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "shadow_crowd": {
+    "author": "toyfantv",
+    "desc": "instanced seated shadow spectators with rim light and glowing eyes; per-seat fill, turn and eyes",
+    "kind": "crowd",
+    "licence": "own",
+    "made_for": "ep33",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "shard_burst": {
+    "author": "toyfantv",
+    "desc": "a deterministic burst of sparks / shards / debris from a point",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep33",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "shockwave_ring": {
+    "author": "toyfantv",
+    "desc": "an expanding ground ring and thin dome (a shockwave)",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep33",
     "source": "this renderer",
     "type": "builder",
     "url": ""
@@ -1089,6 +1239,16 @@
     "type": "builder",
     "url": ""
   },
+  "summon_beam": {
+    "author": "toyfantv",
+    "desc": "a beam of light from the sky (summoning)",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep33",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "sword_cavern": {
     "author": "toyfantv",
     "desc": "a dark cavern beneath an island",
@@ -1105,6 +1265,16 @@
     "kind": "environment",
     "licence": "own",
     "made_for": "ep32",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "teleport_fx": {
+    "author": "toyfantv",
+    "desc": "a vanish / appear flash column and ring",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep33",
     "source": "this renderer",
     "type": "builder",
     "url": ""
@@ -1185,6 +1355,16 @@
     "kind": "building",
     "licence": "own",
     "made_for": "ep28",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "void_rocks": {
+    "author": "toyfantv",
+    "desc": "instanced rocks drifting in a black void",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep33",
     "source": "this renderer",
     "type": "builder",
     "url": ""

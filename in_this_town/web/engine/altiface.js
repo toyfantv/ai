@@ -145,7 +145,7 @@ export function attachAlti(ch, headParts, spec, cache) {
     if (k === key) return;
     key = k; mat.map = mat.emissiveMap = texFor(ids); mat.needsUpdate = true;
   };
-  ch.faceSheet = sheet;
+  ch.faceSheet = sheet; ch.headParts = headParts;
   ch.setFace('neutral');
 }
 

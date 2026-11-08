@@ -255,6 +255,204 @@
    "licence": "own",
    "desc": "sword lowered at the side (loop)",
    "made_for": "ep32"
+  },
+  "magic_set:side_kick": {
+   "set": "magic_set",
+   "source": "Mixamo (Adobe): side_kick (video-farm assets/mixamo/fbx, clip mx_sidekick)",
+   "licence": "Mixamo (Adobe) free licence: use in animations and videos, the raw files not redistributed (git-ignored; rebuild with tools/anim_retarget.py from video-farm assets/mixamo/fbx)",
+   "frames": 61,
+   "fps": 30,
+   "made_for": "ep33"
+  },
+  "magic_set:roundhouse": {
+   "set": "magic_set",
+   "source": "Mixamo (Adobe): roundhouse (video-farm assets/mixamo/fbx, clip mx_roundhouse)",
+   "licence": "Mixamo (Adobe) free licence: use in animations and videos, the raw files not redistributed (git-ignored; rebuild with tools/anim_retarget.py from video-farm assets/mixamo/fbx)",
+   "frames": 76,
+   "fps": 30,
+   "made_for": "ep33"
+  },
+  "magic_set:flip_kick": {
+   "set": "magic_set",
+   "source": "Mixamo (Adobe): flip_kick (video-farm assets/mixamo/fbx, clip mx_flipkick)",
+   "licence": "Mixamo (Adobe) free licence: use in animations and videos, the raw files not redistributed (git-ignored; rebuild with tools/anim_retarget.py from video-farm assets/mixamo/fbx)",
+   "frames": 62,
+   "fps": 30,
+   "made_for": "ep33"
+  },
+  "magic_set:knocked_down": {
+   "set": "magic_set",
+   "source": "Mixamo (Adobe): knocked_down (video-farm assets/mixamo/fbx, clip mx_knocked)",
+   "licence": "Mixamo (Adobe) free licence: use in animations and videos, the raw files not redistributed (git-ignored; rebuild with tools/anim_retarget.py from video-farm assets/mixamo/fbx)",
+   "frames": 85,
+   "fps": 30,
+   "made_for": "ep33"
+  },
+  "magic_set:getting_up": {
+   "set": "magic_set",
+   "source": "Mixamo (Adobe): getting_up (video-farm assets/mixamo/fbx, clip mx_getup)",
+   "licence": "Mixamo (Adobe) free licence: use in animations and videos, the raw files not redistributed (git-ignored; rebuild with tools/anim_retarget.py from video-farm assets/mixamo/fbx)",
+   "frames": 82,
+   "fps": 30,
+   "made_for": "ep33"
+  },
+  "magic_set:react_big": {
+   "set": "magic_set",
+   "source": "Mixamo (Adobe): react_big (video-farm assets/mixamo/fbx, clip mx_react_big)",
+   "licence": "Mixamo (Adobe) free licence: use in animations and videos, the raw files not redistributed (git-ignored; rebuild with tools/anim_retarget.py from video-farm assets/mixamo/fbx)",
+   "frames": 50,
+   "fps": 30,
+   "made_for": "ep33"
+  },
+  "magic_set:react_body": {
+   "set": "magic_set",
+   "source": "Mixamo (Adobe): react_body (video-farm assets/mixamo/fbx, clip mx_react_body)",
+   "licence": "Mixamo (Adobe) free licence: use in animations and videos, the raw files not redistributed (git-ignored; rebuild with tools/anim_retarget.py from video-farm assets/mixamo/fbx)",
+   "frames": 41,
+   "fps": 30,
+   "made_for": "ep33"
+  },
+  "magic_set:dodge_back": {
+   "set": "magic_set",
+   "source": "Mixamo (Adobe): dodge_back (video-farm assets/mixamo/fbx, clip mx_dodge_back)",
+   "licence": "Mixamo (Adobe) free licence: use in animations and videos, the raw files not redistributed (git-ignored; rebuild with tools/anim_retarget.py from video-farm assets/mixamo/fbx)",
+   "frames": 50,
+   "fps": 30,
+   "made_for": "ep33"
+  },
+  "magic_set:standing_block": {
+   "set": "magic_set",
+   "source": "Mixamo (Adobe): standing_block (video-farm assets/mixamo/fbx, clip mx_block)",
+   "licence": "Mixamo (Adobe) free licence: use in animations and videos, the raw files not redistributed (git-ignored; rebuild with tools/anim_retarget.py from video-farm assets/mixamo/fbx)",
+   "frames": 61,
+   "fps": 30,
+   "made_for": "ep33"
+  },
+  "keyed:stance": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 33)",
+   "licence": "own",
+   "desc": "a magic duel stance, hands loose and ready (loop)",
+   "made_for": "ep33"
+  },
+  "keyed:pointUp": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 33)",
+   "licence": "own",
+   "desc": "one hand thrown up to call lightning down (strike ~0.75 s)",
+   "made_for": "ep33"
+  },
+  "keyed:jumpBack": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 33)",
+   "licence": "own",
+   "desc": "a two-footed jump backward (push 0.15, land 0.55)",
+   "made_for": "ep33"
+  },
+  "keyed:summon": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 33)",
+   "licence": "own",
+   "desc": "both arms swept up to raise a wall (rises at ~0.7 s)",
+   "made_for": "ep33"
+  },
+  "keyed:throwR": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 33)",
+   "licence": "own",
+   "desc": "a right-hand energy throw (draw 0.18, release 0.28)",
+   "made_for": "ep33"
+  },
+  "keyed:throwL": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 33)",
+   "licence": "own",
+   "desc": "a left-hand energy throw (draw 0.18, release 0.28)",
+   "made_for": "ep33"
+  },
+  "keyed:palmBlock": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 33)",
+   "licence": "own",
+   "desc": "one open palm raised to block (up by 0.22 s)",
+   "made_for": "ep33"
+  },
+  "keyed:pushKick": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 33)",
+   "licence": "own",
+   "desc": "a front push-kick (chamber 0.16, contact 0.3, travels forward)",
+   "made_for": "ep33"
+  },
+  "keyed:hitFly": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 33)",
+   "licence": "own",
+   "desc": "thrown backward through the air by a hit",
+   "made_for": "ep33"
+  },
+  "keyed:skid": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 33)",
+   "licence": "own",
+   "desc": "skidding on the back with both hands braced on the floor behind",
+   "made_for": "ep33"
+  },
+  "keyed:struggleUp": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 33)",
+   "licence": "own",
+   "desc": "struggling up from the floor (1.75 s)",
+   "made_for": "ep33"
+  },
+  "keyed:raiseBoth": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 33)",
+   "licence": "own",
+   "desc": "both hands raised slowly overhead (lifting something huge)",
+   "made_for": "ep33"
+  },
+  "keyed:gather": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 33)",
+   "licence": "own",
+   "desc": "gathering power, arms low and open, head bowed",
+   "made_for": "ep33"
+  },
+  "keyed:thrust": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 33)",
+   "licence": "own",
+   "desc": "a two-hand forward thrust (contact 0.18 s)",
+   "made_for": "ep33"
+  },
+  "keyed:spread": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 33)",
+   "licence": "own",
+   "desc": "arms flung wide (lightning out of both hands)",
+   "made_for": "ep33"
+  },
+  "keyed:release": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 33)",
+   "licence": "own",
+   "desc": "a full-body release, arms thrown out (release 0.4 s)",
+   "made_for": "ep33"
+  },
+  "keyed:braceBoth": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 33)",
+   "licence": "own",
+   "desc": "both palms forward, braced against a blast",
+   "made_for": "ep33"
+  },
+  "keyed:cower": {
+   "set": "engine/anims.js KEYED",
+   "source": "hand-keyed in the In This Town renderer (Episode 33)",
+   "licence": "own",
+   "desc": "a small, frightened cower, hands to the chest (loop)",
+   "made_for": "ep33"
   }
  }
 }

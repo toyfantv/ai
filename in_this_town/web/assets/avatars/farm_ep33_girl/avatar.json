@@ -1,0 +1,35 @@
+{
+ "key": "farm_ep33_girl",
+ "source": {
+  "route": "one-off Studio capture (Episode 33), the steps of tools/farm_avatars.py",
+  "scene": "scenes/sandbox/avcap_ep33.lua",
+  "label": "The little girl under the white cloak (Episode 33): white nightgown, light brown pigtails",
+  "catalog_items": [
+   9303860210,
+   6822404437,
+   94118975277248
+  ]
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-07",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_Accessory_defaultAccessory"
+ ]
+}

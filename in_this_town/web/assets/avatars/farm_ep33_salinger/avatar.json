@@ -1,0 +1,32 @@
+{
+ "key": "farm_ep33_salinger",
+ "source": {
+  "route": "one-off Studio capture (Episode 33), the steps of tools/farm_avatars.py",
+  "scene": "scenes/sandbox/avcap_ep33.lua",
+  "label": "Salinger80 (user id 11161539736), as worn: blue spiky hair, red headband, black jacket, dark jeans; Episode 33 side character (last night's winner)",
+  "user_id": 11161539736
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-07",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_CoolBoyHair",
+  "acc_RobloxVisor2019"
+ ]
+}

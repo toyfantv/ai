@@ -229,6 +229,126 @@ K.landing = keyed([
 K.crouch = keyed([{ t: 0, torso: [30, 0, 0], neck: [14, 0, 0], aR: [-30, 0, 6], aL: [-20, 0, -6], lR: [-60, 0, 0], lL: [40, 0, 0], h: 0.72, blade: [0, -1, 0.1] }, { t: 1, torso: [32, 0, 0], neck: [16, 0, 0], aR: [-32, 0, 6], aL: [-20, 0, -6], lR: [-60, 0, 0], lL: [40, 0, 0], h: 0.71, blade: [0, -1, 0.1] }], { loop: true });
 // the sword lowered at the side (after the fight)
 K.lowered = keyed([{ t: 0, torso: [2, 0, 0], neck: [0, 0, 0], aR: [-14, 0, 10], aL: [-4, 0, -6], h: 1, blade: [0.2, -0.6, 0.78] }, { t: 2, torso: [3, 0, 0], neck: [1, 0, 0], aR: [-15, 0, 10], aL: [-4, 0, -6], h: 0.995, blade: [0.2, -0.6, 0.78] }], { loop: true });
+// ---------------- hand-keyed magic clips (Episode 33; reusable: no prop) ----------------
+// Each strike or cast has its anticipation, contact (the time in the comment) and follow-through.
+const H33 = { src: 'hand-keyed (Episode 33)' };
+const ST = { torso: [6, -12, 0], neck: [-4, 10, 0], aR: [-70, 0, -14], aL: [-58, 0, 12], lR: [-12, 0, -6], lL: [12, 0, 6], h: 0.97 };   // a caster's ready stance
+K.stance = keyed([{ t: 0, ...ST }, { t: 1.3, ...ST, torso: [8, -14, 0], aR: [-74, 0, -14], h: 0.962 }, { t: 2.6, ...ST }], { loop: true, ...H33 });
+// one arm up to the sky, then snapped down to point at the ground ahead (the strike lands at 0.75)
+K.pointUp = keyed([
+  { t: 0, torso: [0, 0, 0], neck: [0, 0, 0], aR: [-10, 0, 4], aL: [-6, 0, -4], h: 1 },
+  { t: 0.42, ease: 'out', torso: [-6, 0, 0], neck: [-16, 0, 0], aR: [-176, 0, 6], aL: [-12, 0, -8] },
+  { t: 0.62, torso: [-7, 0, 0], neck: [-18, 0, 0], aR: [-178, 0, 6] },
+  { t: 0.75, ease: 'snap', torso: [10, 0, 0], neck: [12, 0, 0], aR: [-58, 0, 2], aL: [-14, 0, -10], h: 0.98 },
+  { t: 1.4, torso: [8, 0, 0], neck: [10, 0, 0], aR: [-54, 0, 2], aL: [-12, 0, -8] },
+], H33);
+// a jump backward: dip, push off (0.15), tuck in the air, land (0.55) in a crouch, rise into the stance
+K.jumpBack = keyed([
+  { t: 0, ...ST },
+  { t: 0.15, ease: 'out', torso: [22, 0, 0], neck: [-14, 0, 0], aR: [-30, 0, -20], aL: [-30, 0, 20], lR: [-30, 0, -4], lL: [24, 0, 4], h: 0.84 },
+  { t: 0.32, ease: 'out', torso: [-8, 0, 0], neck: [-6, 0, 0], aR: [-110, 0, -40], aL: [-110, 0, 40], lR: [-55, 0, -6], lL: [-30, 0, 6], h: 1 },
+  { t: 0.55, ease: 'in', torso: [26, 0, 0], neck: [-18, 0, 0], aR: [-60, 0, -50], aL: [-60, 0, 50], lR: [-42, 0, -10], lL: [30, 0, 10], h: 0.78 },
+  { t: 0.95, ...ST },
+], H33);
+// both hands sweep from low behind to high in front: the wall of fire rises at 0.7
+K.summon = keyed([
+  { t: 0, ...ST },
+  { t: 0.35, ease: 'out', torso: [26, 0, 0], neck: [-10, 0, 0], aR: [24, 0, -26], aL: [24, 0, 26], lR: [-26, 0, -8], lL: [20, 0, 8], h: 0.86 },
+  { t: 0.7, ease: 'snap', torso: [-8, 0, 0], neck: [-12, 0, 0], aR: [-128, 0, -32], aL: [-128, 0, 32], lR: [-14, 0, -8], lL: [12, 0, 8], h: 1 },
+  { t: 1.4, torso: [-4, 0, 0], neck: [-6, 0, 0], aR: [-112, 0, -28], aL: [-112, 0, 28], h: 0.99 },
+], H33);
+// an energy blast from the right hand: drawn back to the hip (0.18), thrown at full reach (release 0.28), follow-through, back to the stance
+K.throwR = keyed([
+  { t: 0, ...ST },
+  { t: 0.18, ease: 'out', torso: [4, 32, 0], neck: [-4, -24, 0], aR: [34, 0, -18], aL: [-80, 0, 18], lR: [-6, 0, -6], lL: [16, 0, 6], h: 0.95 },
+  { t: 0.28, ease: 'snap', torso: [14, -30, 0], neck: [-6, 22, 0], aR: [-94, -10, 6], aL: [-20, 0, 14], lR: [-30, 0, -6], lL: [22, 0, 6], h: 0.93, p: [0, 0.16] },
+  { t: 0.45, ease: 'out', torso: [16, -36, 0], neck: [-6, 26, 0], aR: [-88, -16, 10], aL: [-14, 0, 14], h: 0.93, p: [0, 0.18] },
+  { t: 0.75, ...ST, p: [0, 0] },
+], H33);
+K.throwL = keyed([
+  { t: 0, ...ST },
+  { t: 0.18, ease: 'out', torso: [4, -32, 0], neck: [-4, 24, 0], aL: [34, 0, 18], aR: [-80, 0, -18], lR: [-16, 0, -6], lL: [8, 0, 6], h: 0.95 },
+  { t: 0.28, ease: 'snap', torso: [14, 30, 0], neck: [-6, -22, 0], aL: [-94, 10, -6], aR: [-20, 0, -14], lR: [-28, 0, -6], lL: [24, 0, 6], h: 0.93, p: [0, 0.16] },
+  { t: 0.45, ease: 'out', torso: [16, 36, 0], neck: [-6, -26, 0], aL: [-88, 16, -10], aR: [-14, 0, -14], h: 0.93, p: [0, 0.18] },
+  { t: 0.75, ...ST, p: [0, 0] },
+], H33);
+// the left palm raised flat toward the attacker (the episode adds a small push back and forward at each hit)
+K.palmBlock = keyed([
+  { t: 0, torso: [0, 0, 0], neck: [0, 0, 0], aR: [-10, 0, 4], aL: [-8, 0, -4], h: 1 },
+  { t: 0.22, ease: 'out', torso: [-4, 8, 0], neck: [-2, -6, 0], aL: [-96, 0, 8], aR: [-12, 0, 6], h: 1 },
+  { t: 2, torso: [-4, 8, 0], neck: [-2, -6, 0], aL: [-97, 0, 8], aR: [-12, 0, 6], h: 1 },
+], H33);
+// a straight-leg push kick: chamber (0.16), contact (0.3) with the hips driven in, held a beat, retracted
+K.pushKick = keyed([
+  { t: 0, torso: [4, 0, 0], neck: [-4, 0, 0], aR: [-30, 0, -20], aL: [-30, 0, 20], lR: [-10, 0, 0], lL: [10, 0, 0], h: 0.98 },
+  { t: 0.16, ease: 'out', torso: [-6, 0, 0], neck: [6, 0, 0], aR: [-40, 0, -50], aL: [-60, 0, 40], lR: [-55, 0, 0], lL: [8, 0, 0], h: 0.97 },
+  { t: 0.3, ease: 'snap', torso: [-26, 0, 0], neck: [18, 0, 0], aR: [-20, 0, -70], aL: [-50, 0, 60], lR: [-92, 0, 0], lL: [6, 0, 0], h: 1, p: [0, 0.32] },
+  { t: 0.44, torso: [-24, 0, 0], neck: [16, 0, 0], aR: [-22, 0, -66], aL: [-50, 0, 56], lR: [-86, 0, 0], lL: [6, 0, 0], h: 1, p: [0, 0.34] },
+  { t: 0.8, ease: 'io', torso: [4, 0, 0], neck: [-2, 0, 0], aR: [-14, 0, 8], aL: [-12, 0, -8], lR: [0, 0, 0], lL: [0, 0, 0], h: 1, p: [0, 0.2] },
+], H33);
+// thrown backward off the feet by a blow to the chest (the episode moves the root along the flight)
+K.hitFly = keyed([
+  { t: 0, torso: [8, 0, 0], neck: [-4, 0, 0], aR: [-70, 0, -14], aL: [-58, 0, 12], h: 0.97 },
+  { t: 0.06, ease: 'snap', torso: [38, 0, 0], neck: [30, 0, 0], aR: [-80, 0, -30], aL: [-80, 0, 30], lR: [-40, 0, -6], lL: [-30, 0, 6], h: 1 },
+  { t: 0.5, torso: [30, 0, 0], neck: [16, 0, 0], aR: [-120, 0, -50], aL: [-115, 0, 55], lR: [-60, 0, -10], lL: [-45, 0, 10], h: 1 },
+], H33);
+// skidding on her back, half sitting up, both hands braced on the floor behind her, the heels digging in
+K.skid = keyed([
+  { t: 0, hips: [-62, 0, 0], torso: [36, 0, 0], neck: [24, 0, 0], aR: [54, 0, -32], aL: [54, 0, 32], lR: [-34, 0, -8], lL: [-46, 0, 8], h: 0.34 },
+  { t: 0.5, hips: [-60, 0, 0], torso: [40, 0, 0], neck: [26, 0, 0], aR: [52, 0, -30], aL: [52, 0, 30], lR: [-30, 0, -8], lL: [-40, 0, 8], h: 0.34 },
+], H33);
+// from the skid: roll onto a knee, a hand pushing on the knee, up with a slump, into the stance
+K.struggleUp = keyed([
+  { t: 0, hips: [-60, 0, 0], torso: [40, 0, 0], neck: [26, 0, 0], aR: [52, 0, -30], aL: [52, 0, 30], lR: [-30, 0, -8], lL: [-40, 0, 8], h: 0.34 },
+  { t: 0.45, hips: [-10, 0, 0], torso: [40, 0, 0], neck: [10, 0, 0], aR: [-30, 0, -20], aL: [-40, 0, 20], lR: [-86, 0, -4], lL: [72, 0, 4], h: 0.5 },
+  { t: 0.85, hips: [0, 0, 0], torso: [46, 0, 0], neck: [-8, 0, 0], aR: [-62, 0, -6], aL: [-14, 0, 22], lR: [-80, 0, -4], lL: [70, 0, 4], h: 0.56 },
+  { t: 1.35, ease: 'io', hips: [0, 0, 0], torso: [20, 0, 4], neck: [-10, 0, 0], aR: [-40, 0, -6], aL: [-16, 0, 14], lR: [-20, 0, -6], lL: [16, 0, 6], h: 0.9 },
+  { t: 1.75, hips: [0, 0, 0], torso: [12, -6, 4], neck: [-6, 6, 0], aR: [-30, 0, -10], aL: [-20, 0, 12], lR: [-10, 0, -6], lL: [10, 0, 6], h: 0.95 },
+], H33);
+// both hands raised high and open (lifting the arena)
+K.raiseBoth = keyed([
+  { t: 0, torso: [0, 0, 0], neck: [0, 0, 0], aR: [-12, 0, 6], aL: [-12, 0, -6], h: 1 },
+  { t: 0.9, ease: 'out', torso: [-10, 0, 0], neck: [-18, 0, 0], aR: [-158, 0, -24], aL: [-158, 0, 24], h: 1 },
+  { t: 3, torso: [-12, 0, 0], neck: [-20, 0, 0], aR: [-162, 0, -26], aL: [-162, 0, 26], h: 1 },
+], H33);
+// eyes closed, arms a little out from the sides, palms down: gathering
+K.gather = keyed([
+  { t: 0, ...ST },
+  { t: 0.8, ease: 'io', torso: [-2, 0, 0], neck: [8, 0, 0], aR: [-14, 0, -34], aL: [-14, 0, 34], lR: [-8, 0, -6], lL: [8, 0, 6], h: 1 },
+  { t: 3, torso: [-4, 0, 0], neck: [6, 0, 0], aR: [-18, 0, -42], aL: [-18, 0, 42], lR: [-8, 0, -6], lL: [8, 0, 6], h: 1.01 },
+], H33);
+// both arms thrust forward (fire): the push lands at 0.18
+K.thrust = keyed([
+  { t: 0, torso: [-4, 0, 0], neck: [6, 0, 0], aR: [-18, 0, -42], aL: [-18, 0, 42], h: 1 },
+  { t: 0.1, ease: 'out', torso: [-8, 0, 0], neck: [0, 0, 0], aR: [12, 0, -20], aL: [12, 0, 20], lR: [-10, 0, -6], lL: [16, 0, 6], h: 0.96 },
+  { t: 0.18, ease: 'snap', torso: [14, 0, 0], neck: [-8, 0, 0], aR: [-88, 0, 8], aL: [-88, 0, -8], lR: [-28, 0, -6], lL: [22, 0, 6], h: 0.93, p: [0, 0.12] },
+  { t: 0.8, torso: [16, 0, 0], neck: [-8, 0, 0], aR: [-86, 0, 6], aL: [-86, 0, -6], lR: [-28, 0, -6], lL: [22, 0, 6], h: 0.93, p: [0, 0.12] },
+], H33);
+// hands spread, fingers to the target (lightning): arcs from both hands
+K.spread = keyed([
+  { t: 0, torso: [16, 0, 0], neck: [-8, 0, 0], aR: [-86, 0, 6], aL: [-86, 0, -6], lR: [-28, 0, -6], lL: [22, 0, 6], h: 0.93, p: [0, 0.12] },
+  { t: 0.12, ease: 'snap', torso: [6, 0, 0], neck: [-10, 0, 0], aR: [-104, 0, -22], aL: [-104, 0, 22], lR: [-24, 0, -6], lL: [20, 0, 6], h: 0.95, p: [0, 0.1] },
+  { t: 0.7, torso: [6, 0, 0], neck: [-10, 0, 0], aR: [-106, 0, -24], aL: [-106, 0, 24], lR: [-24, 0, -6], lL: [20, 0, 6], h: 0.95, p: [0, 0.1] },
+], H33);
+// the shockwave: arms crossed over the chest in a crouch, then flung wide and back with the chest out (release 0.4)
+K.release = keyed([
+  { t: 0, torso: [6, 0, 0], neck: [-10, 0, 0], aR: [-104, 0, -24], aL: [-104, 0, 24], h: 0.95, p: [0, 0.1] },
+  { t: 0.3, ease: 'out', torso: [30, 0, 0], neck: [16, 0, 0], aR: [-80, 0, 52], aL: [-80, 0, -52], lR: [-34, 0, -10], lL: [30, 0, 10], h: 0.8, p: [0, 0.05] },
+  { t: 0.4, ease: 'snap', torso: [-16, 0, 0], neck: [-22, 0, 0], aR: [-84, 0, -84], aL: [-84, 0, 84], lR: [-14, 0, -14], lL: [12, 0, 14], h: 1.02, p: [0, 0] },
+  { t: 1.2, torso: [-14, 0, 0], neck: [-18, 0, 0], aR: [-80, 0, -80], aL: [-80, 0, 80], lR: [-12, 0, -14], lL: [10, 0, 14], h: 1.0 },
+  { t: 2.2, ease: 'io', torso: [8, 0, 0], neck: [6, 0, 0], aR: [-20, 0, -14], aL: [-18, 0, 14], lR: [-8, 0, -6], lL: [8, 0, 6], h: 0.97 },
+], H33);
+// both forearms crossed before the face (a two-hand shield, bracing against a blast)
+K.braceBoth = keyed([
+  { t: 0, torso: [6, 0, 0], neck: [6, 0, 0], aR: [-98, 0, 18], aL: [-98, 0, -18], lR: [-20, 0, -6], lL: [18, 0, 6], h: 0.95 },
+  { t: 2, torso: [8, 0, 0], neck: [6, 0, 0], aR: [-100, 0, 18], aL: [-100, 0, -18], lR: [-20, 0, -6], lL: [18, 0, 6], h: 0.94 },
+], H33);
+// a small child, frightened: hands up near the chest, hunched, knees soft
+K.cower = keyed([
+  { t: 0, torso: [14, 0, 0], neck: [10, 0, 0], aR: [-62, 0, 26], aL: [-62, 0, -26], lR: [-8, 0, -2], lL: [8, 0, 2], h: 0.96 },
+  { t: 1.5, torso: [16, 0, 0], neck: [12, 0, 0], aR: [-66, 0, 28], aL: [-64, 0, -28], lR: [-8, 0, -2], lL: [8, 0, 2], h: 0.955 },
+  { t: 3, torso: [14, 0, 0], neck: [10, 0, 0], aR: [-62, 0, 26], aL: [-62, 0, -26], lR: [-8, 0, -2], lL: [8, 0, 2], h: 0.96 },
+], { loop: true, ...H33 });
 export const KEYED_CLIPS = K;
 export const KEYED = K;
 export { PARTS };

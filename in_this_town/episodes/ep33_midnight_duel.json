@@ -1,0 +1,743 @@
+{
+ "id": "ep33",
+ "number": 33,
+ "title": "The Last Magic Duel at Midnight",
+ "output": "InThisTown_Episode33_MidnightDuel.mp4",
+ "tts": "openrouter",
+ "youtube_title": "The Last Magic Duel at Midnight...",
+ "tiktok_caption": "Every midnight, two people are summoned to the abandoned arena. Only one is allowed to leave.",
+ "hashtags": "#InThisTown #RobloxStory #MagicDuel #DarkFantasy #Shorts",
+ "thumbnail_text": "DON'T WIN",
+ "thumbnail_rec": "Quinn in her violet jacket on a floating arena above a black void, a violet shockwave bursting from her open hands; across from her the white-cloaked stranger's hood dissolving into glowing particles, and the faint shapes of shadow spectators filling the tiers behind.",
+ "lead_in": 0.3,
+ "tail": 1.6,
+ "voices": {
+  "narrator": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "ErXwobaYiN019PkySvjV",
+    "pitch": 1.1,
+    "tempo": 1.12,
+    "max_tempo": 1.15,
+    "pace": [
+     2.5,
+     2.95
+    ],
+    "min_tempo": 1.04
+   },
+   "kokoro": "am_michael",
+   "speed": 1.0,
+   "note": "Antoni (American), In This Town preset el:ErXwobaYiN019PkySvjV:1.1:1.12 - same narrator every episode"
+  },
+  "girl": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "jessica",
+    "pitch": 1.24,
+    "tempo": 0.95
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  },
+  "announcer": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "brian",
+    "pitch": 0.88,
+    "tempo": 0.95
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  },
+  "crowd": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "laura",
+    "pitch": 0.94,
+    "tempo": 0.95
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  }
+ },
+ "highlights": {
+  "MIDNIGHT": "purple",
+  "ABANDONED ARENA": "yellow",
+  "ONLY ONE": "red",
+  "QUINN": "yellow",
+  "EMPTY": "cyan",
+  "THOUSANDS OF VOICES": "red",
+  "WHITE CLOAK": "cyan",
+  "BELL RANG": "yellow",
+  "LIGHTNING": "cyan",
+  "WALL OF FIRE": "red",
+  "STRAIGHT THROUGH": "red",
+  "ENERGY BLASTS": "purple",
+  "ONE HAND": "yellow",
+  "VANISHED": "purple",
+  "POWERFUL KICK": "red",
+  "SMALL CUT": "red",
+  "BOTH HANDS": "yellow",
+  "INTO THE SKY": "cyan",
+  "CLOSED HER EYES": "purple",
+  "EVERY BIT OF MAGIC": "purple",
+  "FIRE": "red",
+  "VIOLET SHOCKWAVE": "purple",
+  "GLOWING PARTICLES": "cyan",
+  "LITTLE GIRL": "yellow",
+  "TERRIFIED": "red",
+  "DON'T WIN": "red",
+  "SHADOWY FIGURES": "red",
+  "NEXT CHAMPION": "red",
+  "EVERY SHADOW": "red"
+ },
+ "lines": [
+  {
+   "text": "Every midnight, two people are summoned to the abandoned arena.",
+   "tag": "[mysterious]",
+   "pause": 0.055
+  },
+  {
+   "text": "Only one is allowed to leave.",
+   "tag": "[serious]",
+   "pause": 0.095
+  },
+  {
+   "text": "Tonight, Quinn was chosen.",
+   "tag": "[softly]",
+   "pause": 0.055
+  },
+  {
+   "text": "When she entered, the seats were empty.",
+   "tag": "[mysterious]",
+   "pause": 0.04
+  },
+  {
+   "text": "But thousands of voices whispered her name.",
+   "tag": "[whispers]",
+   "pause": 0.115
+  },
+  {
+   "text": "Across the arena stood a girl in a white cloak.",
+   "tag": "[mysterious]",
+   "pause": 0.075
+  },
+  {
+   "text": "The bell rang.",
+   "tag": "[serious]",
+   "pause": 0.115
+  },
+  {
+   "text": "A bolt of lightning struck Quinn's feet.",
+   "tag": "[excited]",
+   "pause": 0.04
+  },
+  {
+   "text": "She jumped backward and summoned a wall of fire.",
+   "tag": "[excited]",
+   "pause": 0.04
+  },
+  {
+   "text": "The stranger walked straight through it.",
+   "tag": "[serious]",
+   "pause": 0.075
+  },
+  {
+   "text": "Quinn launched three glowing energy blasts.",
+   "tag": "[excited]",
+   "pause": 0.04
+  },
+  {
+   "text": "The stranger blocked them with one hand.",
+   "tag": "[serious]",
+   "pause": 0.055
+  },
+  {
+   "text": "Then vanished.",
+   "tag": "[softly]",
+   "pause": 0.075
+  },
+  {
+   "text": "A powerful kick sent Quinn crashing across the arena.",
+   "tag": "[excited]",
+   "pause": 0.075
+  },
+  {
+   "text": "She struggled to stand.",
+   "tag": "[serious]",
+   "pause": 0.04
+  },
+  {
+   "text": "Blood trickled from a small cut on her cheek.",
+   "tag": "[serious]",
+   "pause": 0.075
+  },
+  {
+   "text": "The stranger raised both hands.",
+   "tag": "[serious]",
+   "pause": 0.04
+  },
+  {
+   "text": "The entire arena lifted into the sky.",
+   "tag": "[mysterious]",
+   "pause": 0.115
+  },
+  {
+   "text": "Quinn closed her eyes.",
+   "tag": "[softly]",
+   "pause": 0.055
+  },
+  {
+   "text": "And unleashed every bit of magic she had left.",
+   "tag": "[excited]",
+   "pause": 0.055
+  },
+  {
+   "text": "Fire. Lightning. And a massive violet shockwave.",
+   "tag": "[excited]",
+   "pause": 0.115,
+   "speak": "Fire, lightning, and a massive violet shockwave."
+  },
+  {
+   "text": "The stranger's cloak disintegrated into glowing particles.",
+   "tag": "[mysterious]",
+   "pause": 0.075
+  },
+  {
+   "text": "But underneath was a little girl.",
+   "tag": "[softly]",
+   "pause": 0.055
+  },
+  {
+   "text": "She looked terrified.",
+   "tag": "[softly]",
+   "pause": 0.055
+  },
+  {
+   "text": "“Please don't win.”",
+   "tag": "[whispers]",
+   "pause": 0.115,
+   "speak": "Please don't win.",
+   "voice": "girl",
+   "fx": "whisper"
+  },
+  {
+   "text": "The empty seats filled with shadowy figures.",
+   "tag": "[mysterious]",
+   "pause": 0.055
+  },
+  {
+   "text": "“THE NEXT CHAMPION HAS BEEN SELECTED.”",
+   "tag": "[serious]",
+   "pause": 0.115,
+   "speak": "The next champion has been selected.",
+   "voice": "announcer",
+   "fx": "giant"
+  },
+  {
+   "text": "Every shadow turned toward Quinn.",
+   "tag": "[slowly]",
+   "pause": 0.04
+  }
+ ],
+ "samples": {
+  "n_quinn": {
+   "text": "Quinn... Quinn... Quinn...",
+   "voice": "crowd",
+   "tag": "[whispers]"
+  },
+  "n_quinn2": {
+   "text": "Quinn. Quinn, Quinn. Quinn...",
+   "voice": "announcer",
+   "tag": "[whispers]"
+  }
+ },
+ "sound": {
+  "key": 38,
+  "music_gain": 0.3,
+  "music": [
+   [
+    "0",
+    "mystery"
+   ],
+   [
+    "ev:bell",
+    "suspense"
+   ],
+   [
+    "ev:strike-0.2",
+    "action"
+   ],
+   [
+    "ev:van",
+    "silence"
+   ],
+   [
+    "ev:kc-0.1",
+    "action_hit"
+   ],
+   [
+    "ev:skidEnd+0.4",
+    "dread"
+   ],
+   [
+    "ev:lift0",
+    "cosmic"
+   ],
+   [
+    "ev:close",
+    "silence"
+   ],
+   [
+    "ev:fire-0.6",
+    "action_hit"
+   ],
+   [
+    "ev:dis+0.3",
+    "silence"
+   ],
+   [
+    "L22",
+    "dread"
+   ],
+   [
+    "ev:ann-0.1",
+    "silence"
+   ],
+   [
+    "ev:turn",
+    "dread"
+   ]
+  ],
+  "cues": [
+   [
+    "0",
+    "wind",
+    0.13,
+    {
+     "dur": 38.8
+    }
+   ],
+   [
+    "0",
+    "tick",
+    0.15,
+    {
+     "dur": 3.2
+    }
+   ],
+   [
+    "ev:mid",
+    "clunk",
+    0.4
+   ],
+   [
+    "ev:mid+0.05",
+    "towerbell",
+    0.32,
+    {
+     "note": 38,
+     "dur": 5.0
+    }
+   ],
+   [
+    "ev:sal0",
+    "footsteps",
+    0.14,
+    {
+     "dur": 5.5,
+     "rate": 1.4
+    }
+   ],
+   [
+    "ev:sum-0.4",
+    "riser",
+    0.18,
+    {
+     "dur": 0.6
+    }
+   ],
+   [
+    "ev:sum",
+    "teleport",
+    0.4
+   ],
+   [
+    "ev:sum+0.05",
+    "shimmer",
+    0.2,
+    {
+     "dur": 1.6
+    }
+   ],
+   [
+    "ev:in0",
+    "footsteps",
+    0.15,
+    {
+     "dur": 3.4,
+     "rate": 1.9
+    }
+   ],
+   [
+    "L4-0.25",
+    "sample",
+    0.2,
+    {
+     "name": "n_quinn",
+     "rev": 3.0,
+     "wet": 0.5
+    }
+   ],
+   [
+    "L4+0.7",
+    "sample",
+    0.16,
+    {
+     "name": "n_quinn2",
+     "rev": 3.0,
+     "wet": 0.55,
+     "rate": 0.96
+    }
+   ],
+   [
+    "ev:bell",
+    "towerbell",
+    0.5,
+    {
+     "note": 40,
+     "dur": 6.0
+    }
+   ],
+   [
+    "ev:pt+0.15",
+    "zap",
+    0.3,
+    {
+     "dur": 0.6
+    }
+   ],
+   [
+    "ev:strike-0.05",
+    "thunder",
+    0.45,
+    {
+     "seed": 4,
+     "dur": 3.0
+    }
+   ],
+   [
+    "ev:strike",
+    "rockbreak",
+    0.4,
+    {
+     "seed": 7,
+     "dur": 1.4
+    }
+   ],
+   [
+    "ev:jb+0.1",
+    "whoosh",
+    0.35,
+    {
+     "dur": 0.6
+    }
+   ],
+   [
+    "ev:land1",
+    "stomp",
+    0.35
+   ],
+   [
+    "ev:rise1-0.2",
+    "firewall",
+    0.42,
+    {
+     "dur": 4.6
+    }
+   ],
+   [
+    "ev:w0",
+    "footsteps",
+    0.1,
+    {
+     "dur": 3.2,
+     "rate": 1.6
+    }
+   ],
+   [
+    "ev:th1+0.18",
+    "orb",
+    0.38,
+    {
+     "seed": 1
+    }
+   ],
+   [
+    "ev:th2+0.18",
+    "orb",
+    0.38,
+    {
+     "seed": 2
+    }
+   ],
+   [
+    "ev:th3+0.18",
+    "orb",
+    0.45,
+    {
+     "seed": 3
+    }
+   ],
+   [
+    "ev:pb+0.1",
+    "shimmer",
+    0.15,
+    {
+     "dur": 1.0
+    }
+   ],
+   [
+    "25.43",
+    "shieldhit",
+    0.42,
+    {
+     "seed": 1
+    }
+   ],
+   [
+    "26.33",
+    "shieldhit",
+    0.42,
+    {
+     "seed": 2
+    }
+   ],
+   [
+    "27.13",
+    "shieldhit",
+    0.5,
+    {
+     "seed": 3
+    }
+   ],
+   [
+    "25.79",
+    "rockbreak",
+    0.25,
+    {
+     "seed": 2,
+     "dur": 1.4
+    }
+   ],
+   [
+    "26.71",
+    "rockbreak",
+    0.25,
+    {
+     "seed": 3,
+     "dur": 1.4
+    }
+   ],
+   [
+    "27.45",
+    "boom",
+    0.18
+   ],
+   [
+    "ev:van-0.05",
+    "teleport",
+    0.45
+   ],
+   [
+    "ev:app-0.6",
+    "teleport",
+    0.45,
+    {
+     "dur": 0.6
+    }
+   ],
+   [
+    "ev:kc-0.2",
+    "swish",
+    0.4,
+    {
+     "seed": 5
+    }
+   ],
+   [
+    "ev:kc",
+    "kickhit",
+    0.8
+   ],
+   [
+    "ev:land",
+    "rockbreak",
+    0.45,
+    {
+     "seed": 5,
+     "dur": 1.5
+    }
+   ],
+   [
+    "ev:land",
+    "scrape",
+    0.4,
+    {
+     "dur": 1.0
+    }
+   ],
+   [
+    "ev:rise+0.3",
+    "groan",
+    0.08,
+    {
+     "dur": 1.2
+    }
+   ],
+   [
+    "ev:raise+0.3",
+    "drone",
+    0.22,
+    {
+     "dur": 3.0,
+     "f": 44
+    }
+   ],
+   [
+    "ev:lift0",
+    "rumble",
+    0.45,
+    {
+     "dur": 3.6
+    }
+   ],
+   [
+    "ev:lift0+0.4",
+    "rockbreak",
+    0.32,
+    {
+     "seed": 9,
+     "dur": 2.2
+    }
+   ],
+   [
+    "ev:void",
+    "wind",
+    0.18,
+    {
+     "dur": 7.0
+    }
+   ],
+   [
+    "ev:close+0.2",
+    "drone",
+    0.2,
+    {
+     "dur": 4.0,
+     "f": 48
+    }
+   ],
+   [
+    "ev:unl",
+    "riser",
+    0.2,
+    {
+     "dur": 2.8
+    }
+   ],
+   [
+    "ev:fireC-0.05",
+    "firewall",
+    0.4,
+    {
+     "dur": 0.9
+    }
+   ],
+   [
+    "ev:ltC",
+    "zap",
+    0.38,
+    {
+     "dur": 1.2
+    }
+   ],
+   [
+    "ev:ltC",
+    "thunder",
+    0.22,
+    {
+     "seed": 9,
+     "dur": 2.0
+    }
+   ],
+   [
+    "ev:shk",
+    "shockboom",
+    0.55
+   ],
+   [
+    "ev:shk",
+    "shieldhit",
+    0.3,
+    {
+     "seed": 5
+    }
+   ],
+   [
+    "ev:dis",
+    "dustglitter",
+    0.32,
+    {
+     "dur": 3.0
+    }
+   ],
+   [
+    "ev:fill",
+    "whisper",
+    0.14,
+    {
+     "dur": 2.5
+    }
+   ],
+   [
+    "ev:fill+0.3",
+    "drone",
+    0.22,
+    {
+     "dur": 8.0,
+     "f": 41
+    }
+   ],
+   [
+    "ev:ann-0.2",
+    "towerbell",
+    0.32,
+    {
+     "note": 36,
+     "dur": 4.0
+    }
+   ],
+   [
+    "ev:turn+0.3",
+    "sample",
+    0.14,
+    {
+     "name": "n_quinn",
+     "rev": 3.4,
+     "wet": 0.6,
+     "rate": 0.92
+    }
+   ],
+   [
+    "ev:turn+0.2",
+    "sting",
+    0.22,
+    {
+     "dur": 3.0
+    }
+   ]
+  ]
+ },
+ "fps": 60
+}

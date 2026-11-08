@@ -272,6 +272,23 @@ change. Episode 17 imports its package, model house and cardboard sky from the l
   Keep the clash / crack cues under ~0.5 when they land in a line, or the voice margin drops under 10 dB.
 * Local 60 fps pro-look renders ran ~3900 frames in about 16 minutes with three workers.
 
+### Episode 33 notes (the midnight magic duel; Action, Episodes 32-34)
+
+* `web/engine/arena.js`: `magicArena` (a floating arena with `.seats`, gate clock / bell, braziers, `.under` rock for the lift, `.update(t, {brazier,
+  runes})`), `arenaGround` (move it DOWN to lift the arena: the arena and the cameras keep their coordinates), `voidRocks`, `fallingRocks`, and the
+  duel magic: `fireWall` (parts round a walker), `energyOrb`, `runeShield`, `shardBurst`, `shockwave`, `sigil`, `beam`, `decal`, `arcBolt`,
+  `fireStream`, `driftParticles` (sample `cloak.surfacePoints(n)` at the dissolve time), `shadowCrowd` (instanced seated shadows: fill, turn, eyes),
+  `teleportFx`, and `cloak(ch)` (a hooded cloak on any character; it hides the torso and head meshes and dissolves with a glowing edge). All are in
+  the model library (`magic_*`, `fire_wall`...).
+* **Animation**: Mixamo `magic_set` (side kick, roundhouse, flip kick, knocked down, getting up, two reactions, dodge back, block; index keys
+  `magic_set:<clip>`) plus hand-keyed `KEYED` clips (stance, pointUp, jumpBack, summon, throwR / throwL, palmBlock, pushKick, hitFly, skid,
+  struggleUp, raiseBoth, gather, thrust, spread, release, braceBoth, cower). Use `travel: 0` with Mixamo reaction clips unless the root is meant to
+  move (their hips travel walked Quinn out of frame), and drive a block with `aimArm` at the shield so the palm really faces it.
+* **Framing**: these avatars are ~5.8 studs tall; in 9:16 the horizontal field is narrow, so a two-shot needs the camera 11-16 studs away or a
+  side angle; frontal 3/4 angles avoid a near arm filling the frame. Additive fire planes seen edge-on stack into glare: shoot a fire wall across,
+  not along. Light a floating island against a black void with a glow sprite and a big point light under it, or it reads as a silhouette.
+* `episodes/animcheck.js` takes `sets=a,b`, `prop=none` and `dist=` now; `altiface.js` keeps `ch.headParts` (the cloak sizes its hood from them).
+
 ### Free models from other sites
 
 Only when a story needs one; no bulk downloads. Add it with the licence recorded:

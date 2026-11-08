@@ -1,6 +1,6 @@
 // Clip check: characters side by side, each playing a clip with a sword in hand (anims.js + blades.js).
 //   RENDER_QUERY="clips=gs_idle,guard,gs_attack&av=farm_ep32_rowan&armor=2" node render.js stills animcheck 0.5 0.2 0.6 1.0
-// t = the clip time; armor=<i> puts the armour on character i (its body hidden), cam=side|front|top
+// sets=sword_set,magic_set loads more sets, prop=none (no sword: magic clips); t = the clip time; armor=<i> puts the armour on character i (its body hidden), cam=side|front|top
 import * as THREE from 'three';
 import { v3 } from '../engine/core.js';
 import { makeCharacter } from '../engine/character.js';
@@ -13,7 +13,8 @@ export async function setup() {
   const q = new URLSearchParams(location.search);
   const clips = (q.get('clips') || 'gs_idle,guard,gs_attack').split(','), av = q.get('av') || 'farm_ep32_rowan', arm = q.get('armor');
   const ctx = await initStage('animcheck', { look: 'pro', avatars: [av] });
-  await loadAnimSet('sword_set'); await loadAlti(['neutral']);
+  for (const set of (q.get('sets') || 'sword_set').split(',')) await loadAnimSet(set);
+  await loadAlti(['neutral']); const noProp = q.get('prop') === 'none';
   const ground = new THREE.Mesh(new THREE.PlaneGeometry(400, 400), new THREE.MeshStandardMaterial({ color: '#7dbb5a', roughness: 0.9 }));
   ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; ctx.scene.add(ground);
   const grid = new THREE.GridHelper(60, 30, '#335', '#557'); grid.position.y = 0.02; ctx.scene.add(grid);
@@ -29,11 +30,11 @@ export async function setup() {
     applyEnv(ctx, DAY);
     for (const { ch, c, sw, suit } of list) {
       ch.reset(); const P = sample(c, t); applyPose(ch, P, { travel: 0 }); ch.setFace && ch.setFace('neutral');
-      holdProp(ch, 0, sw, P); if (!/^ss_/.test(c)) aimArm(ch, 1, propPoint(sw, sw.hilt2));
+      if (noProp) sw.visible = false; else { holdProp(ch, 0, sw, P); if (!/^ss_/.test(c)) aimArm(ch, 1, propPoint(sw, sw.hilt2)); }
       if (suit) suit.wind(t, 1);
     }
     const cam = q.get('cam') || 'front', W = clips.length * 8;
-    const D = W * 2.5 + 8, pos = cam === 'side' ? v3(D, 4.5, 0.01) : cam === 'top' ? v3(0, D, 2) : cam === 'q' ? v3(D * 0.7, 6, D * 0.7) : v3(0, 4.6, D);
+    const D = q.get('dist') ? +q.get('dist') : W * 2.5 + 8, pos = cam === 'side' ? v3(D, 4.5, 0.01) : cam === 'top' ? v3(0, D, 2) : cam === 'q' ? v3(D * 0.7, 6, D * 0.7) : v3(0, 4.6, D);
     frame(ctx, t, { pos, look: v3(0, 3.6, 0), fov: 40 }, { steady: true });
     return 'animcheck';
   }, 0.5, {});
