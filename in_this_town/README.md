@@ -553,6 +553,8 @@ in a 9:16 frame (about 38° across at fov 64): a two-shot needs them side-on to 
 
 ### Pretty girl faces next to Alti Wyre (Episode 22)
 
+**Retired 2026-11-08: don't use the `lash:` eyes in new episodes** (the user: they don't look good, as on Quinn in Episode 33). Girls use plain Alti Wyre expressions.
+
 Glamour faces for girls (lashes, irises, blush, lips), for scenes where Alti Wyre's cartoon eyes look too goofy. Two kinds of name, both
 through the same `setFace` / `loadAlti` as Alti:
 
