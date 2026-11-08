@@ -1,1942 +1,1942 @@
 {
- "ancient_city": {
-  "author": "toyfantv",
-  "desc": "thousands of instanced stone buildings with glowing lines that rise from the seabed",
-  "kind": "building",
-  "licence": "own",
-  "made_for": "ep20",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "antique_print": {
-  "author": "toyfantv",
-  "desc": "a loose antique sepia photograph (render-target print shader with scratches)",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep28",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "arc_bolt": {
-  "author": "toyfantv",
-  "desc": "an electric arc between two points, redrawn per seed",
-  "kind": "effect",
-  "licence": "own",
-  "made_for": "ep33",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "arena_ground": {
-  "author": "toyfantv",
-  "desc": "dark ground round the arena (rocks, dead trees) with a hole for it; move it down to lift the arena",
-  "kind": "set",
-  "licence": "own",
-  "made_for": "ep33",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "banquet_table": {
-  "author": "toyfantv",
-  "desc": "a long banquet table with cloth and runner",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep28",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "bare_trees": {
-  "author": "toyfantv",
-  "desc": "leafless winter trees",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep28",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "beach_hut": {
-  "author": "toyfantv",
-  "desc": "a thatched island hut",
-  "kind": "building",
-  "licence": "own",
-  "made_for": "ep20",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "bed_chart": {
-  "author": "toyfantv",
-  "desc": "a clipboard patient chart with a readable name for the foot of a bed",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep27",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "big_chair": {
-  "author": "toyfantv",
-  "desc": "a high-backed velvet banquet chair",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep28",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "bird": {
-  "author": "toyfantv",
-  "desc": "a blocky bird with wings to flap",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep14",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "black_sword": {
-  "author": "toyfantv",
-  "desc": "a pure-black longsword with a violet-grey edge sheen and an optional glow",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep32",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "bloom_field": {
-  "author": "toyfantv",
-  "desc": "flowers that sprout and bloom in a wave spreading from a centre",
-  "kind": "nature",
-  "licence": "own",
-  "made_for": "ep24",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "brick_wall": {
-  "author": "toyfantv",
-  "desc": "an instanced brick wall that bursts when a body is thrown through it (deterministic, ballistic bricks)",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep32",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "bullet_holes": {
-  "author": "toyfantv",
-  "desc": "bullet-hole decals appearing on hit times",
-  "kind": "effect",
-  "licence": "own",
-  "made_for": "ep34",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "camp_props": {
-  "author": "toyfantv",
-  "desc": "survival camp props: log seat, wood pile, axe in a stump, lantern on a post, cook pot, bedroll, supply crate",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep25",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "camp_table": {
-  "author": "toyfantv",
-  "desc": "a folding table with a map on it",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep39",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "camp_tent": {
-  "author": "toyfantv",
-  "desc": "an A-frame canvas tent with sagging sides, seams, open flaps, poles, guy ropes and pegs",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep25",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "campfire": {
-  "author": "toyfantv",
-  "desc": "a stone-ring campfire with crossed logs, embers, orange flames, rising sparks and one warm shadowed light",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep25",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "car": {
-  "author": "toyfantv",
-  "desc": "a simple car, any colour",
-  "kind": "vehicle",
-  "licence": "own",
-  "made_for": "ep14",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "cardboard_sky": {
-  "author": "toyfantv",
-  "desc": "the sky as a box whose flaps open",
-  "kind": "environment",
-  "licence": "own",
-  "made_for": "ep17",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "caution_tape": {
-  "author": "toyfantv",
-  "desc": "a sagging strip of caution tape between two points",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep39",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "ceiling_tiles": {
-  "author": "toyfantv",
-  "desc": "a drop ceiling whose tiles fall one by one",
-  "kind": "effect",
-  "licence": "own",
-  "made_for": "ep21",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "chandelier": {
-  "author": "toyfantv",
-  "desc": "a brass candle chandelier with crystal drops",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep28",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "child_satchel": {
-  "author": "toyfantv",
-  "desc": "a child's red satchel with a lifting flap, buckle and a yellow name tag",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep37",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "clock": {
-  "author": "toyfantv",
-  "desc": "a round clock, setTime(minutes)",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep14",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "clock_tower": {
-  "author": "toyfantv",
-  "desc": "a stone town clock tower with a working clock",
-  "kind": "building",
-  "licence": "own",
-  "made_for": "ep18",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "control_chair": {
-  "author": "toyfantv",
-  "desc": "a futuristic white control chair on a dark pedestal with cyan neon trims and holographic armrest panels",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep26",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "control_room": {
-  "author": "toyfantv",
-  "desc": "a control room with desk rows, monitors, server racks, a giant screen wall and a security camera",
-  "kind": "building",
-  "licence": "own",
-  "made_for": "ep34",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "countdown_draw": {
-  "author": "toyfantv",
-  "desc": "a countdown scoreboard face (MM:SS, red under ten seconds)",
-  "kind": "texture",
-  "licence": "own",
-  "made_for": "ep36",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "crater": {
-  "author": "toyfantv",
-  "desc": "a ground crater with radial cracks that opens on a strike",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep32",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "crt_tv": {
-  "author": "toyfantv",
-  "desc": "a ceiling-hung hospital CRT television on a pole, its screen ready for a render target",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep27",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "cube_seed": {
-  "author": "toyfantv",
-  "desc": "a tiny glowing blue cube seed with circuit lines, optional sprout",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep24",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "cube_stairs": {
-  "author": "toyfantv",
-  "desc": "a spiral staircase of glowing blue cube steps round a light column with a vine, grows to any height and dissolves",
-  "kind": "structure",
-  "licence": "own",
-  "made_for": "ep24",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "cursed_laptop": {
-  "author": "toyfantv",
-  "desc": "a laptop with a working lid (.setLid(a), .top()) and a screen shader that shows a UI canvas or a live feed with tape tearing",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep38",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "curtain_window": {
-  "author": "toyfantv",
-  "desc": "a tall night window with heavy draped curtains",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep28",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "dining_chair": {
-  "author": "toyfantv",
-  "desc": "a modern dining chair",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep19",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "dining_table": {
-  "author": "toyfantv",
-  "desc": "a modern wood dining table, any size",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep19",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "door_plate": {
-  "author": "toyfantv",
-  "desc": "a brass hotel room number plate, lit or scuffed",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep21",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "dress_form": {
-  "author": "toyfantv",
-  "desc": "a dark-silver dress form wearing the sparkling gown",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep22",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "drift_particles": {
-  "author": "toyfantv",
-  "desc": "glowing particles drifting off sampled surface points (a dissolve)",
-  "kind": "effect",
-  "licence": "own",
-  "made_for": "ep33",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "endless_ward": {
-  "author": "toyfantv",
-  "desc": "instanced endless rows of occupied hospital beds with sleeping patients",
-  "kind": "set",
-  "licence": "own",
-  "made_for": "ep27",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "energy_orb": {
-  "author": "toyfantv",
-  "desc": "a glowing energy orb with a trail and its own light",
-  "kind": "effect",
-  "licence": "own",
-  "made_for": "ep33",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "exit_gate": {
-  "author": "toyfantv",
-  "desc": "a stone exit gate with an arch, glowing runes and a swirling portal that opens and irises shut",
-  "kind": "building",
-  "licence": "own",
-  "made_for": "ep25",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "exit_sign": {
-  "author": "toyfantv",
-  "desc": "a glowing green EXIT sign",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep21",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "eyeless_head": {
-  "author": "toyfantv",
-  "desc": "a pale head with two real, deep black eye sockets, cracks, black runs and an opening mouth",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep37",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "falling_rocks": {
-  "author": "toyfantv",
-  "desc": "rocks breaking off an underside as it tears free (deterministic)",
-  "kind": "effect",
-  "licence": "own",
-  "made_for": "ep33",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "feed_wall": {
-  "author": "toyfantv",
-  "desc": "a wall of CCTV feeds from a render target, with a focus tile, labels and a message overlay",
-  "kind": "effect",
-  "licence": "own",
-  "made_for": "ep34",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "fire_stream": {
-  "author": "toyfantv",
-  "desc": "a stream of fire between two points",
-  "kind": "effect",
-  "licence": "own",
-  "made_for": "ep33",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "fire_wall": {
-  "author": "toyfantv",
-  "desc": "a wall of fire that rises, parts round someone walking through it, embers and warm lights",
-  "kind": "effect",
-  "licence": "own",
-  "made_for": "ep33",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "flashlight": {
-  "author": "toyfantv",
-  "desc": "a yellow handheld flashlight with a glowing lens",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep21",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "flat_tv": {
-  "author": "toyfantv",
-  "desc": "a flat-screen TV on a foot stand",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep36",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "floating_island": {
-  "author": "toyfantv",
-  "desc": "a grassy floating island with a rocky underside, hanging roots, floating rocks and waterfalls",
-  "kind": "set",
-  "licence": "own",
-  "made_for": "ep24",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "flood_tripod": {
-  "author": "toyfantv",
-  "desc": "a site floodlight on a tripod",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep39",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "fluor_panel": {
-  "author": "toyfantv",
-  "desc": "a recessed fluorescent ceiling light panel that dims and flickers",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep27",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "folklore_flashlight": {
-  "author": "toyfantv",
-  "desc": "a small handheld flashlight with a lit lens",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep37",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "folklore_puppet": {
-  "author": "toyfantv",
-  "desc": "a long-limbed figure posed by world points (two-joint IK, knees that can bend backward), robe, curtain of hair; hand-key it point by point",
-  "kind": "character",
-  "licence": "own",
-  "made_for": "ep37",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "forest_beast": {
-  "author": "toyfantv",
-  "desc": "a blocky wolf-like forest creature with glowing red eyes that blink",
-  "kind": "character",
-  "licence": "own",
-  "made_for": "ep25",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "forest_tree": {
-  "author": "toyfantv",
-  "desc": "a tree with real bark and rustling leaves, any size or colours; instanced in numbers",
-  "kind": "environment",
-  "licence": "own",
-  "made_for": "ep18",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "framed_photo": {
-  "author": "toyfantv",
-  "desc": "a framed drawn photo of a little girl (and her dragon) whose face can be erased and restored",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep23",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "galleon": {
-  "author": "toyfantv",
-  "desc": "a three-masted sailing ship",
-  "kind": "vehicle",
-  "licence": "own",
-  "made_for": "ep20",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "garden_plot": {
-  "author": "toyfantv",
-  "desc": "a Grow-a-Garden soil plot with plank border and furrows, empty or with crops (carrot, cabbage, sunflower, tomato, pumpkin, berry, corn)",
-  "kind": "set",
-  "licence": "own",
-  "made_for": "ep24",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "garden_props": {
-  "author": "toyfantv",
-  "desc": "watering can, wheelbarrow and scarecrow",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep24",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "glass_fruit": {
-  "author": "toyfantv",
-  "desc": "a clear glass fruit with a stem and a rim light",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep20",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "glass_plants": {
-  "author": "toyfantv",
-  "desc": "instanced glowing blue glass plants: tulips, crystals, mushrooms, ferns, trees, bells, hedges",
-  "kind": "nature",
-  "licence": "own",
-  "made_for": "ep24",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "glass_shatter": {
-  "author": "toyfantv",
-  "desc": "shop windows bursting into falling shards",
-  "kind": "effect",
-  "licence": "own",
-  "made_for": "ep36",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "golden_dragon": {
-  "author": "toyfantv",
-  "desc": "a tiny golden pet dragon with big expressive eyes, little wings, poses and moods",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep23",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "golden_egg": {
-  "author": "toyfantv",
-  "desc": "a golden pet egg that splits in two",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep23",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "golden_key": {
-  "author": "toyfantv",
-  "desc": "a glowing golden key with a heart bow",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep23",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "gramophone": {
-  "author": "toyfantv",
-  "desc": "a horn gramophone on a side table",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep28",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "grand_clock": {
-  "author": "toyfantv",
-  "desc": "a grandfather clock with moving hands",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep28",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "great_temple": {
-  "author": "toyfantv",
-  "desc": "a stepped stone temple with a gold roof",
-  "kind": "building",
-  "licence": "own",
-  "made_for": "ep20",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "ground_decal": {
-  "author": "toyfantv",
-  "desc": "scorch, skid and crack decals on a floor",
-  "kind": "effect",
-  "licence": "own",
-  "made_for": "ep33",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "hero_house": {
-  "author": "toyfantv",
-  "desc": "Emma's two-storey house with a furnished interior",
-  "kind": "building",
-  "licence": "own",
-  "made_for": "town",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "hero_oak": {
-  "author": "toyfantv",
-  "desc": "an enormous oak with a dim face in its bark that can glow",
-  "kind": "environment",
-  "licence": "own",
-  "made_for": "ep18",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "hit_particles": {
-  "author": "toyfantv",
-  "desc": "sparks, concrete dust, chips and brass casings on event times",
-  "kind": "effect",
-  "licence": "own",
-  "made_for": "ep34",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "home_bed": {
-  "author": "toyfantv",
-  "desc": "a made bed with headboard and pillows",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep19",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "home_fridge": {
-  "author": "toyfantv",
-  "desc": "a steel fridge, hollow, with a door that opens and a light inside",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep19",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "home_sofa": {
-  "author": "toyfantv",
-  "desc": "a modern sofa with cushions",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep19",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "hospital_bed": {
-  "author": "toyfantv",
-  "desc": "a white steel hospital bed with side rails, wheels and a mint blanket",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep27",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "hospital_block": {
-  "author": "toyfantv",
-  "desc": "a derelict five-storey hospital block (Willow Creek General) whose windows switch on",
-  "kind": "building",
-  "licence": "own",
-  "made_for": "ep27",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "hospital_cabinet": {
-  "author": "toyfantv",
-  "desc": "a white bedside hospital cabinet",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep27",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "hotel_door": {
-  "author": "toyfantv",
-  "desc": "a panelled hotel room door with brass handle, hinged, any size or colour",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep21",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "hotel_tower": {
-  "author": "toyfantv",
-  "desc": "a tall hotel with instanced windows that turn green floor by floor, then pancakes",
-  "kind": "building",
-  "licence": "own",
-  "made_for": "ep21",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "hunter_helmet": {
-  "author": "toyfantv",
-  "desc": "an original hunter mask: black helmet, white numbered faceplate that cracks and falls away, a CRT screen inside",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep36",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "industrial_district": {
-  "author": "toyfantv",
-  "desc": "an empty industrial district at night: wet street, warehouses, fences, sodium streetlights, a facility gate and sign",
-  "kind": "building",
-  "licence": "own",
-  "made_for": "ep34",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "invitation_card": {
-  "author": "toyfantv",
-  "desc": "a gilt-edged party invitation card and its sealed envelope",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep28",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "iv_pole": {
-  "author": "toyfantv",
-  "desc": "a steel IV drip stand with a bag",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep27",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "jersey_barrier": {
-  "author": "toyfantv",
-  "desc": "a concrete jersey barrier with hazard stripes",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep34",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "jumbotron": {
-  "author": "toyfantv",
-  "desc": "a four-faced hanging scoreboard with LED rims",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep36",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "katana": {
-  "author": "toyfantv",
-  "desc": "a katana with a red grip",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep20",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "kit_barrel": {
-  "author": "toyfantv",
-  "desc": "a banded barrel",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "the detail kit",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "kit_building": {
-  "author": "toyfantv",
-  "desc": "a layered building: windows, trims, cornice, door, sign, flat or gable roof (engine/kit.js)",
-  "kind": "building",
-  "licence": "own",
-  "made_for": "the detail kit",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "kit_crate": {
-  "author": "toyfantv",
-  "desc": "a framed wooden crate",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "the detail kit",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "kit_crowd": {
-  "author": "toyfantv",
-  "desc": "JavaScript-built extras, hundreds as instanced meshes; .update(t) to move them",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "the detail kit",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "kit_lamp": {
-  "author": "toyfantv",
-  "desc": "a street lamp with a lit head",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "the detail kit",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "kit_sign": {
-  "author": "toyfantv",
-  "desc": "a framed sign with any text",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "the detail kit",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "kit_skyline": {
-  "author": "toyfantv",
-  "desc": "instanced towers for the distance",
-  "kind": "environment",
-  "licence": "own",
-  "made_for": "the detail kit",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "laser_cross": {
-  "author": "toyfantv",
-  "desc": "a dark hub with two or more crisp red laser beams and a faint halo, made to spin",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep26",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "living_cloud": {
-  "author": "toyfantv",
-  "desc": "a cloud with a face, setFace(kind)",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep13",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "magic_arena": {
-  "author": "toyfantv",
-  "desc": "a floating stone arena: a rune floor, tiers of seats (.seats), gate towers with a midnight clock and a bell, braziers with cold flames, broken stairs, an upside-down ring of arches and a rock underside for lifting it into a void",
-  "kind": "set",
-  "licence": "own",
-  "made_for": "ep33",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "magic_cloak": {
-  "author": "toyfantv",
-  "desc": "a white hooded cloak fitted onto any character (mantle, split skirt that follows the legs, sleeves, hood) that dissolves into glowing particles",
-  "kind": "accessory",
-  "licence": "own",
-  "made_for": "ep33",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "magic_sigil": {
-  "author": "toyfantv",
-  "desc": "a glowing magic circle on the floor or in the sky",
-  "kind": "effect",
-  "licence": "own",
-  "made_for": "ep33",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "mailbox": {
-  "author": "toyfantv",
-  "desc": "a street mailbox, new with a name or old and rusty",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep23",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "mall_ring": {
-  "author": "toyfantv",
-  "desc": "an enormous mall's upper floors in a ring with lit and dark shopfronts",
-  "kind": "set",
-  "licence": "own",
-  "made_for": "ep36",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "market_stall": {
-  "author": "toyfantv",
-  "desc": "a striped market stall with a sign",
-  "kind": "building",
-  "licence": "own",
-  "made_for": "ep20",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "masked_soldier_gear": {
-  "author": "toyfantv",
-  "desc": "a white featureless mask, a helmet and a numbered target plate for a soldier",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep34",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "metal_pipe": {
-  "author": "toyfantv",
-  "desc": "a steel scaffold pipe",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep36",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "mimic_puppet": {
-  "author": "toyfantv",
-  "desc": "a long-limbed grey thing in the rags of a yellow raincoat: a folklore puppet with a mount for a stolen head",
-  "kind": "character",
-  "licence": "own",
-  "made_for": "ep39",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "model_house": {
-  "author": "toyfantv",
-  "desc": "hero_house as a roofless cutaway: at 0.1 scale, the miniature",
-  "kind": "building",
-  "licence": "own",
-  "made_for": "ep17",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "modern_house": {
-  "author": "toyfantv",
-  "desc": "a modern two-volume suburban house: stucco, wood cladding, big windows, garage",
-  "kind": "building",
-  "licence": "own",
-  "made_for": "ep19",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "muzzle_flashes": {
-  "author": "toyfantv",
-  "desc": "star-card muzzle flashes",
-  "kind": "effect",
-  "licence": "own",
-  "made_for": "ep34",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "name_tree": {
-  "author": "toyfantv",
-  "desc": "a giant white-bark tree with a blue glass crown, its trunk ready for carved and glowing names",
-  "kind": "nature",
-  "licence": "own",
-  "made_for": "ep24",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "notice_sign": {
-  "author": "toyfantv",
-  "desc": "a demolition notice sign board with custom lines",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep27",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "obby_platform": {
-  "author": "toyfantv",
-  "desc": "a candy-coloured obby platform with a lighter top slab and a neon top trim that glows in space; optional checkpoint number",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep26",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "ornate_frame": {
-  "author": "toyfantv",
-  "desc": "a gilt ornate picture frame",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep28",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "pa_speaker": {
-  "author": "toyfantv",
-  "desc": "a round ceiling PA loudspeaker grille",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep27",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "package_box": {
-  "author": "toyfantv",
-  "desc": "black package, folding walls, lid, blank label",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep17",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "palm": {
-  "author": "toyfantv",
-  "desc": "instanced palm trees that sway",
-  "kind": "plant",
-  "licence": "own",
-  "made_for": "ep20",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "panel_door": {
-  "author": "toyfantv",
-  "desc": "a panelled interior door",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep28",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "paper_charm": {
-  "author": "toyfantv",
-  "desc": "a paper charm with brush marks and a torn lower edge",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep37",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "pastel_cottage": {
-  "author": "toyfantv",
-  "desc": "a pastel suburban house with porch, lap siding, shutters, flower boxes; can build up from light",
-  "kind": "building",
-  "licence": "own",
-  "made_for": "ep23",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "pc_desk": {
-  "author": "toyfantv",
-  "desc": "a desk with a big monitor, keyboard, mouse and lit PC tower",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep19",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "pier": {
-  "author": "toyfantv",
-  "desc": "a wooden pier on posts",
-  "kind": "building",
-  "licence": "own",
-  "made_for": "ep20",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "plate_armor": {
-  "author": "toyfantv",
-  "desc": "dark plate armour with a featureless helmet fitted onto any character; can shatter off an empty suit",
-  "kind": "accessory",
-  "licence": "own",
-  "made_for": "ep32",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "porcelain_nurse": {
-  "author": "toyfantv",
-  "desc": "an original faceless nurse in a white uniform and cap with a cracked porcelain mask (horror, no gore)",
-  "kind": "character",
-  "licence": "own",
-  "made_for": "ep27",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "post_clock": {
-  "author": "toyfantv",
-  "desc": "an iron street post clock with a ticking face",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep32",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "potted_plant": {
-  "author": "toyfantv",
-  "desc": "a potted house plant, seeded",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep19",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "recording_bedroom": {
-  "author": "toyfantv",
-  "desc": "a teenager's bedroom (desk, bed, closet, window, door at the far wall) whose wallpaper and carpet creep in from the door through a shared radius uniform; .chair is a separate movable desk chair",
-  "kind": "set",
-  "licence": "own",
-  "made_for": "ep38",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "recording_hotel_hall": {
-  "author": "toyfantv",
-  "desc": "a long dark hotel corridor with wallpaper, patterned carpet, numbered doors and lit brass sconces",
-  "kind": "set",
-  "licence": "own",
-  "made_for": "ep38",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "rescue_radio": {
-  "author": "toyfantv",
-  "desc": "a handheld rescue radio with an LED and a lit screen",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep39",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "rescue_truck": {
-  "author": "toyfantv",
-  "desc": "a red rescue truck",
-  "kind": "vehicle",
-  "licence": "own",
-  "made_for": "ep39",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "roll_gate": {
-  "author": "toyfantv",
-  "desc": "a steel roll-down security shutter",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep36",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "room_plate": {
-  "author": "toyfantv",
-  "desc": "a white enamel room-number plate with dark-green numerals",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep27",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "rubble_pile": {
-  "author": "toyfantv",
-  "desc": "concrete chunks that fall and settle",
-  "kind": "effect",
-  "licence": "own",
-  "made_for": "ep21",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "ruin_clock_tower": {
-  "author": "toyfantv",
-  "desc": "a stone clock tower whose second hand ticks (set(sec)) and stops",
-  "kind": "building",
-  "licence": "own",
-  "made_for": "ep32",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "ruin_courtyard": {
-  "author": "toyfantv",
-  "desc": "a flagstone courtyard disc with a soft alpha edge",
-  "kind": "environment",
-  "licence": "own",
-  "made_for": "ep32",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "rune_shield": {
-  "author": "toyfantv",
-  "desc": "a rune shield disc in front of a palm that flares on each hit",
-  "kind": "effect",
-  "licence": "own",
-  "made_for": "ep33",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "sailboat": {
-  "author": "toyfantv",
-  "desc": "a small wooden boat with a striped sail",
-  "kind": "vehicle",
-  "licence": "own",
-  "made_for": "ep20",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "school_corridor": {
-  "author": "toyfantv",
-  "desc": "a long abandoned school corridor with lockers, flickering ceiling tubes, loose papers and double exit doors with a green sign",
-  "kind": "building",
-  "licence": "own",
-  "made_for": "ep37",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "seat_banks": {
-  "author": "toyfantv",
-  "desc": "tiered stadium seat banks round an arena floor (instanced)",
-  "kind": "set",
-  "licence": "own",
-  "made_for": "ep36",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "security_cam": {
-  "author": "toyfantv",
-  "desc": "a ceiling security camera with a pan/tilt head and a red LED",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep34",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "seed_stall": {
-  "author": "toyfantv",
-  "desc": "a garden seed stall with green-white awning, seed packets and a SEED SHOP sign",
-  "kind": "building",
-  "licence": "own",
-  "made_for": "ep24",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "selection_box": {
-  "author": "toyfantv",
-  "desc": "the blue outline Roblox Studio draws round a selected part",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep19",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "shadow_crowd": {
-  "author": "toyfantv",
-  "desc": "instanced seated shadow spectators with rim light and glowing eyes; per-seat fill, turn and eyes",
-  "kind": "crowd",
-  "licence": "own",
-  "made_for": "ep33",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "shard_burst": {
-  "author": "toyfantv",
-  "desc": "a deterministic burst of sparks / shards / debris from a point",
-  "kind": "effect",
-  "licence": "own",
-  "made_for": "ep33",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "shockwave_ring": {
-  "author": "toyfantv",
-  "desc": "an expanding ground ring and thin dome (a shockwave)",
-  "kind": "effect",
-  "licence": "own",
-  "made_for": "ep33",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "shop_sign": {
-  "author": "toyfantv",
-  "desc": "a glowing mall shop sign",
-  "kind": "material",
-  "licence": "own",
-  "made_for": "ep36",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "silver_gown": {
-  "author": "toyfantv",
-  "desc": "a silver sequinned gown for a character, flowing or cinched round the legs",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep22",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "smoke_haze": {
-  "author": "toyfantv",
-  "desc": "drifting smoke haze points",
-  "kind": "effect",
-  "licence": "own",
-  "made_for": "ep34",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "snowfall": {
-  "author": "toyfantv",
-  "desc": "falling snow points over an area",
-  "kind": "effect",
-  "licence": "own",
-  "made_for": "ep25",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "snowy_pines": {
-  "author": "toyfantv",
-  "desc": "instanced dark pines with frost on the tips, for a night survival forest; can vanish in a wave",
-  "kind": "nature",
-  "licence": "own",
-  "made_for": "ep25",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "stair_hall": {
-  "author": "toyfantv",
-  "desc": "an abandoned school stairwell hall: worn floorboards, a roped-off wooden staircase with numbered steps, boarded windows, tally marks and paper charms in the cavity under the stairs",
-  "kind": "building",
-  "licence": "own",
-  "made_for": "ep37",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "star": {
-  "author": "toyfantv",
-  "desc": "a glowing star sprite",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep11",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "star_jar": {
-  "author": "toyfantv",
-  "desc": "a glass jar of stars",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep11",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "star_paddle": {
-  "author": "toyfantv",
-  "desc": "a judge's five-star score paddle",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep22",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "steel_door": {
-  "author": "toyfantv",
-  "desc": "a steel door with a CONTROL ROOM label, hinged",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep34",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "storm_island": {
-  "author": "toyfantv",
-  "desc": "a rocky storm island with a flat ruined plateau, vertex-coloured cliffs",
-  "kind": "environment",
-  "licence": "own",
-  "made_for": "ep32",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "storm_rain": {
-  "author": "toyfantv",
-  "desc": "rain streaks that follow the camera",
-  "kind": "environment",
-  "licence": "own",
-  "made_for": "ep32",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "storm_sea": {
-  "author": "toyfantv",
-  "desc": "a storm sea shader that splits apart into a trench between two walls of water",
-  "kind": "environment",
-  "licence": "own",
-  "made_for": "ep32",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "straw_rope": {
-  "author": "toyfantv",
-  "desc": "a sagging straw rope with paper streamers, a barrier for a forbidden place",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep37",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "studio_set": {
-  "author": "toyfantv",
-  "desc": "a game-show studio stage with podium, glitter backdrop, logo and audience seats",
-  "kind": "set",
-  "licence": "own",
-  "made_for": "ep36",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "suburban_house": {
-  "author": "toyfantv",
-  "desc": "a street house, one or two floors, seeded",
-  "kind": "building",
-  "licence": "own",
-  "made_for": "town",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "summon_beam": {
-  "author": "toyfantv",
-  "desc": "a beam of light from the sky (summoning)",
-  "kind": "effect",
-  "licence": "own",
-  "made_for": "ep33",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "sword_cavern": {
-  "author": "toyfantv",
-  "desc": "a dark cavern beneath an island",
-  "kind": "environment",
-  "licence": "own",
-  "made_for": "ep32",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "sword_field": {
-  "author": "toyfantv",
-  "desc": "thousands of upright black swords stuck in a cavern floor that light up as they wake",
-  "kind": "environment",
-  "licence": "own",
-  "made_for": "ep32",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "sync_ranks": {
-  "author": "toyfantv",
-  "desc": "instanced ranks of identical soldiers copying one posed template in perfect sync",
-  "kind": "effect",
-  "licence": "own",
-  "made_for": "ep34",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "tape_head": {
-  "author": "toyfantv",
-  "desc": "a head wrapped in loose brown tape bands with one staring eye, teeth under the tape and a porter cap; set({gaze, mouth}); pass the bounding box of the head it replaces",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep38",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "tape_post": {
-  "author": "toyfantv",
-  "desc": "a weighted barrier post for caution tape",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep39",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "teleport_fx": {
-  "author": "toyfantv",
-  "desc": "a vanish / appear flash column and ring",
-  "kind": "effect",
-  "licence": "own",
-  "made_for": "ep33",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "time_crack": {
-  "author": "toyfantv",
-  "desc": "a glowing violet crack torn through the air (a crack in time)",
-  "kind": "effect",
-  "licence": "own",
-  "made_for": "ep32",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "toon_blood": {
-  "author": "toyfantv",
-  "desc": "toon-shaded blood for shots and cuts: bursts, spray, splats, drips and a growing pool",
-  "kind": "effect",
-  "licence": "own",
-  "made_for": "ep34",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "town": {
-  "author": "toyfantv",
-  "desc": "the whole night or day town: streets, houses, lamps",
-  "kind": "environment",
-  "licence": "own",
-  "made_for": "town",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "tracers": {
-  "author": "toyfantv",
-  "desc": "bullet tracers",
-  "kind": "effect",
-  "licence": "own",
-  "made_for": "ep34",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "train_car": {
-  "author": "toyfantv",
-  "desc": "a silver lit train carriage, any length",
-  "kind": "vehicle",
-  "licence": "own",
-  "made_for": "ep15",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "training_hall": {
-  "author": "toyfantv",
-  "desc": "a long industrial training hall with columns, beams, pipes, tube lights, red beacons and a side corridor",
-  "kind": "building",
-  "licence": "own",
-  "made_for": "ep34",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "training_rifle": {
-  "author": "toyfantv",
-  "desc": "a blocky training rifle (orange tip) with a removable magazine",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep34",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "treasure_chest": {
-  "author": "toyfantv",
-  "desc": "a gold-banded chest full of coins",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep20",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "tree": {
-  "author": "toyfantv",
-  "desc": "a blocky street tree, seeded",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "town",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "tropical_island": {
-  "author": "toyfantv",
-  "desc": "an island with a beach, grass, a rock wall skirt and strata down to the seabed",
-  "kind": "terrain",
-  "licence": "own",
-  "made_for": "ep20",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "tunnel_drips": {
-  "author": "toyfantv",
-  "desc": "water drops falling inside a voice_tunnel with rings on the floor (.update(t))",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep39",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "tunnel_hillside": {
-  "author": "toyfantv",
-  "desc": "a rock face around a tunnel mouth, with a grass clearing and a dirt path (pass tunnel: the voice_tunnel it belongs to)",
-  "kind": "environment",
-  "licence": "own",
-  "made_for": "ep39",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "tv_house": {
-  "author": "toyfantv",
-  "desc": "a suburban house whose every window holds a glowing TV",
-  "kind": "building",
-  "licence": "own",
-  "made_for": "ep36",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "tv_screen_mat": {
-  "author": "toyfantv",
-  "desc": "a CRT/LED screen material fed by a render target or a canvas, with static and scanlines",
-  "kind": "material",
-  "licence": "own",
-  "made_for": "ep36",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "victorian_guest": {
-  "author": "toyfantv",
-  "desc": "twelve faceless Victorian party guests (procedural rigs)",
-  "kind": "character",
-  "licence": "own",
-  "made_for": "ep28",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "victorian_mansion": {
-  "author": "toyfantv",
-  "desc": "a two-storey Victorian mansion with portico, fence and a lit upstairs window room",
-  "kind": "building",
-  "licence": "own",
-  "made_for": "ep28",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "voice_tunnel": {
-  "author": "toyfantv",
-  "desc": "a long winding wet-stone tunnel that narrows to a belly crawl; centre-line helpers .pt/.floor/.yawIn, glow sticks, guide rope; cameras outside it see straight through its near wall",
-  "kind": "environment",
-  "licence": "own",
-  "made_for": "ep39",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "void_rocks": {
-  "author": "toyfantv",
-  "desc": "instanced rocks drifting in a black void",
-  "kind": "effect",
-  "licence": "own",
-  "made_for": "ep33",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "walking_house": {
-  "author": "toyfantv",
-  "desc": "a house on eight legs",
-  "kind": "building",
-  "licence": "own",
-  "made_for": "ep07",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "wall_clock": {
-  "author": "toyfantv",
-  "desc": "an industrial wall clock with moving hands",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep34",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "wall_faces": {
-  "author": "toyfantv",
-  "desc": "pale heads pushing out of a tunnel wall along a stretch of it, mouths working (pass tunnel and canvases)",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep39",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "wall_sconce": {
-  "author": "toyfantv",
-  "desc": "a two-candle brass wall sconce",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep28",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "ward_door": {
-  "author": "toyfantv",
-  "desc": "a pale-green hospital ward door with steel kick plates, a narrow window and a lever handle",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep27",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "watching_house": {
-  "author": "toyfantv",
-  "desc": "a dark house with an eye behind the door",
-  "kind": "building",
-  "licence": "own",
-  "made_for": "ep07",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- },
- "white_greatsword": {
-  "author": "toyfantv",
-  "desc": "a glowing white greatsword",
-  "kind": "prop",
-  "licence": "own",
-  "made_for": "ep32",
-  "source": "this renderer",
-  "type": "builder",
-  "url": ""
- }
+  "ancient_city": {
+    "author": "toyfantv",
+    "desc": "thousands of instanced stone buildings with glowing lines that rise from the seabed",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep20",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "antique_print": {
+    "author": "toyfantv",
+    "desc": "a loose antique sepia photograph (render-target print shader with scratches)",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep28",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "arc_bolt": {
+    "author": "toyfantv",
+    "desc": "an electric arc between two points, redrawn per seed",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep33",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "arena_ground": {
+    "author": "toyfantv",
+    "desc": "dark ground round the arena (rocks, dead trees) with a hole for it; move it down to lift the arena",
+    "kind": "set",
+    "licence": "own",
+    "made_for": "ep33",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "banquet_table": {
+    "author": "toyfantv",
+    "desc": "a long banquet table with cloth and runner",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep28",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "bare_trees": {
+    "author": "toyfantv",
+    "desc": "leafless winter trees",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep28",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "beach_hut": {
+    "author": "toyfantv",
+    "desc": "a thatched island hut",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep20",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "bed_chart": {
+    "author": "toyfantv",
+    "desc": "a clipboard patient chart with a readable name for the foot of a bed",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep27",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "big_chair": {
+    "author": "toyfantv",
+    "desc": "a high-backed velvet banquet chair",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep28",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "bird": {
+    "author": "toyfantv",
+    "desc": "a blocky bird with wings to flap",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep14",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "black_sword": {
+    "author": "toyfantv",
+    "desc": "a pure-black longsword with a violet-grey edge sheen and an optional glow",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep32",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "bloom_field": {
+    "author": "toyfantv",
+    "desc": "flowers that sprout and bloom in a wave spreading from a centre",
+    "kind": "nature",
+    "licence": "own",
+    "made_for": "ep24",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "brick_wall": {
+    "author": "toyfantv",
+    "desc": "an instanced brick wall that bursts when a body is thrown through it (deterministic, ballistic bricks)",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep32",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "bullet_holes": {
+    "author": "toyfantv",
+    "desc": "bullet-hole decals appearing on hit times",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep34",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "camp_props": {
+    "author": "toyfantv",
+    "desc": "survival camp props: log seat, wood pile, axe in a stump, lantern on a post, cook pot, bedroll, supply crate",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep25",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "camp_table": {
+    "author": "toyfantv",
+    "desc": "a folding table with a map on it",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep39",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "camp_tent": {
+    "author": "toyfantv",
+    "desc": "an A-frame canvas tent with sagging sides, seams, open flaps, poles, guy ropes and pegs",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep25",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "campfire": {
+    "author": "toyfantv",
+    "desc": "a stone-ring campfire with crossed logs, embers, orange flames, rising sparks and one warm shadowed light",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep25",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "car": {
+    "author": "toyfantv",
+    "desc": "a simple car, any colour",
+    "kind": "vehicle",
+    "licence": "own",
+    "made_for": "ep14",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "cardboard_sky": {
+    "author": "toyfantv",
+    "desc": "the sky as a box whose flaps open",
+    "kind": "environment",
+    "licence": "own",
+    "made_for": "ep17",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "caution_tape": {
+    "author": "toyfantv",
+    "desc": "a sagging strip of caution tape between two points",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep39",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "ceiling_tiles": {
+    "author": "toyfantv",
+    "desc": "a drop ceiling whose tiles fall one by one",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep21",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "chandelier": {
+    "author": "toyfantv",
+    "desc": "a brass candle chandelier with crystal drops",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep28",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "child_satchel": {
+    "author": "toyfantv",
+    "desc": "a child's red satchel with a lifting flap, buckle and a yellow name tag",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep37",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "clock": {
+    "author": "toyfantv",
+    "desc": "a round clock, setTime(minutes)",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep14",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "clock_tower": {
+    "author": "toyfantv",
+    "desc": "a stone town clock tower with a working clock",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep18",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "control_chair": {
+    "author": "toyfantv",
+    "desc": "a futuristic white control chair on a dark pedestal with cyan neon trims and holographic armrest panels",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep26",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "control_room": {
+    "author": "toyfantv",
+    "desc": "a control room with desk rows, monitors, server racks, a giant screen wall and a security camera",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep34",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "countdown_draw": {
+    "author": "toyfantv",
+    "desc": "a countdown scoreboard face (MM:SS, red under ten seconds)",
+    "kind": "texture",
+    "licence": "own",
+    "made_for": "ep36",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "crater": {
+    "author": "toyfantv",
+    "desc": "a ground crater with radial cracks that opens on a strike",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep32",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "crt_tv": {
+    "author": "toyfantv",
+    "desc": "a ceiling-hung hospital CRT television on a pole, its screen ready for a render target",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep27",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "cube_seed": {
+    "author": "toyfantv",
+    "desc": "a tiny glowing blue cube seed with circuit lines, optional sprout",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep24",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "cube_stairs": {
+    "author": "toyfantv",
+    "desc": "a spiral staircase of glowing blue cube steps round a light column with a vine, grows to any height and dissolves",
+    "kind": "structure",
+    "licence": "own",
+    "made_for": "ep24",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "cursed_laptop": {
+    "author": "toyfantv",
+    "desc": "a laptop with a working lid (.setLid(a), .top()) and a screen shader that shows a UI canvas or a live feed with tape tearing",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep38",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "curtain_window": {
+    "author": "toyfantv",
+    "desc": "a tall night window with heavy draped curtains",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep28",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "dining_chair": {
+    "author": "toyfantv",
+    "desc": "a modern dining chair",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep19",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "dining_table": {
+    "author": "toyfantv",
+    "desc": "a modern wood dining table, any size",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep19",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "door_plate": {
+    "author": "toyfantv",
+    "desc": "a brass hotel room number plate, lit or scuffed",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep21",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "dress_form": {
+    "author": "toyfantv",
+    "desc": "a dark-silver dress form wearing the sparkling gown",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep22",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "drift_particles": {
+    "author": "toyfantv",
+    "desc": "glowing particles drifting off sampled surface points (a dissolve)",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep33",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "endless_ward": {
+    "author": "toyfantv",
+    "desc": "instanced endless rows of occupied hospital beds with sleeping patients",
+    "kind": "set",
+    "licence": "own",
+    "made_for": "ep27",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "energy_orb": {
+    "author": "toyfantv",
+    "desc": "a glowing energy orb with a trail and its own light",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep33",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "exit_gate": {
+    "author": "toyfantv",
+    "desc": "a stone exit gate with an arch, glowing runes and a swirling portal that opens and irises shut",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep25",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "exit_sign": {
+    "author": "toyfantv",
+    "desc": "a glowing green EXIT sign",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep21",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "eyeless_head": {
+    "author": "toyfantv",
+    "desc": "a pale head with two real, deep black eye sockets, cracks, black runs and an opening mouth",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep37",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "falling_rocks": {
+    "author": "toyfantv",
+    "desc": "rocks breaking off an underside as it tears free (deterministic)",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep33",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "feed_wall": {
+    "author": "toyfantv",
+    "desc": "a wall of CCTV feeds from a render target, with a focus tile, labels and a message overlay",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep34",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "fire_stream": {
+    "author": "toyfantv",
+    "desc": "a stream of fire between two points",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep33",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "fire_wall": {
+    "author": "toyfantv",
+    "desc": "a wall of fire that rises, parts round someone walking through it, embers and warm lights",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep33",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "flashlight": {
+    "author": "toyfantv",
+    "desc": "a yellow handheld flashlight with a glowing lens",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep21",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "flat_tv": {
+    "author": "toyfantv",
+    "desc": "a flat-screen TV on a foot stand",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep36",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "floating_island": {
+    "author": "toyfantv",
+    "desc": "a grassy floating island with a rocky underside, hanging roots, floating rocks and waterfalls",
+    "kind": "set",
+    "licence": "own",
+    "made_for": "ep24",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "flood_tripod": {
+    "author": "toyfantv",
+    "desc": "a site floodlight on a tripod",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep39",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "fluor_panel": {
+    "author": "toyfantv",
+    "desc": "a recessed fluorescent ceiling light panel that dims and flickers",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep27",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "folklore_flashlight": {
+    "author": "toyfantv",
+    "desc": "a small handheld flashlight with a lit lens",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep37",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "folklore_puppet": {
+    "author": "toyfantv",
+    "desc": "a long-limbed figure posed by world points (two-joint IK, knees that can bend backward), robe, curtain of hair; hand-key it point by point",
+    "kind": "character",
+    "licence": "own",
+    "made_for": "ep37",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "forest_beast": {
+    "author": "toyfantv",
+    "desc": "a blocky wolf-like forest creature with glowing red eyes that blink",
+    "kind": "character",
+    "licence": "own",
+    "made_for": "ep25",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "forest_tree": {
+    "author": "toyfantv",
+    "desc": "a tree with real bark and rustling leaves, any size or colours; instanced in numbers",
+    "kind": "environment",
+    "licence": "own",
+    "made_for": "ep18",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "framed_photo": {
+    "author": "toyfantv",
+    "desc": "a framed drawn photo of a little girl (and her dragon) whose face can be erased and restored",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep23",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "galleon": {
+    "author": "toyfantv",
+    "desc": "a three-masted sailing ship",
+    "kind": "vehicle",
+    "licence": "own",
+    "made_for": "ep20",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "garden_plot": {
+    "author": "toyfantv",
+    "desc": "a Grow-a-Garden soil plot with plank border and furrows, empty or with crops (carrot, cabbage, sunflower, tomato, pumpkin, berry, corn)",
+    "kind": "set",
+    "licence": "own",
+    "made_for": "ep24",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "garden_props": {
+    "author": "toyfantv",
+    "desc": "watering can, wheelbarrow and scarecrow",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep24",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "glass_fruit": {
+    "author": "toyfantv",
+    "desc": "a clear glass fruit with a stem and a rim light",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep20",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "glass_plants": {
+    "author": "toyfantv",
+    "desc": "instanced glowing blue glass plants: tulips, crystals, mushrooms, ferns, trees, bells, hedges",
+    "kind": "nature",
+    "licence": "own",
+    "made_for": "ep24",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "glass_shatter": {
+    "author": "toyfantv",
+    "desc": "shop windows bursting into falling shards",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep36",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "golden_dragon": {
+    "author": "toyfantv",
+    "desc": "a tiny golden pet dragon with big expressive eyes, little wings, poses and moods",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep23",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "golden_egg": {
+    "author": "toyfantv",
+    "desc": "a golden pet egg that splits in two",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep23",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "golden_key": {
+    "author": "toyfantv",
+    "desc": "a glowing golden key with a heart bow",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep23",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "gramophone": {
+    "author": "toyfantv",
+    "desc": "a horn gramophone on a side table",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep28",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "grand_clock": {
+    "author": "toyfantv",
+    "desc": "a grandfather clock with moving hands",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep28",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "great_temple": {
+    "author": "toyfantv",
+    "desc": "a stepped stone temple with a gold roof",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep20",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "ground_decal": {
+    "author": "toyfantv",
+    "desc": "scorch, skid and crack decals on a floor",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep33",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "hero_house": {
+    "author": "toyfantv",
+    "desc": "Emma's two-storey house with a furnished interior",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "town",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "hero_oak": {
+    "author": "toyfantv",
+    "desc": "an enormous oak with a dim face in its bark that can glow",
+    "kind": "environment",
+    "licence": "own",
+    "made_for": "ep18",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "hit_particles": {
+    "author": "toyfantv",
+    "desc": "sparks, concrete dust, chips and brass casings on event times",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep34",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "home_bed": {
+    "author": "toyfantv",
+    "desc": "a made bed with headboard and pillows",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep19",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "home_fridge": {
+    "author": "toyfantv",
+    "desc": "a steel fridge, hollow, with a door that opens and a light inside",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep19",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "home_sofa": {
+    "author": "toyfantv",
+    "desc": "a modern sofa with cushions",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep19",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "hospital_bed": {
+    "author": "toyfantv",
+    "desc": "a white steel hospital bed with side rails, wheels and a mint blanket",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep27",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "hospital_block": {
+    "author": "toyfantv",
+    "desc": "a derelict five-storey hospital block (Willow Creek General) whose windows switch on",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep27",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "hospital_cabinet": {
+    "author": "toyfantv",
+    "desc": "a white bedside hospital cabinet",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep27",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "hotel_door": {
+    "author": "toyfantv",
+    "desc": "a panelled hotel room door with brass handle, hinged, any size or colour",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep21",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "hotel_tower": {
+    "author": "toyfantv",
+    "desc": "a tall hotel with instanced windows that turn green floor by floor, then pancakes",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep21",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "hunter_helmet": {
+    "author": "toyfantv",
+    "desc": "an original hunter mask: black helmet, white numbered faceplate that cracks and falls away, a CRT screen inside",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep36",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "industrial_district": {
+    "author": "toyfantv",
+    "desc": "an empty industrial district at night: wet street, warehouses, fences, sodium streetlights, a facility gate and sign",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep34",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "invitation_card": {
+    "author": "toyfantv",
+    "desc": "a gilt-edged party invitation card and its sealed envelope",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep28",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "iv_pole": {
+    "author": "toyfantv",
+    "desc": "a steel IV drip stand with a bag",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep27",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "jersey_barrier": {
+    "author": "toyfantv",
+    "desc": "a concrete jersey barrier with hazard stripes",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep34",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "jumbotron": {
+    "author": "toyfantv",
+    "desc": "a four-faced hanging scoreboard with LED rims",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep36",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "katana": {
+    "author": "toyfantv",
+    "desc": "a katana with a red grip",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep20",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "kit_barrel": {
+    "author": "toyfantv",
+    "desc": "a banded barrel",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "the detail kit",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "kit_building": {
+    "author": "toyfantv",
+    "desc": "a layered building: windows, trims, cornice, door, sign, flat or gable roof (engine/kit.js)",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "the detail kit",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "kit_crate": {
+    "author": "toyfantv",
+    "desc": "a framed wooden crate",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "the detail kit",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "kit_crowd": {
+    "author": "toyfantv",
+    "desc": "JavaScript-built extras, hundreds as instanced meshes; .update(t) to move them",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "the detail kit",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "kit_lamp": {
+    "author": "toyfantv",
+    "desc": "a street lamp with a lit head",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "the detail kit",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "kit_sign": {
+    "author": "toyfantv",
+    "desc": "a framed sign with any text",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "the detail kit",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "kit_skyline": {
+    "author": "toyfantv",
+    "desc": "instanced towers for the distance",
+    "kind": "environment",
+    "licence": "own",
+    "made_for": "the detail kit",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "laser_cross": {
+    "author": "toyfantv",
+    "desc": "a dark hub with two or more crisp red laser beams and a faint halo, made to spin",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep26",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "living_cloud": {
+    "author": "toyfantv",
+    "desc": "a cloud with a face, setFace(kind)",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep13",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "magic_arena": {
+    "author": "toyfantv",
+    "desc": "a floating stone arena: a rune floor, tiers of seats (.seats), gate towers with a midnight clock and a bell, braziers with cold flames, broken stairs, an upside-down ring of arches and a rock underside for lifting it into a void",
+    "kind": "set",
+    "licence": "own",
+    "made_for": "ep33",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "magic_cloak": {
+    "author": "toyfantv",
+    "desc": "a white hooded cloak fitted onto any character (mantle, split skirt that follows the legs, sleeves, hood) that dissolves into glowing particles",
+    "kind": "accessory",
+    "licence": "own",
+    "made_for": "ep33",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "magic_sigil": {
+    "author": "toyfantv",
+    "desc": "a glowing magic circle on the floor or in the sky",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep33",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "mailbox": {
+    "author": "toyfantv",
+    "desc": "a street mailbox, new with a name or old and rusty",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep23",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "mall_ring": {
+    "author": "toyfantv",
+    "desc": "an enormous mall's upper floors in a ring with lit and dark shopfronts",
+    "kind": "set",
+    "licence": "own",
+    "made_for": "ep36",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "market_stall": {
+    "author": "toyfantv",
+    "desc": "a striped market stall with a sign",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep20",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "masked_soldier_gear": {
+    "author": "toyfantv",
+    "desc": "a white featureless mask, a helmet and a numbered target plate for a soldier",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep34",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "metal_pipe": {
+    "author": "toyfantv",
+    "desc": "a steel scaffold pipe",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep36",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "mimic_puppet": {
+    "author": "toyfantv",
+    "desc": "a long-limbed grey thing in the rags of a yellow raincoat: a folklore puppet with a mount for a stolen head",
+    "kind": "character",
+    "licence": "own",
+    "made_for": "ep39",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "model_house": {
+    "author": "toyfantv",
+    "desc": "hero_house as a roofless cutaway: at 0.1 scale, the miniature",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep17",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "modern_house": {
+    "author": "toyfantv",
+    "desc": "a modern two-volume suburban house: stucco, wood cladding, big windows, garage",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep19",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "muzzle_flashes": {
+    "author": "toyfantv",
+    "desc": "star-card muzzle flashes",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep34",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "name_tree": {
+    "author": "toyfantv",
+    "desc": "a giant white-bark tree with a blue glass crown, its trunk ready for carved and glowing names",
+    "kind": "nature",
+    "licence": "own",
+    "made_for": "ep24",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "notice_sign": {
+    "author": "toyfantv",
+    "desc": "a demolition notice sign board with custom lines",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep27",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "obby_platform": {
+    "author": "toyfantv",
+    "desc": "a candy-coloured obby platform with a lighter top slab and a neon top trim that glows in space; optional checkpoint number",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep26",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "ornate_frame": {
+    "author": "toyfantv",
+    "desc": "a gilt ornate picture frame",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep28",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "pa_speaker": {
+    "author": "toyfantv",
+    "desc": "a round ceiling PA loudspeaker grille",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep27",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "package_box": {
+    "author": "toyfantv",
+    "desc": "black package, folding walls, lid, blank label",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep17",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "palm": {
+    "author": "toyfantv",
+    "desc": "instanced palm trees that sway",
+    "kind": "plant",
+    "licence": "own",
+    "made_for": "ep20",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "panel_door": {
+    "author": "toyfantv",
+    "desc": "a panelled interior door",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep28",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "paper_charm": {
+    "author": "toyfantv",
+    "desc": "a paper charm with brush marks and a torn lower edge",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep37",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "pastel_cottage": {
+    "author": "toyfantv",
+    "desc": "a pastel suburban house with porch, lap siding, shutters, flower boxes; can build up from light",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep23",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "pc_desk": {
+    "author": "toyfantv",
+    "desc": "a desk with a big monitor, keyboard, mouse and lit PC tower",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep19",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "pier": {
+    "author": "toyfantv",
+    "desc": "a wooden pier on posts",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep20",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "plate_armor": {
+    "author": "toyfantv",
+    "desc": "dark plate armour with a featureless helmet fitted onto any character; can shatter off an empty suit",
+    "kind": "accessory",
+    "licence": "own",
+    "made_for": "ep32",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "porcelain_nurse": {
+    "author": "toyfantv",
+    "desc": "an original faceless nurse in a white uniform and cap with a cracked porcelain mask (horror, no gore)",
+    "kind": "character",
+    "licence": "own",
+    "made_for": "ep27",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "post_clock": {
+    "author": "toyfantv",
+    "desc": "an iron street post clock with a ticking face",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep32",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "potted_plant": {
+    "author": "toyfantv",
+    "desc": "a potted house plant, seeded",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep19",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "recording_bedroom": {
+    "author": "toyfantv",
+    "desc": "a teenager's bedroom (desk, bed, closet, window, door at the far wall) whose wallpaper and carpet creep in from the door through a shared radius uniform; .chair is a separate movable desk chair",
+    "kind": "set",
+    "licence": "own",
+    "made_for": "ep38",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "recording_hotel_hall": {
+    "author": "toyfantv",
+    "desc": "a long dark hotel corridor with wallpaper, patterned carpet, numbered doors and lit brass sconces",
+    "kind": "set",
+    "licence": "own",
+    "made_for": "ep38",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "rescue_radio": {
+    "author": "toyfantv",
+    "desc": "a handheld rescue radio with an LED and a lit screen",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep39",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "rescue_truck": {
+    "author": "toyfantv",
+    "desc": "a red rescue truck",
+    "kind": "vehicle",
+    "licence": "own",
+    "made_for": "ep39",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "roll_gate": {
+    "author": "toyfantv",
+    "desc": "a steel roll-down security shutter",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep36",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "room_plate": {
+    "author": "toyfantv",
+    "desc": "a white enamel room-number plate with dark-green numerals",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep27",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "rubble_pile": {
+    "author": "toyfantv",
+    "desc": "concrete chunks that fall and settle",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep21",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "ruin_clock_tower": {
+    "author": "toyfantv",
+    "desc": "a stone clock tower whose second hand ticks (set(sec)) and stops",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep32",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "ruin_courtyard": {
+    "author": "toyfantv",
+    "desc": "a flagstone courtyard disc with a soft alpha edge",
+    "kind": "environment",
+    "licence": "own",
+    "made_for": "ep32",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "rune_shield": {
+    "author": "toyfantv",
+    "desc": "a rune shield disc in front of a palm that flares on each hit",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep33",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "sailboat": {
+    "author": "toyfantv",
+    "desc": "a small wooden boat with a striped sail",
+    "kind": "vehicle",
+    "licence": "own",
+    "made_for": "ep20",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "school_corridor": {
+    "author": "toyfantv",
+    "desc": "a long abandoned school corridor with lockers, flickering ceiling tubes, loose papers and double exit doors with a green sign",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep37",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "seat_banks": {
+    "author": "toyfantv",
+    "desc": "tiered stadium seat banks round an arena floor (instanced)",
+    "kind": "set",
+    "licence": "own",
+    "made_for": "ep36",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "security_cam": {
+    "author": "toyfantv",
+    "desc": "a ceiling security camera with a pan/tilt head and a red LED",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep34",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "seed_stall": {
+    "author": "toyfantv",
+    "desc": "a garden seed stall with green-white awning, seed packets and a SEED SHOP sign",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep24",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "selection_box": {
+    "author": "toyfantv",
+    "desc": "the blue outline Roblox Studio draws round a selected part",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep19",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "shadow_crowd": {
+    "author": "toyfantv",
+    "desc": "instanced seated shadow spectators with rim light and glowing eyes; per-seat fill, turn and eyes",
+    "kind": "crowd",
+    "licence": "own",
+    "made_for": "ep33",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "shard_burst": {
+    "author": "toyfantv",
+    "desc": "a deterministic burst of sparks / shards / debris from a point",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep33",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "shockwave_ring": {
+    "author": "toyfantv",
+    "desc": "an expanding ground ring and thin dome (a shockwave)",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep33",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "shop_sign": {
+    "author": "toyfantv",
+    "desc": "a glowing mall shop sign",
+    "kind": "material",
+    "licence": "own",
+    "made_for": "ep36",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "silver_gown": {
+    "author": "toyfantv",
+    "desc": "a silver sequinned gown for a character, flowing or cinched round the legs",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep22",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "smoke_haze": {
+    "author": "toyfantv",
+    "desc": "drifting smoke haze points",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep34",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "snowfall": {
+    "author": "toyfantv",
+    "desc": "falling snow points over an area",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep25",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "snowy_pines": {
+    "author": "toyfantv",
+    "desc": "instanced dark pines with frost on the tips, for a night survival forest; can vanish in a wave",
+    "kind": "nature",
+    "licence": "own",
+    "made_for": "ep25",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "stair_hall": {
+    "author": "toyfantv",
+    "desc": "an abandoned school stairwell hall: worn floorboards, a roped-off wooden staircase with numbered steps, boarded windows, tally marks and paper charms in the cavity under the stairs",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep37",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "star": {
+    "author": "toyfantv",
+    "desc": "a glowing star sprite",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep11",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "star_jar": {
+    "author": "toyfantv",
+    "desc": "a glass jar of stars",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep11",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "star_paddle": {
+    "author": "toyfantv",
+    "desc": "a judge's five-star score paddle",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep22",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "steel_door": {
+    "author": "toyfantv",
+    "desc": "a steel door with a CONTROL ROOM label, hinged",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep34",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "storm_island": {
+    "author": "toyfantv",
+    "desc": "a rocky storm island with a flat ruined plateau, vertex-coloured cliffs",
+    "kind": "environment",
+    "licence": "own",
+    "made_for": "ep32",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "storm_rain": {
+    "author": "toyfantv",
+    "desc": "rain streaks that follow the camera",
+    "kind": "environment",
+    "licence": "own",
+    "made_for": "ep32",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "storm_sea": {
+    "author": "toyfantv",
+    "desc": "a storm sea shader that splits apart into a trench between two walls of water",
+    "kind": "environment",
+    "licence": "own",
+    "made_for": "ep32",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "straw_rope": {
+    "author": "toyfantv",
+    "desc": "a sagging straw rope with paper streamers, a barrier for a forbidden place",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep37",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "studio_set": {
+    "author": "toyfantv",
+    "desc": "a game-show studio stage with podium, glitter backdrop, logo and audience seats",
+    "kind": "set",
+    "licence": "own",
+    "made_for": "ep36",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "suburban_house": {
+    "author": "toyfantv",
+    "desc": "a street house, one or two floors, seeded",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "town",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "summon_beam": {
+    "author": "toyfantv",
+    "desc": "a beam of light from the sky (summoning)",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep33",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "sword_cavern": {
+    "author": "toyfantv",
+    "desc": "a dark cavern beneath an island",
+    "kind": "environment",
+    "licence": "own",
+    "made_for": "ep32",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "sword_field": {
+    "author": "toyfantv",
+    "desc": "thousands of upright black swords stuck in a cavern floor that light up as they wake",
+    "kind": "environment",
+    "licence": "own",
+    "made_for": "ep32",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "sync_ranks": {
+    "author": "toyfantv",
+    "desc": "instanced ranks of identical soldiers copying one posed template in perfect sync",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep34",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "tape_head": {
+    "author": "toyfantv",
+    "desc": "a head wrapped in loose brown tape bands with one staring eye, teeth under the tape and a porter cap; set({gaze, mouth}); pass the bounding box of the head it replaces",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep38",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "tape_post": {
+    "author": "toyfantv",
+    "desc": "a weighted barrier post for caution tape",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep39",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "teleport_fx": {
+    "author": "toyfantv",
+    "desc": "a vanish / appear flash column and ring",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep33",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "time_crack": {
+    "author": "toyfantv",
+    "desc": "a glowing violet crack torn through the air (a crack in time)",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep32",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "toon_blood": {
+    "author": "toyfantv",
+    "desc": "toon-shaded blood for shots and cuts: bursts, spray, splats, drips and a growing pool",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep34",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "town": {
+    "author": "toyfantv",
+    "desc": "the whole night or day town: streets, houses, lamps",
+    "kind": "environment",
+    "licence": "own",
+    "made_for": "town",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "tracers": {
+    "author": "toyfantv",
+    "desc": "bullet tracers",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep34",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "train_car": {
+    "author": "toyfantv",
+    "desc": "a silver lit train carriage, any length",
+    "kind": "vehicle",
+    "licence": "own",
+    "made_for": "ep15",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "training_hall": {
+    "author": "toyfantv",
+    "desc": "a long industrial training hall with columns, beams, pipes, tube lights, red beacons and a side corridor",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep34",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "training_rifle": {
+    "author": "toyfantv",
+    "desc": "a blocky training rifle (orange tip) with a removable magazine",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep34",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "treasure_chest": {
+    "author": "toyfantv",
+    "desc": "a gold-banded chest full of coins",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep20",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "tree": {
+    "author": "toyfantv",
+    "desc": "a blocky street tree, seeded",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "town",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "tropical_island": {
+    "author": "toyfantv",
+    "desc": "an island with a beach, grass, a rock wall skirt and strata down to the seabed",
+    "kind": "terrain",
+    "licence": "own",
+    "made_for": "ep20",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "tunnel_drips": {
+    "author": "toyfantv",
+    "desc": "water drops falling inside a voice_tunnel with rings on the floor (.update(t))",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep39",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "tunnel_hillside": {
+    "author": "toyfantv",
+    "desc": "a rock face around a tunnel mouth, with a grass clearing and a dirt path (pass tunnel: the voice_tunnel it belongs to)",
+    "kind": "environment",
+    "licence": "own",
+    "made_for": "ep39",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "tv_house": {
+    "author": "toyfantv",
+    "desc": "a suburban house whose every window holds a glowing TV",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep36",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "tv_screen_mat": {
+    "author": "toyfantv",
+    "desc": "a CRT/LED screen material fed by a render target or a canvas, with static and scanlines",
+    "kind": "material",
+    "licence": "own",
+    "made_for": "ep36",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "victorian_guest": {
+    "author": "toyfantv",
+    "desc": "twelve faceless Victorian party guests (procedural rigs)",
+    "kind": "character",
+    "licence": "own",
+    "made_for": "ep28",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "victorian_mansion": {
+    "author": "toyfantv",
+    "desc": "a two-storey Victorian mansion with portico, fence and a lit upstairs window room",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep28",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "voice_tunnel": {
+    "author": "toyfantv",
+    "desc": "a long winding wet-stone tunnel that narrows to a belly crawl; centre-line helpers .pt/.floor/.yawIn, glow sticks, guide rope; cameras outside it see straight through its near wall",
+    "kind": "environment",
+    "licence": "own",
+    "made_for": "ep39",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "void_rocks": {
+    "author": "toyfantv",
+    "desc": "instanced rocks drifting in a black void",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep33",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "walking_house": {
+    "author": "toyfantv",
+    "desc": "a house on eight legs",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep07",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "wall_clock": {
+    "author": "toyfantv",
+    "desc": "an industrial wall clock with moving hands",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep34",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "wall_faces": {
+    "author": "toyfantv",
+    "desc": "pale heads pushing out of a tunnel wall along a stretch of it, mouths working (pass tunnel and canvases)",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep39",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "wall_sconce": {
+    "author": "toyfantv",
+    "desc": "a two-candle brass wall sconce",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep28",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "ward_door": {
+    "author": "toyfantv",
+    "desc": "a pale-green hospital ward door with steel kick plates, a narrow window and a lever handle",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep27",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "watching_house": {
+    "author": "toyfantv",
+    "desc": "a dark house with an eye behind the door",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep07",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "white_greatsword": {
+    "author": "toyfantv",
+    "desc": "a glowing white greatsword",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep32",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  }
 }
