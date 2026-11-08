@@ -167,7 +167,7 @@ export function frame(ctx, t, sh, o = {}) {
   }
   sun.castShadow = o.shadows !== false;
   if (!sub || sub.i === 0) {   // overlays come from t itself, not from the shutter's earlier sub-frames
-    captionAt(ctx, t, o.captionsOff ?? 1e9);
+    captionAt(ctx, o.capT ?? t, o.captionsOff ?? 1e9);   // capT: video time when the scene's time is remapped (a speed edit)
     ctx.flash.style.opacity = (o.flash || 0).toFixed(3);
     ctx.flash.style.background = o.flashColor || '#ffffff';
     ctx.black.style.opacity = String(o.black || 0);

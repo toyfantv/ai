@@ -17,12 +17,13 @@ import { dock, sailboat } from '../engine/isles.js';
 import { loadAnimSet, sample, blend, keyed, applyPose, holdProp, aimArm, propPoint, KEYED } from '../engine/anims.js';
 import { blackSword, whiteBlade, armorSuit, swordField } from '../engine/blades.js';
 import { installActionFX, weaponTrail } from '../engine/actionfx.js';
+import { Reflector } from 'three/addons/objects/Reflector.js';
 import { stormIsland, courtyard, column, arch, lowWall, rubble, clockTower, postClock, brickWall, crater, stormSea, rain, bolt, flashAt, timeCrack, cavern } from '../engine/ruins.js';
 
 let ctx, L, EV;
 const W = {};
 const TOP = 4, WALLZ = -6, CAV = v3(0, -700, 0);
-const SLAB = v3(-4.6, TOP, 1.0), RSL = v3(-4.6, TOP, -0.85);     // the slab with the sword in it, where Rowan crouches
+const SLAB = v3(-4.6, TOP, 1.0), RSL = v3(-4.6, TOP, -1.55);     // the slab with the sword in it, where Rowan crouches
 const R0 = v3(0, TOP, 0), RL = v3(0, TOP, -16.3), RF = v3(-0.8, TOP, -15.7);   // RF: where Rowan ends the fight                 // Rowan in the first fight; where he lands behind the wall
 const ATL = v3(-15, TOP, 9), DOCK = v3(38, 0, 44), ZZ = v3(38, 2.75, 64);
 const SKIN = '#e9b994', SZ = 104;   // SZ: where the swordsman rises, out in the split
@@ -228,7 +229,23 @@ function people() {
   W.gsuit = gs;
   // Rowan in the armour (the end)
   W.ra = makeCharacter({ avatar: 'farm_ep32_rowan', alti: true, skin: SKIN, caustic: false }); ctx.scene.add(W.ra.root);
-  W.rasuit = armorSuit(W.ra, { seed: 32 }); hideBody(W.ra); W.rasw = blackSword();
+  W.rasuit = armorSuit(W.ra, { seed: 32, openFace: true }); hideBody(W.ra); (W.ra.headParts || []).forEach((m) => { m.visible = true; }); if (W.ra.faceSheet) W.ra.faceSheet.visible = true; W.rasw = blackSword();   // his face shows in the open helmet
+  {
+    const len = 4.4, sh = { uniforms: { color: { value: null }, tDiffuse: { value: null }, textureMatrix: { value: null } },
+      vertexShader: `uniform mat4 textureMatrix; varying vec4 vUv; varying vec2 vQ; void main() { vQ = uv; vUv = textureMatrix * vec4(position, 1.0); gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }`,
+      fragmentShader: `uniform vec3 color; uniform sampler2D tDiffuse; varying vec4 vUv; varying vec2 vQ;
+        void main() { vec4 b = texture2DProj(tDiffuse, vUv); float l = dot(b.rgb, vec3(0.3, 0.55, 0.15));
+          float across = abs(vQ.y - 0.5) * 2.0, edge = smoothstep(0.7, 1.0, across);           // darker toward the edges (the bevel)
+          float sheen = exp(-pow((vQ.x * 3.0 + vQ.y * 0.8 - 1.55) * 3.2, 2.0)) * 0.05;          // a soft diagonal gloss band
+          vec3 c = mix(b.rgb, vec3(l), 0.3) * color * (1.0 - 0.55 * edge) + vec3(0.62, 0.6, 0.75) * sheen;
+          gl_FragColor = vec4(c, 1.0);
+          #include <tonemapping_fragment>
+          #include <colorspace_fragment>
+        }` };
+    W.mirror = new Reflector(new THREE.PlaneGeometry(len * 0.8, 0.34 * 0.86), { textureWidth: 1024, textureHeight: 1024, color: new THREE.Color(0.33, 0.32, 0.4), shader: sh, multisample: 4 });
+    W.mirror.rotation.y = Math.PI / 2; W.mirror.position.set(0.075, 0.06, 0.42 + len * 0.45); W.mirror.visible = false; W.mirror.userData.noAO = true;
+    W.mb = blackSword(); W.mb.visible = false; W.mb.add(W.mirror); ctx.scene.add(W.mb);   // the insert's blade: the same sword, posed for the mirror
+  }
   // the side characters
   W.atl = mk('farm_ep32_atlanta'); W.zz = mk('farm_ep32_zzeekkee');
   W.tagA = nameTag(W.atl, 'Atlanta94275', { width: 3.6, y: 6.1 }); W.tagZ = nameTag(W.zz, 'Zzeekkee26', { width: 3.3, y: 6.1 });
@@ -271,15 +288,14 @@ function shots() {
   // (orbits, a low push-in, whip pans) like action anime; close shots of a determined face only as short inserts.
   // the island under the storm (steady), Rowan at the slab
   add('open', 0, (u) => ({ pos: lp3(v3(70, 46, 120), v3(52, 34, 92), easeInOut(u)), look: v3(-4, 5, -2), fov: 52 }));
-  add('found', 2.4, (u) => ({ pos: lp3(RSL.clone().add(v3(-7.6, 3.6, 8.4)), RSL.clone().add(v3(-4.6, 3.4, 5.2)), easeInOut(u)), look: lp3(SLAB.clone().add(v3(0.3, 3.0, -0.9)), SLAB.clone().add(v3(0, 3.0, 0)), u), fov: 54 }));
+  add('found', 2.4, (u) => ({ pos: lp3(RSL.clone().add(v3(-9.2, 3.6, 5.0)), RSL.clone().add(v3(-6.4, 3.4, 2.8)), easeInOut(u)), look: lp3(RSL.clone().add(v3(0.1, 3.1, 0.9)), RSL.clone().add(v3(0, 3.2, 1.0)), u), fov: 56 }));
   add('touch', T.pull + 0.15, (u) => ({ pos: lp3(SLAB.clone().add(v3(4.6, 3.0, 6.4)), SLAB.clone().add(v3(5.0, 4.2, 7.6)), easeOut(u)), look: lp3(SLAB.clone().add(v3(0, 3.4, -0.6)), SLAB.clone().add(v3(0, 4.2, -1.2)), easeOut(u)), fov: 54 }));
   add('clock', T.free + 0.15, (u) => { const f = W.tower.localToWorld(W.tower.facePos.clone()); const n = v3(Math.sin(0.55), 0, Math.cos(0.55)); return { pos: f.clone().addScaledVector(n, lerp(10, 8.2, u)).add(v3(0, -1.2, 0)), look: f, fov: 34 }; });
   add('dockclock', s(2) + 1.9, (u) => ({ pos: lp3(ZZ.clone().add(v3(-4.6, 3.2, -8.6)), ZZ.clone().add(v3(-4.2, 3.3, -8.0)), u), look: ZZ.clone().add(v3(-1.4, 4.6, -2)), fov: 56 }));
   add('whisper', s(3) - 0.1, (u) => ({ pos: lp3(RSL.clone().add(v3(1.8, 4.4, 6.4)), RSL.clone().add(v3(1.3, 4.3, 5.2)), easeInOut(u)), look: RSL.clone().add(v3(0, 3.5, 0)), fov: 54 }));
   add('coming', s(4) - 0.05, (u) => ({ pos: lp3(R(3.4, 6.0, -8.6), R(2.4, 5.8, -6.4), easeInOut(u)), look: R(-1.0, 3.6, 40), fov: 56 }));
-  // the ocean splits; the boat hand stares; the swordsman rises out of the trench
+  // the ocean splits; the swordsman rises out of the trench
   add('split', s(5) - 0.05, (u) => ({ pos: lp3(v3(-8, 14, 46), v3(-6, 19, 50), easeOut(u)), look: v3(0, -14, 130), fov: 62 }));
-  add('stare', s(5) + 0.85, (u) => ({ pos: lp3(ZZ.clone().add(v3(-3.6, 4.0, 6.4)), ZZ.clone().add(v3(-3.0, 4.0, 5.4)), u), look: ZZ.clone().add(v3(0, 3.4, 0)), fov: 56 }));
   add('rise', s(6) - 0.05, (u) => ({ pos: lp3(v3(6, fy() + 1.6, SZ - 22), v3(3.2, fy() + 2.4, SZ - 13), easeInOut(u)), look: v3(0, fy() + lerp(6, 4.8, u), SZ), fov: 58 }));
   // the leap (tracked wide, low) and the first fight: one wide orbit through the block, a face insert, a high wide through the
   // smash and the third strike (a whip pan between them), Rowan flung through the wall (tracked from the side)
@@ -293,8 +309,7 @@ function shots() {
   add('raise', s(12) - 0.1, (u, t) => { const sp = swordsRoot(t).p; return { pos: sp.clone().add(lp3(v3(8.8, 1.0, 1.2), v3(8.0, 0.8, 0.4), u)), look: sp.clone().add(v3(0, 4.6, -1.2)), fov: 56 }; });
   // the island freezes
   add('freeze', T.FRZ - 0.45, (u) => ({ pos: lp3(v3(26, 22, -40), v3(22, 20, -36), easeInOut(u)), look: v3(0, 6, -8), fov: 58 }));
-  add('stopA', s(14) - 0.1, (u) => { const a = lerp(-0.6, 0.15, easeInOut(u)), c = W.atl.root.position; return { pos: c.clone().add(v3(Math.sin(a) * 9.6, 4.0, Math.cos(a) * 9.6)), look: c.clone().add(v3(0, 3.0, 0)), fov: 54 }; });
-  add('stopZ', s(14) + 0.6, (u) => ({ pos: lp3(ZZ.clone().add(v3(2.6, 4.2, -5.0)), ZZ.clone().add(v3(2.2, 4.1, -4.4)), u), look: ZZ.clone().add(v3(-3, 3.2, 6)), fov: 56 }));
+  add('stopS', s(14) - 0.1, (u, t) => { const sp = swordsRoot(t).p, a = lerp(1.15, 1.5, easeInOut(u)); return { pos: sp.clone().add(v3(Math.sin(a) * 14, 3.0, Math.cos(a) * 14)), look: sp.clone().add(v3(0, 5.2, 0)), fov: 62 }; });
   add('look', s(15) - 0.1, (u) => { const a = lerp(-0.75, -0.3, easeInOut(u)); return { pos: Q(Math.sin(a) * 7.4, 4.4, Math.cos(a) * 7.4), look: Q(0, 3.3, 0.4), fov: 54 }; });
   add('swing', T.rift - 0.25, (u) => ({ pos: lp3(Q(-8.6, 3.8, 9.2), Q(-7.4, 4.0, 8.0), easeOut(u)), look: Q(0.2, 3.8, 1.4), fov: 58 }));
   add('crack', s(17) - 0.15, (u) => ({ pos: lp3(Q(-3.6, 4.4, -9.4), Q(-2.4, 4.8, -7.0), easeInOut(u)), look: Q(0.6, 4.4, 2.4), fov: 56 }));
@@ -373,7 +388,7 @@ function segS(tau) {
   return { base: propPoint(W.wb, v3(0, 0, 2.8)), tip: propPoint(W.wb, W.wb.tip), root: sr.p.clone() };
 }
 // speed lines and impact frames: a pure function of the frame's time
-function fxAt(t, n, cam) {
+function fxAt(t, n, cam, v = t) {
   const e = T, o = { focus: 0, streak: 0, impact: 0, cx: 0.5, cy: 0.45 };
   const bump = (c, a, b) => smooth(c - a, c, t) * (1 - smooth(c, c + b, t));
   const scr = (p) => { const q = p.clone().project(cam); return [clamp(q.x * 0.5 + 0.5), clamp(0.5 - q.y * 0.5)]; };
@@ -386,12 +401,32 @@ function fxAt(t, n, cam) {
   if (n === 'duel2') o.streak = Math.max(o.streak, bump(e.C5 + 0.38, 0.12, 0.14));
   if (n === 'swing' || n === 'crack') { const k = 0.5 * bump(e.rift + 0.62, 0.2, 0.6); if (k > o.focus) { o.focus = k; o.color = 'rgba(205,190,255,0.55)'; [o.cx, o.cy] = scr(RL.clone().add(v3(0.4, 4.6, 2.4))); } }
   // impact frames: the two strikes that decide each fight (the throw through the wall, the cut across the chest)
-  for (const c of [e.C3, e.C7]) { const d = t - c; if (d >= 0 && d < 0.1) { o.impact = d < 0.034 ? 1 : d < 0.067 ? 2 : 1; [o.cx, o.cy] = scr(contactPoint(c === e.C3 ? 2 : 4, c)); } }
+  const hc = held(v); if (hc !== undefined) { o.impact = 3; o.focus = 1; [o.cx, o.cy] = scr(contactPoint(hc === e.C3 ? 2 : 4, hc)); }
   o.streak = clamp(o.streak); o.angle = 0;
   return o;
 }
 
-function renderAt(t) {
+// the speed edit round the two strikes that decide each fight (the user, 2026-11-07): a ramp up, slow motion into the contact, the
+// frame held in film negative, a speed ramp out. v is video time, the scene runs on remap(v); the contact stays at its own time (on
+// the clash in the mix) and the scene is back on video time when the ramp ends, so the narration stays in sync.
+const SE = { PRE: 0.8, SLOW: 0.6, RS: 0.3, HOLD: 0.22, POST: 0.8 };
+function remap(v) {
+  const { PRE, SLOW, RS, HOLD, POST } = SE;
+  for (const c of [T.C3, T.C7]) {
+    const a0 = c - SLOW - PRE, a1 = c - SLOW, b1 = c + HOLD + POST;
+    if (v < a0 || v >= b1) continue;
+    const gain = SLOW * (1 - RS);
+    if (v < a1) { const u = (v - a0) / PRE; return v + gain * (u - Math.sin(2 * Math.PI * u) / (2 * Math.PI)); }
+    if (v < c) return c - (c - v) * RS;
+    if (v < c + HOLD) return c;
+    const u = (v - c - HOLD) / POST; return v - HOLD * (1 - u) ** 3;
+  }
+  return v;
+}
+const held = (v) => [T.C3, T.C7].find((c) => v >= c && v < c + SE.HOLD);
+const DBGCAM = (() => { const q = new URLSearchParams(location.search).get('cam'); if (!q) return null; const [a, b, f] = q.split('>'); const P = (x) => v3(...x.split(',').map(Number)); return [P(a), P(b), f ? +f : null]; })();
+function renderAt(v) {
+  const t = remap(v), hold = held(v);
   let sh = shotAt(W.shots, t); const n = sh.name, e = T;
   const w = tw(t), frozen = t >= e.FRZ && t < e.RES, cave = n === 'field';
   const freezeK = smooth(e.FRZ, e.FRZ + 0.35, t) * (1 - smooth(e.RES - 0.1, e.RES + 0.3, t));
@@ -435,6 +470,7 @@ function renderAt(t) {
       aimArm(RC, 0, stuck.clone().add(v3(0, 0.25, 0))); aimArm(RC, 1, stuck.clone().add(v3(0, 0.75, 0)));
     } else if (!/dodge|react/.test(n) && !(t > e.SH + 1.3 && t < L(27).start - 0.1)) aimArm(RC, 1, propPoint(sword, sword.hilt2), 0.85);
   }
+  W.mirror.visible = W.mb.visible = n === 'reflect'; if (n === 'reflect') W.rasw.visible = false; else W.rasw.visible = true;
   W.sw.setGlow(t > e.look ? 0.4 + 0.6 * smooth(e.rift + 0.4, e.rift + 0.65, t) * (1 - smooth(e.crack + 1, e.crack + 3, t)) : 0);
   if (!armor) faceOf(r, rowanFace(t), t, 0.3);
   W.cut.visible = t >= e.C3 + 0.1;
@@ -470,21 +506,29 @@ function renderAt(t) {
     W.ghostM.opacity = 0.16 + 0.08 * Math.sin(t * 20);
   }
   // Rowan in the armour: the reflection in the blade
-  if (armor) { W.rasuit.wind(w, 1); faceOf(ra, 'neutral', t); }
+  if (armor) { W.rasuit.wind(w, 1); faceOf(ra, t < e.armor + 0.5 ? 'nervous' : 'shocked', t); }
   W.reflectCam = (u) => {
-    const fc = ra.head.localToWorld(v3(0, 0.4, 0.2)); rollToward(W.rasw, fc);
-    const Pm = propPoint(W.rasw, v3(0, 0.16, 0.42 + 1.5)), side = v3(Math.cos(ra.root.rotation.y), 0, -Math.sin(ra.root.rotation.y));
-    // seen from in front of the blade's flat: the dark helmet close, its edges caught by a cold key (Rowan's own face is gone)
-    W.key.position.copy(RF).add(v3(-2.2, 7.0, 3.2)); W.key.color.set('#cfdcff'); W.key.intensity = 60; W.key.distance = 9;
-    return { pos: lp3(RF.clone().add(v3(-1.3, 5.3, 4.8)), RF.clone().add(v3(-1.1, 5.2, 4.1)), easeInOut(u)), look: RF.clone().add(v3(0, 4.75, 0)), fov: 50 };
+    // an insert: the black blade upright before his face, its flat turned so the steel shows him his own face in the open helmet
+    ra.root.updateMatrixWorld(true);
+    const ry = ra.root.rotation.y, fwd = v3(Math.sin(ry), 0, Math.cos(ry)), pp = v3(fwd.z, 0, -fwd.x), up = v3(0, 1, 0);
+    const fc = ra.head.localToWorld(v3(0, 0.45, 0.3)), P = fc.clone().addScaledVector(fwd, 2.1);
+    const cam = P.clone().addScaledVector(fwd, -lerp(1.5, 1.3, easeInOut(u))).addScaledVector(pp, 0.4).add(v3(0, 0.08, 0));
+    const zA = up.clone().multiplyScalar(Math.cos(0.22)).addScaledVector(pp, Math.sin(0.22)).normalize();
+    const nrm = fc.clone().sub(P).normalize().add(cam.clone().sub(P).normalize()).normalize();
+    const xA = nrm.addScaledVector(zA, -nrm.dot(zA)).normalize(), yA = zA.clone().cross(xA);
+    W.mb.quaternion.setFromRotationMatrix(new THREE.Matrix4().makeBasis(xA, yA, zA));
+    W.mb.position.copy(P).sub(v3(0, 0.06, 0.42 + 1.6).applyQuaternion(W.mb.quaternion)); W.mb.updateMatrixWorld(true);
+    // a warm key on his face from beside the camera, a cold rim on the armour
+    W.key.position.copy(fc).lerp(P, 0.5).addScaledVector(pp, -0.6).add(v3(0, 0.4, 0)); W.key.color.set('#ffd9b8'); W.key.intensity = 18; W.key.distance = 5;
+    return { pos: cam, look: P.clone().add(v3(0, 0.05, 0)), fov: 44 };
   };
   // ---- the side characters ----
   const A = W.atl, Z = W.zz, aw = Math.min(w, e.FRZ);
-  A.reset(); A.root.visible = island && t < e.armor;
+  A.reset(); A.root.visible = false;   // no cameos (the user, 2026-11-07: they broke the story's flow)
   const ap = ATL.clone().add(v3(Math.sin(aw * 0.35) * 2.2, 0, Math.cos(aw * 0.28) * 1.6 - 1.0)); A.root.position.copy(ap); A.root.rotation.set(0, -0.7 + Math.sin(aw * 0.35) * 0.6, 0);
   pose(A, 'walk', aw * 0.62); A.neck.rotation.y = 0.4 * Math.sin(aw * 0.9); A.neck.rotation.x = 0.25;
   faceOf(A, t < e.split0 ? 'focused' : 'shocked', t >= e.FRZ ? e.FRZ : t, 0.6);
-  Z.reset(); Z.root.visible = island && t < e.armor; Z.root.position.copy(ZZ); Z.root.rotation.set(0, lerp(-2.57, -0.63, smooth(e.split0, e.split0 + 0.8, Math.min(t, e.FRZ))), 0);
+  Z.reset(); Z.root.visible = false; Z.root.position.copy(ZZ); Z.root.rotation.set(0, lerp(-2.57, -0.63, smooth(e.split0, e.split0 + 0.8, Math.min(t, e.FRZ))), 0);
   pose(Z, t < e.split0 ? 'idle' : 'scared', Math.min(t, e.FRZ), { amt: 0.1 }); if (t < e.split0) Z.neck.rotation.x = -0.3 * smooth(e.clock, e.clock + 0.6, t);
   faceOf(Z, t < e.clock + 0.5 ? 'neutral' : t < e.split0 ? 'surprised' : 'terrified', Math.min(t, e.FRZ), 0.8);
   // ---- effects ----
@@ -510,13 +554,15 @@ function renderAt(t) {
   if (t >= e.wall && t < e.wall + 0.6) shake = Math.max(shake, 1.4 * Math.exp(-(t - e.wall) * 8));
   if (t >= e.SH && t < e.SH + 0.3) flash = Math.max(flash, 0.15 * Math.exp(-(t - e.SH) * 20));
   // focus (the key light follows it)
-  const focus = cave ? CAV.clone() : ['hunter', 'stopA'].includes(n) ? A.root.position.clone() : ['dockclock', 'stare', 'stopZ'].includes(n) ? ZZ.clone() : n.startsWith('rise') ? sr.p.clone() : RC.root.position.clone().lerp(sr.p, ['leap', 'duel1', 'duel1b', 'raise', 'ghost', 'duel2', 'strike'].includes(n) ? 0.5 : 0);
+  const focus = cave ? CAV.clone() : ['hunter', 'stopA'].includes(n) ? A.root.position.clone() : ['dockclock', 'stare', 'stopZ'].includes(n) ? ZZ.clone() : n.startsWith('rise') || n === 'stopS' ? sr.p.clone() : RC.root.position.clone().lerp(sr.p, ['leap', 'duel1', 'duel1b', 'raise', 'ghost', 'duel2', 'strike'].includes(n) ? 0.5 : 0);
   ctx.shotName2 = n; setLights(t, focus, set, fl);
   if (n === 'reflect') { ctx.scene.updateMatrixWorld(true); sh = shotAt(W.shots, t); }   // the reflect shot reads this frame's pose
   const near = ['reflect', 'blade', 'dark'].includes(n) ? 0.03 : 0.2; if (ctx.camera.near !== near) { ctx.camera.near = near; ctx.camera.updateProjectionMatrix(); }
+  if (DBGCAM) sh = { ...sh, pos: DBGCAM[0], look: DBGCAM[1], fov: DBGCAM[2] ?? 40 };   // ?cam=x,y,z>x,y,z>fov: a fixed check view
   const steady = t < e.leap0;
-  frame(ctx, t, sh, { steady, shake: steady ? 0 : shake, shadowSpan: n === 'open' || n === 'freeze' ? 90 : n === 'split' || n.startsWith('rise') ? 70 : 34, flash, flashColor: '#ffffff', shadows: !cave });
-  W.fx.set(t, cave ? {} : fxAt(t, n, ctx.camera));
+  if (hold !== undefined) flash = 0;
+  frame(ctx, t, sh, { capT: v, steady, shake: steady ? 0 : shake, shadowSpan: n === 'open' || n === 'freeze' ? 90 : n === 'split' || n.startsWith('rise') ? 70 : 34, flash, flashColor: '#ffffff', shadows: !cave });
+  W.fx.set(v, cave ? {} : fxAt(t, n, ctx.camera, v));
   return n;
 }
 // where the blades meet: from the two roots at the contact time (pure functions of time, so every worker agrees)

@@ -8,7 +8,8 @@
 //
 // focus: anime "concentration lines" converging on (cx, cy) (0..1 of the frame), a clear oval round the subject; streak: parallel
 // speed lines across the frame at `angle` (radians, 0 = horizontal) for dashes and whip pans. Lines re-draw 12 times a second, as
-// in anime. impact 1: a two-tone (white on black) frame with heavy focus lines; impact 2: the same, inverted (black on white).
+// in anime. impact 1: a two-tone (white on black) frame with heavy focus lines; impact 2: the same, inverted (black on white);
+// impact 3: film negative (the colours inverted) with dark focus lines, for a held impact frame in a speed edit.
 import * as THREE from 'three';
 
 const hash = (n) => { const x = Math.sin(n * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
@@ -54,12 +55,12 @@ export function installActionFX(ctx) {
       const focus = o.focus || 0, streak = o.streak || 0, impact = o.impact || 0;
       const seed = Math.floor(t * 12) + (o.seed || 0);
       const key = [focus.toFixed(2), streak.toFixed(2), impact, seed, o.cx, o.cy, o.angle].join();
-      gl.style.filter = impact === 1 ? 'grayscale(1) brightness(2.6) contrast(7)' : impact === 2 ? 'grayscale(1) brightness(2.6) contrast(7) invert(1)' : '';
+      gl.style.filter = impact === 1 ? 'grayscale(1) brightness(2.6) contrast(7)' : impact === 2 ? 'grayscale(1) brightness(2.6) contrast(7) invert(1)' : impact === 3 ? 'invert(1) brightness(0.38) contrast(1.06) saturate(1.5)' : '';
       if (key === last) return; last = key;
       g.clearRect(0, 0, 1080, 1920);
       const cx = o.cx ?? 0.5, cy = o.cy ?? 0.45;
       if (impact) {
-        focusLines(1, cx, cy, seed, impact === 1 ? 'rgba(0,0,0,0.9)' : 'rgba(255,255,255,0.9)', 0.36);
+        focusLines(1, cx, cy, seed, impact === 2 ? 'rgba(255,255,255,0.9)' : impact === 3 ? 'rgba(10,6,20,0.7)' : 'rgba(0,0,0,0.9)', impact === 3 ? 0.62 : 0.36);
         return;
       }
       if (focus > 0.01) {

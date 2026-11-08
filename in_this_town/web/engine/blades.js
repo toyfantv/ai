@@ -134,12 +134,22 @@ export function armorSuit(ch, o = {}) {
   const hb = partBox(ch.head), hw = hb.max.x - hb.min.x, hh = hb.max.y - hb.min.y, hd = hb.max.z - hb.min.z, hcx = (hb.min.x + hb.max.x) / 2, hcy = (hb.min.y + hb.max.y) / 2, hcz = (hb.min.z + hb.max.z) / 2;
   const S = Math.max(hw, hd) * 1.12;
   const helm = new THREE.Group(); helm.position.set(hcx, hb.min.y + Math.min(hh, S * 1.05) / 2 - 0.02, hcz); ch.head.add(helm);
-  const shell = plate(helm, S, Math.min(hh, S * 1.05) * 1.06, S, 0, 0, 0, dark, 2, 2, S * 0.3);
-  const visor = new THREE.MeshStandardMaterial({ color: '#15171c', metalness: 0.95, roughness: 0.12 });   // a smooth dark faceplate: no eyes, no slit
-  const face = plate(helm, S * 0.86, Math.min(hh, S * 1.05) * 0.8, 0.12, 0, -0.04, S / 2 + 0.02, visor, 1, 1, S * 0.12);
-  const ridge = plate(helm, 0.16, 0.2, S * 0.96, 0, Math.min(hh, S * 1.05) * 0.54, 0, trim, 1, 2, 0.06);
-  // the helmet's inside: darkness (seen when it lies on the ground or the shell is gone)
-  const hollow = new THREE.Mesh(rb(S * 0.94, Math.min(hh, S * 1.05) * 0.98, S * 0.94, S * 0.28), inner); hollow.userData.armor = true; helm.add(hollow);
+  const HH = Math.min(hh, S * 1.05) * 1.06;
+  let hollow;
+  if (o.openFace) {   // an open-faced helmet: crown, back, cheek guards and a brow band; the wearer's face shows in the opening
+    plate(helm, S, HH * 0.34, S, 0, HH * 0.33, 0, dark, 2, 2, S * 0.2);                       // the crown
+    plate(helm, S, HH * 0.8, S * 0.5, 0, -HH * 0.1, -S * 0.25, dark, 2, 1, S * 0.2);          // the back
+    for (const sx of [-1, 1]) plate(helm, S * 0.17, HH * 0.82, S * 0.82, sx * S * 0.415, -HH * 0.12, S * 0.06, dark, 1, 2, 0.07);   // cheek guards
+    plate(helm, S * 0.98, HH * 0.1, 0.14, 0, HH * 0.15, S / 2 + 0.01, trim, 2, 1, 0.04);      // the brow band
+    hollow = new THREE.Group(); helm.add(hollow);
+  } else {
+    plate(helm, S, HH, S, 0, 0, 0, dark, 2, 2, S * 0.3);
+    const visor = new THREE.MeshStandardMaterial({ color: '#15171c', metalness: 0.95, roughness: 0.12 });   // a smooth dark faceplate: no eyes, no slit
+    plate(helm, S * 0.86, Math.min(hh, S * 1.05) * 0.8, 0.12, 0, -0.04, S / 2 + 0.02, visor, 1, 1, S * 0.12);
+    // the helmet's inside: darkness (seen when it lies on the ground or the shell is gone)
+    hollow = new THREE.Mesh(rb(S * 0.94, Math.min(hh, S * 1.05) * 0.98, S * 0.94, S * 0.28), inner); hollow.userData.armor = true; helm.add(hollow);
+  }
+  plate(helm, 0.16, 0.2, S * 0.96, 0, Math.min(hh, S * 1.05) * 0.54, 0, trim, 1, 2, 0.06);
   // a torn dark cape from the shoulders
   const capeG = new THREE.PlaneGeometry(tw * 1.0, ch.hipY * 1.55 + th * 0.6, 6, 14); capeG.translate(0, -(ch.hipY * 1.55 + th * 0.6) / 2, 0);
   const capeT = canvasTex(128, 256, (x, w, h) => { x.fillStyle = '#0c0d12'; x.fillRect(0, 0, w, h); const rr = rng(7); x.globalCompositeOperation = 'destination-out'; for (let i = 0; i < 9; i++) { const cx2 = rr() * w; x.beginPath(); x.moveTo(cx2 - 12, h); x.lineTo(cx2, h - 30 - rr() * 60); x.lineTo(cx2 + 12, h); x.fill(); } });
