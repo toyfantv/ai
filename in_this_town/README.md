@@ -350,6 +350,15 @@ change. Episode 17 imports its package, model house and cardboard sky from the l
 * `render.js frames` skips frames that exist: delete a range before re-rendering it.
 * New avatars: `farm_ep35_nora`, `farm_ep35_girl` (one-off Studio captures; sources in their `avatar.json`).
 
+### Episode 38 notes (the recording from tomorrow; Psychological Horror, Episodes 35-39)
+
+* **`web/engine/cursedtape.js`** holds everything original to this episode: `bedroom(U)` (wallpaper and carpet overlays that creep out from the door through a shared radius; `.chair` is a separate object), `laptop` (`.setLid`, a screen shader with a UI canvas or a live feed), `hotelHall`, `tapeHead` and `TapeShader` (tear, roll and wash for anything seen on the recording).
+* **The recording is a real second render:** the room is rendered from a fixed feed camera into a target and shown on the laptop, and the full-screen footage shots use the same camera position, so the figure only exists in the feed passes.
+* **`renderAt` calls `shotAt` twice** (once early for the shot's name, once after the poses). Shot functions that read posed positions need a default set up in `setup()`, or a worker whose first frame lands on that shot crashes (`W.fh2`, `W.toC`, `W.ehd`).
+* **Laptop-side cameras:** anything placed past z 9 and within the lid's width looks at the back of the lid and renders black. Keep them clear of x +/-1.6.
+* **Scare 2** is shot from where Eli stands, so he is hidden for that one shot (`W.e.root.visible`).
+* **Sound:** `tools/ep38_sound.py` writes the spec's sound block from `build/ep38/events.json`. `loudnorm` with TP -1.0 overshot to -0.6 dBFS here; TP -2.0 lands at -1.3.
+
 ### Episode 37 notes (the woman beneath the stairs; Psychological Horror, Episodes 35-39)
 
 * **`web/engine/folklore.js`** holds everything original to this episode: `puppet` (a long-limbed figure posed by world points through two-joint IK;

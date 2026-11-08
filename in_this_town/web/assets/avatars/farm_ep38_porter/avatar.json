@@ -1,0 +1,33 @@
+{
+ "key": "farm_ep38_porter",
+ "source": {
+  "route": "one-off Studio capture (Episode 38), the steps of tools/farm_avatars.py",
+  "scene": "scenes/sandbox/avcap_ep38.lua",
+  "label": "The porter's body (Episode 38): Bellhop suit 64337143, Black Jeans 382537569 darkened in the bake; the head is replaced in the episode",
+  "catalog_items": [
+   64337143,
+   382537569
+  ]
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-08",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso"
+ ]
+}

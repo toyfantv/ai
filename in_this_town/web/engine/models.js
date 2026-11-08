@@ -4,6 +4,7 @@ import { building, skyline, crowd, crate, barrel, lamp, sign, Batch, surf, paint
 import { treeShape, treeSet, heroOak } from './forest.js';
 import { makeIsland, palms, sailboat, galleon, hut, stall, dock, chest, katana, fruit, city, greatTemple } from './isles.js';
 import * as THREE from 'three';
+import { laptop as cursedLaptop, bedroom as recordingBedroom, hotelHall as recordingHall, tapeHead } from './cursedtape.js';
 import { v3, rng, mat, box, wallRects, lerp } from './core.js';
 import { makeHouse, makeTree, mergeGroup, buildHeroHouse, buildTown } from './town.js';
 import { makeLeg, footAt, makeEye, canvasTex, glowSprite } from './props.js';
@@ -284,6 +285,11 @@ export function makeClockTower() {
 // name -> builder. o.parent, when given, receives the model.
 const put = (o, m) => { if (o.parent) o.parent.add(m.isObject3D ? m : m.g || m.root); return m; };
 export const BUILD = {
+  // Episode 38 (web/engine/cursedtape.js)
+  recording_bedroom: (o) => put(o, recordingBedroom(o.U ?? { value: 0 })),
+  cursed_laptop: (o) => put(o, cursedLaptop(o)),
+  recording_hotel_hall: (o) => put(o, recordingHall()),
+  tape_head: (o) => put(o, tapeHead(o.box ?? new THREE.Box3(new THREE.Vector3(-0.6, -0.6, -0.6), new THREE.Vector3(0.6, 0.6, 0.6)))),
   // Episode 37 (web/engine/folklore.js)
   stair_hall: (o) => put(o, stairHall()),
   school_corridor: (o) => put(o, schoolCorridor()),

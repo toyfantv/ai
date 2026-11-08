@@ -309,6 +309,16 @@
     "type": "builder",
     "url": ""
   },
+  "cursed_laptop": {
+    "author": "toyfantv",
+    "desc": "a laptop with a working lid (.setLid(a), .top()) and a screen shader that shows a UI canvas or a live feed with tape tearing",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep38",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "curtain_window": {
     "author": "toyfantv",
     "desc": "a tall night window with heavy draped curtains",
@@ -1219,6 +1229,26 @@
     "type": "builder",
     "url": ""
   },
+  "recording_bedroom": {
+    "author": "toyfantv",
+    "desc": "a teenager's bedroom (desk, bed, closet, window, door at the far wall) whose wallpaper and carpet creep in from the door through a shared radius uniform; .chair is a separate movable desk chair",
+    "kind": "set",
+    "licence": "own",
+    "made_for": "ep38",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "recording_hotel_hall": {
+    "author": "toyfantv",
+    "desc": "a long dark hotel corridor with wallpaper, patterned carpet, numbered doors and lit brass sconces",
+    "kind": "set",
+    "licence": "own",
+    "made_for": "ep38",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "roll_gate": {
     "author": "toyfantv",
     "desc": "a steel roll-down security shutter",
@@ -1565,6 +1595,16 @@
     "kind": "effect",
     "licence": "own",
     "made_for": "ep34",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "tape_head": {
+    "author": "toyfantv",
+    "desc": "a head wrapped in loose brown tape bands with one staring eye, teeth under the tape and a porter cap; set({gaze, mouth}); pass the bounding box of the head it replaces",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep38",
     "source": "this renderer",
     "type": "builder",
     "url": ""

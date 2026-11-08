@@ -1,0 +1,35 @@
+{
+ "key": "farm_ep38_eli",
+ "source": {
+  "route": "one-off Studio capture (Episode 38), the steps of tools/farm_avatars.py",
+  "scene": "scenes/sandbox/avcap_ep38.lua",
+  "label": "Eli (Episode 38): Orange hoodie 5709689885, Black Jeans with Sneakers 382538503, short black hair 128660233600965",
+  "catalog_items": [
+   5709689885,
+   382538503,
+   128660233600965
+  ]
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-08",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_Accessory_Short_Black_Hair"
+ ]
+}

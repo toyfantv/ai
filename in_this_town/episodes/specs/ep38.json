@@ -1,0 +1,736 @@
+{
+ "number": 38,
+ "title": "The Recording From Tomorrow",
+ "output": "InThisTown_Episode38_TomorrowRecording.mp4",
+ "youtube_title": "The Recording From Tomorrow...",
+ "tiktok_caption": "Eli found a video on his computer, dated tomorrow at 3 AM. It showed him walking out of a hotel room, crying. Then the message came.",
+ "hashtags": "#InThisTown #HorrorStory #ScaryStories #RobloxStory #Shorts",
+ "thumbnail_text": "STOP WATCHING",
+ "thumbnail_rec": "A dark bedroom, Eli in an orange hoodie lit by a laptop, a pale tape-wrapped hotel porter's face filling the laptop screen. Text: \"STOP WATCHING\".",
+ "tail": 2.2,
+ "fps": 60,
+ "narrator": {
+  "pace": [
+   2.5,
+   2.95
+  ],
+  "min_tempo": 1.04
+ },
+ "cast": {
+  "computer": {
+   "voice": "callum",
+   "pitch": 0.86,
+   "tempo": 0.9
+  },
+  "eli": {
+   "voice": "liam",
+   "pitch": 1.05,
+   "tempo": 1.0
+  }
+ },
+ "highlights": {
+  "VIDEO FILE": "yellow",
+  "TOMORROW_3AM.": "red",
+  "HOTEL HALLWAY": "yellow",
+  "ELI WALKED OUT": "red",
+  "COVERED IN DUST": "yellow",
+  "CRYING": "red",
+  "CUT TO BLACK": "red",
+  "YOUR ROOM IS READY": "red",
+  "HOTEL ADDRESS": "yellow",
+  "DELETED": "yellow",
+  "DOOR CHANGED": "red",
+  "BRASS NUMBER": "yellow",
+  "ROOM 013.": "red",
+  "DIFFERENT": "yellow",
+  "DARKNESS": "purple",
+  "BEHIND HIM": "red",
+  "NOTHING": "yellow",
+  "CLOSER": "red",
+  "FACE": "red",
+  "STOP WATCHING": "red",
+  "SLAMMED": "yellow",
+  "THREE SLOW KNOCKS": "red",
+  "BEGAN OPENING": "red"
+ },
+ "lines": [
+  {
+   "text": "Eli found a video file on his computer.",
+   "tag": "[mysterious]",
+   "pause": 0.1
+  },
+  {
+   "text": "It was titled, TOMORROW_3AM.",
+   "tag": "[serious]",
+   "pause": 0.25,
+   "speak": "It was titled, tomorrow, three A M."
+  },
+  {
+   "text": "He pressed play.",
+   "tag": "[quietly]",
+   "pause": 0.3
+  },
+  {
+   "text": "It showed a hotel hallway.",
+   "tag": "[mysterious]",
+   "pause": 0.15
+  },
+  {
+   "text": "A door slowly opened.",
+   "tag": "[quietly]",
+   "pause": 0.5
+  },
+  {
+   "text": "And Eli walked out.",
+   "tag": "[serious]",
+   "pause": 0.25
+  },
+  {
+   "text": "Covered in dust.",
+   "tag": "[quietly]",
+   "pause": 0.1
+  },
+  {
+   "text": "And crying.",
+   "tag": "[quietly]",
+   "pause": 0.25
+  },
+  {
+   "text": "The recording cut to black.",
+   "tag": "[serious]",
+   "pause": 0.4
+  },
+  {
+   "text": "The next morning, Eli received a message.",
+   "tag": "[mysterious]",
+   "pause": 0.2
+  },
+  {
+   "text": "“YOUR ROOM IS READY.”",
+   "tag": "[whispers]",
+   "pause": 0.15,
+   "speak": "Your room is ready."
+  },
+  {
+   "text": "Attached was a hotel address.",
+   "tag": "[quietly]",
+   "pause": 0.12
+  },
+  {
+   "text": "He deleted it.",
+   "tag": "[serious]",
+   "pause": 0.35
+  },
+  {
+   "text": "But that night, his bedroom door changed.",
+   "tag": "[mysterious]",
+   "pause": 0.2
+  },
+  {
+   "text": "A brass number appeared.",
+   "tag": "[quietly]",
+   "pause": 0.12
+  },
+  {
+   "text": "ROOM 013.",
+   "tag": "[serious]",
+   "pause": 0.2,
+   "speak": "Room zero one three."
+  },
+  {
+   "text": "Eli backed away.",
+   "tag": "[quietly]",
+   "pause": 0.12
+  },
+  {
+   "text": "His computer started playing again.",
+   "tag": "[urgent]",
+   "pause": 0.15
+  },
+  {
+   "text": "This time, the recording was different.",
+   "tag": "[quietly]",
+   "pause": 0.12
+  },
+  {
+   "text": "It showed Eli in his bedroom, watching the computer.",
+   "tag": "[quietly]",
+   "pause": 0.3
+  },
+  {
+   "text": "Then someone stepped out of the darkness behind him.",
+   "tag": "[whispers]",
+   "pause": 0.7
+  },
+  {
+   "text": "Eli turned around.",
+   "tag": "[urgent]",
+   "pause": 0.2
+  },
+  {
+   "text": "Nothing.",
+   "tag": "[serious]",
+   "pause": 0.4
+  },
+  {
+   "text": "He looked back at the screen.",
+   "tag": "[quietly]",
+   "pause": 0.2
+  },
+  {
+   "text": "The figure was closer.",
+   "tag": "[serious]",
+   "pause": 0.3
+  },
+  {
+   "text": "Then closer again.",
+   "tag": "[serious]",
+   "pause": 0.35
+  },
+  {
+   "text": "Until its face filled the recording.",
+   "tag": "[whispers]",
+   "pause": 0.7
+  },
+  {
+   "text": "“Stop watching.”",
+   "tag": "[whispers]",
+   "pause": 0.4,
+   "speak": "Stop watching.",
+   "fx": "whisper",
+   "voice": "computer"
+  },
+  {
+   "text": "Eli slammed the laptop shut.",
+   "tag": "[urgent]",
+   "pause": 0.6
+  },
+  {
+   "text": "From inside the closed screen came three slow knocks.",
+   "tag": "[quietly]",
+   "pause": 2.0
+  },
+  {
+   "text": "Then the bedroom door began opening.",
+   "tag": "[whispers]",
+   "pause": 0.1
+  }
+ ],
+ "samples": {
+  "e_sob": {
+   "text": "Hhh... hhh... hhh...",
+   "voice": "eli",
+   "tag": "[sobbing quietly]"
+  }
+ },
+ "sound": {
+  "key": 38,
+  "music_gain": 0.2,
+  "music": [
+   [
+    "0",
+    "mystery"
+   ],
+   [
+    "16.588",
+    "silence"
+   ],
+   [
+    "17.178",
+    "mystery"
+   ],
+   [
+    "24.181",
+    "dread"
+   ],
+   [
+    "41.104",
+    "silence"
+   ],
+   [
+    "42.054",
+    "dread"
+   ],
+   [
+    "43.278",
+    "silence"
+   ],
+   [
+    "45.667",
+    "suspense"
+   ],
+   [
+    "50.25",
+    "silence"
+   ],
+   [
+    "51.17",
+    "silence"
+   ],
+   [
+    "53.422",
+    "silence"
+   ],
+   [
+    "60.876",
+    "dread"
+   ]
+  ],
+  "cues": [
+   [
+    "0",
+    "roomtone",
+    0.2,
+    {
+     "dur": 16.488
+    }
+   ],
+   [
+    "0",
+    "hum",
+    0.07,
+    {
+     "dur": 16.588,
+     "f": 118
+    }
+   ],
+   [
+    "6.374",
+    "clunk",
+    0.2,
+    {
+     "seed": 3
+    }
+   ],
+   [
+    "6.424",
+    "flick",
+    0.1,
+    {
+     "seed": 4
+    }
+   ],
+   [
+    "7.023",
+    "static",
+    0.075,
+    {
+     "dur": 9.565000000000001
+    }
+   ],
+   [
+    "7.023",
+    "hum",
+    0.1,
+    {
+     "dur": 9.565000000000001,
+     "f": 60
+    }
+   ],
+   [
+    "7.023",
+    "drone",
+    0.12,
+    {
+     "dur": 9.565000000000001,
+     "f": 44
+    }
+   ],
+   [
+    "8.967",
+    "creak",
+    0.5,
+    {
+     "dur": 1.9,
+     "seed": 11
+    }
+   ],
+   [
+    "11.101",
+    "footsteps",
+    0.3,
+    {
+     "dur": 2.651,
+     "rate": 1.1,
+     "seed": 7
+    }
+   ],
+   [
+    "13.252",
+    "sample",
+    0.34,
+    {
+     "name": "e_sob"
+    }
+   ],
+   [
+    "16.588",
+    "clunk",
+    0.42,
+    {
+     "seed": 15
+    }
+   ],
+   [
+    "16.588",
+    "flick",
+    0.26,
+    {
+     "seed": 16
+    }
+   ],
+   [
+    "16.928",
+    "chirp",
+    0.16,
+    {
+     "dur": 6.703000000000001
+    }
+   ],
+   [
+    "16.928",
+    "suburb",
+    0.14,
+    {
+     "dur": 7.003000000000001
+    }
+   ],
+   [
+    "19.132",
+    "phonebuzz",
+    0.46
+   ],
+   [
+    "23.146",
+    "pop",
+    0.2
+   ],
+   [
+    "24.181",
+    "roomtone",
+    0.18,
+    {
+     "dur": 29.240999999999996,
+     "seed": 9
+    }
+   ],
+   [
+    "24.181",
+    "drone",
+    0.14,
+    {
+     "dur": 16.92299999999999,
+     "f": 41
+    }
+   ],
+   [
+    "25.031",
+    "creak",
+    0.4,
+    {
+     "dur": 1.3,
+     "seed": 21
+    }
+   ],
+   [
+    "25.331",
+    "groan",
+    0.2,
+    {
+     "dur": 1.8,
+     "seed": 2
+    }
+   ],
+   [
+    "27.058",
+    "clunk",
+    0.42,
+    {
+     "seed": 31
+    }
+   ],
+   [
+    "27.068",
+    "ding",
+    0.07
+   ],
+   [
+    "27.398",
+    "clunk",
+    0.42,
+    {
+     "seed": 32
+    }
+   ],
+   [
+    "27.408",
+    "ding",
+    0.09000000000000001
+   ],
+   [
+    "27.738",
+    "clunk",
+    0.42,
+    {
+     "seed": 33
+    }
+   ],
+   [
+    "27.748",
+    "ding",
+    0.11000000000000001
+   ],
+   [
+    "30.316",
+    "footsteps",
+    0.32,
+    {
+     "dur": 1.2140000000000022,
+     "rate": 1.4,
+     "seed": 13
+    }
+   ],
+   [
+    "31.58",
+    "static",
+    0.26,
+    {
+     "dur": 0.3
+    }
+   ],
+   [
+    "31.63",
+    "flick",
+    0.26,
+    {
+     "seed": 23
+    }
+   ],
+   [
+    "31.83",
+    "static",
+    0.075,
+    {
+     "dur": 9.473999999999993
+    }
+   ],
+   [
+    "35.561",
+    "heartbeat",
+    0.24,
+    {
+     "dur": 5.522999999999996,
+     "bpm": 70
+    }
+   ],
+   [
+    "38.905",
+    "whisper",
+    0.1,
+    {
+     "dur": 2.178999999999995
+    }
+   ],
+   [
+    "41.704",
+    "whoosh",
+    0.56,
+    {
+     "dur": 0.18
+    }
+   ],
+   [
+    "41.794",
+    "scarehit",
+    0.98,
+    {
+     "dur": 2.2
+    }
+   ],
+   [
+    "41.814",
+    "glitch",
+    0.5,
+    {
+     "dur": 0.34
+    }
+   ],
+   [
+    "41.834",
+    "groan",
+    0.3,
+    {
+     "dur": 1.6,
+     "seed": 5
+    }
+   ],
+   [
+    "42.504",
+    "swish",
+    0.36
+   ],
+   [
+    "44.264",
+    "static",
+    0.05,
+    {
+     "dur": 1.4030000000000058
+    }
+   ],
+   [
+    "45.667",
+    "glitch",
+    0.42,
+    {
+     "dur": 0.3
+    }
+   ],
+   [
+    "45.667",
+    "static",
+    0.11,
+    {
+     "dur": 4.583000000000004
+    }
+   ],
+   [
+    "47.305",
+    "glitch",
+    0.54,
+    {
+     "dur": 0.32
+    }
+   ],
+   [
+    "45.767",
+    "heartbeat",
+    0.32,
+    {
+     "dur": 4.483000000000004,
+     "bpm": 118
+    }
+   ],
+   [
+    "48.77",
+    "whisper",
+    0.16,
+    {
+     "dur": 1.480000000000004,
+     "seed": 4
+    }
+   ],
+   [
+    "50.75",
+    "whoosh",
+    0.7,
+    {
+     "dur": 0.18
+    }
+   ],
+   [
+    "50.86",
+    "scarehit",
+    0.98,
+    {
+     "dur": 1.5
+    }
+   ],
+   [
+    "50.89",
+    "glitch",
+    0.66,
+    {
+     "dur": 0.4
+    }
+   ],
+   [
+    "50.9",
+    "groan",
+    0.26,
+    {
+     "dur": 1.3,
+     "seed": 8
+    }
+   ],
+   [
+    "51.12",
+    "static",
+    0.06,
+    {
+     "dur": 2.3019999999999925
+    }
+   ],
+   [
+    "53.422",
+    "doorboom",
+    0.62,
+    {
+     "seed": 44
+    }
+   ],
+   [
+    "53.432",
+    "clunk",
+    0.5,
+    {
+     "seed": 45
+    }
+   ],
+   [
+    "53.922",
+    "roomtone",
+    0.12,
+    {
+     "dur": 10.880000000000004,
+     "seed": 17
+    }
+   ],
+   [
+    "58.736",
+    "knock",
+    0.74
+   ],
+   [
+    "59.336",
+    "knock",
+    0.82
+   ],
+   [
+    "59.956",
+    "knock",
+    0.9
+   ],
+   [
+    "60.876",
+    "creak",
+    0.5,
+    {
+     "dur": 3.2,
+     "seed": 52
+    }
+   ],
+   [
+    "60.776",
+    "drone",
+    0.16,
+    {
+     "dur": 4.126000000000003,
+     "f": 38
+    }
+   ],
+   [
+    "61.376",
+    "wind",
+    0.1,
+    {
+     "dur": 3.4260000000000033
+    }
+   ],
+   [
+    "63.652",
+    "ding",
+    0.14
+   ]
+  ]
+ }
+}
