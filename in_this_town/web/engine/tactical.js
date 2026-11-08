@@ -385,14 +385,15 @@ export function controlRoom(o = {}) {
   // the desk rows facing the screen, with keyboards and chairs
   const desk = paint('#2a2d31', { roughness: 0.45, metalness: 0.2 }), top = paint('#3b3f44', { roughness: 0.35, metalness: 0.2 });
   const monitors = [];
-  for (const [dx, zs] of [[x1 + 8, [zA + 4, zm, zB - 4]], [x1 + 12.5, [zA + 5, zm - 3.5, zm + 3.5, zB - 5]]]) for (const z of zs) {
+  for (const [dx, zs] of [[x1 + 8, [zA + 4, ...(o.aisle ? [] : [zm]), zB - 4]], [x1 + 12.5, [zA + 5, zm - 3.5, zm + 3.5, zB - 5]]]) for (const z of zs) {
     b.box(desk, 2.0, 2.4, 3.6, dx, 1.2, z, { r: 0.06 }); b.box(top, 2.4, 0.14, 3.9, dx, 2.47, z, { r: 0.03 });
     b.box(dark, 0.6, 0.06, 1.4, dx + 0.3, 2.58, z, { r: 0.02 });
     for (const dz of [-0.95, 0.95]) { b.box(dark, 0.12, 1.25, 1.75, dx - 0.6, 3.35, z + dz, { r: 0.04 }); b.box(dark, 0.3, 0.8, 0.2, dx - 0.4, 2.8, z + dz, { r: 0.03 }); monitors.push({ p: v3(dx - 0.53, 3.35, z + dz) }); }
     b.box(paint('#1c1e21'), 1.0, 0.25, 1.1, dx + 2.2, 1.6, z, { r: 0.08 }); b.box(paint('#1c1e21'), 0.25, 1.5, 1.1, dx + 2.7, 2.4, z, { r: 0.08 }); b.cyl(steel, 0.08, 0.08, 1.4, dx + 2.2, 0.75, z);
   }
   // server racks along the side walls, blinking
-  for (let x = x1 + 3; x < x0 - 2; x += 3.2) for (const z of [zA + 1.1, zB - 1.1]) b.box(dark, 2.6, 7, 1.8, x, 3.5, z, { r: 0.05 });
+  const noRack = (x, z) => o.clearCorner && x < x1 + 7 && z > zm;   // o.clearCorner: room for someone to stand in the far corner by the screen
+  for (let x = x1 + 3; x < x0 - 2; x += 3.2) for (const z of [zA + 1.1, zB - 1.1]) if (!noRack(x, z)) b.box(dark, 2.6, 7, 1.8, x, 3.5, z, { r: 0.05 });
   // a screen frame on the back wall
   const sw = o.sw ?? 16, sh = o.sh ?? 8.6, sy = o.sy ?? 5.6;
   b.box(steel, 0.5, sh + 0.7, sw + 0.7, x1 + 0.1, sy, zm, { r: 0.05 });
@@ -409,7 +410,7 @@ export function controlRoom(o = {}) {
   const mons = new THREE.Mesh(merge(mb), monM); mons.userData.noAO = true; g.add(mons); g.monM = monM;
   // rack lights
   const leds = new THREE.MeshBasicMaterial({ color: '#46ff8a', toneMapped: false }); const lb = new Batch(); const r = rng(9);
-  for (let x = x1 + 3; x < x0 - 2; x += 3.2) for (const z of [zA + 1.1, zB - 1.1]) for (let i = 0; i < 9; i++) lb.box(leds, 0.12, 0.06, 0.04, x - 0.9 + r() * 1.8, 1 + r() * 5.6, z + (z < zm ? 0.92 : -0.92), { r: 0.01 });
+  for (let x = x1 + 3; x < x0 - 2; x += 3.2) for (const z of [zA + 1.1, zB - 1.1]) if (!noRack(x, z)) for (let i = 0; i < 9; i++) lb.box(leds, 0.12, 0.06, 0.04, x - 0.9 + r() * 1.8, 1 + r() * 5.6, z + (z < zm ? 0.92 : -0.92), { r: 0.01 });
   const ledG = lb.done(); ledG.traverse((m) => { m.castShadow = false; m.userData.noAO = true; }); g.add(ledG); g.ledM = leds;
   // the security camera on the ceiling near the door, looking at the screen
   g.cam = securityCam(); g.cam.position.set(x0 - 3.2, H - 0.1, zB - 2.6); g.add(g.cam);

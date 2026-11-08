@@ -36,6 +36,7 @@ const BAR = { z: -20, xs: [-10.8, -3, 4.8, 11.6], len: 4.2, top: 3.08 };
 const KN = v3(-3, 0, -16.6);         // Eli's kneel spot behind the barrier
 const DOORX = -38, ZC = -16;         // the control room's door wall and the corridor's centre line
 const CRATE = v3(-0.6, 0, -16.2);
+const ATT = v3(-53.8, 0, -7.9);      // the attendant's far corner
 
 // ---- palettes (indoor: the "sky" is never seen; it sets the haze and the fill) ----
 const HALL = P({ top: '#0b0d12', horizon: '#14171d', haze: '#101217', sunColor: '#c4cedb', sunI: 1.05, sunDir: v3(0.22, 0.93, 0.3),
@@ -55,7 +56,7 @@ function events() {
   const s = (i) => L(i).start;
   Object.assign(T, {
     clock: s(0) + 0.75, wake: s(0) + 3.6, ext0: s(2) - 0.35, ext1: s(3) - 0.15, in0: s(3) - 0.15, in1: s(3) + 2.7,
-    red0: s(4) + 0.15, red1: s(4) + 1.3, pa: s(5), gturn: s(6) + 0.05, turn: s(6) + 0.5, raise: s(6) + 1.15,
+    red0: s(4) + 0.15, red1: s(4) + 1.3, pa: s(5), gturn: s(6) + 0.4, turn: s(6) + 0.5, raise: s(6) + 1.15,
     fire0: s(7) + 0.12, run0: s(8) + 0.0, grab: s(10) + 0.15, pop1: s(11) - 0.05, hitA: s(12) + 0.18, hitB: s(13) + 0.16,
     down1: s(14) - 0.02, mout: s(14) + 0.35, min: s(14) + 1.15, rack2: s(14) + 1.45, pop2: s(14) + 1.75, hitC: s(14) + 2.2,
     backA: s(14) + 0.35, backB: s(14) + 0.85, backC: s(14) + 2.7, spr0: s(15) - 0.3, kick: s(16) + 0.02, walkIn0: s(17) - 0.25,
@@ -185,12 +186,12 @@ function world() {
   // clutter: crates, barrels, a fallen target stand, dust
   [[11, -6, 2.2], [12.4, -9, 1.8], [-12.5, 4, 2.4], [-11.8, 1.5, 1.6], [12.5, 6, 2.4]].forEach(([x, z, s], i) => { const c = crate({ size: s, color: ['#6a5a3c', '#5c6a46', '#4f5a62'][i % 3] }); c.position.set(x, 0, z); c.rotation.y = i * 0.4; scene.add(c); });
   [[-12.6, -8], [13, -2]].forEach(([x, z]) => { const b = barrel({ height: 3.2, color: '#5a3a2a' }); b.position.set(x, 0, z); scene.add(b); });
-  W.clock = wallClock({ r: 1.5 }); W.clock.position.set(-14.85, 8.6, -60); W.clock.rotation.y = Math.PI / 2; scene.add(W.clock);
+  W.clock = wallClock({ r: 1.5 }); W.clock.position.set(-14.85, 7.4, -52); W.clock.rotation.y = Math.PI / 2; scene.add(W.clock);
   W.pa = paSpeaker(); W.pa.position.set(-13.6, 10.2, 2); W.pa.rotation.z = -Math.PI / 2 + 0.3; W.pa.rotation.y = 0; scene.add(W.pa);
   W.smoke = smokeHaze(scene, { centre: v3(0, 3.5, -40), size: v3(28, 6, 80), count: 260, pointSize: 9, amount: 0.12, color: '#6a5e60' });
   W.smoke2 = smokeHaze(scene, { centre: v3(-26, 3, ZC), size: v3(22, 5, 5), count: 70, pointSize: 6, amount: 0.1, color: '#5e5456', seed: 4 });
   W.door = steelDoor({ w: 4.2, h: 7.2 }); W.door.position.set(DOORX, 0, ZC - 2.1); W.door.rotation.y = -Math.PI / 2; scene.add(W.door);
-  W.room = controlRoom({ x0: DOORX, x1: -56, zA: -27, zB: -5, door: { z: ZC, w: 4.2, h: 7.2 } }); scene.add(W.room);
+  W.room = controlRoom({ x0: DOORX, x1: -56, zA: -27, zB: -5, door: { z: ZC, w: 4.2, h: 7.2 }, aisle: true, clearCorner: true }); scene.add(W.room);
   // the street outside (far away), the viewer's room (farther)
   W.ext = industrialDistrict({ facZ: -175 }); W.ext.group.position.copy(EXT); scene.add(W.ext.group);
   W.viewRoom = viewerRoom(); W.viewRoom.position.copy(VIEW); scene.add(W.viewRoom);
@@ -231,9 +232,8 @@ function people() {
   W.tpl = soldier(7); W.tplB = soldier(12);
   W.front = []; W.frontPos = [];
   for (let c = 0; c < COLS; c++) { const x = (c - (COLS - 1) / 2) * DX; W.frontPos.push(v3(x, 0, FRONT)); }
-  W.G = 3;                       // Gregy's place in the front rank (the centre)
   W.A = 2; W.B = 4; W.C = 1;     // the soldiers Eli hits (left of centre, right of centre, far left)
-  for (let c = 0; c < COLS; c++) W.front.push(c === W.G ? null : soldier(100 + c));
+  for (let c = 0; c < COLS; c++) W.front.push(soldier(100 + c));
   // replacements for the three who fall (they glitch in where the fallen were)
   W.rep = [W.A, W.B, W.C].map((c, i) => soldier(200 + i));
   W.vanF = {}; W.vanR = {};
@@ -271,7 +271,7 @@ function buildVolleys() {
   W.VOL = []; for (const [a, b, dt] of bursts()) for (let x = a; x < b - 1e-6; x += dt) W.VOL.push(+x.toFixed(4));
   const tr = [], sparks = [], dusts = [], chips = [], holes = [];
   const shooters = [];   // [ { kind: 'front', c } | { kind: 'rank', i } ]
-  for (let c = 0; c < COLS; c++) if (c !== W.G) shooters.push({ kind: 'front', c });
+  for (let c = 0; c < COLS; c++) shooters.push({ kind: 'front', c });
   for (let i = 0; i < COLS * 2; i++) shooters.push({ kind: 'rank', i });
   W.VOL.forEach((v, vi) => {
     const st = syncState(v + 1e-4), aim = hallAim(v);
@@ -331,7 +331,7 @@ function shots() {
   const s = (i) => L(i).start, S = [], add = (name, t0, f) => S.push({ name, t0: () => t0, f, t1: () => 0 });
   const E = (t) => eliRoot(t).p;
   // 2 AM: the clock, then the ranks waking (steady)
-  add('clock', 0, (u) => ({ pos: lp3(v3(-8.0, 8.2, -55.6), v3(-8.6, 8.2, -56.2), easeInOut(u)), look: v3(-14.8, 8.4, -60), fov: 42 }));
+  add('clock', 0, (u) => ({ pos: lp3(v3(-5.4, 7.3, -52.5), v3(-6.0, 7.3, -52.4), easeInOut(u)), look: v3(-14.8, 6.0, -52), fov: 42 }));
   add('wake', s(0) + 1.75, (u) => ({ pos: lp3(v3(6, 3.0, -197), v3(4.5, 3.6, -191), easeInOut(u)), look: v3(-1, 4.2, -150), fov: 50 }));
   add('mask', s(1) - 0.05, (u) => { const p = v3(W.rankPlaces[COLS * 14 + 3].x, 0, W.rankPlaces[COLS * 14 + 3].z); return { pos: p.clone().add(v3(1.0, lerp(6.0, 5.8, u), lerp(-3.9, -3.5, easeInOut(u)))), look: p.clone().add(v3(0, 4.3, 0)), fov: 56 }; });
   // the industrial district (Atlanta94275 walking away under a streetlight), the gate
@@ -360,7 +360,7 @@ function shots() {
   add('kick', T.kick - 0.12, (u, t) => ({ pos: v3(lerp(DOORX + 9.5, DOORX + 8.8, u), 3.8, ZC + 1.9), look: v3(DOORX, 3.4, ZC - 0.4), fov: 58 }));
   // the control room: in through the door (from inside), the giant screen, the feeds
   add('room', s(17) - 0.05, (u, t) => ({ pos: lp3(v3(-52, 4.6, -9.5), v3(-51.2, 4.4, -10.2), u), look: v3(DOORX - 2, 3.6, ZC), fov: 54 }));
-  add('screen', s(18) - 0.05, (u, t) => ({ pos: lp3(v3(-39.8, 4.6, -11.2), v3(-41.0, 4.6, -12.0), easeInOut(u)), look: v3(-56, 5.2, -16.5), fov: 60 }));
+  add('screen', s(18) - 0.05, (u) => { const k = easeInOut(smooth(0.5, 1, u)); return { pos: lp3(v3(-39.8, 6.4, -11.2), v3(-41.0, 5.2, -12.0), easeInOut(u)), look: v3(-56, lerp(3.5, 5.2, k), lerp(-6.6, -16.5, k)), fov: 60 }; });
   add('feeds', s(19) - 0.05, (u) => ({ pos: lp3(v3(-44.5, 5.4, -14.5), v3(-48.5, 5.6, -15.4), easeInOut(u)), look: v3(-56, 5.6, -16), fov: 56 }));
   add('eliTile', s(20) - 0.05, (u) => ({ pos: lp3(v3(-50.5, 5.6, -16.0), v3(-52.2, 5.6, -16.0), easeOut(u)), look: v3(-56, 5.6, -16), fov: 50 }));
   // the message; Eli lit red; the soldiers in the corridor stop; every mask turns to the screen
@@ -480,7 +480,6 @@ function renderAt(t) {
   W.rankPlaces.forEach((p, i) => { if (fk > 0) W.flash.set(fi, r.muzzle.clone().add(v3(p.x, 0, p.z)), r.dir, fk, 0.95); fi++; });
   // the front rank, one by one (Gregy at the centre)
   W.front.forEach((c, ci) => {
-    if (!c) return;
     const fallen = t >= fallT(ci), back = backT(ci);
     const vis = !(fallen && t >= back + 0.45);
     c.root.visible = vis; c.rifle.visible = vis;
@@ -506,10 +505,8 @@ function renderAt(t) {
     W.vanR[ci].set(1 - smooth(b, b + 0.55, t));
     if (fk > 0 && t > b + 0.6) W.flash.set(fi, rr.muzzle, rr.dir, fk, 0.95); fi++;
   });
-  // Gregy: a target that turns first; he holds no rifle
-  { const g = W.gregy; g.reset(); g.root.position.copy(W.frontPos[W.G]); const ry = t < e.gturn ? Math.PI : Math.PI * (1 - easeInOut(clamp((t - e.gturn) / 0.3)));
-    g.root.rotation.set(0, ry, 0); pose(g, 'still', t); g.neck.rotation.x = 0.4 * st.bow;
-    if (st.look > 0) g.neck.rotation.y = 0.25 * st.look; }
+  // Gregy_dinosour: the control room's attendant, standing in the far corner by the screen, watching the room
+  { const g = W.gregy; g.reset(); g.root.position.copy(ATT); g.root.rotation.set(0, Math.PI / 2 + 0.35, 0); pose(g, 'still', t); }
   // the doorway squad: appears in the corridor behind Eli, rifles on him; stops; every mask turns to the screen
   const sqOn = t >= e.sq0;
   W.squad.visible = sqOn; W.tplB.root.visible = false;
@@ -531,7 +528,7 @@ function renderAt(t) {
   // ---- outside: Atlanta94275 walks away under a streetlight ----
   W.atl.root.visible = outside;
   if (outside) { const a = W.atl, k = clamp((t - e.ext0) / 5); a.reset(); a.root.position.copy(EXT).add(v3(-6.0, 0, lerp(-152, -163, k))); a.root.rotation.set(0, Math.PI, 0); pose(a, 'walk', t * 0.9); }
-  W.gregy.root.visible = !outside;
+  W.gregy.root.visible = inRoom || n === 'kick';
   // the lamps nearest the street shot
   W.ext.lamps.slice(5, 8).forEach((p, i) => { W.lampL[i].position.copy(p).add(EXT); W.lampL[i].intensity = outside ? 260 : 0; });
   // ---- the feeds (the giant screen) ----
@@ -574,14 +571,14 @@ function renderFeeds(t, st, env) {
   f.reset(); f.root.position.copy(KN); f.root.rotation.set(0, Math.PI, 0); applyPose(f, S_(up ? 'kneelUp' : 'kneel', up ? lt - 0.8 : lt, { loop: !up }), { travel: 0 });
   f.root.updateMatrixWorld(true); holdRifle(f, f.rifle, W.frontPos[W.A].clone().add(v3(0, 3.4, 0)), { down: up ? 0 : 0.85, blade: up ? 0.55 : 0.3 });
   face(f, 'angry', t, 0.4);
-  const vis = []; for (const o of [W.eli.root, W.eli.rifle]) { vis.push(o.visible); o.visible = false; }
+  const vis = []; for (const o of [W.eli.root, W.eli.rifle, W.gregy.root]) { vis.push(o.visible); o.visible = false; }
   const fogN = scene.fog.near; scene.fog.near = 90;
   applyEnv(ctx, RED); W.volL.position.set(0, 6, FRONT - 6); W.volL.intensity = flashK(W.VOL, t) * 260;
   const prevBg = scene.background; scene.background = new THREE.Color('#120606');
   renderer.setRenderTarget(W.feedRT); renderer.clear(); renderer.render(scene, W.feedCam); renderer.setRenderTarget(null);
   if (t >= T.orig - 0.2) { applyEnv(ctx, VIEWENV); W.phone.visible = false; renderer.setRenderTarget(W.altRT); renderer.clear(); renderer.render(scene, W.altCam); renderer.setRenderTarget(null); W.phone.visible = true; }
   scene.background = prevBg; scene.fog.near = fogN; applyEnv(ctx, env);
-  [W.eli.root, W.eli.rifle].forEach((o, i) => { o.visible = vis[i]; });
+  [W.eli.root, W.eli.rifle, W.gregy.root].forEach((o, i) => { o.visible = vis[i]; });
   if (!(typeof location !== 'undefined' && location.search.includes('feedeli'))) { f.root.visible = false; f.rifle.visible = false; }
   const e = T;
   W.wall.set({ t, k: 1, red: smooth(e.msg, e.msg + 0.2, t) * (1 - smooth(e.masks + 1.6, e.masks + 2.2, t)) * 0.75, msg: smooth(e.msg + 0.1, e.msg + 0.3, t) * (1 - smooth(e.masks + 1.6, e.masks + 2.0, t)) + smooth(e.view + 0.6, e.view + 0.9, t),
