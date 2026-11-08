@@ -1,0 +1,30 @@
+{
+ "key": "farm_ep39_rescue_a",
+ "source": {
+  "route": "one-off Studio capture (Episode 39), the steps of tools/farm_avatars.py",
+  "scene": "scenes/sandbox/avcap_ep39.lua",
+  "candidate": "rescue_a"
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-08",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_Accessory_HighPonyAri"
+ ]
+}

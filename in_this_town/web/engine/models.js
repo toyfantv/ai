@@ -22,6 +22,7 @@ import { trainingRifle, soldierGear, syncRanks, muzzleFlashes, tracers, eventPar
 import { magicArena, arenaGround, voidRocks, fallingRocks, fireWall, energyOrb, runeShield, shardBurst, shockwave, sigil, beam, decal, arcBolt, fireStream, driftParticles, shadowCrowd, teleportFx, cloak } from './arena.js';
 import { blackSword, whiteBlade, armorSuit, swordField } from './blades.js';
 import { hospitalBed, wardDoor, fluorPanel, crtTV, ivPole, cabinet, paSpeaker, roomPlate, bedChart, nurse, wardBeds, hospitalBlock, noticeSign } from './hospital.js';
+import { voiceTunnel, drips as tunnelDrips, hillside as tunnelHillside, floodTripod, cautionTape, tapePost, rescueRadio, rescueTruck, campTable, wallFaces } from './tunnel.js';
 import { puppet, socketHead, stairHall, schoolCorridor, satchel, flashlightProp, strawRope, ofuda } from './folklore.js';
 import { cubeSeed, cubeStairs, gardenPlot, seedStall, wateringCan, wheelbarrow, scarecrow, floatingIsland, glassField, nameTree, bloomField } from './garden.js';
 
@@ -301,6 +302,17 @@ export const BUILD = {
   paper_charm: (o) => put(o, ofuda(o.seed ?? 1, o.w, o.h)),
   kit_building: (o) => put(o, building(o)),
   security_cam: (o) => put(o, secCam()),
+  voice_tunnel: (o) => put(o, voiceTunnel(o)),   // Episode 39; .pt(s, lat, h) is the centre line, deeper is -z
+  tunnel_hillside: (o) => put(o, tunnelHillside(o.tunnel)),
+  tunnel_drips: (o) => put(o, tunnelDrips(o.tunnel, o.n)),
+  flood_tripod: (o) => put(o, floodTripod(o)),
+  caution_tape: (o) => put(o, cautionTape(o.a, o.b)),
+  tape_post: (o) => put(o, tapePost()),
+  rescue_radio: (o) => put(o, rescueRadio()),
+  rescue_truck: (o) => put(o, rescueTruck(o)),
+  camp_table: (o) => put(o, campTable()),
+  wall_faces: (o) => put(o, wallFaces(o.tunnel, o.canvases, o)),
+  mimic_puppet: (o) => put(o, puppet({ skin: '#b3aea4', bodyMat: paint('#a48a2a', { roughness: 0.5 }), sleeveMat: paint('#8f7826', { roughness: 0.55 }), au: 2.7, al: 3.1, lu: 2.5, ll: 2.9, finger: 0.6, head: false, hair: false, robe: false, width: 0.62, thick: 0.52, ...o })),
   home_fridge: (o) => put(o, fridge()),
   dining_chair: (o) => put(o, diningChair(o)),
   dining_table: (o) => put(o, diningTable(o)),

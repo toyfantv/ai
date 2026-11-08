@@ -350,6 +350,16 @@ change. Episode 17 imports its package, model house and cardboard sky from the l
 * `render.js frames` skips frames that exist: delete a range before re-rendering it.
 * New avatars: `farm_ep35_nora`, `farm_ep35_girl` (one-off Studio captures; sources in their `avatar.json`).
 
+### Episode 39 notes (the tunnel that learned our voices; Psychological Horror, Episodes 35-39)
+
+* **`web/engine/tunnel.js`** holds what is original to this episode: `voiceTunnel(o)` (a mesh with inward faces, so any camera outside it shoots straight through the near wall; `.pt(s, lat, h)`, `.floor(s)`, `.yawIn(s)`), `hillside(T)`, `drips`, `wallFaces`, the tripods, tape, radio and truck.
+* **Real knees and elbows on captured avatars:** `jointify(c)` in `ep39.js` sorts each limb's meshes by height and re-parents the lower ones onto a new pivot, with no engine change. The crawl, the belly crawl, the crab and the kick are two-bone IK from a gait phase, so hands and knees stay planted.
+* **Cutaway shots:** cameras outside the tunnel see the inside through the culled near wall, and rays above and below the tunnel hit nothing, so `W.slab` (a camera-facing plane with the rock texture) fills those bands in the fight and the side view.
+* **`mouthSheet(ch)` in `altiface.js`** draws a mouth on its own sheet that can rotate, slide and scale, used with `setFace(name, { noMouth: true })`. Some Alti presets are whole faces, so it keeps only the connected blob of ink lowest on the image, or the eyes turn with it. Keep the offsets small: sliding the mouth lands it on an eye.
+* **Impact sequences** are Episode 33's, for the claws and the kick only. Hand the sound its contact times through `unmap` (`lcHit`, `kcHit` in `events.json`).
+* **Reverse angles:** when a camera stands where the other character is, that character is hidden for the shot (`ask`, `smile`, `final`, and `shake` to `stare`).
+* **Voices:** `fx: "cave"` and `fx: "mimic"` were added to `audio2.py`. `mimic` is the speaker's own take plus a faint detuned copy, so "So am I." stays recognisably Daniel. `tools/ep39_sound.py` writes the sound block. Note that a `sample` cue's `rev` is a room size in seconds (0 crashes it), and `groan` needs `dur` of at least 1.7 and `rumble` over 2.
+
 ### Episode 38 notes (the recording from tomorrow; Psychological Horror, Episodes 35-39)
 
 * **`web/engine/cursedtape.js`** holds everything original to this episode: `bedroom(U)` (wallpaper and carpet overlays that creep out from the door through a shared radius; `.chair` is a separate object), `laptop` (`.setLid`, a screen shader with a UI canvas or a live feed), `hotelHall`, `tapeHead` and `TapeShader` (tear, roll and wash for anything seen on the recording).

@@ -523,6 +523,54 @@
    "licence": "own",
    "desc": "a belly-up crawl along a ceiling with planted hands and feet; the head snaps round, inverted, then ticks upright",
    "made_for": "ep37"
+  },
+  "ep39:crawl_knees": {
+   "set": "poses in episodes/ep39.js (jointify adds knees and elbows to captured avatars)",
+   "source": "hand-keyed in the In This Town renderer (Episode 39)",
+   "licence": "own",
+   "desc": "hands and knees by two-bone IK from a gait phase, hands and knees planted"
+  },
+  "ep39:crawl_belly": {
+   "set": "poses in episodes/ep39.js (jointify adds knees and elbows to captured avatars)",
+   "source": "hand-keyed in the In This Town renderer (Episode 39)",
+   "licence": "own",
+   "desc": "a flat belly crawl: arms reaching and pulling, one arm able to hold a flashlight forward"
+  },
+  "ep39:crab_back": {
+   "set": "poses in episodes/ep39.js (jointify adds knees and elbows to captured avatars)",
+   "source": "hand-keyed in the In This Town renderer (Episode 39)",
+   "licence": "own",
+   "desc": "scrambling backward on the hands with the feet toward the threat"
+  },
+  "ep39:crab_kick": {
+   "set": "poses in episodes/ep39.js (jointify adds knees and elbows to captured avatars)",
+   "source": "hand-keyed in the In This Town renderer (Episode 39)",
+   "licence": "own",
+   "desc": "from the crab, knees drawn up and both boots driven out"
+  },
+  "ep39:sit_knees_up": {
+   "set": "poses in episodes/ep39.js (jointify adds knees and elbows to captured avatars)",
+   "source": "hand-keyed in the In This Town renderer (Episode 39)",
+   "licence": "own",
+   "desc": "sitting on the ground, knees up, one hand holding something"
+  },
+  "ep39:kneel_one": {
+   "set": "poses in episodes/ep39.js (jointify adds knees and elbows to captured avatars)",
+   "source": "hand-keyed in the In This Town renderer (Episode 39)",
+   "licence": "own",
+   "desc": "one knee down facing someone"
+  },
+  "ep39:haul_out": {
+   "set": "poses in episodes/ep39.js (jointify adds knees and elbows to captured avatars)",
+   "source": "hand-keyed in the In This Town renderer (Episode 39)",
+   "licence": "own",
+   "desc": "gripping a forearm and hauling someone along on their knees"
+  },
+  "ep39:wall_touch": {
+   "set": "poses in episodes/ep39.js (jointify adds knees and elbows to captured avatars)",
+   "source": "hand-keyed in the In This Town renderer (Episode 39)",
+   "licence": "own",
+   "desc": "a hand reaching to a wet wall, the elbow almost straight"
   }
  }
 }

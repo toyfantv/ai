@@ -42,6 +42,7 @@ const layersOf = (name, o = {}) => {
     out.push(e.L[gaze] ?? e.L.forward, e.R[gaze] ?? e.R.forward);
   }
   if (p.brows) { const b = IDX.brows[p.brows]; out.push(b.L, b.R); }
+  if (o.noMouth) return out.filter(Boolean);   // Episode 39: the mouth is drawn on its own sheet (mouthSheet below)
   const set = IDX.talk[p.talk || 'a'];
   if (o.viseme && set[o.viseme]) out.push(set[o.viseme]);
   else if (typeof p.mouth === 'string') out.push(IDX.speech[p.mouth]);
@@ -147,6 +148,37 @@ export function attachAlti(ch, headParts, spec, cache) {
   };
   ch.faceSheet = sheet; ch.headParts = headParts;
   ch.setFace('neutral');
+}
+
+// Episode 39: the mouth on a sheet of its own, so it can turn and slide across the face. Pair it with setFace(name, { noMouth: true }).
+//   const m = mouthSheet(ch);  m.set('happy', { viseme, angle, du, dv, scale });   // angle in radians about the mouth's centre; du, dv in face-sheet widths
+export function mouthSheet(ch) {
+  const mat = new THREE.MeshStandardMaterial({ transparent: true, alphaTest: 0.03, depthWrite: false, roughness: 0.8, polygonOffset: true, polygonOffsetFactor: -4, polygonOffsetUnits: -4, emissive: '#ffffff', emissiveIntensity: U.skinGlow * 0.8 });
+  const sheet = new THREE.Mesh(ch.faceSheet.geometry, mat); sheet.userData.noAO = true; sheet.renderOrder = 3; ch.head.add(sheet);
+  const own = new Map();
+  // Some presets are whole faces: keep only the mouth, the connected blob of ink lowest on the image, so turning it can't turn the eyes too.
+  const mouthOnly = (id) => {
+    const N = 175, im = IMG.get(id), c = document.createElement('canvas'); c.width = c.height = N; const x = c.getContext('2d', { willReadFrequently: true }); x.drawImage(im, 0, 0, N, N);
+    const d = x.getImageData(0, 0, N, N).data, on = (i, j) => i >= 0 && j >= 0 && i < N && j < N && d[(j * N + i) * 4 + 3] > 40;
+    let seed = -1; for (let j = N - 1; j >= 0 && seed < 0; j--) for (let i = 0; i < N; i++) if (on(i, j)) { seed = j * N + i; break; }
+    const seen = new Uint8Array(N * N), st = seed < 0 ? [] : [seed]; if (seed >= 0) seen[seed] = 1; let a = 0, u = 0, v = 0;
+    while (st.length) { const k = st.pop(), j = Math.floor(k / N), i = k - j * N; a++; u += i; v += j; for (let dj = -2; dj <= 2; dj++) for (let di = -2; di <= 2; di++) { const n = (j + dj) * N + i + di; if (on(i + di, j + dj) && !seen[n]) { seen[n] = 1; st.push(n); } } }
+    const C = document.createElement('canvas'); C.width = C.height = 700; const X = C.getContext('2d'); X.drawImage(im, 0, 0, 700, 700);
+    const M = document.createElement('canvas'); M.width = M.height = N; const mx = M.getContext('2d'); mx.fillStyle = '#fff'; for (let j = 0; j < N; j++) for (let i = 0; i < N; i++) if (seen[j * N + i]) mx.fillRect(i - 1, j - 1, 3, 3);
+    X.globalCompositeOperation = 'destination-in'; X.drawImage(M, 0, 0, 700, 700);
+    const t = new THREE.CanvasTexture(C); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8;
+    return { t, c: a ? [(u / a) / N, 1 - (v / a) / N] : [0.5, 0.3] };
+  };
+  sheet.set = (name, o = {}) => {
+    const ids = layersOf(name, { viseme: o.viseme }).slice(-1), id = ids[0];
+    if (!id) { sheet.visible = false; return; }
+    sheet.visible = true;
+    if (!own.has(id)) own.set(id, mouthOnly(id));
+    const { t, c } = own.get(id), s = o.scale ?? 1;
+    t.center.set(c[0], c[1]); t.rotation = o.angle ?? 0; t.repeat.set(1 / s, 1 / s); t.offset.set(-(o.du ?? 0), -(o.dv ?? 0));
+    if (mat.map !== t) { mat.map = mat.emissiveMap = t; mat.needsUpdate = true; }
+  };
+  return sheet;
 }
 
 // A short blink every few seconds, a pure function of t.

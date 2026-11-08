@@ -921,6 +921,13 @@ def main():
             a = a * (0.13 / (np.sqrt(np.mean(a[np.abs(a) > 0.004] ** 2)) + 1e-9))
             a = a + bp(np.random.default_rng(35).standard_normal(len(a)), 800, 3000) * 0.0035
             a = reverb(a, 0.25, 0.05)
+        if fx == 'cave':  # a voice carried along wet rock (Episode 39): long, hollow, a little dark
+            a = reverb(bp(a, 160, 5200, order=2), 1.8, 0.34)
+        if fx == 'mimic':  # the speaker's own voice with something a hair behind it: a faint detuned copy, so it stays recognisable (Episode 39)
+            from scipy.signal import resample
+            y = resample(a, int(len(a) / 0.985)); y = np.concatenate([np.zeros(int(0.018 * SR)), y])
+            n = max(len(a), len(y)); a = np.pad(a, (0, n - len(a))) + np.pad(y, (0, n - len(y))) * 0.2
+            a = reverb(a, 0.5, 0.06)
         if fx == 'chorus':  # a classroom of identical voices: detuned, delayed copies
             from scipy.signal import resample
             layers = [a]

@@ -1,0 +1,1077 @@
+{
+ "number": 39,
+ "title": "The Tunnel That Learned Our Voices",
+ "output": "InThisTown_Episode39_VoiceTunnel.mp4",
+ "youtube_title": "The Tunnel That Learned Our Voices...",
+ "tiktok_caption": "Daniel crawled into the tunnel to find his missing sister. Then he heard her voice. It wasn't her.",
+ "hashtags": "#InThisTown #HorrorStory #ScaryStories #RobloxStory #Shorts",
+ "thumbnail_text": "SO AM I",
+ "thumbnail_rec": "A flashlight beam in a wet stone tunnel, Sophie's smiling face inches from the lens with her mouth turned the wrong way. Text: \"SO AM I\".",
+ "tail": 2.1,
+ "fps": 60,
+ "narrator": {
+  "pace": [
+   2.5,
+   2.95
+  ],
+  "min_tempo": 1.04
+ },
+ "cast": {
+  "worker": {
+   "voice": "eric",
+   "pitch": 1.0,
+   "tempo": 0.98
+  },
+  "sophie": {
+   "voice": "laura",
+   "pitch": 1.02,
+   "tempo": 0.98
+  },
+  "daniel": {
+   "voice": "will",
+   "pitch": 1.03,
+   "tempo": 1.0
+  }
+ },
+ "highlights": {
+  "DON'T ANSWER": "red",
+  "THE TUNNEL": "yellow",
+  "THREE DAYS": "yellow",
+  "FLASHLIGHT": "yellow",
+  "STILL SWITCHED ON": "red",
+  "DARKNESS": "purple",
+  "WET": "yellow",
+  "BREATHING": "red",
+  "SOPHIE'S VOICE": "yellow",
+  "I'M TRAPPED": "red",
+  "NARROWER": "yellow",
+  "BARELY MOVE": "red",
+  "A FACE": "red",
+  "SMILING": "red",
+  "WRONG DIRECTION": "red",
+  "LUNGED": "red",
+  "KICKED": "yellow",
+  "DOZENS OF VOICES": "red",
+  "DAYLIGHT": "yellow",
+  "RESCUE WORKER": "yellow",
+  "RADIO": "yellow",
+  "REAL VOICE": "yellow",
+  "STILL INSIDE": "red",
+  "SLOWLY SMILED": "red",
+  "DANIEL'S VOICE": "red",
+  "SO AM I": "red"
+ },
+ "lines": [
+  {
+   "text": "“Sophie, if you can hear me, don't answer.”",
+   "speak": "Sophie, if you can hear me, don't answer.",
+   "tag": "[urgent]",
+   "voice": "worker",
+   "fx": "radio",
+   "pause": 0.2
+  },
+  {
+   "text": "The last message Daniel received before entering the tunnel.",
+   "tag": "[mysterious]",
+   "pause": 0.1
+  },
+  {
+   "text": "His sister had disappeared three days earlier.",
+   "tag": "[serious]",
+   "pause": 0.1
+  },
+  {
+   "text": "The rescue team found only her flashlight.",
+   "tag": "[quietly]",
+   "pause": 0.2
+  },
+  {
+   "text": "Still switched on.",
+   "tag": "[quietly]",
+   "pause": 0.35
+  },
+  {
+   "text": "Daniel crawled deeper into the darkness.",
+   "tag": "[mysterious]",
+   "pause": 0.12
+  },
+  {
+   "text": "The walls were wet.",
+   "tag": "[quietly]",
+   "pause": 0.2
+  },
+  {
+   "text": "And something was breathing ahead of him.",
+   "tag": "[quietly]",
+   "pause": 0.4
+  },
+  {
+   "text": "Then he heard Sophie's voice.",
+   "tag": "[mysterious]",
+   "pause": 0.12
+  },
+  {
+   "text": "“Daniel? I'm trapped.”",
+   "speak": "Daniel? I'm trapped.",
+   "tag": "[scared, distant]",
+   "voice": "sophie",
+   "fx": "cave",
+   "pause": 0.12
+  },
+  {
+   "text": "“Sophie, I'm coming!”",
+   "speak": "Sophie, I'm coming!",
+   "tag": "[calling out]",
+   "voice": "daniel",
+   "fx": "cave",
+   "pause": 0.12
+  },
+  {
+   "text": "The tunnel grew narrower.",
+   "tag": "[quietly]",
+   "pause": 0.12
+  },
+  {
+   "text": "Until he could barely move.",
+   "tag": "[quietly]",
+   "pause": 0.55
+  },
+  {
+   "text": "His flashlight illuminated a face.",
+   "tag": "[quietly]",
+   "pause": 0.55
+  },
+  {
+   "text": "Sophie.",
+   "tag": "[whispers]",
+   "pause": 0.2
+  },
+  {
+   "text": "She was smiling.",
+   "tag": "[quietly]",
+   "pause": 0.2
+  },
+  {
+   "text": "But her mouth was moving in the wrong direction.",
+   "tag": "[serious]",
+   "pause": 0.2
+  },
+  {
+   "text": "Daniel scrambled backward.",
+   "tag": "[serious]",
+   "pause": 0.4
+  },
+  {
+   "text": "The thing lunged.",
+   "tag": "[serious]",
+   "pause": 0.1
+  },
+  {
+   "text": "He kicked it away and crawled toward the entrance.",
+   "tag": "[urgent]",
+   "pause": 0.08
+  },
+  {
+   "text": "Behind him, dozens of voices began screaming his name.",
+   "tag": "[serious]",
+   "pause": 0.15
+  },
+  {
+   "text": "He reached daylight.",
+   "tag": "[relieved]",
+   "pause": 0.1
+  },
+  {
+   "text": "A rescue worker pulled him out.",
+   "tag": "[mysterious]",
+   "pause": 0.12
+  },
+  {
+   "text": "“Did you find your sister?”",
+   "speak": "Did you find your sister?",
+   "tag": "[gently]",
+   "voice": "worker",
+   "pause": 0.15
+  },
+  {
+   "text": "Daniel shook his head.",
+   "tag": "[quietly]",
+   "pause": 0.2
+  },
+  {
+   "text": "Then his radio crackled.",
+   "tag": "[quietly]",
+   "pause": 0.2
+  },
+  {
+   "text": "Sophie's real voice.",
+   "tag": "[quietly]",
+   "pause": 0.1
+  },
+  {
+   "text": "“Daniel, I'm still inside.”",
+   "speak": "Daniel, I'm still inside.",
+   "tag": "[whispers]",
+   "voice": "sophie",
+   "fx": "radio",
+   "pause": 0.3
+  },
+  {
+   "text": "He stared at the worker.",
+   "tag": "[quietly]",
+   "pause": 0.2
+  },
+  {
+   "text": "The worker slowly smiled.",
+   "tag": "[quietly]",
+   "pause": 0.2
+  },
+  {
+   "text": "And answered in Daniel's voice,",
+   "tag": "[mysterious]",
+   "pause": 0.25
+  },
+  {
+   "text": "“So am I.”",
+   "speak": "So am I.",
+   "tag": "[calm, quietly]",
+   "voice": "daniel",
+   "fx": "mimic",
+   "pause": 0.2
+  }
+ ],
+ "samples": {
+  "v_d1": {
+   "text": "Daniel! Daniel!",
+   "voice": "sophie",
+   "tag": "[screams]"
+  },
+  "v_d2": {
+   "text": "Daniel! Daniel! Daniel!",
+   "voice": "worker",
+   "tag": "[shouting]"
+  },
+  "v_d3": {
+   "text": "Daniel! Come back!",
+   "voice": "daniel",
+   "tag": "[shouting]"
+  },
+  "v_d4": {
+   "text": "Daniel, Daniel, Daniel!",
+   "voice": "sophie",
+   "tag": "[whispers urgently]"
+  },
+  "d_breath": {
+   "text": "Hhh... hhh... hhh... hhh...",
+   "voice": "daniel",
+   "tag": "[panting heavily]"
+  },
+  "d_yell": {
+   "text": "Aaah! Get off me!",
+   "voice": "daniel",
+   "tag": "[screams]"
+  }
+ },
+ "sound": {
+  "key": 39,
+  "music_gain": 0.16,
+  "music": [
+   [
+    "0",
+    "mystery"
+   ],
+   [
+    "7.001",
+    "dread"
+   ],
+   [
+    "29.867",
+    "silence"
+   ],
+   [
+    "32.251",
+    "dread"
+   ],
+   [
+    "37.927",
+    "silence"
+   ],
+   [
+    "41.142",
+    "suspense"
+   ],
+   [
+    "45.67",
+    "silence"
+   ],
+   [
+    "56.736",
+    "dread"
+   ]
+  ],
+  "cues": [
+   [
+    "0",
+    "wind",
+    0.16,
+    {
+     "dur": 7.001
+    }
+   ],
+   [
+    "0.2",
+    "chirp",
+    0.06,
+    {
+     "dur": 6.601
+    }
+   ],
+   [
+    "0.15",
+    "static",
+    0.075,
+    {
+     "dur": 3.6420000000000003
+    }
+   ],
+   [
+    "3.712",
+    "clunk",
+    0.26,
+    {
+     "seed": 3
+    }
+   ],
+   [
+    "3.992",
+    "footsteps",
+    0.2,
+    {
+     "dur": 2.869,
+     "rate": 0.95,
+     "seed": 5
+    }
+   ],
+   [
+    "7.001",
+    "drone",
+    0.16,
+    {
+     "dur": 22.766,
+     "f": 46
+    }
+   ],
+   [
+    "7.001",
+    "roomtone",
+    0.2,
+    {
+     "dur": 22.766,
+     "seed": 9
+    }
+   ],
+   [
+    "7.301",
+    "pop",
+    0.06468958711755621
+   ],
+   [
+    "8.425",
+    "pop",
+    0.06365422200737787
+   ],
+   [
+    "9.56",
+    "pop",
+    0.08938765466490972
+   ],
+   [
+    "10.97",
+    "pop",
+    0.06782802386112262
+   ],
+   [
+    "12.062",
+    "pop",
+    0.06248086182119514
+   ],
+   [
+    "13.658",
+    "pop",
+    0.07058032786276656
+   ],
+   [
+    "15.329",
+    "pop",
+    0.055160027337343445
+   ],
+   [
+    "16.039",
+    "pop",
+    0.07966959770283338
+   ],
+   [
+    "17.203",
+    "pop",
+    0.10265943033097363
+   ],
+   [
+    "18.857",
+    "pop",
+    0.0859356358694559
+   ],
+   [
+    "19.887",
+    "pop",
+    0.10013529617087519
+   ],
+   [
+    "21.093",
+    "pop",
+    0.06802415855557561
+   ],
+   [
+    "22.146",
+    "pop",
+    0.050036870172014344
+   ],
+   [
+    "23.626",
+    "pop",
+    0.05318434078709682
+   ],
+   [
+    "24.533",
+    "pop",
+    0.09337770963398839
+   ],
+   [
+    "25.915",
+    "pop",
+    0.0933151950883819
+   ],
+   [
+    "27.311",
+    "pop",
+    0.10606129349716009
+   ],
+   [
+    "29.051",
+    "pop",
+    0.11774645224055562
+   ],
+   [
+    "33.287",
+    "pop",
+    0.062074246487324986
+   ],
+   [
+    "35.015",
+    "pop",
+    0.10274762556104104
+   ],
+   [
+    "35.974",
+    "pop",
+    0.09841952793964272
+   ],
+   [
+    "37.442",
+    "pop",
+    0.05694126596912898
+   ],
+   [
+    "41.758",
+    "pop",
+    0.11607174102892602
+   ],
+   [
+    "42.555",
+    "pop",
+    0.052370862224309485
+   ],
+   [
+    "44.051",
+    "pop",
+    0.0965980945473646
+   ],
+   [
+    "44.755",
+    "pop",
+    0.09239135928699493
+   ],
+   [
+    "11.994",
+    "hum",
+    0.09,
+    {
+     "dur": 1.5,
+     "f": 196
+    }
+   ],
+   [
+    "13.624",
+    "scrape",
+    0.2,
+    {
+     "dur": 2.057
+    }
+   ],
+   [
+    "15.931",
+    "scrape",
+    0.12,
+    {
+     "dur": 0.9
+    }
+   ],
+   [
+    "17.83",
+    "sample",
+    0.3,
+    {
+     "name": "d_breath",
+     "rate": 0.72,
+     "pan": -0.3,
+     "wet": 0.5
+    }
+   ],
+   [
+    "24.442",
+    "scrape",
+    0.16,
+    {
+     "dur": 1.5900000000000012
+    }
+   ],
+   [
+    "26.102",
+    "scrape",
+    0.26,
+    {
+     "dur": 3.2650000000000006
+    }
+   ],
+   [
+    "26.152",
+    "sample",
+    0.22,
+    {
+     "name": "d_breath",
+     "rate": 1.15,
+     "wet": 0.15
+    }
+   ],
+   [
+    "26.352",
+    "heartbeat",
+    0.28,
+    {
+     "dur": 3.0650000000000004,
+     "bpm": 98
+    }
+   ],
+   [
+    "31.831",
+    "whoosh",
+    0.5,
+    {
+     "dur": 0.16
+    }
+   ],
+   [
+    "31.941",
+    "scarehit",
+    0.98,
+    {
+     "dur": 0.6
+    }
+   ],
+   [
+    "31.971",
+    "groan",
+    0.12,
+    {
+     "dur": 1.7,
+     "seed": 5
+    }
+   ],
+   [
+    "32.651",
+    "drone",
+    0.2,
+    {
+     "dur": 5.275999999999999,
+     "f": 39
+    }
+   ],
+   [
+    "33.115",
+    "whisper",
+    0.09,
+    {
+     "dur": 3.830999999999996,
+     "seed": 4
+    }
+   ],
+   [
+    "34.616",
+    "groan",
+    0.12,
+    {
+     "dur": 2.0,
+     "seed": 11
+    }
+   ],
+   [
+    "37.096",
+    "scrape",
+    0.34,
+    {
+     "dur": 1.2209999999999994
+    }
+   ],
+   [
+    "37.146",
+    "sample",
+    0.24,
+    {
+     "name": "d_breath",
+     "rate": 1.4,
+     "wet": 0.15
+    }
+   ],
+   [
+    "38.357",
+    "whoosh",
+    0.7,
+    {
+     "dur": 0.18
+    }
+   ],
+   [
+    "38.467",
+    "scarehit",
+    0.98,
+    {
+     "dur": 0.3
+    }
+   ],
+   [
+    "38.497",
+    "groan",
+    0.12,
+    {
+     "dur": 1.7,
+     "seed": 8
+    }
+   ],
+   [
+    "38.457",
+    "sample",
+    0.16,
+    {
+     "name": "d_yell",
+     "wet": 0.3
+    }
+   ],
+   [
+    "39.185",
+    "whoosh",
+    0.62,
+    {
+     "dur": 0.14
+    }
+   ],
+   [
+    "39.325",
+    "impact",
+    0.56
+   ],
+   [
+    "39.325",
+    "doorboom",
+    0.3,
+    {
+     "seed": 61
+    }
+   ],
+   [
+    "39.355",
+    "splat",
+    0.26
+   ],
+   [
+    "40.384",
+    "whoosh",
+    0.66,
+    {
+     "dur": 0.15
+    }
+   ],
+   [
+    "40.544",
+    "impact",
+    0.7
+   ],
+   [
+    "40.544",
+    "doorboom",
+    0.4,
+    {
+     "seed": 62
+    }
+   ],
+   [
+    "40.574",
+    "splat",
+    0.22
+   ],
+   [
+    "40.864",
+    "bodyfall",
+    0.42
+   ],
+   [
+    "40.844",
+    "scrape",
+    0.2,
+    {
+     "dur": 0.6
+    }
+   ],
+   [
+    "41.142",
+    "scrape",
+    0.34,
+    {
+     "dur": 4.527999999999999
+    }
+   ],
+   [
+    "41.142",
+    "heartbeat",
+    0.3,
+    {
+     "dur": 4.527999999999999,
+     "bpm": 138
+    }
+   ],
+   [
+    "41.142",
+    "sample",
+    0.2,
+    {
+     "name": "d_breath",
+     "rate": 1.5,
+     "wet": 0.2
+    }
+   ],
+   [
+    "42.24",
+    "sample",
+    0.12229885057471251,
+    {
+     "name": "v_d1",
+     "rate": 1.04,
+     "pan": 0.31310501249571376,
+     "rev": 1.4,
+     "wet": 0.65
+    }
+   ],
+   [
+    "42.544",
+    "sample",
+    0.13627631502317405,
+    {
+     "name": "v_d2",
+     "rate": 1.18,
+     "pan": 0.6271902190593721,
+     "rev": 1.4,
+     "wet": 0.65
+    }
+   ],
+   [
+    "42.774",
+    "sample",
+    0.14684383354280578,
+    {
+     "name": "v_d3",
+     "rate": 0.92,
+     "pan": -0.6112821752822608,
+     "rev": 1.4,
+     "wet": 0.65
+    }
+   ],
+   [
+    "42.983",
+    "sample",
+    0.15644043147546793,
+    {
+     "name": "v_d4",
+     "rate": 0.92,
+     "pan": 0.02660972940350259,
+     "rev": 1.4,
+     "wet": 0.65
+    }
+   ],
+   [
+    "43.232",
+    "sample",
+    0.16789736935577823,
+    {
+     "name": "v_d1",
+     "rate": 0.92,
+     "pan": 0.5637511954706198,
+     "rev": 1.4,
+     "wet": 0.65
+    }
+   ],
+   [
+    "43.492",
+    "sample",
+    0.17987022931880492,
+    {
+     "name": "v_d2",
+     "rate": 0.92,
+     "pan": -0.5903136307948817,
+     "rev": 1.4,
+     "wet": 0.65
+    }
+   ],
+   [
+    "43.651",
+    "sample",
+    0.18717823720371038,
+    {
+     "name": "v_d3",
+     "rate": 1.04,
+     "pan": -0.2704734815808143,
+     "rev": 1.4,
+     "wet": 0.65
+    }
+   ],
+   [
+    "43.885",
+    "sample",
+    0.19791529933558266,
+    {
+     "name": "v_d4",
+     "rate": 1.1,
+     "pan": -0.3501350061481864,
+     "rev": 1.4,
+     "wet": 0.65
+    }
+   ],
+   [
+    "44.095",
+    "sample",
+    0.20760545363102167,
+    {
+     "name": "v_d1",
+     "rate": 0.92,
+     "pan": 0.5389129102359724,
+     "rev": 1.4,
+     "wet": 0.65
+    }
+   ],
+   [
+    "44.317",
+    "sample",
+    0.21777594071201514,
+    {
+     "name": "v_d2",
+     "rate": 1.1,
+     "pan": -0.5720670201824481,
+     "rev": 1.4,
+     "wet": 0.65
+    }
+   ],
+   [
+    "44.524",
+    "sample",
+    0.2273012097824445,
+    {
+     "name": "v_d3",
+     "rate": 0.98,
+     "pan": -0.28548333304338736,
+     "rev": 1.4,
+     "wet": 0.65
+    }
+   ],
+   [
+    "44.683",
+    "sample",
+    0.2346309275015955,
+    {
+     "name": "v_d4",
+     "rate": 0.86,
+     "pan": -0.46238134425376604,
+     "rev": 1.4,
+     "wet": 0.65
+    }
+   ],
+   [
+    "44.836",
+    "sample",
+    0.24165937024381134,
+    {
+     "name": "v_d1",
+     "rate": 0.92,
+     "pan": -0.7228926303429146,
+     "rev": 1.4,
+     "wet": 0.65
+    }
+   ],
+   [
+    "44.99",
+    "sample",
+    0.24873832591647888,
+    {
+     "name": "v_d2",
+     "rate": 0.86,
+     "pan": 0.7189441335981255,
+     "rev": 1.4,
+     "wet": 0.65
+    }
+   ],
+   [
+    "45.165",
+    "sample",
+    0.2567799391111095,
+    {
+     "name": "v_d3",
+     "rate": 1.1,
+     "pan": -0.07409618105826876,
+     "rev": 1.4,
+     "wet": 0.65
+    }
+   ],
+   [
+    "45.323",
+    "sample",
+    0.26405683374951106,
+    {
+     "name": "v_d4",
+     "rate": 1.18,
+     "pan": -0.47387446015663387,
+     "rev": 1.4,
+     "wet": 0.65
+    }
+   ],
+   [
+    "45.67",
+    "wind",
+    0.2,
+    {
+     "dur": 5.659000000000006
+    }
+   ],
+   [
+    "45.77",
+    "chirp",
+    0.09,
+    {
+     "dur": 6.979000000000002
+    }
+   ],
+   [
+    "45.72",
+    "sample",
+    0.2,
+    {
+     "name": "d_breath",
+     "wet": 0.05
+    }
+   ],
+   [
+    "47.528",
+    "scrape",
+    0.2,
+    {
+     "dur": 0.9
+    }
+   ],
+   [
+    "48.604",
+    "bodyfall",
+    0.2
+   ],
+   [
+    "51.129",
+    "static",
+    0.24,
+    {
+     "dur": 0.5
+    }
+   ],
+   [
+    "51.129",
+    "clunk",
+    0.28,
+    {
+     "seed": 15
+    }
+   ],
+   [
+    "51.679",
+    "static",
+    0.09,
+    {
+     "dur": 1.219999999999996
+    }
+   ],
+   [
+    "54.132",
+    "static",
+    0.14,
+    {
+     "dur": 0.2
+    }
+   ],
+   [
+    "54.282",
+    "static",
+    0.06,
+    {
+     "dur": 2.2540000000000036
+    }
+   ],
+   [
+    "56.516",
+    "clunk",
+    0.22,
+    {
+     "seed": 19
+    }
+   ],
+   [
+    "53.449",
+    "wind",
+    0.08,
+    {
+     "dur": 10.648000000000009
+    }
+   ],
+   [
+    "56.636",
+    "drone",
+    0.18,
+    {
+     "dur": 8.161000000000008,
+     "f": 37
+    }
+   ],
+   [
+    "62.897",
+    "sample",
+    0.2,
+    {
+     "name": "d_breath",
+     "rate": 0.7,
+     "wet": 0.4
+    }
+   ]
+  ]
+ }
+}
