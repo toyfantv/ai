@@ -346,6 +346,9 @@ SFX = {
     'static': lambda o: static(o.get('dur', 3.0)), 'clunk': lambda o: clunk(), 'drone': lambda o: drone(o.get('dur', 8.0), o.get('f', 55)), 'flick': lambda o: flick(o.get('dur', 0.6)),
     'scrape': lambda o: scrape(o.get('dur', 0.7), o.get('seed', 3)), 'paper': lambda o: paper(o.get('dur', 0.9), o.get('seed', 2)),
     'winddown': lambda o: winddown(o.get('dur', 2.4), o.get('key', 45)),
+    'phonebuzz': lambda o: phonebuzz(o.get('dur', 0.9)), 'ringtone': lambda o: ringtone(o.get('dur', 4.0)), 'lockturn': lambda o: lockturn(o.get('seed', 52)),
+    'chainslide': lambda o: chainslide(o.get('seed', 53)), 'curtain': lambda o: curtain(o.get('dur', 1.6)), 'scarehit': lambda o: scarehit(o.get('dur', 3.2)),
+    'roomtone': lambda o: roomtone(o.get('dur', 8.0)), 'suburb': lambda o: suburb(o.get('dur', 10.0)),
     'flutter': lambda o: flutter(o.get('dur', 1.2), o.get('rate', 9.0)), 'chirp': lambda o: chirp(o.get('f', 1300), o.get('dur', 0.32), o.get('up', 1)),
 }
 
@@ -555,6 +558,76 @@ SFX.update({
 
 
 # Episode 23: a small dragon's wings (soft feathery beats) and its voice (a bright squeak that bends up or down)
+# ---------- Episode 35: phone, locks, curtain, the scare ----------
+def phonebuzz(d=0.9, seed=51):
+    """A phone vibrating on a nightstand: two pulses of a rattling motor."""
+    t = tt(d); gate = ((t % 0.45) < 0.32).astype(float)
+    x = np.sin(2 * np.pi * 172 * t) * (0.6 + 0.4 * np.sign(np.sin(2 * np.pi * 38 * t))) * gate
+    x = x + 0.35 * bp(np.random.default_rng(seed).standard_normal(len(t)), 900, 4000) * gate
+    return reverb(lp(x, 2600) * 0.7, 0.35, 0.12)
+
+
+def ringtone(d=4.0):
+    """A plain marimba-like phone ring, two-note phrase repeated."""
+    out = np.zeros(int(d * SR)); notes = [(0.0, 76), (0.15, 81), (0.3, 79), (0.45, 84)]
+    for k in range(int(d / 1.4) + 1):
+        for o, n in notes:
+            t0 = k * 1.4 + o
+            if t0 >= d: continue
+            tn = tt(0.4); f = hz(n)
+            x = (np.sin(2 * np.pi * f * tn) + 0.3 * np.sin(2 * np.pi * 4 * f * tn)) * np.exp(-tn * 9)
+            i = int(t0 * SR); out[i:i + len(x)] += x[: len(out) - i] * 0.45
+    return reverb(out, 0.6, 0.15)
+
+
+def lockturn(seed=52):
+    """A deadbolt's thumb turn: a short scrape, then the bolt clacks home."""
+    return reverb(_seq([(0, _slide(0.14, 600, 2400, seed) * 0.8), (0.12, _click(1500, 0.07, seed) * 1.4), (0.13, impact(0.3, 140, 70, 0.2)[: int(0.3 * SR)] * 0.35)]), 0.5, 0.15)
+
+
+def chainslide(seed=53):
+    """A door chain: rattling links run along the track and drop into the slot."""
+    r = np.random.default_rng(seed); parts = [(0.03 * i + 0.01 * r.random(), _click(2800 + 600 * r.random(), 0.04, seed + i) * 0.6) for i in range(14)]
+    parts.append((0.48, _click(2200, 0.06, seed + 30) * 1.3)); parts.append((0.0, _slide(0.45, 1500, 5000, seed) * 0.5))
+    return reverb(_seq(parts), 0.5, 0.15)
+
+
+def curtain(d=1.6, seed=54):
+    """Heavy fabric drawn along a rod: rings rasp and the cloth swishes."""
+    t = tt(d); r = np.random.default_rng(seed)
+    cloth = bp(r.standard_normal(len(t)), 300, 2500) * np.sin(np.pi * t / d) ** 0.7 * 0.35
+    rings = sum(_click(3400, 0.03, seed + i) for i in range(1)) if False else 0
+    rasp = bp(r.standard_normal(len(t)), 2500, 7000) * (0.5 + 0.5 * np.sin(2 * np.pi * 11 * t)) * np.sin(np.pi * t / d) * 0.12
+    return reverb(cloth + rasp + 0 * rings, 0.5, 0.15)
+
+
+def scarehit(d=3.2, seed=55):
+    """The jump scare: a low thud, a scraped metal screech and a dissonant cluster that rings out."""
+    t = tt(d); r = np.random.default_rng(seed)
+    thud = impact(d, 90, 30, 0.8)[: len(t)]
+    f = 1800 + 500 * np.sin(2 * np.pi * 3.1 * t) + 300 * r.standard_normal(1)[0]
+    screech = np.tanh(3 * np.sin(2 * np.pi * np.cumsum(f) / SR)) * np.exp(-t * 2.2) * 0.25
+    cluster = sum(np.sin(2 * np.pi * fr * t) for fr in (233.1, 246.9, 349.2, 370.0, 493.9)) / 5 * np.exp(-t * 1.1) * 0.6
+    return reverb(thud * 0.9 + bp(screech, 900, 6000) + cluster, 2.6, 0.4)
+
+
+def roomtone(d=8.0, seed=56):
+    """A quiet bedroom at night: a soft fridge-like hum far off and air."""
+    t = tt(d); r = np.random.default_rng(seed)
+    return lp(r.standard_normal(len(t)), 500) * 0.12 + np.sin(2 * np.pi * 50 * t) * 0.02
+
+
+def suburb(d=10.0, seed=57):
+    """An afternoon street: distant traffic wash, a few birds."""
+    t = tt(d); r = np.random.default_rng(seed)
+    wash = lp(r.standard_normal(len(t)), 700) * 0.18
+    out = wash.copy()
+    for k in range(int(d * 0.8)):
+        t0 = r.random() * (d - 0.5); i = int(t0 * SR); c = chirp(2400 + 1200 * r.random(), 0.12, 1) * 0.12
+        out[i:i + len(c)] += c[: len(out) - i]
+    return out
+
+
 def flutter(d=1.2, rate=9.0, seed=5):
     r = np.random.default_rng(seed); x = np.zeros(int(d * SR)); t = 0.0
     while t < d - 0.08:
@@ -796,6 +869,11 @@ def main():
         if fx == 'tv':  # a voice from an old CRT speaker: thin, a little crushed, close
             a = bp(a, 380, 3800); a = np.tanh(a * 2.2) / 2.2
             a = a * (0.12 / (np.sqrt(np.mean(a[np.abs(a) > 0.004] ** 2)) + 1e-9)); a = reverb(a, 0.6, 0.12)
+        if fx == 'phone':  # a voice down a phone line (Episode 35): narrow band, a little crushed, dry, a faint line hiss
+            a = bp(a, 300, 3400, order=4); a = np.tanh(a * 2.6) / 2.6
+            a = a * (0.13 / (np.sqrt(np.mean(a[np.abs(a) > 0.004] ** 2)) + 1e-9))
+            a = a + bp(np.random.default_rng(35).standard_normal(len(a)), 800, 3000) * 0.0035
+            a = reverb(a, 0.25, 0.05)
         if fx == 'chorus':  # a classroom of identical voices: detuned, delayed copies
             from scipy.signal import resample
             layers = [a]

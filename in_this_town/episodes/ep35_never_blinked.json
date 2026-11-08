@@ -1,0 +1,512 @@
+{
+ "id": "ep35",
+ "number": 35,
+ "title": "The Girl Who Never Blinked",
+ "output": "InThisTown_Episode35_NeverBlinked.mp4",
+ "tts": "openrouter",
+ "youtube_title": "The Girl Who Never Blinked...",
+ "tiktok_caption": "The girl across the street never blinked. The security cameras never saw her. They only saw Nora, smiling at herself.",
+ "hashtags": "#InThisTown #PsychologicalHorror #ScaryStories #RobloxStory #Shorts",
+ "thumbnail_text": "NEVER BLINKED",
+ "thumbnail_rec": "Nora in her cream sweater lit by her phone in a dark bedroom at 3 AM; on the phone's camera screen, the smiling girl with the black blunt fringe and mint collared sweater stands right behind her shoulder, wide unblinking eyes and a fixed smile.",
+ "lead_in": 0.3,
+ "tail": 2.8,
+ "voices": {
+  "narrator": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "ErXwobaYiN019PkySvjV",
+    "pitch": 1.1,
+    "tempo": 1.12,
+    "max_tempo": 1.15,
+    "pace": [
+     2.5,
+     2.95
+    ],
+    "min_tempo": 1.04
+   },
+   "kokoro": "am_michael",
+   "speed": 1.0,
+   "note": "Antoni (American), In This Town preset el:ErXwobaYiN019PkySvjV:1.1:1.12 - same narrator every episode"
+  },
+  "girl": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "laura",
+    "pitch": 1.04,
+    "tempo": 1.0
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  }
+ },
+ "highlights": {
+  "ACROSS THE STREET": "yellow",
+  "SMILING": "yellow",
+  "CLASSROOM": "yellow",
+  "SAME SMILE": "red",
+  "SAME CLOTHES": "red",
+  "NEVER BLINKED": "red",
+  "POLICE": "cyan",
+  "SECURITY CAMERAS": "yellow",
+  "WASN'T THERE": "red",
+  "STANDING ALONE": "purple",
+  "AT HERSELF": "red",
+  "EVERY DOOR": "yellow",
+  "3 AM": "yellow",
+  "MOM": "yellow",
+  "ASLEEP BESIDE HER": "red",
+  "WHISPERED": "purple",
+  "PRETENDING": "purple",
+  "REMEMBER ME": "red",
+  "KNOCKED": "red",
+  "THIRD FLOOR": "red",
+  "CURTAIN": "yellow",
+  "NOTHING": "purple",
+  "BY ITSELF": "red",
+  "DIRECTLY BEHIND HER": "red",
+  "SPUN AROUND": "yellow",
+  "EMPTY": "purple",
+  "PHOTOGRAPH": "yellow",
+  "HOLDING HANDS": "yellow",
+  "NO FACE": "red",
+  "FOUR WORDS": "yellow",
+  "SWITCH BACK": "red"
+ },
+ "lines": [
+  {
+   "text": "The first time Nora saw the girl, she was standing across the street.",
+   "tag": "[mysterious]",
+   "pause": 0.1
+  },
+  {
+   "text": "Smiling.",
+   "tag": "[quietly]",
+   "pause": 0.35
+  },
+  {
+   "text": "The next morning, she was outside Nora's classroom.",
+   "tag": "[mysterious]",
+   "pause": 0.12
+  },
+  {
+   "text": "Same smile.",
+   "tag": "[quietly]",
+   "pause": 0.1
+  },
+  {
+   "text": "Same clothes.",
+   "tag": "[quietly]",
+   "pause": 0.12
+  },
+  {
+   "text": "And she never blinked.",
+   "tag": "[serious]",
+   "pause": 0.3
+  },
+  {
+   "text": "Nora called the police.",
+   "tag": "[serious]",
+   "pause": 0.1
+  },
+  {
+   "text": "But on the security cameras, the girl wasn't there.",
+   "tag": "[mysterious]",
+   "pause": 0.1
+  },
+  {
+   "text": "Every recording showed Nora standing alone.",
+   "tag": "[mysterious]",
+   "pause": 0.15
+  },
+  {
+   "text": "Smiling at herself.",
+   "tag": "[quietly]",
+   "pause": 0.35
+  },
+  {
+   "text": "That night, Nora locked every door.",
+   "tag": "[serious]",
+   "pause": 0.2
+  },
+  {
+   "text": "At 3 AM, her phone rang.",
+   "tag": "[mysterious]",
+   "pause": 0.1,
+   "speak": "At three A.M., her phone rang."
+  },
+  {
+   "text": "The caller ID said MOM.",
+   "tag": "[mysterious]",
+   "pause": 0.1,
+   "speak": "The caller I.D. said, Mom."
+  },
+  {
+   "text": "But her mother was asleep beside her.",
+   "tag": "[serious]",
+   "pause": 0.2
+  },
+  {
+   "text": "Nora answered.",
+   "tag": "[quietly]",
+   "pause": 0.12
+  },
+  {
+   "text": "“Why are you pretending you don't remember me?”",
+   "tag": "[whispers]",
+   "pause": 0.85,
+   "voice": "girl",
+   "fx": "phone",
+   "speak": "Why are you pretending you don't remember me?"
+  },
+  {
+   "text": "Someone knocked on the bedroom window.",
+   "tag": "[serious]",
+   "pause": 0.15
+  },
+  {
+   "text": "Nora lived on the third floor.",
+   "tag": "[serious]",
+   "pause": 0.45
+  },
+  {
+   "text": "She slowly pulled back the curtain.",
+   "tag": "[quietly]",
+   "pause": 0.45
+  },
+  {
+   "text": "Nothing.",
+   "tag": "[quietly]",
+   "pause": 0.4
+  },
+  {
+   "text": "Her phone camera opened by itself.",
+   "tag": "[mysterious]",
+   "pause": 0.6
+  },
+  {
+   "text": "On the screen, the smiling girl stood directly behind her.",
+   "tag": "[serious]",
+   "pause": 0.15
+  },
+  {
+   "text": "Nora spun around.",
+   "tag": "[serious]",
+   "pause": 0.2
+  },
+  {
+   "text": "The room was empty.",
+   "tag": "[quietly]",
+   "pause": 0.3
+  },
+  {
+   "text": "Her phone buzzed again.",
+   "tag": "[mysterious]",
+   "pause": 0.1
+  },
+  {
+   "text": "A photograph appeared.",
+   "tag": "[mysterious]",
+   "pause": 0.1
+  },
+  {
+   "text": "Two little girls holding hands.",
+   "tag": "[mysterious]",
+   "pause": 0.1
+  },
+  {
+   "text": "One was Nora.",
+   "tag": "[quietly]",
+   "pause": 0.2
+  },
+  {
+   "text": "The other had no face.",
+   "tag": "[serious]",
+   "pause": 0.3
+  },
+  {
+   "text": "Underneath were four words.",
+   "tag": "[quietly]",
+   "pause": 0.35
+  },
+  {
+   "text": "“YOU PROMISED WE'D SWITCH BACK.”",
+   "tag": "[whispers]",
+   "pause": 0.1,
+   "voice": "girl",
+   "fx": "whisper",
+   "speak": "You promised we'd switch back."
+  }
+ ],
+ "samples": {},
+ "sound": {
+  "key": 45,
+  "music_gain": 0.3,
+  "music": [
+   [
+    "0",
+    "mystery"
+   ],
+   [
+    "L6-0.2",
+    "suspense"
+   ],
+   [
+    "L10-0.3",
+    "dread"
+   ],
+   [
+    "L15e+0.05",
+    "silence"
+   ],
+   [
+    "L17-0.1",
+    "suspense"
+   ],
+   [
+    "L20-0.1",
+    "silence"
+   ],
+   [
+    "L22+0.5",
+    "dread"
+   ],
+   [
+    "L24-0.1",
+    "silence"
+   ],
+   [
+    "L25+0.1",
+    "mystery"
+   ],
+   [
+    "L29-0.2",
+    "dread"
+   ]
+  ],
+  "cues": [
+   [
+    "0",
+    "suburb",
+    0.4,
+    {
+     "dur": 5.4
+    }
+   ],
+   [
+    "0.05",
+    "footsteps",
+    0.3,
+    {
+     "dur": 1.7,
+     "rate": 2.1
+    }
+   ],
+   [
+    "L2-0.1",
+    "vent",
+    0.12,
+    {
+     "dur": 3.0
+    }
+   ],
+   [
+    "L4-0.1",
+    "buzz",
+    0.1,
+    {
+     "dur": 2.6,
+     "f": 120
+    }
+   ],
+   [
+    "L5+0.1",
+    "heartbeat",
+    0.35,
+    {
+     "dur": 1.4,
+     "bpm": 96
+    }
+   ],
+   [
+    "L6-0.12",
+    "hum",
+    0.14,
+    {
+     "dur": 7.8,
+     "f": 60
+    }
+   ],
+   [
+    "L7-0.1",
+    "static",
+    0.08,
+    {
+     "dur": 1.0
+    }
+   ],
+   [
+    "L8-0.1",
+    "static",
+    0.08,
+    {
+     "dur": 0.8
+    }
+   ],
+   [
+    "L9-0.1",
+    "glitch",
+    0.25,
+    {
+     "dur": 0.7
+    }
+   ],
+   [
+    "L10-0.15",
+    "roomtone",
+    0.35,
+    {
+     "dur": 2.6
+    }
+   ],
+   [
+    "ev:bolt",
+    "lockturn",
+    0.85
+   ],
+   [
+    "ev:chain",
+    "chainslide",
+    0.75
+   ],
+   [
+    "L11-0.1",
+    "roomtone",
+    0.45,
+    {
+     "dur": 28.0
+    }
+   ],
+   [
+    "ev:ring",
+    "phonebuzz",
+    0.65,
+    {
+     "dur": 3.2
+    }
+   ],
+   [
+    "ev:ring",
+    "ringtone",
+    0.3,
+    {
+     "dur": 3.2
+    }
+   ],
+   [
+    "ev:tap",
+    "pop",
+    0.18
+   ],
+   [
+    "ev:knock1",
+    "knock",
+    0.95
+   ],
+   [
+    "ev:knock2",
+    "knock",
+    0.95
+   ],
+   [
+    "ev:knock3",
+    "knock",
+    0.95
+   ],
+   [
+    "ev:knock4",
+    "knock",
+    0.8
+   ],
+   [
+    "ev:knock5",
+    "knock",
+    0.8
+   ],
+   [
+    "ev:knock1+0.2",
+    "heartbeat",
+    0.45,
+    {
+     "dur": 3.6,
+     "bpm": 112
+    }
+   ],
+   [
+    "L17-0.1",
+    "wind",
+    0.3,
+    {
+     "dur": 3.2
+    }
+   ],
+   [
+    "ev:pull",
+    "curtain",
+    0.65,
+    {
+     "dur": 1.9
+    }
+   ],
+   [
+    "L19-0.12",
+    "wind",
+    0.3,
+    {
+     "dur": 2.4
+    }
+   ],
+   [
+    "ev:camOn",
+    "pop",
+    0.22
+   ],
+   [
+    "ev:girl",
+    "scarehit",
+    1.0
+   ],
+   [
+    "ev:spin",
+    "whoosh",
+    0.55,
+    {
+     "dur": 0.6
+    }
+   ],
+   [
+    "ev:buzz",
+    "phonebuzz",
+    0.75,
+    {
+     "dur": 0.9
+    }
+   ],
+   [
+    "ev:photo",
+    "ding",
+    0.3
+   ],
+   [
+    "ev:words",
+    "drone",
+    0.3,
+    {
+     "dur": 6.0,
+     "f": 49
+    }
+   ]
+  ]
+ },
+ "fps": 60
+}

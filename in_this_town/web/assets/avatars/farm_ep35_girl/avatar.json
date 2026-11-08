@@ -1,0 +1,36 @@
+{
+ "key": "farm_ep35_girl",
+ "source": {
+  "route": "one-off Studio capture (Episode 35), the steps of tools/farm_avatars.py",
+  "scene": "scenes/sandbox/avcap_ep35.lua",
+  "capture_id": "smile_a",
+  "label": "The smiling girl (Episode 35, an original design): mint sweater with a white collar 6068451873, skirt with white socks and black mary janes 5841116922, long straight black hair 104772504057431",
+  "catalog_items": [
+   6068451873,
+   5841116922,
+   104772504057431
+  ]
+ },
+ "obj": "model.obj",
+ "mtl": "model.mtl",
+ "yaw": 0,
+ "fetched": "2026-11-08",
+ "groups": [
+  "Head",
+  "LeftFoot",
+  "LeftHand",
+  "LeftLowerArm",
+  "LeftLowerLeg",
+  "LeftUpperArm",
+  "LeftUpperLeg",
+  "LowerTorso",
+  "RightFoot",
+  "RightHand",
+  "RightLowerArm",
+  "RightLowerLeg",
+  "RightUpperArm",
+  "RightUpperLeg",
+  "UpperTorso",
+  "acc_Accessory_MeshPart"
+ ]
+}

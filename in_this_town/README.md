@@ -325,6 +325,31 @@ change. Episode 17 imports its package, model house and cardboard sky from the l
 * Hand-keyed clips: kneel, kneelUp, kneelDown, dive, slap, doorKick, shotDown (`keyed:<name>`). Mixamo was unreachable (its Chrome profile
   exits with code 21).
 
+### Episode 35 notes (the girl who never blinked; Psychological Horror, Episodes 35-39)
+
+* **Two-pass shots**: `renderAt` takes the shot's name with `shotAt`, poses everyone, then calls `shotAt` again for the camera. Phone
+  inserts frame from the posed phone (`scrPt(u, v, d)`: a point on or in front of the screen); a one-pass director aims at last frame's phone.
+* **aimArm needs a fresh world matrix**: after `place()` moves a character, call `c.root.updateMatrixWorld(true)` before `aimArm` (ep35
+  wraps it), or the arm aims from where the body was last frame. Measure `armLen` once in setup: it calls `reset()`, which wipes a pose.
+* **The neck's y rotation turns the face to the character's LEFT** (positive). Facing +z, the right arm (`arms[0]`) is on -x.
+* **The phone**: a box with a ShaderMaterial screen mixing a UI canvas (redrawn only when its state key changes: call, in-call, camera,
+  notification, message with the photo and the words) and a selfie render target. `holdPhone` aims the right arm and slides the phone up the
+  hand so the forearm stays below the screen. The selfie camera sits at the phone's top edge and looks between her face and the girl behind
+  her; the girl exists only in that render. Keep the phone light dim in the selfie (1.6) or her face blows out.
+* **The photograph**: the two little girls (the avatars at scale 0.62, hands joined with `aimArm` to one point) rendered once into a
+  half-float target, resolved, read back (`DataUtils.fromHalfFloat`) and graded on a canvas (faded, warm, lifted blacks, grain, a crease, a
+  date stamp). The faceless girl: hide `faceSheet`.
+* **CCTV**: `cctvMat(rt)` (pixelated, desaturated, scan lines, noise, an occasional tear, an OSD canvas). The live feed borrows Nora and
+  the street, so render it before posing the office; hide the street camera's own body in its feed; centre the subject in the 16:9 feed (a
+  9:16 shot of the monitor sees only its middle third).
+* **The smiling girl's fringe** covered her eyes: ep35 lifts her hair mesh 0.24 studs (and scales it 1.03) so the unblinking eyes read.
+* Lying in bed: `lie(c, x, zHead)` (position in the room's frame), a 0.16 rad tilt so the head rests on the pillow; the duvets run from the
+  shoulders to a tent over the feet.
+* New SFX in `audio2.py`: phonebuzz, ringtone, lockturn, chainslide, curtain, scarehit, roomtone, suburb; voice fx `phone` (300-3400 Hz,
+  soft saturation, dry, faint line hiss).
+* `render.js frames` skips frames that exist: delete a range before re-rendering it.
+* New avatars: `farm_ep35_nora`, `farm_ep35_girl` (one-off Studio captures; sources in their `avatar.json`).
+
 ### Free models from other sites
 
 Only when a story needs one; no bulk downloads. Add it with the licence recorded:
