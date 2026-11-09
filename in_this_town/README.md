@@ -656,6 +656,10 @@ ch.faceStyle = (x) => 'lash:' + x;   // (Episode 22's faceOf helper) one charact
 
 Every lie makes you lighter. Floating is a pure function of time: `place()` plus a height curve, with the dome's own `.glassY(x, z)` as the ceiling, so a flight can never go through the glass; check any new flight path against the chandelier ring (r 18.8+). Worn props (`wt_iron_boots`, `wt_paper_slippers`, `wt_diver_belt`, `wt_mitt`) need `o.character`; the library page skips them. Cover a character standing between the camera and the subject with the shot's hide list rather than a contorted camera. Add a fourth `dbgchar` value to shift the look height when the caption covers the mouth. Director `web/episodes/ep106.js`, kit `web/engine/lighterlies.js`, sound `tools/ep106_sound.py`, library names `wt_*`.
 
+## Remake 7 notes (The Voice in Every Ear)
+
+A town where a gold bead feeds everyone their words. The wrongness is all in light and timing: `SUN` mixes toward `WRONG` and `DUSKW`, and a freeze is a held `t` for everyone at once. `merrowbay.js` holds the kit (`mb_*` in the library). A long lunch table only shows a row of faces from an oblique angle or from the far end of the room: a 9:16 frame is about 27 degrees wide at fov 46. Seated heads are near y 4.4, so keep tables under about 3. `tools/ep107_sound.py` writes the sound block; the table's flat laugh and the last line's two extra voices are `sample` cues. A hair check caught `farm_ep28_ruby` (a strand crosses the eye) and `hc_maya`: both are poor leads.
+
 ## Making the next episode
 
 Copy the episode JSON (lines + captions), then copy `web/episodes/ep06.js` and change its palettes, shots and

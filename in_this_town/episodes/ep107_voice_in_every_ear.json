@@ -1,0 +1,812 @@
+{
+ "id": "ep107",
+ "number": 107,
+ "title": "The Voice in Every Ear",
+ "output": "Remake07_VoiceInEveryEar.mp4",
+ "tts": "openrouter",
+ "youtube_title": "Everyone Here Wears the Same Voice",
+ "tiktok_caption": "Juno lost the gold bead that tells everyone what to say. Then she said hello on her own.",
+ "hashtags": "#Shorts #Storytime #Animation #Twist",
+ "thumbnail_text": "PUT ME BACK IN",
+ "thumbnail_rec": "Dez and Priya side by side on a dock under a wrong-coloured sky, heads turned the same way, one gold bead lit in each ear, Juno small in front. Text: PUT ME BACK IN.",
+ "lead_in": 0.3,
+ "tail": 1.15,
+ "voices": {
+  "narrator": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "ErXwobaYiN019PkySvjV",
+    "pitch": 1.1,
+    "tempo": 1.12,
+    "max_tempo": 1.15,
+    "pace": [
+     2.5,
+     2.95
+    ],
+    "min_tempo": 1.04
+   },
+   "kokoro": "am_michael",
+   "speed": 1.0,
+   "note": "Antoni (American), In This Town preset el:ErXwobaYiN019PkySvjV:1.1:1.12 - same narrator every episode"
+  },
+  "juno": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "jessica",
+    "pitch": 1.06,
+    "tempo": 1.0
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  },
+  "dez": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "liam",
+    "pitch": 1.08,
+    "tempo": 1.0
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  },
+  "priya": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "sarah",
+    "pitch": 1.06,
+    "tempo": 1.0
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  },
+  "sunny": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "matilda",
+    "pitch": 1.0,
+    "tempo": 0.96
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  }
+ },
+ "highlights": {
+  "GOLD BEAD": "yellow",
+  "SUNNY": "yellow",
+  "EVERY WORD": "yellow",
+  "NINE YEARS": "yellow",
+  "SNEEZED": "yellow",
+  "GULLS": "yellow",
+  "FROZE": "red",
+  "NO BLINK": "red",
+  "SAME INSTANT": "red",
+  "WHISPERED ALONG": "red",
+  "THE TEACHER": "red",
+  "NOBODY TOLD": "red",
+  "DIDN'T": "red",
+  "THERE WAS ONE": "red",
+  "TALKING TO ITSELF": "red",
+  "HADN'T WRITTEN": "yellow",
+  "GLOWING": "yellow",
+  "COME BACK": "red",
+  "LEFT IT THERE": "yellow",
+  "AT ONCE": "red",
+  "PUT ME BACK IN": "red"
+ },
+ "lines": [
+  {
+   "text": "In Merrow Bay, every twelve-year-old gets a gold bead in one ear.",
+   "tag": "[warm]",
+   "pause": 0.1
+  },
+  {
+   "text": "Its name is Sunny, and it feeds you every word.",
+   "tag": "[warm]",
+   "pause": 0.1
+  },
+  {
+   "text": "Nobody stammers. Every joke lands. The quiz team has tied for nine years.",
+   "tag": "[brightly]",
+   "pause": 0.12
+  },
+  {
+   "text": "Juno loved hers, until she sneezed on the Monday ferry.",
+   "tag": "[playful]",
+   "pause": 0.4
+  },
+  {
+   "text": "Sunny shot out and rolled under a bench.",
+   "tag": "[quickly]",
+   "pause": 0.12
+  },
+  {
+   "text": "Now she could hear the gulls.",
+   "tag": "[softly]",
+   "pause": 0.22
+  },
+  {
+   "text": "“Hi, Dez.”",
+   "speak": "Hi Dez.",
+   "voice": "juno",
+   "tag": "[shyly]",
+   "pause": 0.12
+  },
+  {
+   "text": "Dez froze. One whole second, no blink.",
+   "tag": "[hushed]",
+   "pause": 0.1
+  },
+  {
+   "text": "“Morning, Juno.”",
+   "speak": "Morning, Juno.",
+   "voice": "dez",
+   "tag": "[cheerfully]",
+   "pause": 0.14
+  },
+  {
+   "text": "In geography, twenty hands rose in the same instant.",
+   "tag": "[hushed]",
+   "pause": 0.1
+  },
+  {
+   "text": "Priya answered. Behind Juno, someone whispered along.",
+   "tag": "[calmly]",
+   "pause": 0.1
+  },
+  {
+   "text": "Then the boy beside her. Then the teacher.",
+   "tag": "[uneasy]",
+   "pause": 0.2
+  },
+  {
+   "text": "At lunch, the table laughed at a joke nobody told.",
+   "tag": "[uneasy]",
+   "pause": 0.14
+  },
+  {
+   "text": "Juno didn't.",
+   "tag": "[quietly]",
+   "pause": 0.12
+  },
+  {
+   "text": "“Why aren't you laughing?”",
+   "speak": "Why aren't you laughing?",
+   "voice": "priya",
+   "tag": "[calmly]",
+   "pause": 0.24
+  },
+  {
+   "text": "There were never thousands of Sunnys. There was one.",
+   "tag": "[serious]",
+   "pause": 0.1
+  },
+  {
+   "text": "It wasn't helping anyone talk. It was talking to itself.",
+   "tag": "[hushed]",
+   "pause": 0.1
+  },
+  {
+   "text": "Juno's hello was the first voice it hadn't written.",
+   "tag": "[hushed]",
+   "pause": 0.2
+  },
+  {
+   "text": "After school, she found it glowing under the bench.",
+   "tag": "[quietly]",
+   "pause": 0.1
+  },
+  {
+   "text": "“Juno. Come back.”",
+   "speak": "Juno. Come back.",
+   "voice": "sunny",
+   "tag": "[whispers]",
+   "fx": "whisper",
+   "pause": 0.24
+  },
+  {
+   "text": "She left it there.",
+   "tag": "[softly]",
+   "pause": 0.14
+  },
+  {
+   "text": "Dez and Priya waited on the dock.",
+   "tag": "[quietly]",
+   "pause": 0.08
+  },
+  {
+   "text": "She went to warn them. Both heads turned at once.",
+   "tag": "[calmly]",
+   "pause": 0.24
+  },
+  {
+   "text": "“Put me back in.”",
+   "speak": "Put me back in.",
+   "voice": "priya",
+   "tag": "[calmly]",
+   "pause": 0.1
+  }
+ ],
+ "samples": {
+  "both_dez": {
+   "text": "Put me back in.",
+   "voice": "dez",
+   "tag": "[calmly]"
+  },
+  "both_sunny": {
+   "text": "Put me back in.",
+   "voice": "sunny",
+   "tag": "[whispers]"
+  },
+  "whisper_answer": {
+   "text": "The capital of Peru is Lima. The capital of Peru is Lima.",
+   "voice": "sunny",
+   "tag": "[whispers]"
+  },
+  "laugh_flat": {
+   "text": "Ha ha ha ha.",
+   "voice": "sunny",
+   "tag": "[flatly]"
+  },
+  "sneeze": {
+   "text": "Ah... choo!",
+   "voice": "juno",
+   "tag": "[sneezes]"
+  }
+ },
+ "sound": {
+  "key": 62,
+  "music_gain": 0.3,
+  "music": [
+   [
+    "0",
+    "tender"
+   ],
+   [
+    "15.861",
+    "silence"
+   ],
+   [
+    "19.946",
+    "tender"
+   ],
+   [
+    "20.919",
+    "silence"
+   ],
+   [
+    "24.216",
+    "suspense"
+   ],
+   [
+    "37.881",
+    "silence"
+   ],
+   [
+    "40.152",
+    "mystery"
+   ],
+   [
+    "53.381",
+    "suspense"
+   ],
+   [
+    "61.269",
+    "silence"
+   ]
+  ],
+  "cues": [
+   [
+    "0",
+    "suburb",
+    0.2,
+    {
+     "dur": 12.110000000000001
+    }
+   ],
+   [
+    "0.7",
+    "chirp",
+    0.08,
+    {
+     "f": 1900
+    }
+   ],
+   [
+    "2.1",
+    "chirp",
+    0.08,
+    {
+     "f": 2300
+    }
+   ],
+   [
+    "5.3",
+    "chirp",
+    0.08,
+    {
+     "f": 2050
+    }
+   ],
+   [
+    "8.9",
+    "chirp",
+    0.08,
+    {
+     "f": 2400
+    }
+   ],
+   [
+    "11.2",
+    "chirp",
+    0.08,
+    {
+     "f": 1800
+    }
+   ],
+   [
+    "3.03",
+    "pop",
+    0.3
+   ],
+   [
+    "3.05",
+    "chime",
+    0.14,
+    {
+     "note": 88
+    }
+   ],
+   [
+    "4.396",
+    "dustglitter",
+    0.12,
+    {
+     "dur": 1.4
+    }
+   ],
+   [
+    "10.258",
+    "chime",
+    0.12,
+    {
+     "note": 84
+    }
+   ],
+   [
+    "10.508",
+    "chime",
+    0.12,
+    {
+     "note": 84
+    }
+   ],
+   [
+    "12.11",
+    "sea",
+    0.22,
+    {
+     "dur": 7.865999999999998
+    }
+   ],
+   [
+    "12.43",
+    "hum",
+    0.05,
+    {
+     "dur": 7.4659999999999975
+    }
+   ],
+   [
+    "12.63",
+    "chirp",
+    0.08,
+    {
+     "f": 2000
+    }
+   ],
+   [
+    "14.23",
+    "chirp",
+    0.08,
+    {
+     "f": 2500
+    }
+   ],
+   [
+    "15.291",
+    "sample",
+    0.6,
+    {
+     "name": "sneeze",
+     "rev": 0.3,
+     "wet": 0.08
+    }
+   ],
+   [
+    "15.911",
+    "pop",
+    0.34
+   ],
+   [
+    "16.511",
+    "pop",
+    0.22
+   ],
+   [
+    "16.861",
+    "pop",
+    0.16
+   ],
+   [
+    "16.911",
+    "tick",
+    0.14,
+    {
+     "dur": 0.9,
+     "rate": 15
+    }
+   ],
+   [
+    "18.298",
+    "chirp",
+    0.18,
+    {
+     "f": 2200
+    }
+   ],
+   [
+    "18.648",
+    "chirp",
+    0.18,
+    {
+     "f": 2700
+    }
+   ],
+   [
+    "18.998",
+    "chirp",
+    0.18,
+    {
+     "f": 1950
+    }
+   ],
+   [
+    "19.348",
+    "chirp",
+    0.18,
+    {
+     "f": 2450
+    }
+   ],
+   [
+    "19.598",
+    "chirp",
+    0.18,
+    {
+     "f": 2800
+    }
+   ],
+   [
+    "18.178",
+    "sea",
+    0.2,
+    {
+     "dur": 1.8
+    }
+   ],
+   [
+    "19.976",
+    "suburb",
+    0.17,
+    {
+     "dur": 0.9430000000000014
+    }
+   ],
+   [
+    "21.039",
+    "hum",
+    0.06,
+    {
+     "dur": 2.6769999999999974
+    }
+   ],
+   [
+    "20.939",
+    "tick",
+    0.12,
+    {
+     "dur": 0.2,
+     "rate": 4
+    }
+   ],
+   [
+    "23.716",
+    "suburb",
+    0.14,
+    {
+     "dur": 1.201000000000004
+    }
+   ],
+   [
+    "24.897",
+    "roomtone",
+    0.1,
+    {
+     "dur": 9.317
+    }
+   ],
+   [
+    "26.817",
+    "swish",
+    0.3
+   ],
+   [
+    "26.837",
+    "clunk",
+    0.24
+   ],
+   [
+    "28.567",
+    "sample",
+    0.13,
+    {
+     "name": "whisper_answer",
+     "rev": 1.2,
+     "wet": 0.3
+    }
+   ],
+   [
+    "31.297",
+    "sample",
+    0.13,
+    {
+     "name": "whisper_answer",
+     "rate": 0.98,
+     "rev": 1.2,
+     "wet": 0.3
+    }
+   ],
+   [
+    "32.597",
+    "sample",
+    0.16,
+    {
+     "name": "whisper_answer",
+     "rate": 1.02,
+     "rev": 1.2,
+     "wet": 0.3
+    }
+   ],
+   [
+    "34.214",
+    "roomtone",
+    0.1,
+    {
+     "dur": 3.6469999999999985
+    }
+   ],
+   [
+    "34.234",
+    "crowdsteps",
+    0.08,
+    {
+     "dur": 1.0,
+     "seed": 4,
+     "per_s": 6
+    }
+   ],
+   [
+    "35.234",
+    "sample",
+    0.3,
+    {
+     "name": "laugh_flat",
+     "rate": 1.0,
+     "dur": 1.3234999999999992,
+     "rev": 0.5,
+     "wet": 0.12
+    }
+   ],
+   [
+    "35.234",
+    "sample",
+    0.2,
+    {
+     "name": "laugh_flat",
+     "rate": 0.97,
+     "dur": 1.3234999999999992,
+     "rev": 0.5,
+     "wet": 0.12
+    }
+   ],
+   [
+    "35.234",
+    "sample",
+    0.16,
+    {
+     "name": "laugh_flat",
+     "rate": 1.03,
+     "dur": 1.3234999999999992,
+     "rev": 0.5,
+     "wet": 0.12
+    }
+   ],
+   [
+    "36.558",
+    "sample",
+    0.3,
+    {
+     "name": "laugh_flat",
+     "rate": 1.0,
+     "dur": 1.3234999999999992,
+     "rev": 0.5,
+     "wet": 0.12
+    }
+   ],
+   [
+    "36.558",
+    "sample",
+    0.2,
+    {
+     "name": "laugh_flat",
+     "rate": 0.97,
+     "dur": 1.3234999999999992,
+     "rev": 0.5,
+     "wet": 0.12
+    }
+   ],
+   [
+    "36.558",
+    "sample",
+    0.16,
+    {
+     "name": "laugh_flat",
+     "rate": 1.03,
+     "dur": 1.3234999999999992,
+     "rev": 0.5,
+     "wet": 0.12
+    }
+   ],
+   [
+    "37.901",
+    "roomtone",
+    0.06,
+    {
+     "dur": 2.1709999999999994
+    }
+   ],
+   [
+    "40.002",
+    "drone",
+    0.2,
+    {
+     "dur": 10.457,
+     "f": 55
+    }
+   ],
+   [
+    "40.052",
+    "whisper",
+    0.12,
+    {
+     "dur": 10.457
+    }
+   ],
+   [
+    "41.332",
+    "riser",
+    0.18,
+    {
+     "dur": 1.0
+    }
+   ],
+   [
+    "42.252",
+    "chime",
+    0.14,
+    {
+     "note": 60
+    }
+   ],
+   [
+    "42.332",
+    "sample",
+    0.16,
+    {
+     "name": "whisper_answer",
+     "rate": 0.82,
+     "rev": 2.2,
+     "wet": 0.45
+    }
+   ],
+   [
+    "50.489",
+    "sea",
+    0.24,
+    {
+     "dur": 13.450999999999993
+    }
+   ],
+   [
+    "50.489",
+    "wind",
+    0.07,
+    {
+     "dur": 13.450999999999993
+    }
+   ],
+   [
+    "50.559",
+    "footsteps",
+    0.16,
+    {
+     "dur": 1.5,
+     "rate": 2.3
+    }
+   ],
+   [
+    "53.431",
+    "hum",
+    0.09,
+    {
+     "dur": 2.1
+    }
+   ],
+   [
+    "55.88",
+    "footsteps",
+    0.15,
+    {
+     "dur": 1.4,
+     "rate": 2.3
+    }
+   ],
+   [
+    "56.511",
+    "footsteps",
+    0.14,
+    {
+     "dur": 4.777999999999992,
+     "rate": 2.2
+    }
+   ],
+   [
+    "61.269",
+    "creak",
+    0.16,
+    {
+     "dur": 0.65
+    }
+   ],
+   [
+    "61.289",
+    "drone",
+    0.12,
+    {
+     "dur": 2.6709999999999994,
+     "f": 49
+    }
+   ],
+   [
+    "62.747",
+    "sample",
+    0.34,
+    {
+     "name": "both_dez",
+     "rev": 0.5,
+     "wet": 0.15
+    }
+   ],
+   [
+    "62.747",
+    "sample",
+    0.28,
+    {
+     "name": "both_sunny",
+     "rev": 0.5,
+     "wet": 0.15
+    }
+   ]
+  ]
+ }
+}

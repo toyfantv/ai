@@ -280,7 +280,7 @@ export function crowd(o = {}) {
     const skin = pick(SKIN); head.setColorAt(i, c.set(skin)); armL.setColorAt(i, c.set(skin)); armR.setColorAt(i, c.set(skin));
     torso.setColorAt(i, c.set(pick(SHIRT))); legs.setColorAt(i, c.set(pick(LEGS))); hair.setColorAt(i, c.set(pick(HAIR)));
   }
-  const g = new THREE.Group(); Object.values(parts).forEach((m) => g.add(m));
+  const g = new THREE.Group(); Object.values(parts).forEach((m) => g.add(m)); g.people = people;
   const M = new THREE.Matrix4(), P = new THREE.Matrix4(), q = new THREE.Quaternion(), e = new THREE.Euler(), one = v3(1, 1, 1);
   const at = (mesh, i, base, x, y, z, rx = 0) => { M.compose(v3(x, y, z), q.setFromEuler(e.set(rx, 0, 0)), one); mesh.setMatrixAt(i, P.multiplyMatrices(base, M)); };
   const B = new THREE.Matrix4();

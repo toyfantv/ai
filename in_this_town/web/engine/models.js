@@ -27,6 +27,7 @@ import { voiceTunnel, drips as tunnelDrips, hillside as tunnelHillside, floodTri
 import { puppet, socketHead, stairHall, schoolCorridor, satchel, flashlightProp, strawRope, ofuda } from './folklore.js';
 import { cubeSeed, cubeStairs, gardenPlot, seedStall, wateringCan, wheelbarrow, scarecrow, floatingIsland, glassField, nameTree, bloomField } from './garden.js';
 import { ironBoots, paperSlippers, diverBelt, mitt as wtMitt, looseBoots, lostSlipper, rope as wtRope, fireLadder, hallClock, foundersHall, glassPeacock, auntSet, kitchenSet, cerealBox, courtroom, plumbwick, brookYard } from './lighterlies.js';
+import { goldBead as mbGoldBead, looseBead as mbLooseBead, bayWater as mbBayWater, gulls as mbGulls, ferry as mbFerry, harbour as mbHarbour, townBeads as mbTownBeads, threads as mbThreads, oneOrb as mbOneOrb, classroom as mbClassroom, lunchroom as mbLunchroom } from './merrowbay.js';
 import { greenhouse as sgGreenhouse, breadCart, gardenBench, cakeTable, partyHat as sgPartyHat, sickBed, quilt, ruthRoom, flowerMesh, larkspur } from './sorrygarden.js';
 import { mallHall, polishedFloor, directoryKiosk, clawMachine, automaticDoor, wetSign, mop as mallMop, bucket as mopBucket, shoppingBag, phoneProp, blockWall, exteriorFacade, paHorn } from './mall.js';
 import { ferrisWheel, carousel, ticketBooth, parkArch, exitGate as parkExitGate, chainFence, midwayStall, parkLamp, paSpeakers as parkPaSpeakers, broom, controlLever, ticketStub, bareStrings, popcornTub, balloon as nameBalloon, teaCups, swingRide, coaster as parkCoaster, blueCreature } from './amusement.js';
@@ -558,6 +559,17 @@ export const BUILD = {
   wt_founders_hall: (o) => put(o, foundersHall()),   // a round civic hall under a stained-glass dome with chandeliers and a dais; .glassY(x, z) is the glass height
   wt_glass_peacock: (o) => put(o, glassPeacock()),   // a tall glass peacock statue under a drape; .set(smash), .drape(k)
   wt_aunt_room: (o) => put(o, auntSet()),   // an aunt's dining room with a soup table; .bowl(), .top
+  mb_gold_bead: (o) => mbGoldBead(o.character, o.side ?? 1),   // a glowing gold bead worn in one ear (o.character, o.side); .level(k)
+  mb_loose_bead: (o) => put(o, mbLooseBead(o.r ?? 0.26)),   // a loose glowing gold bead; .level(k)
+  mb_bay_water: (o) => put(o, mbBayWater()),   // a bright animated sea at y = -6; .update(t)
+  mb_gulls: (o) => put(o, mbGulls(o.n ?? 14)),   // a flock of circling gulls; .update(t)
+  mb_ferry: (o) => put(o, mbFerry(o.name)),   // a small passenger ferry with benches and a striped canopy; .benches, .seatY, .update(t, k)
+  mb_harbour: (o) => put(o, mbHarbour()),   // a pastel harbour town: terraced houses, quay, dock and school; .beadSpots
+  mb_town_beads: (o) => put(o, mbTownBeads(o.list)),   // instanced gold glows, one at each point of o.list; .level(k)
+  mb_threads: (o) => put(o, mbThreads(o.n)),   // N thin glowing lines between pairs of points; .setLine(i, a, b, w), .level(k)
+  mb_one_orb: (o) => put(o, mbOneOrb()),   // a huge pale-gold orb hanging over a town; .set(k)
+  mb_classroom: (o) => put(o, mbClassroom()),   // a bright classroom with five by four desks, a blackboard and windows; .seat(col, row), .seatY, .deskTop
+  mb_lunchroom: (o) => put(o, mbLunchroom()),   // a school lunchroom with one long table laid with trays, benches and a counter; .seatY, .topY
   wt_kitchen: (o) => put(o, kitchenSet()),   // a bright kitchen with a window and table; .top
   wt_cereal_box: (o) => put(o, cerealBox()),   // a red and yellow cereal box
   wt_courtroom: (o) => put(o, courtroom()),   // a courtroom with a safety net under the ceiling; .netAt, .shapeNet

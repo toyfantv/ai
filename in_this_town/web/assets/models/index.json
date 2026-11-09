@@ -1239,6 +1239,116 @@
     "type": "builder",
     "url": ""
   },
+  "mb_bay_water": {
+    "author": "toyfantv",
+    "desc": "a bright animated sea at y = -6; .update(t)",
+    "kind": "set",
+    "licence": "own",
+    "made_for": "ep107",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "mb_classroom": {
+    "author": "toyfantv",
+    "desc": "a bright classroom with five by four desks, a blackboard and windows; .seat(col, row), .seatY, .deskTop",
+    "kind": "set",
+    "licence": "own",
+    "made_for": "ep107",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "mb_ferry": {
+    "author": "toyfantv",
+    "desc": "a small passenger ferry with benches and a striped canopy; .benches, .seatY, .update(t, k)",
+    "kind": "vehicle",
+    "licence": "own",
+    "made_for": "ep107",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "mb_gold_bead": {
+    "author": "toyfantv",
+    "desc": "a glowing gold bead worn in one ear (o.character, o.side); .level(k)",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep107",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "mb_gulls": {
+    "author": "toyfantv",
+    "desc": "a flock of circling gulls; .update(t)",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep107",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "mb_harbour": {
+    "author": "toyfantv",
+    "desc": "a pastel harbour town: terraced houses, quay, dock and school; .beadSpots",
+    "kind": "set",
+    "licence": "own",
+    "made_for": "ep107",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "mb_loose_bead": {
+    "author": "toyfantv",
+    "desc": "a loose glowing gold bead; .level(k)",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep107",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "mb_lunchroom": {
+    "author": "toyfantv",
+    "desc": "a school lunchroom with one long table laid with trays, benches and a counter; .seatY, .topY",
+    "kind": "set",
+    "licence": "own",
+    "made_for": "ep107",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "mb_one_orb": {
+    "author": "toyfantv",
+    "desc": "a huge pale-gold orb hanging over a town; .set(k)",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep107",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "mb_threads": {
+    "author": "toyfantv",
+    "desc": "N thin glowing lines between pairs of points; .setLine(i, a, b, w), .level(k)",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep107",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "mb_town_beads": {
+    "author": "toyfantv",
+    "desc": "instanced gold glows, one at each point of o.list; .level(k)",
+    "kind": "effect",
+    "licence": "own",
+    "made_for": "ep107",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "metal_pipe": {
     "author": "toyfantv",
     "desc": "a steel scaffold pipe",
