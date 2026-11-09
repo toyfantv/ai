@@ -1,0 +1,633 @@
+{
+ "id": "ep101",
+ "number": 101,
+ "title": "The Sorry Garden",
+ "output": "Remake01_SorryGarden.mp4",
+ "tts": "openrouter",
+ "youtube_title": "In This Town, Every Cruel Thing You Do Grows On Your Skin",
+ "tiktok_caption": "Everyone avoided the man covered in black flowers. Then Nell asked whose they were.",
+ "hashtags": "#Shorts #Storytime #Animation #Fable",
+ "thumbnail_text": "NOT ONE WAS HIS",
+ "thumbnail_rec": "Nell reaching one finger to a black dahlia on Mr. Hollis's flower-covered hand, bright garden behind, one flower turning to dust.",
+ "lead_in": 0.3,
+ "tail": 2.0,
+ "voices": {
+  "narrator": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "ErXwobaYiN019PkySvjV",
+    "pitch": 1.1,
+    "tempo": 1.12,
+    "max_tempo": 1.15,
+    "pace": [
+     2.5,
+     2.95
+    ],
+    "min_tempo": 1.04
+   },
+   "kokoro": "am_michael",
+   "speed": 1.0,
+   "note": "Antoni (American), In This Town preset el:ErXwobaYiN019PkySvjV:1.1:1.12 - same narrator every episode"
+  },
+  "nell": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "jessica",
+    "pitch": 1.03,
+    "tempo": 1.05
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  },
+  "hollis": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "bill",
+    "pitch": 0.95,
+    "tempo": 1.0
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  }
+ },
+ "highlights": {
+  "FLOWER": "yellow",
+  "BUTTERCUP": "yellow",
+  "THISTLE": "purple",
+  "REAL SORRY": "yellow",
+  "ONE PETAL": "yellow",
+  "BLACK DAHLIAS": "purple",
+  "NOBODY": "red",
+  "SMASHED": "red",
+  "NOTHING GREW": "yellow",
+  "WOUND": "red",
+  "INWARD": "red",
+  "RUTH": "yellow",
+  "HER FLOWERS": "yellow",
+  "HIS": "yellow",
+  "FORGIVE": "yellow",
+  "WHOLE STREET": "yellow"
+ },
+ "lines": [
+  {
+   "text": "Hurt someone in Larkspur, and a flower sprouts from your skin.",
+   "tag": "[warm]",
+   "pause": 0.14
+  },
+  {
+   "text": "Forget a birthday? A buttercup on your thumb.",
+   "tag": "[playful]",
+   "pause": 0.12
+  },
+  {
+   "text": "Break a heart? A thistle across your cheek.",
+   "tag": "[calm]",
+   "pause": 0.12
+  },
+  {
+   "text": "Only a real sorry, truly forgiven, makes it drop.",
+   "tag": "[calm]",
+   "pause": 0.14
+  },
+  {
+   "text": "Nell, the bakery girl, had never grown one petal.",
+   "tag": "[warm]",
+   "pause": 0.12
+  },
+  {
+   "text": "Mr. Hollis wore black dahlias, collar to fingertips.",
+   "speak": "Mister Hollis wore black dahlias, collar to fingertips.",
+   "tag": "[mysterious]",
+   "pause": 0.1
+  },
+  {
+   "text": "Nobody went near him.",
+   "tag": "[softly]",
+   "pause": 0.14
+  },
+  {
+   "text": "One windy Monday, her bread cart got loose and smashed his greenhouse.",
+   "tag": "[excited]",
+   "pause": 0.1
+  },
+  {
+   "text": "“I'm so sorry!”",
+   "speak": "I'm so sorry!",
+   "voice": "nell",
+   "tag": "[panicked]",
+   "pause": 0.1
+  },
+  {
+   "text": "She checked her arms. Nothing grew.",
+   "tag": "[curious]",
+   "pause": 0.12
+  },
+  {
+   "text": "“It's only glass.”",
+   "speak": "It's only glass.",
+   "voice": "hollis",
+   "tag": "[flatly]",
+   "pause": 0.12
+  },
+  {
+   "text": "A flower needs a wound. He had nothing left to wound.",
+   "tag": "[softly]",
+   "pause": 0.14
+  },
+  {
+   "text": "A week later, she asked.",
+   "tag": "[calm]",
+   "pause": 0.08
+  },
+  {
+   "text": "“Who did you hurt?”",
+   "speak": "Who did you hurt?",
+   "voice": "nell",
+   "tag": "[quietly]",
+   "pause": 0.1
+  },
+  {
+   "text": "A buttercup popped up on her thumb.",
+   "tag": "[playful]",
+   "pause": 0.12
+  },
+  {
+   "text": "“Nobody.”",
+   "speak": "Nobody.",
+   "voice": "hollis",
+   "tag": "[softly]",
+   "pause": 0.14
+  },
+  {
+   "text": "He folded back his cuff. The roots ran inward.",
+   "tag": "[mysterious]",
+   "pause": 0.14
+  },
+  {
+   "text": "“My Ruth was dying, and the pain made her cruel.”",
+   "speak": "My Ruth was dying, and the pain made her cruel.",
+   "voice": "hollis",
+   "tag": "[sadly]",
+   "pause": 0.12
+  },
+  {
+   "text": "“So I took her flowers. She left clean.”",
+   "speak": "So I took her flowers. She left clean.",
+   "voice": "hollis",
+   "tag": "[softly]",
+   "pause": 0.16
+  },
+  {
+   "text": "Not one bloom was his.",
+   "tag": "[softly]",
+   "pause": 0.2
+  },
+  {
+   "text": "Nell touched the blackest dahlia.",
+   "tag": "[softly]",
+   "pause": 0.12
+  },
+  {
+   "text": "“I forgive her.”",
+   "speak": "I forgive her.",
+   "voice": "nell",
+   "tag": "[softly]",
+   "pause": 0.16
+  },
+  {
+   "text": "It crumbled, and blew away.",
+   "tag": "[warm]",
+   "pause": 0.14
+  },
+  {
+   "text": "Nell ran for town.",
+   "tag": "[excited]",
+   "pause": 0.14
+  },
+  {
+   "text": "By morning, the whole street lined up at his gate.",
+   "tag": "[warm]",
+   "pause": 0.2
+  }
+ ],
+ "samples": {},
+ "sound": {
+  "key": 57,
+  "music_gain": 0.3,
+  "music": [
+   [
+    "0",
+    "tender"
+   ],
+   [
+    "22.714",
+    "suspense"
+   ],
+   [
+    "25.034",
+    "silence"
+   ],
+   [
+    "34.997",
+    "musicbox"
+   ],
+   [
+    "43.982",
+    "mystery"
+   ],
+   [
+    "53.049",
+    "tender_hope"
+   ]
+  ],
+  "cues": [
+   [
+    "0",
+    "suburb",
+    0.2,
+    {
+     "dur": 43.982
+    }
+   ],
+   [
+    "51.242",
+    "suburb",
+    0.2,
+    {
+     "dur": 13.605999999999998
+    }
+   ],
+   [
+    "1.3",
+    "chirp",
+    0.09,
+    {
+     "f": 1500
+    }
+   ],
+   [
+    "3.6",
+    "chirp",
+    0.09,
+    {
+     "f": 1750
+    }
+   ],
+   [
+    "5.2",
+    "chirp",
+    0.09,
+    {
+     "f": 1350
+    }
+   ],
+   [
+    "14.4",
+    "chirp",
+    0.09,
+    {
+     "f": 1600
+    }
+   ],
+   [
+    "18.6",
+    "chirp",
+    0.09,
+    {
+     "f": 1450
+    }
+   ],
+   [
+    "32.2",
+    "chirp",
+    0.09,
+    {
+     "f": 1250
+    }
+   ],
+   [
+    "36.0",
+    "chirp",
+    0.09,
+    {
+     "f": 1650
+    }
+   ],
+   [
+    "59.9",
+    "chirp",
+    0.09,
+    {
+     "f": 1700
+    }
+   ],
+   [
+    "61.3",
+    "chirp",
+    0.09,
+    {
+     "f": 1500
+    }
+   ],
+   [
+    "63.0",
+    "chirp",
+    0.09,
+    {
+     "f": 1800
+    }
+   ],
+   [
+    "2.5",
+    "knock",
+    0.3
+   ],
+   [
+    "2.58",
+    "swish",
+    0.14
+   ],
+   [
+    "2.85",
+    "pop",
+    0.42
+   ],
+   [
+    "2.87",
+    "chime",
+    0.09,
+    {
+     "note": 84
+    }
+   ],
+   [
+    "6.314",
+    "pop",
+    0.42
+   ],
+   [
+    "6.334",
+    "chime",
+    0.09,
+    {
+     "note": 88
+    }
+   ],
+   [
+    "9.068",
+    "pop",
+    0.42
+   ],
+   [
+    "9.088",
+    "chime",
+    0.09,
+    {
+     "note": 79
+    }
+   ],
+   [
+    "39.06",
+    "pop",
+    0.42
+   ],
+   [
+    "39.08",
+    "chime",
+    0.09,
+    {
+     "note": 91
+    }
+   ],
+   [
+    "12.755",
+    "dustglitter",
+    0.2,
+    {
+     "dur": 1.4
+    }
+   ],
+   [
+    "12.805",
+    "swish",
+    0.1
+   ],
+   [
+    "13.734",
+    "footsteps",
+    0.13,
+    {
+     "dur": 3.1870000000000003,
+     "rate": 2.6
+    }
+   ],
+   [
+    "22.314",
+    "wind",
+    0.26,
+    {
+     "dur": 4.5
+    }
+   ],
+   [
+    "22.814",
+    "whoosh",
+    0.2,
+    {
+     "dur": 0.9
+    }
+   ],
+   [
+    "22.934",
+    "creak",
+    0.18,
+    {
+     "dur": 0.9
+    }
+   ],
+   [
+    "23.014",
+    "rumble",
+    0.3,
+    {
+     "dur": 2.0500000000000016
+    }
+   ],
+   [
+    "23.634",
+    "run",
+    0.2,
+    {
+     "dur": 2.2910000000000013
+    }
+   ],
+   [
+    "24.994",
+    "clunk",
+    0.5
+   ],
+   [
+    "25.014",
+    "shatter",
+    0.8
+   ],
+   [
+    "25.094",
+    "glass",
+    0.32,
+    {
+     "dur": 1.6
+    }
+   ],
+   [
+    "25.514",
+    "tick",
+    0.12,
+    {
+     "dur": 0.9,
+     "rate": 9
+    }
+   ],
+   [
+    "31.177",
+    "wind",
+    0.08,
+    {
+     "dur": 3.9800000000000004
+    }
+   ],
+   [
+    "35.147",
+    "footsteps",
+    0.15,
+    {
+     "dur": 1.5,
+     "rate": 2.2
+    }
+   ],
+   [
+    "41.842",
+    "paper",
+    0.2,
+    {
+     "dur": 0.8
+    }
+   ],
+   [
+    "44.032",
+    "roomtone",
+    0.1,
+    {
+     "dur": 7.210000000000001
+    }
+   ],
+   [
+    "46.082",
+    "knock",
+    0.14
+   ],
+   [
+    "47.891",
+    "flutter",
+    0.22,
+    {
+     "dur": 1.9499999999999944,
+     "rate": 7
+    }
+   ],
+   [
+    "47.991",
+    "swish",
+    0.12
+   ],
+   [
+    "49.841",
+    "chime",
+    0.14,
+    {
+     "note": 76
+    }
+   ],
+   [
+    "54.599",
+    "swish",
+    0.06
+   ],
+   [
+    "56.401",
+    "scrape",
+    0.2,
+    {
+     "dur": 0.7,
+     "seed": 31
+    }
+   ],
+   [
+    "56.441",
+    "dustglitter",
+    0.34,
+    {
+     "dur": 2.6
+    }
+   ],
+   [
+    "56.541",
+    "wind",
+    0.2,
+    {
+     "dur": 2.4
+    }
+   ],
+   [
+    "56.491",
+    "chime",
+    0.14,
+    {
+     "note": 83
+    }
+   ],
+   [
+    "58.258",
+    "run",
+    0.18,
+    {
+     "dur": 1.5
+    }
+   ],
+   [
+    "59.733",
+    "crowdsteps",
+    0.16,
+    {
+     "dur": 5.0649999999999995,
+     "seed": 7,
+     "per_s": 9
+    }
+   ],
+   [
+    "59.983",
+    "creak",
+    0.14,
+    {
+     "dur": 1.1
+    }
+   ],
+   [
+    "61.883",
+    "dustglitter",
+    0.2,
+    {
+     "dur": 2.4
+    }
+   ],
+   [
+    "62.748",
+    "chime",
+    0.14,
+    {
+     "note": 88
+    }
+   ]
+  ]
+ }
+}

@@ -26,6 +26,7 @@ import { hospitalBed, wardDoor, fluorPanel, crtTV, ivPole, cabinet, paSpeaker, r
 import { voiceTunnel, drips as tunnelDrips, hillside as tunnelHillside, floodTripod, cautionTape, tapePost, rescueRadio, rescueTruck, campTable, wallFaces } from './tunnel.js';
 import { puppet, socketHead, stairHall, schoolCorridor, satchel, flashlightProp, strawRope, ofuda } from './folklore.js';
 import { cubeSeed, cubeStairs, gardenPlot, seedStall, wateringCan, wheelbarrow, scarecrow, floatingIsland, glassField, nameTree, bloomField } from './garden.js';
+import { greenhouse as sgGreenhouse, breadCart, gardenBench, cakeTable, partyHat as sgPartyHat, sickBed, quilt, ruthRoom, flowerMesh, larkspur } from './sorrygarden.js';
 import { mallHall, polishedFloor, directoryKiosk, clawMachine, automaticDoor, wetSign, mop as mallMop, bucket as mopBucket, shoppingBag, phoneProp, blockWall, exteriorFacade, paHorn } from './mall.js';
 import { ferrisWheel, carousel, ticketBooth, parkArch, exitGate as parkExitGate, chainFence, midwayStall, parkLamp, paSpeakers as parkPaSpeakers, broom, controlLever, ticketStub, bareStrings, popcornTub, balloon as nameBalloon, teaCups, swingRide, coaster as parkCoaster, blueCreature } from './amusement.js';
 
@@ -544,4 +545,14 @@ export const BUILD = {
   bare_trees: (o) => bareTrees(o.parent, o.spots ?? [[0, 0]], o),   // leafless winter trees at [x, z] spots
   victorian_mansion: (o) => put(o, mansion(o)),   // a two-storey mansion, front +z; .winRoom a lit room behind the upstairs window, .setSash(k), .blow(k, t), .lights(k)
   victorian_guest: (o) => put(o, guest(o.i ?? 0, o).root),   // one of 12 faceless Victorian party guests (gowns, top hats, pearls); a character rig
+  sg_greenhouse: (o) => put(o, sgGreenhouse()),   // a glass greenhouse on a brick plinth; .setBroken(k), .setBoards(k), .front, .size
+  sg_bread_cart: (o) => put(o, breadCart()),   // a red bakery hand cart with loaves and a striped awning; .spin(angle) turns the wheels
+  sg_garden_bench: (o) => put(o, gardenBench()),   // a slatted wooden garden bench; .seatY
+  sg_cake_table: (o) => put(o, cakeTable()),   // a party table with a pink cake
+  sg_party_hat: (o) => put(o, sgPartyHat()),   // a paper party hat
+  sg_sick_bed: (o) => put(o, sickBed()),   // a wooden bed with pillows; .top is the mattress height
+  sg_quilt: (o) => put(o, quilt()),   // a striped quilt that lies over the legs on sg_sick_bed
+  sg_bedroom: (o) => put(o, ruthRoom()),   // a papered bedroom centred on the origin, window on +x, the bed's head at -z
+  sg_flower: (o) => put(o, flowerMesh(o.kind ?? 'dahlia', o.size ?? 1, o.tint)),   // one bloom: kind 'dahlia' | 'buttercup' | 'thistle'
+  sg_larkspur: (o) => larkspur(o.parent),   // the whole bright village set: street, lane, yard, greenhouse, cottage, bakery; returns its named parts
 };

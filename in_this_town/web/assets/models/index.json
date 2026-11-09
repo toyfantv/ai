@@ -1719,6 +1719,106 @@
     "type": "builder",
     "url": ""
   },
+  "sg_bedroom": {
+    "author": "toyfantv",
+    "desc": "a papered bedroom with a window, curtains and a bedside table",
+    "kind": "environment",
+    "licence": "own",
+    "made_for": "ep101",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "sg_bread_cart": {
+    "author": "toyfantv",
+    "desc": "a red bakery hand cart with loaves, a striped awning and turning wheels",
+    "kind": "vehicle",
+    "licence": "own",
+    "made_for": "ep101",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "sg_cake_table": {
+    "author": "toyfantv",
+    "desc": "a party table with a pink birthday cake",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep101",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "sg_flower": {
+    "author": "toyfantv",
+    "desc": "a single low-poly bloom: dahlia, buttercup or thistle",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep101",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "sg_garden_bench": {
+    "author": "toyfantv",
+    "desc": "a slatted wooden garden bench",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep101",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "sg_greenhouse": {
+    "author": "toyfantv",
+    "desc": "a glass greenhouse on a brick plinth that can be smashed and boarded up",
+    "kind": "building",
+    "licence": "own",
+    "made_for": "ep101",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "sg_larkspur": {
+    "author": "toyfantv",
+    "desc": "a bright pastel village: blossom trees, cottages, bakery, cobbled lane down to a low garden yard",
+    "kind": "environment",
+    "licence": "own",
+    "made_for": "ep101",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "sg_party_hat": {
+    "author": "toyfantv",
+    "desc": "a paper party hat",
+    "kind": "accessory",
+    "licence": "own",
+    "made_for": "ep101",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "sg_quilt": {
+    "author": "toyfantv",
+    "desc": "a pink striped quilt that goes with sg_sick_bed",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep101",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "sg_sick_bed": {
+    "author": "toyfantv",
+    "desc": "a wooden bed with pillows",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep101",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "shadow_crowd": {
     "author": "toyfantv",
     "desc": "instanced seated shadow spectators with rim light and glowing eyes; per-seat fill, turn and eyes",

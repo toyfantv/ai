@@ -643,6 +643,15 @@ ch.faceStyle = (x) => 'lash:' + x;   // (Episode 22's faceOf helper) one charact
     (the renderer can't post one: credit them in the video's description). Their fan-art faces of existing characters are left out.
 - Same rules as Alti: the head's own face is replaced (no double faces), hair must clear the forehead, check a close frame of every face.
 
+## Remake 1 notes (The Sorry Garden)
+
+`web/episodes/ep101.js`, kit `web/engine/sorrygarden.js`, library names `sg_*`.
+
+- `skinBlooms(c, { count, kinds, size, seed, gap, faceX, faceTop, faceSide, skip })` grows flowers on a character's outermost surface by raycasting at rest, one InstancedMesh per part and kind, so they bend with the limbs. `faceX` / `faceTop` keep the front of the face clear and `faceSide` the sides of the head, or big blooms cover an eye in three-quarter shots. `skip(point, normal)` drops any spot, for example the legs under a quilt.
+- A long fringe or glasses over an Alti face: drop the triangles in the box in front of the face (Ruth in `setup`). Squashing the vertices upward, as Episode 30's Theo, leaves flat plates and streaks on hair that hangs in strands; if the avatar still fights the face, use another avatar.
+- A sitter's held-out hand at chin height covers the face from most angles, and a head turned to a partner shows only its blank side: keep the hand below the chin and shoot from where the face points.
+- Leaning a layered-clothing torso back shows its top edge as a dark bar across the chin: sit the character upright against the pillows.
+
 ## Making the next episode
 
 Copy the episode JSON (lines + captions), then copy `web/episodes/ep06.js` and change its palettes, shots and
