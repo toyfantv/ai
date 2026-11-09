@@ -652,6 +652,10 @@ ch.faceStyle = (x) => 'lash:' + x;   // (Episode 22's faceOf helper) one charact
 - A sitter's held-out hand at chin height covers the face from most angles, and a head turned to a partner shows only its blank side: keep the hand below the chin and shoot from where the face points.
 - Leaning a layered-clothing torso back shows its top edge as a dark bar across the chin: sit the character upright against the pillows.
 
+## Remake 6 notes (The Weight of the Truth)
+
+Every lie makes you lighter. Floating is a pure function of time: `place()` plus a height curve, with the dome's own `.glassY(x, z)` as the ceiling, so a flight can never go through the glass; check any new flight path against the chandelier ring (r 18.8+). Worn props (`wt_iron_boots`, `wt_paper_slippers`, `wt_diver_belt`, `wt_mitt`) need `o.character`; the library page skips them. Cover a character standing between the camera and the subject with the shot's hide list rather than a contorted camera. Add a fourth `dbgchar` value to shift the look height when the caption covers the mouth. Director `web/episodes/ep106.js`, kit `web/engine/lighterlies.js`, sound `tools/ep106_sound.py`, library names `wt_*`.
+
 ## Making the next episode
 
 Copy the episode JSON (lines + captions), then copy `web/episodes/ep06.js` and change its palettes, shots and

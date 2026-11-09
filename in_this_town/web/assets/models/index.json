@@ -2418,5 +2418,175 @@
     "source": "this renderer",
     "type": "builder",
     "url": ""
+  },
+  "wt_aunt_room": {
+    "author": "toyfantv",
+    "desc": "an aunt's dining room with a soup table; .bowl(), .top",
+    "kind": "set",
+    "licence": "own",
+    "made_for": "ep106",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "wt_brook_yard": {
+    "author": "toyfantv",
+    "desc": "a cottage yard with a picket fence and a pond; .FH is the fence height",
+    "kind": "set",
+    "licence": "own",
+    "made_for": "ep106",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "wt_cereal_box": {
+    "author": "toyfantv",
+    "desc": "a red and yellow cereal box",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep106",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "wt_courtroom": {
+    "author": "toyfantv",
+    "desc": "a courtroom with a safety net under the ceiling; .netAt, .shapeNet",
+    "kind": "set",
+    "licence": "own",
+    "made_for": "ep106",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "wt_diver_belt": {
+    "author": "toyfantv",
+    "desc": "a lead diver's belt worn round a character (o.character); .set(on)",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep106",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "wt_fire_ladder": {
+    "author": "toyfantv",
+    "desc": "a red fire-brigade extension ladder from point a to point b (o.a, o.b)",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep106",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "wt_founders_hall": {
+    "author": "toyfantv",
+    "desc": "a round civic hall under a stained-glass dome with chandeliers and a dais; .glassY(x, z) is the glass height",
+    "kind": "set",
+    "licence": "own",
+    "made_for": "ep106",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "wt_glass_peacock": {
+    "author": "toyfantv",
+    "desc": "a tall glass peacock statue under a drape; .set(smash), .drape(k)",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep106",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "wt_hall_clock": {
+    "author": "toyfantv",
+    "desc": "a big wall clock; .set(hours) moves the hands",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep106",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "wt_iron_boots": {
+    "author": "toyfantv",
+    "desc": "heavy iron diver boots worn over a character's feet (o.character)",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep106",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "wt_kitchen": {
+    "author": "toyfantv",
+    "desc": "a bright kitchen with a window and table; .top",
+    "kind": "set",
+    "licence": "own",
+    "made_for": "ep106",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "wt_loose_boots": {
+    "author": "toyfantv",
+    "desc": "a pair of unbuckled iron boots standing empty",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep106",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "wt_lost_slipper": {
+    "author": "toyfantv",
+    "desc": "one paper slipper left on the floor",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep106",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "wt_mitt": {
+    "author": "toyfantv",
+    "desc": "a baseball mitt worn on one hand (o.character, o.side)",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep106",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "wt_paper_slippers": {
+    "author": "toyfantv",
+    "desc": "paper slippers worn over a character's feet (o.character)",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep106",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "wt_plumbwick": {
+    "author": "toyfantv",
+    "desc": "a bright main street with terraced shops, bunting and a flat roof terrace; .RY is the roof height, .seat",
+    "kind": "set",
+    "licence": "own",
+    "made_for": "ep106",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "wt_rope": {
+    "author": "toyfantv",
+    "desc": "a rope between two points; .set(a, b)",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep106",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
   }
 }

@@ -26,6 +26,7 @@ import { hospitalBed, wardDoor, fluorPanel, crtTV, ivPole, cabinet, paSpeaker, r
 import { voiceTunnel, drips as tunnelDrips, hillside as tunnelHillside, floodTripod, cautionTape, tapePost, rescueRadio, rescueTruck, campTable, wallFaces } from './tunnel.js';
 import { puppet, socketHead, stairHall, schoolCorridor, satchel, flashlightProp, strawRope, ofuda } from './folklore.js';
 import { cubeSeed, cubeStairs, gardenPlot, seedStall, wateringCan, wheelbarrow, scarecrow, floatingIsland, glassField, nameTree, bloomField } from './garden.js';
+import { ironBoots, paperSlippers, diverBelt, mitt as wtMitt, looseBoots, lostSlipper, rope as wtRope, fireLadder, hallClock, foundersHall, glassPeacock, auntSet, kitchenSet, cerealBox, courtroom, plumbwick, brookYard } from './lighterlies.js';
 import { greenhouse as sgGreenhouse, breadCart, gardenBench, cakeTable, partyHat as sgPartyHat, sickBed, quilt, ruthRoom, flowerMesh, larkspur } from './sorrygarden.js';
 import { mallHall, polishedFloor, directoryKiosk, clawMachine, automaticDoor, wetSign, mop as mallMop, bucket as mopBucket, shoppingBag, phoneProp, blockWall, exteriorFacade, paHorn } from './mall.js';
 import { ferrisWheel, carousel, ticketBooth, parkArch, exitGate as parkExitGate, chainFence, midwayStall, parkLamp, paSpeakers as parkPaSpeakers, broom, controlLever, ticketStub, bareStrings, popcornTub, balloon as nameBalloon, teaCups, swingRide, coaster as parkCoaster, blueCreature } from './amusement.js';
@@ -545,6 +546,23 @@ export const BUILD = {
   bare_trees: (o) => bareTrees(o.parent, o.spots ?? [[0, 0]], o),   // leafless winter trees at [x, z] spots
   victorian_mansion: (o) => put(o, mansion(o)),   // a two-storey mansion, front +z; .winRoom a lit room behind the upstairs window, .setSash(k), .blow(k, t), .lights(k)
   victorian_guest: (o) => put(o, guest(o.i ?? 0, o).root),   // one of 12 faceless Victorian party guests (gowns, top hats, pearls); a character rig
+  wt_iron_boots: (o) => ironBoots(o.character),   // heavy iron diver boots worn over a character's feet (o.character)
+  wt_paper_slippers: (o) => paperSlippers(o.character),   // paper slippers worn over a character's feet (o.character)
+  wt_diver_belt: (o) => diverBelt(o.character),   // a lead diver's belt worn round a character (o.character); .set(on)
+  wt_mitt: (o) => wtMitt(o.character, o.side ?? 1),   // a baseball mitt worn on one hand (o.character, o.side)
+  wt_loose_boots: (o) => put(o, looseBoots()),   // a pair of unbuckled iron boots standing empty
+  wt_lost_slipper: (o) => put(o, lostSlipper()),   // one paper slipper left on the floor
+  wt_rope: (o) => put(o, wtRope()),   // a rope between two points; .set(a, b)
+  wt_fire_ladder: (o) => fireLadder(o.a, o.b),   // a red fire-brigade extension ladder from point a to point b (o.a, o.b)
+  wt_hall_clock: (o) => put(o, hallClock()),   // a big wall clock; .set(hours) moves the hands
+  wt_founders_hall: (o) => put(o, foundersHall()),   // a round civic hall under a stained-glass dome with chandeliers and a dais; .glassY(x, z) is the glass height
+  wt_glass_peacock: (o) => put(o, glassPeacock()),   // a tall glass peacock statue under a drape; .set(smash), .drape(k)
+  wt_aunt_room: (o) => put(o, auntSet()),   // an aunt's dining room with a soup table; .bowl(), .top
+  wt_kitchen: (o) => put(o, kitchenSet()),   // a bright kitchen with a window and table; .top
+  wt_cereal_box: (o) => put(o, cerealBox()),   // a red and yellow cereal box
+  wt_courtroom: (o) => put(o, courtroom()),   // a courtroom with a safety net under the ceiling; .netAt, .shapeNet
+  wt_plumbwick: (o) => put(o, plumbwick()),   // a bright main street with terraced shops, bunting and a flat roof terrace; .RY is the roof height, .seat
+  wt_brook_yard: (o) => put(o, brookYard()),   // a cottage yard with a picket fence and a pond; .FH is the fence height
   sg_greenhouse: (o) => put(o, sgGreenhouse()),   // a glass greenhouse on a brick plinth; .setBroken(k), .setBoards(k), .front, .size
   sg_bread_cart: (o) => put(o, breadCart()),   // a red bakery hand cart with loaves and a striped awning; .spin(angle) turns the wheels
   sg_garden_bench: (o) => put(o, gardenBench()),   // a slatted wooden garden bench; .seatY

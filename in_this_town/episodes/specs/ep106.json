@@ -1,0 +1,731 @@
+{
+ "number": 106,
+ "title": "The Weight of the Truth",
+ "output": "Remake06_WeightOfTruth.mp4",
+ "youtube_title": "In This Town, Every Lie Makes You Lighter",
+ "tiktok_caption": "Hattie had never told a lie. Then her little brother needed one.",
+ "hashtags": "#Shorts #Storytime #Animation #Fable",
+ "thumbnail_text": "HER FIRST LIE",
+ "thumbnail_rec": "Hattie flung upward under a huge glass dome, the crowd tiny below, her brother looking up. Text: HER FIRST LIE.",
+ "tail": 1.6,
+ "fps": 60,
+ "narrator": {
+  "pace": [
+   2.5,
+   2.95
+  ],
+  "min_tempo": 1.04
+ },
+ "cast": {
+  "hattie": {
+   "voice": "laura",
+   "pitch": 1.02,
+   "tempo": 1.05
+  },
+  "pip": {
+   "voice": "liam",
+   "pitch": 1.26,
+   "tempo": 1.0
+  },
+  "governor": {
+   "voice": "brian",
+   "pitch": 0.94,
+   "tempo": 1.0
+  }
+ },
+ "highlights": {
+  "LIGHTER": "yellow",
+  "HEELS LIFT": "yellow",
+  "CLEAR THE FENCE": "yellow",
+  "IRON BOOTS": "yellow",
+  "NET": "red",
+  "NEVER": "yellow",
+  "PAPER SLIPPERS": "yellow",
+  "BEFORE BREAKFAST": "red",
+  "DIVER'S BELT": "yellow",
+  "GLASS PEACOCK": "purple",
+  "ONE BASEBALL": "red",
+  "GLOVE": "red",
+  "ONE MORE LIE": "red",
+  "FIRST LIE": "red",
+  "LET GO": "yellow",
+  "POPPED CORK": "yellow",
+  "FOUR HOURS": "yellow",
+  "SUNSET": "yellow",
+  "ROPE": "yellow"
+ },
+ "lines": [
+  {
+   "text": "In Plumbwick, every lie makes you lighter.",
+   "speak": "In Plumwick, every lie makes you lighter.",
+   "tag": "[warm]",
+   "pause": 0.14
+  },
+  {
+   "text": "Praise your aunt's awful soup, and your heels lift.",
+   "tag": "[playful]",
+   "pause": 0.1
+  },
+  {
+   "text": "Fake a cough, and you clear the fence.",
+   "tag": "[playful]",
+   "pause": 0.12
+  },
+  {
+   "text": "Kids get iron boots at seven. The courthouse ceiling has a net.",
+   "tag": "[amused]",
+   "pause": 0.14
+  },
+  {
+   "text": "Hattie Moss had never told a lie. She wore paper slippers.",
+   "tag": "[warm]",
+   "pause": 0.12
+  },
+  {
+   "text": "Her brother Pip lied before breakfast.",
+   "tag": "[playful]",
+   "pause": 0.08
+  },
+  {
+   "text": "“I brushed my teeth!”",
+   "speak": "I brushed my teeth!",
+   "voice": "pip",
+   "tag": "[cheerfully]",
+   "pause": 0.08
+  },
+  {
+   "text": "He needed a diver's belt just to reach the cereal.",
+   "tag": "[amused]",
+   "pause": 0.16
+  },
+  {
+   "text": "On Founders' Day, the Governor unveiled a glass peacock.",
+   "tag": "[excited]",
+   "pause": 0.12
+  },
+  {
+   "text": "Then, one baseball.",
+   "tag": "[flatly]",
+   "pause": 0.5
+  },
+  {
+   "text": "“I'll ask every one of you!”",
+   "speak": "I'll ask every one of you!",
+   "voice": "governor",
+   "tag": "[furious]",
+   "pause": 0.08
+  },
+  {
+   "text": "The glove was still on Pip's hand.",
+   "tag": "[tense]",
+   "pause": 0.1
+  },
+  {
+   "text": "One more lie, and no belt could hold him.",
+   "tag": "[tense]",
+   "pause": 0.12
+  },
+  {
+   "text": "“Boy. Did you throw it?”",
+   "speak": "Boy. Did you throw it?",
+   "voice": "governor",
+   "tag": "[coldly]",
+   "pause": 0.14
+  },
+  {
+   "text": "“I threw it! I hate your ugly bird!”",
+   "speak": "I threw it! I hate your ugly bird!",
+   "voice": "hattie",
+   "tag": "[shouting]",
+   "pause": 0.16
+  },
+  {
+   "text": "Her first lie ever.",
+   "tag": "[softly]",
+   "pause": 0.12
+  },
+  {
+   "text": "The floor let go.",
+   "tag": "[hushed]",
+   "pause": 0.05
+  },
+  {
+   "text": "She went up like a popped cork and rang off the glass.",
+   "tag": "[excited]",
+   "pause": 0.2
+  },
+  {
+   "text": "It took the fire brigade four hours.",
+   "tag": "[amused]",
+   "pause": 0.16
+  },
+  {
+   "text": "Now she needs iron boots to cross the street.",
+   "tag": "[warm]",
+   "pause": 0.14
+  },
+  {
+   "text": "But at sunset, she unbuckles them and swears she did the dishes.",
+   "tag": "[warm]",
+   "pause": 0.14
+  },
+  {
+   "text": "Pip, who hasn't lied since, holds the rope.",
+   "tag": "[tender]",
+   "pause": 0
+  }
+ ],
+ "samples": {},
+ "sound": {
+  "key": 62,
+  "music_gain": 0.3,
+  "music": [
+   [
+    "0",
+    "tender"
+   ],
+   [
+    "26.519",
+    "suspense"
+   ],
+   [
+    "27.599",
+    "silence"
+   ],
+   [
+    "31.166",
+    "mystery"
+   ],
+   [
+    "40.734",
+    "silence"
+   ],
+   [
+    "44.053",
+    "fantasy"
+   ],
+   [
+    "47.104",
+    "tender"
+   ],
+   [
+    "52.646",
+    "tender_hope"
+   ]
+  ],
+  "cues": [
+   [
+    "0",
+    "suburb",
+    0.2,
+    {
+     "dur": 3.0
+    }
+   ],
+   [
+    "6.199",
+    "suburb",
+    0.2,
+    {
+     "dur": 4.601000000000001
+    }
+   ],
+   [
+    "13.008",
+    "suburb",
+    0.18,
+    {
+     "dur": 3.8659999999999997
+    }
+   ],
+   [
+    "49.786",
+    "suburb",
+    0.16,
+    {
+     "dur": 2.960000000000001
+    }
+   ],
+   [
+    "1.1",
+    "chirp",
+    0.08,
+    {
+     "f": 1500
+    }
+   ],
+   [
+    "2.4",
+    "chirp",
+    0.08,
+    {
+     "f": 1750
+    }
+   ],
+   [
+    "7.2",
+    "chirp",
+    0.08,
+    {
+     "f": 1350
+    }
+   ],
+   [
+    "14.3",
+    "chirp",
+    0.08,
+    {
+     "f": 1600
+    }
+   ],
+   [
+    "15.6",
+    "chirp",
+    0.08,
+    {
+     "f": 1450
+    }
+   ],
+   [
+    "0.45",
+    "swish",
+    0.12
+   ],
+   [
+    "4.8",
+    "swish",
+    0.16
+   ],
+   [
+    "6.549",
+    "knock",
+    0.1
+   ],
+   [
+    "6.799",
+    "knock",
+    0.1
+   ],
+   [
+    "7.049",
+    "swish",
+    0.18
+   ],
+   [
+    "7.449",
+    "whoosh",
+    0.1,
+    {
+     "dur": 0.9
+    }
+   ],
+   [
+    "8.72",
+    "clunk",
+    0.22,
+    {
+     "rate": 1.3
+    }
+   ],
+   [
+    "9.08",
+    "clunk",
+    0.22,
+    {
+     "rate": 1.3
+    }
+   ],
+   [
+    "9.44",
+    "clunk",
+    0.22,
+    {
+     "rate": 1.3
+    }
+   ],
+   [
+    "9.8",
+    "clunk",
+    0.22,
+    {
+     "rate": 1.3
+    }
+   ],
+   [
+    "10.16",
+    "clunk",
+    0.22,
+    {
+     "rate": 1.3
+    }
+   ],
+   [
+    "10.52",
+    "clunk",
+    0.22,
+    {
+     "rate": 1.3
+    }
+   ],
+   [
+    "10.9",
+    "roomtone",
+    0.08,
+    {
+     "dur": 2.1079999999999983
+    }
+   ],
+   [
+    "11.3",
+    "creak",
+    0.12,
+    {
+     "dur": 0.9
+    }
+   ],
+   [
+    "15.308",
+    "paper",
+    0.28,
+    {
+     "dur": 0.8
+    }
+   ],
+   [
+    "16.974",
+    "roomtone",
+    0.1,
+    {
+     "dur": 6.107000000000001
+    }
+   ],
+   [
+    "19.705",
+    "pop",
+    0.42
+   ],
+   [
+    "19.725",
+    "chime",
+    0.1,
+    {
+     "note": 88
+    }
+   ],
+   [
+    "20.46",
+    "whoosh",
+    0.16,
+    {
+     "dur": 0.5
+    }
+   ],
+   [
+    "21.21",
+    "clunk",
+    0.4
+   ],
+   [
+    "22.48",
+    "tick",
+    0.16,
+    {
+     "dur": 0.3,
+     "rate": 3
+    }
+   ],
+   [
+    "23.081",
+    "crowdsteps",
+    0.12,
+    {
+     "dur": 2.6,
+     "seed": 3,
+     "per_s": 8
+    }
+   ],
+   [
+    "24.531",
+    "swish",
+    0.22
+   ],
+   [
+    "24.701",
+    "chime",
+    0.12,
+    {
+     "note": 84
+    }
+   ],
+   [
+    "24.881",
+    "applause",
+    0.3,
+    {
+     "dur": 2.0
+    }
+   ],
+   [
+    "26.869",
+    "whoosh",
+    0.26,
+    {
+     "dur": 0.8
+    }
+   ],
+   [
+    "27.579",
+    "clunk",
+    0.5
+   ],
+   [
+    "27.579",
+    "shatter",
+    0.85
+   ],
+   [
+    "27.659",
+    "glass",
+    0.38,
+    {
+     "dur": 1.8
+    }
+   ],
+   [
+    "28.179",
+    "tick",
+    0.14,
+    {
+     "dur": 1.2,
+     "rate": 9
+    }
+   ],
+   [
+    "31.066",
+    "roomtone",
+    0.14,
+    {
+     "dur": 9.918
+    }
+   ],
+   [
+    "32.852",
+    "footsteps",
+    0.16,
+    {
+     "dur": 2.1,
+     "rate": 2.4
+    }
+   ],
+   [
+    "37.68",
+    "footsteps",
+    0.2,
+    {
+     "dur": 0.4,
+     "rate": 3.6
+    }
+   ],
+   [
+    "40.734",
+    "roomtone",
+    0.12,
+    {
+     "dur": 3.3690000000000024
+    }
+   ],
+   [
+    "42.783",
+    "chime",
+    0.12,
+    {
+     "note": 76
+    }
+   ],
+   [
+    "42.833",
+    "creak",
+    0.1,
+    {
+     "dur": 0.8
+    }
+   ],
+   [
+    "44.053",
+    "pop",
+    0.55
+   ],
+   [
+    "44.103",
+    "whoosh",
+    0.5,
+    {
+     "dur": 2.0
+    }
+   ],
+   [
+    "45.983",
+    "clunk",
+    0.4
+   ],
+   [
+    "46.003",
+    "chime",
+    0.34,
+    {
+     "note": 72
+    }
+   ],
+   [
+    "46.023",
+    "chime",
+    0.22,
+    {
+     "note": 84
+    }
+   ],
+   [
+    "46.063",
+    "glass",
+    0.12,
+    {
+     "dur": 1.2
+    }
+   ],
+   [
+    "46.283",
+    "crowdsteps",
+    0.1,
+    {
+     "dur": 1.2,
+     "seed": 5,
+     "per_s": 10
+    }
+   ],
+   [
+    "47.204",
+    "tick",
+    0.1,
+    {
+     "dur": 2.3,
+     "rate": 6
+    }
+   ],
+   [
+    "48.354",
+    "tick",
+    0.22,
+    {
+     "dur": 0.55,
+     "rate": 26
+    }
+   ],
+   [
+    "47.304",
+    "creak",
+    0.12,
+    {
+     "dur": 1.4
+    }
+   ],
+   [
+    "49.836",
+    "clunk",
+    0.2
+   ],
+   [
+    "50.296",
+    "clunk",
+    0.2
+   ],
+   [
+    "50.756",
+    "clunk",
+    0.2
+   ],
+   [
+    "51.216",
+    "clunk",
+    0.2
+   ],
+   [
+    "51.676",
+    "clunk",
+    0.2
+   ],
+   [
+    "52.136",
+    "clunk",
+    0.2
+   ],
+   [
+    "52.596",
+    "clunk",
+    0.2
+   ],
+   [
+    "49.836",
+    "footsteps",
+    0.08,
+    {
+     "dur": 2.6,
+     "rate": 1.8
+    }
+   ],
+   [
+    "52.696",
+    "wind",
+    0.08,
+    {
+     "dur": 8.602999999999998
+    }
+   ],
+   [
+    "54.096",
+    "tick",
+    0.16,
+    {
+     "dur": 0.3,
+     "rate": 4
+    }
+   ],
+   [
+    "54.996",
+    "clunk",
+    0.42
+   ],
+   [
+    "55.416",
+    "dustglitter",
+    0.22,
+    {
+     "dur": 2.4
+    }
+   ],
+   [
+    "55.496",
+    "chime",
+    0.12,
+    {
+     "note": 81
+    }
+   ],
+   [
+    "55.796",
+    "creak",
+    0.08,
+    {
+     "dur": 1.4
+    }
+   ],
+   [
+    "59.799",
+    "chime",
+    0.12,
+    {
+     "note": 88
+    }
+   ]
+  ]
+ }
+}
