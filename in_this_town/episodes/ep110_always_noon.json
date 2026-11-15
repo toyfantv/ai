@@ -1,0 +1,652 @@
+{
+ "id": "ep110",
+ "number": 110,
+ "title": "The City Where It's Always Noon",
+ "output": "Remake10_AlwaysNoon.mp4",
+ "tts": "openrouter",
+ "youtube_title": "In This City, It Has Been Noon for 400 Years",
+ "tiktok_caption": "In Sunmere the sun never moves and nobody goes near the wall. Then Pia noticed the balloons.",
+ "hashtags": "#Shorts #Storytime #Animation #PlotTwist",
+ "thumbnail_text": "THE SUN NEVER MOVES",
+ "thumbnail_rec": "Seen from outside the round crew hatch in the white wall: Pia, wide-eyed, framed in the ring of the doorway with the guard looming behind her, and Sunmere's clock tower stuck at twelve in the noon city beyond. Text across the top of the ring, clear of the faces: THE SUN NEVER MOVES",
+ "lead_in": 0.3,
+ "tail": 0.8,
+ "voices": {
+  "narrator": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "ErXwobaYiN019PkySvjV",
+    "pitch": 1.1,
+    "tempo": 1.12,
+    "max_tempo": 1.15,
+    "pace": [
+     2.5,
+     2.95
+    ],
+    "min_tempo": 1.04
+   },
+   "kokoro": "am_michael",
+   "speed": 1.0,
+   "note": "Antoni (American), In This Town preset el:ErXwobaYiN019PkySvjV:1.1:1.12 - same narrator every episode"
+  },
+  "pia": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "jessica",
+    "pitch": 1.12,
+    "tempo": 1.12
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  },
+  "grandpa": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "bill",
+    "pitch": 0.96,
+    "tempo": 1.12
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  },
+  "guard": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "brian",
+    "pitch": 1.0,
+    "tempo": 1.0
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  }
+ },
+ "highlights": {
+  "SUNMERE,": "cyan",
+  "NOON": "yellow",
+  "SLEEP MASK.": "yellow",
+  "SAME HEIGHT.": "yellow",
+  "HELM.": "yellow",
+  "OPENS NOTHING.": "red",
+  "CREW ONLY.": "red",
+  "THE KEY.": "yellow",
+  "NO SEA OF FIRE.": "red",
+  "BILLION STARS.": "cyan",
+  "A SHIP.": "red",
+  "A LAMP.": "yellow",
+  "LET HER GO,": "red",
+  "WAS DYING.": "red",
+  "WE STEER IT.": "cyan",
+  "GREEN PLANET": "cyan",
+  "TOMORROW?": "yellow",
+  "WE LAND.": "cyan",
+  "FOUR HUNDRED YEARS.": "yellow",
+  "RIM,": "red",
+  "ALARM": "yellow",
+  "SWITCHES OFF": "yellow",
+  "SNORED.": "yellow",
+  "HUNDRED YEARS.": "yellow"
+ },
+ "lines": [
+  {
+   "text": "In Sunmere, it has been noon for four hundred years.",
+   "tag": "[mysterious]",
+   "pause": 0.12
+  },
+  {
+   "text": "The sun never moves. At bedtime, everyone pulls on a sleep mask.",
+   "tag": "[amused]",
+   "pause": 0.12
+  },
+  {
+   "text": "Nobody goes near the Rim, the white wall around the city.",
+   "tag": "[ominous]",
+   "pause": 0.12
+  },
+  {
+   "text": "Pia noticed things. Balloons always popped at the same height.",
+   "tag": "[curious]",
+   "pause": 0.12
+  },
+  {
+   "text": "Grandpa never took off his brass key stamped HELM.",
+   "tag": "[warm]",
+   "pause": 0.12
+  },
+  {
+   "text": "“Old junk. It opens nothing.”",
+   "tag": "[gruff, dismissive]",
+   "pause": 0.14,
+   "voice": "grandpa",
+   "speak": "Old junk. It opens nothing."
+  },
+  {
+   "text": "One bedtime, she slipped it off his neck while he snored.",
+   "tag": "[hushed]",
+   "pause": 0.12
+  },
+  {
+   "text": "At the Rim, behind a hedge, was a round door marked crew only.",
+   "tag": "[tense]",
+   "pause": 0.12
+  },
+  {
+   "text": "A guard stood there. She threw her alarm clock into the bushes and turned the key.",
+   "tag": "[urgent]",
+   "pause": 0.14
+  },
+  {
+   "text": "No sea of fire. Just black sky and a billion stars.",
+   "tag": "[in awe]",
+   "pause": 0.14
+  },
+  {
+   "text": "Sunmere wasn't a city. It was a ship. The sun was a lamp.",
+   "tag": "[stunned]",
+   "pause": 0.14
+  },
+  {
+   "text": "“Let her go, Tomas.”",
+   "tag": "[calm, firm]",
+   "pause": 0.14,
+   "voice": "grandpa",
+   "speak": "Let her go, Tomas."
+  },
+  {
+   "text": "“Our world was dying. This ship carries us to a new one.”",
+   "tag": "[gentle]",
+   "pause": 0.12,
+   "voice": "grandpa",
+   "speak": "Our world was dying. This ship carries us to a new one."
+  },
+  {
+   "text": "Far ahead, a small green planet was growing.",
+   "tag": "[wonder]",
+   "pause": 0.12
+  },
+  {
+   "text": "“We steer it. You'd have had the key tomorrow.”",
+   "tag": "[warm]",
+   "pause": 0.12,
+   "voice": "grandpa",
+   "speak": "We steer it. You'd have had the key tomorrow."
+  },
+  {
+   "text": "“Why tomorrow?”",
+   "tag": "[curious]",
+   "pause": 0.12,
+   "voice": "pia",
+   "speak": "Why tomorrow?"
+  },
+  {
+   "text": "“Because tomorrow, we land.”",
+   "tag": "[smiling]",
+   "pause": 0.14,
+   "voice": "grandpa",
+   "speak": "Because tomorrow, we land."
+  },
+  {
+   "text": "Tomorrow, someone switches off the sun for the first time in four hundred years.",
+   "tag": "[warm, hopeful]",
+   "pause": 0.12
+  }
+ ],
+ "samples": {
+  "hey": {
+   "text": "Hey! Who's there?",
+   "voice": "guard",
+   "tag": "[suspicious]"
+  },
+  "grab": {
+   "text": "Gotcha!",
+   "voice": "guard",
+   "tag": "[stern]"
+  },
+  "whoa": {
+   "text": "Whoa...",
+   "voice": "pia",
+   "tag": "[awestruck, whispering]"
+  },
+  "snore": {
+   "text": "Hnnnk... shhh...",
+   "voice": "grandpa",
+   "tag": "[snoring]"
+  }
+ },
+ "sound": {
+  "key": 57,
+  "music_gain": 0.3,
+  "music": [
+   [
+    "0",
+    "playful"
+   ],
+   [
+    "8.122",
+    "mystery"
+   ],
+   [
+    "11.831",
+    "playful"
+   ],
+   [
+    "21.144",
+    "musicbox"
+   ],
+   [
+    "24.666",
+    "suspense"
+   ],
+   [
+    "33.673",
+    "cosmic"
+   ],
+   [
+    "42.264",
+    "tender"
+   ],
+   [
+    "47.869",
+    "wonder"
+   ],
+   [
+    "58.169",
+    "tender"
+   ]
+  ],
+  "cues": [
+   [
+    "0",
+    "suburb",
+    0.09,
+    {
+     "dur": 8.122
+    }
+   ],
+   [
+    "0.4",
+    "chirp",
+    0.05
+   ],
+   [
+    "0.6",
+    "footsteps",
+    0.04,
+    {
+     "dur": 2.6,
+     "rate": 1.5
+    }
+   ],
+   [
+    "1.2",
+    "bell",
+    0.05,
+    {
+     "dur": 2.0
+    }
+   ],
+   [
+    "6.159",
+    "whoosh",
+    0.05,
+    {
+     "dur": 0.4
+    }
+   ],
+   [
+    "6.559",
+    "flick",
+    0.05
+   ],
+   [
+    "6.809",
+    "flick",
+    0.04
+   ],
+   [
+    "9.242",
+    "wind",
+    0.06,
+    {
+     "dur": 2.688999999999999
+    }
+   ],
+   [
+    "9.542",
+    "hum",
+    0.05,
+    {
+     "dur": 2.6,
+     "f": 55
+    }
+   ],
+   [
+    "9.742",
+    "sting",
+    0.05
+   ],
+   [
+    "11.881",
+    "suburb",
+    0.07,
+    {
+     "dur": 3.514000000000001
+    }
+   ],
+   [
+    "13.611",
+    "pop",
+    0.08
+   ],
+   [
+    "14.311",
+    "pop",
+    0.07
+   ],
+   [
+    "14.731",
+    "pop",
+    0.08
+   ],
+   [
+    "15.431",
+    "ding",
+    0.04
+   ],
+   [
+    "15.395",
+    "suburb",
+    0.06,
+    {
+     "dur": 5.7989999999999995
+    }
+   ],
+   [
+    "16.525",
+    "shimmer",
+    0.05,
+    {
+     "dur": 1.2
+    }
+   ],
+   [
+    "19.304",
+    "clunk",
+    0.04
+   ],
+   [
+    "21.194",
+    "roomtone",
+    0.07,
+    {
+     "dur": 3.5219999999999985
+    }
+   ],
+   [
+    "21.394",
+    "tick",
+    0.04,
+    {
+     "dur": 3.0,
+     "rate": 1
+    }
+   ],
+   [
+    "21.344",
+    "sample",
+    0.06,
+    {
+     "name": "snore",
+     "rev": 0.15,
+     "wet": 0.05
+    }
+   ],
+   [
+    "22.564",
+    "creak",
+    0.05
+   ],
+   [
+    "23.264",
+    "chime",
+    0.04,
+    {
+     "note": 79
+    }
+   ],
+   [
+    "24.716",
+    "wind",
+    0.06,
+    {
+     "dur": 8.957
+    }
+   ],
+   [
+    "24.866",
+    "footsteps",
+    0.06,
+    {
+     "dur": 1.6,
+     "rate": 1.6
+    }
+   ],
+   [
+    "25.846",
+    "flutter",
+    0.05
+   ],
+   [
+    "26.926",
+    "drone",
+    0.04,
+    {
+     "dur": 2.3
+    }
+   ],
+   [
+    "27.866",
+    "sting",
+    0.05
+   ],
+   [
+    "29.382",
+    "footsteps",
+    0.05,
+    {
+     "dur": 1.2,
+     "rate": 1.2
+    }
+   ],
+   [
+    "30.642",
+    "whoosh",
+    0.08,
+    {
+     "dur": 0.5
+    }
+   ],
+   [
+    "31.192",
+    "flutter",
+    0.06
+   ],
+   [
+    "31.642",
+    "ringtone",
+    0.07,
+    {
+     "dur": 3.4809999999999945
+    }
+   ],
+   [
+    "32.762",
+    "lockturn",
+    0.11
+   ],
+   [
+    "33.362",
+    "clunk",
+    0.07
+   ],
+   [
+    "33.673",
+    "chainslide",
+    0.08
+   ],
+   [
+    "33.873",
+    "riser",
+    0.04,
+    {
+     "dur": 1.0
+    }
+   ],
+   [
+    "34.173",
+    "shimmer",
+    0.08,
+    {
+     "dur": 2.6
+    }
+   ],
+   [
+    "34.273",
+    "drone",
+    0.05,
+    {
+     "dur": 8.191
+    }
+   ],
+   [
+    "35.783",
+    "sample",
+    0.07,
+    {
+     "name": "whoa",
+     "rev": 0.3,
+     "wet": 0.1
+    }
+   ],
+   [
+    "37.734",
+    "rumble",
+    0.06,
+    {
+     "dur": 3.3399999999999976
+    }
+   ],
+   [
+    "38.034",
+    "hum",
+    0.05,
+    {
+     "dur": 4.0,
+     "f": 48
+    }
+   ],
+   [
+    "40.874",
+    "sting",
+    0.07
+   ],
+   [
+    "41.174",
+    "hum",
+    0.04,
+    {
+     "dur": 1.6,
+     "f": 110
+    }
+   ],
+   [
+    "41.964",
+    "footsteps",
+    0.05,
+    {
+     "dur": 0.9,
+     "rate": 1.3
+    }
+   ],
+   [
+    "43.57",
+    "hum",
+    0.04,
+    {
+     "dur": 7.375,
+     "f": 52
+    }
+   ],
+   [
+    "46.26",
+    "whisper",
+    0.03,
+    {
+     "dur": 1.2
+    }
+   ],
+   [
+    "48.069",
+    "shimmer",
+    0.07,
+    {
+     "dur": 2.2
+    }
+   ],
+   [
+    "48.269",
+    "chime",
+    0.05,
+    {
+     "note": 76
+    }
+   ],
+   [
+    "51.295",
+    "clunk",
+    0.04
+   ],
+   [
+    "55.997",
+    "riser",
+    0.05,
+    {
+     "dur": 1.6
+    }
+   ],
+   [
+    "57.257",
+    "chime",
+    0.06,
+    {
+     "note": 81
+    }
+   ],
+   [
+    "58.169",
+    "winddown",
+    0.08,
+    {
+     "dur": 2.4
+    }
+   ],
+   [
+    "58.869",
+    "flick",
+    0.05
+   ],
+   [
+    "60.449",
+    "shimmer",
+    0.07,
+    {
+     "dur": 2.4
+    }
+   ],
+   [
+    "60.849",
+    "chirp",
+    0.03
+   ]
+  ]
+ }
+}
