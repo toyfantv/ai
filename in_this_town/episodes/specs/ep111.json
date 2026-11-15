@@ -1,0 +1,600 @@
+{
+ "number": 111,
+ "title": "Shuffle Night",
+ "output": "Remake11_ShuffleNight.mp4",
+ "youtube_title": "Every Ten Years, Everyone's Age Gets Shuffled",
+ "tiktok_caption": "Rudy woke up two years old. Then his best friend rang the doorbell, seventy-eight and holding a game controller.",
+ "hashtags": "#Shorts #Storytime #Animation #BestFriends",
+ "thumbnail_text": "NEXT TIME, I'M THE BABY",
+ "thumbnail_rec": "Old Oskar, bald and hunched on his cane, a game controller in his other hand, bending to hook one shaky pinky with toddler Rudy in his red cap and diaper on the hallway floor; warm morning light. Text: NEXT TIME, I'M THE BABY.",
+ "tail": 1.0,
+ "fps": 60,
+ "narrator": {
+  "pace": [
+   2.5,
+   2.95
+  ],
+  "min_tempo": 1.04
+ },
+ "cast": {
+  "oskar": {
+   "voice": "liam",
+   "pitch": 1.26,
+   "tempo": 1.0
+  },
+  "rudy": {
+   "voice": "will",
+   "pitch": 1.42,
+   "tempo": 1.0
+  },
+  "oldoskar": {
+   "voice": "bill",
+   "pitch": 0.96,
+   "tempo": 1.1
+  },
+  "sister": {
+   "voice": "sarah",
+   "pitch": 0.98,
+   "tempo": 1.0
+  },
+  "momkid": {
+   "voice": "jessica",
+   "pitch": 1.3,
+   "tempo": 1.0
+  }
+ },
+ "highlights": {
+  "SHUFFLED": "yellow",
+  "FOUR": "yellow",
+  "FORTY": "yellow",
+  "NINETY-NINE": "yellow",
+  "SIX": "yellow",
+  "THE SLIDE": "yellow",
+  "BEST FRIEND": "yellow",
+  "SECRET HANDSHAKE": "yellow",
+  "BEST FRIENDS": "yellow",
+  "JUST IN CASE": "yellow",
+  "COOL ONE": "yellow",
+  "TINY": "red",
+  "MAMA": "red",
+  "TWO": "red",
+  "NINE": "red",
+  "COOKIE JAR": "yellow",
+  "GROUNDED": "red",
+  "CANE": "yellow",
+  "GAME CONTROLLER": "yellow",
+  "SHAKY PINKY": "yellow",
+  "OSKAR": "yellow",
+  "SEVENTY-EIGHT": "yellow",
+  "KEPT THE PACT": "yellow",
+  "AIRPLANE NOISES": "yellow",
+  "I'M THE BABY": "yellow"
+ },
+ "lines": [
+  {
+   "text": "In Dappleford, every ten years, everyone's age gets shuffled overnight.",
+   "tag": "[warm]",
+   "pause": 0.12
+  },
+  {
+   "text": "You keep your memories, but you might wake up four, or forty, or ninety-nine.",
+   "tag": "[playful]",
+   "pause": 0.14
+  },
+  {
+   "text": "Last time, Grandpa Fennick woke up six and ran for the slide.",
+   "tag": "[amused]",
+   "pause": 0.16
+  },
+  {
+   "text": "Rudy was twelve. Oskar was his best friend.",
+   "tag": "[warm]",
+   "pause": 0.1
+  },
+  {
+   "text": "The night before the shuffle, they sealed a pact with their secret handshake: whatever age we get, we stay best friends.",
+   "tag": "[warm]",
+   "pause": 0.14
+  },
+  {
+   "text": "Oskar practiced being grown-up, just in case.",
+   "tag": "[amused]",
+   "pause": 0.1
+  },
+  {
+   "text": "“If I'm old, I'll be a cool one.”",
+   "speak": "If I'm old, I'll be a cool one.",
+   "voice": "oskar",
+   "tag": "[confidently]",
+   "pause": 0.2
+  },
+  {
+   "text": "Then Rudy woke up. His hands were tiny.",
+   "tag": "[surprised]",
+   "pause": 0.1
+  },
+  {
+   "text": "“Mama!”",
+   "speak": "Mama!",
+   "voice": "rudy",
+   "tag": "[shouting]",
+   "pause": 0.16
+  },
+  {
+   "text": "He was two. Mom was nine, crying under the cookie jar.",
+   "tag": "[amused]",
+   "pause": 0.1
+  },
+  {
+   "text": "His sister was forty, and had already grounded everyone.",
+   "tag": "[amused]",
+   "pause": 0.14
+  },
+  {
+   "text": "The doorbell rang. An old man stood there, a cane in one hand, a game controller in the other.",
+   "tag": "[curious]",
+   "pause": 0.12
+  },
+  {
+   "text": "He did their secret handshake with one shaky pinky.",
+   "tag": "[softly]",
+   "pause": 0.12
+  },
+  {
+   "text": "It was Oskar, seventy-eight.",
+   "tag": "[warm]",
+   "pause": 0.14
+  },
+  {
+   "text": "And he kept the pact. He pushed Rudy's stroller, fed him peas with airplane noises, and let him chew the controller.",
+   "tag": "[warm]",
+   "pause": 0.16
+  },
+  {
+   "text": "“Nine years, eleven months to go. Next time, I'm the baby.”",
+   "speak": "Nine years, eleven months to go. Next time, I'm the baby.",
+   "voice": "oldoskar",
+   "tag": "[whispers]",
+   "pause": 0.1
+  }
+ ],
+ "samples": {
+  "airplane": {
+   "text": "Here comes the airplane! Nyeeeoww!",
+   "voice": "oldoskar",
+   "tag": "[playfully]"
+  },
+  "blegh": {
+   "text": "Bleh.",
+   "voice": "oskar",
+   "tag": "[disgusted]"
+  },
+  "giggle": {
+   "text": "Hee hee!",
+   "voice": "rudy",
+   "tag": "[giggles]"
+  },
+  "grounded": {
+   "text": "Grounded! All of you!",
+   "voice": "sister",
+   "tag": "[sternly]"
+  },
+  "sob": {
+   "text": "I can't reach it!",
+   "voice": "momkid",
+   "tag": "[crying]"
+  }
+ },
+ "sound": {
+  "key": 62,
+  "music_gain": 0.3,
+  "music": [
+   [
+    "0",
+    "playful"
+   ],
+   [
+    "29.941",
+    "silence"
+   ],
+   [
+    "31.969",
+    "playful"
+   ],
+   [
+    "39.309",
+    "silence"
+   ],
+   [
+    "40.609",
+    "wonder"
+   ],
+   [
+    "48.232",
+    "silence"
+   ],
+   [
+    "50.246",
+    "tender_hope"
+   ]
+  ],
+  "cues": [
+   [
+    "0",
+    "suburb",
+    0.2,
+    {
+     "dur": 16.349
+    }
+   ],
+   [
+    "0.6",
+    "chirp",
+    0.08,
+    {
+     "f": 1900
+    }
+   ],
+   [
+    "2.0",
+    "chirp",
+    0.08,
+    {
+     "f": 2300
+    }
+   ],
+   [
+    "5.1",
+    "chirp",
+    0.08,
+    {
+     "f": 2050
+    }
+   ],
+   [
+    "8.4",
+    "chirp",
+    0.08,
+    {
+     "f": 2400
+    }
+   ],
+   [
+    "12.6",
+    "chirp",
+    0.08,
+    {
+     "f": 1800
+    }
+   ],
+   [
+    "14.9",
+    "chirp",
+    0.08,
+    {
+     "f": 2200
+    }
+   ],
+   [
+    "9.754",
+    "footsteps",
+    0.12,
+    {
+     "dur": 1.6,
+     "rate": 3.2
+    }
+   ],
+   [
+    "11.704",
+    "whoosh",
+    0.22,
+    {
+     "dur": 1.1
+    }
+   ],
+   [
+    "12.304",
+    "sample",
+    0.2,
+    {
+     "name": "giggle",
+     "rev": 0.6,
+     "wet": 0.12
+    }
+   ],
+   [
+    "13.217",
+    "footsteps",
+    0.12,
+    {
+     "dur": 2.9,
+     "rate": 2.2
+    }
+   ],
+   [
+    "16.349",
+    "roomtone",
+    0.1,
+    {
+     "dur": 7.2280000000000015
+    }
+   ],
+   [
+    "16.369",
+    "tick",
+    0.06,
+    {
+     "dur": 1.2999999999999985,
+     "rate": 7
+    }
+   ],
+   [
+    "18.219",
+    "swish",
+    0.26
+   ],
+   [
+    "18.369",
+    "pop",
+    0.26
+   ],
+   [
+    "19.019",
+    "pop",
+    0.2
+   ],
+   [
+    "19.469",
+    "swish",
+    0.2,
+    {
+     "seed": 4
+    }
+   ],
+   [
+    "19.569",
+    "chime",
+    0.12,
+    {
+     "note": 86
+    }
+   ],
+   [
+    "23.577",
+    "roomtone",
+    0.1,
+    {
+     "dur": 4.943999999999999
+    }
+   ],
+   [
+    "23.647",
+    "paper",
+    0.28,
+    {
+     "dur": 0.9
+    }
+   ],
+   [
+    "24.997",
+    "pop",
+    0.14
+   ],
+   [
+    "26.305",
+    "swish",
+    0.22,
+    {
+     "seed": 5
+    }
+   ],
+   [
+    "26.435",
+    "chime",
+    0.12,
+    {
+     "note": 91
+    }
+   ],
+   [
+    "28.521",
+    "roomtone",
+    0.1,
+    {
+     "dur": 3.708000000000002
+    }
+   ],
+   [
+    "28.741",
+    "chirp",
+    0.06,
+    {
+     "f": 2100
+    }
+   ],
+   [
+    "29.441",
+    "chirp",
+    0.06,
+    {
+     "f": 2500
+    }
+   ],
+   [
+    "28.941",
+    "whoosh",
+    0.14,
+    {
+     "dur": 0.6
+    }
+   ],
+   [
+    "31.269",
+    "riser",
+    0.08,
+    {
+     "dur": 0.25
+    }
+   ],
+   [
+    "32.229",
+    "roomtone",
+    0.1,
+    {
+     "dur": 7.059999999999995
+    }
+   ],
+   [
+    "33.849",
+    "sample",
+    0.16,
+    {
+     "name": "sob",
+     "rev": 0.5,
+     "wet": 0.1
+    }
+   ],
+   [
+    "37.53",
+    "stomp",
+    0.18
+   ],
+   [
+    "37.58",
+    "sample",
+    0.18,
+    {
+     "name": "grounded",
+     "rev": 0.6,
+     "wet": 0.12
+    }
+   ],
+   [
+    "39.359",
+    "ding",
+    0.32
+   ],
+   [
+    "39.809",
+    "creak",
+    0.16,
+    {
+     "dur": 0.7
+    }
+   ],
+   [
+    "39.959",
+    "suburb",
+    0.1,
+    {
+     "dur": 24.476000000000003
+    }
+   ],
+   [
+    "40.609",
+    "shimmer",
+    0.06,
+    {
+     "dur": 2.2
+    }
+   ],
+   [
+    "45.22",
+    "footsteps",
+    0.1,
+    {
+     "dur": 0.6,
+     "rate": 2.0
+    }
+   ],
+   [
+    "46.32",
+    "chime",
+    0.1,
+    {
+     "note": 84
+    }
+   ],
+   [
+    "46.72",
+    "chime",
+    0.1,
+    {
+     "note": 88
+    }
+   ],
+   [
+    "48.352",
+    "chime",
+    0.14,
+    {
+     "note": 79
+    }
+   ],
+   [
+    "52.496",
+    "footsteps",
+    0.1,
+    {
+     "dur": 1.4,
+     "rate": 1.6
+    }
+   ],
+   [
+    "53.896",
+    "sample",
+    0.2,
+    {
+     "name": "airplane",
+     "rev": 0.5,
+     "wet": 0.12
+    }
+   ],
+   [
+    "55.196",
+    "whoosh",
+    0.1,
+    {
+     "dur": 0.8
+    }
+   ],
+   [
+    "56.296",
+    "sample",
+    0.18,
+    {
+     "name": "giggle",
+     "rate": 0.95,
+     "rev": 0.5,
+     "wet": 0.12
+    }
+   ],
+   [
+    "56.696",
+    "tick",
+    0.06,
+    {
+     "dur": 0.8,
+     "rate": 9
+    }
+   ],
+   [
+    "57.539",
+    "roomtone",
+    0.08,
+    {
+     "dur": 6.8960000000000035
+    }
+   ],
+   [
+    "57.789",
+    "paper",
+    0.1,
+    {
+     "dur": 1.0,
+     "seed": 3
+    }
+   ]
+  ]
+ }
+}

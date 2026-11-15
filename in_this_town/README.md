@@ -660,6 +660,10 @@ Every lie makes you lighter. Floating is a pure function of time: `place()` plus
 
 A town where a gold bead feeds everyone their words. The wrongness is all in light and timing: `SUN` mixes toward `WRONG` and `DUSKW`, and a freeze is a held `t` for everyone at once. `merrowbay.js` holds the kit (`mb_*` in the library). A long lunch table only shows a row of faces from an oblique angle or from the far end of the room: a 9:16 frame is about 27 degrees wide at fov 46. Seated heads are near y 4.4, so keep tables under about 3. `tools/ep107_sound.py` writes the sound block; the table's flat laugh and the last line's two extra voices are `sample` cues. A hair check caught `farm_ep28_ruby` (a strand crosses the eye) and `hc_maya`: both are poor leads.
 
+## Remake 11 notes (Shuffle Night)
+
+Everyone's age gets shuffled overnight. Ages read through scale (`[avatar, scale, headScale]`: a toddler is a kid avatar at 0.5 with a 1.34 head, a nine-year-old mom 0.64 with 1.08) plus worn props from `shufflenight.js` (`wearTie`, `wearApron`, `wearDiaper`, `wearScarf`, `wearCap`, `wearShades`, `wearMustache`; they attach to the torso or head and measure it with `partBox`, which now skips the head, arms and legs, so a scarf sits at the neck). Kit and library: `sn_*` (street with a playground, house with a front door and porch, kid bedroom with a crib, cane, controller, high chair, stroller...). A handshake between straight Roblox arms only works when both arms are on the same side of the pair (one character's left with the other's right) and the second body is placed by `reachPlace()` so the straight arm ends on the meeting point; a camera close to two blocky bodies sees only an arm, so frame the meeting in profile from 9-10 units. In `aimArm`, arms[0] is the avatar's left. A mustache over the Alti mouth hides the lip sync: leave it off a speaking character. Director `web/episodes/ep111.js`, sound `tools/ep111_sound.py`.
+
 ## Making the next episode
 
 Copy the episode JSON (lines + captions), then copy `web/episodes/ep06.js` and change its palettes, shots and

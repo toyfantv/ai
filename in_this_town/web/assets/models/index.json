@@ -1999,6 +1999,206 @@
     "type": "builder",
     "url": ""
   },
+  "sn_bedroom": {
+    "author": "toyfantv",
+    "desc": "a kid bedroom with a bed (.bed, .bedTop, .bedAt), quilt, TV (.screen), a hidden crib (.crib) and chair (.chair), a night light",
+    "kind": "set",
+    "licence": "own",
+    "made_for": "ep111",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "sn_blanket": {
+    "author": "toyfantv",
+    "desc": "a small folded baby blanket",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep111",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "sn_briefcase": {
+    "author": "toyfantv",
+    "desc": "a brown briefcase",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep111",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "sn_cane": {
+    "author": "toyfantv",
+    "desc": "a walking cane; origin at the hook, shaft 3.6 down",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep111",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "sn_controller": {
+    "author": "toyfantv",
+    "desc": "a game controller with sticks and buttons; controller(colour)",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep111",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "sn_cookie_jar": {
+    "author": "toyfantv",
+    "desc": "a labelled cookie jar",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep111",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "sn_crib": {
+    "author": "toyfantv",
+    "desc": "a baby crib; .top mattress height, .W / .L size, .drop(k) lowers the +x side rail",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep111",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "sn_game_screen": {
+    "author": "toyfantv",
+    "desc": "a TV game screen; .set(k, paused) animates a racing game",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep111",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "sn_high_chair": {
+    "author": "toyfantv",
+    "desc": "a baby high chair; .seatY, .tray",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep111",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "sn_house": {
+    "author": "toyfantv",
+    "desc": "an open-plan family house: kitchen with a fridge and a high shelf (.jar), a table, a stair step (.step, .stepY), a front door (.door hinge, opens with rotation.y -1.5) onto a porch, a high chair (.highChair)",
+    "kind": "set",
+    "licence": "own",
+    "made_for": "ep111",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "sn_mug": {
+    "author": "toyfantv",
+    "desc": "a blue coffee mug",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep111",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "sn_newspaper": {
+    "author": "toyfantv",
+    "desc": "THE DAPPLEFORD DAILY newspaper, printed upside down",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep111",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "sn_pea_bowl": {
+    "author": "toyfantv",
+    "desc": "a yellow bowl of peas",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep111",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "sn_room": {
+    "author": "toyfantv",
+    "desc": "a plain room shell (walls, skirting, a window with day and night panes .pane / .npane); options w, d, h, door {z, w, h} for a doorway in the +x wall",
+    "kind": "set",
+    "licence": "own",
+    "made_for": "ep111",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "sn_slide": {
+    "author": "toyfantv",
+    "desc": "a playground slide; .path(u) gives the ride from the top (u 0) to the bottom (u 1), .H the deck height",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep111",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "sn_spoon": {
+    "author": "toyfantv",
+    "desc": "a baby spoon with a pea on it",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep111",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "sn_street": {
+    "author": "toyfantv",
+    "desc": "a pastel suburban street with cottages, pickets, lamps, a playground (.PG) with a slide and swings, a banner and a town sign",
+    "kind": "set",
+    "licence": "own",
+    "made_for": "ep111",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "sn_stroller": {
+    "author": "toyfantv",
+    "desc": "a baby stroller; .seat and .handle local points",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep111",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "sn_swings": {
+    "author": "toyfantv",
+    "desc": "a two-seat playground swing set",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep111",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
+  "sn_walker": {
+    "author": "toyfantv",
+    "desc": "a metal walking frame",
+    "kind": "prop",
+    "licence": "own",
+    "made_for": "ep111",
+    "source": "this renderer",
+    "type": "builder",
+    "url": ""
+  },
   "snowfall": {
     "author": "toyfantv",
     "desc": "falling snow points over an area",

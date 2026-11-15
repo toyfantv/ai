@@ -31,6 +31,7 @@ import { goldBead as mbGoldBead, looseBead as mbLooseBead, bayWater as mbBayWate
 import { greenhouse as sgGreenhouse, breadCart, gardenBench, cakeTable, partyHat as sgPartyHat, sickBed, quilt, ruthRoom, flowerMesh, larkspur } from './sorrygarden.js';
 import { mallHall, polishedFloor, directoryKiosk, clawMachine, automaticDoor, wetSign, mop as mallMop, bucket as mopBucket, shoppingBag, phoneProp, blockWall, exteriorFacade, paHorn } from './mall.js';
 import { ferrisWheel, carousel, ticketBooth, parkArch, exitGate as parkExitGate, chainFence, midwayStall, parkLamp, paSpeakers as parkPaSpeakers, broom, controlLever, ticketStub, bareStrings, popcornTub, balloon as nameBalloon, teaCups, swingRide, coaster as parkCoaster, blueCreature } from './amusement.js';
+import { street as snStreet, slide as snSlide, swings as snSwings, snRoom, gameScreen as snGameScreen, bedroom as snBedroom, crib as snCrib, blanket as snBlanket, houseRoom as snHouse, cookieJar as snCookieJar, cane as snCane, controller as snController, mug as snMug, newspaper as snNewspaper, spoon as snSpoon, peaBowl as snPeaBowl, briefcase as snBriefcase, walker as snWalker, highChair as snHighChair, stroller as snStroller } from './shufflenight.js';
 
 // ---------- Episode 17 ----------
 // The black package: four walls that fold out (open(angle)), a lid, a RETURN ADDRESS label.
@@ -585,4 +586,24 @@ export const BUILD = {
   sg_bedroom: (o) => put(o, ruthRoom()),   // a papered bedroom centred on the origin, window on +x, the bed's head at -z
   sg_flower: (o) => put(o, flowerMesh(o.kind ?? 'dahlia', o.size ?? 1, o.tint)),   // one bloom: kind 'dahlia' | 'buttercup' | 'thistle'
   sg_larkspur: (o) => larkspur(o.parent),   // the whole bright village set: street, lane, yard, greenhouse, cottage, bakery; returns its named parts
+  sn_street: (o) => put(o, snStreet()),   // a pastel suburban street with cottages, pickets, lamps, a playground (.PG) with a slide and swings, a banner and a town sign
+  sn_slide: (o) => put(o, snSlide()),   // a playground slide; .path(u) gives the ride from the top (u 0) to the bottom (u 1), .H the deck height
+  sn_swings: (o) => put(o, snSwings()),   // a two-seat playground swing set
+  sn_room: (o) => put(o, snRoom()),   // a plain room shell (walls, skirting, a window with day and night panes .pane / .npane); options w, d, h, door {z, w, h} for a doorway in the +x wall
+  sn_game_screen: (o) => put(o, snGameScreen()),   // a TV game screen; .set(k, paused) animates a racing game
+  sn_bedroom: (o) => put(o, snBedroom()),   // a kid bedroom with a bed (.bed, .bedTop, .bedAt), quilt, TV (.screen), a hidden crib (.crib) and chair (.chair), a night light
+  sn_crib: (o) => put(o, snCrib()),   // a baby crib; .top mattress height, .W / .L size, .drop(k) lowers the +x side rail
+  sn_blanket: (o) => put(o, snBlanket()),   // a small folded baby blanket
+  sn_house: (o) => put(o, snHouse()),   // an open-plan family house: kitchen with a fridge and a high shelf (.jar), a table, a stair step (.step, .stepY), a front door (.door hinge, opens with rotation.y -1.5) onto a porch, a high chair (.highChair)
+  sn_cookie_jar: (o) => put(o, snCookieJar()),   // a labelled cookie jar
+  sn_cane: (o) => put(o, snCane()),   // a walking cane; origin at the hook, shaft 3.6 down
+  sn_controller: (o) => put(o, snController()),   // a game controller with sticks and buttons; controller(colour)
+  sn_mug: (o) => put(o, snMug()),   // a blue coffee mug
+  sn_newspaper: (o) => put(o, snNewspaper()),   // THE DAPPLEFORD DAILY newspaper, printed upside down
+  sn_spoon: (o) => put(o, snSpoon()),   // a baby spoon with a pea on it
+  sn_pea_bowl: (o) => put(o, snPeaBowl()),   // a yellow bowl of peas
+  sn_briefcase: (o) => put(o, snBriefcase()),   // a brown briefcase
+  sn_walker: (o) => put(o, snWalker()),   // a metal walking frame
+  sn_high_chair: (o) => put(o, snHighChair()),   // a baby high chair; .seatY, .tray
+  sn_stroller: (o) => put(o, snStroller()),   // a baby stroller; .seat and .handle local points
 };
