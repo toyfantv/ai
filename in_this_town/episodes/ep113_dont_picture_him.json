@@ -1,0 +1,1045 @@
+{
+ "id": "ep113",
+ "number": 113,
+ "title": "Don't Picture Him",
+ "output": "Remake13_DontPictureHim.mp4",
+ "tts": "openrouter",
+ "youtube_title": "The Town Where You Can't Picture Him",
+ "tiktok_caption": "In Bramblewick, your daydreams float over your head. At two hundred, Mister Stilts walks out. So Tess picked what everyone pictured.",
+ "hashtags": "#Shorts #Storytime #Animation #PlotTwist",
+ "thumbnail_text": "DON'T PICTURE HIM",
+ "thumbnail_rec": "Mister Stilts, a lanky green monster with a hundred eyes, towering over the bright town square in a sparkly pink tutu, the clock-tower counter reading 200, while Tess stands on her roof with a megaphone. Text across the sky: DON'T PICTURE HIM",
+ "lead_in": 0.3,
+ "tail": 0.8,
+ "voices": {
+  "narrator": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "ErXwobaYiN019PkySvjV",
+    "pitch": 1.1,
+    "tempo": 1.12,
+    "max_tempo": 1.15,
+    "pace": [
+     2.5,
+     2.95
+    ],
+    "min_tempo": 1.04
+   },
+   "kokoro": "am_michael",
+   "speed": 1.0,
+   "note": "Antoni (American), In This Town preset el:ErXwobaYiN019PkySvjV:1.1:1.12 - same narrator every episode"
+  },
+  "tess": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "jessica",
+    "pitch": 1.12,
+    "tempo": 1.0
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  },
+  "mayor": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "bill",
+    "pitch": 1.0,
+    "tempo": 1.05
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  }
+ },
+ "highlights": {
+  "BRAMBLEWICK": "yellow",
+  "DAYDREAMS": "yellow",
+  "TWO HUNDRED": "red",
+  "COMES TRUE": "yellow",
+  "TESS'S": "yellow",
+  "MONSTERS": "yellow",
+  "MISTER STILTS": "red",
+  "BLINKING EYES": "red",
+  "CLOCK TOWER": "yellow",
+  "HE'S REAL": "red",
+  "BORED": "yellow",
+  "ONE.": "red",
+  "FORTY": "red",
+  "BLAMED TESS": "red",
+  "LAUNDRY BASKET": "yellow",
+  "BILLBOARDS": "yellow",
+  "PIZZA BOXES": "yellow",
+  "A BLIMP": "yellow",
+  "NINETY-NINE": "red",
+  "OWN BOX": "yellow",
+  "POPPED": "red",
+  "WITHOUT PICTURING HIM": "yellow",
+  "MEGAPHONE": "yellow",
+  "SPARKLY TUTU": "yellow",
+  "EVERY BUBBLE": "yellow",
+  "FAINTED": "red",
+  "BIRTHDAY PARTIES": "yellow",
+  "2032": "yellow",
+  "GREEN FINGER": "red",
+  "NEW MOVES": "yellow"
+ },
+ "lines": [
+  {
+   "text": "In Bramblewick, your daydreams float over your head.",
+   "tag": "[warm]",
+   "pause": 0.12
+  },
+  {
+   "text": "If two hundred people picture one thing, it comes true.",
+   "tag": "[amused]",
+   "pause": 0.12
+  },
+  {
+   "text": "Tess's bubble was always full of monsters.",
+   "tag": "[warm]",
+   "pause": 0.12
+  },
+  {
+   "text": "But never Mister Stilts and his hundred blinking eyes.",
+   "tag": "[mysterious]",
+   "pause": 0.12
+  },
+  {
+   "text": "The clock tower counts who's picturing him.",
+   "tag": "[serious]",
+   "pause": 0.12
+  },
+  {
+   "text": "In class, Tess got bored, and there he was.",
+   "tag": "[mysterious]",
+   "pause": 0.12
+  },
+  {
+   "text": "Click. One.",
+   "tag": "[tense]",
+   "pause": 0.12
+  },
+  {
+   "text": "“Do not picture Mister Stilts!”",
+   "tag": "[shouting]",
+   "pause": 0.16,
+   "voice": "mayor",
+   "speak": "Do not picture Mister Stilts!"
+  },
+  {
+   "text": "By lunch, forty. Everyone blamed Tess. Mom made her wear a laundry basket.",
+   "tag": "[amused]",
+   "pause": 0.12
+  },
+  {
+   "text": "The mayor got louder: billboards, pizza boxes, a blimp.",
+   "tag": "[amused]",
+   "pause": 0.12
+  },
+  {
+   "text": "One fifty. One ninety-nine.",
+   "tag": "[tense]",
+   "pause": 0.12
+  },
+  {
+   "text": "Then the pizza guy read his own box. Up popped the eyes.",
+   "tag": "[tense]",
+   "pause": 0.12
+  },
+  {
+   "text": "Nobody can read “don't picture him” without picturing him.",
+   "tag": "[realizing]",
+   "pause": 0.12,
+   "speak": "Nobody can read don't picture him without picturing him."
+  },
+  {
+   "text": "So Tess climbed her roof with a megaphone.",
+   "tag": "[determined]",
+   "pause": 0.12
+  },
+  {
+   "text": "“Whatever you do, don't picture Mister Stilts in a sparkly tutu!”",
+   "tag": "[shouting]",
+   "pause": 0.16,
+   "voice": "tess",
+   "speak": "Whatever you do, don't picture Mister Stilts in a sparkly tutu!"
+  },
+  {
+   "text": "Two hundred. In the square stood Mister Stilts, in a sparkly tutu.",
+   "tag": "[mysterious]",
+   "pause": 0.12
+  },
+  {
+   "text": "He tap-danced past the mayor, who fainted.",
+   "tag": "[amused]",
+   "pause": 0.12
+  },
+  {
+   "text": "Now he does birthday parties, booked until 2032.",
+   "tag": "[warm]",
+   "pause": 0.12,
+   "speak": "Now he does birthday parties, booked until twenty thirty-two."
+  },
+  {
+   "text": "Every night, a long green finger taps Tess's window. He needs new moves.",
+   "tag": "[warm]",
+   "pause": 0.12
+  }
+ ],
+ "samples": {
+  "gasp": {
+   "text": "Huh?!",
+   "voice": "tess",
+   "tag": "[gasps]"
+  },
+  "ohno": {
+   "text": "Oh no.",
+   "voice": "tess",
+   "tag": "[nervously]"
+  },
+  "faint": {
+   "text": "Ohhh...",
+   "voice": "mayor",
+   "tag": "[weakly]"
+  },
+  "hehe": {
+   "text": "Hee hee!",
+   "voice": "tess",
+   "tag": "[giggles]"
+  }
+ },
+ "sound": {
+  "key": 60,
+  "music_gain": 0.3,
+  "music": [
+   [
+    "0",
+    "playful"
+   ],
+   [
+    "9.566",
+    "mystery"
+   ],
+   [
+    "15.349",
+    "playful"
+   ],
+   [
+    "19.273",
+    "suspense"
+   ],
+   [
+    "31.894",
+    "dread"
+   ],
+   [
+    "41.254",
+    "action"
+   ],
+   [
+    "48.033",
+    "carousel"
+   ],
+   [
+    "59.008",
+    "musicbox"
+   ]
+  ],
+  "cues": [
+   [
+    "0",
+    "suburb",
+    0.1,
+    {
+     "dur": 9.566
+    }
+   ],
+   [
+    "0.5",
+    "pop",
+    0.08
+   ],
+   [
+    "0.55",
+    "chime",
+    0.05,
+    {
+     "note": 84
+    }
+   ],
+   [
+    "1.2",
+    "pop",
+    0.08
+   ],
+   [
+    "1.25",
+    "chime",
+    0.05,
+    {
+     "note": 88
+    }
+   ],
+   [
+    "1.9",
+    "pop",
+    0.08
+   ],
+   [
+    "1.95",
+    "chime",
+    0.05,
+    {
+     "note": 91
+    }
+   ],
+   [
+    "2.6",
+    "pop",
+    0.08
+   ],
+   [
+    "2.65",
+    "chime",
+    0.05,
+    {
+     "note": 86
+    }
+   ],
+   [
+    "4.296",
+    "pop",
+    0.07
+   ],
+   [
+    "4.416",
+    "pop",
+    0.07
+   ],
+   [
+    "4.536",
+    "pop",
+    0.07
+   ],
+   [
+    "4.656",
+    "pop",
+    0.07
+   ],
+   [
+    "4.776",
+    "pop",
+    0.07
+   ],
+   [
+    "4.896",
+    "pop",
+    0.07
+   ],
+   [
+    "5.146",
+    "whoosh",
+    0.18,
+    {
+     "dur": 0.7
+    }
+   ],
+   [
+    "5.746",
+    "impact",
+    0.3
+   ],
+   [
+    "5.796",
+    "splat",
+    0.14
+   ],
+   [
+    "7.002",
+    "pop",
+    0.1
+   ],
+   [
+    "7.052",
+    "chime",
+    0.06,
+    {
+     "note": 79
+    }
+   ],
+   [
+    "9.566",
+    "drone",
+    0.12,
+    {
+     "dur": 3.4320000000000004
+    }
+   ],
+   [
+    "9.766",
+    "scarehit",
+    0.16
+   ],
+   [
+    "11.666",
+    "flutter",
+    0.1,
+    {
+     "dur": 1.2
+    }
+   ],
+   [
+    "13.048",
+    "suburb",
+    0.08,
+    {
+     "dur": 2.350999999999999
+    }
+   ],
+   [
+    "13.698",
+    "towerbell",
+    0.12
+   ],
+   [
+    "15.399",
+    "roomtone",
+    0.1,
+    {
+     "dur": 5.008000000000001
+    }
+   ],
+   [
+    "17.529",
+    "pop",
+    0.12
+   ],
+   [
+    "17.579",
+    "chime",
+    0.06,
+    {
+     "note": 76
+    }
+   ],
+   [
+    "19.443",
+    "clunk",
+    0.2
+   ],
+   [
+    "19.573",
+    "beep",
+    0.08
+   ],
+   [
+    "19.623",
+    "screams",
+    0.12,
+    {
+     "dur": 1.4
+    }
+   ],
+   [
+    "19.723",
+    "sample",
+    0.16,
+    {
+     "name": "ohno",
+     "rev": 0.3,
+     "wet": 0.1
+    }
+   ],
+   [
+    "20.407",
+    "suburb",
+    0.08,
+    {
+     "dur": 2.4289999999999985
+    }
+   ],
+   [
+    "20.257",
+    "ding",
+    0.08
+   ],
+   [
+    "21.357",
+    "pop",
+    0.1
+   ],
+   [
+    "22.936",
+    "clunk",
+    0.16
+   ],
+   [
+    "23.236",
+    "tick",
+    0.06,
+    {
+     "dur": 0.5,
+     "rate": 6
+    }
+   ],
+   [
+    "23.246",
+    "roomtone",
+    0.1,
+    {
+     "dur": 2.9400000000000013
+    }
+   ],
+   [
+    "23.746",
+    "groan",
+    0.06
+   ],
+   [
+    "26.036",
+    "roomtone",
+    0.1,
+    {
+     "dur": 2.401
+    }
+   ],
+   [
+    "27.186",
+    "swish",
+    0.14
+   ],
+   [
+    "27.586",
+    "clunk",
+    0.12
+   ],
+   [
+    "27.786",
+    "sample",
+    0.14,
+    {
+     "name": "gasp",
+     "rev": 0.3,
+     "wet": 0.1
+    }
+   ],
+   [
+    "28.387",
+    "suburb",
+    0.08,
+    {
+     "dur": 5.728999999999996
+    }
+   ],
+   [
+    "28.637",
+    "stomp",
+    0.12
+   ],
+   [
+    "30.287",
+    "paper",
+    0.12
+   ],
+   [
+    "31.107",
+    "ridehum",
+    0.08,
+    {
+     "dur": 1.4
+    }
+   ],
+   [
+    "31.994",
+    "clunk",
+    0.16
+   ],
+   [
+    "32.194",
+    "tick",
+    0.06,
+    {
+     "dur": 0.4,
+     "rate": 8
+    }
+   ],
+   [
+    "32.084",
+    "clunk",
+    0.18
+   ],
+   [
+    "32.284",
+    "heartbeat",
+    0.12,
+    {
+     "dur": 1.6
+    }
+   ],
+   [
+    "33.666",
+    "footsteps",
+    0.12,
+    {
+     "dur": 1.4,
+     "rate": 2.0
+    }
+   ],
+   [
+    "34.766",
+    "paper",
+    0.08
+   ],
+   [
+    "36.556",
+    "pop",
+    0.2
+   ],
+   [
+    "36.606",
+    "scarehit",
+    0.12
+   ],
+   [
+    "36.856",
+    "clunk",
+    0.1
+   ],
+   [
+    "38.78",
+    "hum",
+    0.05,
+    {
+     "dur": 2.4
+    }
+   ],
+   [
+    "41.454",
+    "footsteps",
+    0.12,
+    {
+     "dur": 2.5089999999999932,
+     "rate": 2.4
+    }
+   ],
+   [
+    "44.063",
+    "clunk",
+    0.1
+   ],
+   [
+    "43.183",
+    "buzz",
+    0.05,
+    {
+     "dur": 1.2
+    }
+   ],
+   [
+    "45.863",
+    "pop",
+    0.07
+   ],
+   [
+    "45.893",
+    "chime",
+    0.04,
+    {
+     "note": 84
+    }
+   ],
+   [
+    "46.013",
+    "pop",
+    0.07
+   ],
+   [
+    "46.043",
+    "chime",
+    0.04,
+    {
+     "note": 88
+    }
+   ],
+   [
+    "46.163",
+    "pop",
+    0.07
+   ],
+   [
+    "46.193",
+    "chime",
+    0.04,
+    {
+     "note": 91
+    }
+   ],
+   [
+    "46.313",
+    "pop",
+    0.07
+   ],
+   [
+    "46.343",
+    "chime",
+    0.04,
+    {
+     "note": 86
+    }
+   ],
+   [
+    "46.463",
+    "pop",
+    0.07
+   ],
+   [
+    "46.493",
+    "chime",
+    0.04,
+    {
+     "note": 93
+    }
+   ],
+   [
+    "46.613",
+    "pop",
+    0.07
+   ],
+   [
+    "46.643",
+    "chime",
+    0.04,
+    {
+     "note": 89
+    }
+   ],
+   [
+    "46.763",
+    "pop",
+    0.07
+   ],
+   [
+    "46.793",
+    "chime",
+    0.04,
+    {
+     "note": 96
+    }
+   ],
+   [
+    "46.913",
+    "pop",
+    0.07
+   ],
+   [
+    "46.943",
+    "chime",
+    0.04,
+    {
+     "note": 91
+    }
+   ],
+   [
+    "47.553",
+    "riser",
+    0.12,
+    {
+     "dur": 0.6
+    }
+   ],
+   [
+    "48.153",
+    "towerbell",
+    0.16
+   ],
+   [
+    "48.203",
+    "clunk",
+    0.18
+   ],
+   [
+    "49.893",
+    "boom",
+    0.18
+   ],
+   [
+    "49.943",
+    "dustglitter",
+    0.16,
+    {
+     "dur": 2.2
+    }
+   ],
+   [
+    "50.193",
+    "shimmer",
+    0.1,
+    {
+     "dur": 2.0
+    }
+   ],
+   [
+    "50.893",
+    "crowdsteps",
+    0.06,
+    {
+     "dur": 2.5
+    }
+   ],
+   [
+    "53.263",
+    "tick",
+    0.1,
+    {
+     "dur": 0.05,
+     "rate": 2
+    }
+   ],
+   [
+    "53.433",
+    "tick",
+    0.1,
+    {
+     "dur": 0.05,
+     "rate": 2
+    }
+   ],
+   [
+    "53.603",
+    "tick",
+    0.1,
+    {
+     "dur": 0.05,
+     "rate": 2
+    }
+   ],
+   [
+    "53.773",
+    "tick",
+    0.1,
+    {
+     "dur": 0.05,
+     "rate": 2
+    }
+   ],
+   [
+    "53.943",
+    "tick",
+    0.1,
+    {
+     "dur": 0.05,
+     "rate": 2
+    }
+   ],
+   [
+    "54.113",
+    "tick",
+    0.1,
+    {
+     "dur": 0.05,
+     "rate": 2
+    }
+   ],
+   [
+    "54.283",
+    "tick",
+    0.1,
+    {
+     "dur": 0.05,
+     "rate": 2
+    }
+   ],
+   [
+    "54.453",
+    "tick",
+    0.1,
+    {
+     "dur": 0.05,
+     "rate": 2
+    }
+   ],
+   [
+    "54.623",
+    "tick",
+    0.1,
+    {
+     "dur": 0.05,
+     "rate": 2
+    }
+   ],
+   [
+    "54.793",
+    "tick",
+    0.1,
+    {
+     "dur": 0.05,
+     "rate": 2
+    }
+   ],
+   [
+    "54.963",
+    "tick",
+    0.1,
+    {
+     "dur": 0.05,
+     "rate": 2
+    }
+   ],
+   [
+    "55.133",
+    "tick",
+    0.1,
+    {
+     "dur": 0.05,
+     "rate": 2
+    }
+   ],
+   [
+    "55.303",
+    "tick",
+    0.1,
+    {
+     "dur": 0.05,
+     "rate": 2
+    }
+   ],
+   [
+    "55.473",
+    "tick",
+    0.1,
+    {
+     "dur": 0.05,
+     "rate": 2
+    }
+   ],
+   [
+    "54.363",
+    "sample",
+    0.16,
+    {
+     "name": "faint",
+     "rev": 0.3,
+     "wet": 0.1
+    }
+   ],
+   [
+    "54.813",
+    "bodyfall",
+    0.16
+   ],
+   [
+    "55.641",
+    "suburb",
+    0.08,
+    {
+     "dur": 3.4169999999999945
+    }
+   ],
+   [
+    "55.991",
+    "applause",
+    0.08,
+    {
+     "dur": 2.2
+    }
+   ],
+   [
+    "56.191",
+    "sample",
+    0.12,
+    {
+     "name": "hehe",
+     "rev": 0.3,
+     "wet": 0.1
+    }
+   ],
+   [
+    "56.291",
+    "pop",
+    0.06
+   ],
+   [
+    "56.691",
+    "pop",
+    0.06
+   ],
+   [
+    "57.091",
+    "pop",
+    0.06
+   ],
+   [
+    "57.491",
+    "pop",
+    0.06
+   ],
+   [
+    "59.058",
+    "roomtone",
+    0.1,
+    {
+     "dur": 5.741000000000009
+    }
+   ],
+   [
+    "59.408",
+    "chirp",
+    0.04,
+    {
+     "f": 4400
+    }
+   ],
+   [
+    "60.508",
+    "chirp",
+    0.04,
+    {
+     "f": 4700
+    }
+   ],
+   [
+    "62.108",
+    "chirp",
+    0.04,
+    {
+     "f": 4500
+    }
+   ],
+   [
+    "63.508",
+    "chirp",
+    0.04,
+    {
+     "f": 4600
+    }
+   ],
+   [
+    "59.508",
+    "knock",
+    0.12
+   ],
+   [
+    "59.798",
+    "knock",
+    0.12
+   ],
+   [
+    "60.088",
+    "knock",
+    0.12
+   ],
+   [
+    "61.508",
+    "pop",
+    0.08
+   ],
+   [
+    "61.558",
+    "chime",
+    0.06,
+    {
+     "note": 88
+    }
+   ]
+  ]
+ }
+}
