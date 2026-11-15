@@ -1,0 +1,737 @@
+{
+ "number": 109,
+ "title": "The Postman of the Birch Woods",
+ "output": "Remake09_BirchPostman.mp4",
+ "youtube_title": "Never Say Your Real Name Near the Birch Woods",
+ "tiktok_caption": "In Birchwater nobody says their real name out loud, because the postman in the birches is listening. Then Mom forgot the rule.",
+ "hashtags": "#Shorts #Storytime #Animation #PlotTwist",
+ "thumbnail_text": "NEVER SAY YOUR REAL NAME",
+ "thumbnail_rec": "Night in the birch woods, looking up from just past Kit's shoulder: the tall bark postman in his navy coat and cap, knot eyes catching the light, golden birch crowns and stars above. Text in the dark sky at the top, clear of his face: NEVER SAY YOUR REAL NAME",
+ "tail": 0.8,
+ "fps": 60,
+ "narrator": {
+  "pace": [
+   2.5,
+   2.95
+  ],
+  "min_tempo": 1.04
+ },
+ "cast": {
+  "kit": {
+   "voice": "liam",
+   "pitch": 1.24,
+   "tempo": 1.0
+  },
+  "mom": {
+   "voice": "sarah",
+   "pitch": 1.02,
+   "tempo": 1.05
+  },
+  "postman": {
+   "voice": "callum",
+   "pitch": 0.8,
+   "tempo": 1.3
+  },
+  "sparrow": {
+   "voice": "jessica",
+   "pitch": 1.1,
+   "tempo": 1.1
+  },
+  "baby": {
+   "voice": "will",
+   "pitch": 1.42,
+   "tempo": 1.0
+  },
+  "barber": {
+   "voice": "chris",
+   "pitch": 1.0,
+   "tempo": 1.0
+  }
+ },
+ "highlights": {
+  "BIRCHWATER,": "cyan",
+  "REAL NAME": "yellow",
+  "SNIPS.": "yellow",
+  "FOUR.": "yellow",
+  "FORGOTTEN.": "red",
+  "SPARROW.": "yellow",
+  "BABY BROTHER.": "red",
+  "THERE FIRST.": "yellow",
+  "MARIGOLD!": "red",
+  "WHO ARE YOU?": "red",
+  "EAR DEFENDERS.": "yellow",
+  "THE SCRATCHING": "red",
+  "THOUSANDS OF POSTCARDS": "cyan",
+  "MARIGOLD.": "red",
+  "COLD HAND": "red",
+  "STAYS POSTED.": "red",
+  "DIFFERENT NAME.": "yellow",
+  "THE LANTERN.": "cyan",
+  "TIPPED HIS CAP.": "yellow",
+  "AT SUNRISE,": "yellow",
+  "ARE YOU LOST,": "red",
+  "COCOA": "yellow",
+  "NEVER TELLS HER.": "cyan",
+  "OF BARK": "red",
+  "HIS OWN": "yellow",
+  "TREEHOUSE": "cyan",
+  "POSTMAN": "red",
+  "QUILL": "red"
+ },
+ "lines": [
+  {
+   "text": "In Birchwater, nobody says their real name aloud.",
+   "tag": "[mysterious]",
+   "pause": 0.12
+  },
+  {
+   "text": "Even the barber just goes by Snips.",
+   "tag": "[amused]",
+   "pause": 0.12
+  },
+  {
+   "text": "Because a postman made of bark lives in the birches.",
+   "tag": "[ominous]",
+   "pause": 0.12
+  },
+  {
+   "text": "If he hears your real name, he posts it. Then you're forgotten.",
+   "tag": "[hushed]",
+   "pause": 0.12
+  },
+  {
+   "text": "Kit's sister went by Sparrow.",
+   "tag": "[warm]",
+   "pause": 0.12
+  },
+  {
+   "text": "One Sunday, a van rolled down the hill at their baby brother.",
+   "tag": "[tense]",
+   "pause": 0.12
+  },
+  {
+   "text": "Sparrow got there first.",
+   "tag": "[urgent]",
+   "pause": 0.14
+  },
+  {
+   "text": "“Marigold!”",
+   "tag": "[screaming]",
+   "pause": 0.12,
+   "voice": "mom",
+   "speak": "MARIGOLD!"
+  },
+  {
+   "text": "In the birches, a quill scratched.",
+   "tag": "[whispering]",
+   "pause": 0.14
+  },
+  {
+   "text": "“Who are you? Put my baby down!”",
+   "tag": "[cold, frightened]",
+   "pause": 0.3,
+   "voice": "mom",
+   "speak": "Who are you? Put my baby down!"
+  },
+  {
+   "text": "Only Kit remembered. He'd been mowing in ear defenders.",
+   "tag": "[serious]",
+   "pause": 0.12
+  },
+  {
+   "text": "That night, he followed the scratching into the birches.",
+   "tag": "[hurried]",
+   "pause": 0.12
+  },
+  {
+   "text": "Thousands of postcards hung between the trees. The newest said Marigold.",
+   "tag": "[hushed]",
+   "pause": 0.12
+  },
+  {
+   "text": "Kit grabbed it. A cold hand closed on his wrist.",
+   "tag": "[tense]",
+   "pause": 0.14
+  },
+  {
+   "text": "“What is posted, stays posted.”",
+   "tag": "[low, creaky]",
+   "pause": 0.14,
+   "voice": "postman",
+   "speak": "What is posted, stays posted."
+  },
+  {
+   "text": "“Then post a different name.”",
+   "tag": "[determined]",
+   "pause": 0.14,
+   "voice": "kit",
+   "speak": "Then post a different name."
+  },
+  {
+   "text": "Kit wrote his own name on a fresh card, and fed hers to the lantern.",
+   "tag": "[steady]",
+   "pause": 0.12
+  },
+  {
+   "text": "The postman tipped his cap.",
+   "tag": "[quiet]",
+   "pause": 0.12
+  },
+  {
+   "text": "At sunrise, Mom was braiding Sparrow's hair.",
+   "tag": "[warm]",
+   "pause": 0.14
+  },
+  {
+   "text": "“Oh! Are you lost, sweetheart?”",
+   "tag": "[politely]",
+   "pause": 0.12,
+   "voice": "mom",
+   "speak": "Oh! Are you lost, sweetheart?"
+  },
+  {
+   "text": "Kit lives in the treehouse now. Sparrow leaves him cocoa every night.",
+   "tag": "[tender]",
+   "pause": 0.12
+  },
+  {
+   "text": "She doesn't know why. He never tells her.",
+   "tag": "[warm]",
+   "pause": 0.12
+  }
+ ],
+ "samples": {
+  "next": {
+   "text": "Next!",
+   "voice": "barber",
+   "tag": "[cheerful]"
+  },
+  "vroom": {
+   "text": "Vroom vroom!",
+   "voice": "baby",
+   "tag": "[giggling]"
+  },
+  "itsme": {
+   "text": "Mom? It's me!",
+   "voice": "sparrow",
+   "tag": "[confused]"
+  },
+  "gasp": {
+   "text": "Ah!",
+   "voice": "kit",
+   "tag": "[gasps]"
+  },
+  "phew": {
+   "text": "Got you!",
+   "voice": "sparrow",
+   "tag": "[breathless]"
+  }
+ },
+ "sound": {
+  "key": 57,
+  "music_gain": 0.3,
+  "music": [
+   [
+    "0",
+    "playful"
+   ],
+   [
+    "5.998",
+    "mystery"
+   ],
+   [
+    "13.298",
+    "playful"
+   ],
+   [
+    "15.263",
+    "suspense"
+   ],
+   [
+    "20.409",
+    "dread"
+   ],
+   [
+    "27.479",
+    "mystery"
+   ],
+   [
+    "38.527",
+    "suspense"
+   ],
+   [
+    "46.268",
+    "wonder"
+   ],
+   [
+    "51.778",
+    "tender"
+   ],
+   [
+    "56.726",
+    "musicbox"
+   ]
+  ],
+  "cues": [
+   [
+    "0",
+    "suburb",
+    0.09,
+    {
+     "dur": 5.998
+    }
+   ],
+   [
+    "0.2",
+    "footsteps",
+    0.05,
+    {
+     "dur": 3.4,
+     "rate": 1.6
+    }
+   ],
+   [
+    "1.6",
+    "chirp",
+    0.05
+   ],
+   [
+    "3.817",
+    "tick",
+    0.05,
+    {
+     "dur": 0.08,
+     "rate": 1
+    }
+   ],
+   [
+    "4.137",
+    "tick",
+    0.05,
+    {
+     "dur": 0.08,
+     "rate": 1
+    }
+   ],
+   [
+    "4.457",
+    "tick",
+    0.05,
+    {
+     "dur": 0.08,
+     "rate": 1
+    }
+   ],
+   [
+    "4.777",
+    "tick",
+    0.05,
+    {
+     "dur": 0.08,
+     "rate": 1
+    }
+   ],
+   [
+    "5.097",
+    "tick",
+    0.05,
+    {
+     "dur": 0.08,
+     "rate": 1
+    }
+   ],
+   [
+    "5.417",
+    "tick",
+    0.05,
+    {
+     "dur": 0.08,
+     "rate": 1
+    }
+   ],
+   [
+    "4.517",
+    "bell",
+    0.04
+   ],
+   [
+    "6.048",
+    "wind",
+    0.07,
+    {
+     "dur": 7.3
+    }
+   ],
+   [
+    "6.398",
+    "sting",
+    0.07
+   ],
+   [
+    "7.298",
+    "creak",
+    0.06
+   ],
+   [
+    "11.178",
+    "scratch",
+    0.08
+   ],
+   [
+    "11.978",
+    "whisper",
+    0.04,
+    {
+     "dur": 1.2
+    }
+   ],
+   [
+    "13.348",
+    "suburb",
+    0.08,
+    {
+     "dur": 7.111000000000001
+    }
+   ],
+   [
+    "13.348",
+    "chug",
+    0.04,
+    {
+     "dur": 5.600999999999999
+    }
+   ],
+   [
+    "16.203",
+    "creak",
+    0.07
+   ],
+   [
+    "16.403",
+    "rumble",
+    0.08,
+    {
+     "dur": 3.716000000000001
+    }
+   ],
+   [
+    "17.653",
+    "sample",
+    0.1,
+    {
+     "name": "vroom",
+     "rev": 0.15,
+     "wet": 0.06
+    }
+   ],
+   [
+    "18.599",
+    "run",
+    0.07,
+    {
+     "dur": 0.8999999999999986
+    }
+   ],
+   [
+    "19.449",
+    "whoosh",
+    0.08,
+    {
+     "dur": 0.5
+    }
+   ],
+   [
+    "19.869",
+    "whoosh",
+    0.07,
+    {
+     "dur": 0.6
+    }
+   ],
+   [
+    "19.919",
+    "clunk",
+    0.16
+   ],
+   [
+    "19.949",
+    "impact",
+    0.1
+   ],
+   [
+    "20.169",
+    "scrape",
+    0.06
+   ],
+   [
+    "20.049",
+    "sample",
+    0.09,
+    {
+     "name": "phew",
+     "rev": 0.15,
+     "wet": 0.06
+    }
+   ],
+   [
+    "20.909",
+    "riser",
+    0.05,
+    {
+     "dur": 1.4
+    }
+   ],
+   [
+    "22.819",
+    "wind",
+    0.07,
+    {
+     "dur": 1.8
+    }
+   ],
+   [
+    "23.069",
+    "scratch",
+    0.1
+   ],
+   [
+    "23.919",
+    "scratch",
+    0.08
+   ],
+   [
+    "24.715",
+    "scarehit",
+    0.07
+   ],
+   [
+    "24.815",
+    "drone",
+    0.05,
+    {
+     "dur": 2.5
+    }
+   ],
+   [
+    "27.529",
+    "chug",
+    0.06,
+    {
+     "dur": 0.6500000000000021
+    }
+   ],
+   [
+    "28.229",
+    "pop",
+    0.05
+   ],
+   [
+    "31.242",
+    "wind",
+    0.08,
+    {
+     "dur": 20.586
+    }
+   ],
+   [
+    "31.392",
+    "footsteps",
+    0.06,
+    {
+     "dur": 2.6,
+     "rate": 1.8
+    }
+   ],
+   [
+    "32.792",
+    "scratch",
+    0.05
+   ],
+   [
+    "31.692",
+    "drone",
+    0.04,
+    {
+     "dur": 7.335000000000001
+    }
+   ],
+   [
+    "34.372",
+    "flutter",
+    0.06
+   ],
+   [
+    "34.472",
+    "shimmer",
+    0.06,
+    {
+     "dur": 2.0
+    }
+   ],
+   [
+    "36.842",
+    "sting",
+    0.07
+   ],
+   [
+    "38.877",
+    "paper",
+    0.12
+   ],
+   [
+    "39.947",
+    "scarehit",
+    0.1
+   ],
+   [
+    "40.117",
+    "sample",
+    0.1,
+    {
+     "name": "gasp",
+     "rev": 0.2,
+     "wet": 0.08
+    }
+   ],
+   [
+    "41.187",
+    "creak",
+    0.07
+   ],
+   [
+    "41.387",
+    "heartbeat",
+    0.05,
+    {
+     "dur": 3.8229999999999933
+    }
+   ],
+   [
+    "41.952",
+    "rumble",
+    0.04,
+    {
+     "dur": 2.9179999999999966
+    }
+   ],
+   [
+    "46.268",
+    "scratch",
+    0.1
+   ],
+   [
+    "46.968",
+    "scratch",
+    0.08
+   ],
+   [
+    "47.568",
+    "footsteps",
+    0.05,
+    {
+     "dur": 0.8,
+     "rate": 1.6
+    }
+   ],
+   [
+    "49.198",
+    "whoosh",
+    0.09,
+    {
+     "dur": 0.7
+    }
+   ],
+   [
+    "49.348",
+    "crackle",
+    0.08,
+    {
+     "dur": 1.0
+    }
+   ],
+   [
+    "49.398",
+    "shimmer",
+    0.08,
+    {
+     "dur": 1.4
+    }
+   ],
+   [
+    "50.598",
+    "chime",
+    0.06,
+    {
+     "note": 76
+    }
+   ],
+   [
+    "51.828",
+    "roomtone",
+    0.08,
+    {
+     "dur": 4.948
+    }
+   ],
+   [
+    "52.078",
+    "chirp",
+    0.05
+   ],
+   [
+    "52.418",
+    "creak",
+    0.07
+   ],
+   [
+    "52.918",
+    "footsteps",
+    0.05,
+    {
+     "dur": 1.1,
+     "rate": 1.5
+    }
+   ],
+   [
+    "55.771",
+    "sting",
+    0.05
+   ],
+   [
+    "56.776",
+    "suburb",
+    0.06,
+    {
+     "dur": 7.621000000000002
+    }
+   ],
+   [
+    "57.426",
+    "chirp",
+    0.04
+   ],
+   [
+    "58.006",
+    "knock",
+    0.06
+   ],
+   [
+    "58.606",
+    "footsteps",
+    0.04,
+    {
+     "dur": 1.0,
+     "rate": 1.4
+    }
+   ],
+   [
+    "62.394",
+    "shimmer",
+    0.05,
+    {
+     "dur": 1.6
+    }
+   ]
+  ]
+ }
+}
