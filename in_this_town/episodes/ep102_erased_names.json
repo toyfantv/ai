@@ -1,0 +1,739 @@
+{
+ "id": "ep102",
+ "number": 102,
+ "title": "The Town That Erased Its Names",
+ "output": "Remake02_ErasedNames.mp4",
+ "tts": "openrouter",
+ "youtube_title": "In This Town, Nobody Keeps Their Name",
+ "tiktok_caption": "In Gullhaven everyone picks a new name every spring. Tilly kept hers. Then the man in the tall hat knocked.",
+ "hashtags": "#Shorts #Storytime #Animation #PlotTwist",
+ "thumbnail_text": "NEVER KEEP YOUR NAME",
+ "thumbnail_rec": "On a sunny harbour-town doorstep: Tilly, grinning, her chalk slate reading TILLY pinned to her coat, and the tall-hatted collector looming over her with his open ledger. Text across the sky at the top, clear of the faces: NEVER KEEP YOUR NAME",
+ "lead_in": 0.3,
+ "tail": 1.4,
+ "voices": {
+  "narrator": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "ErXwobaYiN019PkySvjV",
+    "pitch": 1.1,
+    "tempo": 1.12,
+    "max_tempo": 1.15,
+    "pace": [
+     2.5,
+     2.95
+    ],
+    "min_tempo": 1.04
+   },
+   "kokoro": "am_michael",
+   "speed": 1.0,
+   "note": "Antoni (American), In This Town preset el:ErXwobaYiN019PkySvjV:1.1:1.12 - same narrator every episode"
+  },
+  "tilly": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "jessica",
+    "pitch": 1.12,
+    "tempo": 1.12
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  },
+  "mom": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "sarah",
+    "pitch": 1.02,
+    "tempo": 1.05
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  },
+  "collector": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "roger",
+    "pitch": 0.9,
+    "tempo": 1.05
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  }
+ },
+ "highlights": {
+  "GULLHAVEN,": "cyan",
+  "ONE YEAR.": "yellow",
+  "NEW ONE,": "yellow",
+  "SLATE.": "yellow",
+  "PUDDING.": "yellow",
+  "CAPTAIN SOCKS.": "yellow",
+  "CHISELED OFF.": "red",
+  "TALL HAT": "red",
+  "HARGREAVES": "red",
+  "SHUTS FAST.": "red",
+  "LOVED HER NAME.": "cyan",
+  "BRENDA.": "yellow",
+  "BRENDA?": "yellow",
+  "DOORSTEP.": "red",
+  "HARGREAVE?": "red",
+  "THAT'S ME!": "cyan",
+  "TEAPOT.": "red",
+  "LEDGER.": "yellow",
+  "ON CREDIT.": "red",
+  "INSTEAD OF PAYING,": "red",
+  "EVERY YEAR.": "yellow",
+  "ONE BILL.": "red",
+  "THREE TIMES.": "red",
+  "SLATE CLEAN.": "cyan",
+  "WRONG HOUSE.": "yellow",
+  "I'M BRENDA.": "cyan",
+  "SHUT THE DOOR.": "cyan"
+ },
+ "lines": [
+  {
+   "text": "In Gullhaven, no name lasts longer than one year.",
+   "tag": "[mysterious]",
+   "pause": 0.12
+  },
+  {
+   "text": "Every spring, everyone picks a new one, chalked on a slate.",
+   "tag": "[playful]",
+   "pause": 0.12
+  },
+  {
+   "text": "This year the mayor is Pudding. Last year he was Captain Socks.",
+   "tag": "[amused]",
+   "pause": 0.12
+  },
+  {
+   "text": "On the fountain, the founder's name is chiseled off.",
+   "tag": "[curious]",
+   "pause": 0.12
+  },
+  {
+   "text": "And the morning after, a man in a tall hat knocks on every door.",
+   "tag": "[ominous]",
+   "pause": 0.12
+  },
+  {
+   "text": "“Any Hargreaves here?”",
+   "tag": "[smooth, polite]",
+   "pause": 0.12,
+   "voice": "collector",
+   "speak": "Any Hargreaves here?"
+  },
+  {
+   "text": "Every door shuts fast.",
+   "tag": "[tense]",
+   "pause": 0.12
+  },
+  {
+   "text": "But Tilly loved her name. It was her great-great-grandma's.",
+   "tag": "[warm]",
+   "pause": 0.12
+  },
+  {
+   "text": "So this spring she kept it, and told Mom she was Brenda.",
+   "tag": "[sneaky]",
+   "pause": 0.12
+  },
+  {
+   "text": "“Brenda? Really?”",
+   "tag": "[amused, doubtful]",
+   "pause": 0.12,
+   "voice": "mom",
+   "speak": "Brenda? Really?"
+  },
+  {
+   "text": "Next morning, the tall hat was on her doorstep.",
+   "tag": "[ominous]",
+   "pause": 0.12
+  },
+  {
+   "text": "“Matilda Hargreave?”",
+   "tag": "[reading slowly, pleased]",
+   "pause": 0.12,
+   "voice": "collector",
+   "speak": "Matilda Hargreave?"
+  },
+  {
+   "text": "“That's me!”",
+   "tag": "[proud, cheerful]",
+   "pause": 0.12,
+   "voice": "tilly",
+   "speak": "That's me!"
+  },
+  {
+   "text": "Mom dropped the teapot.",
+   "tag": "[dramatic]",
+   "pause": 0.14
+  },
+  {
+   "text": "He opened his ledger. A century ago, the first Matilda bought the whole harbor on credit.",
+   "tag": "[storytelling]",
+   "pause": 0.12
+  },
+  {
+   "text": "Instead of paying, she made the town change names every year.",
+   "tag": "[sly]",
+   "pause": 0.12
+  },
+  {
+   "text": "It wasn't a custom at all. Gullhaven was hiding from one bill.",
+   "tag": "[revealing]",
+   "pause": 0.14
+  },
+  {
+   "text": "“With interest, you owe us the town. Three times.”",
+   "tag": "[smug, pleased]",
+   "pause": 0.14,
+   "voice": "collector",
+   "speak": "With interest, you owe us the town. Three times."
+  },
+  {
+   "text": "Tilly licked her thumb and wiped her slate clean.",
+   "tag": "[playful]",
+   "pause": 0.12
+  },
+  {
+   "text": "“Sorry, mister. Wrong house. I'm Brenda.”",
+   "tag": "[sweet, innocent]",
+   "pause": 0.12,
+   "voice": "tilly",
+   "speak": "Sorry, mister. Wrong house. I'm Brenda."
+  },
+  {
+   "text": "And she shut the door.",
+   "tag": "[satisfied]",
+   "pause": 0.12
+  }
+ ],
+ "samples": {
+  "oops": {
+   "text": "Oh! Oh no, no, no...",
+   "voice": "mom",
+   "tag": "[gasping]"
+  },
+  "hm": {
+   "text": "Hmm... Brenda?",
+   "voice": "collector",
+   "tag": "[confused, muttering]"
+  }
+ },
+ "sound": {
+  "key": 55,
+  "music_gain": 0.3,
+  "music": [
+   [
+    "0",
+    "playful"
+   ],
+   [
+    "15.013",
+    "mystery"
+   ],
+   [
+    "22.812",
+    "tender"
+   ],
+   [
+    "31.859",
+    "suspense"
+   ],
+   [
+    "38.234",
+    "playful"
+   ],
+   [
+    "40.869",
+    "waltz"
+   ],
+   [
+    "48.682",
+    "suspense"
+   ],
+   [
+    "56.329",
+    "playful"
+   ]
+  ],
+  "cues": [
+   [
+    "0",
+    "sea",
+    0.07,
+    {
+     "dur": 15.013
+    }
+   ],
+   [
+    "0",
+    "suburb",
+    0.06,
+    {
+     "dur": 15.013
+    }
+   ],
+   [
+    "0.5",
+    "chirp",
+    0.04,
+    {
+     "f": 1700,
+     "dur": 0.4,
+     "up": 0
+    }
+   ],
+   [
+    "1.9",
+    "chirp",
+    0.035,
+    {
+     "f": 1500,
+     "dur": 0.35,
+     "up": 0
+    }
+   ],
+   [
+    "4.179",
+    "scratch",
+    0.05,
+    {
+     "dur": 1.3,
+     "rate": 7
+    }
+   ],
+   [
+    "6.039",
+    "scratch",
+    0.05,
+    {
+     "dur": 1.3,
+     "rate": 8
+    }
+   ],
+   [
+    "7.715",
+    "scratch",
+    0.05,
+    {
+     "dur": 1.15,
+     "rate": 8
+    }
+   ],
+   [
+    "9.015",
+    "ding",
+    0.04
+   ],
+   [
+    "10.395",
+    "paper",
+    0.05
+   ],
+   [
+    "13.177",
+    "shimmer",
+    0.04,
+    {
+     "dur": 1.2
+    }
+   ],
+   [
+    "14.297",
+    "scrape",
+    0.05,
+    {
+     "dur": 0.5
+    }
+   ],
+   [
+    "14.697",
+    "scrape",
+    0.045,
+    {
+     "dur": 0.4,
+     "seed": 5
+    }
+   ],
+   [
+    "15.063",
+    "suburb",
+    0.07,
+    {
+     "dur": 7.7989999999999995
+    }
+   ],
+   [
+    "15.313",
+    "footsteps",
+    0.05,
+    {
+     "dur": 1.7400000000000007,
+     "rate": 1.8
+    }
+   ],
+   [
+    "16.473",
+    "sting",
+    0.05
+   ],
+   [
+    "17.413",
+    "knock",
+    0.08
+   ],
+   [
+    "17.723",
+    "knock",
+    0.08
+   ],
+   [
+    "18.033",
+    "knock",
+    0.08
+   ],
+   [
+    "18.343",
+    "knock",
+    0.08
+   ],
+   [
+    "18.533",
+    "creak",
+    0.05,
+    {
+     "dur": 0.6
+    }
+   ],
+   [
+    "21.629",
+    "clunk",
+    0.09
+   ],
+   [
+    "21.979",
+    "clunk",
+    0.07
+   ],
+   [
+    "22.199",
+    "clunk",
+    0.07
+   ],
+   [
+    "22.419",
+    "clunk",
+    0.07
+   ],
+   [
+    "21.679",
+    "chirp",
+    0.03,
+    {
+     "f": 1600,
+     "dur": 0.4,
+     "up": 0
+    }
+   ],
+   [
+    "22.862",
+    "roomtone",
+    0.06,
+    {
+     "dur": 9.047
+    }
+   ],
+   [
+    "24.692",
+    "chime",
+    0.04,
+    {
+     "note": 79
+    }
+   ],
+   [
+    "26.659",
+    "footsteps",
+    0.04,
+    {
+     "dur": 1.4,
+     "rate": 2.4
+    }
+   ],
+   [
+    "28.479",
+    "tick",
+    0.03,
+    {
+     "dur": 2.0,
+     "rate": 1
+    }
+   ],
+   [
+    "31.479",
+    "pop",
+    0.04
+   ],
+   [
+    "31.909",
+    "suburb",
+    0.06,
+    {
+     "dur": 7.449999999999999
+    }
+   ],
+   [
+    "31.659",
+    "chirp",
+    0.04,
+    {
+     "f": 1400,
+     "dur": 0.4
+    }
+   ],
+   [
+    "32.109",
+    "knock",
+    0.09
+   ],
+   [
+    "32.399",
+    "knock",
+    0.09
+   ],
+   [
+    "32.689",
+    "knock",
+    0.09
+   ],
+   [
+    "32.909",
+    "creak",
+    0.06,
+    {
+     "dur": 1.0
+    }
+   ],
+   [
+    "33.939",
+    "sting",
+    0.05
+   ],
+   [
+    "34.404",
+    "paper",
+    0.06
+   ],
+   [
+    "37.269",
+    "ding",
+    0.04
+   ],
+   [
+    "38.134",
+    "whoosh",
+    0.04,
+    {
+     "dur": 0.4
+    }
+   ],
+   [
+    "38.354",
+    "shatter",
+    0.09
+   ],
+   [
+    "38.434",
+    "sample",
+    0.05,
+    {
+     "name": "oops"
+    }
+   ],
+   [
+    "39.509",
+    "paper",
+    0.07
+   ],
+   [
+    "39.909",
+    "paper",
+    0.05,
+    {
+     "seed": 4
+    }
+   ],
+   [
+    "40.819",
+    "whoosh",
+    0.06,
+    {
+     "dur": 0.6
+    }
+   ],
+   [
+    "40.969",
+    "shimmer",
+    0.05,
+    {
+     "dur": 1.4
+    }
+   ],
+   [
+    "41.169",
+    "scratch",
+    0.04,
+    {
+     "dur": 1.6,
+     "rate": 9
+    }
+   ],
+   [
+    "43.259",
+    "sea",
+    0.06,
+    {
+     "dur": 1.6430000000000007
+    }
+   ],
+   [
+    "43.709",
+    "chirp",
+    0.035,
+    {
+     "f": 1600,
+     "dur": 0.4,
+     "up": 0
+    }
+   ],
+   [
+    "45.252",
+    "clunk",
+    0.04
+   ],
+   [
+    "45.602",
+    "clunk",
+    0.04
+   ],
+   [
+    "45.952",
+    "clunk",
+    0.04
+   ],
+   [
+    "46.302",
+    "clunk",
+    0.04
+   ],
+   [
+    "46.652",
+    "clunk",
+    0.04
+   ],
+   [
+    "46.472",
+    "scratch",
+    0.05,
+    {
+     "dur": 1.6,
+     "rate": 10
+    }
+   ],
+   [
+    "48.532",
+    "whoosh",
+    0.06,
+    {
+     "dur": 0.5
+    }
+   ],
+   [
+    "48.732",
+    "suburb",
+    0.05,
+    {
+     "dur": 15.876000000000005
+    }
+   ],
+   [
+    "49.182",
+    "paper",
+    0.06,
+    {
+     "seed": 7
+    }
+   ],
+   [
+    "50.342",
+    "chainslide",
+    0.05
+   ],
+   [
+    "50.842",
+    "sting",
+    0.05
+   ],
+   [
+    "53.087",
+    "hum",
+    0.03,
+    {
+     "dur": 2.0,
+     "f": 55
+    }
+   ],
+   [
+    "54.407",
+    "ding",
+    0.05
+   ],
+   [
+    "56.729",
+    "pop",
+    0.03
+   ],
+   [
+    "57.429",
+    "scrape",
+    0.05,
+    {
+     "dur": 0.7,
+     "seed": 9
+    }
+   ],
+   [
+    "61.999",
+    "whoosh",
+    0.04,
+    {
+     "dur": 0.3
+    }
+   ],
+   [
+    "62.219",
+    "clunk",
+    0.1
+   ],
+   [
+    "62.399",
+    "chirp",
+    0.03,
+    {
+     "f": 1500,
+     "dur": 0.4,
+     "up": 0
+    }
+   ],
+   [
+    "63.549",
+    "sample",
+    0.07,
+    {
+     "name": "hm"
+    }
+   ]
+  ]
+ }
+}
