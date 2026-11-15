@@ -1,0 +1,896 @@
+{
+ "id": "ep108",
+ "number": 108,
+ "title": "The Smallest Kid",
+ "output": "Remake08_SmallestKid.mp4",
+ "tts": "openrouter",
+ "youtube_title": "Every Thank-You Makes You One Inch Taller",
+ "tiktok_caption": "In Fernbrook, every thank-you said to your face makes you an inch taller. So why was Milo still the size of a kindergartner at thirteen?",
+ "hashtags": "#Shorts #Storytime #Animation #PlotTwist",
+ "thumbnail_text": "THANK YOU = +1 INCH",
+ "thumbnail_rec": "In the bright school hallway, Milo, now giant, kneels with his head brushing the swinging ceiling lights, face to face with June, while a line of kids stretches back to the front doors under the MEET THE PHANTOM banner. Text in the upper hallway, clear of the faces: THANK YOU = +1 INCH",
+ "lead_in": 0.3,
+ "tail": 0.8,
+ "voices": {
+  "narrator": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "ErXwobaYiN019PkySvjV",
+    "pitch": 1.1,
+    "tempo": 1.12,
+    "max_tempo": 1.15,
+    "pace": [
+     2.5,
+     2.95
+    ],
+    "min_tempo": 1.04
+   },
+   "kokoro": "am_michael",
+   "speed": 1.0,
+   "note": "Antoni (American), In This Town preset el:ErXwobaYiN019PkySvjV:1.1:1.12 - same narrator every episode"
+  },
+  "milo": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "liam",
+    "pitch": 1.24,
+    "tempo": 1.1
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  },
+  "june": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "jessica",
+    "pitch": 1.12,
+    "tempo": 1.15
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  },
+  "nadia": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "sarah",
+    "pitch": 1.14,
+    "tempo": 1.0
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  },
+  "granny": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "matilda",
+    "pitch": 0.97,
+    "tempo": 1.0
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  },
+  "kidb": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "will",
+    "pitch": 1.22,
+    "tempo": 1.0
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  },
+  "kidg": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "laura",
+    "pitch": 1.16,
+    "tempo": 1.0
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  }
+ },
+ "highlights": {
+  "THANK-YOU": "yellow",
+  "INCH TALLER": "yellow",
+  "DUCK": "yellow",
+  "POCKET-SIZED": "red",
+  "THIRTEEN": "cyan",
+  "A STOOL": "red",
+  "SELFISH.": "red",
+  "PHANTOM:": "yellow",
+  "BIKE GREASE": "red",
+  "BEHIND THE GYM.": "cyan",
+  "BIKE CHAIN.": "yellow",
+  "THE PHANTOM!": "yellow",
+  "JUST SHOPPING.": "red",
+  "STAYED SMALL.": "cyan",
+  "DON'T TELL": "red",
+  "DIDN'T TELL.": "yellow",
+  "GIANT PHOTO": "yellow",
+  "THANK YOU,": "yellow",
+  "ONE INCH.": "yellow",
+  "WHOLE HALLWAY": "yellow",
+  "THE PRINCIPAL,": "cyan",
+  "BUMPED THE LIGHTS.": "red",
+  "KNELT": "cyan",
+  "YOU TOLD THEM.": "yellow"
+ },
+ "lines": [
+  {
+   "text": "In Fernbrook, every thank-you said to your face makes you an inch taller.",
+   "tag": "[warm]",
+   "pause": 0.12
+  },
+  {
+   "text": "Crossing guards duck under streetlights. Greedy people stay pocket-sized.",
+   "tag": "[amused]",
+   "pause": 0.12,
+   "speak": "Crossing guards duck under streetlights, and greedy people stay pocket-sized."
+  },
+  {
+   "text": "Milo was thirteen and needed a stool to reach the fountain.",
+   "tag": "[warm]",
+   "pause": 0.12
+  },
+  {
+   "text": "Everyone called him selfish. Even his best friend June believed it.",
+   "tag": "[serious]",
+   "pause": 0.12
+  },
+  {
+   "text": "But the school had a Phantom: tires pumped overnight, lost homework returned with a note.",
+   "tag": "[curious]",
+   "pause": 0.12
+  },
+  {
+   "text": "Then June spotted bike grease on Milo's fingers.",
+   "tag": "[suspicious]",
+   "pause": 0.12
+  },
+  {
+   "text": "She followed him behind the gym. He was fixing the new girl's bike chain.",
+   "tag": "[whispering]",
+   "pause": 0.12
+  },
+  {
+   "text": "“It's you! You're the Phantom!”",
+   "tag": "[excited]",
+   "pause": 0.14,
+   "voice": "june",
+   "speak": "It's you! You're the Phantom!"
+  },
+  {
+   "text": "His grandpa used to say, help that waits for a thank-you is just shopping.",
+   "tag": "[warm]",
+   "pause": 0.12
+  },
+  {
+   "text": "So Milo helped unseen, and stayed small.",
+   "tag": "[tender]",
+   "pause": 0.12
+  },
+  {
+   "text": "“Please don't tell anyone.”",
+   "tag": "[pleading]",
+   "pause": 0.14,
+   "voice": "milo",
+   "speak": "Please... don't tell anyone."
+  },
+  {
+   "text": "June didn't tell. She hung a giant photo over the front doors.",
+   "tag": "[playful]",
+   "pause": 0.12
+  },
+  {
+   "text": "“Thank you, Milo.”",
+   "tag": "[sincere]",
+   "pause": 0.14,
+   "voice": "nadia",
+   "speak": "Thank you, Milo."
+  },
+  {
+   "text": "One inch. Then the flat-tire kid. The homework kid. A whole hallway of them.",
+   "tag": "[excited]",
+   "pause": 0.12
+  },
+  {
+   "text": "Taller than the principal, until his head bumped the lights.",
+   "tag": "[amazed]",
+   "pause": 0.12
+  },
+  {
+   "text": "He knelt all the way down to June.",
+   "tag": "[tender]",
+   "pause": 0.12
+  },
+  {
+   "text": "“You told them. Thank you, June.”",
+   "tag": "[softly]",
+   "pause": 0.14,
+   "voice": "milo",
+   "speak": "You told them... Thank you, June."
+  },
+  {
+   "text": "And June grew one inch.",
+   "tag": "[warm]",
+   "pause": 0.12
+  }
+ ],
+ "samples": {
+  "granny": {
+   "text": "Oh, thank you, dear!",
+   "voice": "granny",
+   "tag": "[warmly]"
+  },
+  "tyb": {
+   "text": "Thanks, Milo!",
+   "voice": "kidb",
+   "tag": "[cheerful]"
+  },
+  "tyg": {
+   "text": "Thank you!",
+   "voice": "kidg",
+   "tag": "[cheerful]"
+  },
+  "gasp": {
+   "text": "Huh?!",
+   "voice": "june",
+   "tag": "[gasps]"
+  },
+  "ow": {
+   "text": "Ow!",
+   "voice": "milo",
+   "tag": "[surprised]"
+  },
+  "hehe": {
+   "text": "Hee hee!",
+   "voice": "june",
+   "tag": "[giggles]"
+  }
+ },
+ "sound": {
+  "key": 62,
+  "music_gain": 0.3,
+  "music": [
+   [
+    "0",
+    "playful"
+   ],
+   [
+    "8.846",
+    "tender"
+   ],
+   [
+    "16.511",
+    "mystery"
+   ],
+   [
+    "29.305",
+    "suspense"
+   ],
+   [
+    "32.382",
+    "musicbox"
+   ],
+   [
+    "39.78",
+    "tender"
+   ],
+   [
+    "42.512",
+    "playful"
+   ],
+   [
+    "47.936",
+    "wonder"
+   ],
+   [
+    "56.643",
+    "tender"
+   ]
+  ],
+  "cues": [
+   [
+    "0",
+    "suburb",
+    0.09,
+    {
+     "dur": 8.846
+    }
+   ],
+   [
+    "1.3",
+    "sample",
+    0.1,
+    {
+     "name": "granny",
+     "rev": 0.2,
+     "wet": 0.08
+    }
+   ],
+   [
+    "3.96",
+    "pop",
+    0.09000000000000001
+   ],
+   [
+    "4.01",
+    "shimmer",
+    0.07,
+    {
+     "dur": 1.0
+    }
+   ],
+   [
+    "4.06",
+    "chime",
+    0.05600000000000001,
+    {
+     "note": 84
+    }
+   ],
+   [
+    "4.31",
+    "chime",
+    0.049,
+    {
+     "note": 91
+    }
+   ],
+   [
+    "5.223",
+    "whoosh",
+    0.06,
+    {
+     "dur": 0.6
+    }
+   ],
+   [
+    "5.623",
+    "clunk",
+    0.05
+   ],
+   [
+    "7.433",
+    "ding",
+    0.05
+   ],
+   [
+    "8.233",
+    "groan",
+    0.04
+   ],
+   [
+    "8.896",
+    "roomtone",
+    0.08,
+    {
+     "dur": 7.665000000000001
+    }
+   ],
+   [
+    "10.146",
+    "creak",
+    0.06
+   ],
+   [
+    "11.346",
+    "water",
+    0.06,
+    {
+     "dur": 1.4
+    }
+   ],
+   [
+    "13.01",
+    "whisper",
+    0.04,
+    {
+     "dur": 1.6
+    }
+   ],
+   [
+    "16.561",
+    "suburb",
+    0.06,
+    {
+     "dur": 3.3100000000000023
+    }
+   ],
+   [
+    "17.611",
+    "sting",
+    0.07
+   ],
+   [
+    "18.251",
+    "whoosh",
+    0.05,
+    {
+     "dur": 0.45
+    }
+   ],
+   [
+    "18.801",
+    "whoosh",
+    0.05,
+    {
+     "dur": 0.45
+    }
+   ],
+   [
+    "19.351",
+    "whoosh",
+    0.05,
+    {
+     "dur": 0.45
+    }
+   ],
+   [
+    "19.871",
+    "roomtone",
+    0.07,
+    {
+     "dur": 5.404999999999998
+    }
+   ],
+   [
+    "20.221",
+    "paper",
+    0.1
+   ],
+   [
+    "21.521",
+    "paper",
+    0.08
+   ],
+   [
+    "23.467",
+    "sting",
+    0.08
+   ],
+   [
+    "24.067",
+    "sample",
+    0.1,
+    {
+     "name": "gasp",
+     "rev": 0.2,
+     "wet": 0.08
+    }
+   ],
+   [
+    "25.276",
+    "suburb",
+    0.07,
+    {
+     "dur": 7.155999999999999
+    }
+   ],
+   [
+    "25.526",
+    "footsteps",
+    0.06,
+    {
+     "dur": 1.2,
+     "rate": 1.8
+    }
+   ],
+   [
+    "27.316",
+    "tick",
+    0.05,
+    {
+     "dur": 0.1,
+     "rate": 1
+    }
+   ],
+   [
+    "27.736",
+    "tick",
+    0.05,
+    {
+     "dur": 0.1,
+     "rate": 1
+    }
+   ],
+   [
+    "28.156",
+    "tick",
+    0.05,
+    {
+     "dur": 0.1,
+     "rate": 1
+    }
+   ],
+   [
+    "28.576",
+    "tick",
+    0.05,
+    {
+     "dur": 0.1,
+     "rate": 1
+    }
+   ],
+   [
+    "28.996",
+    "tick",
+    0.05,
+    {
+     "dur": 0.1,
+     "rate": 1
+    }
+   ],
+   [
+    "28.466",
+    "chainslide",
+    0.1
+   ],
+   [
+    "28.966",
+    "paper",
+    0.06
+   ],
+   [
+    "29.305",
+    "scarehit",
+    0.07
+   ],
+   [
+    "30.805",
+    "riser",
+    0.06,
+    {
+     "dur": 0.8
+    }
+   ],
+   [
+    "32.432",
+    "suburb",
+    0.05,
+    {
+     "dur": 4.5930000000000035
+    }
+   ],
+   [
+    "32.882",
+    "chirp",
+    0.05
+   ],
+   [
+    "35.082",
+    "footsteps",
+    0.05,
+    {
+     "dur": 1.6,
+     "rate": 1.4
+    }
+   ],
+   [
+    "37.025",
+    "roomtone",
+    0.07,
+    {
+     "dur": 5.536999999999999
+    }
+   ],
+   [
+    "37.475",
+    "footsteps",
+    0.05,
+    {
+     "dur": 1.5,
+     "rate": 3.0
+    }
+   ],
+   [
+    "42.562",
+    "roomtone",
+    0.08,
+    {
+     "dur": 5.4239999999999995
+    }
+   ],
+   [
+    "44.192",
+    "whoosh",
+    0.07,
+    {
+     "dur": 0.7
+    }
+   ],
+   [
+    "44.492",
+    "paper",
+    0.12
+   ],
+   [
+    "44.792",
+    "shimmer",
+    0.06,
+    {
+     "dur": 1.4
+    }
+   ],
+   [
+    "45.959",
+    "crowdsteps",
+    0.07,
+    {
+     "dur": 2.0
+    }
+   ],
+   [
+    "48.186",
+    "pop",
+    0.1
+   ],
+   [
+    "48.236",
+    "shimmer",
+    0.08,
+    {
+     "dur": 1.0
+    }
+   ],
+   [
+    "48.286",
+    "chime",
+    0.064,
+    {
+     "note": 84
+    }
+   ],
+   [
+    "48.536",
+    "chime",
+    0.055999999999999994,
+    {
+     "note": 91
+    }
+   ],
+   [
+    "49.036",
+    "sample",
+    0.1,
+    {
+     "name": "tyb",
+     "rev": 0.2,
+     "wet": 0.08
+    }
+   ],
+   [
+    "49.736",
+    "pop",
+    0.1
+   ],
+   [
+    "49.786",
+    "shimmer",
+    0.08,
+    {
+     "dur": 1.0
+    }
+   ],
+   [
+    "49.836",
+    "chime",
+    0.064,
+    {
+     "note": 86
+    }
+   ],
+   [
+    "50.086",
+    "chime",
+    0.055999999999999994,
+    {
+     "note": 93
+    }
+   ],
+   [
+    "50.036",
+    "sample",
+    0.1,
+    {
+     "name": "tyg",
+     "rev": 0.2,
+     "wet": 0.08
+    }
+   ],
+   [
+    "50.686",
+    "pop",
+    0.1
+   ],
+   [
+    "50.736",
+    "shimmer",
+    0.08,
+    {
+     "dur": 1.0
+    }
+   ],
+   [
+    "50.786",
+    "chime",
+    0.064,
+    {
+     "note": 88
+    }
+   ],
+   [
+    "51.036",
+    "chime",
+    0.055999999999999994,
+    {
+     "note": 95
+    }
+   ],
+   [
+    "51.396",
+    "crowdsteps",
+    0.07,
+    {
+     "dur": 4.052999999999997
+    }
+   ],
+   [
+    "51.696",
+    "pop",
+    0.06
+   ],
+   [
+    "51.746",
+    "chime",
+    0.05,
+    {
+     "note": 89
+    }
+   ],
+   [
+    "52.246",
+    "pop",
+    0.06
+   ],
+   [
+    "52.296",
+    "chime",
+    0.05,
+    {
+     "note": 91
+    }
+   ],
+   [
+    "52.796",
+    "pop",
+    0.06
+   ],
+   [
+    "52.846",
+    "chime",
+    0.05,
+    {
+     "note": 93
+    }
+   ],
+   [
+    "53.346",
+    "pop",
+    0.06
+   ],
+   [
+    "53.396",
+    "chime",
+    0.05,
+    {
+     "note": 95
+    }
+   ],
+   [
+    "53.896",
+    "pop",
+    0.06
+   ],
+   [
+    "53.946",
+    "chime",
+    0.05,
+    {
+     "note": 96
+    }
+   ],
+   [
+    "54.446",
+    "pop",
+    0.06
+   ],
+   [
+    "54.496",
+    "chime",
+    0.05,
+    {
+     "note": 98
+    }
+   ],
+   [
+    "53.349",
+    "riser",
+    0.06,
+    {
+     "dur": 1.8
+    }
+   ],
+   [
+    "55.449",
+    "clunk",
+    0.16
+   ],
+   [
+    "55.469",
+    "ding",
+    0.05
+   ],
+   [
+    "55.599",
+    "sample",
+    0.12,
+    {
+     "name": "ow",
+     "rev": 0.2,
+     "wet": 0.08
+    }
+   ],
+   [
+    "55.749",
+    "creak",
+    0.07
+   ],
+   [
+    "56.993",
+    "bodyfall",
+    0.05
+   ],
+   [
+    "62.374",
+    "pop",
+    0.1
+   ],
+   [
+    "62.424",
+    "shimmer",
+    0.08,
+    {
+     "dur": 1.0
+    }
+   ],
+   [
+    "62.474",
+    "chime",
+    0.064,
+    {
+     "note": 91
+    }
+   ],
+   [
+    "62.724",
+    "chime",
+    0.055999999999999994,
+    {
+     "note": 98
+    }
+   ],
+   [
+    "63.274",
+    "sample",
+    0.1,
+    {
+     "name": "hehe",
+     "rev": 0.2,
+     "wet": 0.08
+    }
+   ]
+  ]
+ }
+}
