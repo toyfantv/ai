@@ -1,0 +1,940 @@
+{
+ "id": "ep112",
+ "number": 112,
+ "title": "The Ink Fountains",
+ "output": "Remake12_InkFountains.mp4",
+ "tts": "openrouter",
+ "youtube_title": "Only His Heart Can Seal the Ink Fountains",
+ "tiktok_caption": "Every night Arlo sealed an ink fountain. Every morning his hands were inky. Then they followed the black knight home.",
+ "hashtags": "#Shorts #Storytime #Animation #PlotTwist",
+ "thumbnail_text": "WHO'S OPENING THEM?",
+ "thumbnail_rec": "Arlo in his dark bedroom at night, staring down at his ink-black hands, his chest no longer glowing, while the glossy black fountain rises from the cracked violet floor and the hollow black knight stands behind him. Text: WHO'S OPENING THEM?",
+ "lead_in": 0.3,
+ "tail": 1.0,
+ "voices": {
+  "narrator": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "ErXwobaYiN019PkySvjV",
+    "pitch": 1.1,
+    "tempo": 1.12,
+    "max_tempo": 1.15,
+    "pace": [
+     2.5,
+     2.95
+    ],
+    "min_tempo": 1.04
+   },
+   "kokoro": "am_michael",
+   "speed": 1.0,
+   "note": "Antoni (American), In This Town preset el:ErXwobaYiN019PkySvjV:1.1:1.12 - same narrator every episode"
+  },
+  "wren": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "sarah",
+    "pitch": 1.12,
+    "tempo": 1.0
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  },
+  "checkers": {
+   "openrouter": {
+    "model": "elevenlabs/eleven-v3-conversational",
+    "voice": "will",
+    "pitch": 1.22,
+    "tempo": 1.0
+   },
+   "kokoro": "af_heart",
+   "speed": 1.0
+  }
+ },
+ "highlights": {
+  "QUILLHAVEN": "yellow",
+  "INK FOUNTAINS": "yellow",
+  "WAKES UP": "yellow",
+  "GOLD HEART": "yellow",
+  "EATS A STAR": "red",
+  "ARLO": "yellow",
+  "WREN": "yellow",
+  "CHECKERS": "yellow",
+  "PICNIC BLANKET": "yellow",
+  "FEARS EVERYTHING": "red",
+  "VANISHING": "red",
+  "INKY": "red",
+  "BLACK KNIGHT": "red",
+  "TONIGHT": "yellow",
+  "THREE A.M.": "yellow",
+  "DRIPPING INK": "red",
+  "ARLO'S ROOM": "red",
+  "EMPTY": "red",
+  "ARLO'S HEART": "yellow",
+  "OWN INK": "red",
+  "SEAL IT": "yellow",
+  "GOLD LIGHT": "yellow",
+  "EVERY STAR": "yellow",
+  "TINY DROP": "red"
+ },
+ "lines": [
+  {
+   "text": "In Quillhaven, ink fountains burst from the ground, and anything near one wakes up.",
+   "tag": "[mysterious]",
+   "pause": 0.14
+  },
+  {
+   "text": "Only a kid with a glowing gold heart can seal one. Every open fountain eats a star.",
+   "tag": "[serious]",
+   "pause": 0.14
+  },
+  {
+   "text": "Arlo was that kid.",
+   "tag": "[warm]",
+   "pause": 0.1
+  },
+  {
+   "text": "His partner Wren kicks anything that moves.",
+   "tag": "[amused]",
+   "pause": 0.1
+  },
+  {
+   "text": "Checkers, a living picnic blanket, fears everything.",
+   "tag": "[amused]",
+   "pause": 0.14
+  },
+  {
+   "text": "Every night, Arlo sealed one. But the stars kept vanishing, and every morning, his hands were inky.",
+   "tag": "[serious]",
+   "pause": 0.16
+  },
+  {
+   "text": "Then a rumor: a black knight stood by every fountain right before it opened.",
+   "tag": "[mysterious]",
+   "pause": 0.12
+  },
+  {
+   "text": "“Tonight, we catch him.”",
+   "speak": "Tonight, we catch him.",
+   "voice": "wren",
+   "tag": "[determined]",
+   "pause": 0.16
+  },
+  {
+   "text": "At three a.m., the knight shuffled past, dripping ink.",
+   "speak": "At three A M, the knight shuffled past, dripping ink.",
+   "tag": "[whispers]",
+   "pause": 0.1
+  },
+  {
+   "text": "They followed him all the way into Arlo's room.",
+   "tag": "[tense]",
+   "pause": 0.12
+  },
+  {
+   "text": "The floor cracked. Wren yanked off the helmet. Empty.",
+   "tag": "[tense]",
+   "pause": 0.14
+  },
+  {
+   "text": "On the pillow sat a jar. Inside, flickering, was Arlo's heart.",
+   "tag": "[softly]",
+   "pause": 0.12
+  },
+  {
+   "text": "His own ink had been sneaking out while he slept.",
+   "tag": "[serious]",
+   "pause": 0.16
+  },
+  {
+   "text": "“Seal it, Arlo. Please.”",
+   "speak": "Seal it, Arlo. Please.",
+   "voice": "checkers",
+   "tag": "[nervously]",
+   "pause": 0.16
+  },
+  {
+   "text": "His heart flew home. Wren and Checkers held on, and gold light filled the room.",
+   "tag": "[warm]",
+   "pause": 0.14
+  },
+  {
+   "text": "Outside, every star blinked back on.",
+   "tag": "[warm]",
+   "pause": 0.2
+  },
+  {
+   "text": "Next morning, one tiny drop of ink sat on his thumb.",
+   "tag": "[mysterious]",
+   "pause": 0.1
+  }
+ ],
+ "samples": {
+  "hiyah": {
+   "text": "Hi-yah!",
+   "voice": "wren",
+   "tag": "[shouting]"
+  },
+  "eep": {
+   "text": "Eep! Eep!",
+   "voice": "checkers",
+   "tag": "[scared]"
+  },
+  "gasp": {
+   "text": "Huh?!",
+   "voice": "wren",
+   "tag": "[gasps]"
+  }
+ },
+ "sound": {
+  "key": 57,
+  "music_gain": 0.3,
+  "music": [
+   [
+    "0",
+    "mystery"
+   ],
+   [
+    "11.041",
+    "wonder"
+   ],
+   [
+    "21.471",
+    "mystery"
+   ],
+   [
+    "24.41",
+    "suspense"
+   ],
+   [
+    "37.379",
+    "dread"
+   ],
+   [
+    "40.598",
+    "mystery"
+   ],
+   [
+    "50.316",
+    "tender_hope"
+   ],
+   [
+    "58.225",
+    "musicbox"
+   ]
+  ],
+  "cues": [
+   [
+    "0",
+    "roomtone",
+    0.12,
+    {
+     "dur": 18.421
+    }
+   ],
+   [
+    "0.4",
+    "chirp",
+    0.04,
+    {
+     "f": 4200
+    }
+   ],
+   [
+    "1.9",
+    "chirp",
+    0.04,
+    {
+     "f": 4600
+    }
+   ],
+   [
+    "3.3",
+    "chirp",
+    0.04,
+    {
+     "f": 4400
+    }
+   ],
+   [
+    "6.2",
+    "chirp",
+    0.04,
+    {
+     "f": 4800
+    }
+   ],
+   [
+    "9.0",
+    "chirp",
+    0.04,
+    {
+     "f": 4300
+    }
+   ],
+   [
+    "13.4",
+    "chirp",
+    0.04,
+    {
+     "f": 4700
+    }
+   ],
+   [
+    "16.8",
+    "chirp",
+    0.04,
+    {
+     "f": 4500
+    }
+   ],
+   [
+    "0.85",
+    "riser",
+    0.12,
+    {
+     "dur": 0.3
+    }
+   ],
+   [
+    "1.05",
+    "water",
+    0.3,
+    {
+     "dur": 3.6
+    }
+   ],
+   [
+    "1.1",
+    "whoosh",
+    0.22,
+    {
+     "dur": 1.0
+    }
+   ],
+   [
+    "3.4",
+    "pop",
+    0.2
+   ],
+   [
+    "3.7",
+    "clash",
+    0.06
+   ],
+   [
+    "3.9",
+    "stomp",
+    0.12
+   ],
+   [
+    "4.35",
+    "stomp",
+    0.1
+   ],
+   [
+    "5.35",
+    "water",
+    0.12,
+    {
+     "dur": 7.34
+    }
+   ],
+   [
+    "6.85",
+    "shimmer",
+    0.07,
+    {
+     "dur": 1.6
+    }
+   ],
+   [
+    "8.85",
+    "chime",
+    0.1,
+    {
+     "note": 88
+    }
+   ],
+   [
+    "9.35",
+    "chime",
+    0.08,
+    {
+     "note": 81
+    }
+   ],
+   [
+    "11.341",
+    "chime",
+    0.08,
+    {
+     "note": 84
+    }
+   ],
+   [
+    "13.34",
+    "footsteps",
+    0.12,
+    {
+     "dur": 0.6,
+     "rate": 4.0
+    }
+   ],
+   [
+    "13.79",
+    "sample",
+    0.2,
+    {
+     "name": "hiyah",
+     "rev": 0.4,
+     "wet": 0.1
+    }
+   ],
+   [
+    "13.84",
+    "kickhit",
+    0.3
+   ],
+   [
+    "13.94",
+    "whoosh",
+    0.16,
+    {
+     "dur": 0.7
+    }
+   ],
+   [
+    "16.73",
+    "sample",
+    0.2,
+    {
+     "name": "eep",
+     "rev": 0.4,
+     "wet": 0.1
+    }
+   ],
+   [
+    "16.78",
+    "swish",
+    0.14
+   ],
+   [
+    "18.621",
+    "water",
+    0.16,
+    {
+     "dur": 2.2499999999999973
+    }
+   ],
+   [
+    "18.821",
+    "shimmer",
+    0.1,
+    {
+     "dur": 2.2
+    }
+   ],
+   [
+    "20.671",
+    "chime",
+    0.14,
+    {
+     "note": 91
+    }
+   ],
+   [
+    "20.971",
+    "chime",
+    0.1,
+    {
+     "note": 86
+    }
+   ],
+   [
+    "21.571",
+    "chime",
+    0.06,
+    {
+     "note": 76
+    }
+   ],
+   [
+    "21.971",
+    "chime",
+    0.05,
+    {
+     "note": 74
+    }
+   ],
+   [
+    "22.621",
+    "roomtone",
+    0.1,
+    {
+     "dur": 1.8890000000000011
+    }
+   ],
+   [
+    "22.721",
+    "tick",
+    0.05,
+    {
+     "dur": 1.6,
+     "rate": 4
+    }
+   ],
+   [
+    "24.46",
+    "roomtone",
+    0.12,
+    {
+     "dur": 11.533999999999999
+    }
+   ],
+   [
+    "26.81",
+    "riser",
+    0.12,
+    {
+     "dur": 0.3
+    }
+   ],
+   [
+    "27.01",
+    "water",
+    0.28,
+    {
+     "dur": 3.0
+    }
+   ],
+   [
+    "27.06",
+    "whoosh",
+    0.2,
+    {
+     "dur": 1.0
+    }
+   ],
+   [
+    "29.878",
+    "pop",
+    0.12
+   ],
+   [
+    "30.128",
+    "pop",
+    0.1
+   ],
+   [
+    "30.694",
+    "footsteps",
+    0.16,
+    {
+     "dur": 3.95,
+     "rate": 1.5
+    }
+   ],
+   [
+    "31.394",
+    "hum",
+    0.05,
+    {
+     "dur": 4.0
+    }
+   ],
+   [
+    "31.594",
+    "tick",
+    0.04,
+    {
+     "dur": 0.06,
+     "rate": 2
+    }
+   ],
+   [
+    "32.044",
+    "tick",
+    0.04,
+    {
+     "dur": 0.06,
+     "rate": 2
+    }
+   ],
+   [
+    "32.494",
+    "tick",
+    0.04,
+    {
+     "dur": 0.06,
+     "rate": 2
+    }
+   ],
+   [
+    "32.944",
+    "tick",
+    0.04,
+    {
+     "dur": 0.06,
+     "rate": 2
+    }
+   ],
+   [
+    "33.394",
+    "tick",
+    0.04,
+    {
+     "dur": 0.06,
+     "rate": 2
+    }
+   ],
+   [
+    "33.844",
+    "tick",
+    0.04,
+    {
+     "dur": 0.06,
+     "rate": 2
+    }
+   ],
+   [
+    "34.294",
+    "tick",
+    0.04,
+    {
+     "dur": 0.06,
+     "rate": 2
+    }
+   ],
+   [
+    "34.744",
+    "tick",
+    0.04,
+    {
+     "dur": 0.06,
+     "rate": 2
+    }
+   ],
+   [
+    "35.194",
+    "tick",
+    0.04,
+    {
+     "dur": 0.06,
+     "rate": 2
+    }
+   ],
+   [
+    "35.044",
+    "creak",
+    0.18,
+    {
+     "dur": 0.9
+    }
+   ],
+   [
+    "36.144",
+    "footsteps",
+    0.1,
+    {
+     "dur": 1.0,
+     "rate": 1.6
+    }
+   ],
+   [
+    "36.124",
+    "roomtone",
+    0.1,
+    {
+     "dur": 22.201000000000004
+    }
+   ],
+   [
+    "37.579",
+    "crackle",
+    0.22,
+    {
+     "dur": 1.2
+    }
+   ],
+   [
+    "37.679",
+    "rockbreak",
+    0.12
+   ],
+   [
+    "37.979",
+    "water",
+    0.1,
+    {
+     "dur": 3.0
+    }
+   ],
+   [
+    "38.629",
+    "footsteps",
+    0.12,
+    {
+     "dur": 0.4,
+     "rate": 4
+    }
+   ],
+   [
+    "38.979",
+    "clash",
+    0.14
+   ],
+   [
+    "39.079",
+    "swish",
+    0.2
+   ],
+   [
+    "39.279",
+    "sample",
+    0.16,
+    {
+     "name": "gasp",
+     "rev": 0.4,
+     "wet": 0.1
+    }
+   ],
+   [
+    "39.929",
+    "hum",
+    0.08,
+    {
+     "dur": 2.4
+    }
+   ],
+   [
+    "40.029",
+    "chime",
+    0.08,
+    {
+     "note": 70
+    }
+   ],
+   [
+    "40.898",
+    "shimmer",
+    0.07,
+    {
+     "dur": 3.4
+    }
+   ],
+   [
+    "42.698",
+    "chime",
+    0.07,
+    {
+     "note": 83
+    }
+   ],
+   [
+    "45.044",
+    "water",
+    0.08,
+    {
+     "dur": 2.8
+    }
+   ],
+   [
+    "50.566",
+    "pop",
+    0.2
+   ],
+   [
+    "50.966",
+    "whoosh",
+    0.16,
+    {
+     "dur": 0.9
+    }
+   ],
+   [
+    "51.066",
+    "shimmer",
+    0.1,
+    {
+     "dur": 1.2
+    }
+   ],
+   [
+    "51.766",
+    "chime",
+    0.14,
+    {
+     "note": 88
+    }
+   ],
+   [
+    "52.366",
+    "shimmer",
+    0.12,
+    {
+     "dur": 3.2
+    }
+   ],
+   [
+    "52.666",
+    "riser",
+    0.06,
+    {
+     "dur": 1.8
+    }
+   ],
+   [
+    "54.766",
+    "chime",
+    0.12,
+    {
+     "note": 91
+    }
+   ],
+   [
+    "55.066",
+    "chime",
+    0.1,
+    {
+     "note": 95
+    }
+   ],
+   [
+    "56.138",
+    "chime",
+    0.06,
+    {
+     "note": 84
+    }
+   ],
+   [
+    "56.358",
+    "chime",
+    0.06,
+    {
+     "note": 88
+    }
+   ],
+   [
+    "56.578",
+    "chime",
+    0.06,
+    {
+     "note": 91
+    }
+   ],
+   [
+    "56.798",
+    "chime",
+    0.06,
+    {
+     "note": 86
+    }
+   ],
+   [
+    "57.018",
+    "chime",
+    0.06,
+    {
+     "note": 93
+    }
+   ],
+   [
+    "57.238",
+    "chime",
+    0.06,
+    {
+     "note": 89
+    }
+   ],
+   [
+    "57.458",
+    "chime",
+    0.06,
+    {
+     "note": 96
+    }
+   ],
+   [
+    "57.678",
+    "chime",
+    0.06,
+    {
+     "note": 91
+    }
+   ],
+   [
+    "55.738",
+    "roomtone",
+    0.08,
+    {
+     "dur": 2.537000000000006
+    }
+   ],
+   [
+    "56.188",
+    "chirp",
+    0.03,
+    {
+     "f": 4400
+    }
+   ],
+   [
+    "57.388",
+    "chirp",
+    0.03,
+    {
+     "f": 4700
+    }
+   ],
+   [
+    "58.275",
+    "roomtone",
+    0.08,
+    {
+     "dur": 4.861999999999997
+    }
+   ],
+   [
+    "58.625",
+    "chirp",
+    0.06,
+    {
+     "f": 2100
+    }
+   ],
+   [
+    "59.525",
+    "chirp",
+    0.06,
+    {
+     "f": 2500
+    }
+   ],
+   [
+    "60.925",
+    "chirp",
+    0.06,
+    {
+     "f": 2300
+    }
+   ],
+   [
+    "60.925",
+    "chime",
+    0.08,
+    {
+     "note": 70
+    }
+   ],
+   [
+    "61.225",
+    "water",
+    0.05,
+    {
+     "dur": 0.6
+    }
+   ]
+  ]
+ }
+}
