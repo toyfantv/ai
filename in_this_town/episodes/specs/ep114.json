@@ -1,0 +1,790 @@
+{
+ "number": 114,
+ "title": "The Door in Her Wall",
+ "output": "Remake14_DoorInHerWall.mp4",
+ "youtube_title": "The Door That Grows When You Turn Eleven",
+ "tiktok_caption": "When you turn eleven, a door grows in your wall to a world of what you love most. Felix never got one. So he walked into Mae's.",
+ "hashtags": "#Shorts #Storytime #Animation #PlotTwist",
+ "thumbnail_text": "NEVER GO IN UNINVITED",
+ "thumbnail_rec": "Felix, half turned to wood from the sneakers up, hiding beside a giant patchwork blanket fort while three huge crooked paper foxes dive out of a red-starred purple sky; Mae's mint-green door glowing behind. Text in the sky, clear of the faces: NEVER GO IN UNINVITED",
+ "tail": 0.8,
+ "fps": 60,
+ "narrator": {
+  "pace": [
+   2.5,
+   2.95
+  ],
+  "min_tempo": 1.04
+ },
+ "cast": {
+  "mae": {
+   "voice": "sarah",
+   "pitch": 1.14,
+   "tempo": 1.0
+  },
+  "felix": {
+   "voice": "liam",
+   "pitch": 1.24,
+   "tempo": 1.0
+  }
+ },
+ "highlights": {
+  "BEDROOM WALL": "yellow",
+  "LOVE MOST": "yellow",
+  "UNINVITED": "red",
+  "AS SCENERY": "red",
+  "PAPER ANIMALS": "yellow",
+  "EVERY ONE": "yellow",
+  "MINT-GREEN": "cyan",
+  "BRASS PADLOCK": "yellow",
+  "LONGER": "red",
+  "NOT YET": "red",
+  "NO DOOR": "red",
+  "SLIPPED IN": "red",
+  "PAPER STARS": "yellow",
+  "STRAWBERRY MILK": "yellow",
+  "BOARD-GAME BRIDGE": "yellow",
+  "WOOD,": "red",
+  "TURNED RED": "red",
+  "PAPER FOXES": "red",
+  "FIRST FOLDS": "yellow",
+  "BLANKET FORT": "yellow",
+  "YELLOW BEANIE": "yellow",
+  "THEM.": "yellow",
+  "BURGLAR": "red",
+  "MY FORT": "yellow",
+  "FROZE": "cyan",
+  "SAWDUST": "yellow",
+  "NEVER COMING": "red",
+  "HALF OF MINE": "yellow",
+  "SECOND KEY": "yellow",
+  "SAYS FELIX": "yellow"
+ },
+ "lines": [
+  {
+   "text": "When you turn eleven, a door grows in your bedroom wall.",
+   "tag": "[warm]",
+   "pause": 0.12
+  },
+  {
+   "text": "Behind it, a world built from whatever you love most.",
+   "tag": "[warm]",
+   "pause": 0.12
+  },
+  {
+   "text": "Never enter someone else's world uninvited. It keeps you as scenery.",
+   "tag": "[serious]",
+   "pause": 0.12
+  },
+  {
+   "text": "Felix folds paper animals. His best friend Mae keeps every one.",
+   "tag": "[warm]",
+   "pause": 0.12
+  },
+  {
+   "text": "Mae turned eleven first: a mint-green door, a brass padlock.",
+   "tag": "[amazed]",
+   "pause": 0.12
+  },
+  {
+   "text": "Each night, she stayed in longer.",
+   "tag": "[serious]",
+   "pause": 0.12
+  },
+  {
+   "text": "“Not yet, Felix. Stay out.”",
+   "tag": "[firmly]",
+   "pause": 0.16,
+   "voice": "mae",
+   "speak": "Not yet, Felix. Stay out."
+  },
+  {
+   "text": "Felix's birthday: no door.",
+   "tag": "[deadpan]",
+   "pause": 0.12
+  },
+  {
+   "text": "One night, her door hung open. He slipped in.",
+   "tag": "[whispering]",
+   "pause": 0.12
+  },
+  {
+   "text": "Paper stars, a strawberry milk river, a board-game bridge.",
+   "tag": "[excited]",
+   "pause": 0.12
+  },
+  {
+   "text": "Then his sneakers creaked. Wood, climbing his knees.",
+   "tag": "[urgent]",
+   "pause": 0.12
+  },
+  {
+   "text": "The stars turned red. Paper foxes dove, his very first folds.",
+   "tag": "[urgent]",
+   "pause": 0.12
+  },
+  {
+   "text": "He hid behind their blanket fort, by a wooden boy in Felix's yellow beanie.",
+   "tag": "[urgent]",
+   "pause": 0.12
+  },
+  {
+   "text": "Mae built this world from what she loved most. Them.",
+   "tag": "[realizing]",
+   "pause": 0.12
+  },
+  {
+   "text": "“I'm not a burglar! This is my fort!”",
+   "tag": "[determined]",
+   "pause": 0.16,
+   "voice": "felix",
+   "speak": "I'm not a burglar! This is my fort!"
+  },
+  {
+   "text": "The foxes froze. The wood crumbled like sawdust.",
+   "tag": "[amazed]",
+   "pause": 0.12
+  },
+  {
+   "text": "“Your door was never coming. So I was building you half of mine.”",
+   "tag": "[out of breath]",
+   "pause": 0.16,
+   "voice": "mae",
+   "speak": "Your door was never coming. So I was building you half of mine."
+  },
+  {
+   "text": "Now her door has a second key. It says Felix.",
+   "tag": "[warm]",
+   "pause": 0.12
+  }
+ ],
+ "samples": {
+  "whoa": {
+   "text": "Whoa...",
+   "voice": "felix",
+   "tag": "[in awe]"
+  },
+  "huh": {
+   "text": "Huh?!",
+   "voice": "felix",
+   "tag": "[gasps]"
+  },
+  "ohno": {
+   "text": "Oh no, oh no!",
+   "voice": "felix",
+   "tag": "[panicked]"
+  },
+  "pant": {
+   "text": "Felix! Wait!",
+   "voice": "mae",
+   "tag": "[out of breath]"
+  },
+  "hehe": {
+   "text": "Hee hee!",
+   "voice": "mae",
+   "tag": "[giggles]"
+  }
+ },
+ "sound": {
+  "key": 62,
+  "music_gain": 0.3,
+  "music": [
+   [
+    "0",
+    "wonder"
+   ],
+   [
+    "7.461",
+    "mystery"
+   ],
+   [
+    "11.439",
+    "playful"
+   ],
+   [
+    "24.618",
+    "tender"
+   ],
+   [
+    "26.616",
+    "mystery"
+   ],
+   [
+    "30.112",
+    "wonder"
+   ],
+   [
+    "33.843",
+    "suspense"
+   ],
+   [
+    "37.357",
+    "action"
+   ],
+   [
+    "45.899",
+    "dread"
+   ],
+   [
+    "53.143",
+    "tender"
+   ],
+   [
+    "59.39",
+    "musicbox"
+   ]
+  ],
+  "cues": [
+   [
+    "0",
+    "roomtone",
+    0.1,
+    {
+     "dur": 4.059
+    }
+   ],
+   [
+    "1.4",
+    "rumble",
+    0.12,
+    {
+     "dur": 1.6
+    }
+   ],
+   [
+    "1.7",
+    "creak",
+    0.12
+   ],
+   [
+    "2.3",
+    "shimmer",
+    0.08,
+    {
+     "dur": 1.4
+    }
+   ],
+   [
+    "3.659",
+    "creak",
+    0.1
+   ],
+   [
+    "3.859",
+    "shimmer",
+    0.1,
+    {
+     "dur": 2.2
+    }
+   ],
+   [
+    "4.059",
+    "chime",
+    0.05,
+    {
+     "note": 84
+    }
+   ],
+   [
+    "4.409",
+    "chime",
+    0.05,
+    {
+     "note": 88
+    }
+   ],
+   [
+    "4.759",
+    "chime",
+    0.05,
+    {
+     "note": 91
+    }
+   ],
+   [
+    "5.109",
+    "chime",
+    0.05,
+    {
+     "note": 96
+    }
+   ],
+   [
+    "7.511",
+    "roomtone",
+    0.08,
+    {
+     "dur": 3.9779999999999998
+    }
+   ],
+   [
+    "7.761",
+    "footsteps",
+    0.06,
+    {
+     "dur": 1.4,
+     "rate": 1.6
+    }
+   ],
+   [
+    "10.361",
+    "scarehit",
+    0.14
+   ],
+   [
+    "10.561",
+    "creak",
+    0.12
+   ],
+   [
+    "11.489",
+    "suburb",
+    0.06,
+    {
+     "dur": 4.287000000000001
+    }
+   ],
+   [
+    "11.939",
+    "paper",
+    0.12
+   ],
+   [
+    "13.139",
+    "paper",
+    0.1
+   ],
+   [
+    "13.239",
+    "pop",
+    0.08
+   ],
+   [
+    "13.819",
+    "clunk",
+    0.06
+   ],
+   [
+    "15.776",
+    "roomtone",
+    0.08,
+    {
+     "dur": 8.892
+    }
+   ],
+   [
+    "16.786",
+    "rumble",
+    0.1,
+    {
+     "dur": 1.2
+    }
+   ],
+   [
+    "16.986",
+    "creak",
+    0.1
+   ],
+   [
+    "18.386",
+    "lockturn",
+    0.14
+   ],
+   [
+    "18.486",
+    "chime",
+    0.05,
+    {
+     "note": 79
+    }
+   ],
+   [
+    "20.038",
+    "creak",
+    0.08
+   ],
+   [
+    "20.438",
+    "shimmer",
+    0.06,
+    {
+     "dur": 1.2
+    }
+   ],
+   [
+    "21.879",
+    "knock",
+    0.1
+   ],
+   [
+    "23.679",
+    "clunk",
+    0.1
+   ],
+   [
+    "24.668",
+    "roomtone",
+    0.08,
+    {
+     "dur": 5.494
+    }
+   ],
+   [
+    "24.918",
+    "pop",
+    0.05
+   ],
+   [
+    "25.168",
+    "pop",
+    0.05
+   ],
+   [
+    "25.418",
+    "pop",
+    0.05
+   ],
+   [
+    "25.818",
+    "groan",
+    0.05
+   ],
+   [
+    "25.918",
+    "tick",
+    0.05,
+    {
+     "dur": 0.8,
+     "rate": 1
+    }
+   ],
+   [
+    "26.916",
+    "creak",
+    0.12
+   ],
+   [
+    "28.196",
+    "footsteps",
+    0.08,
+    {
+     "dur": 1.0,
+     "rate": 2.2
+    }
+   ],
+   [
+    "28.796",
+    "whoosh",
+    0.14,
+    {
+     "dur": 0.7
+    }
+   ],
+   [
+    "28.996",
+    "shimmer",
+    0.12,
+    {
+     "dur": 2.0
+    }
+   ],
+   [
+    "30.212",
+    "water",
+    0.08,
+    {
+     "dur": 3.730999999999998
+    }
+   ],
+   [
+    "30.512",
+    "sample",
+    0.14,
+    {
+     "name": "whoa",
+     "rev": 0.3,
+     "wet": 0.1
+    }
+   ],
+   [
+    "30.812",
+    "chime",
+    0.05,
+    {
+     "note": 84
+    }
+   ],
+   [
+    "31.312",
+    "chime",
+    0.05,
+    {
+     "note": 88
+    }
+   ],
+   [
+    "31.812",
+    "chime",
+    0.05,
+    {
+     "note": 91
+    }
+   ],
+   [
+    "32.312",
+    "chime",
+    0.05,
+    {
+     "note": 86
+    }
+   ],
+   [
+    "32.812",
+    "chime",
+    0.05,
+    {
+     "note": 93
+    }
+   ],
+   [
+    "32.812",
+    "clunk",
+    0.08
+   ],
+   [
+    "33.212",
+    "tick",
+    0.05,
+    {
+     "dur": 0.6,
+     "rate": 4
+    }
+   ],
+   [
+    "34.793",
+    "creak",
+    0.18
+   ],
+   [
+    "35.693",
+    "creak",
+    0.16
+   ],
+   [
+    "36.393",
+    "scrape",
+    0.1,
+    {
+     "dur": 1.0
+    }
+   ],
+   [
+    "35.293",
+    "heartbeat",
+    0.1,
+    {
+     "dur": 2.4
+    }
+   ],
+   [
+    "36.693",
+    "sample",
+    0.15,
+    {
+     "name": "ohno",
+     "rev": 0.3,
+     "wet": 0.1
+    }
+   ],
+   [
+    "37.357",
+    "scarehit",
+    0.18
+   ],
+   [
+    "37.457",
+    "drone",
+    0.1,
+    {
+     "dur": 12.280000000000001
+    }
+   ],
+   [
+    "38.357",
+    "whoosh",
+    0.16,
+    {
+     "dur": 0.8
+    }
+   ],
+   [
+    "38.957",
+    "flutter",
+    0.12,
+    {
+     "dur": 1.6
+    }
+   ],
+   [
+    "39.157",
+    "paper",
+    0.12
+   ],
+   [
+    "41.449",
+    "footsteps",
+    0.14,
+    {
+     "dur": 2.0000000000000044,
+     "rate": 3.2
+    }
+   ],
+   [
+    "42.049",
+    "flutter",
+    0.1,
+    {
+     "dur": 1.4
+    }
+   ],
+   [
+    "43.349",
+    "bodyfall",
+    0.08
+   ],
+   [
+    "43.549",
+    "sting",
+    0.12
+   ],
+   [
+    "43.849",
+    "sample",
+    0.14,
+    {
+     "name": "huh",
+     "rev": 0.3,
+     "wet": 0.1
+    }
+   ],
+   [
+    "45.999",
+    "heartbeat",
+    0.08,
+    {
+     "dur": 3.5379999999999994
+    }
+   ],
+   [
+    "47.599",
+    "paper",
+    0.08
+   ],
+   [
+    "49.637",
+    "riser",
+    0.1,
+    {
+     "dur": 0.6
+    }
+   ],
+   [
+    "51.893",
+    "freeze",
+    0.14
+   ],
+   [
+    "51.943",
+    "scratch",
+    0.08
+   ],
+   [
+    "52.443",
+    "shimmer",
+    0.12,
+    {
+     "dur": 2.4
+    }
+   ],
+   [
+    "53.143",
+    "rockbreak",
+    0.12
+   ],
+   [
+    "53.243",
+    "dustglitter",
+    0.14,
+    {
+     "dur": 2.0
+    }
+   ],
+   [
+    "53.682",
+    "footsteps",
+    0.12,
+    {
+     "dur": 1.4,
+     "rate": 2.6
+    }
+   ],
+   [
+    "53.782",
+    "sample",
+    0.15,
+    {
+     "name": "pant",
+     "rev": 0.3,
+     "wet": 0.1
+    }
+   ],
+   [
+    "55.132",
+    "water",
+    0.05,
+    {
+     "dur": 4.308
+    }
+   ],
+   [
+    "61.09",
+    "lockturn",
+    0.14
+   ],
+   [
+    "61.19",
+    "chime",
+    0.07,
+    {
+     "note": 84
+    }
+   ],
+   [
+    "61.39",
+    "chime",
+    0.06,
+    {
+     "note": 91
+    }
+   ],
+   [
+    "61.69",
+    "shimmer",
+    0.08,
+    {
+     "dur": 1.8
+    }
+   ],
+   [
+    "62.777",
+    "sample",
+    0.12,
+    {
+     "name": "hehe",
+     "rev": 0.3,
+     "wet": 0.1
+    }
+   ]
+  ]
+ }
+}
