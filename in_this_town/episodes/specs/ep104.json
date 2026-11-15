@@ -1,0 +1,827 @@
+{
+ "number": 104,
+ "title": "The Sloth Bite",
+ "output": "Remake04_SlothBite.mp4",
+ "youtube_title": "The Animal That Bites You Gives You Its Power. Hers Was a Sloth.",
+ "tiktok_caption": "In Copper Hollow the first animal that bites you gives you its power. Hazel got a sloth. Everyone laughed, until she stared back.",
+ "hashtags": "#Shorts #Storytime #Animation #PlotTwist",
+ "thumbnail_text": "BITTEN BY A SLOTH",
+ "thumbnail_rec": "Hazel in the school courtyard, eyes locked ahead and a slow green ripple around her, Zane frozen mid-leap behind her with cookies hanging in the air. Text in the sky at the top, clear of her face: BITTEN BY A SLOTH.",
+ "tail": 1.0,
+ "fps": 60,
+ "narrator": {
+  "pace": [
+   2.8,
+   3.0
+  ],
+  "min_tempo": 1.04
+ },
+ "cast": {
+  "hazel": {
+   "voice": "laura",
+   "pitch": 1.14,
+   "tempo": 1.0
+  },
+  "zane": {
+   "voice": "liam",
+   "pitch": 1.18,
+   "tempo": 1.05
+  },
+  "bo": {
+   "voice": "will",
+   "pitch": 1.42,
+   "tempo": 1.05
+  }
+ },
+ "highlights": {
+  "COPPER HOLLOW,": "cyan",
+  "ITS POWER.": "yellow",
+  "WALK UP WALLS.": "cyan",
+  "EVERY ARGUMENT.": "yellow",
+  "MANSIONS.": "yellow",
+  "A SLOTH.": "red",
+  "SLOWPOKE.": "red",
+  "SLOWPOKE!": "red",
+  "PARROT KID:": "cyan",
+  "SOAP BUBBLES,": "cyan",
+  "CLOCK CRAWLED.": "yellow",
+  "ZANE.": "red",
+  "A HARE": "cyan",
+  "FASTER.": "yellow",
+  "COOKIES AND PHONES.": "yellow",
+  "SKETCHBOOK.": "cyan",
+  "COME GET IT,": "red",
+  "HARDER THAN EVER,": "red",
+  "LIKE TAFFY.": "cyan",
+  "RUSHES.": "cyan",
+  "BEING SLOW.": "red",
+  "THINGS SLOW.": "yellow",
+  "KEPT STARING.": "cyan",
+  "MID-LEAP,": "yellow",
+  "EVERYTHING BACK.": "yellow",
+  "THE FOUNTAIN,": "cyan",
+  "BLINKED.": "yellow",
+  "INTO THE WATER.": "cyan",
+  "TAKE YOUR TIME.": "yellow",
+  "THEIR SHOES.": "yellow"
+ },
+ "lines": [
+  {
+   "text": "In Copper Hollow, whichever animal bites you first gives you its power.",
+   "tag": "[mysterious]",
+   "pause": 0.08
+  },
+  {
+   "text": "Gecko kids walk up walls. Skunk kids win every argument.",
+   "tag": "[playful]",
+   "pause": 0.08
+  },
+  {
+   "text": "Pet shops cost more than mansions.",
+   "tag": "[deadpan]",
+   "pause": 0.08
+  },
+  {
+   "text": "At three, Hazel got bitten by a sloth.",
+   "tag": "[amused]",
+   "pause": 0.08
+  },
+  {
+   "text": "The whole school called her Slowpoke.",
+   "tag": "[mocking, light]",
+   "pause": 0.08
+  },
+  {
+   "text": "Even her little brother, a parrot kid:",
+   "tag": "[dry]",
+   "pause": 0.08
+  },
+  {
+   "text": "“Slowpoke! Slowpoke!”",
+   "speak": "Slowpoke! Slowpoke!",
+   "voice": "bo",
+   "tag": "[squawky, teasing]",
+   "pause": 0.08
+  },
+  {
+   "text": "Yet near Hazel, dodgeballs drifted like soap bubbles, and the lunch clock crawled.",
+   "tag": "[curious]",
+   "pause": 0.08
+  },
+  {
+   "text": "Then there was Zane. A hare bit Zane, and nobody was faster.",
+   "tag": "[ominous, quick]",
+   "pause": 0.08
+  },
+  {
+   "text": "He zipped through lunch, snatching cookies and phones.",
+   "tag": "[fast]",
+   "pause": 0.08
+  },
+  {
+   "text": "Then he grabbed Hazel's sketchbook.",
+   "tag": "[tense]",
+   "pause": 0.08
+  },
+  {
+   "text": "“Come get it, Slowpoke!”",
+   "speak": "Come get it, Slowpoke!",
+   "voice": "zane",
+   "tag": "[mocking, laughing]",
+   "pause": 0.08
+  },
+  {
+   "text": "Everyone laughed. Hazel glared harder than ever, and his laugh stretched like taffy.",
+   "tag": "[building]",
+   "pause": 0.08
+  },
+  {
+   "text": "To a sloth, the world rushes. Her power wasn't being slow. It was making things slow.",
+   "tag": "[realizing]",
+   "pause": 0.08
+  },
+  {
+   "text": "So she kept staring. Zane hung mid-leap, one sneaker up.",
+   "tag": "[slow, amused]",
+   "pause": 0.08
+  },
+  {
+   "text": "Hazel strolled over and took everything back.",
+   "tag": "[relaxed]",
+   "pause": 0.08
+  },
+  {
+   "text": "She turned him toward the fountain, and blinked.",
+   "tag": "[sly]",
+   "pause": 0.3
+  },
+  {
+   "text": "Zane sprinted full speed, straight into the water.",
+   "tag": "[gleeful]",
+   "pause": 0.25
+  },
+  {
+   "text": "“Take your time.”",
+   "speak": "Take your time.",
+   "voice": "hazel",
+   "tag": "[calm, smug]",
+   "pause": 0.08
+  },
+  {
+   "text": "Nobody calls her Slowpoke now. When Hazel walks by, everyone studies their shoes.",
+   "tag": "[warm, satisfied]",
+   "pause": 0.08
+  }
+ ],
+ "samples": {
+  "zanelaugh": {
+   "text": "Ha ha ha ha!",
+   "voice": "zane",
+   "tag": "[mocking laugh]"
+  },
+  "crowdlaugh": {
+   "text": "Ha ha ha! Ha ha!",
+   "voice": "bo",
+   "tag": "[laughing]"
+  }
+ },
+ "sound": {
+  "key": 62,
+  "music_gain": 0.3,
+  "music": [
+   [
+    "0",
+    "playful"
+   ],
+   [
+    "10.121",
+    "tender"
+   ],
+   [
+    "12.849",
+    "playful"
+   ],
+   [
+    "24.145",
+    "action"
+   ],
+   [
+    "36.287",
+    "suspense"
+   ],
+   [
+    "39.73",
+    "wonder"
+   ],
+   [
+    "45.318",
+    "mystery"
+   ],
+   [
+    "54.203",
+    "playful"
+   ],
+   [
+    "58.214",
+    "tender_hope"
+   ]
+  ],
+  "cues": [
+   [
+    "0",
+    "suburb",
+    0.06,
+    {
+     "dur": 10.121
+    }
+   ],
+   [
+    "0.5",
+    "chirp",
+    0.04,
+    {
+     "f": 1700,
+     "dur": 0.4,
+     "up": 0
+    }
+   ],
+   [
+    "1.3",
+    "chirp",
+    0.03,
+    {
+     "f": 1450,
+     "dur": 0.35,
+     "up": 0
+    }
+   ],
+   [
+    "2.85",
+    "flutter",
+    0.05,
+    {
+     "dur": 0.6,
+     "rate": 12
+    }
+   ],
+   [
+    "2.9",
+    "pop",
+    0.04
+   ],
+   [
+    "3.0",
+    "shimmer",
+    0.05,
+    {
+     "dur": 1.2
+    }
+   ],
+   [
+    "4.319",
+    "scrape",
+    0.04,
+    {
+     "dur": 0.5,
+     "seed": 3
+    }
+   ],
+   [
+    "4.869",
+    "scrape",
+    0.035,
+    {
+     "dur": 0.5,
+     "seed": 5
+    }
+   ],
+   [
+    "5.369",
+    "scrape",
+    0.03,
+    {
+     "dur": 0.5,
+     "seed": 7
+    }
+   ],
+   [
+    "5.749",
+    "whoosh",
+    0.04,
+    {
+     "dur": 0.8
+    }
+   ],
+   [
+    "7.029",
+    "groan",
+    0.025,
+    {
+     "dur": 1.8
+    }
+   ],
+   [
+    "9.264",
+    "ding",
+    0.05
+   ],
+   [
+    "9.414",
+    "sting",
+    0.03,
+    {
+     "dur": 2.6
+    }
+   ],
+   [
+    "10.121",
+    "wind",
+    0.03,
+    {
+     "dur": 2.7279999999999998
+    }
+   ],
+   [
+    "10.321",
+    "shimmer",
+    0.04,
+    {
+     "dur": 1.0
+    }
+   ],
+   [
+    "10.621",
+    "creak",
+    0.035,
+    {
+     "dur": 1.4
+    }
+   ],
+   [
+    "12.211",
+    "pop",
+    0.05
+   ],
+   [
+    "12.261",
+    "chime",
+    0.03,
+    {
+     "note": 72
+    }
+   ],
+   [
+    "12.849",
+    "water",
+    0.02,
+    {
+     "dur": 51.364999999999995
+    }
+   ],
+   [
+    "12.849",
+    "roomtone",
+    0.03,
+    {
+     "dur": 11.296000000000001
+    }
+   ],
+   [
+    "13.829",
+    "sample",
+    0.04,
+    {
+     "name": "crowdlaugh",
+     "dur": 1.4,
+     "rev": 0.8,
+     "wet": 0.2
+    }
+   ],
+   [
+    "16.468",
+    "chirp",
+    0.045,
+    {
+     "f": 2100,
+     "dur": 0.18,
+     "up": 0
+    }
+   ],
+   [
+    "16.748",
+    "chirp",
+    0.045,
+    {
+     "f": 1900,
+     "dur": 0.18,
+     "up": 1
+    }
+   ],
+   [
+    "17.028",
+    "chirp",
+    0.045,
+    {
+     "f": 2300,
+     "dur": 0.18,
+     "up": 0
+    }
+   ],
+   [
+    "17.638",
+    "chirp",
+    0.04,
+    {
+     "f": 2000,
+     "dur": 0.2,
+     "up": 1
+    }
+   ],
+   [
+    "18.138",
+    "chirp",
+    0.04,
+    {
+     "f": 2150,
+     "dur": 0.2,
+     "up": 1
+    }
+   ],
+   [
+    "18.638",
+    "chirp",
+    0.04,
+    {
+     "f": 2300,
+     "dur": 0.2,
+     "up": 1
+    }
+   ],
+   [
+    "20.265",
+    "whoosh",
+    0.04,
+    {
+     "dur": 1.6
+    }
+   ],
+   [
+    "20.965",
+    "shimmer",
+    0.035,
+    {
+     "dur": 1.6
+    }
+   ],
+   [
+    "22.325",
+    "tick",
+    0.05,
+    {
+     "dur": 1.9,
+     "rate": 0.45
+    }
+   ],
+   [
+    "24.445",
+    "swish",
+    0.05
+   ],
+   [
+    "26.085",
+    "whoosh",
+    0.05,
+    {
+     "dur": 0.6
+    }
+   ],
+   [
+    "26.285",
+    "run",
+    0.04,
+    {
+     "dur": 1.8
+    }
+   ],
+   [
+    "27.005",
+    "swish",
+    0.05
+   ],
+   [
+    "27.505",
+    "swish",
+    0.05
+   ],
+   [
+    "28.483",
+    "whoosh",
+    0.06,
+    {
+     "dur": 0.7
+    }
+   ],
+   [
+    "29.483",
+    "pop",
+    0.035
+   ],
+   [
+    "29.703",
+    "pop",
+    0.035
+   ],
+   [
+    "29.923",
+    "pop",
+    0.035
+   ],
+   [
+    "30.143",
+    "pop",
+    0.035
+   ],
+   [
+    "30.383",
+    "phonebuzz",
+    0.02,
+    {
+     "dur": 0.4
+    }
+   ],
+   [
+    "31.851",
+    "swish",
+    0.06
+   ],
+   [
+    "31.901",
+    "paper",
+    0.05,
+    {
+     "dur": 0.6
+    }
+   ],
+   [
+    "33.008",
+    "paper",
+    0.035,
+    {
+     "dur": 0.5,
+     "seed": 4
+    }
+   ],
+   [
+    "35.337",
+    "sample",
+    0.05,
+    {
+     "name": "crowdlaugh",
+     "dur": 1.6,
+     "rev": 0.8,
+     "wet": 0.2
+    }
+   ],
+   [
+    "35.537",
+    "sample",
+    0.045,
+    {
+     "name": "zanelaugh",
+     "dur": 1.6,
+     "rev": 0.6,
+     "wet": 0.15
+    }
+   ],
+   [
+    "36.487",
+    "riser",
+    0.035,
+    {
+     "dur": 1.5
+    }
+   ],
+   [
+    "37.777",
+    "sample",
+    0.05,
+    {
+     "name": "zanelaugh",
+     "dur": 1.0,
+     "rate": 0.32,
+     "rev": 1.2,
+     "wet": 0.3
+    }
+   ],
+   [
+    "38.077",
+    "freeze",
+    0.05,
+    {
+     "dur": 2.2
+    }
+   ],
+   [
+    "38.477",
+    "hum",
+    0.02,
+    {
+     "dur": 1.9529999999999959,
+     "f": 110
+    }
+   ],
+   [
+    "39.78",
+    "wind",
+    0.03,
+    {
+     "dur": 2.3599999999999994
+    }
+   ],
+   [
+    "40.94",
+    "whoosh",
+    0.05,
+    {
+     "dur": 0.5
+    }
+   ],
+   [
+    "41.34",
+    "whoosh",
+    0.045,
+    {
+     "dur": 0.5
+    }
+   ],
+   [
+    "41.74",
+    "whoosh",
+    0.04,
+    {
+     "dur": 0.5
+    }
+   ],
+   [
+    "42.29",
+    "chime",
+    0.035,
+    {
+     "note": 76
+    }
+   ],
+   [
+    "43.54",
+    "shimmer",
+    0.05,
+    {
+     "dur": 1.6
+    }
+   ],
+   [
+    "45.368",
+    "hum",
+    0.025,
+    {
+     "dur": 7.706000000000003,
+     "f": 96
+    }
+   ],
+   [
+    "47.258",
+    "freeze",
+    0.04,
+    {
+     "dur": 2.0
+    }
+   ],
+   [
+    "49.333",
+    "footsteps",
+    0.05,
+    {
+     "dur": 1.2,
+     "rate": 1.8
+    }
+   ],
+   [
+    "50.633",
+    "pop",
+    0.03
+   ],
+   [
+    "50.803",
+    "pop",
+    0.03
+   ],
+   [
+    "50.973",
+    "pop",
+    0.03
+   ],
+   [
+    "51.143",
+    "pop",
+    0.03
+   ],
+   [
+    "51.313",
+    "pop",
+    0.03
+   ],
+   [
+    "50.733",
+    "paper",
+    0.035,
+    {
+     "dur": 0.6,
+     "seed": 6
+    }
+   ],
+   [
+    "51.934",
+    "scrape",
+    0.03,
+    {
+     "dur": 0.4,
+     "seed": 9
+    }
+   ],
+   [
+    "53.104",
+    "ding",
+    0.05
+   ],
+   [
+    "54.253",
+    "whoosh",
+    0.07,
+    {
+     "dur": 0.8
+    }
+   ],
+   [
+    "54.353",
+    "run",
+    0.05,
+    {
+     "dur": 1.3
+    }
+   ],
+   [
+    "55.653",
+    "watersplit",
+    0.08,
+    {
+     "dur": 2.4
+    }
+   ],
+   [
+    "56.203",
+    "sample",
+    0.035,
+    {
+     "name": "crowdlaugh",
+     "dur": 1.5,
+     "rev": 0.8,
+     "wet": 0.2
+    }
+   ],
+   [
+    "57.274",
+    "sting",
+    0.025,
+    {
+     "dur": 2.6
+    }
+   ],
+   [
+    "58.414",
+    "footsteps",
+    0.04,
+    {
+     "dur": 5.509000000000002,
+     "rate": 1.9
+    }
+   ],
+   [
+    "61.334",
+    "chime",
+    0.035,
+    {
+     "note": 79
+    }
+   ],
+   [
+    "63.423",
+    "chirp",
+    0.025,
+    {
+     "f": 1500,
+     "dur": 0.35,
+     "up": 0
+    }
+   ]
+  ]
+ }
+}
