@@ -1,0 +1,796 @@
+{
+ "number": 105,
+ "title": "The Most Common Name",
+ "output": "Remake05_MostCommonName.mp4",
+ "youtube_title": "Your Last Name Is Your Superpower. His Was the Most Common One.",
+ "tiktok_caption": "In Pebble Creek your last name is your superpower. Ezra Wilson's never did anything, until the day he really needed it.",
+ "hashtags": "#Shorts #Storytime #Animation #PlotTwist",
+ "thumbnail_text": "MY LAST NAME IS MY POWER",
+ "thumbnail_rec": "Behind the arcade: Dad in a frilly apron and bunny slippers pops out of a burst of sparkles between little Ezra and big Brock, a pancake flipping above his frying pan, the stop sign tied in a knot behind them. Text in the sky at the top, clear of every face: MY LAST NAME IS MY POWER.",
+ "tail": 1.0,
+ "fps": 60,
+ "narrator": {
+  "pace": [
+   2.8,
+   3.0
+  ],
+  "min_tempo": 1.04
+ },
+ "cast": {
+  "ezra": {
+   "voice": "liam",
+   "pitch": 1.24,
+   "tempo": 1.12
+  },
+  "brock": {
+   "voice": "will",
+   "pitch": 1.04,
+   "tempo": 1.18
+  },
+  "dad": {
+   "voice": "brian",
+   "pitch": 1.0,
+   "tempo": 1.05
+  }
+ },
+ "highlights": {
+  "PEBBLE CREEK,": "cyan",
+  "YOUR SUPERPOWER.": "yellow",
+  "IN A BLINK.": "yellow",
+  "IN A SNEEZE.": "cyan",
+  "EZRA WILSON": "cyan",
+  "COMMON NAMES": "yellow",
+  "THEIR POWER.": "red",
+  "BROCK STEELE,": "red",
+  "LAMP POSTS,": "yellow",
+  "NO-POWER": "red",
+  "TRASH CANS.": "yellow",
+  "A GOOSE": "yellow",
+  "DAD!": "red",
+  "RIGHT THERE,": "cyan",
+  "CORN MAZE,": "yellow",
+  "THE PRINCIPAL,": "cyan",
+  "ALWAYS AROUND.": "yellow",
+  "THE ARCADE": "cyan",
+  "STOP SIGN.": "red",
+  "NO POWER.": "red",
+  "DAD?": "cyan",
+  "POOF.": "yellow",
+  "FRILLY APRON,": "cyan",
+  "STILL FLIPPING.": "yellow",
+  "WILL'S SON.": "yellow",
+  "CALL HIS DAD.": "cyan",
+  "BRING YOUR GRANDMA.": "yellow",
+  "CHEATING!": "red",
+  "LAST NAME.": "yellow",
+  "NOTHING.": "red",
+  "SON'S NAME.": "yellow",
+  "TELL YOUR DAD HI!": "cyan"
+ },
+ "lines": [
+  {
+   "text": "In Pebble Creek, your last name is your superpower.",
+   "tag": "[mysterious, warm]",
+   "pause": 0.08
+  },
+  {
+   "text": "Gardners grow pumpkins in a blink. Taylors sew suits in a sneeze.",
+   "tag": "[playful]",
+   "pause": 0.08
+  },
+  {
+   "text": "Ezra Wilson had one of the most common names around. No Wilson ever found their power.",
+   "tag": "[deadpan]",
+   "pause": 0.08
+  },
+  {
+   "text": "Brock Steele, who bent lamp posts, called him No-Power and dumped him in trash cans.",
+   "tag": "[dry]",
+   "pause": 0.08
+  },
+  {
+   "text": "Once, a goose chased him.",
+   "tag": "[amused]",
+   "pause": 0.05
+  },
+  {
+   "text": "“Dad!”",
+   "speak": "Dad!",
+   "voice": "ezra",
+   "tag": "[panicked yell]",
+   "pause": 0.08
+  },
+  {
+   "text": "And Dad was right there, holding the goose.",
+   "tag": "[matter-of-fact]",
+   "pause": 0.05
+  },
+  {
+   "text": "“Just passing by.”",
+   "speak": "Just passing by.",
+   "voice": "dad",
+   "tag": "[casual]",
+   "pause": 0.08
+  },
+  {
+   "text": "Lost in a corn maze, Ezra whispered it, and Dad tapped his shoulder.",
+   "tag": "[curious]",
+   "pause": 0.08
+  },
+  {
+   "text": "Dad was the principal, always around.",
+   "tag": "[shrugging]",
+   "pause": 0.08
+  },
+  {
+   "text": "One Saturday, Brock cornered him behind the arcade and knotted a stop sign.",
+   "tag": "[ominous]",
+   "pause": 0.08
+  },
+  {
+   "text": "“No teachers. No friends. No power.”",
+   "speak": "No teachers. No friends. No power.",
+   "voice": "brock",
+   "tag": "[menacing, mocking]",
+   "pause": 0.08
+  },
+  {
+   "text": "“Dad?”",
+   "speak": "Dad?",
+   "voice": "ezra",
+   "tag": "[scared whisper]",
+   "pause": 0.08
+  },
+  {
+   "text": "Poof. Dad appeared between them in a frilly apron, a pancake still flipping.",
+   "tag": "[surprised, comic]",
+   "pause": 0.08
+  },
+  {
+   "text": "Wilson means Will's son. A son in real trouble can always call his dad.",
+   "tag": "[realizing, warm]",
+   "pause": 0.08
+  },
+  {
+   "text": "“Mister Steele. My office, Monday, six a.m. Bring your grandma.”",
+   "speak": "Mister Steele. My office, Monday, six A M. Bring your grandma.",
+   "voice": "dad",
+   "tag": "[calm, stern]",
+   "pause": 0.08
+  },
+  {
+   "text": "“That's cheating!”",
+   "speak": "That's cheating!",
+   "voice": "brock",
+   "tag": "[outraged]",
+   "pause": 0.05
+  },
+  {
+   "text": "“Nope. Just my last name.”",
+   "speak": "Nope. Just my last name.",
+   "voice": "ezra",
+   "tag": "[shrugging, cheeky]",
+   "pause": 0.08
+  },
+  {
+   "text": "“DAD!”",
+   "speak": "DAD!",
+   "voice": "brock",
+   "tag": "[desperate shout]",
+   "pause": 0.15
+  },
+  {
+   "text": "Nothing. Steele isn't a son's name.",
+   "tag": "[deadpan]",
+   "pause": 0.08
+  },
+  {
+   "text": "Now Brock waves every morning.",
+   "tag": "[warm, amused]",
+   "pause": 0.05
+  },
+  {
+   "text": "“Morning, Ezra. Tell your dad hi!”",
+   "speak": "Morning, Ezra. Tell your dad hi!",
+   "voice": "brock",
+   "tag": "[nervous, overly polite]",
+   "pause": 0.08
+  }
+ ],
+ "samples": {
+  "goose": {
+   "text": "Honk! Honk honk!",
+   "voice": "brock",
+   "tag": "[goose honking]"
+  },
+  "crowdlaugh": {
+   "text": "Ha ha ha! Ha ha!",
+   "voice": "ezra",
+   "tag": "[laughing]"
+  }
+ },
+ "sound": {
+  "key": 62,
+  "music_gain": 0.3,
+  "music": [
+   [
+    "0",
+    "playful"
+   ],
+   [
+    "18.232",
+    "action"
+   ],
+   [
+    "25.25",
+    "tender"
+   ],
+   [
+    "31.887",
+    "suspense"
+   ],
+   [
+    "40.41",
+    "wonder"
+   ],
+   [
+    "49.88",
+    "playful"
+   ],
+   [
+    "57.212",
+    "mystery"
+   ],
+   [
+    "59.387",
+    "tender_hope"
+   ]
+  ],
+  "cues": [
+   [
+    "0",
+    "suburb",
+    0.06,
+    {
+     "dur": 18.232
+    }
+   ],
+   [
+    "0.6",
+    "chirp",
+    0.04,
+    {
+     "f": 1700,
+     "dur": 0.4,
+     "up": 0
+    }
+   ],
+   [
+    "1.5",
+    "chirp",
+    0.03,
+    {
+     "f": 1450,
+     "dur": 0.35,
+     "up": 0
+    }
+   ],
+   [
+    "4.735",
+    "whoosh",
+    0.04,
+    {
+     "dur": 0.4
+    }
+   ],
+   [
+    "4.885",
+    "pop",
+    0.06
+   ],
+   [
+    "4.935",
+    "shimmer",
+    0.035,
+    {
+     "dur": 0.9
+    }
+   ],
+   [
+    "6.245",
+    "riser",
+    0.02,
+    {
+     "dur": 0.55
+    }
+   ],
+   [
+    "6.795",
+    "impact",
+    0.035
+   ],
+   [
+    "6.895",
+    "whoosh",
+    0.05,
+    {
+     "dur": 0.8
+    }
+   ],
+   [
+    "7.045",
+    "paper",
+    0.035,
+    {
+     "dur": 0.6,
+     "seed": 3
+    }
+   ],
+   [
+    "7.545",
+    "ding",
+    0.04
+   ],
+   [
+    "10.32",
+    "hum",
+    0.025,
+    {
+     "dur": 1.6,
+     "f": 140
+    }
+   ],
+   [
+    "12.02",
+    "winddown",
+    0.03,
+    {
+     "dur": 0.9
+    }
+   ],
+   [
+    "13.936",
+    "creak",
+    0.06,
+    {
+     "dur": 1.0
+    }
+   ],
+   [
+    "14.186",
+    "scrape",
+    0.035,
+    {
+     "dur": 0.6,
+     "seed": 5
+    }
+   ],
+   [
+    "15.746",
+    "whoosh",
+    0.05,
+    {
+     "dur": 0.7
+    }
+   ],
+   [
+    "16.936",
+    "impact",
+    0.06
+   ],
+   [
+    "16.986",
+    "clash",
+    0.035
+   ],
+   [
+    "17.136",
+    "sample",
+    0.035,
+    {
+     "name": "crowdlaugh",
+     "dur": 1.3,
+     "rev": 0.6,
+     "wet": 0.15
+    }
+   ],
+   [
+    "18.232",
+    "wind",
+    0.025,
+    {
+     "dur": 11.431000000000001
+    }
+   ],
+   [
+    "18.282",
+    "whoosh",
+    0.04,
+    {
+     "dur": 0.5
+    }
+   ],
+   [
+    "18.432",
+    "sample",
+    0.06,
+    {
+     "name": "goose",
+     "dur": 1.4
+    }
+   ],
+   [
+    "18.432",
+    "run",
+    0.05,
+    {
+     "dur": 1.9
+    }
+   ],
+   [
+    "18.532",
+    "flutter",
+    0.04,
+    {
+     "dur": 0.25,
+     "rate": 14
+    }
+   ],
+   [
+    "18.852",
+    "flutter",
+    0.04,
+    {
+     "dur": 0.25,
+     "rate": 14
+    }
+   ],
+   [
+    "19.172",
+    "flutter",
+    0.04,
+    {
+     "dur": 0.25,
+     "rate": 14
+    }
+   ],
+   [
+    "19.492",
+    "flutter",
+    0.04,
+    {
+     "dur": 0.25,
+     "rate": 14
+    }
+   ],
+   [
+    "21.239",
+    "sting",
+    0.03,
+    {
+     "dur": 2.4
+    }
+   ],
+   [
+    "21.589",
+    "sample",
+    0.035,
+    {
+     "name": "goose",
+     "dur": 0.7,
+     "rate": 1.1
+    }
+   ],
+   [
+    "25.3",
+    "scrape",
+    0.02,
+    {
+     "dur": 1.2,
+     "seed": 8
+    }
+   ],
+   [
+    "26.75",
+    "scrape",
+    0.018,
+    {
+     "dur": 1.0,
+     "seed": 11
+    }
+   ],
+   [
+    "28.28",
+    "pop",
+    0.04
+   ],
+   [
+    "28.38",
+    "chime",
+    0.03,
+    {
+     "note": 72
+    }
+   ],
+   [
+    "29.713",
+    "beep",
+    0.025,
+    {
+     "f": 1250,
+     "dur": 0.5
+    }
+   ],
+   [
+    "30.363",
+    "chirp",
+    0.05,
+    {
+     "f": 3000,
+     "dur": 0.4,
+     "up": 1
+    }
+   ],
+   [
+    "30.063",
+    "crowdsteps",
+    0.03,
+    {
+     "dur": 1.8
+    }
+   ],
+   [
+    "31.887",
+    "buzz",
+    0.015,
+    {
+     "dur": 27.400000000000002
+    }
+   ],
+   [
+    "31.887",
+    "roomtone",
+    0.03,
+    {
+     "dur": 27.400000000000002
+    }
+   ],
+   [
+    "32.187",
+    "footsteps",
+    0.04,
+    {
+     "dur": 1.8,
+     "rate": 1.6
+    }
+   ],
+   [
+    "34.887",
+    "creak",
+    0.06,
+    {
+     "dur": 1.1
+    }
+   ],
+   [
+    "35.187",
+    "chainslide",
+    0.035,
+    {
+     "dur": 0.8
+    }
+   ],
+   [
+    "35.887",
+    "clash",
+    0.03
+   ],
+   [
+    "36.287",
+    "sting",
+    0.025,
+    {
+     "dur": 2.4
+    }
+   ],
+   [
+    "40.139",
+    "riser",
+    0.03,
+    {
+     "dur": 0.3
+    }
+   ],
+   [
+    "40.43",
+    "teleport",
+    0.07
+   ],
+   [
+    "40.48",
+    "pop",
+    0.07
+   ],
+   [
+    "40.51",
+    "shimmer",
+    0.05,
+    {
+     "dur": 1.6
+    }
+   ],
+   [
+    "40.56",
+    "whoosh",
+    0.04,
+    {
+     "dur": 0.8
+    }
+   ],
+   [
+    "40.61",
+    "swish",
+    0.03
+   ],
+   [
+    "41.66",
+    "swish",
+    0.03
+   ],
+   [
+    "42.71",
+    "swish",
+    0.03
+   ],
+   [
+    "43.76",
+    "swish",
+    0.03
+   ],
+   [
+    "45.105",
+    "impact",
+    0.04
+   ],
+   [
+    "45.155",
+    "ding",
+    0.035
+   ],
+   [
+    "45.085",
+    "pop",
+    0.04
+   ],
+   [
+    "45.485",
+    "ding",
+    0.045
+   ],
+   [
+    "46.285",
+    "chime",
+    0.045,
+    {
+     "note": 76
+    }
+   ],
+   [
+    "46.975",
+    "shimmer",
+    0.03,
+    {
+     "dur": 1.6
+    }
+   ],
+   [
+    "50.08",
+    "sting",
+    0.03,
+    {
+     "dur": 2.4
+    }
+   ],
+   [
+    "53.958",
+    "stomp",
+    0.04
+   ],
+   [
+    "55.102",
+    "pop",
+    0.03
+   ],
+   [
+    "56.625",
+    "riser",
+    0.02,
+    {
+     "dur": 0.6
+    }
+   ],
+   [
+    "57.212",
+    "wind",
+    0.06,
+    {
+     "dur": 2.4
+    }
+   ],
+   [
+    "57.762",
+    "chirp",
+    0.03,
+    {
+     "f": 4200,
+     "dur": 0.12,
+     "up": 0
+    }
+   ],
+   [
+    "58.212",
+    "chirp",
+    0.03,
+    {
+     "f": 4200,
+     "dur": 0.12,
+     "up": 0
+    }
+   ],
+   [
+    "58.662",
+    "chirp",
+    0.03,
+    {
+     "f": 4200,
+     "dur": 0.12,
+     "up": 0
+    }
+   ],
+   [
+    "57.462",
+    "paper",
+    0.04,
+    {
+     "dur": 1.8,
+     "seed": 6
+    }
+   ],
+   [
+    "59.387",
+    "suburb",
+    0.05,
+    {
+     "dur": 5.025000000000004
+    }
+   ],
+   [
+    "59.687",
+    "chirp",
+    0.035,
+    {
+     "f": 1600,
+     "dur": 0.35,
+     "up": 1
+    }
+   ],
+   [
+    "59.587",
+    "footsteps",
+    0.035,
+    {
+     "dur": 4.325000000000005,
+     "rate": 1.8
+    }
+   ],
+   [
+    "62.865",
+    "chime",
+    0.035,
+    {
+     "note": 79
+    }
+   ]
+  ]
+ }
+}
