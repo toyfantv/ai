@@ -196,15 +196,15 @@ const CZ = (x, z) => at(CM, x, 0, z);
 function poseCorn(t, name) {   // L8: Ezra lost in the corn, whispers "Dad?"; Dad steps out of a side row behind him and taps his shoulder
   const E = EV, e = W.ezra, d = W.dad;
   const EP = CZ(-0.4, 3.2), turn = smooth(E.tap + 0.05, E.tap + 0.5, t);
-  place(e, EP, lerp(0.1, -2.4, turn), sz('ezra')); pose(e, 'idle', t);
+  place(e, EP, lerp(0.1, 0.75, turn), sz('ezra')); pose(e, 'idle', t);
   const w = Math.max(0, 1 - Math.abs(t - E.whisp - 0.2) / 0.45);
   face(e, t > E.tap + 0.25 ? 'happy' : t > E.tap ? 'surprised' : 'nervous', t, 0.3, { viseme: t > E.whisp - 0.1 && t < E.whisp + 0.5 ? visemeAt('dad', E.whisp - 0.1, E.whisp + 0.5, t) : undefined });
   if (t < E.tap) { aimArm(e, 0, chestOf(e).add(fwd(e, 0.3)).add(side(e, 0.2)), 0.8); aimArm(e, 1, chestOf(e).add(fwd(e, 0.3)).add(side(e, -0.2)), 0.8); lookAtP(e, EP.clone().add(v3(Math.sin(t * 0.9) * 4, 3.0, 6)), 0.6); }
   else lookAtP(e, H(d), 0.9);
   void w;
-  const DA = CZ(9.5, -3.5), DB = CZ(1.7, 1.4), dk = smooth(E.tap - 1.6, E.tap - 0.15, t);
+  const DA = CZ(9.5, -3.5), DB = CZ(1.5, 4.9), dk = smooth(E.tap - 1.6, E.tap - 0.15, t);
   if (dk <= 0) { d.root.visible = false; return; }
-  const dp = lp3(DA, DB, easeOut(dk)); place(d, dp, dk < 1 ? yawTo(DA, DB) : yawTo(DB, EP) + 0.4, sz('dad')); pose(d, dk < 0.98 ? 'walk' : 'idle', t);
+  const dp = lp3(DA, DB, easeOut(dk)); place(d, dp, dk < 1 ? yawTo(DA, DB) : yawTo(DB, EP) + 1.1, sz('dad')); pose(d, dk < 0.98 ? 'walk' : 'idle', t);
   if (t > E.tap - 0.3) aimArm(d, 1, H(e).add(v3(0, -0.85 * SCa(e), 0)).add(side(e, -0.75 * SCa(e))), smooth(E.tap - 0.3, E.tap, t) * (1 - smooth(E.tap + 0.6, E.tap + 1.0, t)));
   face(d, 'happy', t, 0.6); lookAtP(d, H(e), 0.4);
 }
@@ -225,7 +225,7 @@ function poseAlley(t, name) {   // L10-19: Brock corners Ezra, knots the stop si
   const kn = easeInOut(smooth(E.knot - 0.5, E.knot + 0.5, t)); S.stop.set(kn);
   // Ezra: backs up to the wall, then pressed there
   const back = smooth(E.alley - 0.2, E.alley + 2.2, t), EP = lp3(A(-0.6, 1.6), EZA(), easeOut(back));
-  place(e, EP, yawTo(EP, A(-0.4, 8)), sz('ezra')); pose(e, back > 0.02 && back < 0.95 ? 'walk' : 'idle', t * 0.8);
+  place(e, EP, lerp(yawTo(EP, A(-0.4, 8)), yawTo(EP, BRA()) - 0.9, smooth(E.nope - 0.35, E.nope - 0.05, t) * (1 - smooth(E.dadyell - 0.1, E.dadyell + 0.2, t))), sz('ezra')); pose(e, back > 0.02 && back < 0.95 ? 'walk' : 'idle', t * 0.8);
   if (back > 0.02 && back < 0.95) e.root.rotation.y += 0;   // walking backward: the legs still swing
   // Brock: follows him in, stops at BRA
   const bu = smooth(E.alley - 0.2, E.alley + 2.0, t), BP = lp3(A(6.0, 6.0), BRA(), easeOut(bu));
@@ -268,8 +268,8 @@ function poseAlley(t, name) {   // L10-19: Brock corners Ezra, knots the stop si
     if (ft < land) { const per = 1.05, ph = (ft % per) / per, hgt = Math.sin(ph * Math.PI) * 3.2; W.cake.position.copy(pc).add(v3(0, 0.1 + hgt, 0)); W.cake.rotation.set(ph * Math.PI * 2 * (Math.floor(ft / per) % 2 ? -1 : 1), 0, 0.2); }
     else { W.cake.position.copy(pc).add(v3(0, 0.08, 0)); W.cake.rotation.set(0, 0, 0); }
     // left hand: the spatula point at Brock for his line; a hand on Ezra's shoulder on "a son"
-    if (t > E.son - 0.2 && t < E.office) aimArm(d, 1, H(e).add(v3(0, -0.85 * SCa(e), 0)).add(side(e, -0.6 * SCa(e))), smooth(E.son - 0.2, E.son + 0.3, t) * (1 - smooth(E.office - 0.4, E.office, t)));
-    if (t > E.office && t < E.cheat) aimArm(d, 1, H(b).add(v3(0, -0.4, 0)), smooth(E.office + 0.1, E.office + 0.5, t) * 0.85);
+    if (t > E.son - 0.2 && t < E.cheat + 0.4) aimArm(d, 1, chestOf(d).add(side(d, -1.5)).add(fwd(d, 0.2)).add(v3(0, -2.0, 0)), smooth(E.son - 0.2, E.son + 0.3, t) * (1 - smooth(E.cheat, E.cheat + 0.4, t)));
+    if (t > E.office && t < E.cheat + 0.4) { const ptr = chestOf(d).add(side(d, 1.7)).add(fwd(d, 1.2)).add(v3(0, -1.4, 0)); aimArm(d, 0, lp3(hp, ptr, smooth(E.office + 0.1, E.office + 0.5, t) * (1 - smooth(E.cheat, E.cheat + 0.4, t))), 1); W.pan.position.copy(handOf(d, 0)); W.pan.updateMatrixWorld(true); W.cake.position.copy(W.pan.localToWorld(W.pan.centre.clone())).add(v3(0, 0.08, 0)); }
     const lookP = t < E.poof + 0.9 ? H(d).add(v3(-3, 0.4, 6)) : t < E.land ? W.cake.position : t < E.land + 0.6 ? A(5, 0.5) : t < E.means + 2.0 ? H(e) : t < E.nothing + 0.4 ? H(b) : H(e);
     lookAtP(d, lookP, t < E.land ? 0.35 : t > E.office - 0.1 && t < E.cheat ? 0.1 : 0.6);
     face(d, t > E.nothing + 0.4 ? 'smug' : t > E.office ? 'focused' : t > E.son ? 'happy' : t < E.land ? 'surprised' : 'shocked', t, 0.5, { viseme: talk(15, t) });
@@ -324,7 +324,7 @@ function shots() {
   add('passing', s(7) - 0.05, (u) => camOn(W.dad, 8.6 - u * 0.4, 12, 0.0, -1.2, 48));
   // L8: the corn maze
   add('corn', s(8) - 0.05, (u) => ({ pos: CZ(0.4, 15.5 - u * 2.0).add(v3(0, 4.2, 0)), look: CZ(0.2, 1.0).add(v3(0, 3.0, 0)), fov: 54 }));
-  add('tap', E.tap - 0.4, (u) => ({ pos: CZ(-0.6, 11.5 - u * 0.5).add(v3(0, 4.4, 0)), look: CZ(0.6, 2.2).add(v3(0, 3.4, 0)), fov: 54 }));
+  add('tap', E.tap - 0.4, (u) => ({ pos: CZ(-0.6, 11.5 - u * 0.5).add(v3(0, 4.4, 0)), look: CZ(0.5, 3.9).add(v3(0, 3.4, 0)), fov: 56 }));
   // L9: the principal
   add('principal', s(9) - 0.05, (u) => ({ pos: v3(SX - 2.0 + u * 0.6, 4.6, SCHOOL.front + 15 - u * 1.2), look: v3(SX + 2.0, 4.6, SCHOOL.front + 1), fov: 56 }));
   // L10-11: the alley; the knot; the taunt
@@ -336,11 +336,11 @@ function shots() {
   add('poof', s(13) - 0.05, (u) => ({ pos: A(-9.0 + u * 0.6, 2.2).add(v3(0, 5.6, 0)), look: A(1.0, -3.4).add(v3(0, 3.4, 0)), fov: 58 }));
   add('pancake', E.apron - 0.1, (u) => camOn(W.dad, 8.5 - u * 0.6, 0, 1.0, -0.4, 56));
   add('means', s(14) - 0.05, (u) => ({ pos: A(-8.0 + u * 0.4, 3.0).add(v3(0, 5.0, 0)), look: A(-0.6, -4.3).add(v3(0, 5.4, 0)), fov: 60 }));
-  add('son', E.son - 0.05, (u) => ({ pos: A(-5.0, 5.2 - u * 0.4).add(v3(0, 4.6, 0)), look: A(-0.7, -4.4).add(v3(0, 4.4, 0)), fov: 58 }));
+  add('son', E.son - 0.05, (u) => ({ pos: A(-5.6, 6.6 - u * 0.4).add(v3(0, 5.0, 0)), look: A(-0.7, -4.4).add(v3(0, 5.2, 0)), fov: 62 }));
   // L15-19: the office line; cheating; nope; DAD!; nothing
   add('office', s(15) - 0.05, (u) => camOn(W.dad, 8.0 - u * 0.4, -4, -0.2, -0.5, 54));
   add('cheat', s(16) - 0.05, (u) => camOn(W.brock, 7.0, 40, 0.3, -0.6, 52));
-  add('nope', s(17) - 0.05, (u) => camOn(W.ezra, 6.2, -20, 0.5, -0.6, 50));
+  add('nope', s(17) - 0.05, (u) => camOn(W.ezra, 6.2 - u * 0.4, -8, 0.4, -0.5, 54));
   add('dadyell', s(18) - 0.05, (u) => { const h = H(W.brock); return { pos: h.clone().add(v3(0.6, -1.2, 6.5 - u * 0.6)), look: h.clone().add(v3(0, 0.0, 0)), fov: 60 }; });
   add('nothing', s(19) - 0.05, (u) => ({ pos: A(-1.5, 17 - u * 1.0).add(v3(0, 5.5, 0)), look: A(1.8, -2.0).add(v3(0, 3.0, 0)), fov: 56 }));
   // L20-21: next morning
