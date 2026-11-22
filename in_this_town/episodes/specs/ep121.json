@@ -1,0 +1,989 @@
+{
+ "number": 121,
+ "title": "We Lie Down When the Shadow Comes",
+ "output": "LORE001_WeLieDownWhenTheShadowComes.mp4",
+ "youtube_title": "We Lie Down When The Shadow Comes",
+ "tiktok_caption": "Every day at noon a shadow crosses our town and everyone lies down. Today it stopped over our house. Would you have stood up, or stayed down with your mom?",
+ "hashtags": "#Shorts #Lore #Storytime #Animation #PlotTwist",
+ "thumbnail_text": "NOBODY HERE LOOKS UP",
+ "thumbnail_rec": "A sunny village street, everyone face-down in the dirt, one girl in a yellow dress standing in a vast wing-shaped shadow, looking up at a burning sky. Text in the sky, clear of faces: NOBODY HERE LOOKS UP",
+ "tail": 0.35,
+ "fps": 60,
+ "narrator": {
+  "voice": "jessica",
+  "pitch": 1.12,
+  "tempo": 1.12,
+  "max_tempo": 1.15,
+  "pace": [
+   2.5,
+   2.95
+  ],
+  "min_tempo": 1.04,
+  "note": "LORE-001: the narrator is Wren, a 12-year-old girl (voice = her gender); jessica is used by no character here"
+ },
+ "cast": {
+  "mom": {
+   "voice": "sarah",
+   "pitch": 0.98,
+   "tempo": 1.05
+  },
+  "mrslee": {
+   "voice": "matilda",
+   "pitch": 0.92,
+   "tempo": 0.96
+  },
+  "pip": {
+   "voice": "will",
+   "pitch": 1.42,
+   "tempo": 1.0
+  }
+ },
+ "highlights": {
+  "SHADOW": "red",
+  "LIE DOWN.": "yellow",
+  "UP": "red",
+  "FLAT.": "yellow",
+  "CROOKED.": "yellow",
+  "TODAY": "red",
+  "OUR HOUSE.": "red",
+  "WANTS.": "red",
+  "NOON.": "yellow",
+  "TEN BREATHS,": "yellow",
+  "THE VIEW.": "yellow",
+  "DROP": "yellow",
+  "KITE.": "yellow",
+  "HOTTER.": "red",
+  "PIP": "yellow",
+  "A HUNDRED.": "red",
+  "SHADE.": "cyan",
+  "LOOK UP,": "red",
+  "GO UP.": "red",
+  "ONE O'CLOCK,": "yellow",
+  "ABARA": "yellow",
+  "SMOKE.": "red",
+  "MR. LEE": "yellow",
+  "SCREAMED": "red",
+  "WAVING.": "cyan",
+  "FEATHER.": "yellow",
+  "BURNT": "red",
+  "GROW.": "red",
+  "FLATTER!": "red",
+  "HUNGRY?": "red",
+  "HUNTING": "cyan",
+  "HALF THE SKY.": "yellow",
+  "BURNING.": "red",
+  "SCREAMING.": "red",
+  "CALLING US.": "cyan",
+  "OPEN.": "cyan",
+  "REACH.": "cyan",
+  "STAND UP.": "yellow",
+  "COMING DOWN.": "red"
+ },
+ "lines": [
+  {
+   "text": "When the shadow comes, we lie down.",
+   "tag": "[matter-of-fact]",
+   "pause": 0.24
+  },
+  {
+   "text": "Anyone still standing goes up with it.",
+   "tag": "[matter-of-fact]",
+   "pause": 0.24
+  },
+  {
+   "text": "We get married flat. Haircuts come out crooked.",
+   "tag": "[deadpan]",
+   "pause": 0.4
+  },
+  {
+   "text": "Today it stopped over our house.",
+   "tag": "[quietly]",
+   "pause": 0.45
+  },
+  {
+   "text": "Nobody knows what it wants.",
+   "tag": "[quietly]",
+   "pause": 0.55
+  },
+  {
+   "text": "Most days it crosses once, at noon. Ten breaths, then gone.",
+   "tag": "[matter-of-fact]",
+   "pause": 0.24,
+   "speak": "Most days it crosses once, at noon. Ten breaths... then gone."
+  },
+  {
+   "text": "We call it going up for the view.",
+   "tag": "[deadpan]",
+   "pause": 0.24
+  },
+  {
+   "text": "Babies learn to drop before they learn to walk.",
+   "tag": "[matter-of-fact]",
+   "pause": 0.24
+  },
+  {
+   "text": "Nobody here owns a kite.",
+   "tag": "[deadpan]",
+   "pause": 0.24
+  },
+  {
+   "text": "Every summer is hotter. Mom says that's just summer.",
+   "tag": "[flat]",
+   "pause": 0.4
+  },
+  {
+   "text": "My brother Pip is five. When it comes, I count for him.",
+   "tag": "[warm]",
+   "pause": 0.24
+  },
+  {
+   "text": "One, two, flat.",
+   "tag": "[softly]",
+   "pause": 0.45,
+   "speak": "One... two... flat."
+  },
+  {
+   "text": "Ten breaths. Twenty. A hundred. Still here.",
+   "tag": "[quietly]",
+   "pause": 0.4,
+   "speak": "Ten breaths. Twenty. A hundred... Still here."
+  },
+  {
+   "text": "The whole town fits inside its shade.",
+   "tag": "[quietly]",
+   "pause": 0.24
+  },
+  {
+   "text": "Mom says if you look up, you go up.",
+   "tag": "[whispers]",
+   "pause": 0.24
+  },
+  {
+   "text": "By one o'clock, the whole town is lying in the road.",
+   "tag": "[matter-of-fact]",
+   "pause": 0.24,
+   "speak": "By one o'clock, the whole town is lying in the road."
+  },
+  {
+   "text": "“Faces down. Nobody moves.”",
+   "tag": "[low, firm]",
+   "pause": 0.24,
+   "voice": "mom",
+   "speak": "Faces down. Nobody moves."
+  },
+  {
+   "text": "Old Mr. Abara has been lying in his garden since Tuesday.",
+   "tag": "[deadpan]",
+   "pause": 0.24,
+   "speak": "Old Mister Abara has been lying in his garden since Tuesday."
+  },
+  {
+   "text": "Past the edge of the shadow, the grass starts to smoke.",
+   "tag": "[quietly]",
+   "pause": 0.24
+  },
+  {
+   "text": "“Don't look, child. Count your breaths.”",
+   "tag": "[calm]",
+   "pause": 0.24,
+   "voice": "mrslee",
+   "speak": "Don't look, child. Count your breaths."
+  },
+  {
+   "text": "Last spring, Mr. Lee stood up to catch his hat.",
+   "tag": "[quietly]",
+   "pause": 0.24,
+   "speak": "Last spring, Mister Lee stood up to catch his hat."
+  },
+  {
+   "text": "She says he screamed all the way up.",
+   "tag": "[quietly]",
+   "pause": 0.24
+  },
+  {
+   "text": "I was there. He was waving.",
+   "tag": "[quietly]",
+   "pause": 0.45
+  },
+  {
+   "text": "Something drops into the road beside me.",
+   "tag": "[tense]",
+   "pause": 0.24
+  },
+  {
+   "text": "A feather. Longer than our front door.",
+   "tag": "[awed]",
+   "pause": 0.24,
+   "speak": "A feather... Longer than our front door."
+  },
+  {
+   "text": "Its tips are burnt black.",
+   "tag": "[quietly]",
+   "pause": 0.4
+  },
+  {
+   "text": "Then the shadow starts to grow. It's coming down.",
+   "tag": "[tense]",
+   "pause": 0.24
+  },
+  {
+   "text": "“Flatter, Pip! Flatter!”",
+   "tag": "[scared]",
+   "pause": 0.24,
+   "voice": "mom",
+   "speak": "Flatter, Pip! Flatter!"
+  },
+  {
+   "text": "“Is it hungry?”",
+   "tag": "[whispers]",
+   "pause": 0.24,
+   "voice": "pip",
+   "speak": "Is it... hungry?"
+  },
+  {
+   "text": "I don't know.",
+   "tag": "[whispers]",
+   "pause": 0.24
+  },
+  {
+   "text": "So I look up.",
+   "tag": "[quietly]",
+   "pause": 5.7
+  },
+  {
+   "text": "It isn't hunting us.",
+   "tag": "[in awe]",
+   "pause": 0.24
+  },
+  {
+   "text": "Behind it, the sun fills half the sky.",
+   "tag": "[in awe]",
+   "pause": 0.24
+  },
+  {
+   "text": "Its feathers are burning. It doesn't move.",
+   "tag": "[in awe]",
+   "pause": 0.24
+  },
+  {
+   "text": "Mr. Lee wasn't screaming.",
+   "tag": "[realizing]",
+   "pause": 0.24,
+   "speak": "Mister Lee wasn't screaming."
+  },
+  {
+   "text": "He was calling us.",
+   "tag": "[realizing]",
+   "pause": 0.24
+  },
+  {
+   "text": "Its feet are open. Low enough to reach.",
+   "tag": "[softly]",
+   "pause": 0.3
+  },
+  {
+   "text": "“Stay down!”",
+   "tag": "[sharp]",
+   "pause": 0.35,
+   "voice": "mom",
+   "speak": "Stay down!"
+  },
+  {
+   "text": "When the shadow comes, we lie down.",
+   "tag": "[quietly]",
+   "pause": 0.24
+  },
+  {
+   "text": "I stand up.",
+   "tag": "[quietly]",
+   "pause": 0.5
+  },
+  {
+   "text": "One, two... up.",
+   "tag": "[quietly]",
+   "pause": 0.0,
+   "speak": "One... two... up."
+  }
+ ],
+ "sound": {
+  "key": 57,
+  "music_gain": 0.3,
+  "music": [
+   [
+    "0",
+    "tender"
+   ],
+   [
+    "8.751",
+    "silence"
+   ],
+   [
+    "13.796",
+    "tender"
+   ],
+   [
+    "29.502",
+    "tender_hope"
+   ],
+   [
+    "36.884",
+    "silence"
+   ],
+   [
+    "41.577",
+    "dread"
+   ],
+   [
+    "64.922",
+    "mystery"
+   ],
+   [
+    "74.579",
+    "suspense"
+   ],
+   [
+    "92.558",
+    "silence"
+   ],
+   [
+    "98.874",
+    "cosmic"
+   ],
+   [
+    "110.646",
+    "dread"
+   ],
+   [
+    "115.762",
+    "silence"
+   ],
+   [
+    "118.588",
+    "cosmic"
+   ]
+  ],
+  "cues": [
+   [
+    "0",
+    "suburb",
+    0.06,
+    {
+     "dur": 8.801
+    }
+   ],
+   [
+    "13.846",
+    "suburb",
+    0.06,
+    {
+     "dur": 23.088
+    }
+   ],
+   [
+    "0",
+    "wind",
+    0.05,
+    {
+     "dur": 122.852
+    }
+   ],
+   [
+    "0.2",
+    "whoosh",
+    0.12,
+    {
+     "dur": 2.4
+    }
+   ],
+   [
+    "0.6",
+    "rumble",
+    0.07,
+    {
+     "dur": 2.0
+    }
+   ],
+   [
+    "1.15",
+    "bodyfall",
+    0.07
+   ],
+   [
+    "1.35",
+    "bodyfall",
+    0.066
+   ],
+   [
+    "1.6",
+    "bodyfall",
+    0.062000000000000006
+   ],
+   [
+    "1.8",
+    "bodyfall",
+    0.05800000000000001
+   ],
+   [
+    "2.05",
+    "bodyfall",
+    0.054000000000000006
+   ],
+   [
+    "2.3",
+    "bodyfall",
+    0.05
+   ],
+   [
+    "3.405",
+    "riser",
+    0.08,
+    {
+     "dur": 1.6
+    }
+   ],
+   [
+    "3.605",
+    "whoosh",
+    0.1,
+    {
+     "dur": 1.4
+    }
+   ],
+   [
+    "5.732",
+    "chime",
+    0.05,
+    {
+     "note": 84
+    }
+   ],
+   [
+    "5.982",
+    "chime",
+    0.05,
+    {
+     "note": 88
+    }
+   ],
+   [
+    "6.942",
+    "roomtone",
+    0.07,
+    {
+     "dur": 2.059
+    }
+   ],
+   [
+    "7.142",
+    "scratch",
+    0.05
+   ],
+   [
+    "7.362",
+    "scratch",
+    0.05
+   ],
+   [
+    "7.582",
+    "scratch",
+    0.05
+   ],
+   [
+    "7.802",
+    "scratch",
+    0.05
+   ],
+   [
+    "8.022",
+    "scratch",
+    0.05
+   ],
+   [
+    "8.801",
+    "whoosh",
+    0.12,
+    {
+     "dur": 1.6
+    }
+   ],
+   [
+    "10.201",
+    "rumble",
+    0.1,
+    {
+     "dur": 1.8
+    }
+   ],
+   [
+    "10.601",
+    "sting",
+    0.1
+   ],
+   [
+    "11.34",
+    "drone",
+    0.06,
+    {
+     "dur": 2.406
+    }
+   ],
+   [
+    "12.746",
+    "shimmer",
+    0.08,
+    {
+     "dur": 1.0
+    }
+   ],
+   [
+    "14.046",
+    "towerbell",
+    0.1
+   ],
+   [
+    "16.166",
+    "whoosh",
+    0.12,
+    {
+     "dur": 2.4
+    }
+   ],
+   [
+    "16.466",
+    "flutter",
+    0.05,
+    {
+     "dur": 1.6
+    }
+   ],
+   [
+    "18.951",
+    "clunk",
+    0.04
+   ],
+   [
+    "19.551",
+    "chirp",
+    0.04
+   ],
+   [
+    "20.968",
+    "bodyfall",
+    0.07
+   ],
+   [
+    "21.698",
+    "bodyfall",
+    0.08
+   ],
+   [
+    "23.915",
+    "suburb",
+    0.05,
+    {
+     "dur": 1.6
+    }
+   ],
+   [
+    "25.604",
+    "hum",
+    0.05,
+    {
+     "dur": 3.8980000000000024
+    }
+   ],
+   [
+    "27.364",
+    "swish",
+    0.04
+   ],
+   [
+    "27.764",
+    "swish",
+    0.04
+   ],
+   [
+    "30.602",
+    "creak",
+    0.06
+   ],
+   [
+    "35.093",
+    "whoosh",
+    0.1,
+    {
+     "dur": 1.4
+    }
+   ],
+   [
+    "36.113",
+    "bodyfall",
+    0.1
+   ],
+   [
+    "36.293",
+    "bodyfall",
+    0.09
+   ],
+   [
+    "36.443",
+    "bodyfall",
+    0.08
+   ],
+   [
+    "36.984",
+    "heartbeat",
+    0.07,
+    {
+     "dur": 4.292999999999999
+    }
+   ],
+   [
+    "40.104",
+    "rumble",
+    0.06,
+    {
+     "dur": 2.0
+    }
+   ],
+   [
+    "41.677",
+    "drone",
+    0.05,
+    {
+     "dur": 16.988
+    }
+   ],
+   [
+    "48.238",
+    "towerbell",
+    0.08
+   ],
+   [
+    "55.892",
+    "groan",
+    0.04
+   ],
+   [
+    "57.292",
+    "groan",
+    0.035
+   ],
+   [
+    "58.665",
+    "crackle",
+    0.06,
+    {
+     "dur": 6.357000000000006
+    }
+   ],
+   [
+    "58.865",
+    "wind",
+    0.04,
+    {
+     "dur": 3.0
+    }
+   ],
+   [
+    "64.922",
+    "shimmer",
+    0.06,
+    {
+     "dur": 1.0
+    }
+   ],
+   [
+    "65.472",
+    "wind",
+    0.1,
+    {
+     "dur": 2.4
+    }
+   ],
+   [
+    "65.572",
+    "whoosh",
+    0.08,
+    {
+     "dur": 1.2
+    }
+   ],
+   [
+    "68.642",
+    "crackle",
+    0.05,
+    {
+     "dur": 3.1980000000000075
+    }
+   ],
+   [
+    "71.54",
+    "riser",
+    0.06,
+    {
+     "dur": 2.2
+    }
+   ],
+   [
+    "73.729",
+    "whoosh",
+    0.1,
+    {
+     "dur": 1.1
+    }
+   ],
+   [
+    "74.929",
+    "impact",
+    0.13
+   ],
+   [
+    "74.979",
+    "dustglitter",
+    0.06,
+    {
+     "dur": 1.4
+    }
+   ],
+   [
+    "75.229",
+    "crackle",
+    0.07,
+    {
+     "dur": 7.9140000000000015
+    }
+   ],
+   [
+    "82.943",
+    "whoosh",
+    0.16,
+    {
+     "dur": 1.8
+    }
+   ],
+   [
+    "83.143",
+    "thunder",
+    0.07
+   ],
+   [
+    "83.343",
+    "wind",
+    0.14,
+    {
+     "dur": 3.4
+    }
+   ],
+   [
+    "84.703",
+    "rumble",
+    0.14,
+    {
+     "dur": 2.4
+    }
+   ],
+   [
+    "82.843",
+    "heartbeat",
+    0.08,
+    {
+     "dur": 9.514999999999995
+    }
+   ],
+   [
+    "86.36",
+    "bodyfall",
+    0.06
+   ],
+   [
+    "88.158",
+    "wind",
+    0.05,
+    {
+     "dur": 3.4
+    }
+   ],
+   [
+    "92.258",
+    "scrape",
+    0.04,
+    {
+     "dur": 0.6
+    }
+   ],
+   [
+    "93.174",
+    "riser",
+    0.05,
+    {
+     "dur": 1.0
+    }
+   ],
+   [
+    "93.424",
+    "drone",
+    0.08,
+    {
+     "dur": 13.799000000000007
+    }
+   ],
+   [
+    "93.924",
+    "crackle",
+    0.06,
+    {
+     "dur": 28.92800000000001
+    }
+   ],
+   [
+    "94.624",
+    "shimmer",
+    0.07,
+    {
+     "dur": 3.0
+    }
+   ],
+   [
+    "96.274",
+    "flutter",
+    0.04,
+    {
+     "dur": 2.2
+    }
+   ],
+   [
+    "100.961",
+    "shimmer",
+    0.08,
+    {
+     "dur": 2.4
+    }
+   ],
+   [
+    "104.18",
+    "crackle",
+    0.09,
+    {
+     "dur": 2.6
+    }
+   ],
+   [
+    "104.38",
+    "firewall",
+    0.05,
+    {
+     "dur": 2.0
+    }
+   ],
+   [
+    "107.123",
+    "shimmer",
+    0.06,
+    {
+     "dur": 2.0
+    }
+   ],
+   [
+    "109.032",
+    "chime",
+    0.05,
+    {
+     "note": 79
+    }
+   ],
+   [
+    "109.432",
+    "chime",
+    0.05,
+    {
+     "note": 84
+    }
+   ],
+   [
+    "110.396",
+    "whoosh",
+    0.14,
+    {
+     "dur": 1.6
+    }
+   ],
+   [
+    "112.346",
+    "stomp",
+    0.16
+   ],
+   [
+    "112.396",
+    "rumble",
+    0.12,
+    {
+     "dur": 1.6
+    }
+   ],
+   [
+    "112.446",
+    "dustglitter",
+    0.06,
+    {
+     "dur": 1.4
+    }
+   ],
+   [
+    "110.546",
+    "creak",
+    0.1
+   ],
+   [
+    "111.046",
+    "creak",
+    0.08
+   ],
+   [
+    "114.157",
+    "scarehit",
+    0.08
+   ],
+   [
+    "115.862",
+    "drone",
+    0.06,
+    {
+     "dur": 2.676000000000002
+    }
+   ],
+   [
+    "118.588",
+    "scrape",
+    0.06,
+    {
+     "dur": 0.7
+    }
+   ],
+   [
+    "118.788",
+    "riser",
+    0.08,
+    {
+     "dur": 3.615000000000009
+    }
+   ],
+   [
+    "119.893",
+    "heartbeat",
+    0.08,
+    {
+     "dur": 2.3100000000000023
+    }
+   ],
+   [
+    "122.503",
+    "whoosh",
+    0.12,
+    {
+     "dur": 0.5
+    }
+   ]
+  ]
+ }
+}
