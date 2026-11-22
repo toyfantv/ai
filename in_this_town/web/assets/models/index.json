@@ -1589,6 +1589,94 @@
     "type": "builder",
     "url": ""
   },
+  "pf_fire_extinguisher": {
+    "author": "Polyfork",
+    "desc": "red fire extinguisher (0.55 m)",
+    "file": "model.glb",
+    "kind": "prop",
+    "licence": "CC-BY",
+    "source": "Polyfork",
+    "title": "Fire Extinguisher",
+    "type": "file",
+    "url": "https://polyfork.dev/asset/fire-extinguisher-95dca1"
+  },
+  "pf_floor_plant": {
+    "author": "Polyfork",
+    "desc": "floor houseplant in a dark pot (1.5 m)",
+    "file": "model.glb",
+    "kind": "prop",
+    "licence": "CC-BY",
+    "source": "Polyfork",
+    "title": "Floor Houseplant",
+    "type": "file",
+    "url": "https://polyfork.dev/asset/floor-houseplant-8fad17"
+  },
+  "pf_mop_trolley": {
+    "author": "Polyfork",
+    "desc": "janitor's mop bucket trolley with wringer and mop (1.0 m)",
+    "file": "model.glb",
+    "kind": "prop",
+    "licence": "CC-BY",
+    "source": "Polyfork",
+    "title": "Mop Bucket Trolley",
+    "type": "file",
+    "url": "https://polyfork.dev/asset/mop-bucket-trolley-ed94e7"
+  },
+  "pf_pupil_backpack": {
+    "author": "Polyfork",
+    "desc": "small kid's school backpack, blue, straps strap-l / strap-r (0.46 m)",
+    "file": "model.glb",
+    "kind": "prop",
+    "licence": "CC-BY",
+    "source": "Polyfork",
+    "title": "Pupil Backpack",
+    "type": "file",
+    "url": "https://polyfork.dev/asset/pupil-backpack-d9b5fb"
+  },
+  "pf_sanitiser": {
+    "author": "Polyfork",
+    "desc": "wall hand-sanitiser dispenser on a post (0.53 m)",
+    "file": "model.glb",
+    "kind": "prop",
+    "licence": "CC-BY",
+    "source": "Polyfork",
+    "title": "Hand Sanitiser Dispenser",
+    "type": "file",
+    "url": "https://polyfork.dev/asset/hand-sanitiser-dispenser-a48460"
+  },
+  "pf_seminar_chair": {
+    "author": "Polyfork",
+    "desc": "stacking seminar chair, wood seat on a steel frame (node 'dressing' is a book on the seat: hide it)",
+    "file": "model.glb",
+    "kind": "prop",
+    "licence": "CC-BY",
+    "source": "Polyfork",
+    "title": "Seminar Chair (Stacking)",
+    "type": "file",
+    "url": "https://polyfork.dev/asset/seminar-chair-stacking-4f7734"
+  },
+  "pf_vending_machine": {
+    "author": "Polyfork",
+    "desc": "red snack vending machine, lit shelves (1.9 m)",
+    "file": "model.glb",
+    "kind": "prop",
+    "licence": "CC-BY",
+    "source": "Polyfork",
+    "title": "Vending Machine",
+    "type": "file",
+    "url": "https://polyfork.dev/asset/vending-machine-471c29"
+  },
+  "pf_waste_bin": {
+    "author": "Polyfork",
+    "desc": "white pedal waste bin (0.58 m)",
+    "file": "model.glb",
+    "kind": "prop",
+    "licence": "CC-BY",
+    "source": "Polyfork",
+    "title": "Waste Bin",
+    "type": "file",
+    "url": "https://polyfork.dev/asset/waste-bin-sharps-bca988"
+  },
   "phone_445": {
     "author": "toyfantv",
     "desc": "a phone whose lock screen reads 4:45 PM",

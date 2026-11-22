@@ -1,0 +1,294 @@
+{
+ "number": 201,
+ "title": "Now Serving 4,812",
+ "output": "LIM001_NowServing4812.mp4",
+ "youtube_title": "My number finally got called",
+ "tiktok_caption": "The board's said 4,812 since I was nine. My ticket says 4,813. Would you have stood up first, or let someone else try the door?",
+ "hashtags": "#Shorts #Backrooms #Liminal #Animation #LiminalSpaces",
+ "thumbnail_text": "SINCE I WAS NINE",
+ "thumbnail_rec": "Wren's hand holding a worn paper ticket 4813, sharp in the foreground; behind it the red LED board NOW SERVING 4812 over a frosted door marked PLEASE WAIT, rows of pastel chairs fading into a mint haze. Text at the top: SINCE I WAS NINE",
+ "tail": 0.9,
+ "fps": 60,
+ "narrator": {
+  "pace": [
+   2.5,
+   2.95
+  ],
+  "min_tempo": 1.04
+ },
+ "cast": {
+  "wren": {
+   "voice": "laura",
+   "pitch": 1.0,
+   "tempo": 1.12,
+   "max_tempo": 1.15,
+   "min_tempo": 1.04,
+   "pace": [
+    2.5,
+    3.0
+   ]
+  },
+  "oldman": {
+   "voice": "bill",
+   "pitch": 0.98,
+   "tempo": 0.95
+  }
+ },
+ "highlights": {
+  "4,812": "red",
+  "NINE.": "red",
+  "4,813.": "yellow",
+  "NEXT.": "yellow",
+  "CALLED.": "red",
+  "NUMBER.": "yellow",
+  "CLOSE ONE.": "cyan"
+ },
+ "lines": [
+  {
+   "text": "The board's said 4,812 since I was nine.",
+   "speak": "The board's said forty-eight twelve, since I was nine.",
+   "tag": "[flat, tired]",
+   "voice": "wren",
+   "pause": 0.2
+  },
+  {
+   "text": "My ticket says 4,813. I'm next.",
+   "speak": "My ticket says forty-eight thirteen. I'm next.",
+   "tag": "[flat]",
+   "voice": "wren",
+   "pause": 0.22
+  },
+  {
+   "text": "Nobody talks. Nobody leaves. Nobody gets called.",
+   "tag": "[flat, quietly]",
+   "voice": "wren",
+   "pause": 0.22,
+   "speak": "Nobody talks, nobody leaves, nobody gets called."
+  },
+  {
+   "text": "One door. One number.",
+   "tag": "[flat, quietly]",
+   "voice": "wren",
+   "pause": 4.5
+  },
+  {
+   "text": "Close one.",
+   "tag": "[dry, kindly]",
+   "voice": "oldman",
+   "pause": 0.2
+  }
+ ],
+ "samples": {},
+ "sound": {
+  "key": 57,
+  "music_gain": 0.0,
+  "music": [],
+  "cues": [
+   [
+    "0",
+    "buzz",
+    0.06,
+    {
+     "dur": 11.926000000000002,
+     "f": 120
+    }
+   ],
+   [
+    "0",
+    "vent",
+    0.05,
+    {
+     "dur": 11.926000000000002
+    }
+   ],
+   [
+    "0",
+    "roomtone",
+    0.05,
+    {
+     "dur": 11.876000000000001
+    }
+   ],
+   [
+    "4.225",
+    "flick",
+    0.03
+   ],
+   [
+    "6.166",
+    "tick",
+    0.035,
+    {
+     "dur": 1.2,
+     "rate": 6.5
+    }
+   ],
+   [
+    "7.216",
+    "scrape",
+    0.05,
+    {
+     "dur": 1.1,
+     "seed": 5
+    }
+   ],
+   [
+    "8.416",
+    "scrape",
+    0.04,
+    {
+     "dur": 0.9,
+     "seed": 7
+    }
+   ],
+   [
+    "8.516",
+    "clunk",
+    0.05
+   ],
+   [
+    "11.876",
+    "pachime",
+    0.22
+   ],
+   [
+    "12.826",
+    "scrape",
+    0.07,
+    {
+     "dur": 0.45,
+     "seed": 11
+    }
+   ],
+   [
+    "12.886",
+    "scrape",
+    0.062000000000000006,
+    {
+     "dur": 0.45,
+     "seed": 12
+    }
+   ],
+   [
+    "12.906",
+    "scrape",
+    0.054000000000000006,
+    {
+     "dur": 0.45,
+     "seed": 13
+    }
+   ],
+   [
+    "12.966",
+    "scrape",
+    0.046000000000000006,
+    {
+     "dur": 0.45,
+     "seed": 14
+    }
+   ],
+   [
+    "12.986",
+    "scrape",
+    0.038000000000000006,
+    {
+     "dur": 0.45,
+     "seed": 15
+    }
+   ],
+   [
+    "13.076",
+    "creak",
+    0.05
+   ],
+   [
+    "15.226",
+    "flick",
+    0.12,
+    {
+     "dur": 0.25
+    }
+   ],
+   [
+    "15.246",
+    "clunk",
+    0.06
+   ],
+   [
+    "15.276",
+    "buzz",
+    0.06,
+    {
+     "dur": 2.903999999999998,
+     "f": 120
+    }
+   ],
+   [
+    "15.276",
+    "vent",
+    0.05,
+    {
+     "dur": 2.903999999999998
+    }
+   ],
+   [
+    "15.276",
+    "roomtone",
+    0.05,
+    {
+     "dur": 2.903999999999998
+    }
+   ],
+   [
+    "15.586",
+    "scrape",
+    0.05,
+    {
+     "dur": 0.35,
+     "seed": 21
+    }
+   ],
+   [
+    "15.636",
+    "scrape",
+    0.05,
+    {
+     "dur": 0.35,
+     "seed": 22
+    }
+   ],
+   [
+    "15.686",
+    "scrape",
+    0.05,
+    {
+     "dur": 0.35,
+     "seed": 23
+    }
+   ],
+   [
+    "15.736",
+    "scrape",
+    0.05,
+    {
+     "dur": 0.35,
+     "seed": 24
+    }
+   ],
+   [
+    "15.736",
+    "creak",
+    0.05
+   ],
+   [
+    "16.576",
+    "tick",
+    0.03,
+    {
+     "dur": 1.0,
+     "rate": 6.5
+    }
+   ]
+  ]
+ }
+}
